@@ -21,7 +21,7 @@
       "styles": [
         "styles.css",
         "../semantic/dist/semantic.css",
-        "../node_modules/mapbox-gl-js/dist/mapbox-gl.css"
+        "../node_modules/mapbox-gl/dist/mapbox-gl.css"
 
       ],
       "scripts": [
