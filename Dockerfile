@@ -7,11 +7,12 @@ WORKDIR /usr/src/app
 COPY package.json .
 COPY package-lock.json .
 
-#RUN npm install -g npm
-
 RUN npm install
 
 COPY . .
 
-EXPOSE 4200
-CMD ["npm", "start"]
+EXPOSE 3000
+# EXPOSE 4200
+# CMD ["npm", "start"]
+CMD ["ng", "build", "--aot", "-prod"]
+CMD ["node", "app.js"]

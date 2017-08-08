@@ -9,7 +9,7 @@ declare var jQuery: any;
 })
 export class LayerMapComponent implements OnInit {
 
-  private chartData: Array<any>;
+  public chartData: Array<any>;
 
   constructor() { }
 
