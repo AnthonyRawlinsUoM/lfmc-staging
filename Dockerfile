@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:alpine
 MAINTAINER Anthony Rawlins <anthony.rawlins@unimelb.edu.au>
 
 # Make working dir
