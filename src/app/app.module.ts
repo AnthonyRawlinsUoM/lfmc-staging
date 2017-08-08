@@ -12,6 +12,7 @@ import { AgmCoreModule } from '@agm/core';
 
 // Services
 import { ModisService } from './services/modis.service'
+import { MapService } from './services/map.service'
 
 // Components
 import { AppComponent } from './app.component';
@@ -29,6 +30,7 @@ import { CallbackComponent } from './components/callback/callback.component';
 import { AuthService } from './services/auth.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
+import { MapboxComponent } from './shared/mapbox/mapbox.component';
 
 const appRoutes: Routes = [
   {path:'', component:HomeComponent },
@@ -59,7 +61,8 @@ const appRoutes: Routes = [
     TimelineComponent,
     CallbackComponent,
     ProfileComponent,
-    HomeComponent
+    HomeComponent,
+    MapboxComponent
   ],
 
   // Modules
@@ -78,7 +81,10 @@ const appRoutes: Routes = [
   ],
 
   // Services
-  providers: [ModisService, AuthService],
+  providers: [
+    MapService,
+    ModisService,
+    AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
