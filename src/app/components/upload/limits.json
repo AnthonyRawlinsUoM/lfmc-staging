@@ -1,0 +1,12 @@
+{
+  "limits": {
+    "TIFF and GeoTIFF":	"10 GB",
+    "MBTiles": "25 GB",
+    "GeoJSON": "1 GB",
+    "CSV": "1 GB",
+    "KML": "260 MB",
+    "GPX": "260 MB",
+    "Shapefile (zipped)": "260 MB",
+    "Mapbox Dataset": "1 GB"
+  }
+}

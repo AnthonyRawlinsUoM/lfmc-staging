@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PersistenceService, StorageType } from 'angular-persistence';
 
 @Component({
   selector: 'lfmc-user',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: PersistenceService) { }
 
   ngOnInit() {
+    this.store.set('test', 'success', {type: StorageType.SESSION});
   }
 
 }

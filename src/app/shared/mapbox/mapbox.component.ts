@@ -19,7 +19,7 @@ export class MapboxComponent implements OnInit {
   ngOnInit() {
     let map = new Map({
         container: 'mymapbox',
-        style: 'mapbox://styles/mapbox/outdoors-v9',
+        style: 'mapbox://styles/anthonyrawlinsuom/cj5we9hex7cy82rqimwlky6rz',
         center: [this.lng, this.lat],
         zoom: this.zoom
     });

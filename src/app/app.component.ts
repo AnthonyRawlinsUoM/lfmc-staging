@@ -9,7 +9,7 @@ declare var jQuery: any;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Fuel Moisture v1';
+  title = 'Lanscape Fuel Moisture Content v1';
 
   constructor(public auth: AuthService) {
     auth.handleAuthentication();

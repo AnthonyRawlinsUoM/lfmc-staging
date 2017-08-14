@@ -1,0 +1,16 @@
+ui.segment.dropzone,
+.dropzone {
+  border-style: dashed;
+  border-color: lightgray;
+  min-height:150px;
+  text-align: center;
+  padding-top: 3rem;
+  background-color: rgba(225,225,245,0.35);
+}
+.nv-file-over {
+  border-color: green;
+  background-color: rgba(225,245,225,0.35);
+}
+.another-file-over-class {
+  border: dashed 1px green;
+}
