@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as AWS from 'aws-sdk';
+//import * as AWS from 'aws-sdk';
 
 @Injectable()
 export class MapboxUploadAPIS3Service {
@@ -25,6 +25,8 @@ export class MapboxUploadAPIS3Service {
 
    }
 
+
+   /*
    sendToMapbox(file:any) {
      this.client.createUploadCredentials(function(err, credentials) {
        // Use aws-sdk to stage the file on Amazon S3
@@ -41,5 +43,7 @@ export class MapboxUploadAPIS3Service {
        }, function(err, resp) {
        });
      });
+
    }
+   */
 }

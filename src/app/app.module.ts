@@ -5,8 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { PersistenceModule } from 'angular-persistence';
-
 import { AgmCoreModule } from '@agm/core';
+import { SuiModule } from 'ng2-semantic-ui';
 //import  { MapBoxModule } from '@mapbox/mapbox-gl-draw';
 
 
@@ -83,6 +83,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FileUploadModule,
+    SuiModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDxVm7cOOIMVDj6SPcj3lp0S_S2-T7mDFw'
     })

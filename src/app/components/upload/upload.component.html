@@ -45,7 +45,13 @@
 
   <!-- Start: File Chooser -->
   <div class="ui segment">
-    <h3>Choose a file to upload: </h3><input type="file" ng2FileSelect [uploader]="uploader"/>
+    <h3>Choose a file to upload: </h3>
+    <input ng2FileSelect
+    [ngClass]="{'another-file-over-class': hasAnotherDropZoneOver}"
+    type="file"
+    (fileOver)="fileOverAnother($event)"
+    [uploader]="uploader"
+    multiple />
   </div>
   <!-- End: File Chooser -->
 
@@ -77,22 +83,15 @@
             </div>
           </div>
           <div class="seven wide column middle aligned">
-            <div class="ui fluid indicating progress">
-              <div class="bar" data-percent="{item.progress}" role="progressbar">
+              <sui-progress [value]="item.progress" [showProgress]="true" [maximum]="maximum" [precision]="precision">
                 <div class="progress">{{item.progress + '%'}}</div>
-              </div>
-              <div *ngIf="item.isReady" class="label">Ready to upload.</div>
-              <div *ngIf="item.isUploading" class="label">Uploading File.</div>
-              <div *ngIf="item.isSuccess" class="label">Complete.</div>
-              <div *ngIf="item.isCancel" class="label">Cancelled.</div>
-              <div *ngIf="item.isError" class="label">Error: {{item.file.name}} failed to upload.</div>
+              </sui-progress>
             </div>
-          </div>
           <div class="five wide column middle aligned">
             <div class="mini ui icon buttons fluid">
               <button type="button" class="mini ui icon button" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess || item.isError"><i class="green upload icon"></i>Upload file</button>
               <button type="button" class="mini ui icon button" (click)="item.cancel()" [disabled]="!item.isUploading"><i class="blue stop icon"></i>Stop upload</button>
-              <button type="button" class="mini ui icon button" (click)="item.remove()" [disabled]="item.isSuccess"><i class="red delete icon"></i>Remove file</button>
+              <button type="button" class="mini ui icon button" (click)="item.remove()" [disabled]="!item.isSuccess"><i class="red delete icon"></i>Remove file</button>
             </div>
           </div>
         </div>

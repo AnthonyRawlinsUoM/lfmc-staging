@@ -3,7 +3,7 @@ import { FileUploader } from 'ng2-file-upload';
 import { MapboxUploadAPIS3Service } from '../../services/mapbox-upload-api-s3.service';
 
 // TODO
-const URL = '/api';
+const URL = 'http:////localhost:1880/upload';
 
 @Component({
   selector: 'lfmc-upload',
@@ -32,5 +32,7 @@ export class UploadComponent implements OnInit {
 
   ngOnInit() {
   }
+
+
 
 }
