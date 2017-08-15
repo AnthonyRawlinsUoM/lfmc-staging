@@ -17,7 +17,6 @@ import { MapboxUploadAPIS3Service } from './services/mapbox-upload-api-s3.servic
 
 // Components
 import { AppComponent } from './app.component';
-import { UserComponent } from './components/user/user.component';
 import { BarchartComponent } from './shared/barchart/barchart.component';
 import { HelpComponent } from './components/help/help.component';
 import { OptionsComponent } from './components/options/options.component';
@@ -56,7 +55,6 @@ const appRoutes: Routes = [
   // Components
   declarations: [
     AppComponent,
-    UserComponent,
     BarchartComponent,
     HelpComponent,
     OptionsComponent,

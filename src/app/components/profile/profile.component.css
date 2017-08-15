@@ -1,0 +1,7 @@
+.ui.card .avatar img.full,
+.ui.card .img.avatar.full,
+.ui.cards > .card img.avatar,
+img.avatar.full {
+  width: 100%;
+  height: inherit;
+}
