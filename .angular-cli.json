@@ -20,14 +20,11 @@
       "prefix": "lfmc",
       "styles": [
         "styles.css",
-        "../semantic/dist/semantic.css",
         "../node_modules/mapbox-gl/dist/mapbox-gl.css"
 
       ],
       "scripts": [
-        "../node_modules/jquery/dist/jquery.js",
         "../node_modules/auth0-js/build/auth0.js",
-        "../semantic/dist/semantic.js",
         "../node_modules/mapbox-gl/dist/mapbox-gl.js"
       ],
       "environmentSource": "environments/environment.ts",
