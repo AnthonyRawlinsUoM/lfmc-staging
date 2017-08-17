@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-declare var jQuery: any;
-
 @Component({
   selector: 'lfmc-layer-map',
   templateUrl: './layer-map.component.html',
@@ -14,7 +12,6 @@ export class LayerMapComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    jQuery('.ui.accordion').accordion();
 
     setTimeout(() => {
       this.generateData();

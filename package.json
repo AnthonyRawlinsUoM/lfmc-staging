@@ -30,6 +30,7 @@
     "@angular/router": "^4.3.4",
     "@mapbox/mapbox-data-cli": "^2.0.0",
     "@mapbox/mapbox-gl-draw": "^1.0.0",
+    "@mapbox/mapbox-gl-geocoder": "^2.1.0",
     "@mapbox/mapbox-gl-sync-move": "^0.2.0",
     "@types/geojson": "^1.0.2",
     "@types/mapbox-gl": "^0.39.4",

@@ -7,7 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PersistenceModule } from 'angular-persistence';
 import { AgmCoreModule } from '@agm/core';
 import { SuiModule } from 'ng2-semantic-ui';
-//import  { MapBoxModule } from '@mapbox/mapbox-gl-draw';
+// import  { MapboxGeocoderModule } from '@mapbox/mapbox-gl-geocoder';
 
 
 // Services
@@ -82,6 +82,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FileUploadModule,
     SuiModule,
+    // MapboxGeocoderModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDxVm7cOOIMVDj6SPcj3lp0S_S2-T7mDFw'
     })
