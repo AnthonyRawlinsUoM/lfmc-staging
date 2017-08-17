@@ -1,4 +1,18 @@
-#mymapbox {
-  height: 400px;
+#mymapbox,
+#myaltmap {
+  height: 600px;
   padding: 0em;
+  margin: 0em;
+}
+
+#myoverlay {
+  position: absolute;
+  width: ((100%)-1em);
+  top: 1em;
+  left: 4em;
+}
+
+#geocoder-container > div {
+    min-width:50%;
+    margin-left:25%;
 }

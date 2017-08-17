@@ -1,33 +1,87 @@
-
-<lfmc-toolbar></lfmc-toolbar>
-<lfmc-basic-map></lfmc-basic-map>
-<div class="ui two column grid">
-  <div class="column">
-<div class="ui styled fluid accordion">
-  <div  class="active title">
-    <i class="dropdown icon"></i>
-    Layer 1
-  </div>
-  <div class="active content">
-    <p>Testing</p>
-  </div>
-  <div class="title">
-    <i class="dropdown icon"></i>
-    Layer 2
-  </div>
-  <div class="content">
-    <p>other stuff</p>
-  </div>
-  <div class="title">
-    <i class="dropdown icon"></i>
-    Layer 3
-  </div>
-  <div class="content">
-    <p>other stuff</p>
-  </div>
-</div>
-</div>
-<div class="column">
-  <lfmc-barchart *ngIf="chartData" [data]="chartData"></lfmc-barchart>
-</div>
-</div>
+<sui-accordion class="ui styled fluid accordion">
+  <sui-accordion-panel [isOpen]="true">
+    <div title>
+      <i class="dropdown icon"></i> Datasets
+    </div>
+    <div content>
+      <table class="ui celled table">
+        <thead>
+          <tr>
+            <th>Dataset</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Frequency</th>
+            <th>Provider</th>
+            <th>Size</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="ui toggle checkbox">
+                <input type="checkbox" name="Layer1">
+                <label></label>
+              </div>
+            </td>
+            <td>KBDI</td>
+            <td>Keech-Byram Drought Index</td>
+            <td>6 hours</td>
+            <td>DELWP</td>
+            <td>100MB</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="ui toggle checkbox">
+                <input type="checkbox" name="Layer3">
+                <label></label>
+              </div>
+            </td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="ui toggle checkbox">
+                <input type="checkbox" name="Layer2">
+                <label></label>
+              </div>
+            </td>
+            <td>Cell</td>
+            <td>Cell</td><td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="6">
+              <div class="ui right floated pagination menu">
+                <a class="icon item">
+          <i class="left chevron icon"></i>
+        </a>
+                <a class="item">1</a>
+                <a class="item">2</a>
+                <a class="item">3</a>
+                <a class="item">4</a>
+                <a class="icon item">
+          <i class="right chevron icon"></i>
+        </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </sui-accordion-panel>
+  <sui-accordion-panel [isOpen]="false">
+    <div title>
+      <i class="dropdown icon"></i> Tilesets
+    </div>
+    <div content>
+      <p>Add classes to the <code>sui-accordion</code> element to apply styles.</p>
+    </div>
+  </sui-accordion-panel>
+</sui-accordion>

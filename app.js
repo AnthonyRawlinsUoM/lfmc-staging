@@ -14,4 +14,6 @@ const port = process.env.PORT || '3000';
 app.set('port', port);
 
 const server = http.createServer(app);
-server.listen(port, () => console.log('Server running'));
+server.listen(port, () => {
+  console.log('LFMCv1 Server running on', port);
+});

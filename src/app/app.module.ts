@@ -4,19 +4,19 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
-// import { MapBoxModule } from 'mapbox-gl-js/dist/mapbox-gl-js';
-
+import { PersistenceModule } from 'angular-persistence';
 import { AgmCoreModule } from '@agm/core';
-//import  { MapBoxModule } from '@mapbox/mapbox-gl-draw';
+import { SuiModule } from 'ng2-semantic-ui';
+// import  { MapboxGeocoderModule } from '@mapbox/mapbox-gl-geocoder';
 
 
 // Services
-import { ModisService } from './services/modis.service'
-import { MapService } from './services/map.service'
+import { ModisService } from './services/modis.service';
+import { MapService } from './services/map.service';
+import { MapboxUploadAPIS3Service } from './services/mapbox-upload-api-s3.service';
 
 // Components
 import { AppComponent } from './app.component';
-import { UserComponent } from './components/user/user.component';
 import { BarchartComponent } from './shared/barchart/barchart.component';
 import { HelpComponent } from './components/help/help.component';
 import { OptionsComponent } from './components/options/options.component';
@@ -31,6 +31,11 @@ import { AuthService } from './services/auth.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { MapboxComponent } from './shared/mapbox/mapbox.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { UploadComponent } from './components/upload/upload.component';
+
+
+import { FileUploadModule } from 'ng2-file-upload';
 
 const appRoutes: Routes = [
   {path:'', component:HomeComponent },
@@ -40,8 +45,9 @@ const appRoutes: Routes = [
   {path:'options', component:OptionsComponent },
   {path:'contribute', component:ContributeComponent },
   {path:'layers', component:LayerMapComponent },
-  {path: 'callback', component: CallbackComponent },
-  {path: '**', redirectTo: '' }
+  {path: 'callback', component: CallbackComponent }
+  //,
+  //{path: '**', redirectTo: '' }
 ]
 
 @NgModule({
@@ -49,7 +55,6 @@ const appRoutes: Routes = [
   // Components
   declarations: [
     AppComponent,
-    UserComponent,
     BarchartComponent,
     HelpComponent,
     OptionsComponent,
@@ -62,7 +67,9 @@ const appRoutes: Routes = [
     CallbackComponent,
     ProfileComponent,
     HomeComponent,
-    MapboxComponent
+    MapboxComponent,
+    FooterComponent,
+    UploadComponent
   ],
 
   // Modules
@@ -70,21 +77,23 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    PersistenceModule,
     RouterModule.forRoot(appRoutes),
     BrowserModule,
+    FileUploadModule,
+    SuiModule,
+    // MapboxGeocoderModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDxVm7cOOIMVDj6SPcj3lp0S_S2-T7mDFw'
     })
-/*   , MapBoxModule.forRoot(
-      "pk.eyJ1IjoiYW50aG9ueXJhd2xpbnN1b20iLCJhIjoiY2o1dm81NTIwMDN6MTJxbjlvOHBiNHd1OSJ9.1t8I4sU0ceA6N8Tnnmx2ig"
-    )*/
   ],
 
   // Services
   providers: [
     MapService,
     ModisService,
-    AuthService],
+    AuthService,
+    MapboxUploadAPIS3Service],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
