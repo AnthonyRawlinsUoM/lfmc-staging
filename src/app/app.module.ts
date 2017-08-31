@@ -45,6 +45,8 @@ import { ImporttasksComponent } from './components/importtasks/importtasks.compo
 import { FullscreenComponent } from './components/fullscreen/fullscreen.component';
 import { SearchresultsComponent } from './components/searchresults/searchresults.component';
 import { DatasourcesComponent } from './components/datasources/datasources.component';
+import { ConfirmModal, ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
+import { MongolComponent } from './shared/mongol/mongol.component';
 
 const appRoutes: Routes = [
   {path:'', component:HomeComponent },
@@ -60,6 +62,10 @@ const appRoutes: Routes = [
 ]
 
 @NgModule({
+
+  entryComponents:[
+    ConfirmModalComponent
+  ],
 
   // Components
   declarations: [
@@ -85,7 +91,9 @@ const appRoutes: Routes = [
     ImporttasksComponent,
     FullscreenComponent,
     SearchresultsComponent,
-    DatasourcesComponent
+    DatasourcesComponent,
+    ConfirmModalComponent,
+    MongolComponent
   ],
 
   // Modules

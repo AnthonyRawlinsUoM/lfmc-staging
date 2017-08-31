@@ -1,4 +1,4 @@
-<div class="ui inverted vertical masthead center aligned segment">
+<div class="ui blue inverted vertical masthead center aligned segment">
 
   <div class="ui text container">
     <h1 class="ui inverted header">Landscape Fuel Moisture Condition</h1>
@@ -42,7 +42,7 @@
               <span *ngIf="m.enabled">Enabled</span><span *ngIf="!m.enabled">Disabled</span>
             </div>
             <label>Rating</label>
-            <sui-rating [(ngModel)]="m.rating" [maximum]="10" [isReadonly]="readonly"></sui-rating>
+            <sui-rating [(ngModel)]="m.rating" [maximum]="10" [isReadonly]="true"></sui-rating>
 
             <div class="ui divider"></div>
             <lfmc-datasources [model]="m"></lfmc-datasources>

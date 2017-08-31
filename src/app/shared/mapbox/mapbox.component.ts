@@ -26,7 +26,7 @@ export class MapboxComponent implements OnInit {
 
   lat: number = -36.568;
   lng: number = 145.062;
-  zoom: number = 6;
+  zoom: number = 6.5;
   bearing: number = 0;
 
   nav: NavigationControl;
@@ -36,10 +36,8 @@ export class MapboxComponent implements OnInit {
 
   // Set bounds to Victorian Area
   bounds = [
-    [140.09765625,
-      -39.90973623453718],
-    [150.9521484375,
-      -33.504759069226075]
+    [139, -41],
+    [151, -33]
   ];
 
   ngOnInit() {

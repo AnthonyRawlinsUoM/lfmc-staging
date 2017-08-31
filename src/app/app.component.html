@@ -1,50 +1,46 @@
-<!-- Following Menu -->
-<div class="ui inverted large top pointing menu transition">
-  <div class="ui container">
-    <a class="item" [routerLinkActive]="['active']" routerLink="/home">
-        <i class="home icon"></i>
-  Home
-  </a>
-    <a class="item" [routerLinkActive]="['active']" routerLink="/models">
-  <i class="map outline icon"></i>Models
-  </a>
-    <a class="item" [routerLinkActive]="['active']" routerLink="/contribute">
-  <i class="marker icon"></i>Contribute
-  </a>
-    <a class="item" [routerLinkActive]="['active']" routerLink="/options">
-  <i class="options icon"></i>Options
-  </a>
-    <a class="item" [routerLinkActive]="['active']" routerLink="/help">
-  <i class="help icon"></i>Help
-  </a>
-
-    <div class="right menu">
-      <div class="item">
-        <div class="ui transparent icon input">
-          <input type="text" placeholder="Search...">
-          <i class="inverted search link icon"></i>
-        </div>
-      </div>
-      <a class="item" [routerLinkActive]="['active']" *ngIf="auth.isAuthenticated()" routerLink="/profile">
-      <i class="user circle icon"></i>
-      Profile
-    </a>
-      <a class="item" *ngIf="!auth.isAuthenticated()" (click)="auth.login()">
-    <i class="enter icon"></i>Login
-    </a>
-      <a class="item" *ngIf="auth.isAuthenticated()" (click)="auth.logout()">
-      <i class="exit icon"></i>Logout
-    </a>
-    </div>
-  </div>
-</div>
-
 <!-- Page Contents -->
-<div class="pusher">
-  <div class="ui">
+<div class="ui top attached inverted menu">
+  <a class="item" (click)="sidebar.toggle()">
+        <i class="sidebar icon"></i> Menu
+    </a>
+</div>
+<sui-sidebar-container class="ui bottom attached segment">
+  <sui-sidebar class="inverted vertical" #sidebar>
+    <a class="item" [routerLinkActive]="['active']" routerLink="/home">
+          <i class="home icon"></i>
+    Home
+    </a>
+    <div class="item">
+      <div class="ui transparent icon input">
+        <input type="text" placeholder="Search...">
+        <i class="inverted search link icon"></i>
+      </div>
+    </div>
+    <a class="item" [routerLinkActive]="['active']" routerLink="/models">
+    <i class="map outline icon"></i>Models
+    </a>
+    <a class="item" [routerLinkActive]="['active']" routerLink="/contribute">
+    <i class="marker icon"></i>Contribute
+    </a>
+    <a class="item" [routerLinkActive]="['active']" routerLink="/options">
+    <i class="options icon"></i>Options
+    </a>
+    <a class="item" [routerLinkActive]="['active']" routerLink="/help">
+    <i class="help icon"></i>Help
+    </a><a class="item" [routerLinkActive]="['active']" *ngIf="auth.isAuthenticated()" routerLink="/profile">
+    <i class="user circle icon"></i>
+    Profile
+  </a>
+    <a class="item" *ngIf="!auth.isAuthenticated()" (click)="auth.login()">
+  <i class="enter icon"></i>Login
+  </a>
+    <a class="item" *ngIf="auth.isAuthenticated()" (click)="auth.logout()">
+    <i class="exit icon"></i>Logout
+  </a>
+  </sui-sidebar>
+  <sui-sidebar-sibling [isDimmedWhenVisible]="true">
     <main>
       <router-outlet></router-outlet>
     </main>
-  </div>
-  <lfmc-footer></lfmc-footer>
-</div>
+  </sui-sidebar-sibling>
+</sui-sidebar-container>
