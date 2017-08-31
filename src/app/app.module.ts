@@ -7,12 +7,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { PersistenceModule } from 'angular-persistence';
 import { AgmCoreModule } from '@agm/core';
 import { SuiModule } from 'ng2-semantic-ui';
-// import  { MapboxGeocoderModule } from '@mapbox/mapbox-gl-geocoder';
 
 
 // Services
 import { ModisService } from './services/modis.service';
 import { ModelsService } from './services/models.service';
+import { DatasourcesService } from './services/datasources.service';
 import { MapService } from './services/map.service';
 import { MapboxUploadAPIS3Service } from './services/mapbox-upload-api-s3.service';
 
@@ -44,6 +44,7 @@ import { ImportjobsComponent } from './components/importjobs/importjobs.componen
 import { ImporttasksComponent } from './components/importtasks/importtasks.component';
 import { FullscreenComponent } from './components/fullscreen/fullscreen.component';
 import { SearchresultsComponent } from './components/searchresults/searchresults.component';
+import { DatasourcesComponent } from './components/datasources/datasources.component';
 
 const appRoutes: Routes = [
   {path:'', component:HomeComponent },
@@ -83,7 +84,8 @@ const appRoutes: Routes = [
     ImportjobsComponent,
     ImporttasksComponent,
     FullscreenComponent,
-    SearchresultsComponent
+    SearchresultsComponent,
+    DatasourcesComponent
   ],
 
   // Modules
@@ -109,6 +111,7 @@ const appRoutes: Routes = [
     ModisService,
     AuthService,
     ModelsService,
+    DatasourcesService,
     MapboxUploadAPIS3Service],
   bootstrap: [AppComponent]
 })

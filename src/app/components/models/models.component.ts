@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ModelsService } from '../../services/models.service';
-
+import { DatasourcesModule } from '../datasources/datasources.module';
 import { Observable } from 'rxjs/Rx';
 
 @Component({
@@ -18,7 +18,18 @@ export class ModelsComponent implements OnInit {
 		this.modelserver.getModels().subscribe(m => this.models = m);
 	}
 
+  getData() {
+    return this.modelserver.getModels();
+  }
+
+  getModels() {
+    return this.getData().subscribe(m => {
+      console.log(m);
+      this.models = m;
+    });
+  }
+
   enable(m:any) {
-    
+
   }
 }
