@@ -12,6 +12,7 @@ import { SuiModule } from 'ng2-semantic-ui';
 
 // Services
 import { ModisService } from './services/modis.service';
+import { ModelsService } from './services/models.service';
 import { MapService } from './services/map.service';
 import { MapboxUploadAPIS3Service } from './services/mapbox-upload-api-s3.service';
 
@@ -34,8 +35,13 @@ import { MapboxComponent } from './shared/mapbox/mapbox.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { UploadComponent } from './components/upload/upload.component';
 
+import { HttpClientModule } from '@angular/common/http';
 
 import { FileUploadModule } from 'ng2-file-upload';
+import { ModelsComponent } from './components/models/models.component';
+import { ModelviewComponent } from './components/modelview/modelview.component';
+import { ImportjobsComponent } from './components/importjobs/importjobs.component';
+import { ImporttasksComponent } from './components/importtasks/importtasks.component';
 
 const appRoutes: Routes = [
   {path:'', component:HomeComponent },
@@ -44,7 +50,7 @@ const appRoutes: Routes = [
   {path:'help', component:HelpComponent },
   {path:'options', component:OptionsComponent },
   {path:'contribute', component:ContributeComponent },
-  {path:'layers', component:LayerMapComponent },
+  {path:'models', component:ModelsComponent },
   {path: 'callback', component: CallbackComponent }
   //,
   //{path: '**', redirectTo: '' }
@@ -69,7 +75,11 @@ const appRoutes: Routes = [
     HomeComponent,
     MapboxComponent,
     FooterComponent,
-    UploadComponent
+    UploadComponent,
+    ModelsComponent,
+    ModelviewComponent,
+    ImportjobsComponent,
+    ImporttasksComponent
   ],
 
   // Modules
@@ -77,6 +87,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     PersistenceModule,
     RouterModule.forRoot(appRoutes),
     BrowserModule,
@@ -93,6 +104,7 @@ const appRoutes: Routes = [
     MapService,
     ModisService,
     AuthService,
+    ModelsService,
     MapboxUploadAPIS3Service],
   bootstrap: [AppComponent]
 })

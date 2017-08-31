@@ -1,0 +1,64 @@
+{
+	"models": [{
+		"model": {
+			"name": "",
+			"abbr": "",
+			"href": "",
+			"version": "",
+			"validated": {
+				"validated": true,
+				"references": [{
+					"href": "",
+					"authors": "",
+					"date": ""
+				}]
+			},
+			"description": {
+				"author": "",
+				"date": "",
+				"abstract": "",
+				"range": {},
+				"fuel": {},
+				"metric": "",
+				"index": "",
+				"resolutions": {
+					"minimum": {
+						"spatial": {
+							"value": "",
+							"unit": ""
+						},
+						"temporal": {
+							"value": "",
+							"unit": ""
+						}
+					},
+					"optimum": {
+						"spatial": {
+							"value": "",
+							"unit": ""
+						},
+						"temporal": {
+							"value": "",
+							"unit": ""
+						}
+					},
+					"maximum": {
+						"spatial": {
+							"value": "",
+							"unit": ""
+						},
+						"temporal": {
+							"value": "",
+							"unit": ""
+						}
+					}
+				},
+				"keywords": {
+					"strengths": [],
+					"weaknesses": []
+				},
+				"cavaets": ""
+			}
+		}
+	}]
+}

@@ -1,0 +1,165 @@
+<div class="ui inverted vertical masthead center aligned segment">
+
+  <div class="ui text container">
+    <h1 class="ui inverted header">Latest Fuel Moisture Prediction Models</h1>
+    <h2>Select from the best-of-class predictive models</h2>
+  </div>
+
+</div>
+<!-- Models -->
+<div class="ui vertical stripe container">
+  <div *ngFor="let m of models" class="ui attached segment">
+    <div class="ui item">
+      <div class="ui internally divided grid">
+        <div class="ui row">
+          <div class="ui twelve wide column">
+            <h3 class="ui header">Model: <a [href]="m.href" target="_blank">{{m.name}}</a></h3>
+            <h2 class="ui header">{{m.title}}</h2>
+            <p>{{m.date}}</p>
+            <p>{{m.validated.references[0].authors}}</p>
+            <h4 class="heading">Abstract</h4>
+            <p>{{m.description.abstract}}</p>
+          </div>
+          <div class="ui four wide column">
+            <div class="ui attached warning icon message">
+              <i class="attention icon"></i>
+
+              <div class="content">
+                <div class="header">Applicability of Purpose Notice</div>
+                <p>This model might not be suitable for certain areas.</p></div>
+            </div>
+            <div class="ui bottom attached black message">
+              <sui-checkbox [(ngModel)]="m.enabled" class="toggle"></sui-checkbox>
+              <span *ngIf="m.enabled">Enabled</span><span *ngIf="!m.enabled">Disabled</span>
+            </div>
+            <label>Rating</label>
+            <sui-rating [(ngModel)]="m.rating" [maximum]="10" [isReadonly]="readonly"></sui-rating>
+
+            <div class="ui divider"></div>
+            <div class="ui segment">
+              <h3 class="heading">Data Sources Used</h3>
+              <div class="ui relaxed divided list">
+                <div class="item">
+                  <i class="large cube middle aligned blue icon"></i>
+                  <div class="content">
+                    <a href="" class="header">MODIS</a>
+                    <div class="description">Updated x mins ago</div>
+                  </div>
+                </div>
+                <div class="item">
+                  <i class="large cube middle aligned blue icon"></i>
+                  <div class="content">
+                    <a href="" class="header">Gridded Weather</a>
+                    <div class="description">Updated x mins ago</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui row">
+          <div class="ui four wide column">
+            <h4 class="heading"><i class="large blue world icon"></i>Spatial Range</h4>
+          </div>
+          <div class="ui four wide column">
+            <h4 class="heading"><i class="large blue clock icon"></i>Temporal Range</h4>
+          </div>
+          <div class="ui four wide column">
+            <h4 class="heading"><i class="large blue fire icon"></i>Fuel Types</h4>
+          </div>
+          <div class="ui four wide column">
+            <h4 class="heading"><i class="large blue tree icon"></i>Vegetation Types</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <sui-accordion class="ui bottom attached styled fluid accordion">
+    <sui-accordion-panel [isOpen]="false">
+      <div title>
+        <i class="dropdown icon"></i> Datasets
+      </div>
+      <div content>
+        <table class="ui celled table">
+          <thead>
+            <tr>
+              <th>Dataset</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Frequency</th>
+              <th>Provider</th>
+              <th>Size</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="ui toggle checkbox">
+                  <input type="checkbox" name="Layer1">
+                  <label></label>
+                </div>
+              </td>
+              <td>KBDI</td>
+              <td>Keech-Byram Drought Index</td>
+              <td>6 hours</td>
+              <td>DELWP</td>
+              <td>100MB</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="ui toggle checkbox">
+                  <input type="checkbox" name="Layer3">
+                  <label></label>
+                </div>
+              </td>
+              <td>DF</td>
+              <td>Drought Factor</td>
+              <td>Daily</td>
+              <td>DELWP</td>
+              <td>100MB</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="ui toggle checkbox">
+                  <input type="checkbox" name="Layer2">
+                  <label></label>
+                </div>
+              </td>
+              <td>FFDI</td>
+              <td>Forest Fire Danger Index</td>
+              <td>Daily</td>
+              <td>DELWP</td>
+              <td>100MB</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th colspan="6">
+                <div class="ui right floated pagination menu">
+                  <a class="icon item">
+          <i class="left chevron icon"></i>
+        </a>
+                  <a class="item">1</a>
+                  <a class="item">2</a>
+                  <a class="item">3</a>
+                  <a class="item">4</a>
+                  <a class="icon item">
+          <i class="right chevron icon"></i>
+        </a>
+                </div>
+              </th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </sui-accordion-panel>
+    <sui-accordion-panel [isOpen]="false">
+      <div title>
+        <i class="dropdown icon"></i> Tilesets
+      </div>
+      <div content>
+        <p>Add classes to the <code>sui-accordion</code> element to apply styles.</p>
+      </div>
+    </sui-accordion-panel>
+  </sui-accordion>
+</div>
