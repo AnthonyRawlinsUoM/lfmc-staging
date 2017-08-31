@@ -42,6 +42,8 @@ import { ModelsComponent } from './components/models/models.component';
 import { ModelviewComponent } from './components/modelview/modelview.component';
 import { ImportjobsComponent } from './components/importjobs/importjobs.component';
 import { ImporttasksComponent } from './components/importtasks/importtasks.component';
+import { FullscreenComponent } from './components/fullscreen/fullscreen.component';
+import { SearchresultsComponent } from './components/searchresults/searchresults.component';
 
 const appRoutes: Routes = [
   {path:'', component:HomeComponent },
@@ -79,7 +81,9 @@ const appRoutes: Routes = [
     ModelsComponent,
     ModelviewComponent,
     ImportjobsComponent,
-    ImporttasksComponent
+    ImporttasksComponent,
+    FullscreenComponent,
+    SearchresultsComponent
   ],
 
   // Modules
