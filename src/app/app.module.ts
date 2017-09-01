@@ -1,12 +1,17 @@
+// Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ApplicationRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { PersistenceModule } from 'angular-persistence';
 import { AgmCoreModule } from '@agm/core';
 import { SuiModule } from 'ng2-semantic-ui';
+import { FileUploadModule } from 'ng2-file-upload';
+
+
 
 
 // Services
@@ -15,6 +20,11 @@ import { ModelsService } from './services/models.service';
 import { DatasourcesService } from './services/datasources.service';
 import { MapService } from './services/map.service';
 import { MapboxUploadAPIS3Service } from './services/mapbox-upload-api-s3.service';
+import { AuthService } from './services/auth.service';
+
+
+
+
 
 // Components
 import { AppComponent } from './app.component';
@@ -28,16 +38,11 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { D3mapComponent } from './shared/d3map/d3map.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { CallbackComponent } from './components/callback/callback.component';
-import { AuthService } from './services/auth.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { MapboxComponent } from './shared/mapbox/mapbox.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { UploadComponent } from './components/upload/upload.component';
-
-import { HttpClientModule } from '@angular/common/http';
-
-import { FileUploadModule } from 'ng2-file-upload';
 import { ModelsComponent } from './components/models/models.component';
 import { ModelviewComponent } from './components/modelview/modelview.component';
 import { ImportjobsComponent } from './components/importjobs/importjobs.component';
@@ -46,7 +51,7 @@ import { FullscreenComponent } from './components/fullscreen/fullscreen.componen
 import { SearchresultsComponent } from './components/searchresults/searchresults.component';
 import { DatasourcesComponent } from './components/datasources/datasources.component';
 import { ConfirmModal, ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
-import { MongolComponent } from './shared/mongol/mongol.component';
+
 
 const appRoutes: Routes = [
   {path:'', component:HomeComponent },
@@ -56,6 +61,7 @@ const appRoutes: Routes = [
   {path:'options', component:OptionsComponent },
   {path:'contribute', component:ContributeComponent },
   {path:'models', component:ModelsComponent },
+  {path:'fullscreen', component:FullscreenComponent },
   {path: 'callback', component: CallbackComponent }
   //,
   //{path: '**', redirectTo: '' }
@@ -92,8 +98,7 @@ const appRoutes: Routes = [
     FullscreenComponent,
     SearchresultsComponent,
     DatasourcesComponent,
-    ConfirmModalComponent,
-    MongolComponent
+    ConfirmModalComponent
   ],
 
   // Modules
@@ -107,7 +112,6 @@ const appRoutes: Routes = [
     BrowserModule,
     FileUploadModule,
     SuiModule,
-    // MapboxGeocoderModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDxVm7cOOIMVDj6SPcj3lp0S_S2-T7mDFw'
     })

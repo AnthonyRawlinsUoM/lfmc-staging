@@ -1,6 +1,6 @@
 {
 	"models": [{
-		"model": {
+		"type":"model",
 			"name": "",
 			"abbr": "",
 			"href": "",
@@ -60,5 +60,5 @@
 				"cavaets": ""
 			}
 		}
-	}]
+	]
 }
