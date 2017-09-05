@@ -12,8 +12,6 @@ import { SuiModule } from 'ng2-semantic-ui';
 import { FileUploadModule } from 'ng2-file-upload';
 
 
-
-
 // Services
 import { ModisService } from './services/modis.service';
 import { ModelsService } from './services/models.service';
@@ -51,6 +49,9 @@ import { FullscreenComponent } from './components/fullscreen/fullscreen.componen
 import { SearchresultsComponent } from './components/searchresults/searchresults.component';
 import { DatasourcesComponent } from './components/datasources/datasources.component';
 import { ConfirmModal, ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
+import { D3chartComponent } from './shared/d3chart/d3chart.component';
+import { LegendComponent } from './components/legend/legend.component';
+import { AgmComponent } from './shared/agm/agm.component';
 
 
 const appRoutes: Routes = [
@@ -98,7 +99,10 @@ const appRoutes: Routes = [
     FullscreenComponent,
     SearchresultsComponent,
     DatasourcesComponent,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    D3chartComponent,
+    LegendComponent,
+    AgmComponent
   ],
 
   // Modules

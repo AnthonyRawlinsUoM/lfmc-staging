@@ -2,4 +2,6 @@
 .ui.inverted.pointing.dropdown .menu {
 	box-shadow: 0px 4px 13px hsla(0, 0%, 0%, 0.5);
 	-moz-box-shadow: 0px 0px 13px hsla(0, 0%, 0%, 0.5);
+	margin-bottom: 0;
+	z-index : 400;
 }

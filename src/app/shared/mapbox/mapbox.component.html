@@ -4,20 +4,17 @@
   <div id="myoverlay">
     <div class="ui container">
       <div class="ui mini labeled input">
-        <div class="ui mini label">Latitude: </div><input [(ngModel)]="lat"></div>
+        <div class="ui mini label">Latitude: </div><input [(ngModel)]="cursorLat"></div>
       <div class="ui mini labeled input">
-        <div class="ui mini label">Longitude: </div><input [(ngModel)]="lng"></div>
+        <div class="ui mini label">Longitude: </div><input [(ngModel)]="cursorLng"></div>
       <div class="ui mini labeled input">
         <div class="ui mini label">Bearing: </div><input [(ngModel)]="bearing"></div>
       <div class="ui mini labeled input">
         <div class="ui mini label">Zoom: </div><input [(ngModel)]="zoom"></div>
     </div>
   </div>
-</div>
 
-<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>
-<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css' type='text/css' />
-<div class="ui container">
+<div id="temp">
   <div class="ui mini buttons">
 
     <button class="ui mini button" (click)="setDefaultStyle()">Default</button>
@@ -28,3 +25,11 @@
 
   </div>
 </div>
+
+
+<lfmc-timeline id="timeline"></lfmc-timeline>
+<lfmc-d3chart id="chart"></lfmc-d3chart>
+</div>
+
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css' type='text/css' />

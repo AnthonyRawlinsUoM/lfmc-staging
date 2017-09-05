@@ -1,0 +1,6 @@
+#timeline {
+  width: 100vw;
+  height: 20vh;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.81);
+}

@@ -1,8 +1,9 @@
 #mymapbox,
 #myaltmap {
-  height: 100vh;
+  height: 80vh;
   padding: 0em;
   margin: 0em;
+  z-index: 200;
 }
 
 #myoverlay {
@@ -12,7 +13,18 @@
   left: 4em;
 }
 
+#temp {
+  position: absolute;
+  bottom: 20vh + 2em;
+  right: 4em;
+}
+
 #geocoder-container > div {
     min-width:50%;
     margin-left:25%;
+}
+
+
+#chart {
+  position: absolute;
 }
