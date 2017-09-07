@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LegendComponent implements OnInit {
 
+  legendItems: Array<string>;
+
   constructor() { }
 
   ngOnInit() {

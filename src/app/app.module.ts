@@ -16,10 +16,11 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { ModisService } from './services/modis.service';
 import { ModelsService } from './services/models.service';
 import { DatasourcesService } from './services/datasources.service';
+import { TsvService } from './services/tsv.service';
 import { MapService } from './services/map.service';
 import { MapboxUploadAPIS3Service } from './services/mapbox-upload-api-s3.service';
 import { AuthService } from './services/auth.service';
-
+import { D3Service } from 'd3-ng2-service';
 
 
 
@@ -128,7 +129,10 @@ const appRoutes: Routes = [
     AuthService,
     ModelsService,
     DatasourcesService,
-    MapboxUploadAPIS3Service],
+    MapboxUploadAPIS3Service,
+    D3Service,
+    TsvService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

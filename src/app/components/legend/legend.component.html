@@ -1,3 +1,9 @@
-<p>
-  legend works!
-</p>
+<h4 class="heading">Legend: Fuel Moisture Content %</h4>
+<div class="ui list">
+  <div *ngFor="let l of legendItems" class="item">
+    <i class="icon"></i>
+    <div class="content">
+      {{l.valueRangeLabel}}
+    </div>
+  </div>
+</div>

@@ -1,34 +1,47 @@
-<div style="position:relative;">
+<div class="ui mapbox">
   <div id="mymapbox" class="ui mapbox mapboxgl-map"></div>
 
   <div id="myoverlay">
-    <div class="ui container">
-      <div class="ui mini labeled input">
-        <div class="ui mini label">Latitude: </div><input [(ngModel)]="cursorLat"></div>
-      <div class="ui mini labeled input">
-        <div class="ui mini label">Longitude: </div><input [(ngModel)]="cursorLng"></div>
-      <div class="ui mini labeled input">
-        <div class="ui mini label">Bearing: </div><input [(ngModel)]="bearing"></div>
-      <div class="ui mini labeled input">
-        <div class="ui mini label">Zoom: </div><input [(ngModel)]="zoom"></div>
+
+    <div class="ui grid">
+      <div class="ui three wide column"></div>
+      <div class="ui ten wide center aligned column">
+
+          <div class="ui mini inverted labeled input">
+            <div class="ui mini inverted black label">Latitude: </div>
+            <input class="inverted" [(ngModel)]="cursorLat"></div>
+          <div class="ui mini inverted labeled input">
+            <div class="ui mini inverted black label">Longitude: </div>
+            <input class="inverted" [(ngModel)]="cursorLng"></div>
+          <div class="ui mini inverted labeled input">
+            <div class="ui mini inverted black label">Bearing: </div>
+            <input class="inverted" [(ngModel)]="bearing"></div>
+          <div class="ui mini inverted labeled input">
+            <div class="ui mini inverted black label">Zoom: </div>
+            <input class="inverted" [(ngModel)]="zoom"></div>
+
+
+      </div>
+      <div class="ui three wide right aligned column"></div>
     </div>
-  </div>
-
-<div id="temp">
-  <div class="ui mini buttons">
-
-    <button class="ui mini button" (click)="setDefaultStyle()">Default</button>
-    <div class="or"></div>
-    <button class="ui mini button" (click)="setDatavizStyle()">DataViz</button>
-    <div class="or"></div>
-    <button class="ui mini button" (click)="setSatelliteStyle()">Satellite</button>
 
   </div>
-</div>
+
+  <!-- <div id="temp">
+    <div class="ui mini buttons">
+
+      <button class="ui mini button" (click)="setDefaultStyle()">Default</button>
+      <div class="or"></div>
+      <button class="ui mini button" (click)="setDatavizStyle()">DataViz</button>
+      <div class="or"></div>
+      <button class="ui mini button" (click)="setSatelliteStyle()">Satellite</button>
+
+    </div>
+  </div> -->
 
 
-<lfmc-timeline id="timeline"></lfmc-timeline>
-<lfmc-d3chart id="chart"></lfmc-d3chart>
+  <lfmc-timeline></lfmc-timeline>
+  <lfmc-d3chart id="chart"></lfmc-d3chart>
 </div>
 
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>

@@ -1,47 +1,45 @@
-<!-- Page Contents -->
-<div class="ui top following inverted menu shadow">
+    <div class="ui top following inverted menu shadow">
 
-  <div class="ui inverted pointing dropdown item" suiDropdown>
-    <div class="text">
-      <i class="gray sidebar icon"></i> Menu</div>
-    <div class="menu" suiDropdownMenu>
-      <a class="item" [routerLinkActive]="['active']" routerLink="/home">
+      <div class="ui inverted pointing dropdown item" suiDropdown>
+        <div class="text">
+          <i class="gray sidebar icon"></i> Menu</div>
+        <div class="menu" suiDropdownMenu>
+          <a class="item" [routerLinkActive]="['active']" routerLink="/home">
             <i class="blue map outline icon"></i>Map
       </a>
-      <a class="item" [routerLinkActive]="['active']" routerLink="/models">
+          <a class="item" [routerLinkActive]="['active']" routerLink="/models">
       <i class="blue database icon"></i>Models
       </a>
-      <a class="item" [routerLinkActive]="['active']" routerLink="/contribute">
+          <a class="item" [routerLinkActive]="['active']" routerLink="/contribute">
       <i class="blue marker icon"></i>Contribute
       </a>
-      <a class="item" [routerLinkActive]="['active']" routerLink="/options">
+          <a class="item" [routerLinkActive]="['active']" routerLink="/options">
       <i class="blue options icon"></i>Options
       </a>
-      <a class="item" [routerLinkActive]="['active']" routerLink="/help">
+          <a class="item" [routerLinkActive]="['active']" routerLink="/help">
       <i class="blue help icon"></i>Help
       </a>
-    </div>
-  </div>
-  <div class="ui inverted header item"><i class="red fire icon"></i> {{title}}</div>
-  <div class="right menu">
-    <a class="item" [routerLinkActive]="['active']" *ngIf="auth.isAuthenticated()" routerLink="/profile">
+        </div>
+      </div>
+      <div class="ui inverted header item"><i class="red fire icon"></i> {{title}}</div>
+      <div class="right menu">
+        <a class="item" [routerLinkActive]="['active']" *ngIf="auth.isAuthenticated()" routerLink="/profile">
     <i class="blue user circle icon"></i>
     Profile
   </a>
-    <a class="item" *ngIf="!auth.isAuthenticated()" (click)="auth.login()">
+        <a class="item" *ngIf="!auth.isAuthenticated()" (click)="auth.login()">
   <i class="blue sign in icon"></i>Login
   </a>
-    <a class="item" *ngIf="auth.isAuthenticated()" (click)="auth.logout()">
+        <a class="item" *ngIf="auth.isAuthenticated()" (click)="auth.logout()">
     <i class="red sign out icon"></i>Logout
   </a>
-    <div class="item">
-      <div class="ui transparent icon input">
-        <input type="text" placeholder="Site Search...">
-        <i class="inverted search link icon"></i>
+        <div class="item">
+          <div class="ui transparent icon input">
+            <input type="text" placeholder="Site Search...">
+            <i class="inverted search link icon"></i>
+          </div>
+        </div>
+
       </div>
     </div>
-
-  </div>
-</div>
 <router-outlet></router-outlet>
-<lfmc-footer></lfmc-footer>
