@@ -114,12 +114,8 @@ export class MapboxComponent implements OnInit {
 			this.cursorMoveEW.emit(this.cursorLng);
 			this.cursorMoveNS.emit(this.cursorLat);
 			// console.log(JSON.stringify(e.lngLat));
-			this.bearingReading.emit(this.nav.getBearing());
-			this.zoomReading.emit(this.nav.getZoom());
-		});
-
-		map.on('navigate', (e) => {
-
+			// this.bearingReading.emit(this.nav.getBearing());
+			// this.zoomReading.emit(this.nav.getZoom());
 		});
 
 		map.on('load', function() {
@@ -140,42 +136,6 @@ export class MapboxComponent implements OnInit {
 					"circle-color": "#A6423C"
 				}
 			});
-
-			//   map.addLayer({
-			//     'id': 'wms-model-test-layer',
-			//     'type': 'raster',
-			//     'source': {
-			//         'type': 'raster',
-			//         'tiles': [
-			//             'http://localhost:8080/geoserver/victoria/wms?service=WMS&version=1.1.0&request=GetMap&layers=victoria:KBDI_SFC&styles=&bbox=140.8879867553711,-39.76999832100885,151.05409088134766,-33.929998627233346&width=768&height=441&srs=EPSG:4326&format=image%2Fpng'
-			//         ],
-			//         'tileSize': 256
-			//     },
-			//     'paint': {}
-			// }, 'water');
-
-
-
-			// map.addSource('kbdi', {
-			//   'type': 'raster',
-			//   'url': 'http://localhost:8080/geoserver/victoria/wms?service=WMS&version=1.1.0&request=GetMap&layers=victoria:KBDI_SFC&styles=&bbox=140.8879867553711,-39.76999832100885,151.05409088134766,-33.929998627233346&width=768&height=441&srs=EPSG:4326&format=image%2Fpng',
-			//   'tileSize': 256
-			//
-			// });
-
-
-
-			//   map.addLayer({
-			//     'id': 'metadata-layer-kbdi',
-			//     'type': 'raster',
-			//     'source': 'kbdi',
-			//     'layout': {
-			//         'visibility': 'visible'
-			//     },
-			//     'paint': {
-			//       'raster-opacity': 1.0
-			//     }
-			// },'aeroway-taxiway');
 
 			map.addSource('cfastations', {
 				'type': 'vector',
@@ -202,6 +162,8 @@ export class MapboxComponent implements OnInit {
 				],
 				'tileSize': 256
 			});
+
+			// map.addSource('windDirection', );
 
 
 			map.addLayer({
@@ -239,6 +201,19 @@ export class MapboxComponent implements OnInit {
 			// 	'layout': {},
 			// 	'source-layer': 'KBDI_SFC'
 			// }, 'water');
+
+			map.addLayer({
+				'id': 'index-layer-windDirection',
+				'type': 'raster',
+				'source': {
+					'type': 'raster',
+					'tiles': [
+						'http://localhost:8080/geoserver/victoria/wms?service=WMS&version=1.1.0&request=GetMap&layers=victoria:Wind_Dir_SFC&styles=&bbox=140.8879867553711,-39.76999832100885,151.05409088134766,-33.929998627233346&width=768&height=441&srs=EPSG:4326&format=image%2Fpng%3B%20mode%3D8bit'
+					],
+					'tileSize': 256
+				},
+				'paint': {},
+			}, 'water');
 
 
 
