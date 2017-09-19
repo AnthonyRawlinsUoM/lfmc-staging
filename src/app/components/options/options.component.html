@@ -18,7 +18,7 @@
 
       </td>
       <td>Bushfires </td>
-      <td class="right aligned collapsing"><sui-checkbox class="toggle">Disabled</sui-checkbox></td>
+      <td class="right aligned collapsing"><sui-checkbox [(ngModel)]="bushfires" class="toggle"><span *ngIf="bushfires">Enabled</span><span *ngIf="!bushfires">Disabled</span></sui-checkbox></td>
     </tr>
     <tr>
       <td class="collapsing">
@@ -28,7 +28,7 @@
 
       </td>
       <td>Other fire incidents </td>
-      <td class="right aligned collapsing"><sui-checkbox class="toggle">Disabled</sui-checkbox></td>
+      <td class="right aligned collapsing"><sui-checkbox [(ngModel)]="fires" class="toggle"><span *ngIf="fires">Enabled</span><span *ngIf="!fires">Disabled</span></sui-checkbox></td>
     </tr>
     <tr>
       <td class="collapsing">
@@ -38,7 +38,7 @@
 
       </td>
       <td>Hotspots as detected by thermal imaging from the Sentinel Satellite </td>
-      <td class="right aligned collapsing"><sui-checkbox class="toggle">Disabled</sui-checkbox></td>
+      <td class="right aligned collapsing"><sui-checkbox [(ngModel)]="hotspots" class="toggle"><span *ngIf="hotspots">Enabled</span><span *ngIf="!hotspots">Disabled</span></sui-checkbox></td>
     </tr>
 
   </tbody>

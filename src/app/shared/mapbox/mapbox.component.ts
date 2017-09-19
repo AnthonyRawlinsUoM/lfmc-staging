@@ -2,6 +2,11 @@
 declare let require: any;
 import { EventEmitter, Component, OnInit, Input, Output } from '@angular/core';
 import { MapService } from '../../services/map.service';
+import { DatasourcesService } from '../../services/datasources.service';
+import { Observable } from 'rxjs/Rx';
+
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 import {
 	GeolocateControl,
 	ScaleControl,
@@ -43,7 +48,7 @@ export class MapboxComponent implements OnInit {
 	@Output() zoomReading;
 	@Output() bearingReading;
 
-	constructor(private mapService: MapService) {
+	constructor(private mapService: MapService, private datasourcesService: DatasourcesService) {
 		this.cursorMoveEW = new EventEmitter<number>();
 		this.cursorMoveNS = new EventEmitter<number>();
 
@@ -77,8 +82,8 @@ export class MapboxComponent implements OnInit {
 			hash: true,
 			boxZoom: true,
 			attributionControl: false
-			,
-			maxBounds: this.bounds
+			// ,
+			// maxBounds: this.bounds
 		});
 
 		this.geo = new GeolocateControl();
@@ -118,40 +123,20 @@ export class MapboxComponent implements OnInit {
 			// this.zoomReading.emit(this.nav.getZoom());
 		});
 
-		var markerHeight = 10, markerRadius = 10, linearOffset = 25;
-		var popupOffsets = {
-			'top': [0, 0],
-			'top-left': [0, 0],
-			'top-right': [0, 0],
-			'bottom': [0, -markerHeight],
-			'bottom-left': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
-			'bottom-right': [-linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
-			'left': [markerRadius, (markerHeight - markerRadius) * -1],
-			'right': [-markerRadius, (markerHeight - markerRadius) * -1]
-		};
+		var layers:any = [];
+		var sources:any = [];
 
-		// Change the cursor to a pointer when the mouse is over the places layer.
-		map.on('mouseenter', 'index-layer-bushfires', function() {
-			map.getCanvas().style.cursor = 'pointer';
-		});
 
-		// Change it back to a pointer when it leaves.
-		map.on('mouseleave', 'index-layer-bushfires', function() {
-			map.getCanvas().style.cursor = '';
-		});
-
-		map.on('click', 'index-layer-bushfires', function(e) {
-			new Popup({ offset: popupOffsets })
-				.setLngLat(e.features[0].geometry.coordinates)
-				.setHTML("<strong>Incident</strong>"
-			+ "Type: " + e.features[0].properties.incidentType + "<br/>"
-			+ "Location: " + e.features[0].properties.incidentLocation + "<br/>"
-		  + "Agency: " + e.features[0].properties.agency + "<br/>"
-		  + "Status: " + e.features[0].properties.originStatus + "<br/>")
-				.addTo(map);
-		});
 
 		map.on('load', function() {
+
+
+			// Extension Layers
+			for (var l in layers) {
+				map.addLayer(l);
+			}
+
+
 			map.addSource('single-point', {
 				"type": "geojson",
 				"data": {
@@ -166,7 +151,7 @@ export class MapboxComponent implements OnInit {
 				"type": "circle",
 				"paint": {
 					"circle-radius": 5,
-					"circle-color": "#A6423C"
+					"circle-color": "#f19213"
 				}
 			});
 
@@ -189,9 +174,8 @@ export class MapboxComponent implements OnInit {
 
 
 			map.addSource('cfastations', {
-				'type': 'vector',
-				'tiles': ['http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&WIDTH=512&HEIGHT=512&LAYERS=VMFEAT_CFA_FIRE_STATION&STYLES=&FORMAT=image%2Fpng&SRS=EPSG%3A4283&BBOX=140.501%2C-39.137%2C150.068%2C-33.0'],
-				'tileSize': 512
+				'type': 'geojson',
+				'data': 'http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&WIDTH=512&HEIGHT=512&LAYERS=VMFEAT_CFA_FIRE_STATION&STYLES=&FORMAT=image%2Fpng&SRS=EPSG%3A4283&BBOX=140.501%2C-39.137%2C150.068%2C-33.0'
 			});
 
 			map.addSource('cfaregion', {
@@ -253,6 +237,19 @@ export class MapboxComponent implements OnInit {
 
 
 			map.addLayer({
+				'id': 'metadata-layer-cfa-stations',
+				'type': 'circle',
+				'source': 'cfastations',
+				'layout': {},
+				'paint': {
+					'circle-color': '#777472',
+					'circle-radius': 3.53
+				},
+				'source-layer': 'CFA_DISTRICT'
+			});
+
+
+			map.addLayer({
 				'id': 'index-layer-windDirection',
 				'type': 'raster',
 				'source': {
@@ -265,10 +262,18 @@ export class MapboxComponent implements OnInit {
 				'paint': {},
 			}, 'water');
 
+
+
 			map.addSource('bushfires', {
 				'type': 'geojson',
 				'data': 'http://localhost:1880/bushfires'
 			});
+
+			// var data = this.http.get('http://localhost:1880/bushfires')
+			// 	.map((res: Response) => res.json())
+			// 	.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+			//
+			// map.getSource('bushfires').setData(data);
 
 			map.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Fireicon01.svg/100px-Fireicon01.svg.png', function(error, image) {
 				if (error) throw error;
@@ -301,34 +306,51 @@ export class MapboxComponent implements OnInit {
 			 */
 			map.addSource('hotspots', {
 				'type': 'geojson',
+				// 'data': 'https://firms.modaps.eosdis.nasa.gov/wms/c6/?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=fires24&BBOX=-180,-90,180,90&&SRS=EPSG:4326'
 				'data': 'http://sentinel.ga.gov.au/geoserver/wfs?service=wfs&version=1.1.1&request=GetFeature&typeName=public:hotspot_current_4326&outputFormat=application%2Fjson'
 			});
 
-			map.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Fireicon01.svg/100px-Fireicon01.svg.png', function(error, image) {
-				if (error) throw error;
-				map.addImage('fire', image);
-				map.addLayer({
-					'id': 'index-layer-hotspots',
-					'type': 'symbol',
-					'source': 'hotspots',
-					// 'source-layer':'hotspot_current_4326',
-					'layout': {
-						'icon-image': 'fire',
-						// 'icon-color': {
-						// 	'property': 'age_hours',
-						// 	'type': 'interval',
-						// 	'stops': [
-						// 		[2, '#f7e184'],
-						// 		[6, '#fbb03b'],
-						// 		[24, '#e8761a'],
-						// 		[48, '#ed3131'],
-						// 		[72, '#cccccc']]
-						// },
-						'icon-size': 0.15
-					}
-				}, 'roads');
 
-			});
+			map.addLayer({
+				'id': 'index-layer-hotspots',
+				'type': 'circle',
+				'source': 'hotspots',
+				'layout': {},
+				'paint': {
+					'circle-color': {
+						'property': 'temp_kelvin',
+						'type': 'interval',
+						'stops': [
+							[0, '#3d05fa'],
+							[273.15, '#5b05fa'],
+							[285, '#8202c7'],
+							[300, '#b8004d'],
+							[400, '#ed3131'],
+							[500, '#f05a11'],
+							[600, '#f67d0c'],
+							[700, '#ffb100'],
+							[800, '#ffc825'],
+							[900, '#ffd473'],
+							[1000, '#ffe29f'],
+							[1100, '#fff6e2']]
+					},
+					'circle-radius': {
+						'base': 5,
+						'stops': [[12, 5], [22, 180]]
+					},
+					'circle-opacity': {
+						'property': 'confidence',
+						'type': 'interval',
+						'stops': [
+							[0, 0.05],
+							[20, 0.2],
+							[40, 0.4],
+							[60, 0.6],
+							[80, 0.8],
+							[100, 1.0]]
+					}
+				}
+			}, 'roads');
 
 
 			//this.filterBy(0);
@@ -359,6 +381,60 @@ export class MapboxComponent implements OnInit {
 				this.lat = ev.result.geometry.lat;
 				this.lng = ev.result.geometry.lng;
 			});
+		});
+
+		var markerHeight = 10, markerRadius = 10, linearOffset = 25;
+		var popupOffsets = {
+			'top': [0, 0],
+			'top-left': [0, 0],
+			'top-right': [0, 0],
+			'bottom': [0, -markerHeight],
+			'bottom-left': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+			'bottom-right': [-linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+			'left': [markerRadius, (markerHeight - markerRadius) * -1],
+			'right': [-markerRadius, (markerHeight - markerRadius) * -1]
+		};
+
+		// Change the cursor to a pointer when the mouse is over the places layer.
+		map.on('mouseenter', 'index-layer-bushfires', function() {
+			map.getCanvas().style.cursor = 'pointer';
+		});
+
+		// Change it back to a pointer when it leaves.
+		map.on('mouseleave', 'index-layer-bushfires', function() {
+			map.getCanvas().style.cursor = '';
+		});
+
+		// Change the cursor to a pointer when the mouse is over the places layer.
+		map.on('mouseenter', 'index-layer-hotspots', function() {
+			map.getCanvas().style.cursor = 'pointer';
+		});
+
+		// Change it back to a pointer when it leaves.
+		map.on('mouseleave', 'index-layer-hotspots', function() {
+			map.getCanvas().style.cursor = '';
+		});
+
+		map.on('click', 'index-layer-bushfires', function(e) {
+			new Popup({ offset: popupOffsets })
+				.setLngLat(e.features[0].geometry.coordinates)
+				.setHTML("<strong>Incident</strong><br/>"
+				+ "Type: " + e.features[0].properties.incidentType + "<br/>"
+				+ "Location: " + e.features[0].properties.incidentLocation + "<br/>"
+				+ "Agency: " + e.features[0].properties.agency + "<br/>"
+				+ "Status: " + e.features[0].properties.originStatus + "<br/>")
+				.addTo(map);
+		});
+
+		map.on('click', 'index-layer-hotspots', function(e) {
+			new Popup({ offset: popupOffsets })
+				.setLngLat(e.features[0].geometry.coordinates)
+				.setHTML("<strong>Thermal Anomaly</strong><br/>"
+				+ "Temp: " + (e.features[0].properties.temp_kelvin - 273.15).toFixed(1) + "&deg;C<br/>"
+				+ "Satellite: " + e.features[0].properties.satellite + "<br/>"
+				+ "Sensor: " + e.features[0].properties.sensor + "<br/>"
+				+ "Confidence: " + e.features[0].properties.confidence)
+				.addTo(map);
 		});
 
 		this.mapService.map = map;

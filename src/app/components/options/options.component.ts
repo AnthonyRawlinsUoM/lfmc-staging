@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OptionsComponent implements OnInit {
 
+  hotspots:boolean;
+  bushfires:boolean;
+  fires:boolean;
+
   constructor() { }
 
   ngOnInit() {
+    this.fires = true;
+    this.bushfires = true;
+    this.hotspots = true;
   }
 
 }
