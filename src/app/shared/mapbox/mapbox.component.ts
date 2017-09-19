@@ -7,7 +7,7 @@ import {
 	ScaleControl,
 	NavigationControl,
 	FullscreenControl,
-	Map
+	Map, Popup
 } from 'mapbox-gl/dist/mapbox-gl.js';
 
 var MapboxGeocoder = require('@mapbox/mapbox-gl-geocoder');
@@ -118,6 +118,39 @@ export class MapboxComponent implements OnInit {
 			// this.zoomReading.emit(this.nav.getZoom());
 		});
 
+		var markerHeight = 10, markerRadius = 10, linearOffset = 25;
+		var popupOffsets = {
+			'top': [0, 0],
+			'top-left': [0, 0],
+			'top-right': [0, 0],
+			'bottom': [0, -markerHeight],
+			'bottom-left': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+			'bottom-right': [-linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+			'left': [markerRadius, (markerHeight - markerRadius) * -1],
+			'right': [-markerRadius, (markerHeight - markerRadius) * -1]
+		};
+
+		// Change the cursor to a pointer when the mouse is over the places layer.
+		map.on('mouseenter', 'index-layer-bushfires', function() {
+			map.getCanvas().style.cursor = 'pointer';
+		});
+
+		// Change it back to a pointer when it leaves.
+		map.on('mouseleave', 'index-layer-bushfires', function() {
+			map.getCanvas().style.cursor = '';
+		});
+
+		map.on('click', 'index-layer-bushfires', function(e) {
+			new Popup({ offset: popupOffsets })
+				.setLngLat(e.features[0].geometry.coordinates)
+				.setHTML("<strong>Incident</strong>"
+			+ "Type: " + e.features[0].properties.incidentType + "<br/>"
+			+ "Location: " + e.features[0].properties.incidentLocation + "<br/>"
+		  + "Agency: " + e.features[0].properties.agency + "<br/>"
+		  + "Status: " + e.features[0].properties.originStatus + "<br/>")
+				.addTo(map);
+		});
+
 		map.on('load', function() {
 			map.addSource('single-point', {
 				"type": "geojson",
@@ -136,6 +169,24 @@ export class MapboxComponent implements OnInit {
 					"circle-color": "#A6423C"
 				}
 			});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 			map.addSource('cfastations', {
 				'type': 'vector',
@@ -158,12 +209,18 @@ export class MapboxComponent implements OnInit {
 			map.addSource('kbdi', {
 				'type': 'raster',
 				'tiles': [
-					'http://localhost:8080/geoserver/victoria/wms?service=WMS&version=1.1.0&request=GetMap&layers=victoria:KBDI_SFC&styles=&bbox=140.8879867553711,-39.76999832100885,151.05409088134766,-33.929998627233346&width=768&height=441&srs=EPSG:4326&format=image%2Fpng%3B%20mode%3D8bit'
+					'http://localhost:8080/geoserver/victoria/wms?service=WMS&version=1.1.0&request=GetMap&layers=victoria:KBDI_SFC&styles=&bbox=140.8879867553711,-39.76999832100885,151.05409088134766,-33.929998627233346&width=768&height=441&srs=EPSG:4326&format=image%2Fpng'
 				],
 				'tileSize': 256
 			});
 
-			// map.addSource('windDirection', );
+			map.addSource('windDirection', {
+				'type': 'raster',
+				'tiles': [
+					'http://localhost:8080/geoserver/victoria/wms?service=WMS&version=1.1.0&request=GetMap&layers=victoria:victoria:Wind_Dir_SFC&styles=&bbox=140.8879867553711,-39.76999832100885,151.05409088134766,-33.929998627233346&width=768&height=441&srs=EPSG:4326&format=image%2Fpng'
+				],
+				'tileSize': 256
+			});
 
 
 			map.addLayer({
@@ -194,13 +251,6 @@ export class MapboxComponent implements OnInit {
 				'source-layer': 'CFA_DISTRICT'
 			});
 
-			// map.addLayer({
-			// 	'id': 'index-layer-kbdi',
-			// 	'type': 'raster',
-			// 	'source': 'kbdi',
-			// 	'layout': {},
-			// 	'source-layer': 'KBDI_SFC'
-			// }, 'water');
 
 			map.addLayer({
 				'id': 'index-layer-windDirection',
@@ -215,6 +265,70 @@ export class MapboxComponent implements OnInit {
 				'paint': {},
 			}, 'water');
 
+			map.addSource('bushfires', {
+				'type': 'geojson',
+				'data': 'http://localhost:1880/bushfires'
+			});
+
+			map.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Fireicon01.svg/100px-Fireicon01.svg.png', function(error, image) {
+				if (error) throw error;
+				map.addImage('fire', image);
+				map.addLayer({
+					'id': 'index-layer-bushfires',
+					'type': 'symbol',
+					'source': 'bushfires',
+					// 'source-layer':'hotspot_current_4326',
+					'layout': {
+						'icon-image': 'fire',
+						// 'icon-color': {
+						// 	'property': 'age_hours',
+						// 	'type': 'interval',
+						// 	'stops': [
+						// 		[2, '#f7e184'],
+						// 		[6, '#fbb03b'],
+						// 		[24, '#e8761a'],
+						// 		[48, '#ed3131'],
+						// 		[72, '#cccccc']]
+						// },
+						'icon-size': 0.09
+					}
+				}, 'roads');
+
+			});
+
+			/**
+			 * Heat visible fire sources from Sentinel via GeoSciences Australia
+			 */
+			map.addSource('hotspots', {
+				'type': 'geojson',
+				'data': 'http://sentinel.ga.gov.au/geoserver/wfs?service=wfs&version=1.1.1&request=GetFeature&typeName=public:hotspot_current_4326&outputFormat=application%2Fjson'
+			});
+
+			map.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Fireicon01.svg/100px-Fireicon01.svg.png', function(error, image) {
+				if (error) throw error;
+				map.addImage('fire', image);
+				map.addLayer({
+					'id': 'index-layer-hotspots',
+					'type': 'symbol',
+					'source': 'hotspots',
+					// 'source-layer':'hotspot_current_4326',
+					'layout': {
+						'icon-image': 'fire',
+						// 'icon-color': {
+						// 	'property': 'age_hours',
+						// 	'type': 'interval',
+						// 	'stops': [
+						// 		[2, '#f7e184'],
+						// 		[6, '#fbb03b'],
+						// 		[24, '#e8761a'],
+						// 		[48, '#ed3131'],
+						// 		[72, '#cccccc']]
+						// },
+						'icon-size': 0.15
+					}
+				}, 'roads');
+
+			});
 
 
 			//this.filterBy(0);
