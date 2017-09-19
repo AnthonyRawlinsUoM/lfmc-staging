@@ -5,3 +5,7 @@
 	margin-bottom: 0;
 	z-index : 400;
 }
+
+.ui.inverted.menu.shadow {
+	max-height: 5vh;
+}

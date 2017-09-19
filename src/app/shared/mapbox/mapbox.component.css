@@ -1,22 +1,40 @@
+html, body {
+  margin: 0; height: 100%; overflow: hidden;
+}
+body { margin:0; padding:0; }
+
 #mymapbox,
 #myaltmap {
-  height: 80vh;
+  height: 100%;
   padding: 0em;
   margin: 0em;
   z-index: 200;
 }
+.ui.mapbox {
+  position: relative;
+  width: 100vw;
+  height: 95vh;
+}
+#mymapbox { position:absolute; top:0; bottom:0; width:100%; }
 
 #myoverlay {
   position: absolute;
-  width: ((100%)-1em);
-  top: 1em;
-  left: 4em;
+  widows: 100vw;;
+  top: 0.8em;
+  left: 0;
+  right: 0;
+  z-index: 250;
+}
+#myoverlay .ui.mini.inverted.black.label,
+#myoverlay input.inverted {
+  opacity: 0.65;
 }
 
 #temp {
   position: absolute;
-  bottom: 20vh + 2em;
+  bottom: 1em;
   right: 4em;
+  z-index: 400;
 }
 
 #geocoder-container > div {
@@ -27,4 +45,9 @@
 
 #chart {
   position: absolute;
+}
+
+input.inverted {
+  background-color: #000;
+  color: #fff;
 }
