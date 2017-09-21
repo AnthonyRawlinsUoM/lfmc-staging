@@ -1,5 +1,6 @@
 // Modules
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule, ApplicationRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -10,6 +11,7 @@ import { PersistenceModule } from 'angular-persistence';
 import { AgmCoreModule } from '@agm/core';
 import { SuiModule } from 'ng2-semantic-ui';
 import { FileUploadModule } from 'ng2-file-upload';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 // Services
@@ -27,7 +29,6 @@ import { D3Service } from 'd3-ng2-service';
 
 // Components
 import { AppComponent } from './app.component';
-import { BarchartComponent } from './shared/barchart/barchart.component';
 import { HelpComponent } from './components/help/help.component';
 import { OptionsComponent } from './components/options/options.component';
 import { ContributeComponent } from './components/contribute/contribute.component';
@@ -50,9 +51,9 @@ import { FullscreenComponent } from './components/fullscreen/fullscreen.componen
 import { SearchresultsComponent } from './components/searchresults/searchresults.component';
 import { DatasourcesComponent } from './components/datasources/datasources.component';
 import { ConfirmModal, ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
-import { D3chartComponent } from './shared/d3chart/d3chart.component';
 import { LegendComponent } from './components/legend/legend.component';
 import { AgmComponent } from './shared/agm/agm.component';
+import { ChartingComponent } from './components/charting/charting.component';
 
 
 const appRoutes: Routes = [
@@ -78,7 +79,6 @@ const appRoutes: Routes = [
   // Components
   declarations: [
     AppComponent,
-    BarchartComponent,
     HelpComponent,
     OptionsComponent,
     ContributeComponent,
@@ -101,14 +101,15 @@ const appRoutes: Routes = [
     SearchresultsComponent,
     DatasourcesComponent,
     ConfirmModalComponent,
-    D3chartComponent,
     LegendComponent,
-    AgmComponent
+    AgmComponent,
+    ChartingComponent
   ],
 
   // Modules
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     HttpClientModule,
@@ -117,6 +118,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FileUploadModule,
     SuiModule,
+    NgxChartsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDxVm7cOOIMVDj6SPcj3lp0S_S2-T7mDFw'
     })

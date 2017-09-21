@@ -48,19 +48,13 @@ export class MapboxComponent implements OnInit {
 	@Output() zoomReading;
 	@Output() bearingReading;
 
-	constructor(private mapService: MapService, private datasourcesService: DatasourcesService) {
-		this.cursorMoveEW = new EventEmitter<number>();
-		this.cursorMoveNS = new EventEmitter<number>();
-
-		this.zoomReading = new EventEmitter<number>();
-		this.bearingReading = new EventEmitter<number>();
-	}
-
 	public lat: number = -36.568;
 	public lng: number = 145.062;
 
 	coloroptions: any;
 	colorLegend: any;
+
+	collapse:boolean = true;
 
 	nav: NavigationControl;
 	geo: GeolocateControl;
@@ -72,9 +66,32 @@ export class MapboxComponent implements OnInit {
 		[139, -41],
 		[151, -33]
 	];
+	canvas: any;
+	coordinates: any;
+
+	dragPointGeoJSON:any = {
+		"type": "FeatureCollection",
+		"features": [{
+			"type": "Feature",
+			"geometry": {
+				"type": "Point",
+				"coordinates": [this.lng, this.lat]
+			}
+		}]
+	};
+
+	constructor(private mapService: MapService, private datasourcesService: DatasourcesService) {
+		this.cursorMoveEW = new EventEmitter<number>();
+		this.cursorMoveNS = new EventEmitter<number>();
+		this.zoomReading = new EventEmitter<number>();
+		this.bearingReading = new EventEmitter<number>();
+	}
+
+
+
 
 	ngOnInit() {
-		let map = new Map({
+		var map = new Map({
 			container: 'mymapbox',
 			style: 'mapbox://styles/anthonyrawlinsuom/cj6eembnj0x4k2smhax6o0ztl',
 			center: [this.lng, this.lat],
@@ -90,6 +107,11 @@ export class MapboxComponent implements OnInit {
 		this.nav = new NavigationControl();
 		this.scl = new ScaleControl();
 		this.ful = new FullscreenControl();
+
+		this.canvas = map.getCanvasContainer();
+		console.log("Canvas = ", this.canvas);
+
+		this.coordinates = document.getElementById('coordinates');
 
 		var geocoder = new MapboxGeocoder({
 			accessToken: this.mapService.accessToken
@@ -111,31 +133,23 @@ export class MapboxComponent implements OnInit {
 		map.addControl(this.ful, 'top-right');
 		map.addControl(this.scl, 'top-left');
 
-		map.on('mousemove', (e) => {
-			this.cursorLng = (e.lngLat.toArray())[0];
-			this.cursorLat = (e.lngLat.toArray())[1];
-			// console.log("{" + this.cursorLng + "," + this.cursorLat + "}");
+		// map.on('mousemove', (e) => {
+		// 	this.cursorLng = (e.lngLat.toArray())[0];
+		// 	this.cursorLat = (e.lngLat.toArray())[1];
+		// 	this.cursorMoveEW.emit(this.cursorLng);
+		// 	this.cursorMoveNS.emit(this.cursorLat);
+		// });
 
-			this.cursorMoveEW.emit(this.cursorLng);
-			this.cursorMoveNS.emit(this.cursorLat);
-			// console.log(JSON.stringify(e.lngLat));
-			// this.bearingReading.emit(this.nav.getBearing());
-			// this.zoomReading.emit(this.nav.getZoom());
-		});
-
-		var layers:any = [];
-		var sources:any = [];
-
-
+		var layers: any = [];
+		var sources: any = [];
+		var dragPointGeoJSON = this.dragPointGeoJSON;
 
 		map.on('load', function() {
-
 
 			// Extension Layers
 			for (var l in layers) {
 				map.addLayer(l);
 			}
-
 
 			map.addSource('single-point', {
 				"type": "geojson",
@@ -155,28 +169,47 @@ export class MapboxComponent implements OnInit {
 				}
 			});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			map.addSource('cfastations', {
-				'type': 'geojson',
-				'data': 'http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&WIDTH=512&HEIGHT=512&LAYERS=VMFEAT_CFA_FIRE_STATION&STYLES=&FORMAT=image%2Fpng&SRS=EPSG%3A4283&BBOX=140.501%2C-39.137%2C150.068%2C-33.0'
+			// Add a single point to the map
+			map.addSource('draggable-point-source', {
+				"type": "geojson",
+				"data": dragPointGeoJSON
 			});
+
+			map.addLayer({
+				"id": "draggable-point",
+				"type": "circle",
+				"source": "draggable-point-source",
+				"paint": {
+					"circle-radius": 10,
+					"circle-color": "#3887be"
+					// ,
+					// "stroke-width": 2,
+					// "stroke-color": "#0264b5"
+				}
+			});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			// map.addSource('cfastations', {
+			// 	'type': 'geojson',
+			// 	'data': 'http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&WIDTH=512&HEIGHT=512&LAYERS=VMFEAT_CFA_FIRE_STATION&STYLES=&FORMAT=image%2Fpng&SRS=EPSG%3A4283&BBOX=140.501%2C-39.137%2C150.068%2C-33.0'
+			// });
 
 			map.addSource('cfaregion', {
 				'type': 'vector',
@@ -190,21 +223,21 @@ export class MapboxComponent implements OnInit {
 				'tileSize': 512
 			});
 
-			map.addSource('kbdi', {
-				'type': 'raster',
-				'tiles': [
-					'http://localhost:8080/geoserver/victoria/wms?service=WMS&version=1.1.0&request=GetMap&layers=victoria:KBDI_SFC&styles=&bbox=140.8879867553711,-39.76999832100885,151.05409088134766,-33.929998627233346&width=768&height=441&srs=EPSG:4326&format=image%2Fpng'
-				],
-				'tileSize': 256
-			});
+			// map.addSource('kbdi', {
+			// 	'type': 'raster',
+			// 	'tiles': [
+			// 		'http://localhost:8080/geoserver/victoria/wms?service=WMS&version=1.1.0&request=GetMap&layers=victoria:KBDI_SFC&styles=&bbox=140.8879867553711,-39.76999832100885,151.05409088134766,-33.929998627233346&width=768&height=441&srs=EPSG:4326&format=image%2Fpng'
+			// 	],
+			// 	'tileSize': 256
+			// });
 
-			map.addSource('windDirection', {
-				'type': 'raster',
-				'tiles': [
-					'http://localhost:8080/geoserver/victoria/wms?service=WMS&version=1.1.0&request=GetMap&layers=victoria:victoria:Wind_Dir_SFC&styles=&bbox=140.8879867553711,-39.76999832100885,151.05409088134766,-33.929998627233346&width=768&height=441&srs=EPSG:4326&format=image%2Fpng'
-				],
-				'tileSize': 256
-			});
+			// map.addSource('windDirection', {
+			// 	'type': 'raster',
+			// 	'tiles': [
+			// 		'http://localhost:8080/geoserver/victoria/wms?service=WMS&version=1.1.0&request=GetMap&layers=victoria:victoria:Wind_Dir_SFC&styles=&bbox=140.8879867553711,-39.76999832100885,151.05409088134766,-33.929998627233346&width=768&height=441&srs=EPSG:4326&format=image%2Fpng'
+			// 	],
+			// 	'tileSize': 256
+			// });
 
 
 			map.addLayer({
@@ -236,31 +269,30 @@ export class MapboxComponent implements OnInit {
 			});
 
 
-			map.addLayer({
-				'id': 'metadata-layer-cfa-stations',
-				'type': 'circle',
-				'source': 'cfastations',
-				'layout': {},
-				'paint': {
-					'circle-color': '#777472',
-					'circle-radius': 3.53
-				},
-				'source-layer': 'CFA_DISTRICT'
-			});
+			// map.addLayer({
+			// 	'id': 'metadata-layer-cfa-stations',
+			// 	'type': 'circle',
+			// 	'source': 'cfastations',
+			// 	'layout': {},
+			// 	'paint': {
+			// 		'circle-color': '#777472',
+			// 		'circle-radius': 3.53
+			// 	}
+			// });
 
 
-			map.addLayer({
-				'id': 'index-layer-windDirection',
-				'type': 'raster',
-				'source': {
-					'type': 'raster',
-					'tiles': [
-						'http://localhost:8080/geoserver/victoria/wms?service=WMS&version=1.1.0&request=GetMap&layers=victoria:Wind_Dir_SFC&styles=&bbox=140.8879867553711,-39.76999832100885,151.05409088134766,-33.929998627233346&width=768&height=441&srs=EPSG:4326&format=image%2Fpng%3B%20mode%3D8bit'
-					],
-					'tileSize': 256
-				},
-				'paint': {},
-			}, 'water');
+			// map.addLayer({
+			// 	'id': 'index-layer-windDirection',
+			// 	'type': 'raster',
+			// 	'source': {
+			// 		'type': 'raster',
+			// 		'tiles': [
+			// 			'http://localhost:8080/geoserver/victoria/wms?service=WMS&version=1.1.0&request=GetMap&layers=victoria:Wind_Dir_SFC&styles=&bbox=140.8879867553711,-39.76999832100885,151.05409088134766,-33.929998627233346&width=768&height=441&srs=EPSG:4326&format=image%2Fpng%3B%20mode%3D8bit'
+			// 		],
+			// 		'tileSize': 256
+			// 	},
+			// 	'paint': {},
+			// }, 'water');
 
 
 
@@ -353,27 +385,6 @@ export class MapboxComponent implements OnInit {
 			}, 'roads');
 
 
-			//this.filterBy(0);
-
-			// document.getElementById('slider').addEventListener('input', function(e) {
-			// 	var month = parseInt(e.target.value, 10);
-			// 	this.filterBy(month);
-			// });
-
-			// map.addLayer({
-			// 	'id': 'metadata-layer-cfa-stations',
-			// 	'type': 'point',
-			// 	'source': 'cfa',
-			// 	'layout': {
-			// 		// 'visibility': 'visible'
-			// 	},
-			// 	'paint': {
-			// 		'line-color': '#f50',
-			// 		'line-width': 0.655
-			// 	},
-			// 	'source-layer': 'CFA_STATIONS'
-			// });
-
 			// Listen for the `geocoder.input` event that is triggered when a user
 			// makes a selection and add a symbol that matches the result.
 			geocoder.on('result', function(ev) {
@@ -416,6 +427,8 @@ export class MapboxComponent implements OnInit {
 		});
 
 		map.on('click', 'index-layer-bushfires', function(e) {
+			map.flyTo({center: e.features[0].geometry.coordinates});
+
 			new Popup({ offset: popupOffsets })
 				.setLngLat(e.features[0].geometry.coordinates)
 				.setHTML("<strong>Incident</strong><br/>"
@@ -427,6 +440,8 @@ export class MapboxComponent implements OnInit {
 		});
 
 		map.on('click', 'index-layer-hotspots', function(e) {
+			map.flyTo({center: e.features[0].geometry.coordinates});
+
 			new Popup({ offset: popupOffsets })
 				.setLngLat(e.features[0].geometry.coordinates)
 				.setHTML("<strong>Thermal Anomaly</strong><br/>"
@@ -436,6 +451,35 @@ export class MapboxComponent implements OnInit {
 				+ "Confidence: " + e.features[0].properties.confidence)
 				.addTo(map);
 		});
+
+		map.on('click', 'draggable-point', function(e) {
+			map.flyTo({center: e.features[0].geometry.coordinates});
+		});
+
+
+
+		// When the cursor enters a feature in the draggable-point layer, prepare for dragging.
+		map.on('mouseenter', 'draggable-point', function() {
+
+			console.log(">>> MouseEnter on draggable point.");
+			map.setPaintProperty('draggable-point', 'circle-color', '#3bb2d0');
+			// this.canvas.style.cursor = 'move';
+			this.isCursorOverPoint = true;
+			map.dragPan.disable();
+		}.bind(this));
+
+		map.on('mouseleave', 'draggable-point', function() {
+
+			console.log(">>> MouseLeave on draggable point.");
+			map.setPaintProperty('draggable-point', 'circle-color', '#3887be');
+			// this.canvas.style.cursor = '';
+			this.isCursorOverPoint = false;
+			map.dragPan.enable();
+		}.bind(this));
+
+		map.on('mousedown', this.mouseDown.bind(this));
+		// map.on('mousemove', this.onMove.bind(this));
+		// map.on('mouseup', this.onUp.bind(this));
 
 		this.mapService.map = map;
 	}
@@ -459,5 +503,93 @@ export class MapboxComponent implements OnInit {
 
 		// Set the label to the month
 		document.getElementById('month').textContent = this.months[month];
+	}
+
+	isCursorOverPoint: boolean = false;
+	isDragging: boolean = false;
+
+	private mouseDown() {
+		if (!this.isCursorOverPoint) {
+			this.mapService.map.on('mousemove', this.onMove.bind(this));
+			return;
+		}
+		console.log(">>> MouseDown on draggable point.");
+		this.isDragging = true;
+
+		// Set a cursor indicator
+		// this.canvas.style.cursor = 'grab';
+
+		// Mouse events
+		this.mapService.map.on('mousemove', this.onDragMove.bind(this));
+		this.mapService.map.once('mouseup', this.onUp.bind(this));
+	}
+
+	private onMove(e) {
+			this.cursorLng = (e.lngLat.toArray())[0];
+			this.cursorLat = (e.lngLat.toArray())[1];
+			this.cursorMoveEW.emit(this.cursorLng);
+			this.cursorMoveNS.emit(this.cursorLat);
+	}
+
+	private onDragMove(e) {
+		if (!this.isDragging) return;
+		var coords = e.lngLat;
+
+		console.log(">>> Dragging draggable point.");
+
+		// Set a UI indicator for dragging.
+		// this.canvas.style.cursor = 'grabbing';
+
+		this.coordinates.style.display = 'block';
+		this.coordinates.innerHTML = 'Longitude: ' + coords.lng + '<br />Latitude: ' + coords.lat;
+
+		// Update the Point feature in `geojson` coordinates
+		// and call setData to the source layer `point` on it.
+		this.dragPointGeoJSON.features[0].geometry.coordinates = [coords.lng, coords.lat];
+		this.mapService.map.getSource('draggable-point-source').setData(this.dragPointGeoJSON);
+
+	}
+
+	public flyToDragPoint(e) {
+		console.log("Flying to: " + this.dragPointGeoJSON.features[0].geometry.coordinates);
+		this.mapService.map.flyTo({
+			center: this.dragPointGeoJSON.features[0].geometry.coordinates,
+			zoom: 15
+		});
+	}
+
+	public repositionDragPoint() {
+		this.dragPointGeoJSON.features[0].geometry.coordinates = this.mapService.map.get;
+		this.mapService.map.getSource('draggable-point-source').setData(this.dragPointGeoJSON);
+		this.flyToDragPoint(null);
+	}
+
+	public zoomToStateView(e) {
+		console.log("Flying to: " + [this.lng, this.lat]);
+		this.mapService.map.flyTo({
+			center: [this.lng, this.lat],
+			zoom: 6.5
+		});
+	}
+
+	private onUp(e) {
+		if (!this.isDragging) return;
+		var coords = e.lngLat;
+
+		console.log(">>> MouseUp on draggable point.");
+
+		// Print the coordinates of where the point had
+		// finished being dragged to on the map.
+		this.coordinates.style.display = 'block';
+		this.coordinates.innerHTML = 'Longitude: ' + coords.lng + '<br />Latitude: ' + coords.lat;
+		this.canvas.style.cursor = '';
+		this.isDragging = false;
+
+		// This is where we trigger the API call to get Fuel Moisture Data for the
+		// ChartingComponent at the current Lat & Lng.
+		console.log("Getting Fuel Moisture History for 'Longitude: " + coords.lng + "', 'Latitude: " + coords.lat + "'");
+
+		// Unbind mouse events
+		this.mapService.map.off('mousemove', this.onDragMove);
 	}
 }

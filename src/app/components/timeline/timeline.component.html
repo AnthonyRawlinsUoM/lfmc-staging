@@ -1,31 +1,31 @@
-<div class='map-overlay list' id="timeline">
+<div class='map-overlay right aligned' id="timeline">
 
-	<div class="ui grid">
-		<div class="ui three wide column"></div>
-		<div class="ui ten wide column">
-			<div class='map-overlay-inner top attached item'>
+	<!-- <div class='map-overlay-inner top attached item'>
 				<div class="ui grid">
 					<div class="ui one wide column"><i class="large middle aligned orange clock icon"></i></div>
 					<div class="ui fifteen wide column">
 						<input class='timestep' type='range' min='0' max='365' step='1' value='365' />
-						<!-- Timeline tick marks / scale goes here -->
 					</div>
 				</div>
-			</div>
-			<div class="bottom attached item map-overlay-inner">
-				<div id='legend' class='legend'>
-					<div class='bar'></div>
-				</div>
-				<div class="ui grid">
-					<div class="ui four wide column">
-						<h5 class="ui tiny gray inverted header">0%</h5></div>
-					<div class="ui eight wide column center aligned">
-						<h5 class="ui tiny gray inverted header">Fuel Moisture (%)</h5></div>
-					<div class="ui four wide column right aligned">
-						<h5 class="ui tiny gray inverted header">100%</h5></div>
-				</div>
-			</div>
-
+			</div> -->
+		<div class="map-overlay-inner dark">
+			<!-- ChartingComponent -->
+			<lfmc-charting id="chart" style="color:#fff;"></lfmc-charting>
+			<!-- ChartingComponent -->
 		</div>
-		<div class="ui three wide column"></div>
+
+	<div class="map-overlay-inner">
+		<div id='legend' class='legend'>
+			<div class='bar'></div>
+		</div>
+		<div class="ui grid">
+			<div class="ui four wide column left aligned">
+				<h5 class="ui tiny gray inverted header">0%</h5></div>
+			<div class="ui eight wide column center aligned">
+				<h5 class="ui tiny gray inverted header">Fuel Moisture (%)</h5></div>
+			<div class="ui four wide column right aligned">
+				<h5 class="ui tiny gray inverted header">100%</h5></div>
+		</div>
 	</div>
+
+</div>

@@ -3,21 +3,51 @@
 
   <div id="myoverlay">
 
-    <div class="ui grid">
+    <!-- <div class="ui grid">
       <div class="ui three wide column"></div>
-      <div class="ui ten wide center aligned column">
+      <div class="ui ten wide left aligned column"> -->
 
-          <div class="ui mini inverted labeled input">
-            <div class="ui mini inverted black label">Latitude: </div>
-            <input class="inverted" [(ngModel)]="cursorLat"></div>
-          <div class="ui mini inverted labeled input">
-            <div class="ui mini inverted black label">Longitude: </div>
-            <input class="inverted" [(ngModel)]="cursorLng"></div>
-          
+        <button class="ui tiny blue icon button" (click)="collapse = !collapse">
+          <div *ngIf="collapse"><i class="white window line chart icon"></i>Show Chart</div>
+          <div *ngIf="!collapse"><i class="white window minimize icon"></i>Hide Chart</div>
+        </button>
+        <button class="ui tiny blue icon button" (click)="flyToDragPoint()">
+          <i class="white crosshairs icon"></i>Re-center
+        </button>
+        <button class="ui tiny blue icon button" (click)="repositionDragPoint()">
+          <i class="white search icon"></i>Inspect
+        </button>
+        <button class="ui tiny blue icon button" (click)="zoomToStateView()">
+          <i class="white world icon"></i>State View
+        </button>
+        <button class="ui tiny green icon button" (click)="setSatelliteStyle()">
+          <i class="white map icon"></i>Satellite
+        </button>
+        <button class="ui tiny green icon button" (click)="setDatavizStyle()">
+          <i class="white map icon"></i>DataViz
+        </button>
+        <button class="ui tiny green icon button" (click)="setDefaultStyle()">
+          <i class="white map icon"></i>Outdoors
+        </button>
 
-      </div>
+        <div class="ui mini inverted labeled input">
+          <div class="ui mini inverted black label">Longitude: </div>
+          <input class="inverted" [(ngModel)]="cursorLng"></div>
+
+        <div class="ui mini inverted labeled input">
+          <div class="ui mini inverted black label">Latitude: </div>
+          <input class="inverted" [(ngModel)]="cursorLat"></div>
+
+        <pre id='coordinates' class='coordinates'></pre>
+
+        <div [suiCollapse]="collapse">
+
+
+          <lfmc-timeline></lfmc-timeline>
+        </div>
+      <!-- </div>
       <div class="ui three wide right aligned column"></div>
-    </div>
+    </div> -->
 
   </div>
 
@@ -34,8 +64,7 @@
   </div> -->
 
 
-  <lfmc-timeline></lfmc-timeline>
-  <lfmc-d3chart id="chart"></lfmc-d3chart>
+
 </div>
 
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>
