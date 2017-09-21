@@ -15,7 +15,9 @@ import {
 	Map, Popup
 } from 'mapbox-gl/dist/mapbox-gl.js';
 
+var MapboxDraw = require('@mapbox/mapbox-gl-draw');
 var MapboxGeocoder = require('@mapbox/mapbox-gl-geocoder');
+var turf = require('@turf/turf');
 
 @Component({
 	selector: 'lfmc-mapbox',
@@ -60,6 +62,7 @@ export class MapboxComponent implements OnInit {
 	geo: GeolocateControl;
 	scl: ScaleControl;
 	ful: FullscreenControl;
+	drw: any;
 
 	// Set bounds to Victorian Area
 	bounds = [
@@ -107,6 +110,13 @@ export class MapboxComponent implements OnInit {
 		this.nav = new NavigationControl();
 		this.scl = new ScaleControl();
 		this.ful = new FullscreenControl();
+		this.drw = new MapboxDraw({
+		    displayControlsDefault: true,
+		    controls: {
+		        polygon: true,
+		        trash: true
+		    }
+		});
 
 		this.canvas = map.getCanvasContainer();
 		console.log("Canvas = ", this.canvas);
@@ -131,6 +141,7 @@ export class MapboxComponent implements OnInit {
 		map.addControl(this.nav, 'top-right');
 		map.addControl(this.geo, 'top-right');
 		map.addControl(this.ful, 'top-right');
+		map.addControl(this.drw, 'top-right');
 		map.addControl(this.scl, 'top-left');
 
 		// map.on('mousemove', (e) => {
@@ -456,8 +467,6 @@ export class MapboxComponent implements OnInit {
 			map.flyTo({center: e.features[0].geometry.coordinates});
 		});
 
-
-
 		// When the cursor enters a feature in the draggable-point layer, prepare for dragging.
 		map.on('mouseenter', 'draggable-point', function() {
 
@@ -482,6 +491,26 @@ export class MapboxComponent implements OnInit {
 		// map.on('mouseup', this.onUp.bind(this));
 
 		this.mapService.map = map;
+	}
+
+
+		// Uses turf to calculate the area of the polygon in square meters
+	public calculateArea() {
+		var data = this.drw.getAll();
+	     if (data.features.length > 0) {
+	         var area = turf.area(data);
+	         // restrict to area to 2 decimal points
+	         var rounded_area = area.toFixed(2);
+					 var area_km = turf.convertArea(area, 'meters', 'kilometers');
+
+					 var answer = document.getElementById('calculated-area');
+
+	         answer.innerHTML = '<p><strong>Area of polygon:</strong> ' + rounded_area + ' square meters, (or '+ area_km.toFixed(2) +' square kilometers)</p>';
+					 answer.style.display = 'block';
+	     } else {
+	         alert("Use the draw tools to draw a polygon!");
+					 answer.style.display = 'none';
+	     }
 	}
 
 	public setSatelliteStyle() {

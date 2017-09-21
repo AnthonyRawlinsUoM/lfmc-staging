@@ -12,6 +12,7 @@ import { AgmCoreModule } from '@agm/core';
 import { SuiModule } from 'ng2-semantic-ui';
 import { FileUploadModule } from 'ng2-file-upload';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MapboxDraw } from '@mapbox/mapbox-gl-draw';
 
 
 // Services
