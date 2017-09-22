@@ -7,7 +7,7 @@
     width: 100%;
     height: 8px;
     border-radius: 4px;
-    background: #111;
+    background: #000;
     outline: none;
     opacity: 0.45;
     -webkit-transition: .2s;
@@ -47,7 +47,10 @@
 }
 
 .map-overlay .map-overlay-inner {
-    background-color: rgba(0, 0, 0, 0.40);
+
+  background: -webkit-linear-gradient(0deg, rgba(0, 0, 0,0.45), rgba(0, 0, 0, 0.85));
+  background: -o-linear-gradient(0deg, rgba(0, 0, 0,0.45), rgba(0, 0, 0, 0.85));
+  background: linear-gradient(0deg, rgba(0, 0, 0,0.45), rgba(0, 0, 0, 0.85));
     /*opacity: 0.5;*/
     box-shadow:0 3px 10px rgba(0, 0, 0, 0.50);
     border-radius: .3em;
