@@ -50,13 +50,17 @@ export class MapboxComponent implements OnInit {
 	@Output() zoomReading;
 	@Output() bearingReading;
 
-	public lat: number = -36.568;
-	public lng: number = 145.062;
+	public defaultLat: number = -36.568;
+	public defaultLng: number = 145.062;
+
+	public lat: number = this.defaultLat;
+	public lng: number = this.defaultLng;
 
 	coloroptions: any;
 	colorLegend: any;
 
 	collapse:boolean = true;
+	timebrush:boolean = false;
 
 	nav: NavigationControl;
 	geo: GeolocateControl;
@@ -440,6 +444,9 @@ export class MapboxComponent implements OnInit {
 		map.on('click', 'index-layer-bushfires', function(e) {
 			map.flyTo({center: e.features[0].geometry.coordinates});
 
+			this.lat = e.features[0].geometry.coordinates.lat;
+			this.lng = e.features[0].geometry.coordinates.lng;
+
 			new Popup({ offset: popupOffsets })
 				.setLngLat(e.features[0].geometry.coordinates)
 				.setHTML("<strong>Incident</strong><br/>"
@@ -452,6 +459,9 @@ export class MapboxComponent implements OnInit {
 
 		map.on('click', 'index-layer-hotspots', function(e) {
 			map.flyTo({center: e.features[0].geometry.coordinates});
+
+			this.lat = e.features[0].geometry.coordinates.lat;
+			this.lng = e.features[0].geometry.coordinates.lng;
 
 			new Popup({ offset: popupOffsets })
 				.setLngLat(e.features[0].geometry.coordinates)
@@ -475,6 +485,7 @@ export class MapboxComponent implements OnInit {
 			// this.canvas.style.cursor = 'move';
 			this.isCursorOverPoint = true;
 			map.dragPan.disable();
+			console.log('dragPan: disabled');
 		}.bind(this));
 
 		map.on('mouseleave', 'draggable-point', function() {
@@ -484,10 +495,11 @@ export class MapboxComponent implements OnInit {
 			// this.canvas.style.cursor = '';
 			this.isCursorOverPoint = false;
 			map.dragPan.enable();
+			console.log('dragPan: enabled');
 		}.bind(this));
 
 		map.on('mousedown', this.mouseDown.bind(this));
-		// map.on('mousemove', this.onMove.bind(this));
+		map.on('mousemove', this.onMove.bind(this));
 		// map.on('mouseup', this.onUp.bind(this));
 
 		this.mapService.map = map;
@@ -537,9 +549,8 @@ export class MapboxComponent implements OnInit {
 	isCursorOverPoint: boolean = false;
 	isDragging: boolean = false;
 
-	private mouseDown() {
+	private mouseDown(e:any) {
 		if (!this.isCursorOverPoint) {
-			this.mapService.map.on('mousemove', this.onMove.bind(this));
 			return;
 		}
 		console.log(">>> MouseDown on draggable point.");
@@ -547,15 +558,16 @@ export class MapboxComponent implements OnInit {
 
 		// Set a cursor indicator
 		// this.canvas.style.cursor = 'grab';
-
+		this.mapService.map.dragPan.disable();
 		// Mouse events
 		this.mapService.map.on('mousemove', this.onDragMove.bind(this));
 		this.mapService.map.once('mouseup', this.onUp.bind(this));
 	}
 
-	private onMove(e) {
-			this.cursorLng = (e.lngLat.toArray())[0];
-			this.cursorLat = (e.lngLat.toArray())[1];
+	private onMove(e:any) {
+			var coords = e.lngLat;
+			this.cursorLng = coords.lng;
+			this.cursorLat = coords.lat;
 			this.cursorMoveEW.emit(this.cursorLng);
 			this.cursorMoveNS.emit(this.cursorLat);
 	}
@@ -579,24 +591,26 @@ export class MapboxComponent implements OnInit {
 
 	}
 
+	// Re-center
 	public flyToDragPoint(e) {
 		console.log("Flying to: " + this.dragPointGeoJSON.features[0].geometry.coordinates);
 		this.mapService.map.flyTo({
-			center: this.dragPointGeoJSON.features[0].geometry.coordinates,
-			zoom: 15
+			center: this.dragPointGeoJSON.features[0].geometry.coordinates
 		});
 	}
 
+	// Inspect
 	public repositionDragPoint() {
-		this.dragPointGeoJSON.features[0].geometry.coordinates = this.mapService.map.get;
+		this.dragPointGeoJSON.features[0].geometry.coordinates = [this.lng, this.lat];
 		this.mapService.map.getSource('draggable-point-source').setData(this.dragPointGeoJSON);
 		this.flyToDragPoint(null);
 	}
 
+	// State View
 	public zoomToStateView(e) {
-		console.log("Flying to: " + [this.lng, this.lat]);
+		console.log("Flying to: " + [this.defaultLng, this.defaultLat]);
 		this.mapService.map.flyTo({
-			center: [this.lng, this.lat],
+			center: [this.defaultLng, this.defaultLat],
 			zoom: 6.5
 		});
 	}
@@ -618,7 +632,13 @@ export class MapboxComponent implements OnInit {
 		// ChartingComponent at the current Lat & Lng.
 		console.log("Getting Fuel Moisture History for 'Longitude: " + coords.lng + "', 'Latitude: " + coords.lat + "'");
 
+		this.lat = coords.lat;
+		this.lng = coords.lng;
+
+		this.flyToDragPoint(e);
+
 		// Unbind mouse events
-		this.mapService.map.off('mousemove', this.onDragMove);
+		this.mapService.map.off('mousemove', this.onDragMove.bind(this));
+		this.mapService.map.dragPan.enable();
 	}
 }

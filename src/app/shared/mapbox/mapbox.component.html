@@ -11,8 +11,12 @@
       <div class="ui ten wide left aligned column"> -->
 
         <button class="ui tiny purple icon button" (click)="collapse = !collapse">
-          <div *ngIf="collapse"><i class="white window area chart icon"></i>Show Chart</div>
+          <div *ngIf="collapse"><i class="white area chart icon"></i>Show Chart</div>
           <div *ngIf="!collapse"><i class="white window minimize icon"></i>Hide Chart</div>
+        </button>
+        <button *ngIf="!collapse" class="ui tiny purple icon button" (click)="timebrush = !timebrush">
+          <div *ngIf="timebrush"><i class="white clock icon"></i>Show Timebrush</div>
+          <div *ngIf="!timebrush"><i class="white close icon"></i>Hide Timebrush</div>
         </button>
         <button class="ui tiny blue icon button" (click)="flyToDragPoint()">
           <i class="white crosshairs icon"></i>Re-center
