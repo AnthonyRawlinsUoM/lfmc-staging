@@ -8,4 +8,9 @@
 
 .ui.inverted.menu.shadow {
 	max-height: 5vh;
+	z-index: 250;
+}
+
+main {
+	overflow: hidden;
 }

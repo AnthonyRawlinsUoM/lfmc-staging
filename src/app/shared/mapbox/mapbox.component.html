@@ -1,63 +1,86 @@
 <div class="ui mapbox">
-  <div id="mymapbox" class="ui mapbox mapboxgl-map"></div>
 
-<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
-<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>
-<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css' type='text/css'/>
-<div id="myoverlay">
+
+
+  <div class="viewport" id="backViewport">
+    <div class="viewframe">
+      <div id="mymapbox" class="ui mapbox mapboxgl-map"></div>
+    </div>
+  </div>
+  <div class="viewport" id="frontViewport">
+    <div class="viewframe">
+      <div id="myAltmapbox" class="ui mapbox mapboxgl-map"></div>
+    </div>
+  </div>
+  <div id="splitViewHandle" class="viewDividerhandle"
+  (mouseenter)="enterSplitViewHandle($event)"
+  (mouseleave)="leaveSplitViewHandle($event)"
+  (mousedown)="downSplitViewHandle($event)"
+  (mouseup)="upSplitViewHandle($event)"
+  (click)="clickSplitViewHandle($event)"
+  (drag)="dragSplitViewHandle($event)"></div>
+
+
+
+
+
+  <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>
+  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css' type='text/css' />
+  <div id="myoverlay">
 
     <!-- <div class="ui grid">
       <div class="ui three wide column"></div>
       <div class="ui ten wide left aligned column"> -->
 
-        <button class="ui tiny purple icon button" (click)="collapse = !collapse">
+    <button class="ui tiny purple icon button" (click)="collapse = !collapse">
           <div *ngIf="collapse"><i class="white area chart icon"></i>Show Chart</div>
           <div *ngIf="!collapse"><i class="white window minimize icon"></i>Hide Chart</div>
         </button>
-        <button *ngIf="!collapse" class="ui tiny purple icon button" (click)="timebrush = !timebrush">
+    <button *ngIf="!collapse" class="ui tiny purple icon button" (click)="timebrush = !timebrush">
           <div *ngIf="timebrush"><i class="white clock icon"></i>Show Timebrush</div>
           <div *ngIf="!timebrush"><i class="white close icon"></i>Hide Timebrush</div>
         </button>
-        <button class="ui tiny blue icon button" (click)="flyToDragPoint()">
+    <button class="ui tiny blue icon button" (click)="flyToDragPoint()">
           <i class="white crosshairs icon"></i>Re-center
         </button>
-        <button class="ui tiny blue icon button" (click)="repositionDragPoint()">
+    <button class="ui tiny blue icon button" (click)="repositionDragPoint()">
           <i class="white search icon"></i>Inspect
         </button>
-        <button class="ui tiny blue icon button" (click)="zoomToStateView()">
+    <button class="ui tiny blue icon button" (click)="zoomToStateView()">
           <i class="white world icon"></i>State View
         </button>
-        <button class="ui tiny green icon button" (click)="setSatelliteStyle()">
+    <button class="ui tiny green icon button" (click)="setSatelliteStyle()">
           <i class="white map icon"></i>Satellite
         </button>
-        <button class="ui tiny green icon button" (click)="setDatavizStyle()">
+    <button class="ui tiny green icon button" (click)="setDatavizStyle()">
           <i class="white map icon"></i>DataViz
         </button>
-        <button class="ui tiny green icon button" (click)="setDefaultStyle()">
+    <button class="ui tiny green icon button" (click)="setDefaultStyle()">
           <i class="white map icon"></i>Outdoors
         </button>
 
-        <button class="ui tiny orange icon button" (click)="calculateArea()">
+    <button class="ui tiny orange icon button" (click)="calculateArea()">
           <i class="white square outline icon"></i>Calculate Area
         </button>
 
-        <div class="ui mini inverted labeled input">
-          <div class="ui mini inverted black label">Longitude: </div>
-          <input class="inverted" [(ngModel)]="cursorLng"></div>
+    <div class="ui mini inverted labeled input">
+      <div class="ui mini inverted black label">Longitude: </div>
+      <input class="inverted" [(ngModel)]="cursorLng"></div>
 
-        <div class="ui mini inverted labeled input">
-          <div class="ui mini inverted black label">Latitude: </div>
-          <input class="inverted" [(ngModel)]="cursorLat"></div>
+    <div class="ui mini inverted labeled input">
+      <div class="ui mini inverted black label">Latitude: </div>
+      <input class="inverted" [(ngModel)]="cursorLat"></div>
 
-        <pre id='coordinates' class='coordinates'></pre>
-        <pre id='calculated-area' class='calculated-area'></pre>
+    <pre id='coordinates' class='coordinates'></pre>
+    <pre id='calculated-area' class='calculated-area'></pre>
 
-        <div [suiCollapse]="collapse">
+    <div [suiCollapse]="collapse">
 
 
-          <lfmc-timeline></lfmc-timeline>
-        </div>
-      <!-- </div>
+      <lfmc-timeline></lfmc-timeline>
+    </div>
+    <!-- </div>
       <div class="ui three wide right aligned column"></div>
     </div> -->
 

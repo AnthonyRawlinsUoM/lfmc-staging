@@ -1,48 +1,121 @@
 html, body {
-  margin: 0; height: 100%; overflow: hidden;
-}
-body { margin:0; padding:0; }
-
-.coordinates,
-.calculated-area {
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    /*position: absolute;*/
-    bottom: 10px;
-    left: 10px;
-    padding:5px 10px;
-    margin: 0;
-    font-size: 11px;
-    line-height: 18px;
-    border-radius: 3px;
-    display: none;
-    /*z-index: 400;*/
-}
-
-#mymapbox,
-#myaltmap {
+  margin: 0;
   height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.coordinates, .calculated-area {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  /*position: absolute;*/
+  bottom: 10px;
+  left: 10px;
+  padding: 5px 10px;
+  margin: 0;
+  font-size: 11px;
+  line-height: 18px;
+  border-radius: 3px;
+  display: none;
+  /*z-index: 400;*/
+}
+
+.viewDividerhandle {
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  z-index: 220;
+  top: -22px;
+  /*border-radius: 11px;*/
+  -ms-transform: rotate(45deg);
+  /* IE 9 */
+  -webkit-transform: rotate(45deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(45deg);
+  background-color: rgb(33, 36, 42);
+  left: calc(50vw - 22px);
+  cursor: grab;
+  box-shadow: 3px 3px 10px #000000;
+}
+
+.viewport {
+  overflow: hidden;
+  position: absolute;
+  width: auto;
+  top: 0;
+  bottom: 0;
+}
+
+.viewframe {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+#backViewport {
+  left: 0;
+  right: 0;
+}
+
+#frontViewport {
+  left: 0;
+  right: 50vw;
+}
+
+#backViewport #mymapbox {}
+
+#frontViewport #myAltmapbox {}
+
+#mymapbox, #myAltmapbox {
   padding: 0em;
   margin: 0em;
-  z-index: 200;
+  position: relative;
 }
+
+#mymapbox {
+  z-index: 200;
+  width: 100vw;
+  left: 0;
+  right: 0;
+}
+
+#myAltmapbox {
+  z-index: 210;
+  width: 100vw;
+  opacity: 0.5;
+  background-blend-mode: screen;
+  left: 0;
+  right: 0;
+}
+
 .ui.mapbox {
   position: relative;
   width: 100vw;
   height: 95vh;
 }
-#mymapbox { position:absolute; top:0; bottom:0; width:100%; }
+
+#mymapbox, #myAltmapbox {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
 
 #myoverlay {
   position: absolute;
-  widows: 100vw;;
+  widows: 100vw;
+  ;
   bottom: 0.2em;
   left: 0;
   right: 0;
   z-index: 250;
 }
-#myoverlay .ui.mini.inverted.black.label,
-#myoverlay input.inverted {
+
+#myoverlay .ui.mini.inverted.black.label, #myoverlay input.inverted {
   opacity: 0.65;
 }
 
@@ -53,11 +126,10 @@ body { margin:0; padding:0; }
   z-index: 400;
 }
 
-#geocoder-container > div {
-    min-width:50%;
-    margin-left:25%;
+#geocoder-container>div {
+  min-width: 50%;
+  margin-left: 25%;
 }
-
 
 #chart {
   position: absolute;
