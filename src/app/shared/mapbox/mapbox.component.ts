@@ -14,7 +14,7 @@ import {
 	FullscreenControl,
 	Map, Popup
 } from 'mapbox-gl/dist/mapbox-gl.js';
-
+var syncMove = require('@mapbox/mapbox-gl-sync-move');
 var MapboxDraw = require('@mapbox/mapbox-gl-draw');
 var MapboxGeocoder = require('@mapbox/mapbox-gl-geocoder');
 var turf = require('@turf/turf');
@@ -95,9 +95,49 @@ export class MapboxComponent implements OnInit {
 	}
 
 
+	splitViewHandle: any;
+	aView:any;
+	bView:any;
+
+	draggingHandle:boolean = false;
+
+	enterSplitViewHandle(e:any) {
+		this.splitViewHandle.style['background-color'] = "rgb(58, 64, 74)";
+	}
+
+	leaveSplitViewHandle(e:any) {
+		this.splitViewHandle.style['background-color'] = "rgb(33, 36, 42)";
+	}
+
+	downSplitViewHandle(e:any) {
+		this.draggingHandle = true;
+		console.log('Dragging SplitView...');
+	}
+
+	upSplitViewHandle(e:any) {
+		this.bView.style.right = "50vw";
+		this.splitViewHandle.style.left = "calc(50vw - 22px)";
+		this.draggingHandle = false;
+		console.log('Not dragging SplitView...');
+	}
+ 	clickSplitViewHandle(e:any) {}
+
+  dragSplitViewHandle(e:any) {
+		if(this.draggingHandle) {
+			this.bView.style.right = "calc(100vw - " + e.screenX + "px)";
+			this.splitViewHandle.style.left = "calc(" + e.screenX + "px - 22px)";
+		}
+	}
 
 
 	ngOnInit() {
+
+		this.splitViewHandle = document.getElementById('splitViewHandle');
+		this.aView = document.getElementById('backViewport');
+		this.bView = document.getElementById('frontViewport');
+
+		this.splitViewHandle.onousemove = this.dragSplitViewHandle.bind(this);
+
 		var map = new Map({
 			container: 'mymapbox',
 			style: 'mapbox://styles/anthonyrawlinsuom/cj6eembnj0x4k2smhax6o0ztl',
@@ -109,6 +149,20 @@ export class MapboxComponent implements OnInit {
 			// ,
 			// maxBounds: this.bounds
 		});
+
+		var altmap = new Map({
+			container: 'myAltmapbox',
+			style: 'mapbox://styles/mapbox/satellite-v9',
+			center: [this.lng, this.lat],
+			zoom: 6.5,
+			hash: true,
+			boxZoom: true,
+			attributionControl: false
+			// ,
+			// maxBounds: this.bounds
+		});
+
+		syncMove(map, altmap);
 
 		this.geo = new GeolocateControl();
 		this.nav = new NavigationControl();
@@ -611,7 +665,9 @@ export class MapboxComponent implements OnInit {
 		console.log("Flying to: " + [this.defaultLng, this.defaultLat]);
 		this.mapService.map.flyTo({
 			center: [this.defaultLng, this.defaultLat],
-			zoom: 6.5
+			zoom: 6.5,
+			bearing: 0.0,
+			pitch: 0
 		});
 	}
 
