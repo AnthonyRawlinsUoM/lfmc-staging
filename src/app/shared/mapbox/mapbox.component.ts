@@ -42,6 +42,8 @@ export class MapboxComponent implements OnInit {
 		'December'
 	];
 
+	splitview: boolean = false;
+
 	@Input() cursorLat: number | string;
 	@Input() cursorLng: number | string;
 	@Output() cursorMoveEW;
@@ -59,8 +61,8 @@ export class MapboxComponent implements OnInit {
 	coloroptions: any;
 	colorLegend: any;
 
-	collapse:boolean = true;
-	timebrush:boolean = false;
+	collapse: boolean = true;
+	timebrush: boolean = false;
 
 	nav: NavigationControl;
 	geo: GeolocateControl;
@@ -76,7 +78,7 @@ export class MapboxComponent implements OnInit {
 	canvas: any;
 	coordinates: any;
 
-	dragPointGeoJSON:any = {
+	dragPointGeoJSON: any = {
 		"type": "FeatureCollection",
 		"features": [{
 			"type": "Feature",
@@ -96,38 +98,13 @@ export class MapboxComponent implements OnInit {
 
 
 	splitViewHandle: any;
-	aView:any;
-	bView:any;
+	aView: any;
+	bView: any;
 
-	draggingHandle:boolean = false;
+	draggingHandle: boolean = false;
+	canDragSplitView: boolean = false;
 
-	enterSplitViewHandle(e:any) {
-		this.splitViewHandle.style['background-color'] = "rgb(58, 64, 74)";
-	}
 
-	leaveSplitViewHandle(e:any) {
-		this.splitViewHandle.style['background-color'] = "rgb(33, 36, 42)";
-	}
-
-	downSplitViewHandle(e:any) {
-		this.draggingHandle = true;
-		console.log('Dragging SplitView...');
-	}
-
-	upSplitViewHandle(e:any) {
-		this.bView.style.right = "50vw";
-		this.splitViewHandle.style.left = "calc(50vw - 22px)";
-		this.draggingHandle = false;
-		console.log('Not dragging SplitView...');
-	}
- 	clickSplitViewHandle(e:any) {}
-
-  dragSplitViewHandle(e:any) {
-		if(this.draggingHandle) {
-			this.bView.style.right = "calc(100vw - " + e.screenX + "px)";
-			this.splitViewHandle.style.left = "calc(" + e.screenX + "px - 22px)";
-		}
-	}
 
 
 	ngOnInit() {
@@ -135,8 +112,7 @@ export class MapboxComponent implements OnInit {
 		this.splitViewHandle = document.getElementById('splitViewHandle');
 		this.aView = document.getElementById('backViewport');
 		this.bView = document.getElementById('frontViewport');
-
-		this.splitViewHandle.onousemove = this.dragSplitViewHandle.bind(this);
+		// this.splitViewHandle.onousemove = this.dragSplitView.bind(this);
 
 		var map = new Map({
 			container: 'mymapbox',
@@ -164,16 +140,18 @@ export class MapboxComponent implements OnInit {
 
 		syncMove(map, altmap);
 
+
+
 		this.geo = new GeolocateControl();
 		this.nav = new NavigationControl();
 		this.scl = new ScaleControl();
 		this.ful = new FullscreenControl();
 		this.drw = new MapboxDraw({
-		    displayControlsDefault: true,
-		    controls: {
-		        polygon: true,
-		        trash: true
-		    }
+			displayControlsDefault: true,
+			controls: {
+				polygon: true,
+				trash: true
+			}
 		});
 
 		this.canvas = map.getCanvasContainer();
@@ -200,7 +178,7 @@ export class MapboxComponent implements OnInit {
 		map.addControl(this.geo, 'top-right');
 		map.addControl(this.ful, 'top-right');
 		map.addControl(this.drw, 'top-right');
-		map.addControl(this.scl, 'top-left');
+		map.addControl(this.scl, 'bottom-right');
 
 		// map.on('mousemove', (e) => {
 		// 	this.cursorLng = (e.lngLat.toArray())[0];
@@ -257,29 +235,6 @@ export class MapboxComponent implements OnInit {
 				}
 			});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			// map.addSource('cfastations', {
-			// 	'type': 'geojson',
-			// 	'data': 'http://services.land.vic.gov.au/catalogue/publicproxy/guest/dv_geoserver/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&WIDTH=512&HEIGHT=512&LAYERS=VMFEAT_CFA_FIRE_STATION&STYLES=&FORMAT=image%2Fpng&SRS=EPSG%3A4283&BBOX=140.501%2C-39.137%2C150.068%2C-33.0'
-			// });
-
 			map.addSource('cfaregion', {
 				'type': 'vector',
 				'tiles': ['http://localhost:8080/geoserver/gwc/service/wmts?request=GetTile&service=WMTS&version=1.0.0&layer=victoria:CFA_REGION&style=&tilematrix=EPSG:900913:{z}&tilematrixset=EPSG:900913&format=application/x-protobuf;type=mapbox-vector&tilecol={x}&tilerow={y}'],
@@ -291,23 +246,6 @@ export class MapboxComponent implements OnInit {
 				'tiles': ['http://localhost:8080/geoserver/gwc/service/wmts?request=GetTile&service=WMTS&version=1.0.0&layer=victoria:CFA_DISTRICT&style=&tilematrix=EPSG:900913:{z}&tilematrixset=EPSG:900913&format=application/x-protobuf;type=mapbox-vector&tilecol={x}&tilerow={y}'],
 				'tileSize': 512
 			});
-
-			// map.addSource('kbdi', {
-			// 	'type': 'raster',
-			// 	'tiles': [
-			// 		'http://localhost:8080/geoserver/victoria/wms?service=WMS&version=1.1.0&request=GetMap&layers=victoria:KBDI_SFC&styles=&bbox=140.8879867553711,-39.76999832100885,151.05409088134766,-33.929998627233346&width=768&height=441&srs=EPSG:4326&format=image%2Fpng'
-			// 	],
-			// 	'tileSize': 256
-			// });
-
-			// map.addSource('windDirection', {
-			// 	'type': 'raster',
-			// 	'tiles': [
-			// 		'http://localhost:8080/geoserver/victoria/wms?service=WMS&version=1.1.0&request=GetMap&layers=victoria:victoria:Wind_Dir_SFC&styles=&bbox=140.8879867553711,-39.76999832100885,151.05409088134766,-33.929998627233346&width=768&height=441&srs=EPSG:4326&format=image%2Fpng'
-			// 	],
-			// 	'tileSize': 256
-			// });
-
 
 			map.addLayer({
 				'id': 'metadata-layer-cfa-regions',
@@ -337,44 +275,10 @@ export class MapboxComponent implements OnInit {
 				'source-layer': 'CFA_DISTRICT'
 			});
 
-
-			// map.addLayer({
-			// 	'id': 'metadata-layer-cfa-stations',
-			// 	'type': 'circle',
-			// 	'source': 'cfastations',
-			// 	'layout': {},
-			// 	'paint': {
-			// 		'circle-color': '#777472',
-			// 		'circle-radius': 3.53
-			// 	}
-			// });
-
-
-			// map.addLayer({
-			// 	'id': 'index-layer-windDirection',
-			// 	'type': 'raster',
-			// 	'source': {
-			// 		'type': 'raster',
-			// 		'tiles': [
-			// 			'http://localhost:8080/geoserver/victoria/wms?service=WMS&version=1.1.0&request=GetMap&layers=victoria:Wind_Dir_SFC&styles=&bbox=140.8879867553711,-39.76999832100885,151.05409088134766,-33.929998627233346&width=768&height=441&srs=EPSG:4326&format=image%2Fpng%3B%20mode%3D8bit'
-			// 		],
-			// 		'tileSize': 256
-			// 	},
-			// 	'paint': {},
-			// }, 'water');
-
-
-
 			map.addSource('bushfires', {
 				'type': 'geojson',
 				'data': 'http://localhost:1880/bushfires'
 			});
-
-			// var data = this.http.get('http://localhost:1880/bushfires')
-			// 	.map((res: Response) => res.json())
-			// 	.catch((error: any) => Observable.throw(error.json().error || 'Server error'));
-			//
-			// map.getSource('bushfires').setData(data);
 
 			map.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Fireicon01.svg/100px-Fireicon01.svg.png', function(error, image) {
 				if (error) throw error;
@@ -386,16 +290,6 @@ export class MapboxComponent implements OnInit {
 					// 'source-layer':'hotspot_current_4326',
 					'layout': {
 						'icon-image': 'fire',
-						// 'icon-color': {
-						// 	'property': 'age_hours',
-						// 	'type': 'interval',
-						// 	'stops': [
-						// 		[2, '#f7e184'],
-						// 		[6, '#fbb03b'],
-						// 		[24, '#e8761a'],
-						// 		[48, '#ed3131'],
-						// 		[72, '#cccccc']]
-						// },
 						'icon-size': 0.09
 					}
 				}, 'roads');
@@ -496,10 +390,10 @@ export class MapboxComponent implements OnInit {
 		});
 
 		map.on('click', 'index-layer-bushfires', function(e) {
-			map.flyTo({center: e.features[0].geometry.coordinates});
-
-			this.lat = e.features[0].geometry.coordinates.lat;
-			this.lng = e.features[0].geometry.coordinates.lng;
+			// map.flyTo({center: e.features[0].geometry.coordinates});
+			//
+			// this.lat = e.features[0].geometry.coordinates.lat;
+			// this.lng = e.features[0].geometry.coordinates.lng;
 
 			new Popup({ offset: popupOffsets })
 				.setLngLat(e.features[0].geometry.coordinates)
@@ -511,11 +405,23 @@ export class MapboxComponent implements OnInit {
 				.addTo(map);
 		});
 
-		map.on('click', 'index-layer-hotspots', function(e) {
-			map.flyTo({center: e.features[0].geometry.coordinates});
 
-			this.lat = e.features[0].geometry.coordinates.lat;
-			this.lng = e.features[0].geometry.coordinates.lng;
+		var getFuelHistoryAtPoint = function(e) {
+			var coords = e.lngLat;
+			// Spawn fuel-history retrieval at this point.
+			console.log('Now spawning fuel-history retrieval at Point(' + coords.lng + ',' + coords.lat + ')');
+		}
+
+		map.on('click', 'landcover_wood', getFuelHistoryAtPoint);
+		map.on('click', 'landcover_crop', getFuelHistoryAtPoint);
+		map.on('click', 'landcover_scrub', getFuelHistoryAtPoint);
+		map.on('click', 'landcover_grass', getFuelHistoryAtPoint);
+
+		map.on('click', 'index-layer-hotspots', function(e) {
+			// map.flyTo({center: e.features[0].geometry.coordinates});
+
+			// this.lat = e.features[0].geometry.coordinates.lat;
+			// this.lng = e.features[0].geometry.coordinates.lng;
 
 			new Popup({ offset: popupOffsets })
 				.setLngLat(e.features[0].geometry.coordinates)
@@ -528,7 +434,7 @@ export class MapboxComponent implements OnInit {
 		});
 
 		map.on('click', 'draggable-point', function(e) {
-			map.flyTo({center: e.features[0].geometry.coordinates});
+			map.flyTo({ center: e.features[0].geometry.coordinates });
 		});
 
 		// When the cursor enters a feature in the draggable-point layer, prepare for dragging.
@@ -559,24 +465,89 @@ export class MapboxComponent implements OnInit {
 		this.mapService.map = map;
 	}
 
+	public toggleSplitView() {
+		this.splitview = !this.splitview;
+		if (!this.splitview) {
+			this.bView.style.right = "100vw";
+			this.splitViewHandle.style.left = "-22px";
+		} else {
+			this.bView.style.right = "50vw";
+			this.splitViewHandle.style.left = "calc(50vw - 22px)";
+		}
+	}
 
-		// Uses turf to calculate the area of the polygon in square meters
+	enterSplitViewHandle(e: any) {
+		this.splitViewHandle.style['background-color'] = "rgb(58, 64, 74)";
+		this.mapService.map.dragPan.disable();
+		this.canDragSplitView = true;
+		console.log('Dragging SplitView is enabled...');
+	}
+
+	leaveSplitViewHandle(e: any) {
+		if (!this.draggingHandle) {
+			this.splitViewHandle.style['background-color'] = "rgb(33, 36, 42)";
+			this.mapService.map.dragPan.enable();
+			this.canDragSplitView = false;
+			console.log('Dragging SplitView is now disabled.');
+		}
+	}
+
+	downSplitView(e: any) {
+		if (this.canDragSplitView) {
+			this.draggingHandle = true;
+			this.splitview = true;
+			console.log('Dragging SplitView...');
+			this.bView.style.right = "calc(100vw - " + e.screenX + "px)";
+			this.splitViewHandle.style.left = "calc(" + e.screenX + "px - 22px)";
+		}
+	}
+
+	upSplitView(e: any) {
+		if (this.canDragSplitView) {
+			this.bView.style.right = "calc(100vw - " + e.screenX + "px)";
+			this.splitViewHandle.style.left = "calc(" + e.screenX + "px - 22px)";
+			this.draggingHandle = false;
+			this.canDragSplitView = false;
+			console.log('Not dragging SplitView...');
+			if (!this.splitview) this.splitview = true;
+		}
+		this.mapService.map.dragPan.enable();
+	}
+	clickSplitView(e: any) { }
+
+	dragSplitView(e: any) {
+		if (this.canDragSplitView && this.draggingHandle) {
+			this.bView.style.right = "calc(100vw - " + e.screenX + "px)";
+			this.splitViewHandle.style.left = "calc(" + e.screenX + "px - 22px)";
+		}
+	}
+
+	// use turf to save GeoJSON of boundary
+	public saveBoundary() {
+		var data = this.drw.getAll();
+		if (data.features.length > 0) {
+			console.log('Saving GeoJSON for boundary.');
+			console.log(data);
+		}
+	}
+
+	// Uses turf to calculate the area of the polygon in square meters
 	public calculateArea() {
 		var data = this.drw.getAll();
-	     if (data.features.length > 0) {
-	         var area = turf.area(data);
-	         // restrict to area to 2 decimal points
-	         var rounded_area = area.toFixed(2);
-					 var area_km = turf.convertArea(area, 'meters', 'kilometers');
+		if (data.features.length > 0) {
+			var area = turf.area(data);
+			// restrict to area to 2 decimal points
+			var rounded_area = area.toFixed(2);
+			var area_km = turf.convertArea(area, 'meters', 'kilometers');
 
-					 var answer = document.getElementById('calculated-area');
+			var answer = document.getElementById('calculated-area');
 
-	         answer.innerHTML = '<p><strong>Area of polygon:</strong> ' + rounded_area + ' square meters, (or '+ area_km.toFixed(2) +' square kilometers)</p>';
-					 answer.style.display = 'block';
-	     } else {
-	         alert("Use the draw tools to draw a polygon!");
-					 answer.style.display = 'none';
-	     }
+			answer.innerHTML = '<p><strong>Area of polygon:</strong> ' + rounded_area + ' square meters, (or ' + area_km.toFixed(2) + ' square kilometers)</p>';
+			answer.style.display = 'block';
+		} else {
+			alert("Use the draw tools to draw a polygon!");
+			answer.style.display = 'none';
+		}
 	}
 
 	public setSatelliteStyle() {
@@ -603,7 +574,7 @@ export class MapboxComponent implements OnInit {
 	isCursorOverPoint: boolean = false;
 	isDragging: boolean = false;
 
-	private mouseDown(e:any) {
+	private mouseDown(e: any) {
 		if (!this.isCursorOverPoint) {
 			return;
 		}
@@ -618,12 +589,12 @@ export class MapboxComponent implements OnInit {
 		this.mapService.map.once('mouseup', this.onUp.bind(this));
 	}
 
-	private onMove(e:any) {
-			var coords = e.lngLat;
-			this.cursorLng = coords.lng;
-			this.cursorLat = coords.lat;
-			this.cursorMoveEW.emit(this.cursorLng);
-			this.cursorMoveNS.emit(this.cursorLat);
+	private onMove(e: any) {
+		var coords = e.lngLat;
+		this.cursorLng = coords.lng;
+		this.cursorLat = coords.lat;
+		this.cursorMoveEW.emit(this.cursorLng);
+		this.cursorMoveNS.emit(this.cursorLat);
 	}
 
 	private onDragMove(e) {
@@ -672,6 +643,8 @@ export class MapboxComponent implements OnInit {
 	}
 
 	private onUp(e) {
+
+		// if(this.draggingHandle) return this.upSplitViewHandle;
 		if (!this.isDragging) return;
 		var coords = e.lngLat;
 

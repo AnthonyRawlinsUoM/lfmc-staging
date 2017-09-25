@@ -37,9 +37,21 @@ body {
   /* Chrome, Safari, Opera */
   transform: rotate(45deg);
   background-color: rgb(33, 36, 42);
+  color: white;
   left: calc(50vw - 22px);
   cursor: grab;
-  box-shadow: 3px 3px 10px #000000;
+  box-shadow: 3px 3px 6px rgba(0,0,0,0.45);
+  border-radius: 6px;
+}
+
+.viewDividerhandle .icon {
+  display: block;
+  width: 22px;
+  height: 22px;
+  margin-top: 18px;
+  margin-left: 18px;
+  margin-right: 4px;
+  margin-bottom: 4px;
 }
 
 .viewport {
@@ -64,6 +76,7 @@ body {
 #frontViewport {
   left: 0;
   right: 50vw;
+  border-right: 1px outset white;
 }
 
 #backViewport #mymapbox {}

@@ -1,4 +1,9 @@
-<div class="ui mapbox">
+<div class="ui mapbox"
+(mouseup)="upSplitView($event)"
+(mousedown)="downSplitView($event)"
+(click)="clickSplitViewHandle($event)"
+(drag)="dragSplitView($event)"
+(mousemove) ="dragSplitView($event)">
 
 
 
@@ -15,10 +20,7 @@
   <div id="splitViewHandle" class="viewDividerhandle"
   (mouseenter)="enterSplitViewHandle($event)"
   (mouseleave)="leaveSplitViewHandle($event)"
-  (mousedown)="downSplitViewHandle($event)"
-  (mouseup)="upSplitViewHandle($event)"
-  (click)="clickSplitViewHandle($event)"
-  (drag)="dragSplitViewHandle($event)"></div>
+  ><i class="ui large white expand icon"></i></div>
 
 
 
@@ -29,10 +31,6 @@
   <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css' type='text/css' />
   <div id="myoverlay">
 
-    <!-- <div class="ui grid">
-      <div class="ui three wide column"></div>
-      <div class="ui ten wide left aligned column"> -->
-
     <button class="ui tiny purple icon button" (click)="collapse = !collapse">
           <div *ngIf="collapse"><i class="white area chart icon"></i>Show Chart</div>
           <div *ngIf="!collapse"><i class="white window minimize icon"></i>Hide Chart</div>
@@ -41,6 +39,10 @@
           <div *ngIf="timebrush"><i class="white clock icon"></i>Show Timebrush</div>
           <div *ngIf="!timebrush"><i class="white close icon"></i>Hide Timebrush</div>
         </button>
+        <button class="ui tiny blue icon button" (click)="toggleSplitView()">
+              <div *ngIf="splitview"><i class="white crosshairs icon"></i>Split View Off</div>
+              <div *ngIf="!splitview"><i class="white crosshairs icon"></i>Split View On</div>
+            </button>
     <button class="ui tiny blue icon button" (click)="flyToDragPoint()">
           <i class="white crosshairs icon"></i>Re-center
         </button>
@@ -63,6 +65,9 @@
     <button class="ui tiny orange icon button" (click)="calculateArea()">
           <i class="white square outline icon"></i>Calculate Area
         </button>
+        <button class="ui tiny orange icon button" (click)="saveBoundary()">
+              <i class="white group object icon"></i>Save Boundary
+            </button>
 
     <div class="ui mini inverted labeled input">
       <div class="ui mini inverted black label">Longitude: </div>
@@ -76,30 +81,9 @@
     <pre id='calculated-area' class='calculated-area'></pre>
 
     <div [suiCollapse]="collapse">
-
-
       <lfmc-timeline></lfmc-timeline>
     </div>
-    <!-- </div>
-      <div class="ui three wide right aligned column"></div>
-    </div> -->
-
   </div>
-
-  <!-- <div id="temp">
-    <div class="ui mini buttons">
-
-      <button class="ui mini button" (click)="setDefaultStyle()">Default</button>
-      <div class="or"></div>
-      <button class="ui mini button" (click)="setDatavizStyle()">DataViz</button>
-      <div class="or"></div>
-      <button class="ui mini button" (click)="setSatelliteStyle()">Satellite</button>
-
-    </div>
-  </div> -->
-
-
-
 </div>
 
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>
