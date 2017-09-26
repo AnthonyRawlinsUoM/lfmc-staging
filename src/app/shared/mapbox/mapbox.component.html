@@ -1,9 +1,4 @@
-<div class="ui mapbox"
-(mouseup)="upSplitView($event)"
-(mousedown)="downSplitView($event)"
-(click)="clickSplitViewHandle($event)"
-(drag)="dragSplitView($event)"
-(mousemove) ="dragSplitView($event)">
+<div class="ui mapbox" (mouseup)="upSplitView($event)" (mousedown)="downSplitView($event)" (click)="clickSplitView($event)" (drag)="dragSplitView($event)" (mousemove)="dragSplitView($event)">
 
 
 
@@ -17,10 +12,7 @@
       <div id="myAltmapbox" class="ui mapbox mapboxgl-map"></div>
     </div>
   </div>
-  <div id="splitViewHandle" class="viewDividerhandle"
-  (mouseenter)="enterSplitViewHandle($event)"
-  (mouseleave)="leaveSplitViewHandle($event)"
-  ><i class="ui large white expand icon"></i></div>
+  <div id="splitViewHandle" class="viewDividerhandle" (mouseenter)="enterSplitViewHandle($event)" (mouseleave)="leaveSplitViewHandle($event)"><i class="ui large white expand icon"></i></div>
 
 
 
@@ -29,19 +21,47 @@
   <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
   <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>
   <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css' type='text/css' />
+
+
+
+
   <div id="myoverlay">
+    <div [suiCollapse]="collapse">
+      <lfmc-timeline></lfmc-timeline>
+    </div>
+
+    <pre id='coordinates' class='coordinates'></pre>
+    <pre id='calculated-area' class='calculated-area'></pre>
+    <div *ngIf="ingesting" id='ingest-area' class='ingest-area'>
+      <div class="ui form">
+        <div class="field json">
+          <label>GeoJSON</label>
+          <textarea [(ngModel)]="ingestGeoJson"></textarea>
+        </div>
+      </div>
+      <button class="ui tiny orange icon button" (click)="importGeoJSON()">
+        <i class="white file icon"></i>Import GeoJSON
+      </button>
+
+      <button class="ui tiny orange icon button" (click)="saveBoundary()">
+            <i class="white group object icon"></i>Save GeoJSON
+          </button>
+    </div>
 
     <button class="ui tiny purple icon button" (click)="collapse = !collapse">
           <div *ngIf="collapse"><i class="white area chart icon"></i>Show Chart</div>
           <div *ngIf="!collapse"><i class="white window minimize icon"></i>Hide Chart</div>
         </button>
-    <button *ngIf="!collapse" class="ui tiny purple icon button" (click)="timebrush = !timebrush">
+    <!-- <button *ngIf="!collapse" class="ui tiny purple icon button" (click)="timebrush = !timebrush">
           <div *ngIf="timebrush"><i class="white clock icon"></i>Show Timebrush</div>
           <div *ngIf="!timebrush"><i class="white close icon"></i>Hide Timebrush</div>
-        </button>
-        <button class="ui tiny blue icon button" (click)="toggleSplitView()">
-              <div *ngIf="splitview"><i class="white crosshairs icon"></i>Split View Off</div>
-              <div *ngIf="!splitview"><i class="white crosshairs icon"></i>Split View On</div>
+        </button> -->
+
+
+
+    <button class="ui tiny blue icon button" (click)="toggleSplitView()">
+              <div *ngIf="splitview"><i class="white square outline icon"></i>Split View Off</div>
+              <div *ngIf="!splitview"><i class="white columns icon"></i>Split View On</div>
             </button>
     <button class="ui tiny blue icon button" (click)="flyToDragPoint()">
           <i class="white crosshairs icon"></i>Re-center
@@ -63,11 +83,13 @@
         </button>
 
     <button class="ui tiny orange icon button" (click)="calculateArea()">
-          <i class="white square outline icon"></i>Calculate Area
+          <i class="white calculator icon"></i>Calculate Area
         </button>
-        <button class="ui tiny orange icon button" (click)="saveBoundary()">
-              <i class="white group object icon"></i>Save Boundary
-            </button>
+
+    <button class="ui tiny orange icon button" (click)="ingesting = !ingesting">
+                     <div *ngIf="!ingesting"> <i class="white file icon"></i>Show GeoJSON</div>
+                     <div *ngIf="ingesting"> <i class="white file icon"></i>Hide GeoJSON</div>
+                </button>
 
     <div class="ui mini inverted labeled input">
       <div class="ui mini inverted black label">Longitude: </div>
@@ -77,12 +99,8 @@
       <div class="ui mini inverted black label">Latitude: </div>
       <input class="inverted" [(ngModel)]="cursorLat"></div>
 
-    <pre id='coordinates' class='coordinates'></pre>
-    <pre id='calculated-area' class='calculated-area'></pre>
 
-    <div [suiCollapse]="collapse">
-      <lfmc-timeline></lfmc-timeline>
-    </div>
+
   </div>
 </div>
 

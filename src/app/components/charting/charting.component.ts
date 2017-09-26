@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LineChartComponent } from '@swimlane/ngx-charts';
 
 import * as shape from 'd3-shape';
 import * as d3 from 'd3';
@@ -20,11 +19,11 @@ export class ChartingComponent implements OnInit {
 	gradient = true;
 	showLegend = true;
 	showXAxisLabel = true;
-	xAxisLabel = 'Model';
+	xAxisLabel = 'Time';
 	showYAxisLabel = true;
 	yAxisLabel = 'Fuel Moisture (%)';
 	showGridLines = true;
-	timeline = false; // TODO - tie to MapboxComponent!
+	timeline = true; // TODO - tie to MapboxComponent!
 	roundDomains = true;
 	fitContainer: boolean = true;
 	realTimeData: boolean = true;
@@ -220,57 +219,90 @@ export class ChartingComponent implements OnInit {
 			{
 				"name": "Nolan",
 				"series": [
-					{ "name": "2017-09-20T00:00:00.001Z", "value": 10.3, "min": 9.01, "max": 10.56 },
-					{ "name": "2017-09-20T01:00:00.001Z", "value": 11.12, "min": 11.36, "max": 11.5 },
-					{ "name": "2017-09-20T02:00:00.001Z", "value": 12.32, "min": 12.15, "max": 13.5 },
-					{ "name": "2017-09-20T03:00:00.001Z", "value": 13.17, "min": 12.64, "max": 14.61 },
-					{ "name": "2017-09-20T04:00:00.001Z", "value": 14.52, "min": 13.68, "max": 16.56 },
-					{ "name": "2017-09-20T05:00:00.001Z", "value": 17.46, "min": 13.98, "max": 21.65 },
-					{ "name": "2017-09-20T06:00:00.001Z", "value": 17.18, "min": 15.31, "max": 18.53 },
-					{ "name": "2017-09-20T07:00:00.001Z", "value": 16.27, "min": 15.63, "max": 18.96 },
-					{ "name": "2017-09-20T08:00:00.001Z", "value": 15.75, "min": 14.39, "max": 18.32 },
-					{ "name": "2017-09-20T09:00:00.001Z", "value": 13.94, "min": 12.06, "max": 14.35 },
-					{ "name": "2017-09-20T10:00:00.001Z", "value": 11.19, "min": 10.03, "max": 12.87 },
-					{ "name": "2017-09-20T11:00:00.001Z", "value": 9.47, "min": 6.27, "max": 9.98 },
-					{ "name": "2017-09-20T12:00:00.001Z", "value": 6.84, "min": 5.84, "max": 8.61 }
+					{ "name": new Date("2017-09-20T00:00:00.001Z"), "value": 10.3, "min": 9.01, "max": 10.56 },
+					{ "name": new Date("2017-09-20T01:00:00.001Z"), "value": 11.12, "min": 11.36, "max": 11.5 },
+					{ "name": new Date("2017-09-20T02:00:00.001Z"), "value": 12.32, "min": 12.15, "max": 13.5 },
+					{ "name": new Date("2017-09-20T03:00:00.001Z"), "value": 13.17, "min": 12.64, "max": 14.61 },
+					{ "name": new Date("2017-09-20T04:00:00.001Z"), "value": 14.52, "min": 13.68, "max": 16.56 },
+					{ "name": new Date("2017-09-20T05:00:00.001Z"), "value": 17.46, "min": 13.98, "max": 21.65 },
+					{ "name": new Date("2017-09-20T06:00:00.001Z"), "value": 17.18, "min": 15.31, "max": 18.53 },
+					{ "name": new Date("2017-09-20T07:00:00.001Z"), "value": 16.27, "min": 15.63, "max": 18.96 },
+					{ "name": new Date("2017-09-20T08:00:00.001Z"), "value": 15.75, "min": 14.39, "max": 18.32 },
+					{ "name": new Date("2017-09-20T09:00:00.001Z"), "value": 13.94, "min": 12.06, "max": 14.35 },
+					{ "name": new Date("2017-09-20T10:00:00.001Z"), "value": 11.19, "min": 10.03, "max": 12.87 },
+					{ "name": new Date("2017-09-20T11:00:00.001Z"), "value": 9.47, "min": 6.27, "max": 9.98 },
+					{ "name": new Date("2017-09-20T12:00:00.001Z"), "value": 6.84, "min": 5.84, "max": 8.61 },
+					{ "name": new Date("2017-09-20T13:00:00.001Z"), "value": 10.3, "min": 9.01, "max": 10.56 },
+					{ "name": new Date("2017-09-20T14:00:00.001Z"), "value": 11.12, "min": 11.36, "max": 11.5 },
+					{ "name": new Date("2017-09-20T15:00:00.001Z"), "value": 12.32, "min": 12.15, "max": 13.5 },
+					{ "name": new Date("2017-09-20T16:00:00.001Z"), "value": 13.17, "min": 12.64, "max": 14.61 },
+					{ "name": new Date("2017-09-20T17:00:00.001Z"), "value": 14.52, "min": 13.68, "max": 16.56 },
+					{ "name": new Date("2017-09-20T18:00:00.001Z"), "value": 17.46, "min": 13.98, "max": 21.65 },
+					{ "name": new Date("2017-09-20T19:00:00.001Z"), "value": 17.18, "min": 15.31, "max": 18.53 },
+					{ "name": new Date("2017-09-20T20:00:00.001Z"), "value": 16.27, "min": 15.63, "max": 18.96 },
+					{ "name": new Date("2017-09-20T21:00:00.001Z"), "value": 15.75, "min": 14.39, "max": 18.32 },
+					{ "name": new Date("2017-09-20T22:00:00.001Z"), "value": 13.94, "min": 12.06, "max": 14.35 },
+					{ "name": new Date("2017-09-20T23:00:00.001Z"), "value": 11.19, "min": 10.03, "max": 12.87 }
 				]
 			},
 
 			{
 				"name": "Boer",
 				"series": [
-					{ "name": "2017-09-20T00:00:00.001Z", "value": 11.3, "min": 9.01, "max": 14.56 },
-					{ "name": "2017-09-20T01:00:00.001Z", "value": 12.12, "min": 10.36, "max": 15.51 },
-					{ "name": "2017-09-20T02:00:00.001Z", "value": 16.32, "min": 12.15, "max": 18.52 },
-					{ "name": "2017-09-20T03:00:00.001Z", "value": 15.17, "min": 12.64, "max": 20.61 },
-					{ "name": "2017-09-20T04:00:00.001Z", "value": 19.52, "min": 13.68, "max": 21.56 },
-					{ "name": "2017-09-20T05:00:00.001Z", "value": 23.46, "min": 13.98, "max": 28.65 },
-					{ "name": "2017-09-20T06:00:00.001Z", "value": 23.18, "min": 11.64, "max": 28.65 },
-					{ "name": "2017-09-20T07:00:00.001Z", "value": 21.27, "min": 13.98, "max": 28.65 },
-					{ "name": "2017-09-20T08:00:00.001Z", "value": 18.75, "min": 13.98, "max": 28.65 },
-					{ "name": "2017-09-20T09:00:00.001Z", "value": 17.94, "min": 13.98, "max": 28.65 },
-					{ "name": "2017-09-20T10:00:00.001Z", "value": 14.19, "min": 13.98, "max": 28.65 },
-					{ "name": "2017-09-20T11:00:00.001Z", "value": 8.47, "min": 3.48, "max": 18.15 },
-					{ "name": "2017-09-20T12:00:00.001Z", "value": 2.84, "min": 1.92, "max": 8.32 }
+					{ "name": new Date("2017-09-20T00:00:00.001Z"), "value": 11.3, "min": 9.01, "max": 14.56 },
+					{ "name": new Date("2017-09-20T01:00:00.001Z"), "value": 12.12, "min": 10.36, "max": 15.51 },
+					{ "name": new Date("2017-09-20T02:00:00.001Z"), "value": 16.32, "min": 12.15, "max": 18.52 },
+					{ "name": new Date("2017-09-20T03:00:00.001Z"), "value": 15.17, "min": 12.64, "max": 20.61 },
+					{ "name": new Date("2017-09-20T04:00:00.001Z"), "value": 19.52, "min": 13.68, "max": 21.56 },
+					{ "name": new Date("2017-09-20T05:00:00.001Z"), "value": 23.46, "min": 13.98, "max": 28.65 },
+					{ "name": new Date("2017-09-20T06:00:00.001Z"), "value": 23.18, "min": 11.64, "max": 28.65 },
+					{ "name": new Date("2017-09-20T07:00:00.001Z"), "value": 21.27, "min": 13.98, "max": 28.65 },
+					{ "name": new Date("2017-09-20T08:00:00.001Z"), "value": 18.75, "min": 13.98, "max": 28.65 },
+					{ "name": new Date("2017-09-20T09:00:00.001Z"), "value": 17.94, "min": 13.98, "max": 28.65 },
+					{ "name": new Date("2017-09-20T10:00:00.001Z"), "value": 14.19, "min": 13.98, "max": 28.65 },
+					{ "name": new Date("2017-09-20T11:00:00.001Z"), "value": 8.47, "min": 3.48, "max": 18.15 },
+					{ "name": new Date("2017-09-20T12:00:00.001Z"), "value": 2.84, "min": 0.00, "max": 8.32 },
+					{ "name": new Date("2017-09-20T13:00:00.001Z"), "value": 11.3, "min": 9.01, "max": 14.56 },
+					{ "name": new Date("2017-09-20T14:00:00.001Z"), "value": 12.12, "min": 10.36, "max": 15.51 },
+					{ "name": new Date("2017-09-20T15:00:00.001Z"), "value": 16.32, "min": 12.15, "max": 18.52 },
+					{ "name": new Date("2017-09-20T16:00:00.001Z"), "value": 15.17, "min": 12.64, "max": 20.61 },
+					{ "name": new Date("2017-09-20T17:00:00.001Z"), "value": 19.52, "min": 13.68, "max": 21.56 },
+					{ "name": new Date("2017-09-20T18:00:00.001Z"), "value": 23.46, "min": 13.98, "max": 28.65 },
+					{ "name": new Date("2017-09-20T19:00:00.001Z"), "value": 23.18, "min": 11.64, "max": 28.65 },
+					{ "name": new Date("2017-09-20T20:00:00.001Z"), "value": 21.27, "min": 13.98, "max": 28.65 },
+					{ "name": new Date("2017-09-20T21:00:00.001Z"), "value": 18.75, "min": 13.98, "max": 28.65 },
+					{ "name": new Date("2017-09-20T22:00:00.001Z"), "value": 17.94, "min": 13.98, "max": 28.65 },
+					{ "name": new Date("2017-09-20T23:00:00.001Z"), "value": 14.19, "min": 13.98, "max": 28.65 }
 				]
 			},
 
-			{
-				"name": "Kumar",
-				"series": [
-					{ "name": "2017-09-20T00:00:00.001Z", "value": 5.31, "min": 3.12, "max": 5.94 },
-					{ "name": "2017-09-20T01:00:00.001Z", "value": 21.12, "min": 18.62, "max": 23.46 },
-					{ "name": "2017-09-20T02:00:00.001Z", "value": 22.32, "min": 21.09, "max": 24.67 },
-					{ "name": "2017-09-20T03:00:00.001Z", "value": 23.17, "min": 21.98, "max": 25.68 },
-					{ "name": "2017-09-20T04:00:00.001Z", "value": 24.52, "min": 23.17, "max": 27.46 },
-					{ "name": "2017-09-20T05:00:00.001Z", "value": 27.46, "min": 24.52, "max": 28.65 },
-					{ "name": "2017-09-20T06:00:00.001Z", "value": 27.18, "min": 27.03, "max": 29.67 },
-					{ "name": "2017-09-20T07:00:00.001Z", "value": 26.27, "min": 23.64, "max": 27.59 },
-					{ "name": "2017-09-20T08:00:00.001Z", "value": 25.75, "min": 22.13, "max": 31.06 },
-					{ "name": "2017-09-20T09:00:00.001Z", "value": 23.94, "min": 21.08, "max": 25.74 },
-					{ "name": "2017-09-20T10:00:00.001Z", "value": 21.19, "min": 18.92, "max": 24.81 },
-					{ "name": "2017-09-20T11:00:00.001Z", "value": 19.47, "min": 16.32, "max": 25.87 },
-					{ "name": "2017-09-20T12:00:00.001Z", "value": 16.84, "min": 13.54, "max": 19.41 }
+      {
+        "name": "Kumar",
+        "series": [
+          { "name": new Date("2017-09-20T00:00:00.001Z"), "value": 5.31, "min": 3.12, "max": 5.94 },
+          { "name": new Date("2017-09-20T01:00:00.001Z"), "value": 21.12, "min": 18.62, "max": 23.46 },
+          { "name": new Date("2017-09-20T02:00:00.001Z"), "value": 22.32, "min": 21.09, "max": 24.67 },
+          { "name": new Date("2017-09-20T03:00:00.001Z"), "value": 23.17, "min": 21.98, "max": 25.68 },
+          { "name": new Date("2017-09-20T04:00:00.001Z"), "value": 24.52, "min": 23.17, "max": 27.46 },
+          { "name": new Date("2017-09-20T05:00:00.001Z"), "value": 27.46, "min": 24.52, "max": 28.65 },
+          { "name": new Date("2017-09-20T06:00:00.001Z"), "value": 87.18, "min": 77.03, "max": 100.0 },
+          { "name": new Date("2017-09-20T07:00:00.001Z"), "value": 66.27, "min": 63.64, "max": 89.59 },
+          { "name": new Date("2017-09-20T08:00:00.001Z"), "value": 55.75, "min": 52.13, "max": 61.06 },
+          { "name": new Date("2017-09-20T09:00:00.001Z"), "value": 63.94, "min": 51.08, "max": 65.74 },
+          { "name": new Date("2017-09-20T10:00:00.001Z"), "value": 51.19, "min": 18.92, "max": 54.81 },
+          { "name": new Date("2017-09-20T11:00:00.001Z"), "value": 59.47, "min": 16.32, "max": 65.87 },
+          { "name": new Date("2017-09-20T12:00:00.001Z"), "value": 56.84, "min": 13.54, "max": 69.41 },
+					{ "name": new Date("2017-09-20T13:00:00.001Z"), "value": 45.31, "min": 43.12, "max": 65.94 },
+          { "name": new Date("2017-09-20T14:00:00.001Z"), "value": 21.12, "min": 18.62, "max": 23.46 },
+          { "name": new Date("2017-09-20T15:00:00.001Z"), "value": 22.32, "min": 21.09, "max": 24.67 },
+          { "name": new Date("2017-09-20T16:00:00.001Z"), "value": 23.17, "min": 21.98, "max": 25.68 },
+          { "name": new Date("2017-09-20T17:00:00.001Z"), "value": 24.52, "min": 23.17, "max": 27.46 },
+          { "name": new Date("2017-09-20T18:00:00.001Z"), "value": 27.46, "min": 24.52, "max": 28.65 },
+          { "name": new Date("2017-09-20T19:00:00.001Z"), "value": 87.18, "min": 77.03, "max": 100.0 },
+          { "name": new Date("2017-09-20T20:00:00.001Z"), "value": 26.27, "min": 23.64, "max": 27.59 },
+          { "name": new Date("2017-09-20T21:00:00.001Z"), "value": 25.75, "min": 22.13, "max": 31.06 },
+          { "name": new Date("2017-09-20T22:00:00.001Z"), "value": 23.94, "min": 21.08, "max": 25.74 },
+          { "name": new Date("2017-09-20T23:00:00.001Z"), "value": 21.19, "min": 18.92, "max": 24.81 }
 				]
 			}
 		];
@@ -279,19 +311,19 @@ export class ChartingComponent implements OnInit {
 		// 	{
 		// 		"name": "Nolan",
 		// 		"series": [
-		// 			{ "name": "2017-09-21", "value": 10.3, "min": 9.01, "max": 10.56 },
-		// 			{ "name": "2017-09-20", "value": 11.12, "min": 11.36, "max": 11.5 },
-		// 			{ "name": "2017-09-19", "value": 12.32, "min": 12.15, "max": 13.5 },
-		// 			{ "name": "2017-09-18", "value": 13.17, "min": 12.64, "max": 14.61 },
-		// 			{ "name": "2017-09-17", "value": 14.52, "min": 13.68, "max": 16.56 },
-		// 			{ "name": "2017-09-16", "value": 17.46, "min": 13.98, "max": 19.04 },
-		// 			{ "name": "2017-09-15", "value": 17.18, "min": 15.31, "max": 18.53 },
-		// 			{ "name": "2017-09-14", "value": 16.27, "min": 15.63, "max": 18.96 },
-		// 			{ "name": "2017-09-13", "value": 15.75, "min": 14.39, "max": 18.32 },
-		// 			{ "name": "2017-09-12", "value": 13.94, "min": 12.06, "max": 14.35 },
-		// 			{ "name": "2017-09-11", "value": 11.19, "min": 10.03, "max": 12.87 },
-		// 			{ "name": "2017-09-10", "value": 9.47, "min": 6.27, "max": 9.98 },
-		// 			{ "name": "2017-09-09", "value": 6.84, "min": 0.00, "max": 100.00 }
+		// 			{ "name": new Date("2017-09-20T00:00:00.001Z"), "value": 10.3, "min": 9.01, "max": 10.56 },
+		// 			{ "name": new Date("2017-09-20T01:00:00.001Z"), "value": 11.12, "min": 11.36, "max": 11.5 },
+		// 			{ "name": new Date("2017-09-20T02:00:00.001Z"), "value": 12.32, "min": 12.15, "max": 13.5 },
+		// 			{ "name": new Date("2017-09-20T03:00:00.001Z"), "value": 13.17, "min": 12.64, "max": 14.61 },
+		// 			{ "name": new Date("2017-09-20T04:00:00.001Z"), "value": 14.52, "min": 13.68, "max": 16.56 },
+		// 			{ "name": new Date("2017-09-20T05:00:00.001Z"), "value": 17.46, "min": 13.98, "max": 19.04 },
+		// 			{ "name": new Date("2017-09-20T06:00:00.001Z"), "value": 17.18, "min": 15.31, "max": 18.53 },
+		// 			{ "name": new Date("2017-09-20T07:00:00.001Z"), "value": 16.27, "min": 15.63, "max": 18.96 },
+		// 			{ "name": new Date("2017-09-20T08:00:00.001Z"), "value": 15.75, "min": 14.39, "max": 18.32 },
+		// 			{ "name": new Date("2017-09-20T09:00:00.001Z"), "value": 13.94, "min": 12.06, "max": 14.35 },
+		// 			{ "name": new Date("2017-09-20T10:00:00.001Z"), "value": 11.19, "min": 10.03, "max": 12.87 },
+		// 			{ "name": new Date("2017-09-20T11:00:00.001Z"), "value": 9.47, "min": 6.27, "max": 9.98 },
+		// 			{ "name": new Date("2017-09-20T12:00:00.001Z"), "value": 6.84, "min": 0.00, "max": 100.00 }
 		// 		]
 		// 	},
 		//
@@ -346,22 +378,4 @@ export class ChartingComponent implements OnInit {
 		this.colorScheme = this.colorSets.find(s => s.name === name);
 	}
 
-}
-
-export function timelineFilterBarData() {
-	const results: any[] = [];
-	const dataPoints = 30;
-	const domain: Date[] = []; // array of time stamps in milliseconds
-	const dayLength = 24 * 60 * 60 * 1000;
-	let date = 1473700105009; // Sep 12, 2016
-	for (let j = 0; j < dataPoints; j++) {
-		// random dates between Sep 12, 2016 and Sep 24, 2016
-		results.push({
-			name: new Date(date),
-			value: Math.floor(Math.random() * 300)
-		});
-		date += dayLength;
-	}
-
-	return results;
 }

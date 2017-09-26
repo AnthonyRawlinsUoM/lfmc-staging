@@ -15,6 +15,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MapboxDraw } from '@mapbox/mapbox-gl-draw';
 
 
+
 // Services
 import { ModisService } from './services/modis.service';
 import { ModelsService } from './services/models.service';
@@ -55,6 +56,8 @@ import { ConfirmModal, ConfirmModalComponent } from './components/confirm-modal/
 import { LegendComponent } from './components/legend/legend.component';
 import { AgmComponent } from './shared/agm/agm.component';
 import { ChartingComponent } from './components/charting/charting.component';
+import { FilesaverComponent } from './shared/filesaver/filesaver.component';
+
 
 
 const appRoutes: Routes = [
@@ -104,7 +107,8 @@ const appRoutes: Routes = [
     ConfirmModalComponent,
     LegendComponent,
     AgmComponent,
-    ChartingComponent
+    ChartingComponent,
+    FilesaverComponent
   ],
 
   // Modules

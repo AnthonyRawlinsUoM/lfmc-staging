@@ -43,6 +43,7 @@ export class MapboxComponent implements OnInit {
 	];
 
 	splitview: boolean = false;
+	ingesting:boolean = false;
 
 	@Input() cursorLat: number | string;
 	@Input() cursorLng: number | string;
@@ -104,7 +105,8 @@ export class MapboxComponent implements OnInit {
 	draggingHandle: boolean = false;
 	canDragSplitView: boolean = false;
 
-
+	map:Map;
+	altmap:Map;
 
 
 	ngOnInit() {
@@ -114,7 +116,7 @@ export class MapboxComponent implements OnInit {
 		this.bView = document.getElementById('frontViewport');
 		// this.splitViewHandle.onousemove = this.dragSplitView.bind(this);
 
-		var map = new Map({
+		this.map = new Map({
 			container: 'mymapbox',
 			style: 'mapbox://styles/anthonyrawlinsuom/cj6eembnj0x4k2smhax6o0ztl',
 			center: [this.lng, this.lat],
@@ -126,7 +128,8 @@ export class MapboxComponent implements OnInit {
 			// maxBounds: this.bounds
 		});
 
-		var altmap = new Map({
+
+		this.altmap = new Map({
 			container: 'myAltmapbox',
 			style: 'mapbox://styles/mapbox/satellite-v9',
 			center: [this.lng, this.lat],
@@ -137,6 +140,10 @@ export class MapboxComponent implements OnInit {
 			// ,
 			// maxBounds: this.bounds
 		});
+
+		// Convenience
+		var altmap = this.altmap;
+		var map = this.map;
 
 		syncMove(map, altmap);
 
@@ -401,8 +408,11 @@ export class MapboxComponent implements OnInit {
 				+ "Type: " + e.features[0].properties.incidentType + "<br/>"
 				+ "Location: " + e.features[0].properties.incidentLocation + "<br/>"
 				+ "Agency: " + e.features[0].properties.agency + "<br/>"
-				+ "Status: " + e.features[0].properties.originStatus + "<br/>")
-				.addTo(map);
+				+ "Status: " + e.features[0].properties.originStatus + "<br/>"
+				+ "Started:" + e.features[0].properties.originDateTime + "<br/>"
+				+ "Updated:" + e.features[0].properties.lastUpdateDateTime + "<br/>"
+				+ "Size:" + e.features[0].properties.incidentSize + "<br/>"
+			).addTo(map);
 		});
 
 
@@ -429,7 +439,8 @@ export class MapboxComponent implements OnInit {
 				+ "Temp: " + (e.features[0].properties.temp_kelvin - 273.15).toFixed(1) + "&deg;C<br/>"
 				+ "Satellite: " + e.features[0].properties.satellite + "<br/>"
 				+ "Sensor: " + e.features[0].properties.sensor + "<br/>"
-				+ "Confidence: " + e.features[0].properties.confidence)
+				+ "Confidence: " + e.features[0].properties.confidence + "<br/>"
+				+ "Age: " + e.features[0].properties.age_hours + " hrs")
 				.addTo(map);
 		});
 
@@ -526,8 +537,34 @@ export class MapboxComponent implements OnInit {
 	public saveBoundary() {
 		var data = this.drw.getAll();
 		if (data.features.length > 0) {
-			console.log('Saving GeoJSON for boundary.');
+			console.log('Preparing GeoJSON for saving boundary locally.');
 			console.log(data);
+			this.setIngestValue(data);
+		} else {
+			alert("Use the draw tools to draw a polygon!");
+		}
+	}
+
+	ingestGeoJson:string;
+
+	getIngestValue () {
+    return JSON.parse(this.ingestGeoJson);
+  }
+
+  setIngestValue (v) {
+    try{
+    	this.ingestGeoJson = JSON.stringify(v, null, '\t');
+		} catch(e) {
+      console.log('Error occured while you were typing the JSON: ' + e);
+    };
+  }
+
+	public importGeoJSON() {
+		if(this.ingesting) {
+			console.log('Parsing GeoJSON');
+			var data = this.getIngestValue();
+			console.log(data);
+			this.drw.set(data);
 		}
 	}
 
@@ -551,15 +588,15 @@ export class MapboxComponent implements OnInit {
 	}
 
 	public setSatelliteStyle() {
-		this.mapService.map.setStyle('mapbox://styles/mapbox/satellite-v9');
+		this.altmap.setStyle('mapbox://styles/mapbox/satellite-v9');
 	}
 
 	public setDatavizStyle() {
-		this.mapService.map.setStyle('mapbox://styles/anthonyrawlinsuom/cj6eembnj0x4k2smhax6o0ztl');
+		this.altmap.setStyle('mapbox://styles/anthonyrawlinsuom/cj6eembnj0x4k2smhax6o0ztl');
 	}
 
 	public setDefaultStyle() {
-		this.mapService.map.setStyle('mapbox://styles/anthonyrawlinsuom/cj5we9hex7cy82rqimwlky6rz');
+		this.altmap.setStyle('mapbox://styles/anthonyrawlinsuom/cj5we9hex7cy82rqimwlky6rz');
 	}
 
 	private filterBy(month) {

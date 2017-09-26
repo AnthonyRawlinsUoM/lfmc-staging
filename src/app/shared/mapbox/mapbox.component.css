@@ -38,7 +38,7 @@ body {
   transform: rotate(45deg);
   background-color: rgb(33, 36, 42);
   color: white;
-  left: calc(50vw - 22px);
+  left: calc(0vw - 22px);
   cursor: grab;
   box-shadow: 3px 3px 6px rgba(0,0,0,0.45);
   border-radius: 6px;
@@ -68,6 +68,11 @@ body {
   position: relative;
 }
 
+.ui .form .field.json textarea {
+  background: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.88);
+}
+
 #backViewport {
   left: 0;
   right: 0;
@@ -75,7 +80,7 @@ body {
 
 #frontViewport {
   left: 0;
-  right: 50vw;
+  right: 100vw;
   border-right: 1px outset white;
 }
 
@@ -99,7 +104,7 @@ body {
 #myAltmapbox {
   z-index: 210;
   width: 100vw;
-  opacity: 0.5;
+  opacity: 0.75;
   background-blend-mode: screen;
   left: 0;
   right: 0;
@@ -128,8 +133,9 @@ body {
   z-index: 250;
 }
 
-#myoverlay .ui.mini.inverted.black.label, #myoverlay input.inverted {
-  opacity: 0.65;
+#myoverlay .ui.mini.inverted.black.label,
+#myoverlay input.inverted {
+  opacity: 0.465;
 }
 
 #temp {
