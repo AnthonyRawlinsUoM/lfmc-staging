@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { Http, Headers } from '@angular/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { ApiService } from '../../services/api.service';
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/toPromise';
 
 import * as shape from 'd3-shape';
 import * as d3 from 'd3';
@@ -10,9 +17,12 @@ import * as d3 from 'd3';
 })
 export class ChartingComponent implements OnInit {
 
+	@Input() lat:number;
+	@Input() lng:number;
+
 	single: any[];
 	multi: any[];
-	view = [1920, 350];
+	view = [1650, 350];
 	// options
 	showXAxis = true;
 	showYAxis = true;
@@ -23,17 +33,18 @@ export class ChartingComponent implements OnInit {
 	showYAxisLabel = true;
 	yAxisLabel = 'Fuel Moisture (%)';
 	showGridLines = true;
-	timeline = true; // TODO - tie to MapboxComponent!
+	timeline = false;
 	roundDomains = true;
 	fitContainer: boolean = true;
 	realTimeData: boolean = true;
 	colorScheme: any;
 	schemeType: string = 'linear';
 	selectedColorScheme: string = 'viridis';
-	autoScale=false;
+	autoScale=true;
 
 	curves = {
 		Linear: shape.curveLinear,
+		Bundle: shape.curveBundle.beta(1),
 		Natural: shape.curveNatural
 	}
 
@@ -45,15 +56,16 @@ export class ChartingComponent implements OnInit {
 	// line, area
 
 	// Reference lines
-	showRefLines: boolean = false;
-	showRefLabels: boolean = false;
+	showRefLabels: boolean = true;
+	referenceLines:	any[]	= [{name:"Ignition", "value": 2.5}];//	an array of reference lines to be shown behind the chart. Every reference line should be of format {name, value}
+	showRefLines:	boolean	= true; // show or hide the reference lines
 
 	// Supports any number of reference lines.
-	refLines = [
-		{ value: 99, name: 'Maximum' },
-		{ value: 50, name: 'Average' },
-		{ value: 1, name: 'Minimum' }
-	];
+	// refLines = [
+	// 	{ value: 99, name: 'Maximum' },
+	// 	{ value: 50, name: 'Average' },
+	// 	{ value: 1, name: 'Minimum' }
+	// ];
 
 	colorSets = [
 		{
@@ -198,7 +210,10 @@ export class ChartingComponent implements OnInit {
 		}
 	];
 
-	constructor() {
+	constructor(private api :ApiService) {
+
+		this.lat=0;
+		this.lng=0;
 
 		var single = [
 			{
@@ -371,6 +386,7 @@ export class ChartingComponent implements OnInit {
 
 	ngOnInit() {
 		this.setColorScheme('viridis');
+		this.getFuelData();
 	}
 
 	setColorScheme(name) {
@@ -378,4 +394,37 @@ export class ChartingComponent implements OnInit {
 		this.colorScheme = this.colorSets.find(s => s.name === name);
 	}
 
+	// TESTING FUNCTION ONLY - no geo query here
+	// Returns randomly  generated data
+
+	getFuel(name:string) {
+		const dateFormat = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$/;
+		function reviver(key, value) {
+		    if (typeof value === "string" && dateFormat.test(value)) {
+		        return new Date(value);
+		    }
+		    return value;
+		}
+		return this.api.callAPI(name).subscribe(m => {
+			console.log(m);
+			this.multi = JSON.parse(JSON.stringify(m), reviver);
+		});
+	}
+
+	public getFuelData() {
+		this.getFuel('/fuel');
+	}
+
+	// Calls API for fuel moisture at a fixed pointer
+	// Each model will use its own methodology to return its derived value
+	// at that point. Eg., Some might be nearest neighbour, others might be
+	// interpolated using other methods. The method used is returned in the metadata
+	public getFuelDataAtPoint(lng:number, lat:number) {
+		this.getFuel(`/fuel/${lng}/${lat}`);
+	}
+
+	public getFuelDataAtPointForModels(lng:number, lat:number, models:any[]) {
+		console.log(models.toString());
+		this.getFuel(`/fuel/${lng}/${lat}/models/${models.toString()}`);
+	}
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { ModelsService } from '../../services/models.service';
-import { DatasourcesModule } from '../datasources/datasources.module';
+import { ApiService } from '../../services/api.service';
 import { Observable } from 'rxjs/Rx';
 
 @Component({
@@ -11,25 +10,10 @@ import { Observable } from 'rxjs/Rx';
 })
 export class ModelsComponent implements OnInit {
 	models: any[] = [];
-	constructor(private modelserver: ModelsService) {
+	constructor(private api: ApiService) {
 	}
 
 	ngOnInit() {
-		this.modelserver.getModels().subscribe(m => this.models = m);
+		this.api.callAPI("/models").subscribe(m => this.models = m);
 	}
-
-  getData() {
-    return this.modelserver.getModels();
-  }
-
-  getModels() {
-    return this.getData().subscribe(m => {
-      console.log(m);
-      this.models = m;
-    });
-  }
-
-  enable(m:any) {
-
-  }
 }

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { DatasourcesService } from '../../services/datasources.service';
+import { ApiService } from '../../services/api.service';
 
 import { Observable } from 'rxjs/Rx';
 
@@ -13,7 +13,7 @@ export class DatasourcesComponent implements OnInit {
 	datasources: any[] = [];
   @Input() model:any = {};
 
-	constructor(private sourceserver: DatasourcesService) {
+	constructor(private sourceserver: ApiService) {
     this.model = {"name":"Boer"};
 	}
 
@@ -22,7 +22,7 @@ export class DatasourcesComponent implements OnInit {
 	}
 
   getDatasources(name:string) {
-    return this.sourceserver.getDatasources(name).subscribe(m => {
+    return this.sourceserver.getModelDatasources(name).subscribe(m => {
       console.log(m);
       this.datasources = m;
     });

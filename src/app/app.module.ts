@@ -19,7 +19,7 @@ import { MapboxDraw } from '@mapbox/mapbox-gl-draw';
 // Services
 import { ModisService } from './services/modis.service';
 import { ModelsService } from './services/models.service';
-import { DatasourcesService } from './services/datasources.service';
+import { ApiService } from './services/api.service';
 import { TsvService } from './services/tsv.service';
 import { MapService } from './services/map.service';
 import { MapboxUploadAPIS3Service } from './services/mapbox-upload-api-s3.service';
@@ -38,7 +38,6 @@ import { BasicMapComponent } from './components/basic-map/basic-map.component';
 import { LayerMapComponent } from './components/layer-map/layer-map.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { D3mapComponent } from './shared/d3map/d3map.component';
-import { TimelineComponent } from './components/timeline/timeline.component';
 import { CallbackComponent } from './components/callback/callback.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
@@ -90,7 +89,6 @@ const appRoutes: Routes = [
     LayerMapComponent,
     ToolbarComponent,
     D3mapComponent,
-    TimelineComponent,
     CallbackComponent,
     ProfileComponent,
     HomeComponent,
@@ -135,7 +133,7 @@ const appRoutes: Routes = [
     ModisService,
     AuthService,
     ModelsService,
-    DatasourcesService,
+    ApiService,
     MapboxUploadAPIS3Service,
     D3Service,
     TsvService

@@ -1,7 +1,4 @@
-<div class="ui mapbox" (mouseup)="upSplitView($event)" (mousedown)="downSplitView($event)" (click)="clickSplitView($event)" (drag)="dragSplitView($event)" (mousemove)="dragSplitView($event)">
-
-
-
+<div class="ui mapbox" (mouseup)="upSplitView($event)" (mousedown)="downSplitView($event)" (click)="onUp($event)" (drag)="dragSplitView($event)" (mousemove)="dragSplitView($event)">
   <div class="viewport" id="backViewport">
     <div class="viewframe">
       <div id="mymapbox" class="ui mapbox mapboxgl-map"></div>
@@ -12,24 +9,45 @@
       <div id="myAltmapbox" class="ui mapbox mapboxgl-map"></div>
     </div>
   </div>
-  <div id="splitViewHandle" class="viewDividerhandle" (mouseenter)="enterSplitViewHandle($event)" (mouseleave)="leaveSplitViewHandle($event)"><i class="ui large white expand icon"></i></div>
-
-
-
-
-
+  <div id="splitViewHandle" class="viewDividerhandle" (mouseenter)="enterSplitViewHandle($event)" (click)="clickSplitView($event)" (mouseleave)="leaveSplitViewHandle($event)"><i class="ui large white expand icon"></i></div>
   <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
   <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>
   <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css' type='text/css' />
-
-
-
-
   <div id="myoverlay">
     <div [suiCollapse]="collapse">
-      <lfmc-timeline></lfmc-timeline>
-    </div>
+      <div class='map-overlay'>
+        <div class=" map-overlay-inner dark">
+          <div class="ui grid">
+            <div class="ui two wide column">
 
+              <div class="ui inverted top attached message">
+                <h3 class="ui inverted header">Models</h3>
+              </div>
+              <div class="ui attached buttons">
+                <button class="ui tiny black labeled icon button" (click)="exclusiveModelMode = !exclusiveModelMode">
+                  <i *ngIf="!exclusiveModelMode" class="ui inverted toggle on icon"></i>
+                  <i *ngIf="exclusiveModelMode" class="ui inverted toggle off icon"></i>
+                  Compare
+                </button>
+                <button class="ui tiny black icon button" (click)="allModelsOff()"><i class="radio icon"></i></button>
+                <button class="ui tiny black icon button" (click)="allModelsOn()"><i class="check circle outline icon"></i></button>
+              </div>
+              <div class="ui attached inverted vertical menu" *ngFor="let m of models">
+                <div (click)="toggleModel(m.abbr)" class="ui inverted item">
+                      <i *ngIf="m.enabled" class="green toggle on icon"></i>
+                      <i *ngIf="!m.enabled" class="toggle off icon"></i>
+                       {{m.name}}
+                     </div>
+              </div>
+
+            </div>
+            <div class="ui fourteen wide column">
+              <lfmc-charting id="chart" [lat]="lat" [lng]="lng"></lfmc-charting>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <pre id='coordinates' class='coordinates'></pre>
     <pre id='calculated-area' class='calculated-area'></pre>
     <div *ngIf="ingesting" id='ingest-area' class='ingest-area'>
@@ -42,67 +60,56 @@
       <button class="ui tiny orange icon button" (click)="importGeoJSON()">
         <i class="white file icon"></i>Import GeoJSON
       </button>
-
       <button class="ui tiny orange icon button" (click)="saveBoundary()">
-            <i class="white group object icon"></i>Save GeoJSON
-          </button>
+        <i class="white group object icon"></i>Save GeoJSON
+      </button>
     </div>
-
     <button class="ui tiny purple icon button" (click)="collapse = !collapse">
-          <div *ngIf="collapse"><i class="white area chart icon"></i>Show Chart</div>
-          <div *ngIf="!collapse"><i class="white window minimize icon"></i>Hide Chart</div>
-        </button>
-    <!-- <button *ngIf="!collapse" class="ui tiny purple icon button" (click)="timebrush = !timebrush">
-          <div *ngIf="timebrush"><i class="white clock icon"></i>Show Timebrush</div>
-          <div *ngIf="!timebrush"><i class="white close icon"></i>Hide Timebrush</div>
-        </button> -->
-
-
-
+      <div *ngIf="collapse"><i class="white area chart icon"></i>Show Chart</div>
+      <div *ngIf="!collapse"><i class="white window minimize icon"></i>Hide Chart</div>
+    </button>
+    <button *ngIf="!collapse" class="ui tiny purple icon button" (click)="toggleTimeBrushing()">
+      <div *ngIf="timebrush"><i class="white clock icon"></i>Show Timebrush</div>
+      <div *ngIf="!timebrush"><i class="white close icon"></i>Hide Timebrush</div>
+    </button>
     <button class="ui tiny blue icon button" (click)="toggleSplitView()">
-              <div *ngIf="splitview"><i class="white square outline icon"></i>Split View Off</div>
-              <div *ngIf="!splitview"><i class="white columns icon"></i>Split View On</div>
-            </button>
+      <div *ngIf="splitview"><i class="white square outline icon"></i>Split View Off</div>
+      <div *ngIf="!splitview"><i class="white columns icon"></i>Split View On</div>
+    </button>
     <button class="ui tiny blue icon button" (click)="flyToDragPoint()">
-          <i class="white crosshairs icon"></i>Re-center
-        </button>
+      <i class="white crosshairs icon"></i>Re-center
+    </button>
     <button class="ui tiny blue icon button" (click)="repositionDragPoint()">
-          <i class="white search icon"></i>Inspect
-        </button>
+      <i class="white search icon"></i>Inspect
+    </button>
     <button class="ui tiny blue icon button" (click)="zoomToStateView()">
-          <i class="white world icon"></i>State View
-        </button>
+      <i class="white world icon"></i>State View
+    </button>
     <button class="ui tiny green icon button" (click)="setSatelliteStyle()">
-          <i class="white map icon"></i>Satellite
-        </button>
+      <i class="white map icon"></i>Satellite
+    </button>
     <button class="ui tiny green icon button" (click)="setDatavizStyle()">
-          <i class="white map icon"></i>DataViz
-        </button>
+      <i class="white map icon"></i>DataViz
+    </button>
     <button class="ui tiny green icon button" (click)="setDefaultStyle()">
-          <i class="white map icon"></i>Outdoors
-        </button>
-
+      <i class="white map icon"></i>Outdoors
+    </button>
     <button class="ui tiny orange icon button" (click)="calculateArea()">
-          <i class="white calculator icon"></i>Calculate Area
-        </button>
-
+      <i class="white calculator icon"></i>Calculate Area
+    </button>
     <button class="ui tiny orange icon button" (click)="ingesting = !ingesting">
-                     <div *ngIf="!ingesting"> <i class="white file icon"></i>Show GeoJSON</div>
-                     <div *ngIf="ingesting"> <i class="white file icon"></i>Hide GeoJSON</div>
-                </button>
-
+      <div *ngIf="!ingesting"> <i class="white file icon"></i>Show GeoJSON</div>
+      <div *ngIf="ingesting"> <i class="white file icon"></i>Hide GeoJSON</div>
+    </button>
     <div class="ui mini inverted labeled input">
       <div class="ui mini inverted black label">Longitude: </div>
-      <input class="inverted" [(ngModel)]="cursorLng"></div>
-
+      <input class="inverted" [(ngModel)]="cursorLng">
+    </div>
     <div class="ui mini inverted labeled input">
       <div class="ui mini inverted black label">Latitude: </div>
-      <input class="inverted" [(ngModel)]="cursorLat"></div>
-
-
-
+      <input class="inverted" [(ngModel)]="cursorLat">
+    </div>
   </div>
 </div>
-
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>
 <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css' type='text/css' />

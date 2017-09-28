@@ -1,10 +1,12 @@
 // Dodgy require fix : things-to-do
 declare let require: any;
-import { EventEmitter, Component, OnInit, Input, Output } from '@angular/core';
+import { EventEmitter, Component, OnInit, Input, Output, ViewChild, AfterViewInit } from '@angular/core';
+import { Http, Headers } from '@angular/http';
 import { MapService } from '../../services/map.service';
-import { DatasourcesService } from '../../services/datasources.service';
+import { ApiService } from '../../services/api.service';
+import { ChartingComponent } from '../../components/charting/charting.component';
 import { Observable } from 'rxjs/Rx';
-
+import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {
@@ -25,7 +27,12 @@ var turf = require('@turf/turf');
 	styleUrls: ['./mapbox.component.css'],
 	providers: [MapService]
 })
-export class MapboxComponent implements OnInit {
+export class MapboxComponent implements OnInit, AfterViewInit {
+
+	@ViewChild(ChartingComponent)
+  private chartComponent: ChartingComponent;
+
+	models: any[] = [];
 
 	months = [
 		'January',
@@ -63,7 +70,7 @@ export class MapboxComponent implements OnInit {
 	colorLegend: any;
 
 	collapse: boolean = true;
-	timebrush: boolean = false;
+	timebrush: boolean = true;
 
 	nav: NavigationControl;
 	geo: GeolocateControl;
@@ -90,13 +97,18 @@ export class MapboxComponent implements OnInit {
 		}]
 	};
 
-	constructor(private mapService: MapService, private datasourcesService: DatasourcesService) {
+	constructor(private mapService: MapService, private api: ApiService, private http:Http) {
 		this.cursorMoveEW = new EventEmitter<number>();
 		this.cursorMoveNS = new EventEmitter<number>();
 		this.zoomReading = new EventEmitter<number>();
 		this.bearingReading = new EventEmitter<number>();
+
+		this.api.callAPI("/models").subscribe(m => this.models = m);
 	}
 
+	ngAfterViewInit() {
+
+	}
 
 	splitViewHandle: any;
 	aView: any;
@@ -284,7 +296,7 @@ export class MapboxComponent implements OnInit {
 
 			map.addSource('bushfires', {
 				'type': 'geojson',
-				'data': 'http://localhost:1880/bushfires'
+				'data': 'http://localhost:1880/api/bushfires'
 			});
 
 			map.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Fireicon01.svg/100px-Fireicon01.svg.png', function(error, image) {
@@ -416,16 +428,7 @@ export class MapboxComponent implements OnInit {
 		});
 
 
-		var getFuelHistoryAtPoint = function(e) {
-			var coords = e.lngLat;
-			// Spawn fuel-history retrieval at this point.
-			console.log('Now spawning fuel-history retrieval at Point(' + coords.lng + ',' + coords.lat + ')');
-		}
 
-		map.on('click', 'landcover_wood', getFuelHistoryAtPoint);
-		map.on('click', 'landcover_crop', getFuelHistoryAtPoint);
-		map.on('click', 'landcover_scrub', getFuelHistoryAtPoint);
-		map.on('click', 'landcover_grass', getFuelHistoryAtPoint);
 
 		map.on('click', 'index-layer-hotspots', function(e) {
 			// map.flyTo({center: e.features[0].geometry.coordinates});
@@ -679,10 +682,78 @@ export class MapboxComponent implements OnInit {
 		});
 	}
 
+
+
+public getFuelHistoryAtPoint(e:any) {
+	var coords = e.lngLat;
+	// This is where we trigger the API call to get Fuel Moisture Data for the
+	// // ChartingComponent at the current Lat & Lng.
+	// this.chartComponent.getFuelDataAtPoint(coords.lng, coords.lat);
+	console.log(this.getActiveModels().toString());
+	this.chartComponent.getFuelDataAtPointForModels(coords.lng, coords.lat, this.getActiveModels());
+
+	// this.chartComponent.lat = coords.lat;
+
+	console.log("Getting Fuel Moisture History for 'Longitude: " + coords.lng + "', 'Latitude: " + coords.lat + "'");
+
+}
+exclusiveModelMode:boolean = false;
+
+toggleModel(m:string) {
+
+	if(this.exclusiveModelMode) {
+		for(var i=0;i<this.models.length;i++) {
+			if(this.models[i].abbr == m) {
+				this.models[i].enabled = true;
+			} else {
+				this.models[i].enabled = false;
+			}
+		}
+	} else {
+		for(var i=0;i<this.models.length;i++) {
+			if(this.models[i].abbr == m) this.models[i].enabled = !this.models[i].enabled;
+		}
+	}
+	this.refreshModelData();
+}
+
+refreshModelData() {
+	this.chartComponent.getFuelDataAtPointForModels(this.lng, this.lat, this.getActiveModels());
+}
+
+allModelsOn() {
+	this.exclusiveModelMode = false;
+	for(var i=0;i<this.models.length;i++) {
+		this.models[i].enabled = true;
+	}
+	this.refreshModelData();
+}
+
+allModelsOff() {
+	for(var i=0;i<this.models.length;i++) {
+		this.models[i].enabled = false;
+	}
+	this.refreshModelData();
+}
+
+private getActiveModels() {
+	var active = [];
+	for(var i=0;i<this.models.length;i++) {
+		if(this.models[i].enabled) active.push(this.models[i].abbr);
+	}
+	return active;
+}
+
+private toggleTimeBrushing() {
+	this.timebrush = !this.timebrush;
+	this.chartComponent.timeline = !this.timebrush;
+}
+
+
 	private onUp(e) {
 
 		// if(this.draggingHandle) return this.upSplitViewHandle;
-		if (!this.isDragging) return;
+
 		var coords = e.lngLat;
 
 		console.log(">>> MouseUp on draggable point.");
@@ -694,17 +765,16 @@ export class MapboxComponent implements OnInit {
 		this.canvas.style.cursor = '';
 		this.isDragging = false;
 
-		// This is where we trigger the API call to get Fuel Moisture Data for the
-		// ChartingComponent at the current Lat & Lng.
-		console.log("Getting Fuel Moisture History for 'Longitude: " + coords.lng + "', 'Latitude: " + coords.lat + "'");
-
 		this.lat = coords.lat;
 		this.lng = coords.lng;
 
 		this.flyToDragPoint(e);
+		this.getFuelHistoryAtPoint(e);
 
-		// Unbind mouse events
-		this.mapService.map.off('mousemove', this.onDragMove.bind(this));
-		this.mapService.map.dragPan.enable();
+		if (this.isDragging) {
+			// Unbind mouse events
+			this.mapService.map.off('mousemove', this.onDragMove.bind(this));
+			this.mapService.map.dragPan.enable();
+		}
 	}
 }
