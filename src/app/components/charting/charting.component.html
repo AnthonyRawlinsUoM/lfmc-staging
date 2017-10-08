@@ -1,28 +1,29 @@
-<ngx-charts-line-chart
-
-      [view]="view"
-      [scheme]="colorScheme"
-      [results]="multi"
-      [gradient]="gradient"
-      [xAxis]="showXAxis"
-      [yAxis]="showYAxis"
-      [legend]="showLegend"
-      [showXAxisLabel]="showXAxisLabel"
-      [showYAxisLabel]="showYAxisLabel"
-      [xAxisLabel]="xAxisLabel"
-      [yAxisLabel]="yAxisLabel"
-      [autoScale]="autoScale"
-      [showGridLines]="showGridLines"
-      [showRefLines]="showRefLines"
-      [referenceLines]="referenceLines"
-      [roundDomains]="roundDomains"
-      [schemeType]="schemeType"
-      [timeline]="timeline"
-      [curve]="curve"
-      [autoScale]="autoScale"
-      rangeFillOpacity="0.13"
-      (select)="onSelect($event)">
-    </ngx-charts-line-chart>
+<div class="chartcontainer">
+	<ngx-charts-line-chart
+	[view]="view"
+	[scheme]="colorScheme"
+	[results]="multi"
+	[gradient]="gradient"
+	[xAxis]="showXAxis"
+	[yAxis]="showYAxis"
+	[legend]="showLegend"
+	[showXAxisLabel]="showXAxisLabel"
+	[showYAxisLabel]="showYAxisLabel"
+	[xAxisLabel]="xAxisLabel"
+	[yAxisLabel]="yAxisLabel"
+	[autoScale]="autoScale"
+	[showGridLines]="showGridLines"
+	[showRefLines]="showRefLines"
+	[referenceLines]="referenceLines"
+	[roundDomains]="roundDomains"
+	[schemeType]="schemeType"
+	[timeline]="timeline"
+	[curve]="curve"
+	[autoScale]="autoScale"
+	rangeFillOpacity="0.13"
+	(select)="onSelect($event)">
+	</ngx-charts-line-chart>
+</div>
 <!-- Property	Type	Default Value	Description
 view	number[]		the dimensions of the chart [width, height]. If left undefined, the chart will fit to the parent container size
 results	object[]		the chart data

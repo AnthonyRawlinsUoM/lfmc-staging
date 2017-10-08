@@ -22,7 +22,9 @@ export class ChartingComponent implements OnInit {
 
 	single: any[];
 	multi: any[];
-	view = [1650, 350];
+	// view = [1900, 350];
+	view = undefined;
+
 	// options
 	showXAxis = true;
 	showYAxis = true;
@@ -46,7 +48,7 @@ export class ChartingComponent implements OnInit {
 		Linear: shape.curveLinear,
 		Bundle: shape.curveBundle.beta(1),
 		Natural: shape.curveNatural
-	}
+	};
 
 	curveType: string = 'Natural';
 	curve: any = this.curves[this.curveType];
@@ -57,7 +59,14 @@ export class ChartingComponent implements OnInit {
 
 	// Reference lines
 	showRefLabels: boolean = true;
-	referenceLines:	any[]	= [{name:"Ignition", "value": 2.5}];//	an array of reference lines to be shown behind the chart. Every reference line should be of format {name, value}
+	referenceLines:	any[]	= [
+		{
+			name:"Ignition Risk", value: 2.5
+		},
+		{
+			name:"Online", value: 10
+		}
+	];//	an array of reference lines to be shown behind the chart. Every reference line should be of format {name, value}
 	showRefLines:	boolean	= true; // show or hide the reference lines
 
 	// Supports any number of reference lines.

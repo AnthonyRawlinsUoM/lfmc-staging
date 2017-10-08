@@ -13,7 +13,7 @@ import { SuiModule } from 'ng2-semantic-ui';
 import { FileUploadModule } from 'ng2-file-upload';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MapboxDraw } from '@mapbox/mapbox-gl-draw';
-
+import { ClipboardModule } from 'ngx-clipboard';
 
 
 // Services
@@ -34,7 +34,6 @@ import { AppComponent } from './app.component';
 import { HelpComponent } from './components/help/help.component';
 import { OptionsComponent } from './components/options/options.component';
 import { ContributeComponent } from './components/contribute/contribute.component';
-import { BasicMapComponent } from './components/basic-map/basic-map.component';
 import { LayerMapComponent } from './components/layer-map/layer-map.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { D3mapComponent } from './shared/d3map/d3map.component';
@@ -71,7 +70,7 @@ const appRoutes: Routes = [
   {path: 'callback', component: CallbackComponent }
   //,
   //{path: '**', redirectTo: '' }
-]
+];
 
 @NgModule({
 
@@ -85,7 +84,6 @@ const appRoutes: Routes = [
     HelpComponent,
     OptionsComponent,
     ContributeComponent,
-    BasicMapComponent,
     LayerMapComponent,
     ToolbarComponent,
     D3mapComponent,
@@ -122,6 +120,7 @@ const appRoutes: Routes = [
     FileUploadModule,
     SuiModule,
     NgxChartsModule,
+		ClipboardModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDxVm7cOOIMVDj6SPcj3lp0S_S2-T7mDFw'
     })
