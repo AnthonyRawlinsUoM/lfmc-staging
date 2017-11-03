@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lfmc-contribute',
+  selector: 'app-contribute',
   templateUrl: './contribute.component.html',
   styleUrls: ['./contribute.component.css']
 })

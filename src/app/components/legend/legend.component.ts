@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lfmc-legend',
+  selector: 'app-legend',
   templateUrl: './legend.component.html',
   styleUrls: ['./legend.component.css']
 })

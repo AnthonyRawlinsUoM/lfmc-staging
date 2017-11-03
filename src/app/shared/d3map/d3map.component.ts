@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lfmc-d3map',
+  selector: 'app-d3map',
   templateUrl: './d3map.component.html',
   styleUrls: ['./d3map.component.css']
 })

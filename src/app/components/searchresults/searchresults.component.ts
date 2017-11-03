@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lfmc-searchresults',
+  selector: 'app-searchresults',
   templateUrl: './searchresults.component.html',
   styleUrls: ['./searchresults.component.css']
 })

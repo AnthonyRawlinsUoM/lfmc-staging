@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lfmc-fullscreen',
+  selector: 'app-fullscreen',
   templateUrl: './fullscreen.component.html',
   styleUrls: ['./fullscreen.component.css']
 })

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lfmc-callback',
+  selector: 'app-callback',
   templateUrl: './callback.component.html',
   styleUrls: ['./callback.component.css']
 })

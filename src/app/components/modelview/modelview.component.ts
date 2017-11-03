@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lfmc-modelview',
+  selector: 'app-modelview',
   templateUrl: './modelview.component.html',
   styleUrls: ['./modelview.component.css']
 })

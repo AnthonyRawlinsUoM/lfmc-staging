@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PolygonManager, KmlLayerManager, DataLayerManager } from '@agm/core';
 
 @Component({
-  selector: 'lfmc-agm',
+  selector: 'app-agm',
   templateUrl: './agm.component.html',
   styleUrls: ['./agm.component.css']
 })
@@ -13,7 +13,7 @@ export class AgmComponent implements OnInit {
   public zoom: number = 6.5;
 
   constructor() {
-    
+
   }
 
   ngOnInit() {

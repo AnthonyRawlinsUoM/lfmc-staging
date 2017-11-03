@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lfmc-importtasks',
+  selector: 'app-importtasks',
   templateUrl: './importtasks.component.html',
   styleUrls: ['./importtasks.component.css']
 })

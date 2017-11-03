@@ -3,7 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { PersistenceService, StorageType } from 'angular-persistence';
 
 @Component({
-  selector: 'lfmc-profile',
+  selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })

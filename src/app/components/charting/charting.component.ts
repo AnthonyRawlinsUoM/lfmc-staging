@@ -11,14 +11,17 @@ import * as shape from 'd3-shape';
 import * as d3 from 'd3';
 
 @Component({
-	selector: 'lfmc-charting',
+	selector: 'app-charting',
 	templateUrl: './charting.component.html',
 	styleUrls: ['./charting.component.css']
 })
 export class ChartingComponent implements OnInit {
 
-	@Input() lat:number;
-	@Input() lng:number;
+	@Input() lat: number;
+	@Input() lng: number;
+
+	@Input() @Output() start: string;
+	@Input() @Output() finish: string;
 
 	single: any[];
 	multi: any[];
@@ -42,7 +45,7 @@ export class ChartingComponent implements OnInit {
 	colorScheme: any;
 	schemeType: string = 'linear';
 	selectedColorScheme: string = 'viridis';
-	autoScale=true;
+	autoScale = true;
 
 	curves = {
 		Linear: shape.curveLinear,
@@ -59,15 +62,15 @@ export class ChartingComponent implements OnInit {
 
 	// Reference lines
 	showRefLabels: boolean = true;
-	referenceLines:	any[]	= [
+	referenceLines: any[] = [
 		{
-			name:"Ignition Risk", value: 2.5
+			name: "Ignition Risk", value: 2.5
 		},
 		{
-			name:"Online", value: 10
+			name: "Online", value: 10
 		}
 	];//	an array of reference lines to be shown behind the chart. Every reference line should be of format {name, value}
-	showRefLines:	boolean	= true; // show or hide the reference lines
+	showRefLines: boolean = true; // show or hide the reference lines
 
 	// Supports any number of reference lines.
 	// refLines = [
@@ -219,10 +222,10 @@ export class ChartingComponent implements OnInit {
 		}
 	];
 
-	constructor(private api :ApiService) {
+	constructor(private api: ApiService) {
 
-		this.lat=0;
-		this.lng=0;
+		this.lat = 0;
+		this.lng = 0;
 
 		var single = [
 			{
@@ -300,95 +303,36 @@ export class ChartingComponent implements OnInit {
 				]
 			},
 
-      {
-        "name": "Kumar",
-        "series": [
-          { "name": new Date("2017-09-20T00:00:00.001Z"), "value": 5.31, "min": 3.12, "max": 5.94 },
-          { "name": new Date("2017-09-20T01:00:00.001Z"), "value": 21.12, "min": 18.62, "max": 23.46 },
-          { "name": new Date("2017-09-20T02:00:00.001Z"), "value": 22.32, "min": 21.09, "max": 24.67 },
-          { "name": new Date("2017-09-20T03:00:00.001Z"), "value": 23.17, "min": 21.98, "max": 25.68 },
-          { "name": new Date("2017-09-20T04:00:00.001Z"), "value": 24.52, "min": 23.17, "max": 27.46 },
-          { "name": new Date("2017-09-20T05:00:00.001Z"), "value": 27.46, "min": 24.52, "max": 28.65 },
-          { "name": new Date("2017-09-20T06:00:00.001Z"), "value": 87.18, "min": 77.03, "max": 100.0 },
-          { "name": new Date("2017-09-20T07:00:00.001Z"), "value": 66.27, "min": 63.64, "max": 89.59 },
-          { "name": new Date("2017-09-20T08:00:00.001Z"), "value": 55.75, "min": 52.13, "max": 61.06 },
-          { "name": new Date("2017-09-20T09:00:00.001Z"), "value": 63.94, "min": 51.08, "max": 65.74 },
-          { "name": new Date("2017-09-20T10:00:00.001Z"), "value": 51.19, "min": 18.92, "max": 54.81 },
-          { "name": new Date("2017-09-20T11:00:00.001Z"), "value": 59.47, "min": 16.32, "max": 65.87 },
-          { "name": new Date("2017-09-20T12:00:00.001Z"), "value": 56.84, "min": 13.54, "max": 69.41 },
+			{
+				"name": "Kumar",
+				"series": [
+					{ "name": new Date("2017-09-20T00:00:00.001Z"), "value": 5.31, "min": 3.12, "max": 5.94 },
+					{ "name": new Date("2017-09-20T01:00:00.001Z"), "value": 21.12, "min": 18.62, "max": 23.46 },
+					{ "name": new Date("2017-09-20T02:00:00.001Z"), "value": 22.32, "min": 21.09, "max": 24.67 },
+					{ "name": new Date("2017-09-20T03:00:00.001Z"), "value": 23.17, "min": 21.98, "max": 25.68 },
+					{ "name": new Date("2017-09-20T04:00:00.001Z"), "value": 24.52, "min": 23.17, "max": 27.46 },
+					{ "name": new Date("2017-09-20T05:00:00.001Z"), "value": 27.46, "min": 24.52, "max": 28.65 },
+					{ "name": new Date("2017-09-20T06:00:00.001Z"), "value": 87.18, "min": 77.03, "max": 100.0 },
+					{ "name": new Date("2017-09-20T07:00:00.001Z"), "value": 66.27, "min": 63.64, "max": 89.59 },
+					{ "name": new Date("2017-09-20T08:00:00.001Z"), "value": 55.75, "min": 52.13, "max": 61.06 },
+					{ "name": new Date("2017-09-20T09:00:00.001Z"), "value": 63.94, "min": 51.08, "max": 65.74 },
+					{ "name": new Date("2017-09-20T10:00:00.001Z"), "value": 51.19, "min": 18.92, "max": 54.81 },
+					{ "name": new Date("2017-09-20T11:00:00.001Z"), "value": 59.47, "min": 16.32, "max": 65.87 },
+					{ "name": new Date("2017-09-20T12:00:00.001Z"), "value": 56.84, "min": 13.54, "max": 69.41 },
 					{ "name": new Date("2017-09-20T13:00:00.001Z"), "value": 45.31, "min": 43.12, "max": 65.94 },
-          { "name": new Date("2017-09-20T14:00:00.001Z"), "value": 21.12, "min": 18.62, "max": 23.46 },
-          { "name": new Date("2017-09-20T15:00:00.001Z"), "value": 22.32, "min": 21.09, "max": 24.67 },
-          { "name": new Date("2017-09-20T16:00:00.001Z"), "value": 23.17, "min": 21.98, "max": 25.68 },
-          { "name": new Date("2017-09-20T17:00:00.001Z"), "value": 24.52, "min": 23.17, "max": 27.46 },
-          { "name": new Date("2017-09-20T18:00:00.001Z"), "value": 27.46, "min": 24.52, "max": 28.65 },
-          { "name": new Date("2017-09-20T19:00:00.001Z"), "value": 87.18, "min": 77.03, "max": 100.0 },
-          { "name": new Date("2017-09-20T20:00:00.001Z"), "value": 26.27, "min": 23.64, "max": 27.59 },
-          { "name": new Date("2017-09-20T21:00:00.001Z"), "value": 25.75, "min": 22.13, "max": 31.06 },
-          { "name": new Date("2017-09-20T22:00:00.001Z"), "value": 23.94, "min": 21.08, "max": 25.74 },
-          { "name": new Date("2017-09-20T23:00:00.001Z"), "value": 21.19, "min": 18.92, "max": 24.81 }
+					{ "name": new Date("2017-09-20T14:00:00.001Z"), "value": 21.12, "min": 18.62, "max": 23.46 },
+					{ "name": new Date("2017-09-20T15:00:00.001Z"), "value": 22.32, "min": 21.09, "max": 24.67 },
+					{ "name": new Date("2017-09-20T16:00:00.001Z"), "value": 23.17, "min": 21.98, "max": 25.68 },
+					{ "name": new Date("2017-09-20T17:00:00.001Z"), "value": 24.52, "min": 23.17, "max": 27.46 },
+					{ "name": new Date("2017-09-20T18:00:00.001Z"), "value": 27.46, "min": 24.52, "max": 28.65 },
+					{ "name": new Date("2017-09-20T19:00:00.001Z"), "value": 87.18, "min": 77.03, "max": 100.0 },
+					{ "name": new Date("2017-09-20T20:00:00.001Z"), "value": 26.27, "min": 23.64, "max": 27.59 },
+					{ "name": new Date("2017-09-20T21:00:00.001Z"), "value": 25.75, "min": 22.13, "max": 31.06 },
+					{ "name": new Date("2017-09-20T22:00:00.001Z"), "value": 23.94, "min": 21.08, "max": 25.74 },
+					{ "name": new Date("2017-09-20T23:00:00.001Z"), "value": 21.19, "min": 18.92, "max": 24.81 }
 				]
 			}
 		];
-
-		// var multi = [
-		// 	{
-		// 		"name": "Nolan",
-		// 		"series": [
-		// 			{ "name": new Date("2017-09-20T00:00:00.001Z"), "value": 10.3, "min": 9.01, "max": 10.56 },
-		// 			{ "name": new Date("2017-09-20T01:00:00.001Z"), "value": 11.12, "min": 11.36, "max": 11.5 },
-		// 			{ "name": new Date("2017-09-20T02:00:00.001Z"), "value": 12.32, "min": 12.15, "max": 13.5 },
-		// 			{ "name": new Date("2017-09-20T03:00:00.001Z"), "value": 13.17, "min": 12.64, "max": 14.61 },
-		// 			{ "name": new Date("2017-09-20T04:00:00.001Z"), "value": 14.52, "min": 13.68, "max": 16.56 },
-		// 			{ "name": new Date("2017-09-20T05:00:00.001Z"), "value": 17.46, "min": 13.98, "max": 19.04 },
-		// 			{ "name": new Date("2017-09-20T06:00:00.001Z"), "value": 17.18, "min": 15.31, "max": 18.53 },
-		// 			{ "name": new Date("2017-09-20T07:00:00.001Z"), "value": 16.27, "min": 15.63, "max": 18.96 },
-		// 			{ "name": new Date("2017-09-20T08:00:00.001Z"), "value": 15.75, "min": 14.39, "max": 18.32 },
-		// 			{ "name": new Date("2017-09-20T09:00:00.001Z"), "value": 13.94, "min": 12.06, "max": 14.35 },
-		// 			{ "name": new Date("2017-09-20T10:00:00.001Z"), "value": 11.19, "min": 10.03, "max": 12.87 },
-		// 			{ "name": new Date("2017-09-20T11:00:00.001Z"), "value": 9.47, "min": 6.27, "max": 9.98 },
-		// 			{ "name": new Date("2017-09-20T12:00:00.001Z"), "value": 6.84, "min": 0.00, "max": 100.00 }
-		// 		]
-		// 	},
-		//
-		// 	{
-		// 		"name": "Boer",
-		// 		"series": [
-		// 			{ "name": "2017-09-21", "value": 11.3, "min": 9.01, "max": 14.56 },
-		// 			{ "name": "2017-09-20", "value": 12.12, "min": 10.36, "max": 15.51 },
-		// 			{ "name": "2017-09-19", "value": 16.32, "min": 12.15, "max": 18.52 },
-		// 			{ "name": "2017-09-18", "value": 15.17, "min": 12.64, "max": 20.61 },
-		// 			{ "name": "2017-09-17", "value": 19.52, "min": 13.68, "max": 21.56 },
-		// 			{ "name": "2017-09-16", "value": 23.46, "min": 13.98, "max": 28.65 },
-		// 			{ "name": "2017-09-15", "value": 23.18, "min": 11.64, "max": 28.65 },
-		// 			{ "name": "2017-09-14", "value": 21.27, "min": 13.98, "max": 28.65 },
-		// 			{ "name": "2017-09-13", "value": 18.75, "min": 13.98, "max": 28.65 },
-		// 			{ "name": "2017-09-12", "value": 17.94, "min": 13.98, "max": 28.65 },
-		// 			{ "name": "2017-09-11", "value": 14.19, "min": 13.98, "max": 28.65 },
-		// 			{ "name": "2017-09-10", "value": 8.47, "min": 3.48, "max": 18.15 },
-		// 			{ "name": "2017-09-09", "value": 2.84, "min": 0.00, "max": 100.00 }
-		// 		]
-		// 	},
-		//
-		// 	{
-		// 		"name": "Kumar",
-		// 		"series": [
-		// 			{ "name": "2017-09-21", "value": 5.31, "min": 3.12, "max": 5.94 },
-		// 			{ "name": "2017-09-20", "value": 21.12, "min": 18.62, "max": 23.46 },
-		// 			{ "name": "2017-09-19", "value": 22.32, "min": 21.09, "max": 24.67 },
-		// 			{ "name": "2017-09-18", "value": 23.17, "min": 21.98, "max": 25.68 },
-		// 			{ "name": "2017-09-17", "value": 24.52, "min": 23.17, "max": 27.46 },
-		// 			{ "name": "2017-09-16", "value": 27.46, "min": 24.52, "max": 28.65 },
-		// 			{ "name": "2017-09-15", "value": 27.18, "min": 27.03, "max": 29.67 },
-		// 			{ "name": "2017-09-14", "value": 26.27, "min": 23.64, "max": 27.59 },
-		// 			{ "name": "2017-09-13", "value": 25.75, "min": 22.13, "max": 31.06 },
-		// 			{ "name": "2017-09-12", "value": 23.94, "min": 21.08, "max": 25.74 },
-		// 			{ "name": "2017-09-11", "value": 21.19, "min": 18.92, "max": 24.81 },
-		// 			{ "name": "2017-09-10", "value": 19.47, "min": 16.32, "max": 25.87 },
-		// 			{ "name": "2017-09-09", "value": 16.84, "min": 0.00, "max": 100.00 }
-		// 		]
-		// 	}
-		// ];
 
 		Object.assign(this, { single, multi });
 	}
@@ -406,17 +350,19 @@ export class ChartingComponent implements OnInit {
 	// TESTING FUNCTION ONLY - no geo query here
 	// Returns randomly  generated data
 
-	getFuel(name:string) {
+	getFuel(name: string) {
 		const dateFormat = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$/;
 		function reviver(key, value) {
-		    if (typeof value === "string" && dateFormat.test(value)) {
-		        return new Date(value);
-		    }
-		    return value;
+			if (typeof value === "string" && dateFormat.test(value)) {
+				return new Date(value);
+			}
+			return value;
 		}
 		return this.api.callAPI(name).subscribe(m => {
 			console.log(m);
-			this.multi = JSON.parse(JSON.stringify(m), reviver);
+			let r = JSON.parse(JSON.stringify(m), reviver);
+			this.multi = r;
+			console.log(this.multi);
 		});
 	}
 
@@ -428,12 +374,20 @@ export class ChartingComponent implements OnInit {
 	// Each model will use its own methodology to return its derived value
 	// at that point. Eg., Some might be nearest neighbour, others might be
 	// interpolated using other methods. The method used is returned in the metadata
-	public getFuelDataAtPoint(lng:number, lat:number) {
+	public getFuelDataAtPoint(lng: number, lat: number) {
 		this.getFuel(`/fuel/${lng}/${lat}`);
 	}
 
-	public getFuelDataAtPointForModels(lng:number, lat:number, models:any[]) {
-		console.log(models.toString());
-		this.getFuel(`/fuel/${lng}/${lat}/models/${models.toString()}`);
+	public getFuelInBoundsForModels(lng1: number, lat1: number, lng2: number, lat2: number, models: any[]) {
+		// ie., lng1lat1 Top-left to lng2lat2 bottom-right
+		let call = `/fuel/models/${models.toString()}/${lng1}/${lat1}/${lng2}/${lat2}/time/${this.start}/${this.finish}`;
+		console.log(call);
+		this.getFuel(call);
+	}
+
+	public getFuelDataAtPointForModels(lng: number, lat: number, models: any[]) {
+		let call = `/fuel/models/${models.toString()}/${lng}/${lat}/${lng}/${lat}/time/${this.start}/${this.finish}`;
+		console.log(call);
+		this.getFuel(call);
 	}
 }

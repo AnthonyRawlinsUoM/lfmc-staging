@@ -55,6 +55,10 @@
 			</i>
 		</a>
 
+		<a class="item" (click)="queryLFMCUsingGeoJSON()">
+			<i class="map icon"></i> Use as query (Under development!)
+		</a>
+
 			</div>
 			<div class="ui form">
 				<div class="field json">
@@ -80,36 +84,40 @@
 						<div *ngIf="timebrush"><i class="white clock icon"></i> Show Timebrush</div>
 						<div *ngIf="!timebrush"><i class="white close icon"></i> Hide Timebrush</div>
 					</a>
+
+					<a class="item" suiDatepicker [pickerMode]="date" [(ngModel)]="start" (ngModelChange)="refreshModelData()"><i class="calendar icon"></i> From: {{start | date:'dd/MM/y'}}</a>
+
+					<a class="item" suiDatepicker [pickerMode]="date" [(ngModel)]="finish" (ngModelChange)="refreshModelData()"><i class="calendar icon"></i> To: {{finish | date:'dd/MM/y'}}</a>
+					<a class="item" (click)="makeToday()"><i class="clock icon"></i> Today</a>
 				</div>
-				<div class="ui container"><h3 class="ui center aligned header">LFMC (%) vs. Time</h3></div>
+				<div class="ui container">
+					<h3 class="ui center aligned header">LFMC (%) vs. Time</h3></div>
 				<sui-sidebar-container class="ui bottom attached">
 
 
 					<sui-sidebar class="inverted vertical" #sidebar>
 						<div class="ui fluid inverted menu">
 							<a class="item" (click)="exclusiveModelMode = !exclusiveModelMode">
-							<div  *ngIf="!exclusiveModelMode">
-								<i class="inverted toggle on icon"></i> Compare
-							</div>
-							<div *ngIf="exclusiveModelMode">
-								<i class="inverted toggle off icon"></i> Exclusive
-							</div>
-						</a>
+								<div *ngIf="!exclusiveModelMode">
+									<i class="inverted toggle on icon"></i> Compare
+								</div>
+								<div *ngIf="exclusiveModelMode">
+									<i class="inverted toggle off icon"></i> Exclusive
+								</div>
+							</a>
 
 							<a *ngIf="allModels" class="item" (click)="allModelsOff()"><i class="check circle outline icon"></i></a>
 							<a *ngIf="!allModels" class="item" (click)="allModelsOn()"><i class="radio icon"></i></a>
 						</div>
 						<div class="ui fluid vertical inverted menu">
-							<a *ngFor="let m of models"
-							    (click)="toggleModel(m.abbr)"
-									  class="ui inverted item">
+							<a *ngFor="let m of models" (click)="toggleModel(m.abbr)" class="ui inverted item">
 								<i *ngIf="m.enabled" class="green toggle on icon"></i>
 								<i *ngIf="!m.enabled" class="toggle off icon"></i> {{m.name}}
 							</a>
 						</div>
 					</sui-sidebar>
 					<sui-sidebar-sibling [isDimmedWhenVisible]="false" class="inverted">
-						<lfmc-charting id="chart" [lat]="lat" [lng]="lng"></lfmc-charting>
+						<app-charting id="chart" [lat]="lat" [lng]="lng" [start]="start | date:'yMMdd'" [finish]="finish | date:'yMMdd'"></app-charting>
 					</sui-sidebar-sibling>
 				</sui-sidebar-container>
 			</div>

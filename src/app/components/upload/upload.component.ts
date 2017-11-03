@@ -8,7 +8,7 @@ import { SuiModal, ComponentModalConfig, ModalSize } from "ng2-semantic-ui";
 const URL = 'http:////localhost:1880/upload';
 
 @Component({
-  selector: 'lfmc-upload',
+  selector: 'app-upload',
   templateUrl: './upload.component.html',
   styleUrls: ['./upload.component.css']
 })

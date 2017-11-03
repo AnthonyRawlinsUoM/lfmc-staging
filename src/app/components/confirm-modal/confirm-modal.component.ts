@@ -7,7 +7,7 @@ interface IConfirmModalContext {
 }
 
 @Component({
-  selector: 'lfmc-modal-confirm',
+  selector: 'app-modal-confirm',
   template: `
     <div class="header">{{ modal.context.title }}</div>
     <div class="content">

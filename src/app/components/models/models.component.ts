@@ -4,7 +4,7 @@ import { ApiService } from '../../services/api.service';
 import { Observable } from 'rxjs/Rx';
 
 @Component({
-	selector: 'lfmc-models',
+	selector: 'app-models',
 	templateUrl: './models.component.html',
 	styleUrls: ['./models.component.css']
 })

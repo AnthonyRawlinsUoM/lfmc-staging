@@ -20,6 +20,8 @@
                   <h2 class="ui header"><a [href]="m.href" target="_blank">{{m.title}}</a></h2>
                   <p>{{m.date}}</p>
                   <p>{{m.validated.references[0].authors}}</p>
+                  <h4 class="heading">Introduction</h4>
+                  <p>{{m.onefloor}}</p>
                   <h4 class="heading">Abstract</h4>
                   <p>{{m.description.abstract}}</p>
                 </div>
@@ -38,7 +40,7 @@
                   <label>Rating</label>
                   <sui-rating [(ngModel)]="m.rating" [maximum]="10" [isReadonly]="true"></sui-rating>
                   <div class="ui divider"></div>
-                  <lfmc-datasources [model]="m"></lfmc-datasources>
+                  <app-datasources [model]="m"></app-datasources>
                 </div>
               </div>
               <div class="ui row">
@@ -81,7 +83,15 @@
                 </div>
                 </div>
                 <div class="ui four wide column">
-                  <div class="ui top attached segment"><h4 class="top attached heading"><i class="large blue fire icon"></i>Fuel Types</h4></div>
+                  <div class="ui top attached segment"><h4 class="top attached heading"><i class="large blue fire icon"></i>Fuel Types</h4>
+                  </div>
+                  <div class="ui gray attached segment">
+                    <div class="ui relaxed divided list">
+                      <div class="item" *ngFor="let ft of m.description.fuel.types">
+                        <div class="ui green horizontal label"> Fuel </div> {{ft}}
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="ui four wide column">
                   <div class="ui top attached segment"><h4 class="top attached heading"><i class="large blue tree icon"></i>Vegetation Types</h4></div>
@@ -96,4 +106,4 @@
 </div>
 
 
-<lfmc-footer></lfmc-footer>
+<app-footer></app-footer>

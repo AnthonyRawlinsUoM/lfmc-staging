@@ -5,7 +5,7 @@ import { ApiService } from '../../services/api.service';
 import { Observable } from 'rxjs/Rx';
 
 @Component({
-	selector: 'lfmc-datasources',
+	selector: 'app-datasources',
 	templateUrl: './datasources.component.html',
 	styleUrls: ['./datasources.component.css']
 })
