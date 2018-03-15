@@ -16,7 +16,6 @@ import {ClipboardModule} from 'ngx-clipboard';
 
 
 // Services
-import {ModisService} from './services/modis.service';
 import {ModelsService} from './services/models.service';
 import {ApiService} from './services/api.service';
 import {TsvService} from './services/tsv.service';
@@ -125,7 +124,6 @@ const appRoutes: Routes = [
   // Services
   providers: [
     MapService,
-    ModisService,
     AuthService,
     ModelsService,
     ApiService,

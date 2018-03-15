@@ -85,9 +85,9 @@
 						<div *ngIf="!timebrush"><i class="white close icon"></i> Hide Timebrush</div>
 					</a>
 
-					<a class="item" suiDatepicker [pickerMode]="date" [(ngModel)]="start" (ngModelChange)="refreshModelData()"><i class="calendar icon"></i> From: {{start | date:'dd/MM/y'}}</a>
+					<a class="item" suiDatepicker [pickerMinDate]="minStartDate" [pickerMaxDate]="maxStartDate"  [pickerMode]="'date'" [(ngModel)]="start" (ngModelChange)="refreshModelData()"><i class="calendar icon"></i> From: {{start | date:'dd/MM/y'}}</a>
 
-					<a class="item" suiDatepicker [pickerMode]="date" [(ngModel)]="finish" (ngModelChange)="refreshModelData()"><i class="calendar icon"></i> To: {{finish | date:'dd/MM/y'}}</a>
+					<a class="item" suiDatepicker [pickerMinDate]="minEndDate" [pickerMaxDate]="maxEndDate"  [pickerMode]="'date'" [(ngModel)]="finish" (ngModelChange)="refreshModelData()"><i class="calendar icon"></i> To: {{finish | date:'dd/MM/y'}}</a>
 					<a class="item" (click)="makeToday()"><i class="clock icon"></i> Today</a>
 				</div>
 				<div class="ui container">
