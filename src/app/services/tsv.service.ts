@@ -11,7 +11,7 @@ export class TsvService {
 
 	constructor(private http: Http) { }
 
-	private datasourcesUrl = 'http://localhost:1880/tsv';
+	private datasourcesUrl = 'http://pipeline:1880/tsv';
 
 	get(name: string): Observable<any> {
 		let model$ = this.http

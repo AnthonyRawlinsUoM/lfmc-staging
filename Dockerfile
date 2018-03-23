@@ -6,12 +6,12 @@ WORKDIR /usr/src/app
 
 COPY package.json .
 COPY package-lock.json .
-
-RUN npm install
+RUN npm i -g npm
+RUN npm install --no-optional
 
 COPY . .
 
-# Production
+# Development Mode
 # EXPOSE 4200
 # CMD ["npm", "start"]
 

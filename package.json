@@ -1,6 +1,6 @@
 {
   "name": "v1",
-  "version": "0.1.5",
+  "version": "0.5.1",
   "license": "MIT",
   "main": "app.js",
   "scripts": {
@@ -81,7 +81,7 @@
     "zone.js": "^0.8.20"
   },
   "devDependencies": {
-    "@angular/cli": "^1.6.5",
+    "@angular/cli": "^1.7.3",
     "@angular/compiler-cli": "^4.4.6",
     "@angular/language-service": "^4.4.6",
     "@types/d3": "^4.12.0",

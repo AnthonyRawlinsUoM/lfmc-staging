@@ -1,6 +1,7 @@
 all: build
 
 build:
+	npm run-script build
 	@docker build --tag=anthonyrawlinsuom/lfmc-staging .
 
 install:

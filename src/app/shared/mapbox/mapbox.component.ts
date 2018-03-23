@@ -296,7 +296,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         'source': {
           'type': 'raster',
           'tiles': [
-            'http://geoserver:9090/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:dfmc&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng'],
+            'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:dfmc&styles=raster_viridis_reversed&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng'],
           'tileSize': 256
         },
         'paint': {}
@@ -308,7 +308,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
           'source': {
               'type':'raster',
               'tiles': [
-                  'http://geoserver:9090/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:Image&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2fpng'
+                  'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:Image&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2fpng'
               ],
               'tileSize': 256
           },
@@ -318,13 +318,13 @@ export class MapboxComponent implements OnInit, AfterViewInit {
 
       // map.addSource('cfaregion', {
       // 	'type': 'vector',
-      // 	'tiles': ['http://geoserver:9090/geoserver/gwc/service/wmts?request=GetTile&service=WMTS&version=1.0.0&layer=victoria:CFA_REGION&style=&tilematrix=EPSG:900913:{z}&tilematrixset=EPSG:900913&format=application/x-protobuf;type=mapbox-vector&tilecol={x}&tilerow={y}'],
+      // 	'tiles': ['http://localhost:9090/geoserver/gwc/service/wmts?request=GetTile&service=WMTS&version=1.0.0&layer=victoria:CFA_REGION&style=&tilematrix=EPSG:900913:{z}&tilematrixset=EPSG:900913&format=application/x-protobuf;type=mapbox-vector&tilecol={x}&tilerow={y}'],
       // 	'tileSize': 512
       // });
       //
       // map.addSource('cfadistrict', {
       // 	'type': 'vector',
-      // 	'tiles': ['http://geoserver:9090/geoserver/gwc/service/wmts?request=GetTile&service=WMTS&version=1.0.0&layer=victoria:CFA_DISTRICT&style=&tilematrix=EPSG:900913:{z}&tilematrixset=EPSG:900913&format=application/x-protobuf;type=mapbox-vector&tilecol={x}&tilerow={y}'],
+      // 	'tiles': ['http://localhost:9090/geoserver/gwc/service/wmts?request=GetTile&service=WMTS&version=1.0.0&layer=victoria:CFA_DISTRICT&style=&tilematrix=EPSG:900913:{z}&tilematrixset=EPSG:900913&format=application/x-protobuf;type=mapbox-vector&tilecol={x}&tilerow={y}'],
       // 	'tileSize': 512
       // });
       //

@@ -5,7 +5,7 @@ import { ConfirmModal } from '../confirm-modal/confirm-modal.component';
 import { SuiModal, ComponentModalConfig, ModalSize } from "ng2-semantic-ui";
 
 // TODO
-const URL = 'http:////localhost:1880/upload';
+const URL = 'http:////pipeline:1880/upload';
 
 @Component({
   selector: 'app-upload',
