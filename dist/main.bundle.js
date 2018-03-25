@@ -2858,30 +2858,54 @@ var MapboxComponent = (function () {
             // }, 'water');
             // 25m LiDAR DEM Model from GA
             // http://services.ga.gov.au/gis/services/DEM_LiDAR_25m/MapServer/WMSServer?request=GetCapabilities&service=WMS
+            // map.addSource('dem', {
+            //         "type": "raster-dem",
+            //         "url": "mapbox://mapbox.terrain-rgb"
+            //     });
+            //     map.addLayer({
+            //         "id": "hillshading",
+            //         "source": "dem",
+            //         "type": "hillshade"
+            //     // insert below waterway-river-canal-shadow;
+            //     // where hillshading sits in the Mapbox Outdoors style
+            //     }, 'waterway-river-canal-shadow');
             map.addLayer({
-                'id': 'wms-test-layer',
+                'id': 'dead_fuel',
                 'type': 'raster',
                 'source': {
                     'type': 'raster',
                     'tiles': [
-                        'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:dfmc&styles=raster_viridis_reversed&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng'
+                        'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=raster&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-01'
                     ],
                     'tileSize': 256
                 },
                 'paint': {}
             }, 'water');
             map.addLayer({
-                'id': 'DEM1sec',
+                'id': 'awra',
                 'type': 'raster',
                 'source': {
                     'type': 'raster',
                     'tiles': [
-                        'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:Image&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2fpng'
+                        'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=raster&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-01'
                     ],
                     'tileSize': 256
                 },
                 'paint': {}
             }, 'water');
+            // map.addLayer({
+            //     'id': 'DEM1sec', 
+            //     'type': 'raster',
+            //     'source': {
+            //         'type':'raster',
+            //         'tiles': [
+            //             'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:Image&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2fpng'
+            //         ],
+            //         'tileSize': 256
+            //     },
+            //     'paint': {}
+            //   },
+            //   'water');
             // map.addSource('cfaregion', {
             // 	'type': 'vector',
             // 	'tiles': ['http://localhost:9090/geoserver/gwc/service/wmts?request=GetTile&service=WMTS&version=1.0.0&layer=victoria:CFA_REGION&style=&tilematrix=EPSG:900913:{z}&tilematrixset=EPSG:900913&format=application/x-protobuf;type=mapbox-vector&tilecol={x}&tilerow={y}'],
@@ -2943,53 +2967,51 @@ var MapboxComponent = (function () {
             /**
              * Heat visible fire sources from Sentinel via GeoSciences Australia
              */
-            map.addSource('hotspots', {
-                'type': 'geojson',
-                // 'data': 'https://firms.modaps.eosdis.nasa.gov/wms/c6/?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=fires24&BBOX=-180,-90,180,90&&SRS=EPSG:4326'
-                'data': 'http://sentinel.ga.gov.au/geoserver/wfs?service=wfs&version=1.1.1&request=GetFeature&typeName=public:hotspot_current_4326&outputFormat=application%2Fjson'
-            });
-            map.addLayer({
-                'id': 'index-layer-hotspots',
-                'type': 'circle',
-                'source': 'hotspots',
-                'layout': {},
-                'paint': {
-                    'circle-color': {
-                        'property': 'temp_kelvin',
-                        'type': 'interval',
-                        'stops': [
-                            [0, '#3d05fa'],
-                            [273.15, '#5b05fa'],
-                            [285, '#8202c7'],
-                            [300, '#b8004d'],
-                            [400, '#ed3131'],
-                            [500, '#f05a11'],
-                            [600, '#f67d0c'],
-                            [700, '#ffb100'],
-                            [800, '#ffc825'],
-                            [900, '#ffd473'],
-                            [1000, '#ffe29f'],
-                            [1100, '#fff6e2']
-                        ]
-                    },
-                    'circle-radius': {
-                        'base': 5,
-                        'stops': [[12, 5], [22, 180]]
-                    },
-                    'circle-opacity': {
-                        'property': 'confidence',
-                        'type': 'interval',
-                        'stops': [
-                            [0, 0.05],
-                            [20, 0.2],
-                            [40, 0.4],
-                            [60, 0.6],
-                            [80, 0.8],
-                            [100, 1.0]
-                        ]
-                    }
-                }
-            }, 'roads');
+            // map.addSource('hotspots', {
+            //   'type': 'geojson',
+            //   // 'data': 'https://firms.modaps.eosdis.nasa.gov/wms/c6/?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=fires24&BBOX=-180,-90,180,90&&SRS=EPSG:4326'
+            //   'data': 'http://sentinel.ga.gov.au/geoserver/wfs?service=wfs&version=1.1.1&request=GetFeature&typeName=public:hotspot_current_4326&outputFormat=application%2Fjson'
+            // });
+            // map.addLayer({
+            //   'id': 'index-layer-hotspots',
+            //   'type': 'circle',
+            //   'source': 'hotspots',
+            //   'layout': {},
+            //   'paint': {
+            //     'circle-color': {
+            //       'property': 'temp_kelvin',
+            //       'type': 'interval',
+            //       'stops': [
+            //         [0, '#3d05fa'],
+            //         [273.15, '#5b05fa'],
+            //         [285, '#8202c7'],
+            //         [300, '#b8004d'],
+            //         [400, '#ed3131'],
+            //         [500, '#f05a11'],
+            //         [600, '#f67d0c'],
+            //         [700, '#ffb100'],
+            //         [800, '#ffc825'],
+            //         [900, '#ffd473'],
+            //         [1000, '#ffe29f'],
+            //         [1100, '#fff6e2']]
+            //     },
+            //     'circle-radius': {
+            //       'base': 5,
+            //       'stops': [[12, 5], [22, 180]]
+            //     },
+            //     'circle-opacity': {
+            //       'property': 'confidence',
+            //       'type': 'interval',
+            //       'stops': [
+            //         [0, 0.05],
+            //         [20, 0.2],
+            //         [40, 0.4],
+            //         [60, 0.6],
+            //         [80, 0.8],
+            //         [100, 1.0]]
+            //     }
+            //   }
+            // }, 'roads');
             // Listen for the `geocoder.input` event that is triggered when a user
             // makes a selection and add a symbol that matches the result.
             geocoder.on('result', function (ev) {
@@ -3010,13 +3032,13 @@ var MapboxComponent = (function () {
             'right': [-markerRadius, (markerHeight - markerRadius) * -1]
         };
         // Change the cursor to a pointer when the mouse is over the places layer.
-        map.on('mouseenter', 'index-layer-bushfires', function () {
-            map.getCanvas().style.cursor = 'pointer';
-        });
+        // map.on('mouseenter', 'index-layer-bushfires', function () {
+        //   map.getCanvas().style.cursor = 'pointer';
+        // });
         // Change it back to a pointer when it leaves.
-        map.on('mouseleave', 'index-layer-bushfires', function () {
-            map.getCanvas().style.cursor = '';
-        });
+        // map.on('mouseleave', 'index-layer-bushfires', function () {
+        //   map.getCanvas().style.cursor = '';
+        // });
         // Change the cursor to a pointer when the mouse is over the places layer.
         // map.on('mouseenter', 'index-layer-hotspots', function () {
         //   map.getCanvas().style.cursor = 'pointer';
@@ -3025,36 +3047,40 @@ var MapboxComponent = (function () {
         // map.on('mouseleave', 'index-layer-hotspots', function () {
         //   map.getCanvas().style.cursor = '';
         // });
-        map.on('click', 'index-layer-bushfires', function (e) {
-            // map.flyTo({center: e.features[0].geometry.coordinates});
-            //
-            // this.lat = e.features[0].geometry.coordinates.lat;
-            // this.lng = e.features[0].geometry.coordinates.lng;
-            new __WEBPACK_IMPORTED_MODULE_8_mapbox_gl_dist_mapbox_gl_js__["Popup"]({ offset: popupOffsets })
-                .setLngLat(e.features[0].geometry.coordinates)
-                .setHTML('<strong>Incident</strong><br/>'
-                + 'Type: ' + e.features[0].properties.incidentType + '<br/>'
-                + 'Location: ' + e.features[0].properties.incidentLocation + '<br/>'
-                + 'Agency: ' + e.features[0].properties.agency + '<br/>'
-                + 'Status: ' + e.features[0].properties.originStatus + '<br/>'
-                + 'Started:' + e.features[0].properties.originDateTime + '<br/>'
-                + 'Updated:' + e.features[0].properties.lastUpdateDateTime + '<br/>'
-                + 'Size:' + e.features[0].properties.incidentSize + '<br/>').addTo(map);
-        });
-        map.on('click', 'index-layer-hotspots', function (e) {
-            // map.flyTo({center: e.features[0].geometry.coordinates});
-            // this.lat = e.features[0].geometry.coordinates.lat;
-            // this.lng = e.features[0].geometry.coordinates.lng;
-            new __WEBPACK_IMPORTED_MODULE_8_mapbox_gl_dist_mapbox_gl_js__["Popup"]({ offset: popupOffsets })
-                .setLngLat(e.features[0].geometry.coordinates)
-                .setHTML('<strong>Thermal Anomaly</strong><br/>'
-                + 'Temp: ' + (e.features[0].properties.temp_kelvin - 273.15).toFixed(1) + '&deg;C<br/>'
-                + 'Satellite: ' + e.features[0].properties.satellite + '<br/>'
-                + 'Sensor: ' + e.features[0].properties.sensor + '<br/>'
-                + 'Confidence: ' + e.features[0].properties.confidence + '<br/>'
-                + 'Age: ' + e.features[0].properties.age_hours + ' hrs')
-                .addTo(map);
-        });
+        // map.on('click', 'index-layer-bushfires', function (e) {
+        //   // map.flyTo({center: e.features[0].geometry.coordinates});
+        //   //
+        //   // this.lat = e.features[0].geometry.coordinates.lat;
+        //   // this.lng = e.features[0].geometry.coordinates.lng;
+        // 
+        //   new Popup({offset: popupOffsets})
+        //     .setLngLat(e.features[0].geometry.coordinates)
+        //     .setHTML('<strong>Incident</strong><br/>'
+        //       + 'Type: ' + e.features[0].properties.incidentType + '<br/>'
+        //       + 'Location: ' + e.features[0].properties.incidentLocation + '<br/>'
+        //       + 'Agency: ' + e.features[0].properties.agency + '<br/>'
+        //       + 'Status: ' + e.features[0].properties.originStatus + '<br/>'
+        //       + 'Started:' + e.features[0].properties.originDateTime + '<br/>'
+        //       + 'Updated:' + e.features[0].properties.lastUpdateDateTime + '<br/>'
+        //       + 'Size:' + e.features[0].properties.incidentSize + '<br/>'
+        //     ).addTo(map);
+        // });
+        // map.on('click', 'index-layer-hotspots', function (e) {
+        //   // map.flyTo({center: e.features[0].geometry.coordinates});
+        // 
+        //   // this.lat = e.features[0].geometry.coordinates.lat;
+        //   // this.lng = e.features[0].geometry.coordinates.lng;
+        // 
+        //   new Popup({offset: popupOffsets})
+        //     .setLngLat(e.features[0].geometry.coordinates)
+        //     .setHTML('<strong>Thermal Anomaly</strong><br/>'
+        //       + 'Temp: ' + (e.features[0].properties.temp_kelvin - 273.15).toFixed(1) + '&deg;C<br/>'
+        //       + 'Satellite: ' + e.features[0].properties.satellite + '<br/>'
+        //       + 'Sensor: ' + e.features[0].properties.sensor + '<br/>'
+        //       + 'Confidence: ' + e.features[0].properties.confidence + '<br/>'
+        //       + 'Age: ' + e.features[0].properties.age_hours + ' hrs')
+        //     .addTo(map);
+        // });
         map.on('click', 'draggable-point', function (e) {
             map.flyTo({ center: e.features[0].geometry.coordinates });
         });
@@ -3362,8 +3388,10 @@ var MapboxComponent = (function () {
     MapboxComponent.prototype.getActiveModels = function () {
         var active = [];
         for (var i = 0; i < this.models.length; i++) {
+            this.map.setLayoutProperty(this.models[i].abbr, 'visibility', 'none');
             if (this.models[i].enabled) {
                 active.push(this.models[i].abbr);
+                this.map.setLayoutProperty(this.models[i].abbr, 'visibility', 'visible');
             }
         }
         return active;
