@@ -308,37 +308,141 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         'source': {
           'type': 'raster',
           'tiles': [
-            'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=raster&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-01'],
+            'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-01'],
           'tileSize': 256
         },
-        'paint': {}
+        'paint': {
+            'opacity': 0.2
+        }
       }, 'water');
-
+      
+      map.addLayer({
+        'id': 'live_fuel',
+        'type': 'raster',
+        'source': {
+          'type': 'raster',
+          'tiles': [
+            'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-02'],
+          'tileSize': 256
+        },
+        'paint': {
+            'raster-opacity': 0.2
+        }
+      }, 'water');
+      
       map.addLayer({
         'id': 'awra',
         'type': 'raster',
         'source': {
           'type': 'raster',
           'tiles': [
-            'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=raster&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-01'],
+            'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-03'],
           'tileSize': 256
         },
-        'paint': {}
+        'paint': {
+            'raster-opacity': 0.2
+        }
+      }, 'water');
+
+      map.addLayer({
+        'id': 'chen',
+        'type': 'raster',
+        'source': {
+          'type': 'raster',
+          'tiles': [
+            'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-04'],
+          'tileSize': 256
+        },
+        'paint': {
+            'raster-opacity': 0.2
+        }
       }, 'water');
       
-      // map.addLayer({
-      //     'id': 'DEM1sec', 
-      //     'type': 'raster',
-      //     'source': {
-      //         'type':'raster',
-      //         'tiles': [
-      //             'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:Image&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2fpng'
-      //         ],
-      //         'tileSize': 256
-      //     },
-      //     'paint': {}
-      //   },
-      //   'water');
+      map.addLayer({
+        'id': 'boer',
+        'type': 'raster',
+        'source': {
+          'type': 'raster',
+          'tiles': [
+            'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-05'],
+          'tileSize': 256
+        },
+        'paint': {
+            'raster-opacity': 0.2
+        }
+      }, 'water');
+      
+      map.addLayer({
+        'id': 'matthews',
+        'type': 'raster',
+        'source': {
+          'type': 'raster',
+          'tiles': [
+            'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-06'],
+          'tileSize': 256
+        },
+        'paint': {
+            'raster-opacity': 0.2
+        }
+      }, 'water');
+      
+      map.addLayer({
+        'id': 'kbdi',
+        'type': 'raster',
+        'source': {
+          'type': 'raster',
+          'tiles': [
+            'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:KBDI_SFC&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng'],
+          'tileSize': 256
+        },
+        'paint': {
+            'raster-opacity': 0.2
+        }
+      }, 'water');
+      
+      map.addLayer({
+        'id': 'ffdi',
+        'type': 'raster',
+        'source': {
+          'type': 'raster',
+          'tiles': [
+            'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:FFDI_SFC&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng'],
+          'tileSize': 256
+        },
+        'paint': {
+            'raster-opacity': 0.2
+        }
+      }, 'water');
+      
+      map.addLayer({
+        'id': 'gfdi',
+        'type': 'raster',
+        'source': {
+          'type': 'raster',
+          'tiles': [
+            'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:GFDI_SFC&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng'],
+          'tileSize': 256
+        },
+        'paint': {
+            'raster-opacity': 0.2
+        }
+      }, 'water');
+      
+      altmap.addLayer({
+          'id': 'DEM1sec', 
+          'type': 'raster',
+          'source': {
+              'type':'raster',
+              'tiles': [
+                  'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:Image&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2fpng'
+              ],
+              'tileSize': 256
+          },
+          'paint': {
+              'raster-opacity': 1.0
+          }
+        },
+        'water');
 
       // map.addSource('cfaregion', {
       // 	'type': 'vector',
@@ -479,14 +583,14 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     };
 
     // Change the cursor to a pointer when the mouse is over the places layer.
-    // map.on('mouseenter', 'index-layer-bushfires', function () {
-    //   map.getCanvas().style.cursor = 'pointer';
-    // });
+    map.on('mouseenter', 'index-layer-bushfires', function () {
+      map.getCanvas().style.cursor = 'pointer';
+    });
 
     // Change it back to a pointer when it leaves.
-    // map.on('mouseleave', 'index-layer-bushfires', function () {
-    //   map.getCanvas().style.cursor = '';
-    // });
+    map.on('mouseleave', 'index-layer-bushfires', function () {
+      map.getCanvas().style.cursor = '';
+    });
 
     // Change the cursor to a pointer when the mouse is over the places layer.
     // map.on('mouseenter', 'index-layer-hotspots', function () {
@@ -498,24 +602,24 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     //   map.getCanvas().style.cursor = '';
     // });
 
-    // map.on('click', 'index-layer-bushfires', function (e) {
-    //   // map.flyTo({center: e.features[0].geometry.coordinates});
-    //   //
-    //   // this.lat = e.features[0].geometry.coordinates.lat;
-    //   // this.lng = e.features[0].geometry.coordinates.lng;
-    // 
-    //   new Popup({offset: popupOffsets})
-    //     .setLngLat(e.features[0].geometry.coordinates)
-    //     .setHTML('<strong>Incident</strong><br/>'
-    //       + 'Type: ' + e.features[0].properties.incidentType + '<br/>'
-    //       + 'Location: ' + e.features[0].properties.incidentLocation + '<br/>'
-    //       + 'Agency: ' + e.features[0].properties.agency + '<br/>'
-    //       + 'Status: ' + e.features[0].properties.originStatus + '<br/>'
-    //       + 'Started:' + e.features[0].properties.originDateTime + '<br/>'
-    //       + 'Updated:' + e.features[0].properties.lastUpdateDateTime + '<br/>'
-    //       + 'Size:' + e.features[0].properties.incidentSize + '<br/>'
-    //     ).addTo(map);
-    // });
+    map.on('click', 'index-layer-bushfires', function (e) {
+      // map.flyTo({center: e.features[0].geometry.coordinates});
+      //
+      // this.lat = e.features[0].geometry.coordinates.lat;
+      // this.lng = e.features[0].geometry.coordinates.lng;
+    
+      new Popup({offset: popupOffsets})
+        .setLngLat(e.features[0].geometry.coordinates)
+        .setHTML('<strong>Incident</strong><br/>'
+          + 'Type: ' + e.features[0].properties.incidentType + '<br/>'
+          + 'Location: ' + e.features[0].properties.incidentLocation + '<br/>'
+          + 'Agency: ' + e.features[0].properties.agency + '<br/>'
+          + 'Status: ' + e.features[0].properties.originStatus + '<br/>'
+          + 'Started:' + e.features[0].properties.originDateTime + '<br/>'
+          + 'Updated:' + e.features[0].properties.lastUpdateDateTime + '<br/>'
+          + 'Size:' + e.features[0].properties.incidentSize + '<br/>'
+        ).addTo(map);
+    });
 
 
     // map.on('click', 'index-layer-hotspots', function (e) {
@@ -894,12 +998,19 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   private getActiveModels() {
     const active = [];
     for (let i = 0; i < this.models.length; i++) {
-      this.map.setLayoutProperty(this.models[i].abbr, 'visibility', 'none');
-      if (this.models[i].enabled) {
-        active.push(this.models[i].abbr);
-        this.map.setLayoutProperty(this.models[i].abbr, 'visibility', 'visible');
-      }
+        if (this.models[i].enabled) {
+            active.push(this.models[i].abbr);
+            this.map.setLayoutProperty(this.models[i].abbr, 'visibility', 'visible');
+        } else {
+            this.map.setLayoutProperty(this.models[i].abbr, 'visibility', 'none');
+        }
     }
+    for (let i = 0; i < this.models.length; i++) {
+        if (this.models[i].enabled) {
+            this.map.setPaintProperty(this.models[i].abbr, 'raster-opacity', (1/active.length));
+        }
+    }
+    
     return active;
   }
 
