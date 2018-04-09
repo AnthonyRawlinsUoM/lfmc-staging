@@ -104,8 +104,8 @@ body {
 #myAltmapbox {
   z-index: 210;
   width: 100vw;
-  opacity: 0.75;
-  background-blend-mode: screen;
+  opacity: 1.0;
+  /*background-blend-mode: screen;*/
   left: 0;
   right: 0;
 }

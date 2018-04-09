@@ -1,4 +1,4 @@
-all: build
+all: pull
 
 build:
 	npm run-script build
@@ -6,6 +6,9 @@ build:
 
 install:
 	@docker push anthonyrawlinsuom/lfmc-staging
+	
+pull:
+	@docker pull anthonyrawlinsuom/lfmc-staging
 
 clean:
-	@docker rmi anthonyrawlinsuom/lfmc-staging
+	@docker rmi --force anthonyrawlinsuom/lfmc-staging
