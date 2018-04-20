@@ -14,15 +14,15 @@ export class DatasourcesComponent implements OnInit {
   @Input() model:any = {};
 
 	constructor(private sourceserver: ApiService) {
-    this.model = {"name":"Boer"};
+        this.model = {"abbr":"boer"};
 	}
 
 	ngOnInit() {
-		this.getDatasources(this.model.name);
+		this.getDatasources(this.model.abbr);
 	}
 
-  getDatasources(name:string) {
-    return this.sourceserver.getModelDatasources(name).subscribe(m => {
+  getDatasources(abbr:string) {
+    return this.sourceserver.callAPI(`/model/${abbr}/datasources`).subscribe(m => {
       console.log(m);
       this.datasources = m;
     });

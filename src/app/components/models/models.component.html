@@ -7,7 +7,7 @@
 <!-- Models -->
 <div class="ui vertical stripe container">
   <sui-accordion class="ui bottom attached styled fluid accordion">
-    <sui-accordion-panel *ngFor="let m of models" [isOpen]="true">
+    <sui-accordion-panel *ngFor="let m of models" [isOpen]="false">
       <div title>
         <i class="large dropdown icon"></i> <span class="ui header">{{m.name}}</span>
       </div>
@@ -88,7 +88,7 @@
                   <div class="ui gray attached segment">
                     <div class="ui relaxed divided list">
                       <div class="item" *ngFor="let ft of m.description.fuel.types">
-                        <div class="ui green horizontal label"> Fuel </div> {{ft}}
+                        <div class="ui green horizontal label"> Fuel </div> {{m.description.fuel}}
                       </div>
                     </div>
                   </div>
