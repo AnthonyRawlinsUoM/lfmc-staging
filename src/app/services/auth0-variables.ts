@@ -7,5 +7,5 @@ interface AuthConfig {
 export const AUTH_CONFIG: AuthConfig = {
   domain: 'bnhcrclfmc.au.auth0.com',
   clientID: '5pP2Zg470UaUpF44jIdX6Peo2OWuWElX',
-  callbackURL: 'http://localhost:4200/callback'
+  callbackURL: 'http://webfire.mobility.unimelb.net.au:3000/callback'
 };

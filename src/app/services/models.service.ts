@@ -13,7 +13,7 @@ export class ModelsService {
   constructor(private http: Http) {
   }
 
-  private modelsUrl = 'http://localhost:1880/api/models';
+  private modelsUrl = 'http://webfire.mobility.unimelb.net.au:1880/api/models';
     // private modelsUrl = 'http://api:8002/v1/models';
 
   get(id: number): Observable<Model> {

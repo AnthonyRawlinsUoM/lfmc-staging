@@ -6,8 +6,9 @@
       <div *ngFor="let s of datasources" class="item">
         <i class="large cube middle aligned blue icon"></i>
         <div class="content">
-          <a href="" class="header">{{s.name}}</a>
+          <a href="{{s.provider_org}}" class="header">{{s.abbr}}</a>
           <!-- <div class="description">Updated {{s.last_updated | date | timestamp }} x mins ago</div> -->
+          <div class="description heading">{{s.desc}}</div>
           <div class="description">Updates every {{s.frequency.value + ' ' + s.frequency.units}}</div>
         </div>
       </div>

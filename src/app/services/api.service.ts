@@ -12,13 +12,13 @@ export class ApiService {
   constructor(private http: Http) {
   }
 
-  private apiUrl = 'http://localhost:1880/api';
+  private apiUrl = 'http://webfire.mobility.unimelb.net.au:1880/api';
   // private apiUrl = 'http://api:8002/v1';
 
   // Deprecated
-  getModelDatasources(name: string): Observable<any> {
+  getModelDatasources(abbr: string): Observable<any> {
     return this.http
-      .get(`${this.apiUrl}/model/${name}/datasources`, {headers: this.getHeaders()})
+      .get(`${this.apiUrl}/model/${abbr}/datasources`, {headers: this.getHeaders()})
       .map((resp: Response) => resp.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }

@@ -226,6 +226,8 @@ export class MapboxComponent implements OnInit, AfterViewInit {
 
     const layers: any = [];
     const dragPointGeoJSON = this.dragPointGeoJSON;
+    
+    
 
     map.on('load', function () {
 
@@ -308,7 +310,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         'source': {
           'type': 'raster',
           'tiles': [
-            'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-01'],
+            'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2018-01-01'],
           'tileSize': 256
         },
         'paint': {
@@ -322,7 +324,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         'source': {
           'type': 'raster',
           'tiles': [
-            'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-02'],
+            'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2018-01-02'],
           'tileSize': 256
         },
         'paint': {
@@ -336,7 +338,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         'source': {
           'type': 'raster',
           'tiles': [
-            'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-03'],
+            'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-03'],
           'tileSize': 256
         },
         'paint': {
@@ -350,7 +352,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         'source': {
           'type': 'raster',
           'tiles': [
-            'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-04'],
+            'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-04'],
           'tileSize': 256
         },
         'paint': {
@@ -364,7 +366,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         'source': {
           'type': 'raster',
           'tiles': [
-            'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-05'],
+            'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-05'],
           'tileSize': 256
         },
         'paint': {
@@ -378,7 +380,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         'source': {
           'type': 'raster',
           'tiles': [
-            'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-06'],
+            'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-06'],
           'tileSize': 256
         },
         'paint': {
@@ -392,7 +394,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         'source': {
           'type': 'raster',
           'tiles': [
-            'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:KBDI_SFC&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng'],
+            'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:KBDI_SFC&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng'],
           'tileSize': 256
         },
         'paint': {
@@ -406,7 +408,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         'source': {
           'type': 'raster',
           'tiles': [
-            'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:FFDI_SFC&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng'],
+            'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:FFDI_SFC&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng'],
           'tileSize': 256
         },
         'paint': {
@@ -420,7 +422,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         'source': {
           'type': 'raster',
           'tiles': [
-            'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:GFDI_SFC&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng'],
+            'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:GFDI_SFC&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng'],
           'tileSize': 256
         },
         'paint': {
@@ -434,7 +436,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
           'source': {
               'type':'raster',
               'tiles': [
-                  'http://localhost:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:Image&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2fpng'
+                  'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:Image&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2fpng'
               ],
               'tileSize': 256
           },
