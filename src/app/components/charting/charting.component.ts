@@ -361,7 +361,7 @@ export class ChartingComponent implements OnInit {
 
   ngOnInit() {
     this.setColorScheme('viridis');
-    this.getFuelData();
+    this.getFuelDataAtPointForModels(145, -36, ['dead_fuel']);
   }
 
   setColorScheme(name) {

@@ -8,7 +8,7 @@ COPY package.json .
 COPY package-lock.json .
 RUN npm i -g npm
 RUN npm install --no-optional
-
+ADD VERSION .
 COPY . .
 
 # Development Mode

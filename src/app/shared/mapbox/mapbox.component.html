@@ -90,8 +90,7 @@
 					<a class="item" suiDatepicker [pickerMinDate]="minEndDate" [pickerMaxDate]="maxEndDate"  [pickerMode]="'date'" [(ngModel)]="finish" (ngModelChange)="refreshModelData()"><i class="calendar icon"></i> To: {{finish | date:'dd/MM/y'}}</a>
 					<a class="item" (click)="makeToday()"><i class="clock icon"></i> Today</a>
 				</div>
-				<div class="ui container">
-					<h3 class="ui center aligned header">LFMC (%) vs. Time</h3></div>
+				
 				<sui-sidebar-container class="ui bottom attached">
 
 
@@ -117,7 +116,10 @@
 						</div>
 					</sui-sidebar>
 					<sui-sidebar-sibling [isDimmedWhenVisible]="false" class="inverted">
-						<app-charting id="chart" [lat]="lat" [lng]="lng" [start]="start | date:'yMMdd'" [finish]="finish | date:'yMMdd'"></app-charting>
+                        <div class="ui container">
+        					<h3 class="ui center aligned header">LFMC (%) vs. Time</h3>
+                        </div>
+                        <app-charting id="chart" [lat]="lat" [lng]="lng" [start]="start | date:'yMMdd'" [finish]="finish | date:'yMMdd'"></app-charting>
 					</sui-sidebar-sibling>
 				</sui-sidebar-container>
 			</div>

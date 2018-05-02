@@ -109,6 +109,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   isCopied = false;
   isCursorOverPoint = false;
   isDragging = false;
+  dimmer=false;
 
   map: Map;
   altmap: Map;
@@ -976,7 +977,9 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   }
 
   refreshModelData() {
+    this.dimmer = true;
     this.chartComponent.getFuelDataAtPointForModels(this.lng, this.lat, this.getActiveModels());
+    this.dimmer = false;
   }
 
 
