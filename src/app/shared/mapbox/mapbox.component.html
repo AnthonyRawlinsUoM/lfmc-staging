@@ -1,192 +1,206 @@
-<div class="ui mapbox" (mouseup)="upSplitView($event)" (mousedown)="downSplitView($event)" (click)="onUp($event)" (drag)="dragSplitView($event)" (mousemove)="dragSplitView($event)">
-	<div class="viewport" id="backViewport">
-		<div class="viewframe">
-			<div id="mymapbox" class="ui mapbox mapboxgl-map"></div>
-		</div>
-	</div>
-	<div class="viewport" id="frontViewport">
-		<div class="viewframe">
-			<div id="myAltmapbox" class="ui mapbox mapboxgl-map"></div>
-		</div>
-	</div>
-	<div id="splitViewHandle" class="viewDividerhandle" (mouseenter)="enterSplitViewHandle($event)" (click)="clickSplitView($event)" (mouseleave)="leaveSplitViewHandle($event)"><i class="ui large white expand icon"></i></div>
-	<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
-	<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>
-	<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css' type='text/css' />
+<div class="ui mapbox" (mouseup)="upSplitView($event)" (mousedown)="downSplitView($event)" (click)="onUp($event)"
+     (drag)="dragSplitView($event)" (mousemove)="dragSplitView($event)">
+  <div class="viewport" id="backViewport">
+    <div class="viewframe">
+      <div id="mymapbox" class="ui mapbox mapboxgl-map"></div>
+    </div>
+  </div>
+  <div class="viewport" id="frontViewport">
+    <div class="viewframe">
+      <div id="myAltmapbox" class="ui mapbox mapboxgl-map"></div>
+    </div>
+  </div>
+  <div id="splitViewHandle" class="viewDividerhandle" (mouseenter)="enterSplitViewHandle($event)"
+       (click)="clickSplitView($event)" (mouseleave)="leaveSplitViewHandle($event)"><i
+    class="ui large white expand icon"></i></div>
+  <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>
+  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css'
+        type='text/css'/>
 
 
-	<div id="myoverlay" class='map-overlay'>
-		<div class="ui mini inverted labeled input">
-			<div class="ui mini inverted black label">Longitude: </div>
-			<input class="inverted" [(ngModel)]="cursorLng">
-		</div>
-		<div class="ui mini inverted labeled input">
-			<div class="ui mini inverted black label">Latitude: </div>
-			<input class="inverted" [(ngModel)]="cursorLat">
-		</div>
-
-		<div class="map-overlay-inner">
-			<pre id='coordinates' class='coordinates'></pre>
-		</div>
+  <div id="myoverlay" class='map-overlay'>
+    <div [suiCollapse]="!ingesting" id='ingest-area' class='ingest-area top attached map-overlay-inner dark'>
+      <div class="ui top attached fluid tiny inverted menu">
 
 
-		<div [suiCollapse]="!ingesting" id='ingest-area' class='ingest-area top attached map-overlay-inner dark'>
-			<div class="ui fluid tiny inverted menu">
-
-
-				<a class="item" (click)="ingesting = !ingesting; isCopied=false;">
+        <a class="item" (click)="ingesting = !ingesting; isCopied=false;">
           <i class="red close icon"></i>
         </a>
-				<a class="item" (click)="calculateArea()">
-        <i class="white calculator icon"></i> Calculate Area
-      </a>
+        <a class="item">
+          SPACE
+        </a>
+        <a class="item" (click)="calculateArea()" data-content="Calculate Area">
+          <i class="white calculator icon"></i> Area
+        </a>
 
-				<a class="item" (click)="importGeoJSON()">
-      <i class="white file icon"></i> Import GeoJSON
-    </a>
-				<a class="item" (click)="saveBoundary()">
-      <i class="white group object icon"></i>Save GeoJSON
-    </a>
+        <a class="item" (click)="importGeoJSON()" data-content="Import GeoJSON">
+          <i class="white file icon"></i> Import
+        </a>
+        <a class="item" (click)="saveBoundary()" data-content="Save GeoJSON">
+          <i class="white group object icon"></i> Save
+        </a>
 
-				<a class="item" [ngxClipboard]="geojsonarea" (cbOnSuccess)="isCopied = true">
-			<i class="icons">
-				<i class="copy icon"></i>
-				<i *ngIf="isCopied" class="green checkmark icon"></i>
-			</i>
-		</a>
+        <a class="item" [ngxClipboard]="geojsonarea" (cbOnSuccess)="isCopied = true">
+          <i class="icons">
+            <i class="copy icon"></i>
+            <i *ngIf="isCopied" class="green checkmark icon"></i>
+          </i>
+        </a>
 
-		<a class="item" (click)="queryLFMCUsingGeoJSON()">
-			<i class="map icon"></i> Use as query (Under development!)
-		</a>
+        <a class="item" (click)="refreshModelData()">
+          <i class="search icon"></i> Go
+        </a>
 
-			</div>
-			<div class="ui form">
-				<div class="field json">
-					<h3 class="ui header">GeoJSON (Copy/Paste)</h3>
-					<pre id='calculated-area' class='calculated-area'></pre>
-					<textarea [(ngModel)]="ingestGeoJson" #geojsonarea></textarea>
-				</div>
+      </div>
+      <div class="ui form">
+        <div class="field json">
+          <!--<h3 class="ui header">GeoJSON (Copy/Paste)</h3>-->
+          <pre id='calculated-area' class='calculated-area'></pre>
+          <textarea [(ngModel)]="ingestGeoJson" #geojsonarea></textarea>
+        </div>
 
-			</div>
-		</div>
+      </div>
+    </div>
 
-		<div [suiCollapse]="collapse" class="attached">
-			<div class="map-overlay-inner dark">
-				<div class="ui fluid tiny inverted menu">
-					<a class="item" (click)="collapse = !collapse">
+    <div [suiCollapse]="collapse" class="attached">
+      <div class="map-overlay-inner dark">
+        <div class="ui top attached fluid tiny inverted menu">
+          <a class="item" (click)="collapse = !collapse">
             <i class="red close icon"></i>
           </a>
-					<a class="item" (click)="sidebar.toggle();">
-                    <i class="sidebar icon"></i> Models
-                </a>
 
-					<a class="item" (click)="toggleTimeBrushing()">
-						<div *ngIf="timebrush"><i class="white clock icon"></i> Show Timebrush</div>
-						<div *ngIf="!timebrush"><i class="white close icon"></i> Hide Timebrush</div>
-					</a>
+          <a class="item">
+            TIME
+          </a>
 
-					<a class="item" suiDatepicker [pickerMinDate]="minStartDate" [pickerMaxDate]="maxStartDate"  [pickerMode]="'date'" [(ngModel)]="start" (ngModelChange)="refreshModelData()"><i class="calendar icon"></i> From: {{start | date:'dd/MM/y'}}</a>
+          <a class="item" (click)="sidebar.toggle();">
+            <i class="sidebar icon"></i> Models
+          </a>
 
-					<a class="item" suiDatepicker [pickerMinDate]="minEndDate" [pickerMaxDate]="maxEndDate"  [pickerMode]="'date'" [(ngModel)]="finish" (ngModelChange)="refreshModelData()"><i class="calendar icon"></i> To: {{finish | date:'dd/MM/y'}}</a>
-					<a class="item" (click)="makeToday()"><i class="clock icon"></i> Today</a>
-				</div>
-				
-				<sui-sidebar-container class="ui bottom attached">
+          <a class="item" (click)="toggleTimeBrushing()" data-content="Timebrushing">
+            <div *ngIf="timebrush"><i class="white paint brush icon"></i> Timebrush OFF</div>
+            <div *ngIf="!timebrush"><i class="white close icon"></i> Timebrushing ON</div>
+          </a>
 
+          <a class="item" suiDatepicker [pickerMinDate]="minStartDate" [pickerMaxDate]="maxStartDate"
+             [pickerMode]="'date'" [(ngModel)]="start"><i
+            class="calendar icon"></i> From: {{start | date:'dd/MM/y'}}</a>
 
-					<sui-sidebar class="inverted vertical" #sidebar>
-						<div class="ui fluid inverted menu">
-							<a class="item" (click)="exclusiveModelMode = !exclusiveModelMode">
-								<div *ngIf="!exclusiveModelMode">
-									<i class="inverted toggle on icon"></i> Compare
-								</div>
-								<div *ngIf="exclusiveModelMode">
-									<i class="inverted toggle off icon"></i> Exclusive
-								</div>
-							</a>
+          <a class="item" suiDatepicker [pickerMinDate]="minEndDate" [pickerMaxDate]="maxEndDate" [pickerMode]="'date'"
+             [(ngModel)]="finish"><i class="calendar icon"></i> To: {{finish |
+            date:'dd/MM/y'}}</a>
+          <a class="item" (click)="weekView()" data-content="This past week"><i class="clock icon"></i> This week</a>
 
-							<a *ngIf="allModels" class="item" (click)="allModelsOff()"><i class="check circle outline icon"></i></a>
-							<a *ngIf="!allModels" class="item" (click)="allModelsOn()"><i class="radio icon"></i></a>
-						</div>
-						<div class="ui fluid vertical inverted menu">
-							<a *ngFor="let m of models" (click)="toggleModel(m.abbr)" class="ui inverted item">
-								<i *ngIf="m.enabled" class="green toggle on icon"></i>
-								<i *ngIf="!m.enabled" class="toggle off icon"></i> {{m.name}}
-							</a>
-						</div>
-					</sui-sidebar>
-					<sui-sidebar-sibling [isDimmedWhenVisible]="false" class="inverted">
-                        <div class="ui container">
-        					<h3 class="ui center aligned header">LFMC (%) vs. Time</h3>
-                        </div>
-                        <app-charting id="chart" [lat]="lat" [lng]="lng" [start]="start | date:'yMMdd'" [finish]="finish | date:'yMMdd'"></app-charting>
-					</sui-sidebar-sibling>
-				</sui-sidebar-container>
-			</div>
-		</div>
+          <a class="item" (click)="mpg()" data-content="Get MP4">
+            <i class="file video icon"></i> Animation
+          </a>
+
+          <a class="item" (click)="netCDF()" data-content="NetCDF Export">
+            <i class="archive icon"></i> DataSet
+          </a>
+
+          <a class="item" (click)="pdf()" data-content="PDF">
+            <i class="file pdf icon"></i> PDF
+          </a>
+
+          <a class="item" (click)="refreshModelData()" data-content="Go">
+            <i class="search icon"></i> Go
+          </a>
 
 
-		<div [suiCollapse]="!splitview" class="attached">
-			<div class="ui fluid tiny inverted menu">
-				<a class="item" (click)="toggleSplitView()">
+
+        </div>
+
+        <sui-sidebar-container class="ui bottom attached">
+
+
+          <sui-sidebar class="inverted vertical" #sidebar>
+            <div class="ui fluid inverted menu">
+              <a class="item" (click)="exclusiveModelMode = !exclusiveModelMode">
+                <div *ngIf="!exclusiveModelMode">
+                  <i class="inverted toggle on icon"></i> Compare
+                </div>
+                <div *ngIf="exclusiveModelMode">
+                  <i class="inverted toggle off icon"></i> Exclusive
+                </div>
+              </a>
+
+              <a *ngIf="allModels" class="item" (click)="allModelsOff()"><i class="check circle outline icon"></i> All models</a>
+              <a *ngIf="!allModels" class="item" (click)="allModelsOn()"><i class="radio icon"></i></a>
+            </div>
+            <div class="ui fluid vertical inverted menu">
+              <a *ngFor="let m of models" (click)="toggleModel(m.abbr)" class="ui inverted item">
+                <i *ngIf="m.enabled" class="green toggle on icon"></i>
+                <i *ngIf="!m.enabled" class="toggle off icon"></i> {{m.name}}
+              </a>
+            </div>
+          </sui-sidebar>
+          <sui-sidebar-sibling [isDimmedWhenVisible]="false" class="inverted">
+            <!--<div class="ui container">-->
+              <!--<h3 class="ui center aligned header">LFMC (%) vs. Time</h3>-->
+            <!--</div>-->
+            <app-charting id="chart" [lat]="lat" [lng]="lng" [start]="start | date:'yMMdd'"
+                          [finish]="finish | date:'yMMdd'"></app-charting>
+          </sui-sidebar-sibling>
+        </sui-sidebar-container>
+      </div>
+    </div>
+
+
+    <div [suiCollapse]="!splitview" class="attached">
+      <div class="ui fluid tiny inverted menu">
+        <a class="item" (click)="toggleSplitView()">
           <i class="red close icon"></i>
         </a>
-				<a class="item" (click)="setSatelliteStyle()">
-              <i class="green map icon"></i> Satellite
-            </a>
-				<a class="item" (click)="setDatavizStyle()">
-              <i class="green map icon"></i> DataViz
-            </a>
-				<a class="item" (click)="setDefaultStyle()">
-              <i class="green map icon"></i> Outdoors
-            </a>
-			</div>
-		</div>
+        <a class="item" (click)="setSatelliteStyle()" data-content="Satellite">
+          <i class="green map icon"></i>
+        </a>
+        <a class="item" (click)="setDatavizStyle()" data-content="DataViz">
+          <i class="green map icon"></i>
+        </a>
+        <a class="item" (click)="setDefaultStyle()" data-content="Outdoors">
+          <i class="green map icon"></i>
+        </a>
+      </div>
+    </div>
 
-		<div class="ui bottom attached inverted horizontal fluid menu">
-			<a class="item" (click)="showtoolBar = !showtoolBar">
-              <i class="sidebar icon"></i> Tools:
-          </a>
+    <div class="ui bottom attached inverted horizontal fluid menu">
+      <a class="item" (click)="showtoolBar = !showtoolBar">
+        <i class="sidebar icon"></i> Tools:
+      </a>
 
-			<a class="ui tiny purple icon item" (click)="collapse = !collapse">
-				<div *ngIf="collapse"><i class="white area chart icon"></i> Show Chart</div>
-				<div *ngIf="!collapse"><i class="white window minimize icon"></i> Hide Chart</div>
-			</a>
+      <a class="ui tiny purple icon item" (click)="collapse = !collapse"  data-content="Time-series Chart Panel">
+        <i class="white area chart icon"></i> TIME
+      </a>
 
-			<a class="ui tiny orange icon item" (click)="ingesting = !ingesting;saveBoundary();">
-				<div *ngIf="!ingesting"> <i class="white file icon"></i>Show GeoJSON</div>
-				<div *ngIf="ingesting"> <i class="white file icon"></i>Hide GeoJSON</div>
-			</a>
+      <a class="ui tiny orange icon item" (click)="ingesting = !ingesting;saveBoundary();" data-content="GeoJSON Panel">
+        <i class="white map icon"></i> SPACE
+      </a>
 
-			<a class="ui tiny blue icon item" (click)="toggleSplitView()">
-				<div *ngIf="splitview"><i class="white square outline icon"></i> Split View Off</div>
-				<div *ngIf="!splitview"><i class="white columns icon"></i> Split View On</div>
-			</a>
+      <a class="ui tiny blue icon item" (click)="toggleSplitView()"  data-content="Split View Panel">
+        <div *ngIf="splitview"><i class="white square outline icon"></i> Split</div>
+        <div *ngIf="!splitview"><i class="white columns icon"></i> Split</div>
+      </a>
 
-
-			<a class="ui tiny blue icon item" (click)="flyToDragPoint()">
-            <i class="white crosshairs icon"></i> Re-center
-          </a>
-			<a class="ui tiny blue icon item" (click)="repositionDragPoint()">
-            <i class="white search icon"></i> Inspect
-          </a>
-			<a class="ui tiny blue icon item" (click)="zoomToStateView()">
-            <i class="white world icon"></i> State View
-          </a>
-			<a class="item" (click)="undoView()">
-					<i class="angle left icon"></i> Back
-					<span *ngIf="undos.length > 0">({{undos.length}})</span>
-			</a>
-			<a class="item" (click)="redoView()">
-					<i class="angle right icon"></i> Forward
-					<span *ngIf="redos.length > 0">({{redos.length}})</span>
-			</a>
+      <!--<a class="ui tiny blue icon item" (click)="zoomToStateView()"><i class="white world icon"></i></a>-->
+      <!--<a class="item" (click)="undoView()">-->
+        <!--<i class="angle left icon"></i> Back-->
+        <!--<span *ngIf="undos.length > 0">({{undos.length}})</span>-->
+      <!--</a>-->
+      <!--<a class="item" (click)="redoView()">-->
+        <!--<i class="angle right icon"></i> Forward-->
+        <!--<span *ngIf="redos.length > 0">({{redos.length}})</span>-->
+      <!--</a>-->
 
 
-
-
-		</div>
-	</div>
+    </div>
+  </div>
 </div>
+<lfmc-video></lfmc-video>
+
+
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>
-<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css' type='text/css' />
+<link rel='stylesheet'
+      href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css'
+      type='text/css'/>

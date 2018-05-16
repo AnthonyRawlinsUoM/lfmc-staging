@@ -1,10 +1,13 @@
 // Dodgy require fix : things-to-do
+import {VideoComponent} from '../../components/video/video.component';
+
 declare let require: any;
 import {EventEmitter, Component, OnInit, Input, Output, ViewChild, AfterViewInit} from '@angular/core';
 import {Http} from '@angular/http';
 import {MapService} from '../../services/map.service';
-import {ApiService} from '../../services/api.service';
-import {ChartingComponent} from '../../components/charting/charting.component';
+import {TimeseriesService} from '../../services/timeseries.service';
+import {NosqlService} from '../../services/nosql.service';
+import {ChartingComponent, LFMCResponseType} from '../../components/charting/charting.component';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -27,9 +30,12 @@ const MapboxDraw = require('@mapbox/mapbox-gl-draw');
 const MapboxGeocoder = require('@mapbox/mapbox-gl-geocoder');
 const turf = require('@turf/turf');
 
-const epsg3112 = proj4.defs('EPSG:3112', '+proj=lcc +lat_1=-18 +lat_2=-36 +lat_0=0 +lon_0=134 +x_0=0 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs');
-const epsg3857 = proj4.defs('EPSG:3857', '+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext  +no_defs');
-const epsg4326 = proj4.defs('EPSG:4326', '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs ');
+const epsg3112 = proj4.defs('EPSG:3112',
+  '+proj=lcc +lat_1=-18 +lat_2=-36 +lat_0=0 +lon_0=134 +x_0=0 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs');
+const epsg3857 = proj4.defs('EPSG:3857',
+  '+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext  +no_defs');
+const epsg4326 = proj4.defs('EPSG:4326',
+  '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs ');
 
 @Component({
   selector: 'app-mapbox',
@@ -41,16 +47,15 @@ export class MapboxComponent implements OnInit, AfterViewInit {
 
   @ViewChild(ChartingComponent)
   private chartComponent: ChartingComponent;
+  @ViewChild(VideoComponent)
+  private videoComponent: VideoComponent;
 
   showtoolBar = false;
+  showVideo = false;
+
   models: any[] = [];
-
-  // finishm = moment().format('YYYYMMDD');
-  // startm = moment().subtract(30, "days").format('YYYYMMDD');
-
-  start: Date = moment().subtract(30, 'days').toDate()
-  finish: Date = moment().toDate();
-
+  start: Date = moment().subtract(31, 'days').toDate();
+  finish: Date = moment().subtract(1, 'days').toDate();
 
   months = [
     'January',
@@ -107,21 +112,20 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   exclusiveModelMode = false;
   ingestGeoJson: string;
   isCopied = false;
-  isCursorOverPoint = false;
+  // isCursorOverPoint = false;
   isDragging = false;
-  dimmer=false;
 
   map: Map;
   altmap: Map;
 
   // Set bounds to Australian Area
-  bounds = [108, -45, 155, -10];
+  // bounds = [108, -45, 155, -10];
   canvas: any;
   coordinates: any;
 
 
-  undos: any[] = [];
-  redos: any[] = [];
+  // undos: any[] = [];
+  // redos: any[] = [];
 
   dragPointGeoJSON: any = {
     'type': 'FeatureCollection',
@@ -134,13 +138,15 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     }]
   };
 
-  constructor(private mapService: MapService, private api: ApiService, private http: Http) {
+  constructor(private mapService: MapService,
+              private ns: NosqlService,
+              private tss: TimeseriesService,
+              private http: Http) {
     this.cursorMoveEW = new EventEmitter<number>();
     this.cursorMoveNS = new EventEmitter<number>();
     this.zoomReading = new EventEmitter<number>();
     this.bearingReading = new EventEmitter<number>();
-
-    this.api.callAPI('/models').subscribe(m => this.models = m);
+    this.ns.get('/models').subscribe(m => this.models = m);
   }
 
   ngAfterViewInit() {
@@ -153,7 +159,6 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     this.splitViewHandle = document.getElementById('splitViewHandle');
     this.aView = document.getElementById('backViewport');
     this.bView = document.getElementById('frontViewport');
-    // this.splitViewHandle.onousemove = this.dragSplitView.bind(this);
 
     this.map = new Map({
       container: 'mymapbox',
@@ -185,7 +190,6 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     const map = this.map;
 
     syncMove(map, altmap);
-
 
     this.geo = new GeolocateControl();
     this.nav = new NavigationControl();
@@ -225,17 +229,9 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     map.addControl(this.drw, 'top-right');
     map.addControl(this.scl, 'bottom-right');
 
-    const layers: any = [];
     const dragPointGeoJSON = this.dragPointGeoJSON;
-    
-    
 
     map.on('load', function () {
-
-      // Extension Layers
-      for (const l in layers) {
-        map.addLayer(l);
-      }
 
       map.addSource('single-point', {
         'type': 'geojson',
@@ -260,19 +256,19 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         'type': 'geojson',
         'data': dragPointGeoJSON
       });
-
-      map.addLayer({
-        'id': 'draggable-point',
-        'type': 'circle',
-        'source': 'draggable-point-source',
-        'paint': {
-          'circle-radius': 10,
-          'circle-color': '#3887be'
-          // ,
-          // 'stroke-width': 2,
-          // 'stroke-color': '#0264b5'
-        }
-      });
+      //
+      // map.addLayer({
+      //   'id': 'draggable-point',
+      //   'type': 'circle',
+      //   'source': 'draggable-point-source',
+      //   'paint': {
+      //     'circle-radius': 10,
+      //     'circle-color': '#3887be'
+      //     // ,
+      //     // 'stroke-width': 2,
+      //     // 'stroke-color': '#0264b5'
+      //   }
+      // });
 
       // 'https://geodata.state.nj.us/imagerywms/Natural2015?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&width=256&height=256&layers=Natural2015'
 
@@ -315,10 +311,10 @@ export class MapboxComponent implements OnInit, AfterViewInit {
           'tileSize': 256
         },
         'paint': {
-            'opacity': 0.2
+          'opacity': 0.2
         }
       }, 'water');
-      
+
       map.addLayer({
         'id': 'live_fuel',
         'type': 'raster',
@@ -329,10 +325,10 @@ export class MapboxComponent implements OnInit, AfterViewInit {
           'tileSize': 256
         },
         'paint': {
-            'raster-opacity': 0.2
+          'raster-opacity': 0.2
         }
       }, 'water');
-      
+
       map.addLayer({
         'id': 'awra',
         'type': 'raster',
@@ -343,7 +339,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
           'tileSize': 256
         },
         'paint': {
-            'raster-opacity': 0.2
+          'raster-opacity': 0.2
         }
       }, 'water');
 
@@ -357,10 +353,10 @@ export class MapboxComponent implements OnInit, AfterViewInit {
           'tileSize': 256
         },
         'paint': {
-            'raster-opacity': 0.2
+          'raster-opacity': 0.2
         }
       }, 'water');
-      
+
       map.addLayer({
         'id': 'boer',
         'type': 'raster',
@@ -371,10 +367,10 @@ export class MapboxComponent implements OnInit, AfterViewInit {
           'tileSize': 256
         },
         'paint': {
-            'raster-opacity': 0.2
+          'raster-opacity': 0.2
         }
       }, 'water');
-      
+
       map.addLayer({
         'id': 'matthews',
         'type': 'raster',
@@ -385,10 +381,10 @@ export class MapboxComponent implements OnInit, AfterViewInit {
           'tileSize': 256
         },
         'paint': {
-            'raster-opacity': 0.2
+          'raster-opacity': 0.2
         }
       }, 'water');
-      
+
       map.addLayer({
         'id': 'kbdi',
         'type': 'raster',
@@ -399,10 +395,10 @@ export class MapboxComponent implements OnInit, AfterViewInit {
           'tileSize': 256
         },
         'paint': {
-            'raster-opacity': 0.2
+          'raster-opacity': 0.2
         }
       }, 'water');
-      
+
       map.addLayer({
         'id': 'ffdi',
         'type': 'raster',
@@ -413,10 +409,10 @@ export class MapboxComponent implements OnInit, AfterViewInit {
           'tileSize': 256
         },
         'paint': {
-            'raster-opacity': 0.2
+          'raster-opacity': 0.2
         }
       }, 'water');
-      
+
       map.addLayer({
         'id': 'gfdi',
         'type': 'raster',
@@ -427,22 +423,22 @@ export class MapboxComponent implements OnInit, AfterViewInit {
           'tileSize': 256
         },
         'paint': {
-            'raster-opacity': 0.2
+          'raster-opacity': 0.2
         }
       }, 'water');
-      
+
       altmap.addLayer({
-          'id': 'DEM1sec', 
+          'id': 'DEM1sec',
           'type': 'raster',
           'source': {
-              'type':'raster',
-              'tiles': [
-                  'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:Image&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2fpng'
-              ],
-              'tileSize': 256
+            'type': 'raster',
+            'tiles': [
+              'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:Image&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2fpng'
+            ],
+            'tileSize': 256
           },
           'paint': {
-              'raster-opacity': 1.0
+            'raster-opacity': 1.0
           }
         },
         'water');
@@ -487,10 +483,10 @@ export class MapboxComponent implements OnInit, AfterViewInit {
       // 	'source-layer': 'CFA_DISTRICT'
       // });
 
-      map.addSource('bushfires', {
-        'type': 'geojson',
-        'data': 'http://api:1880/api/bushfires'
-      });
+      // map.addSource('bushfires', {
+      //   'type': 'geojson',
+      //   'data': 'http://api:1880/api/bushfires'
+      // });
 
       map.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Fireicon01.svg/100px-Fireicon01.svg.png',
         function (error, image) {
@@ -518,8 +514,6 @@ export class MapboxComponent implements OnInit, AfterViewInit {
       //   // 'data': 'https://firms.modaps.eosdis.nasa.gov/wms/c6/?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=fires24&BBOX=-180,-90,180,90&&SRS=EPSG:4326'
       //   'data': 'http://sentinel.ga.gov.au/geoserver/wfs?service=wfs&version=1.1.1&request=GetFeature&typeName=public:hotspot_current_4326&outputFormat=application%2Fjson'
       // });
-      
-      
 
 
       // map.addLayer({
@@ -586,14 +580,14 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     };
 
     // Change the cursor to a pointer when the mouse is over the places layer.
-    map.on('mouseenter', 'index-layer-bushfires', function () {
-      map.getCanvas().style.cursor = 'pointer';
-    });
+    // map.on('mouseenter', 'index-layer-bushfires', function () {
+    //   map.getCanvas().style.cursor = 'pointer';
+    // });
 
     // Change it back to a pointer when it leaves.
-    map.on('mouseleave', 'index-layer-bushfires', function () {
-      map.getCanvas().style.cursor = '';
-    });
+    // map.on('mouseleave', 'index-layer-bushfires', function () {
+    //   map.getCanvas().style.cursor = '';
+    // });
 
     // Change the cursor to a pointer when the mouse is over the places layer.
     // map.on('mouseenter', 'index-layer-hotspots', function () {
@@ -605,32 +599,32 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     //   map.getCanvas().style.cursor = '';
     // });
 
-    map.on('click', 'index-layer-bushfires', function (e) {
-      // map.flyTo({center: e.features[0].geometry.coordinates});
-      //
-      // this.lat = e.features[0].geometry.coordinates.lat;
-      // this.lng = e.features[0].geometry.coordinates.lng;
-    
-      new Popup({offset: popupOffsets})
-        .setLngLat(e.features[0].geometry.coordinates)
-        .setHTML('<strong>Incident</strong><br/>'
-          + 'Type: ' + e.features[0].properties.incidentType + '<br/>'
-          + 'Location: ' + e.features[0].properties.incidentLocation + '<br/>'
-          + 'Agency: ' + e.features[0].properties.agency + '<br/>'
-          + 'Status: ' + e.features[0].properties.originStatus + '<br/>'
-          + 'Started:' + e.features[0].properties.originDateTime + '<br/>'
-          + 'Updated:' + e.features[0].properties.lastUpdateDateTime + '<br/>'
-          + 'Size:' + e.features[0].properties.incidentSize + '<br/>'
-        ).addTo(map);
-    });
+    // map.on('click', 'index-layer-bushfires', function (e) {
+    //   // map.flyTo({center: e.features[0].geometry.coordinates});
+    //   //
+    //   // this.lat = e.features[0].geometry.coordinates.lat;
+    //   // this.lng = e.features[0].geometry.coordinates.lng;
+    //
+    //   new Popup({offset: popupOffsets})
+    //     .setLngLat(e.features[0].geometry.coordinates)
+    //     .setHTML('<strong>Incident</strong><br/>'
+    //       + 'Type: ' + e.features[0].properties.incidentType + '<br/>'
+    //       + 'Location: ' + e.features[0].properties.incidentLocation + '<br/>'
+    //       + 'Agency: ' + e.features[0].properties.agency + '<br/>'
+    //       + 'Status: ' + e.features[0].properties.originStatus + '<br/>'
+    //       + 'Started:' + e.features[0].properties.originDateTime + '<br/>'
+    //       + 'Updated:' + e.features[0].properties.lastUpdateDateTime + '<br/>'
+    //       + 'Size:' + e.features[0].properties.incidentSize + '<br/>'
+    //     ).addTo(map);
+    // });
 
 
     // map.on('click', 'index-layer-hotspots', function (e) {
     //   // map.flyTo({center: e.features[0].geometry.coordinates});
-    // 
+    //
     //   // this.lat = e.features[0].geometry.coordinates.lat;
     //   // this.lng = e.features[0].geometry.coordinates.lng;
-    // 
+    //
     //   new Popup({offset: popupOffsets})
     //     .setLngLat(e.features[0].geometry.coordinates)
     //     .setHTML('<strong>Thermal Anomaly</strong><br/>'
@@ -642,33 +636,33 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     //     .addTo(map);
     // });
 
-    map.on('click', 'draggable-point', function (e) {
-      map.flyTo({center: e.features[0].geometry.coordinates});
-    });
+    // map.on('click', 'draggable-point', function (e) {
+    //   map.flyTo({center: e.features[0].geometry.coordinates});
+    // });
 
     // When the cursor enters a feature in the draggable-point layer, prepare for dragging.
-    map.on('mouseenter', 'draggable-point', function () {
+    // map.on('mouseenter', 'draggable-point', function () {
+    //
+    //   console.log('>>> MouseEnter on draggable point.');
+    //   map.setPaintProperty('draggable-point', 'circle-color', '#3bb2d0');
+    //   // this.canvas.style.cursor = 'move';
+    //   this.isCursorOverPoint = true;
+    //   map.dragPan.disable();
+    //   console.log('dragPan: disabled');
+    // }.bind(this));
+    //
+    // map.on('mouseleave', 'draggable-point', function () {
+    //
+    //   console.log('>>> MouseLeave on draggable point.');
+    //   map.setPaintProperty('draggable-point', 'circle-color', '#3887be');
+    //   // this.canvas.style.cursor = '';
+    //   this.isCursorOverPoint = false;
+    //   map.dragPan.enable();
+    //   console.log('dragPan: enabled');
+    // }.bind(this));
 
-      console.log('>>> MouseEnter on draggable point.');
-      map.setPaintProperty('draggable-point', 'circle-color', '#3bb2d0');
-      // this.canvas.style.cursor = 'move';
-      this.isCursorOverPoint = true;
-      map.dragPan.disable();
-      console.log('dragPan: disabled');
-    }.bind(this));
-
-    map.on('mouseleave', 'draggable-point', function () {
-
-      console.log('>>> MouseLeave on draggable point.');
-      map.setPaintProperty('draggable-point', 'circle-color', '#3887be');
-      // this.canvas.style.cursor = '';
-      this.isCursorOverPoint = false;
-      map.dragPan.enable();
-      console.log('dragPan: enabled');
-    }.bind(this));
-
-    map.on('mousedown', this.mouseDown.bind(this));
-    map.on('mousemove', this.onMove.bind(this));
+    // map.on('mousedown', this.mouseDown.bind(this));
+    // map.on('mousemove', this.onMove.bind(this));
     // map.on('mouseup', this.onUp.bind(this));
 
     this.mapService.map = map;
@@ -745,7 +739,6 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     }
   }
 
-
   getIngestValue() {
     return JSON.parse(this.ingestGeoJson);
   }
@@ -754,7 +747,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     try {
       this.ingestGeoJson = JSON.stringify(v, null, '\t');
     } catch (e) {
-      console.log('Error occured while you were typing the JSON: ' + e);
+      console.log('JSON appears invalid: ' + e);
     }
   }
 
@@ -767,20 +760,25 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     }
   }
 
-  public queryLFMCUsingGeoJSON() {
-    console.log('Bounds call test')
-    if (this.drw.getAll()) {
-      console.log('Got Drawling')
-      const bounds = bbox(this.drw.getAll());
-      console.log('Using bounds of GeoJSON to query.');
-      console.log(bounds);
-      this.chartComponent.getFuelInBoundsForModels(bounds[0], bounds[3], bounds[2], bounds[1], this.getActiveModels());
-    }
+  // public queryLFMCUsingGeoJSON() {
+  //   console.log('Bounds call test');
+  //   if (this.drw.getAll()) {
+  //     console.log('Got Drawling');
+  //
+  //     // const bounds = bbox(this.drw.getAll());
+  //     // console.log('Using bounds of GeoJSON to query.');
+  //     // console.log(bounds);
+  //     // this.chartComponent.getFuelInBoundsForModels(bounds[0], bounds[3], bounds[2], bounds[1], this.getActiveModels());
+  //
+  //     this.chartComponent.getFuelForShapeWithModels(this.drw.getAll(), this.start.toDateString(), this.finish.toDateString(), this.getActiveModels());
+  //   }
+  // }
+
+  public weekView() {
+    this.start = moment().subtract(8, 'days').toDate();
+    this.finish = moment().subtract(1, 'days').toDate();
   }
 
-  public makeToday() {
-    this.finish = new Date(Date.now());
-  }
 
   // Uses turf to calculate the area of the polygon in square meters
   public calculateArea() {
@@ -812,145 +810,144 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     this.altmap.setStyle('mapbox://styles/anthonyrawlinsuom/cj5we9hex7cy82rqimwlky6rz');
   }
 
-  private filterBy(month) {
-    const filters = ['==', 'month', month];
-    this.mapService.map.setFilter('incident-circles', filters);
-    this.mapService.map.setFilter('incident-labels', filters);
+  // private filterBy(month) {
+  //   const filters = ['==', 'month', month];
+  //   this.mapService.map.setFilter('incident-circles', filters);
+  //   this.mapService.map.setFilter('incident-labels', filters);
+  //
+  //   // Set the label to the month
+  //   document.getElementById('month').textContent = this.months[month];
+  // }
 
-    // Set the label to the month
-    document.getElementById('month').textContent = this.months[month];
-  }
+  // private mouseDown(e: any) {
+  //   if (!this.isCursorOverPoint) {
+  //     return;
+  //   }
+  //   console.log('>>> MouseDown on draggable point.');
+  //   this.isDragging = true;
+  //
+  //   // Set a cursor indicator
+  //   // this.canvas.style.cursor = 'grab';
+  //   this.mapService.map.dragPan.disable();
+  //   // Mouse events
+  //   this.mapService.map.on('mousemove', this.onDragMove.bind(this));
+  //   this.mapService.map.once('mouseup', this.onUp.bind(this));
+  // }
 
-  private mouseDown(e: any) {
-    if (!this.isCursorOverPoint) {
-      return;
-    }
-    console.log('>>> MouseDown on draggable point.');
-    this.isDragging = true;
+  // private onMove(e: any) {
+  //   const coords = e.lngLat;
+  //   this.cursorLng = coords.lng;
+  //   this.cursorLat = coords.lat;
+  //   this.cursorMoveEW.emit(this.cursorLng);
+  //   this.cursorMoveNS.emit(this.cursorLat);
+  // }
 
-    // Set a cursor indicator
-    // this.canvas.style.cursor = 'grab';
-    this.mapService.map.dragPan.disable();
-    // Mouse events
-    this.mapService.map.on('mousemove', this.onDragMove.bind(this));
-    this.mapService.map.once('mouseup', this.onUp.bind(this));
-  }
-
-  private onMove(e: any) {
-    const coords = e.lngLat;
-    this.cursorLng = coords.lng;
-    this.cursorLat = coords.lat;
-    this.cursorMoveEW.emit(this.cursorLng);
-    this.cursorMoveNS.emit(this.cursorLat);
-  }
-
-  private onDragMove(e) {
-    if (!this.isDragging) {
-      return;
-    }
-    const coords = e.lngLat;
-
-    console.log('>>> Dragging draggable point.');
-
-    // Set a UI indicator for dragging.
-    // this.canvas.style.cursor = 'grabbing';
-
-    this.coordinates.style.display = 'block';
-    this.coordinates.innerHTML = 'Longitude: ' + coords.lng + '<br />Latitude: ' + coords.lat;
-
-    // Update the Point feature in `geojson` coordinates
-    // and call setData to the source layer `point` on it.
-    this.dragPointGeoJSON.features[0].geometry.coordinates = [coords.lng, coords.lat];
-    this.mapService.map.getSource('draggable-point-source').setData(this.dragPointGeoJSON);
-
-  }
+  // private onDragMove(e) {
+  //   if (!this.isDragging) {
+  //     return;
+  //   }
+  //   const coords = e.lngLat;
+  //
+  //   console.log('>>> Dragging draggable point.');
+  //
+  //   // Set a UI indicator for dragging.
+  //   // this.canvas.style.cursor = 'grabbing';
+  //
+  //   this.coordinates.style.display = 'block';
+  //   this.coordinates.innerHTML = 'Longitude: ' + coords.lng + '<br />Latitude: ' + coords.lat;
+  //
+  //   // Update the Point feature in `geojson` coordinates
+  //   // and call setData to the source layer `point` on it.
+  //   this.dragPointGeoJSON.features[0].geometry.coordinates = [coords.lng, coords.lat];
+  //   this.mapService.map.getSource('draggable-point-source').setData(this.dragPointGeoJSON);
+  //
+  // }
 
   // Re-center
-  public flyToDragPoint(e, undoaction: boolean = false) {
-    let point;
-    if (undoaction) {
-      point = e;
-      this.coordinates.style.display = 'block';
-      this.coordinates.innerHTML = 'Longitude: ' + point.center[0] + '<br />Latitude: ' + point.center[1];
+  // public flyToDragPoint(e, undoaction: boolean = false) {
+  //   let point;
+  //   if (undoaction) {
+  //     point = e;
+  //     this.coordinates.style.display = 'block';
+  //     this.coordinates.innerHTML = 'Longitude: ' + point.center[0] + '<br />Latitude: ' + point.center[1];
+  //
+  //     // Update the Point feature in `geojson` coordinates
+  //     // and call setData to the source layer `point` on it.
+  //     this.dragPointGeoJSON.features[0].geometry.coordinates = point.center;
+  //     this.mapService.map.getSource('draggable-point-source').setData(this.dragPointGeoJSON);
+  //   } else {
+  //     console.log('Flying to: ' + this.dragPointGeoJSON.features[0].geometry.coordinates);
+  //     point = {
+  //       center: this.dragPointGeoJSON.features[0].geometry.coordinates,
+  //       zoom: 9
+  //     };
+  //   }
+  //   this.mapService.map.flyTo(point);
+  //   if (!undoaction) {
+  //     this.undos.push(point);
+  //   }
+  // }
 
-      // Update the Point feature in `geojson` coordinates
-      // and call setData to the source layer `point` on it.
-      this.dragPointGeoJSON.features[0].geometry.coordinates = point.center;
-      this.mapService.map.getSource('draggable-point-source').setData(this.dragPointGeoJSON);
-    } else {
-      console.log('Flying to: ' + this.dragPointGeoJSON.features[0].geometry.coordinates);
-      point = {
-        center: this.dragPointGeoJSON.features[0].geometry.coordinates,
-        zoom: 9
-      };
-    }
-    this.mapService.map.flyTo(point);
-    if (!undoaction) {
-      this.undos.push(point);
-    }
-  }
-
-  public clearHistory() {
-    this.undos = [];
-    this.redos = [];
-  }
+  // public clearHistory() {
+  //   this.undos = [];
+  //   this.redos = [];
+  // }
 
 
   // Inspect
-  public repositionDragPoint() {
-    this.dragPointGeoJSON.features[0].geometry.coordinates = [this.lng, this.lat];
-    this.mapService.map.getSource('draggable-point-source').setData(this.dragPointGeoJSON);
-    this.flyToDragPoint(null);
-
-  }
+  // public repositionDragPoint() {
+  //   this.dragPointGeoJSON.features[0].geometry.coordinates = [this.lng, this.lat];
+  //   this.mapService.map.getSource('draggable-point-source').setData(this.dragPointGeoJSON);
+  //   this.flyToDragPoint(null);
+  // }
 
   // State View
-  public zoomToStateView(e) {
-    console.log('Flying to: ' + [this.defaultLng, this.defaultLat]);
-
-    const point = {
-      center: [this.defaultLng, this.defaultLat],
-      zoom: 6.5,
-      bearing: 0.0,
-      pitch: 0
-    };
-    this.mapService.map.flyTo(point);
-    this.undos.push(point);
-  }
+  // public zoomToStateView(e) {
+  //   // console.log('Flying to: ' + [this.defaultLng, this.defaultLat]);
+  //
+  //   const point = {
+  //     center: [this.defaultLng, this.defaultLat],
+  //     zoom: 6.5,
+  //     bearing: 0.0,
+  //     pitch: 0
+  //   };
+  //   // this.mapService.map.flyTo(point);
+  //   this.undos.push(point);
+  // }
 
   // Psuedocode: on(repositionDragPoint) {localStorage.undos += map.serialize() }
   // Stub
   // pop map.options from localStorage.undos
   // stash map.options into localStorage.redos
-  public undoView() {
-    if (this.undos.length > 0) {
-      const prev = this.undos.pop();
-      this.redos.push(prev);
-      this.flyToDragPoint(prev, true);
+  // public undoView() {
+  //   if (this.undos.length > 0) {
+  //     const prev = this.undos.pop();
+  //     this.redos.push(prev);
+  //     // this.flyToDragPoint(prev, true);
+  //   }
+  // }
+  //
+  // // Stub
+  // public redoView() {
+  //   if (this.redos.length > 0) {
+  //     const prev = this.redos.pop();
+  //     this.undos.push(prev);
+  //     // this.flyToDragPoint(prev, true);
+  //   }
+  // }
+
+  public mpg() {
+    if (this.drw.getAll()) {
+      this.showVideo = true;
+      const json_query = {
+        'geo_json': this.drw.getAll(),
+        'start': this.start.toDateString(),
+        'finish': this.finish.toDateString(),
+        'models': this.getActiveModels(),
+        'response_as': LFMCResponseType.MP4
+      }
+      this.videoComponent.getVideo(json_query);
     }
-  }
-
-  // Stub
-  public redoView() {
-    if (this.redos.length > 0) {
-      const prev = this.redos.pop();
-      this.undos.push(prev);
-      this.flyToDragPoint(prev, true);
-    }
-  }
-
-  public getFuelHistoryAtPoint(e: any) {
-    const coords = e.lngLat;
-    // This is where we trigger the API call to get Fuel Moisture Data for the
-    // // ChartingComponent at the current Lat & Lng.
-    // this.chartComponent.getFuelDataAtPoint(coords.lng, coords.lat);
-    console.log(this.getActiveModels().toString());
-    this.chartComponent.getFuelDataAtPointForModels(coords.lng, coords.lat, this.getActiveModels());
-
-    // this.chartComponent.lat = coords.lat;
-
-    console.log('Getting Fuel Moisture History for Longitude: ' + coords.lng + ', Latitude: ' + coords.lat);
-
   }
 
   toggleModel(m: string) {
@@ -965,23 +962,29 @@ export class MapboxComponent implements OnInit, AfterViewInit {
       }
     } else {
       for (let i = 0; i < this.models.length; i++) {
-        
+
         if (this.models[i].abbr === m) {
           this.models[i].enabled = !this.models[i].enabled;
-          
+
         }
-        
+
       }
     }
-    this.refreshModelData();
+    // this.refreshModelData();
   }
 
   refreshModelData() {
-    this.dimmer = true;
-    this.chartComponent.getFuelDataAtPointForModels(this.lng, this.lat, this.getActiveModels());
-    this.dimmer = false;
+    if (this.drw.getAll()) {
+      this.chartComponent.dimmer = true;
+      this.chartComponent.getFuelForShapeWithModels(
+        this.drw.getAll(),
+        this.start.toDateString(),
+        this.finish.toDateString(),
+        this.getActiveModels(),
+        LFMCResponseType.TIMESERIES
+      );
+    }
   }
-
 
   allModelsOn() {
     this.exclusiveModelMode = false;
@@ -989,7 +992,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     for (let i = 0; i < this.models.length; i++) {
       this.models[i].enabled = true;
     }
-    this.refreshModelData();
+    // this.refreshModelData();
   }
 
   allModelsOff() {
@@ -997,25 +1000,25 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     for (let i = 0; i < this.models.length; i++) {
       this.models[i].enabled = false;
     }
-    this.refreshModelData();
+    // this.refreshModelData();
   }
 
   private getActiveModels() {
     const active = [];
     for (let i = 0; i < this.models.length; i++) {
-        if (this.models[i].enabled) {
-            active.push(this.models[i].abbr);
-            this.map.setLayoutProperty(this.models[i].abbr, 'visibility', 'visible');
-        } else {
-            this.map.setLayoutProperty(this.models[i].abbr, 'visibility', 'none');
-        }
+      if (this.models[i].enabled) {
+        active.push(this.models[i].abbr);
+        this.map.setLayoutProperty(this.models[i].abbr, 'visibility', 'visible');
+      } else {
+        this.map.setLayoutProperty(this.models[i].abbr, 'visibility', 'none');
+      }
     }
     for (let i = 0; i < this.models.length; i++) {
-        if (this.models[i].enabled) {
-            this.map.setPaintProperty(this.models[i].abbr, 'raster-opacity', (1/active.length));
-        }
+      if (this.models[i].enabled) {
+        this.map.setPaintProperty(this.models[i].abbr, 'raster-opacity', (1 / active.length));
+      }
     }
-    
+
     return active;
   }
 
@@ -1023,7 +1026,6 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     this.timebrush = !this.timebrush;
     this.chartComponent.timeline = !this.timebrush;
   }
-
 
   private onUp(e) {
 
@@ -1044,13 +1046,12 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     this.lat = coords.lat;
     this.lng = coords.lng;
 
-    this.flyToDragPoint(e);
-    this.getFuelHistoryAtPoint(e);
+    // this.flyToDragPoint(e);
 
-    if (this.isDragging) {
-      // Unbind mouse events
-      this.mapService.map.off('mousemove', this.onDragMove.bind(this));
-      this.mapService.map.dragPan.enable();
-    }
+    // if (this.isDragging) {
+    //   // Unbind mouse events
+    //   this.mapService.map.off('mousemove', this.onDragMove.bind(this));
+    //   this.mapService.map.dragPan.enable();
+    // }
   }
 }

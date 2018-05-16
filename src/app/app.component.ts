@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   title = 'Landscape Fuel Moisture Condition';
-  version = '0.5.1';
+  public version: string = environment.VERSION;
 
   constructor(public auth: AuthService) {
     auth.handleAuthentication();

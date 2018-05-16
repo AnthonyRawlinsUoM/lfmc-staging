@@ -7,7 +7,6 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 import {PersistenceModule} from 'angular-persistence';
-import {AgmCoreModule} from '@agm/core';
 import {SuiModule} from 'ng2-semantic-ui';
 import {FileUploadModule} from 'ng2-file-upload';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
@@ -17,8 +16,8 @@ import {ClipboardModule} from 'ngx-clipboard';
 
 // Services
 import {ModelsService} from './services/models.service';
-import {ApiService} from './services/api.service';
-import {TsvService} from './services/tsv.service';
+import {TimeseriesService} from './services/timeseries.service';
+import {NosqlService} from './services/nosql.service';
 import {MapService} from './services/map.service';
 import {MapboxUploadAPIS3Service} from './services/mapbox-upload-api-s3.service';
 import {AuthService} from './services/auth.service';
@@ -48,9 +47,10 @@ import {SearchresultsComponent} from './components/searchresults/searchresults.c
 import {DatasourcesComponent} from './components/datasources/datasources.component';
 import {ConfirmModalComponent} from './components/confirm-modal/confirm-modal.component';
 import {LegendComponent} from './components/legend/legend.component';
-import {AgmComponent} from './shared/agm/agm.component';
 import {ChartingComponent} from './components/charting/charting.component';
 import {FilesaverComponent} from './shared/filesaver/filesaver.component';
+import {VideoComponent} from './components/video/video.component';
+import {ServerlogComponent} from './components/serverlog/serverlog.component';
 
 
 const appRoutes: Routes = [
@@ -63,8 +63,7 @@ const appRoutes: Routes = [
   {path: 'models', component: ModelsComponent},
   {path: 'fullscreen', component: FullscreenComponent},
   {path: 'callback', component: CallbackComponent}
-  //,
-  //{path: '**', redirectTo: '' }
+
 ];
 
 @NgModule({
@@ -97,9 +96,10 @@ const appRoutes: Routes = [
     DatasourcesComponent,
     ConfirmModalComponent,
     LegendComponent,
-    AgmComponent,
     ChartingComponent,
-    FilesaverComponent
+    FilesaverComponent,
+    VideoComponent,
+    ServerlogComponent
   ],
 
   // Modules
@@ -115,10 +115,7 @@ const appRoutes: Routes = [
     FileUploadModule,
     SuiModule,
     NgxChartsModule,
-    ClipboardModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDxVm7cOOIMVDj6SPcj3lp0S_S2-T7mDFw'
-    })
+    ClipboardModule
   ],
 
   // Services
@@ -126,10 +123,10 @@ const appRoutes: Routes = [
     MapService,
     AuthService,
     ModelsService,
-    ApiService,
+    TimeseriesService,
     MapboxUploadAPIS3Service,
     D3Service,
-    TsvService
+    NosqlService
   ],
   bootstrap: [AppComponent]
 })

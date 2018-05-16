@@ -1,19 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { ApiService } from '../../services/api.service';
-import { Observable } from 'rxjs/Rx';
+import {Component, OnInit} from '@angular/core';
+import {NosqlService} from '../../services/nosql.service';
 
 @Component({
-	selector: 'app-models',
-	templateUrl: './models.component.html',
-	styleUrls: ['./models.component.css']
+  selector: 'app-models',
+  templateUrl: './models.component.html',
+  styleUrls: ['./models.component.css']
 })
 export class ModelsComponent implements OnInit {
-	models: any[] = [];
-	constructor(private api: ApiService) {
-	}
+  models: any[] = [];
 
-	ngOnInit() {
-		this.api.callAPI("/models").subscribe(m => this.models = m);
-	}
+  constructor(private ns: NosqlService) {
+  }
+
+  ngOnInit() {
+    this.ns.get('/models').subscribe(m => this.models = m);
+  }
 }
