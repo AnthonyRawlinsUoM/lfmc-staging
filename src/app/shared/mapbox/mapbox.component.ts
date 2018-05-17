@@ -311,7 +311,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
           'tileSize': 256
         },
         'paint': {
-          'opacity': 0.2
+          'raster-opacity': 0.2
         }
       }, 'water');
 
@@ -343,33 +343,33 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         }
       }, 'water');
 
-      map.addLayer({
-        'id': 'chen',
-        'type': 'raster',
-        'source': {
-          'type': 'raster',
-          'tiles': [
-            'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-04'],
-          'tileSize': 256
-        },
-        'paint': {
-          'raster-opacity': 0.2
-        }
-      }, 'water');
+      // map.addLayer({
+      //   'id': 'chen',
+      //   'type': 'raster',
+      //   'source': {
+      //     'type': 'raster',
+      //     'tiles': [
+      //       'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-04'],
+      //     'tileSize': 256
+      //   },
+      //   'paint': {
+      //     'raster-opacity': 0.2
+      //   }
+      // }, 'water');
 
-      map.addLayer({
-        'id': 'boer',
-        'type': 'raster',
-        'source': {
-          'type': 'raster',
-          'tiles': [
-            'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-05'],
-          'tileSize': 256
-        },
-        'paint': {
-          'raster-opacity': 0.2
-        }
-      }, 'water');
+      // map.addLayer({
+      //   'id': 'boer',
+      //   'type': 'raster',
+      //   'source': {
+      //     'type': 'raster',
+      //     'tiles': [
+      //       'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-05'],
+      //     'tileSize': 256
+      //   },
+      //   'paint': {
+      //     'raster-opacity': 0.2
+      //   }
+      // }, 'water');
 
       map.addLayer({
         'id': 'matthews',
@@ -488,23 +488,23 @@ export class MapboxComponent implements OnInit, AfterViewInit {
       //   'data': 'http://api:1880/api/bushfires'
       // });
 
-      map.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Fireicon01.svg/100px-Fireicon01.svg.png',
-        function (error, image) {
-          if (error) {
-            throw error;
-          }
-          map.addImage('fire', image);
-          map.addLayer({
-            'id': 'index-layer-bushfires',
-            'type': 'symbol',
-            'source': 'bushfires',
-            'layout': {
-              'icon-image': 'fire',
-              'icon-size': 0.09
-            }
-          }, 'roads');
-
-        });
+      // map.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Fireicon01.svg/100px-Fireicon01.svg.png',
+      //   function (error, image) {
+      //     if (error) {
+      //       throw error;
+      //     }
+      //     map.addImage('fire', image);
+      //     map.addLayer({
+      //       'id': 'index-layer-bushfires',
+      //       'type': 'symbol',
+      //       'source': 'bushfires',
+      //       'layout': {
+      //         'icon-image': 'fire',
+      //         'icon-size': 0.09
+      //       }
+      //     }, 'roads');
+      //
+      //   });
 
       /**
        * Heat visible fire sources from Sentinel via GeoSciences Australia
@@ -1033,18 +1033,18 @@ export class MapboxComponent implements OnInit, AfterViewInit {
 
     // if(this.draggingHandle) return this.upSplitViewHandle;
 
-    const coords = e.lngLat;
+    // const coords = e.lngLat;
     // console.log(">>> MouseUp on draggable point.");
 
     // Print the coordinates of where the point had
     // finished being dragged to on the map.
-    this.coordinates.style.display = 'block';
-    this.coordinates.innerHTML = 'Longitude: ' + coords.lng + '<br />Latitude: ' + coords.lat;
+    // this.coordinates.style.display = 'block';
+    // this.coordinates.innerHTML = 'Longitude: ' + coords.lng + '<br />Latitude: ' + coords.lat;
     this.canvas.style.cursor = '';
     this.isDragging = false;
 
-    this.lat = coords.lat;
-    this.lng = coords.lng;
+    // this.lat = coords.lat;
+    // this.lng = coords.lng;
 
     // this.flyToDragPoint(e);
 

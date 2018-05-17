@@ -9,7 +9,8 @@ import 'rxjs/add/operator/toPromise';
 
 import * as shape from 'd3-shape';
 import * as d3 from 'd3';
-
+import {ConfirmModal} from '../confirm-modal/confirm-modal.component';
+import {SuiModalService} from 'ng2-semantic-ui';
 
 export enum LFMCResponseType {
   TIMESERIES = 0,
@@ -247,19 +248,19 @@ export class ChartingComponent implements OnInit {
     }
   ];
 
-  constructor(private tss: TimeseriesService) {
+  constructor(private tss: TimeseriesService, private modalService: SuiModalService) {
 
     this.lat = 0;
     this.lng = 0;
 
-    let single = [
+    const single = [
       {
         'name': 'Nolan',
         'value': 10
       }
     ];
 
-    let multi = [
+    const multi = [
       {
         'name': 'dead_fuel',
         'series': [
@@ -320,10 +321,32 @@ export class ChartingComponent implements OnInit {
       }
       return value;
     }
-    return this.tss.postAPI(name, json_query).subscribe(m => {
-      this.multi = JSON.parse(JSON.stringify(m), reviver);
-      this.dimmer = false;
-    });
+    return this.tss.postAPI(
+      name,
+      json_query
+    ).subscribe(
+      (m) => {
+        this.multi = JSON.parse(JSON.stringify(m), reviver);
+        if (this.multi['error'] && this.multi['code']) {
+          this.modalService
+            .open(new ConfirmModal('An error occurred: ' + this.multi['code'] , this.multi['error'] + '\nSend Report?', 'tiny'))
+            .onApprove(() => alert('Report sent.'))
+            .onDeny(() => alert('No report sent.'));
+        } else {
+          this.dimmer = false;
+        }
+      },
+      e => {
+        this.multi = [];
+        this.modalService
+          .open(new ConfirmModal('An error occurred', e, 'tiny'));
+        this.dimmer = true;
+      },
+      () => {
+        this.modalService
+          .open(new ConfirmModal('Success!', 'Your chart is ready.', 'tiny'));
+        this.dimmer = false;
+      });
   }
 
   // TODO - Toggle weighted selections ON/OFF

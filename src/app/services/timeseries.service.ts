@@ -15,6 +15,9 @@ export class TimeseriesService {
 
   private apiUrl = 'http://webfire.mobility.unimelb.net.au:8002/v1';
 
+  // Trying version 2
+  // private apiUrl = 'http://webfire.mobility.unimelb.net.au:8002/v2';
+
   // // Utility function
   private getHeaders() {
     // I included these headers because otherwise FireFox
