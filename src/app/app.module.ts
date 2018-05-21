@@ -28,7 +28,7 @@ import {D3Service} from 'd3-ng2-service';
 import {AppComponent} from './app.component';
 import {HelpComponent} from './components/help/help.component';
 import {OptionsComponent} from './components/options/options.component';
-import {ContributeComponent} from './components/contribute/contribute.component';
+import {ImportComponent} from './components/import/import.component';
 import {LayerMapComponent} from './components/layer-map/layer-map.component';
 import {ToolbarComponent} from './components/toolbar/toolbar.component';
 import {D3mapComponent} from './shared/d3map/d3map.component';
@@ -59,7 +59,7 @@ const appRoutes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'help', component: HelpComponent},
   {path: 'options', component: OptionsComponent},
-  {path: 'contribute', component: ContributeComponent},
+  {path: 'import', component: ImportComponent},
   {path: 'models', component: ModelsComponent},
   {path: 'fullscreen', component: FullscreenComponent},
   {path: 'callback', component: CallbackComponent}
@@ -77,7 +77,7 @@ const appRoutes: Routes = [
     AppComponent,
     HelpComponent,
     OptionsComponent,
-    ContributeComponent,
+    ImportComponent,
     LayerMapComponent,
     ToolbarComponent,
     D3mapComponent,

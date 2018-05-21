@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NosqlService} from '../../services/nosql.service';
+import {ModelsService} from '../../services/models.service';
 
 @Component({
   selector: 'app-models',
@@ -9,10 +9,10 @@ import {NosqlService} from '../../services/nosql.service';
 export class ModelsComponent implements OnInit {
   models: any[] = [];
 
-  constructor(private ns: NosqlService) {
+  constructor(private ms: ModelsService) {
   }
 
   ngOnInit() {
-    this.ns.get('/models').subscribe(m => this.models = m);
+    this.ms.get('models').subscribe(m => this.models = m.models);
   }
 }

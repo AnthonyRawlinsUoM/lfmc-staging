@@ -127,12 +127,12 @@
               </a>
 
               <a *ngIf="allModels" class="item" (click)="allModelsOff()"><i class="check circle outline icon"></i> All models</a>
-              <a *ngIf="!allModels" class="item" (click)="allModelsOn()"><i class="radio icon"></i></a>
+              <a *ngIf="!allModels" class="item" (click)="allModelsOn()"><i class="radio icon"></i> All models</a>
             </div>
             <div class="ui fluid vertical inverted menu">
-              <a *ngFor="let m of models" (click)="toggleModel(m.abbr)" class="ui inverted item">
+              <a *ngFor="let m of models" (click)="toggleModel(m.name)" class="ui inverted item">
                 <i *ngIf="m.enabled" class="green toggle on icon"></i>
-                <i *ngIf="!m.enabled" class="toggle off icon"></i> {{m.name}}
+                <i *ngIf="!m.enabled" class="toggle off icon"></i> {{m.ident}} - ({{m.code}})
               </a>
             </div>
           </sui-sidebar>

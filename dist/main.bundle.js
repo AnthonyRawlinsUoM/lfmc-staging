@@ -337,7 +337,7 @@ module.exports = ".ui.inverted.menu.shadow,\n.ui.inverted.pointing.dropdown .men
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "    <div class=\"ui top following inverted menu shadow\">\n\n      <div class=\"ui inverted pointing dropdown item\" suiDropdown>\n        <div class=\"text\">\n          <i class=\"gray sidebar icon\"></i> Site</div>\n        <div class=\"menu\" suiDropdownMenu>\n          <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/home\">\n            <i class=\"blue map outline icon\"></i>Map\n      </a>\n          <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/models\">\n      <i class=\"blue database icon\"></i>Models\n      </a>\n          <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/contribute\">\n      <i class=\"blue marker icon\"></i>Contribute\n      </a>\n          <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/options\">\n      <i class=\"blue options icon\"></i>Options\n      </a>\n          <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/help\">\n      <i class=\"blue help icon\"></i>Help\n      </a>\n        </div>\n      </div>\n      <div class=\"ui inverted header item\"><i class=\"red fire icon\"></i> {{title}} - v{{version}}</div>\n      <div class=\"right menu\">\n        <a class=\"item\" [routerLinkActive]=\"['active']\" *ngIf=\"auth.isAuthenticated()\" routerLink=\"/profile\">\n    <i class=\"blue user circle icon\"></i>\n    Profile\n  </a>\n        <a class=\"item\" *ngIf=\"!auth.isAuthenticated()\" (click)=\"auth.login()\">\n  <i class=\"blue sign in icon\"></i>Login\n  </a>\n        <a class=\"item\" *ngIf=\"auth.isAuthenticated()\" (click)=\"auth.logout()\">\n    <i class=\"red sign out icon\"></i>Logout\n  </a>\n        <div class=\"item\">\n          <div class=\"ui transparent icon input\">\n            <input type=\"text\" placeholder=\"Site Search...\">\n            <i class=\"inverted search link icon\"></i>\n          </div>\n        </div>\n      </div>\n    </div>\n<main>\n  <router-outlet></router-outlet>\n</main>\n"
+module.exports = "    <div class=\"ui top following inverted menu shadow\">\n\n      <div class=\"ui inverted pointing dropdown item\" suiDropdown>\n        <div class=\"text\">\n          <i class=\"gray sidebar icon\"></i> Site</div>\n        <div class=\"menu\" suiDropdownMenu>\n          <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/home\">\n            <i class=\"blue map outline icon\"></i>Map\n      </a>\n          <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/models\">\n      <i class=\"blue database icon\"></i>Models\n      </a>\n          <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/import\">\n      <i class=\"blue marker icon\"></i>Import\n      </a>\n          <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/options\">\n      <i class=\"blue options icon\"></i>Options\n      </a>\n          <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/help\">\n      <i class=\"blue help icon\"></i>Help\n      </a>\n        </div>\n      </div>\n      <div class=\"ui inverted header item\"><i class=\"red fire icon\"></i> {{title}} - v{{version}}</div>\n      <div class=\"right menu\">\n        <a class=\"item\" [routerLinkActive]=\"['active']\" *ngIf=\"auth.isAuthenticated()\" routerLink=\"/profile\">\n    <i class=\"blue user circle icon\"></i>\n    Profile\n  </a>\n        <a class=\"item\" *ngIf=\"!auth.isAuthenticated()\" (click)=\"auth.login()\">\n  <i class=\"blue sign in icon\"></i>Login\n  </a>\n        <a class=\"item\" *ngIf=\"auth.isAuthenticated()\" (click)=\"auth.logout()\">\n    <i class=\"red sign out icon\"></i>Logout\n  </a>\n        <div class=\"item\">\n          <div class=\"ui transparent icon input\">\n            <input type=\"text\" placeholder=\"Site Search...\">\n            <i class=\"inverted search link icon\"></i>\n          </div>\n        </div>\n      </div>\n    </div>\n<main>\n  <router-outlet></router-outlet>\n</main>\n"
 
 /***/ }),
 
@@ -413,7 +413,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__app_component__ = __webpack_require__("./src/app/app.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_help_help_component__ = __webpack_require__("./src/app/components/help/help.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_options_options_component__ = __webpack_require__("./src/app/components/options/options.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_contribute_contribute_component__ = __webpack_require__("./src/app/components/contribute/contribute.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_import_import_component__ = __webpack_require__("./src/app/components/import/import.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_layer_map_layer_map_component__ = __webpack_require__("./src/app/components/layer-map/layer-map.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_toolbar_toolbar_component__ = __webpack_require__("./src/app/components/toolbar/toolbar.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__shared_d3map_d3map_component__ = __webpack_require__("./src/app/shared/d3map/d3map.component.ts");
@@ -496,7 +496,7 @@ var appRoutes = [
     { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_27__components_profile_profile_component__["a" /* ProfileComponent */] },
     { path: 'help', component: __WEBPACK_IMPORTED_MODULE_20__components_help_help_component__["a" /* HelpComponent */] },
     { path: 'options', component: __WEBPACK_IMPORTED_MODULE_21__components_options_options_component__["a" /* OptionsComponent */] },
-    { path: 'contribute', component: __WEBPACK_IMPORTED_MODULE_22__components_contribute_contribute_component__["a" /* ContributeComponent */] },
+    { path: 'import', component: __WEBPACK_IMPORTED_MODULE_22__components_import_import_component__["a" /* ImportComponent */] },
     { path: 'models', component: __WEBPACK_IMPORTED_MODULE_32__components_models_models_component__["a" /* ModelsComponent */] },
     { path: 'fullscreen', component: __WEBPACK_IMPORTED_MODULE_36__components_fullscreen_fullscreen_component__["a" /* FullscreenComponent */] },
     { path: 'callback', component: __WEBPACK_IMPORTED_MODULE_26__components_callback_callback_component__["a" /* CallbackComponent */] }
@@ -516,7 +516,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_19__app_component__["a" /* AppComponent */],
             __WEBPACK_IMPORTED_MODULE_20__components_help_help_component__["a" /* HelpComponent */],
             __WEBPACK_IMPORTED_MODULE_21__components_options_options_component__["a" /* OptionsComponent */],
-            __WEBPACK_IMPORTED_MODULE_22__components_contribute_contribute_component__["a" /* ContributeComponent */],
+            __WEBPACK_IMPORTED_MODULE_22__components_import_import_component__["a" /* ImportComponent */],
             __WEBPACK_IMPORTED_MODULE_23__components_layer_map_layer_map_component__["a" /* LayerMapComponent */],
             __WEBPACK_IMPORTED_MODULE_24__components_toolbar_toolbar_component__["a" /* ToolbarComponent */],
             __WEBPACK_IMPORTED_MODULE_25__shared_d3map_d3map_component__["a" /* D3mapComponent */],
@@ -965,8 +965,8 @@ var ChartingComponent = (function () {
                 .open(new __WEBPACK_IMPORTED_MODULE_6__confirm_modal_confirm_modal_component__["a" /* ConfirmModal */]('An error occurred', e, 'tiny'));
             _this.dimmer = true;
         }, function () {
-            _this.modalService
-                .open(new __WEBPACK_IMPORTED_MODULE_6__confirm_modal_confirm_modal_component__["a" /* ConfirmModal */]('Success!', 'Your chart is ready.', 'tiny'));
+            // this.modalService
+            //   .open(new ConfirmModal('Success!', 'Your chart is ready.', 'tiny'));
             _this.dimmer = false;
         });
     };
@@ -1077,56 +1077,6 @@ var ConfirmModal = (function (_super) {
 
 var _a;
 //# sourceMappingURL=confirm-modal.component.js.map
-
-/***/ }),
-
-/***/ "./src/app/components/contribute/contribute.component.css":
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/components/contribute/contribute.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"ui container\">\n\t<div class=\"ui segment\">\n\t\t<div class=\"ui grid\">\n\t\t\t<div class=\"ui four wide column\">\n\t\t\t\t<div class=\"ui blue inverted segment\">\n\t\t\t\t\t<h3 class=\"heading\">Limitations</h3>\n\t\t\t\t\t<div class=\"ui inverted relaxed divided list\">\n\t\t\t\t\t\t<div class=\"item\"><i class=\"upload icon\"></i>5 file upload limit.</div>\n\t\t\t\t\t\t<div class=\"item\"><i class=\"disk outline icon\"></i>100MB per file.</div>\n\t\t\t\t\t\t<div class=\"item\"><i class=\"file icon\"></i>GeoJSON only.</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"ui eight wide column\">\n\t\t\t\t<h2 class=\"heading\"><i class=\"large blue middle aligned info icon\"></i>Visualise your own data</h2>\n\t\t\t\t<p>Need to visualise extra boundaries, features or point data?</p>\n\t\t\t\t<p>Upload your own GeoJSON files and have them visible on your own data layer.</p>\n\t\t\t</div>\n\t\t\t<div class=\"ui four wide column\"></div>\n\t\t</div>\n\t</div>\n</div>\n<app-upload></app-upload>\n\n<app-footer></app-footer>\n"
-
-/***/ }),
-
-/***/ "./src/app/components/contribute/contribute.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContributeComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var ContributeComponent = (function () {
-    function ContributeComponent() {
-    }
-    ContributeComponent.prototype.ngOnInit = function () {
-    };
-    return ContributeComponent;
-}());
-ContributeComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-contribute',
-        template: __webpack_require__("./src/app/components/contribute/contribute.component.html"),
-        styles: [__webpack_require__("./src/app/components/contribute/contribute.component.css")]
-    }),
-    __metadata("design:paramtypes", [])
-], ContributeComponent);
-
-//# sourceMappingURL=contribute.component.js.map
 
 /***/ }),
 
@@ -1401,6 +1351,56 @@ HomeComponent = __decorate([
 
 /***/ }),
 
+/***/ "./src/app/components/import/import.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/import/import.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"ui container\">\n\t<div class=\"ui segment\">\n\t\t<div class=\"ui grid\">\n\t\t\t<div class=\"ui four wide column\">\n\t\t\t\t<div class=\"ui blue inverted segment\">\n\t\t\t\t\t<h3 class=\"heading\">Limitations</h3>\n\t\t\t\t\t<div class=\"ui inverted relaxed divided list\">\n\t\t\t\t\t\t<div class=\"item\"><i class=\"upload icon\"></i>5 file upload limit.</div>\n\t\t\t\t\t\t<div class=\"item\"><i class=\"disk outline icon\"></i>100MB per file.</div>\n\t\t\t\t\t\t<div class=\"item\"><i class=\"file icon\"></i>GeoJSON</div>\n            <div class=\"item\"><i class=\"file icon\"></i>SHP Files</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"ui eight wide column\">\n\t\t\t\t<h2 class=\"heading\"><i class=\"large blue middle aligned info icon\"></i>Visualise your own data</h2>\n\t\t\t\t<p>Need to visualise extra boundaries, features or point data?</p>\n\t\t\t\t<p>Upload your own GeoJSON files and have them visible on your own data layer.</p>\n\t\t\t</div>\n\t\t\t<div class=\"ui four wide column\"></div>\n\t\t</div>\n\t</div>\n</div>\n<app-upload></app-upload>\n\n<app-footer></app-footer>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/import/import.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ImportComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ImportComponent = (function () {
+    function ImportComponent() {
+    }
+    ImportComponent.prototype.ngOnInit = function () {
+    };
+    return ImportComponent;
+}());
+ImportComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-contribute',
+        template: __webpack_require__("./src/app/components/import/import.component.html"),
+        styles: [__webpack_require__("./src/app/components/import/import.component.css")]
+    }),
+    __metadata("design:paramtypes", [])
+], ImportComponent);
+
+//# sourceMappingURL=import.component.js.map
+
+/***/ }),
+
 /***/ "./src/app/components/importjobs/importjobs.component.css":
 /***/ (function(module, exports) {
 
@@ -1621,7 +1621,7 @@ module.exports = "<div class=\"ui blue inverted vertical masthead center aligned
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModelsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_nosql_service__ = __webpack_require__("./src/app/services/nosql.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_models_service__ = __webpack_require__("./src/app/services/models.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1634,13 +1634,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var ModelsComponent = (function () {
-    function ModelsComponent(ns) {
-        this.ns = ns;
+    function ModelsComponent(ms) {
+        this.ms = ms;
         this.models = [];
     }
     ModelsComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.ns.get('/models').subscribe(function (m) { return _this.models = m; });
+        this.ms.get('models').subscribe(function (m) { return _this.models = m.models; });
     };
     return ModelsComponent;
 }());
@@ -1650,7 +1650,7 @@ ModelsComponent = __decorate([
         template: __webpack_require__("./src/app/components/models/models.component.html"),
         styles: [__webpack_require__("./src/app/components/models/models.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_nosql_service__["a" /* NosqlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_nosql_service__["a" /* NosqlService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_models_service__["a" /* ModelsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_models_service__["a" /* ModelsService */]) === "function" && _a || Object])
 ], ModelsComponent);
 
 var _a;
@@ -1988,7 +1988,7 @@ module.exports = "ui.segment.dropzone,\n.dropzone {\n  border-style: dashed;\n  
 /***/ "./src/app/components/upload/upload.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui container\">\n    <!-- Steps -->\n  <div class=\"ui fluid steps\">\n    <div class=\"active step\">\n      <i class=\"file outline icon\"></i>\n      <div class=\"content\">\n        <div class=\"title\">Upload File(s)</div>\n        <div class=\"description\">Import GeoJSON</div>\n      </div>\n    </div>\n    <div class=\"disabled step\">\n      <i class=\"bar chart icon\"></i>\n      <div class=\"content\">\n        <div class=\"title\">Readings extracted</div>\n        <div class=\"description\">Metadata analysis</div>\n      </div>\n    </div>\n    <div class=\"disabled step\">\n      <i class=\"microchip icon\"></i>\n      <div class=\"content\">\n        <div class=\"title\">Merging and Interpolation</div>\n      </div>\n    </div>\n    <div class=\"disabled step\">\n      <i class=\"server icon\"></i>\n      <div class=\"content\">\n        <div class=\"title\">Distribution</div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Start: File Drop Area -->\n  <div ng2FileDrop\n  [ngClass]=\"{'nv-file-over': hasBaseDropZoneOver}\"\n  (fileOver)=\"fileOverBase($event)\"\n  [uploader]=\"uploader\"\n  class=\"well\">\n    <div class=\"ui segment dropzone\">\n      <i class=\"big upload icon disabled\"></i>\n      <h3>Drag and Drop</h3>\n    </div>\n  </div>\n  <!-- End: File Drop Area -->\n  <div class=\"ui horizontal divider\"> Or</div>\n\n  <!-- Start: File Chooser -->\n  <div class=\"ui segment\">\n    <h3>Choose a file to upload: </h3>\n    <input ng2FileSelect\n    [ngClass]=\"{'another-file-over-class': hasAnotherDropZoneOver}\"\n    type=\"file\"\n    (fileOver)=\"fileOverAnother($event)\"\n    [uploader]=\"uploader\"\n    multiple />\n  </div>\n  <!-- End: File Chooser -->\n\n\n  <!-- Start: uploader queue -->\n  <div *ngIf=\"uploader.queue.length > 0\">\n    <!-- Uploader has Items -->\n    <div class=\"ui horizontal divider\"></div>\n    <div class=\"ui attached segment\">\n      <div class=\"mini ui icon buttons right floated\">\n        <button type=\"button\" class=\"mini ui icon positive button\" (click)=\"uploader.uploadAll()\" [disabled]=\"!uploader.getNotUploadedItems().length\"><i class=\"upload icon\"></i>Upload All</button>\n        <button type=\"button\" class=\"mini ui icon blue button\" (click)=\"uploader.cancelAll()\" [disabled]=\"!uploader.isUploading\"><i class=\"ban icon\"></i>Cancel All</button>\n        <button type=\"button\" class=\"mini ui icon negative button\" (click)=\"uploader.clearQueue()\" [disabled]=\"!uploader.queue.length\"><i class=\"delete icon\"></i>Flush Queue</button>\n      </div>\n      <h2 class=\"ui header\">File Upload Queue</h2>\n      <p>Contains {{uploader.queue.length}} item<span *ngIf=\"uploader.queue.length > 1\">s</span>.</p>\n    </div>\n\n    <!-- ITEMS -->\n    <div class=\"ui attached segment\">\n      <div class=\"ui internally celled grid\">\n        <!-- start: item -->\n        <div *ngFor=\"let item of uploader.queue\" class=\"equal height row\">\n          <div class=\"four wide column\">\n            <h5 class=\"header\">{{ item.file.name }}</h5>\n            <div class=\"meta\">\n              <p>{{item.file.size/1024/1024 | number:'.2'}} MB</p>\n              <p>{{item.file.type}}</p>\n            </div>\n          </div>\n          <div class=\"seven wide column middle aligned\">\n              <sui-progress [value]=\"item.progress\" [showProgress]=\"true\" [maximum]=\"maximum\" [precision]=\"precision\">\n                <div class=\"progress\">{{item.progress + '%'}}</div>\n              </sui-progress>\n            </div>\n          <div class=\"five wide column middle aligned\">\n            <div class=\"mini ui icon buttons fluid\">\n              <button type=\"button\" class=\"mini ui icon button\" (click)=\"item.upload()\" [disabled]=\"item.isReady || item.isUploading || item.isSuccess || item.isError\"><i class=\"green upload icon\"></i>Upload file</button>\n              <button type=\"button\" class=\"mini ui icon button\" (click)=\"item.cancel()\" [disabled]=\"!item.isUploading\"><i class=\"blue stop icon\"></i>Stop upload</button>\n              <button type=\"button\" class=\"mini ui icon button\" (click)=\"item.remove()\" [disabled]=\"!item.isSuccess\"><i class=\"red delete icon\"></i>Remove file</button>\n            </div>\n          </div>\n        </div>\n        <!-- end: item -->\n      </div>\n    </div>\n    <!-- End: ITEMS -->\n  </div>\n</div>\n"
+module.exports = "<div class=\"ui container\">\n    <!-- Steps -->\n  <div class=\"ui fluid steps\">\n    <div class=\"active step\">\n      <i class=\"file outline icon\"></i>\n      <div class=\"content\">\n        <div class=\"title\">Upload File(s)</div>\n        <div class=\"description\">Import for analysis</div>\n      </div>\n    </div>\n    <div class=\"disabled step\">\n      <i class=\"bar chart icon\"></i>\n      <div class=\"content\">\n        <div class=\"title\">Check for consistency</div>\n        <div class=\"description\">Metadata analysis</div>\n      </div>\n    </div>\n    <div class=\"disabled step\">\n      <i class=\"microchip icon\"></i>\n      <div class=\"content\">\n        <div class=\"title\">Conversion to GeoJSON</div>\n      </div>\n    </div>\n    <div class=\"disabled step\">\n      <i class=\"server icon\"></i>\n      <div class=\"content\">\n        <div class=\"title\">Ready for use</div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Start: File Drop Area -->\n  <div ng2FileDrop\n  [ngClass]=\"{'nv-file-over': hasBaseDropZoneOver}\"\n  (fileOver)=\"fileOverBase($event)\"\n  [uploader]=\"uploader\"\n  class=\"well\">\n    <div class=\"ui segment dropzone\">\n      <i class=\"big upload icon disabled\"></i>\n      <h3>Drag and Drop</h3>\n    </div>\n  </div>\n  <!-- End: File Drop Area -->\n  <div class=\"ui horizontal divider\"> Or</div>\n\n  <!-- Start: File Chooser -->\n  <div class=\"ui segment\">\n    <h3>Choose a file to upload: </h3>\n    <input ng2FileSelect\n    [ngClass]=\"{'another-file-over-class': hasAnotherDropZoneOver}\"\n    type=\"file\"\n    (fileOver)=\"fileOverAnother($event)\"\n    [uploader]=\"uploader\"\n    multiple />\n  </div>\n  <!-- End: File Chooser -->\n\n\n  <!-- Start: uploader queue -->\n  <div *ngIf=\"uploader.queue.length > 0\">\n    <!-- Uploader has Items -->\n    <div class=\"ui horizontal divider\"></div>\n    <div class=\"ui attached segment\">\n      <div class=\"mini ui icon buttons right floated\">\n        <button type=\"button\" class=\"mini ui icon positive button\" (click)=\"uploader.uploadAll()\" [disabled]=\"!uploader.getNotUploadedItems().length\"><i class=\"upload icon\"></i>Upload All</button>\n        <button type=\"button\" class=\"mini ui icon blue button\" (click)=\"uploader.cancelAll()\" [disabled]=\"!uploader.isUploading\"><i class=\"ban icon\"></i>Cancel All</button>\n        <button type=\"button\" class=\"mini ui icon negative button\" (click)=\"uploader.clearQueue()\" [disabled]=\"!uploader.queue.length\"><i class=\"delete icon\"></i>Flush Queue</button>\n      </div>\n      <h2 class=\"ui header\">File Upload Queue</h2>\n      <p>Contains {{uploader.queue.length}} item<span *ngIf=\"uploader.queue.length > 1\">s</span>.</p>\n    </div>\n\n    <!-- ITEMS -->\n    <div class=\"ui attached segment\">\n      <div class=\"ui internally celled grid\">\n        <!-- start: item -->\n        <div *ngFor=\"let item of uploader.queue\" class=\"equal height row\">\n          <div class=\"four wide column\">\n            <h5 class=\"header\">{{ item.file.name }}</h5>\n            <div class=\"meta\">\n              <p>{{item.file.size/1024/1024 | number:'.2'}} MB</p>\n              <p>{{item.file.type}}</p>\n            </div>\n          </div>\n          <div class=\"seven wide column middle aligned\">\n              <sui-progress [value]=\"item.progress\" [showProgress]=\"true\" [maximum]=\"maximum\" [precision]=\"precision\">\n                <div class=\"progress\">{{item.progress + '%'}}</div>\n              </sui-progress>\n            </div>\n          <div class=\"five wide column middle aligned\">\n            <div class=\"mini ui icon buttons fluid\">\n              <button type=\"button\" class=\"mini ui icon button\" (click)=\"item.upload()\" [disabled]=\"item.isReady || item.isUploading || item.isSuccess || item.isError\"><i class=\"green upload icon\"></i>Upload file</button>\n              <button type=\"button\" class=\"mini ui icon button\" (click)=\"item.cancel()\" [disabled]=\"!item.isUploading\"><i class=\"blue stop icon\"></i>Stop upload</button>\n              <button type=\"button\" class=\"mini ui icon button\" (click)=\"item.remove()\" [disabled]=\"!item.isSuccess\"><i class=\"red delete icon\"></i>Remove file</button>\n            </div>\n          </div>\n        </div>\n        <!-- end: item -->\n      </div>\n    </div>\n    <!-- End: ITEMS -->\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -2012,10 +2012,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 // TODO
-var URL = 'http:////pipeline:1880/upload';
+var URL = 'http://webfire.mobility.unimelb.edu.au:1880/upload';
 var UploadComponent = (function () {
     function UploadComponent() {
         this.uploader = new __WEBPACK_IMPORTED_MODULE_1_ng2_file_upload__["FileUploader"]({ url: URL });
+        this.uploader.onBeforeUploadItem = function (item) {
+            item.withCredentials = false;
+        };
         this.hasBaseDropZoneOver = false;
         this.hasAnotherDropZoneOver = false;
         // this.modalService
@@ -2336,20 +2339,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ModelsService = (function () {
     function ModelsService(http) {
         this.http = http;
-        this.modelsUrl = 'http://webfire.mobility.unimelb.net.au:1880/api/models';
+        this.modelsUrl = 'http://webfire.mobility.unimelb.net.au:8002/v1';
     }
-    // private modelsUrl = 'http://api:8002/v1/models';
-    ModelsService.prototype.get = function (id) {
+    ModelsService.prototype.get = function (abbr) {
         return this.http
-            .get(this.modelsUrl + "/" + id, { headers: this.getHeaders() })
+            .get(this.modelsUrl + "/" + abbr, { headers: this.getHeaders() })
             .map(function (resp) { return resp.json(); })
             .catch(function (error) { return __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["a" /* Observable */].throw(error.json().error || 'Server error'); });
     };
+    // Utility function
     ModelsService.prototype.getHeaders = function () {
         // I included these headers because otherwise FireFox
         // will request text/html
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]();
         headers.append('Accept', 'application/json');
+        headers.append('Access-Control-Allow-Origin', '*');
+        headers.append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
         return headers;
     };
     ModelsService.prototype.getModels = function () {
@@ -2364,11 +2369,6 @@ ModelsService = __decorate([
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
 ], ModelsService);
 
-function mapModels(response) {
-    // The response of the API has a results
-    // property with the actual results
-    return response.json();
-}
 var _a;
 //# sourceMappingURL=models.service.js.map
 
@@ -2633,7 +2633,7 @@ module.exports = "html, body {\n  margin: 0;\n  height: 100%;\n  overflow: hidde
 /***/ "./src/app/shared/mapbox/mapbox.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui mapbox\" (mouseup)=\"upSplitView($event)\" (mousedown)=\"downSplitView($event)\" (click)=\"onUp($event)\"\n     (drag)=\"dragSplitView($event)\" (mousemove)=\"dragSplitView($event)\">\n  <div class=\"viewport\" id=\"backViewport\">\n    <div class=\"viewframe\">\n      <div id=\"mymapbox\" class=\"ui mapbox mapboxgl-map\"></div>\n    </div>\n  </div>\n  <div class=\"viewport\" id=\"frontViewport\">\n    <div class=\"viewframe\">\n      <div id=\"myAltmapbox\" class=\"ui mapbox mapboxgl-map\"></div>\n    </div>\n  </div>\n  <div id=\"splitViewHandle\" class=\"viewDividerhandle\" (mouseenter)=\"enterSplitViewHandle($event)\"\n       (click)=\"clickSplitView($event)\" (mouseleave)=\"leaveSplitViewHandle($event)\"><i\n    class=\"ui large white expand icon\"></i></div>\n  <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>\n  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>\n  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css'\n        type='text/css'/>\n\n\n  <div id=\"myoverlay\" class='map-overlay'>\n    <div [suiCollapse]=\"!ingesting\" id='ingest-area' class='ingest-area top attached map-overlay-inner dark'>\n      <div class=\"ui top attached fluid tiny inverted menu\">\n\n\n        <a class=\"item\" (click)=\"ingesting = !ingesting; isCopied=false;\">\n          <i class=\"red close icon\"></i>\n        </a>\n        <a class=\"item\">\n          SPACE\n        </a>\n        <a class=\"item\" (click)=\"calculateArea()\" data-content=\"Calculate Area\">\n          <i class=\"white calculator icon\"></i> Area\n        </a>\n\n        <a class=\"item\" (click)=\"importGeoJSON()\" data-content=\"Import GeoJSON\">\n          <i class=\"white file icon\"></i> Import\n        </a>\n        <a class=\"item\" (click)=\"saveBoundary()\" data-content=\"Save GeoJSON\">\n          <i class=\"white group object icon\"></i> Save\n        </a>\n\n        <a class=\"item\" [ngxClipboard]=\"geojsonarea\" (cbOnSuccess)=\"isCopied = true\">\n          <i class=\"icons\">\n            <i class=\"copy icon\"></i>\n            <i *ngIf=\"isCopied\" class=\"green checkmark icon\"></i>\n          </i>\n        </a>\n\n        <a class=\"item\" (click)=\"refreshModelData()\">\n          <i class=\"search icon\"></i> Go\n        </a>\n\n      </div>\n      <div class=\"ui form\">\n        <div class=\"field json\">\n          <!--<h3 class=\"ui header\">GeoJSON (Copy/Paste)</h3>-->\n          <pre id='calculated-area' class='calculated-area'></pre>\n          <textarea [(ngModel)]=\"ingestGeoJson\" #geojsonarea></textarea>\n        </div>\n\n      </div>\n    </div>\n\n    <div [suiCollapse]=\"collapse\" class=\"attached\">\n      <div class=\"map-overlay-inner dark\">\n        <div class=\"ui top attached fluid tiny inverted menu\">\n          <a class=\"item\" (click)=\"collapse = !collapse\">\n            <i class=\"red close icon\"></i>\n          </a>\n\n          <a class=\"item\">\n            TIME\n          </a>\n\n          <a class=\"item\" (click)=\"sidebar.toggle();\">\n            <i class=\"sidebar icon\"></i> Models\n          </a>\n\n          <a class=\"item\" (click)=\"toggleTimeBrushing()\" data-content=\"Timebrushing\">\n            <div *ngIf=\"timebrush\"><i class=\"white paint brush icon\"></i> Timebrush OFF</div>\n            <div *ngIf=\"!timebrush\"><i class=\"white close icon\"></i> Timebrushing ON</div>\n          </a>\n\n          <a class=\"item\" suiDatepicker [pickerMinDate]=\"minStartDate\" [pickerMaxDate]=\"maxStartDate\"\n             [pickerMode]=\"'date'\" [(ngModel)]=\"start\"><i\n            class=\"calendar icon\"></i> From: {{start | date:'dd/MM/y'}}</a>\n\n          <a class=\"item\" suiDatepicker [pickerMinDate]=\"minEndDate\" [pickerMaxDate]=\"maxEndDate\" [pickerMode]=\"'date'\"\n             [(ngModel)]=\"finish\"><i class=\"calendar icon\"></i> To: {{finish |\n            date:'dd/MM/y'}}</a>\n          <a class=\"item\" (click)=\"weekView()\" data-content=\"This past week\"><i class=\"clock icon\"></i> This week</a>\n\n          <a class=\"item\" (click)=\"mpg()\" data-content=\"Get MP4\">\n            <i class=\"file video icon\"></i> Animation\n          </a>\n\n          <a class=\"item\" (click)=\"netCDF()\" data-content=\"NetCDF Export\">\n            <i class=\"archive icon\"></i> DataSet\n          </a>\n\n          <a class=\"item\" (click)=\"pdf()\" data-content=\"PDF\">\n            <i class=\"file pdf icon\"></i> PDF\n          </a>\n\n          <a class=\"item\" (click)=\"refreshModelData()\" data-content=\"Go\">\n            <i class=\"search icon\"></i> Go\n          </a>\n\n\n\n        </div>\n\n        <sui-sidebar-container class=\"ui bottom attached\">\n\n\n          <sui-sidebar class=\"inverted vertical\" #sidebar>\n            <div class=\"ui fluid inverted menu\">\n              <a class=\"item\" (click)=\"exclusiveModelMode = !exclusiveModelMode\">\n                <div *ngIf=\"!exclusiveModelMode\">\n                  <i class=\"inverted toggle on icon\"></i> Compare\n                </div>\n                <div *ngIf=\"exclusiveModelMode\">\n                  <i class=\"inverted toggle off icon\"></i> Exclusive\n                </div>\n              </a>\n\n              <a *ngIf=\"allModels\" class=\"item\" (click)=\"allModelsOff()\"><i class=\"check circle outline icon\"></i> All models</a>\n              <a *ngIf=\"!allModels\" class=\"item\" (click)=\"allModelsOn()\"><i class=\"radio icon\"></i></a>\n            </div>\n            <div class=\"ui fluid vertical inverted menu\">\n              <a *ngFor=\"let m of models\" (click)=\"toggleModel(m.abbr)\" class=\"ui inverted item\">\n                <i *ngIf=\"m.enabled\" class=\"green toggle on icon\"></i>\n                <i *ngIf=\"!m.enabled\" class=\"toggle off icon\"></i> {{m.name}}\n              </a>\n            </div>\n          </sui-sidebar>\n          <sui-sidebar-sibling [isDimmedWhenVisible]=\"false\" class=\"inverted\">\n            <!--<div class=\"ui container\">-->\n              <!--<h3 class=\"ui center aligned header\">LFMC (%) vs. Time</h3>-->\n            <!--</div>-->\n            <app-charting id=\"chart\" [lat]=\"lat\" [lng]=\"lng\" [start]=\"start | date:'yMMdd'\"\n                          [finish]=\"finish | date:'yMMdd'\"></app-charting>\n          </sui-sidebar-sibling>\n        </sui-sidebar-container>\n      </div>\n    </div>\n\n\n    <div [suiCollapse]=\"!splitview\" class=\"attached\">\n      <div class=\"ui fluid tiny inverted menu\">\n        <a class=\"item\" (click)=\"toggleSplitView()\">\n          <i class=\"red close icon\"></i>\n        </a>\n        <a class=\"item\" (click)=\"setSatelliteStyle()\" data-content=\"Satellite\">\n          <i class=\"green map icon\"></i>\n        </a>\n        <a class=\"item\" (click)=\"setDatavizStyle()\" data-content=\"DataViz\">\n          <i class=\"green map icon\"></i>\n        </a>\n        <a class=\"item\" (click)=\"setDefaultStyle()\" data-content=\"Outdoors\">\n          <i class=\"green map icon\"></i>\n        </a>\n      </div>\n    </div>\n\n    <div class=\"ui bottom attached inverted horizontal fluid menu\">\n      <a class=\"item\" (click)=\"showtoolBar = !showtoolBar\">\n        <i class=\"sidebar icon\"></i> Tools:\n      </a>\n\n      <a class=\"ui tiny purple icon item\" (click)=\"collapse = !collapse\"  data-content=\"Time-series Chart Panel\">\n        <i class=\"white area chart icon\"></i> TIME\n      </a>\n\n      <a class=\"ui tiny orange icon item\" (click)=\"ingesting = !ingesting;saveBoundary();\" data-content=\"GeoJSON Panel\">\n        <i class=\"white map icon\"></i> SPACE\n      </a>\n\n      <a class=\"ui tiny blue icon item\" (click)=\"toggleSplitView()\"  data-content=\"Split View Panel\">\n        <div *ngIf=\"splitview\"><i class=\"white square outline icon\"></i> Split</div>\n        <div *ngIf=\"!splitview\"><i class=\"white columns icon\"></i> Split</div>\n      </a>\n\n      <!--<a class=\"ui tiny blue icon item\" (click)=\"zoomToStateView()\"><i class=\"white world icon\"></i></a>-->\n      <!--<a class=\"item\" (click)=\"undoView()\">-->\n        <!--<i class=\"angle left icon\"></i> Back-->\n        <!--<span *ngIf=\"undos.length > 0\">({{undos.length}})</span>-->\n      <!--</a>-->\n      <!--<a class=\"item\" (click)=\"redoView()\">-->\n        <!--<i class=\"angle right icon\"></i> Forward-->\n        <!--<span *ngIf=\"redos.length > 0\">({{redos.length}})</span>-->\n      <!--</a>-->\n\n\n    </div>\n  </div>\n</div>\n<lfmc-video></lfmc-video>\n\n\n<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>\n<link rel='stylesheet'\n      href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css'\n      type='text/css'/>\n"
+module.exports = "<div class=\"ui mapbox\" (mouseup)=\"upSplitView($event)\" (mousedown)=\"downSplitView($event)\" (click)=\"onUp($event)\"\n     (drag)=\"dragSplitView($event)\" (mousemove)=\"dragSplitView($event)\">\n  <div class=\"viewport\" id=\"backViewport\">\n    <div class=\"viewframe\">\n      <div id=\"mymapbox\" class=\"ui mapbox mapboxgl-map\"></div>\n    </div>\n  </div>\n  <div class=\"viewport\" id=\"frontViewport\">\n    <div class=\"viewframe\">\n      <div id=\"myAltmapbox\" class=\"ui mapbox mapboxgl-map\"></div>\n    </div>\n  </div>\n  <div id=\"splitViewHandle\" class=\"viewDividerhandle\" (mouseenter)=\"enterSplitViewHandle($event)\"\n       (click)=\"clickSplitView($event)\" (mouseleave)=\"leaveSplitViewHandle($event)\"><i\n    class=\"ui large white expand icon\"></i></div>\n  <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>\n  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>\n  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css'\n        type='text/css'/>\n\n\n  <div id=\"myoverlay\" class='map-overlay'>\n    <div [suiCollapse]=\"!ingesting\" id='ingest-area' class='ingest-area top attached map-overlay-inner dark'>\n      <div class=\"ui top attached fluid tiny inverted menu\">\n\n\n        <a class=\"item\" (click)=\"ingesting = !ingesting; isCopied=false;\">\n          <i class=\"red close icon\"></i>\n        </a>\n        <a class=\"item\">\n          SPACE\n        </a>\n        <a class=\"item\" (click)=\"calculateArea()\" data-content=\"Calculate Area\">\n          <i class=\"white calculator icon\"></i> Area\n        </a>\n\n        <a class=\"item\" (click)=\"importGeoJSON()\" data-content=\"Import GeoJSON\">\n          <i class=\"white file icon\"></i> Import\n        </a>\n        <a class=\"item\" (click)=\"saveBoundary()\" data-content=\"Save GeoJSON\">\n          <i class=\"white group object icon\"></i> Save\n        </a>\n\n        <a class=\"item\" [ngxClipboard]=\"geojsonarea\" (cbOnSuccess)=\"isCopied = true\">\n          <i class=\"icons\">\n            <i class=\"copy icon\"></i>\n            <i *ngIf=\"isCopied\" class=\"green checkmark icon\"></i>\n          </i>\n        </a>\n\n        <a class=\"item\" (click)=\"refreshModelData()\">\n          <i class=\"search icon\"></i> Go\n        </a>\n\n      </div>\n      <div class=\"ui form\">\n        <div class=\"field json\">\n          <!--<h3 class=\"ui header\">GeoJSON (Copy/Paste)</h3>-->\n          <pre id='calculated-area' class='calculated-area'></pre>\n          <textarea [(ngModel)]=\"ingestGeoJson\" #geojsonarea></textarea>\n        </div>\n\n      </div>\n    </div>\n\n    <div [suiCollapse]=\"collapse\" class=\"attached\">\n      <div class=\"map-overlay-inner dark\">\n        <div class=\"ui top attached fluid tiny inverted menu\">\n          <a class=\"item\" (click)=\"collapse = !collapse\">\n            <i class=\"red close icon\"></i>\n          </a>\n\n          <a class=\"item\">\n            TIME\n          </a>\n\n          <a class=\"item\" (click)=\"sidebar.toggle();\">\n            <i class=\"sidebar icon\"></i> Models\n          </a>\n\n          <a class=\"item\" (click)=\"toggleTimeBrushing()\" data-content=\"Timebrushing\">\n            <div *ngIf=\"timebrush\"><i class=\"white paint brush icon\"></i> Timebrush OFF</div>\n            <div *ngIf=\"!timebrush\"><i class=\"white close icon\"></i> Timebrushing ON</div>\n          </a>\n\n          <a class=\"item\" suiDatepicker [pickerMinDate]=\"minStartDate\" [pickerMaxDate]=\"maxStartDate\"\n             [pickerMode]=\"'date'\" [(ngModel)]=\"start\"><i\n            class=\"calendar icon\"></i> From: {{start | date:'dd/MM/y'}}</a>\n\n          <a class=\"item\" suiDatepicker [pickerMinDate]=\"minEndDate\" [pickerMaxDate]=\"maxEndDate\" [pickerMode]=\"'date'\"\n             [(ngModel)]=\"finish\"><i class=\"calendar icon\"></i> To: {{finish |\n            date:'dd/MM/y'}}</a>\n          <a class=\"item\" (click)=\"weekView()\" data-content=\"This past week\"><i class=\"clock icon\"></i> This week</a>\n\n          <a class=\"item\" (click)=\"mpg()\" data-content=\"Get MP4\">\n            <i class=\"file video icon\"></i> Animation\n          </a>\n\n          <a class=\"item\" (click)=\"netCDF()\" data-content=\"NetCDF Export\">\n            <i class=\"archive icon\"></i> DataSet\n          </a>\n\n          <a class=\"item\" (click)=\"pdf()\" data-content=\"PDF\">\n            <i class=\"file pdf icon\"></i> PDF\n          </a>\n\n          <a class=\"item\" (click)=\"refreshModelData()\" data-content=\"Go\">\n            <i class=\"search icon\"></i> Go\n          </a>\n\n\n\n        </div>\n\n        <sui-sidebar-container class=\"ui bottom attached\">\n\n\n          <sui-sidebar class=\"inverted vertical\" #sidebar>\n            <div class=\"ui fluid inverted menu\">\n              <a class=\"item\" (click)=\"exclusiveModelMode = !exclusiveModelMode\">\n                <div *ngIf=\"!exclusiveModelMode\">\n                  <i class=\"inverted toggle on icon\"></i> Compare\n                </div>\n                <div *ngIf=\"exclusiveModelMode\">\n                  <i class=\"inverted toggle off icon\"></i> Exclusive\n                </div>\n              </a>\n\n              <a *ngIf=\"allModels\" class=\"item\" (click)=\"allModelsOff()\"><i class=\"check circle outline icon\"></i> All models</a>\n              <a *ngIf=\"!allModels\" class=\"item\" (click)=\"allModelsOn()\"><i class=\"radio icon\"></i> All models</a>\n            </div>\n            <div class=\"ui fluid vertical inverted menu\">\n              <a *ngFor=\"let m of models\" (click)=\"toggleModel(m.name)\" class=\"ui inverted item\">\n                <i *ngIf=\"m.enabled\" class=\"green toggle on icon\"></i>\n                <i *ngIf=\"!m.enabled\" class=\"toggle off icon\"></i> {{m.ident}} - ({{m.code}})\n              </a>\n            </div>\n          </sui-sidebar>\n          <sui-sidebar-sibling [isDimmedWhenVisible]=\"false\" class=\"inverted\">\n            <!--<div class=\"ui container\">-->\n              <!--<h3 class=\"ui center aligned header\">LFMC (%) vs. Time</h3>-->\n            <!--</div>-->\n            <app-charting id=\"chart\" [lat]=\"lat\" [lng]=\"lng\" [start]=\"start | date:'yMMdd'\"\n                          [finish]=\"finish | date:'yMMdd'\"></app-charting>\n          </sui-sidebar-sibling>\n        </sui-sidebar-container>\n      </div>\n    </div>\n\n\n    <div [suiCollapse]=\"!splitview\" class=\"attached\">\n      <div class=\"ui fluid tiny inverted menu\">\n        <a class=\"item\" (click)=\"toggleSplitView()\">\n          <i class=\"red close icon\"></i>\n        </a>\n        <a class=\"item\" (click)=\"setSatelliteStyle()\" data-content=\"Satellite\">\n          <i class=\"green map icon\"></i>\n        </a>\n        <a class=\"item\" (click)=\"setDatavizStyle()\" data-content=\"DataViz\">\n          <i class=\"green map icon\"></i>\n        </a>\n        <a class=\"item\" (click)=\"setDefaultStyle()\" data-content=\"Outdoors\">\n          <i class=\"green map icon\"></i>\n        </a>\n      </div>\n    </div>\n\n    <div class=\"ui bottom attached inverted horizontal fluid menu\">\n      <a class=\"item\" (click)=\"showtoolBar = !showtoolBar\">\n        <i class=\"sidebar icon\"></i> Tools:\n      </a>\n\n      <a class=\"ui tiny purple icon item\" (click)=\"collapse = !collapse\"  data-content=\"Time-series Chart Panel\">\n        <i class=\"white area chart icon\"></i> TIME\n      </a>\n\n      <a class=\"ui tiny orange icon item\" (click)=\"ingesting = !ingesting;saveBoundary();\" data-content=\"GeoJSON Panel\">\n        <i class=\"white map icon\"></i> SPACE\n      </a>\n\n      <a class=\"ui tiny blue icon item\" (click)=\"toggleSplitView()\"  data-content=\"Split View Panel\">\n        <div *ngIf=\"splitview\"><i class=\"white square outline icon\"></i> Split</div>\n        <div *ngIf=\"!splitview\"><i class=\"white columns icon\"></i> Split</div>\n      </a>\n\n      <!--<a class=\"ui tiny blue icon item\" (click)=\"zoomToStateView()\"><i class=\"white world icon\"></i></a>-->\n      <!--<a class=\"item\" (click)=\"undoView()\">-->\n        <!--<i class=\"angle left icon\"></i> Back-->\n        <!--<span *ngIf=\"undos.length > 0\">({{undos.length}})</span>-->\n      <!--</a>-->\n      <!--<a class=\"item\" (click)=\"redoView()\">-->\n        <!--<i class=\"angle right icon\"></i> Forward-->\n        <!--<span *ngIf=\"redos.length > 0\">({{redos.length}})</span>-->\n      <!--</a>-->\n\n\n    </div>\n  </div>\n</div>\n<lfmc-video></lfmc-video>\n\n\n<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>\n<link rel='stylesheet'\n      href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css'\n      type='text/css'/>\n"
 
 /***/ }),
 
@@ -2659,6 +2659,7 @@ module.exports = "<div class=\"ui mapbox\" (mouseup)=\"upSplitView($event)\" (mo
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_proj4_dist_proj4_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_proj4_dist_proj4_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_moment__ = __webpack_require__("./node_modules/moment/moment.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_models_service__ = __webpack_require__("./src/app/services/models.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2682,6 +2683,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var bbox = __webpack_require__("./node_modules/geojson-bbox/geojson-bbox.js");
 var now = __WEBPACK_IMPORTED_MODULE_12_moment__().format('LLLL');
 var syncMove = __webpack_require__("./node_modules/@mapbox/mapbox-gl-sync-move/index.js");
@@ -2692,12 +2694,13 @@ var epsg3112 = __WEBPACK_IMPORTED_MODULE_11_proj4_dist_proj4_js__["defs"]('EPSG:
 var epsg3857 = __WEBPACK_IMPORTED_MODULE_11_proj4_dist_proj4_js__["defs"]('EPSG:3857', '+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext  +no_defs');
 var epsg4326 = __WEBPACK_IMPORTED_MODULE_11_proj4_dist_proj4_js__["defs"]('EPSG:4326', '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs ');
 var MapboxComponent = (function () {
-    function MapboxComponent(mapService, ns, tss, http) {
+    function MapboxComponent(mapService, ns, tss, http, ms) {
         var _this = this;
         this.mapService = mapService;
         this.ns = ns;
         this.tss = tss;
         this.http = http;
+        this.ms = ms;
         this.showtoolBar = false;
         this.showVideo = false;
         this.models = [];
@@ -2748,7 +2751,12 @@ var MapboxComponent = (function () {
         this.cursorMoveNS = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["EventEmitter"]();
         this.zoomReading = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["EventEmitter"]();
         this.bearingReading = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["EventEmitter"]();
-        this.ns.get('/models').subscribe(function (m) { return _this.models = m; });
+        // Old System
+        // this.ns.get('/models').subscribe(m => this.models = m);
+        // New System
+        this.ms.get('models').subscribe(function (m) {
+            _this.models = m.models;
+        });
     }
     MapboxComponent.prototype.ngAfterViewInit = function () {
     };
@@ -3478,7 +3486,7 @@ var MapboxComponent = (function () {
     MapboxComponent.prototype.toggleModel = function (m) {
         if (this.exclusiveModelMode) {
             for (var i = 0; i < this.models.length; i++) {
-                if (this.models[i].abbr === m) {
+                if (this.models[i].name === m) {
                     this.models[i].enabled = true;
                 }
                 else {
@@ -3488,7 +3496,7 @@ var MapboxComponent = (function () {
         }
         else {
             for (var i = 0; i < this.models.length; i++) {
-                if (this.models[i].abbr === m) {
+                if (this.models[i].name === m) {
                     this.models[i].enabled = !this.models[i].enabled;
                 }
             }
@@ -3520,16 +3528,16 @@ var MapboxComponent = (function () {
         var active = [];
         for (var i = 0; i < this.models.length; i++) {
             if (this.models[i].enabled) {
-                active.push(this.models[i].abbr);
-                this.map.setLayoutProperty(this.models[i].abbr, 'visibility', 'visible');
+                active.push(this.models[i].name);
+                this.map.setLayoutProperty(this.models[i].name, 'visibility', 'visible');
             }
             else {
-                this.map.setLayoutProperty(this.models[i].abbr, 'visibility', 'none');
+                this.map.setLayoutProperty(this.models[i].name, 'visibility', 'none');
             }
         }
         for (var i = 0; i < this.models.length; i++) {
             if (this.models[i].enabled) {
-                this.map.setPaintProperty(this.models[i].abbr, 'raster-opacity', (1 / active.length));
+                this.map.setPaintProperty(this.models[i].name, 'raster-opacity', (1 / active.length));
             }
         }
         return active;
@@ -3599,10 +3607,10 @@ MapboxComponent = __decorate([
         styles: [__webpack_require__("./src/app/shared/mapbox/mapbox.component.css")],
         providers: [__WEBPACK_IMPORTED_MODULE_3__services_map_service__["a" /* MapService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_map_service__["a" /* MapService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_map_service__["a" /* MapService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__services_nosql_service__["a" /* NosqlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_nosql_service__["a" /* NosqlService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__services_timeseries_service__["a" /* TimeseriesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_timeseries_service__["a" /* TimeseriesService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _f || Object])
+    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_map_service__["a" /* MapService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_map_service__["a" /* MapService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__services_nosql_service__["a" /* NosqlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_nosql_service__["a" /* NosqlService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__services_timeseries_service__["a" /* TimeseriesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_timeseries_service__["a" /* TimeseriesService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_13__services_models_service__["a" /* ModelsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_13__services_models_service__["a" /* ModelsService */]) === "function" && _g || Object])
 ], MapboxComponent);
 
-var _a, _b, _c, _d, _e, _f;
+var _a, _b, _c, _d, _e, _f, _g;
 //# sourceMappingURL=mapbox.component.js.map
 
 /***/ }),

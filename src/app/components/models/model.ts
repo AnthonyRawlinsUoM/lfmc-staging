@@ -1,7 +1,6 @@
 export class Model {
-	constructor(
-		public id: string,
-		public name: string,
-		public version: string
-	) {}
+  constructor(public ident: string,
+              public name: string,
+              public version: string) {
+  }
 }

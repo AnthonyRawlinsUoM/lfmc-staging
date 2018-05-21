@@ -343,8 +343,8 @@ export class ChartingComponent implements OnInit {
         this.dimmer = true;
       },
       () => {
-        this.modalService
-          .open(new ConfirmModal('Success!', 'Your chart is ready.', 'tiny'));
+        // this.modalService
+        //   .open(new ConfirmModal('Success!', 'Your chart is ready.', 'tiny'));
         this.dimmer = false;
       });
   }

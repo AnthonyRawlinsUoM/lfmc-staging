@@ -20,6 +20,7 @@ import {
 } from 'mapbox-gl/dist/mapbox-gl.js';
 import * as proj4 from 'proj4/dist/proj4.js';
 import * as moment from 'moment';
+import {ModelsService} from '../../services/models.service';
 
 const bbox = require('geojson-bbox');
 
@@ -141,12 +142,18 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   constructor(private mapService: MapService,
               private ns: NosqlService,
               private tss: TimeseriesService,
-              private http: Http) {
+              private http: Http,
+              private ms: ModelsService) {
     this.cursorMoveEW = new EventEmitter<number>();
     this.cursorMoveNS = new EventEmitter<number>();
     this.zoomReading = new EventEmitter<number>();
     this.bearingReading = new EventEmitter<number>();
-    this.ns.get('/models').subscribe(m => this.models = m);
+    // Old System
+    // this.ns.get('/models').subscribe(m => this.models = m);
+    // New System
+    this.ms.get('models').subscribe(m => {
+      this.models = m.models;
+    });
   }
 
   ngAfterViewInit() {
@@ -954,7 +961,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
 
     if (this.exclusiveModelMode) {
       for (let i = 0; i < this.models.length; i++) {
-        if (this.models[i].abbr === m) {
+        if (this.models[i].name === m) {
           this.models[i].enabled = true;
         } else {
           this.models[i].enabled = false;
@@ -963,7 +970,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     } else {
       for (let i = 0; i < this.models.length; i++) {
 
-        if (this.models[i].abbr === m) {
+        if (this.models[i].name === m) {
           this.models[i].enabled = !this.models[i].enabled;
 
         }
@@ -1007,15 +1014,15 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     const active = [];
     for (let i = 0; i < this.models.length; i++) {
       if (this.models[i].enabled) {
-        active.push(this.models[i].abbr);
-        this.map.setLayoutProperty(this.models[i].abbr, 'visibility', 'visible');
+        active.push(this.models[i].name);
+        this.map.setLayoutProperty(this.models[i].name, 'visibility', 'visible');
       } else {
-        this.map.setLayoutProperty(this.models[i].abbr, 'visibility', 'none');
+        this.map.setLayoutProperty(this.models[i].name, 'visibility', 'none');
       }
     }
     for (let i = 0; i < this.models.length; i++) {
       if (this.models[i].enabled) {
-        this.map.setPaintProperty(this.models[i].abbr, 'raster-opacity', (1 / active.length));
+        this.map.setPaintProperty(this.models[i].name, 'raster-opacity', (1 / active.length));
       }
     }
 
