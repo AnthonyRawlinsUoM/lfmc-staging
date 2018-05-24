@@ -3,14 +3,14 @@ import {VideoComponent} from '../../components/video/video.component';
 
 declare let require: any;
 import {EventEmitter, Component, ElementRef, OnInit, Input, Output, ViewChild, AfterViewInit} from '@angular/core';
-import {Http} from '@angular/http';
+
 import {MapService} from '../../services/map.service';
 import {TimeseriesService} from '../../services/timeseries.service';
 import {NosqlService} from '../../services/nosql.service';
 import {ChartingComponent, LFMCResponseType} from '../../components/charting/charting.component';
-import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+//import 'rxjs/add/operator/toPromise';
+//import 'rxjs/add/operator/map';
+//import 'rxjs/add/operator/catch';
 import {
   GeolocateControl,
   ScaleControl,
@@ -60,7 +60,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
 
   showtoolBar = false;
   showVideo = false;
-  calculated_area: string = '';
+  calculated_area = '';
   models: any[] = [];
   start: Date = moment().subtract(31, 'days').toDate();
   finish: Date = moment().subtract(1, 'days').toDate();
@@ -112,6 +112,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   scl: ScaleControl;
   ful: FullscreenControl;
   @Input() @Output() drw: any;
+  @Input() @Output() altdrw: any;
 
   splitViewHandle: any;
   aView: any;
@@ -156,7 +157,6 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   constructor(private mapService: MapService,
               private ns: NosqlService,
               private tss: TimeseriesService,
-              private http: Http,
               private ms: ModelsService,
               private modalService: SuiModalService) {
     this.cursorMoveEW = new EventEmitter<number>();
@@ -240,6 +240,13 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         trash: true
       }
     });
+    this.altdrw = new MapboxDraw({
+      displayControlsDefault: true,
+      controls: {
+        polygon: true,
+        trash: true
+      }
+    });
 
     this.canvas = map.getCanvasContainer();
     console.log('Canvas = ', this.canvas);
@@ -265,6 +272,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     map.addControl(this.geo, 'top-right');
     map.addControl(this.ful, 'top-right');
     map.addControl(this.drw, 'top-right');
+    altmap.addControl(this.altdrw, 'top-right');
     map.addControl(this.scl, 'bottom-right');
 
     // const dragPointGeoJSON = this.dragPointGeoJSON;
@@ -508,10 +516,10 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     this.splitview = !this.splitview;
     if (!this.splitview) {
       this.bView.style.right = '100vw';
-      this.splitViewHandle.style.left = '-22px';
+      this.splitViewHandle.style.left = '-33px';
     } else {
       this.bView.style.right = '50vw';
-      this.splitViewHandle.style.left = 'calc(50vw - 22px)';
+      this.splitViewHandle.style.left = 'calc(50vw - 33px)';
     }
   }
 
@@ -537,14 +545,14 @@ export class MapboxComponent implements OnInit, AfterViewInit {
       this.splitview = true;
       console.log('Dragging SplitView...');
       this.bView.style.right = 'calc(100vw - ' + e.screenX + 'px)';
-      this.splitViewHandle.style.left = 'calc(' + e.screenX + 'px - 22px)';
+      this.splitViewHandle.style.left = 'calc(' + e.screenX + 'px - 33px)';
     }
   }
 
   upSplitView(e: any) {
     if (this.canDragSplitView) {
       this.bView.style.right = 'calc(100vw - ' + e.screenX + 'px)';
-      this.splitViewHandle.style.left = 'calc(' + e.screenX + 'px - 22px)';
+      this.splitViewHandle.style.left = 'calc(' + e.screenX + 'px - 33px)';
       this.draggingHandle = false;
       this.canDragSplitView = false;
       console.log('Not dragging SplitView...');
@@ -561,13 +569,13 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   dragSplitView(e: any) {
     if (this.canDragSplitView && this.draggingHandle) {
       this.bView.style.right = 'calc(100vw - ' + e.screenX + 'px)';
-      this.splitViewHandle.style.left = 'calc(' + e.screenX + 'px - 22px)';
+      this.splitViewHandle.style.left = 'calc(' + e.screenX + 'px - 33px)';
     }
   }
 
   // use turf to save GeoJSON of boundary
   public saveBoundary() {
-    if (this.prevBoundary !== {}) {
+    if (!this.prevBoundary) {
       if (this.prevBoundary.features !== [] || this.prevBoundary.features.length > 0) {
         console.log('Drawing exists.');
         if (this.prevBoundary !== this.drw.getAll()) { // ie., change detected
@@ -614,6 +622,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
       const data = this.getIngestValue();
       console.log(data);
       this.drw.set(data);
+      this.altdrw.set(data); // Mirror the data on the alternate view!
       this.zoomToBoundaryView();
     }
   }
@@ -663,19 +672,6 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     }
   }
 
-  public setSatelliteStyle() {
-    this.altmap.setStyle('mapbox://styles/mapbox/satellite-v9');
-  }
-
-  public setDatavizStyle() {
-    this.altmap.setStyle('mapbox://styles/anthonyrawlinsuom/cj6eembnj0x4k2smhax6o0ztl');
-  }
-
-  public setDefaultStyle() {
-    this.altmap.setStyle('mapbox://styles/anthonyrawlinsuom/cj5we9hex7cy82rqimwlky6rz');
-  }
-
-
   // State View
   // public zoomToStateView(e) {
   //   // console.log('Flying to: ' + [this.defaultLng, this.defaultLat]);
@@ -708,14 +704,18 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     switch (LRO) {
       case 'L':
         for (let i = 0; i < this.models.length; i++) {
-          this.models[i].enabled_left = this.models[i].name === m;
-          this.models[i].enabled_right = false;
+          if (this.models[i].name === m) {
+            this.models[i].enabled_left = !this.models[i].enabled_left;
+            this.models[i].enabled_right = false;
+          }
         }
         break;
       case 'R':
         for (let i = 0; i < this.models.length; i++) {
-          this.models[i].enabled_right = this.models[i].name === m;
-          this.models[i].enabled_left = false;
+          if (this.models[i].name === m) {
+            this.models[i].enabled_right = !this.models[i].enabled_right;
+            this.models[i].enabled_left = false;
+          }
         }
         break;
       case 'O':
@@ -834,7 +834,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   }
 
   makeSourceForModel(layer_name) {
-    const layer_url_part_A = 'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:';
+    const layer_url_part_A = 'http://lfmc.landfood.unimelb.edu.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:';
     const layer_url_part_B = '&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng';
     const time_component = '&time=' + moment(this.finish).format('YYYY-MM-DD');
     const layer_source = {
@@ -903,7 +903,6 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     } catch (e) {
       console.log('OK that the layer doesn\'t exist yet.');
     }
-
   }
 
   ownLayerRight(layer_code) {

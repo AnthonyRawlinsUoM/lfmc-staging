@@ -1,25 +1,21 @@
 import {Injectable} from '@angular/core';
-import {Http, Response, Headers, RequestOptions} from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import {Model} from '../components/models/model';
-import {Observable} from 'rxjs/Rx';
 
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import {Observable} from 'rxjs/index';
 
 
 @Injectable()
 export class ModelsService {
 
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
   }
 
-  private modelsUrl = 'http://webfire.mobility.unimelb.net.au:8002/v1';
+  private modelsUrl = 'http://lfmc.landfood.unimelb.edu.au:8002/v1';
 
   get(abbr: any): Observable<any> {
     return this.http
-      .get(`${this.modelsUrl}/${abbr}`, {headers: this.getHeaders()})
-      .map((resp: Response) => resp.json())
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+      .get(`${this.modelsUrl}/${abbr}`);
   }
 
   // Utility function
@@ -34,9 +30,6 @@ export class ModelsService {
   }
 
   getModels(): Observable<any> {
-    return this.http.get(this.modelsUrl)
-      .map((res: Response) => res.json())
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    return this.http.get(this.modelsUrl);
   }
-
 }

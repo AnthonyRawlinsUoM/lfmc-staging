@@ -1,14 +1,6 @@
 import {Component, OnInit, Input, Output} from '@angular/core';
-import {Http, Headers} from '@angular/http';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {TimeseriesService} from '../../services/timeseries.service';
-import {Observable} from 'rxjs/Rx';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/toPromise';
-
 import * as shape from 'd3-shape';
-import * as d3 from 'd3';
 import {ConfirmModal} from '../confirm-modal/confirm-modal.component';
 import {SuiModalService} from 'ng2-semantic-ui';
 

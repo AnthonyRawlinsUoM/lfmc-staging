@@ -48,7 +48,6 @@ import {DatasourcesComponent} from './components/datasources/datasources.compone
 import {ConfirmModalComponent} from './components/confirm-modal/confirm-modal.component';
 import {LegendComponent} from './components/legend/legend.component';
 import {ChartingComponent} from './components/charting/charting.component';
-import {FilesaverComponent} from './shared/filesaver/filesaver.component';
 import {VideoComponent} from './components/video/video.component';
 import {ServerlogComponent} from './components/serverlog/serverlog.component';
 
@@ -97,7 +96,6 @@ const appRoutes: Routes = [
     ConfirmModalComponent,
     LegendComponent,
     ChartingComponent,
-    FilesaverComponent,
     VideoComponent,
     ServerlogComponent
   ],

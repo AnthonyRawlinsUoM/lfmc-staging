@@ -1,25 +1,19 @@
 import {Injectable} from '@angular/core';
-import {Http, Response, Headers} from '@angular/http';
-import {Observable} from 'rxjs/Rx';
-
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import {Observable} from 'rxjs/index';
+import {HttpClient} from '@angular/common/http';
 
 
 @Injectable()
 export class NosqlService {
 
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
   }
 
-  private url = 'http://webfire.mobility.unimelb.edu.au:1880';
+  private url = 'http://lfmc.landfood.unimelb.edu.au:1880';
 
   get(name: string): Observable<any> {
     const model$ = this.http
-      .get(`${this.url}${name}`, {headers: this.getHeaders()})
-      //
-      .map((resp: Response) => resp.json())
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+      .get(`${this.url}${name}`);
     return model$;
   }
 

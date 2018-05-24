@@ -1,22 +1,21 @@
 import {Injectable} from '@angular/core';
-import {Http, Response, Headers} from '@angular/http';
-import {Observable} from 'rxjs/Rx';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs/index';
 import {DomSanitizer} from '@angular/platform-browser';
 
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-
+//import 'rxjs/add/operator/map';
+//import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class TimeseriesService {
 
-  constructor(private http: Http, private sanitizer: DomSanitizer) {
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer) {
   }
 
-  private apiUrl = 'http://webfire.mobility.unimelb.net.au:8002/v1';
+  private apiUrl = 'http://lfmc.landfood.unimelb.edu.au:8002/v1';
 
   // Trying version 2
-  // private apiUrl = 'http://webfire.mobility.unimelb.net.au:8002/v2';
+  // private apiUrl = 'http://lfmc.landfood.unimelb.edu.au:8002/v2';
 
   // // Utility function
   private getHeaders() {
@@ -29,21 +28,16 @@ export class TimeseriesService {
     return headers;
   }
 
-  postAPI(path: string, json_query: any): Observable<any[]> {
-    return this.http.post(`${this.apiUrl}${path}`, json_query, {headers: this.getHeaders()})
-      .map((res: Response) => res.json())
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  postAPI(path: string, json_query: any) {
+    return this.http.post(`${this.apiUrl}${path}`, json_query);
   }
 
-  mpgAPI(path: string, json_query: any): Observable<any[]> {
-    return this.http.post(`${this.apiUrl}/fuel.mp4`, json_query, {headers: this.getHeaders()})
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  mpgAPI(path: string, json_query: any) {
+    return this.http.post(`${this.apiUrl}/fuel.mp4`, json_query);
   }
 
-  getAPI(path: string, jq: any): Observable<any[]> {
+  getAPI(path: string, jq: any) {
     const qs = `?start=${jq.start}&finish=${jq.finish}&models=${jq.models}&weighted=${jq.weighted}&geo_json=${jq.geo_json}&response_as=${jq.response_as}`;
-    return this.http.get(`${this.apiUrl}${path}${qs}`, {headers: this.getHeaders()})
-      // .map((res: Response) => res.json())
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    return this.http.get(`${this.apiUrl}${path}${qs}`);
   }
 }

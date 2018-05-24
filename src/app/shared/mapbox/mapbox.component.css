@@ -25,11 +25,11 @@ body {
 }
 
 .viewDividerhandle {
-  width: 44px;
-  height: 44px;
+  width: 66px;
+  height: 66px;
   position: absolute;
   z-index: 220;
-  top: -22px;
+  top: -33px;
   /*border-radius: 11px;*/
   -ms-transform: rotate(45deg);
   /* IE 9 */
@@ -41,17 +41,17 @@ body {
   left: calc(0vw - 22px);
   cursor: grab;
   box-shadow: 3px 3px 6px rgba(0,0,0,0.45);
-  border-radius: 6px;
+  border-radius: 9px;
 }
 
 .viewDividerhandle .icon {
   display: block;
-  width: 22px;
-  height: 22px;
-  margin-top: 18px;
-  margin-left: 18px;
-  margin-right: 4px;
-  margin-bottom: 4px;
+  /*width: 22px;*/
+  /*height: 22px;*/
+  /*margin-top: 18px;*/
+  /*margin-left: 18px;*/
+  /*margin-right: 4px;*/
+  /*margin-bottom: 4px;*/
 }
 
 .viewport {
@@ -267,4 +267,8 @@ textarea.fillgeoarea {
   height: 40vh;
   background: transparent;
   font-size: 0.745em;
+}
+
+#modelList {
+  margin: 0;
 }

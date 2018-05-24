@@ -13,6 +13,7 @@ import {PersistenceService, StorageType} from 'angular-persistence';
 export class ImportedItemsComponent implements OnInit, AfterViewInit {
 
   @Input() @Output() drawing: any;
+  @Input() @Output() altdrawing: any;
 
   @Input() @Output() queries: GeoJSONQuery[];
 
@@ -289,12 +290,13 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit {
     console.log('Got toggle on!');
     console.log('Selection is now ' + q);
     for (let i = 0; i < this.queries.length; i++) {
-      this.queries[i].enabled = this.queries[i].name === q;
-      if (this.queries[i].enabled) {
+      this.queries[i].enabled_right = this.queries[i].name === q;
+      if (this.queries[i].enabled_right) {
         const gj = this.queries[i].geojson;
         console.log(gj);
         console.log('Setting the selection');
         this.drawing.set(gj);
+        this.altdrawing.set(gj);
       }
     }
     this.saveSession();
@@ -303,9 +305,10 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit {
   toggleSelectionOff() {
     console.log('Got toggle off!');
     for (let i = 0; i < this.queries.length; i++) {
-      this.queries[i].enabled = false;
+      this.queries[i].enabled_right = false;
     }
     this.drawing.set(this.emptyGeoJSON);
+    // this.drawing.deleteAll().getAll();
     this.saveSession();
   }
 
@@ -406,7 +409,7 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit {
       }
     }
     if (index > -1) {
-      if (this.queries[index].enabled) {
+      if (this.queries[index].enabled_right) {
         this.toggleSelectionOff();
       }
       this.queries.splice(index, 1);
@@ -425,7 +428,7 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit {
     const editable = new GeoJSONQuery(new_name, this.emptyGeoJSON);
     this.queries.push(editable);
     this.saveSession();
-    editable.enabled = true;
+    editable.enabled_right = true;
     this.editname.nativeElement.focus();
     this.editname.nativeElement.select();
   }
@@ -446,7 +449,7 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit {
     let found = false;
     while (i < this.queries.length && !found) {
       if (this.queries[i].name.toLowerCase().indexOf(this.searchterm.toLowerCase()) !== -1) {
-        this.queries[i].enabled = true;
+        this.queries[i].enabled_right = true;
         this.editname.nativeElement.focus();
         this.editname.nativeElement.select();
         found = true;
@@ -460,11 +463,13 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit {
 export class GeoJSONQuery {
   name: string;
   geojson: any;
-  enabled: boolean;
+  enabled_left: boolean;
+  enabled_right: boolean;
 
   constructor(name, geojson) {
     this.name = name;
-    this.enabled = false;
+    this.enabled_left = false;
+    this.enabled_right = false;
     this.geojson = geojson;
   }
 }
