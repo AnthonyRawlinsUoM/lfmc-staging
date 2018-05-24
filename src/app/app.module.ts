@@ -41,7 +41,7 @@ import {UploadComponent} from './components/upload/upload.component';
 import {ModelsComponent} from './components/models/models.component';
 import {ModelviewComponent} from './components/modelview/modelview.component';
 import {ImportjobsComponent} from './components/importjobs/importjobs.component';
-import {ImporttasksComponent} from './components/importtasks/importtasks.component';
+import {ImportedItemsComponent} from './components/importeditems/importeditems.component';
 import {FullscreenComponent} from './components/fullscreen/fullscreen.component';
 import {SearchresultsComponent} from './components/searchresults/searchresults.component';
 import {DatasourcesComponent} from './components/datasources/datasources.component';
@@ -90,7 +90,7 @@ const appRoutes: Routes = [
     ModelsComponent,
     ModelviewComponent,
     ImportjobsComponent,
-    ImporttasksComponent,
+    ImportedItemsComponent,
     FullscreenComponent,
     SearchresultsComponent,
     DatasourcesComponent,

@@ -34,11 +34,6 @@ export class UploadComponent implements OnInit {
     };
     this.hasBaseDropZoneOver = false;
     this.hasAnotherDropZoneOver = false;
-
-    // this.modalService
-    //   .open(new ConfirmModal("Are you sure?", "Are you sure about accepting this?", ModalSize.Small))
-    //   .onApprove(() => alert("User has accepted."))
-    //   .onDeny(() => alert("User has denied."));
   }
 
   ngOnInit() {

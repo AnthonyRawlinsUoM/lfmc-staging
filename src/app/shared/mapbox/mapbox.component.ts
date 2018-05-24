@@ -2,7 +2,7 @@
 import {VideoComponent} from '../../components/video/video.component';
 
 declare let require: any;
-import {EventEmitter, Component, OnInit, Input, Output, ViewChild, AfterViewInit} from '@angular/core';
+import {EventEmitter, Component, ElementRef, OnInit, Input, Output, ViewChild, AfterViewInit} from '@angular/core';
 import {Http} from '@angular/http';
 import {MapService} from '../../services/map.service';
 import {TimeseriesService} from '../../services/timeseries.service';
@@ -21,6 +21,9 @@ import {
 import * as proj4 from 'proj4/dist/proj4.js';
 import * as moment from 'moment';
 import {ModelsService} from '../../services/models.service';
+import {SuiModalService} from 'ng2-semantic-ui';
+import {ConfirmModal} from '../../components/confirm-modal/confirm-modal.component';
+import {ImportedItemsComponent} from '../../components/importeditems/importeditems.component';
 
 const bbox = require('geojson-bbox');
 
@@ -46,14 +49,18 @@ const epsg4326 = proj4.defs('EPSG:4326',
 })
 export class MapboxComponent implements OnInit, AfterViewInit {
 
+  @ViewChild('calculatedarea') calculatedarea: ElementRef;
+
   @ViewChild(ChartingComponent)
   private chartComponent: ChartingComponent;
+  @ViewChild(ImportedItemsComponent)
+  private importedItemsComponent: ImportedItemsComponent;
   @ViewChild(VideoComponent)
   private videoComponent: VideoComponent;
 
   showtoolBar = false;
   showVideo = false;
-
+  calculated_area: string = '';
   models: any[] = [];
   start: Date = moment().subtract(31, 'days').toDate();
   finish: Date = moment().subtract(1, 'days').toDate();
@@ -95,14 +102,16 @@ export class MapboxComponent implements OnInit, AfterViewInit {
 
   collapse = true;
   timebrush = true;
-
+  snapping = true;
   allModels = false;
+
+  prevBoundary = {'features': []};
 
   nav: NavigationControl;
   geo: GeolocateControl;
   scl: ScaleControl;
   ful: FullscreenControl;
-  drw: any;
+  @Input() @Output() drw: any;
 
   splitViewHandle: any;
   aView: any;
@@ -110,7 +119,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
 
   draggingHandle = false;
   canDragSplitView = false;
-  exclusiveModelMode = false;
+  exclusiveModelMode = true;
   ingestGeoJson: string;
   isCopied = false;
   // isCursorOverPoint = false;
@@ -118,9 +127,14 @@ export class MapboxComponent implements OnInit, AfterViewInit {
 
   map: Map;
   altmap: Map;
+  currentmap: Map;
+
+  model_dimmer = true;
 
   // Set bounds to Australian Area
-  // bounds = [108, -45, 155, -10];
+  bounds = [108, -45, 155, -10];
+  default_bounds = [108, -45, 155, -10];
+
   canvas: any;
   coordinates: any;
 
@@ -143,21 +157,37 @@ export class MapboxComponent implements OnInit, AfterViewInit {
               private ns: NosqlService,
               private tss: TimeseriesService,
               private http: Http,
-              private ms: ModelsService) {
+              private ms: ModelsService,
+              private modalService: SuiModalService) {
     this.cursorMoveEW = new EventEmitter<number>();
     this.cursorMoveNS = new EventEmitter<number>();
     this.zoomReading = new EventEmitter<number>();
     this.bearingReading = new EventEmitter<number>();
+    this.modalService = modalService;
+
     // Old System
     // this.ns.get('/models').subscribe(m => this.models = m);
-    // New System
-    this.ms.get('models').subscribe(m => {
-      this.models = m.models;
-    });
+
+
   }
 
   ngAfterViewInit() {
 
+    // New System
+    this.ms.get('models').subscribe(m => {
+        this.models = m.models;
+      },
+      (e) => {
+        console.log(e);
+        this.modalService.open(new ConfirmModal('Error', 'While retrieving the list of models: ' + e, 'tiny'))
+          .onApprove(() => {
+          })
+          .onDeny(() => {
+          });
+      },
+      () => {
+        this.model_dimmer = false;
+      });
   }
 
 
@@ -166,6 +196,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     this.splitViewHandle = document.getElementById('splitViewHandle');
     this.aView = document.getElementById('backViewport');
     this.bView = document.getElementById('frontViewport');
+
 
     this.map = new Map({
       container: 'mymapbox',
@@ -182,7 +213,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
 
     this.altmap = new Map({
       container: 'myAltmapbox',
-      style: 'mapbox://styles/mapbox/satellite-v9',
+      style: 'mapbox://styles/anthonyrawlinsuom/cj6eembnj0x4k2smhax6o0ztl',
       center: [this.lng, this.lat],
       zoom: 6.5,
       hash: true,
@@ -236,7 +267,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     map.addControl(this.drw, 'top-right');
     map.addControl(this.scl, 'bottom-right');
 
-    const dragPointGeoJSON = this.dragPointGeoJSON;
+    // const dragPointGeoJSON = this.dragPointGeoJSON;
 
     map.on('load', function () {
 
@@ -258,40 +289,6 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         }
       });
 
-      // Add a single point to the map
-      map.addSource('draggable-point-source', {
-        'type': 'geojson',
-        'data': dragPointGeoJSON
-      });
-      //
-      // map.addLayer({
-      //   'id': 'draggable-point',
-      //   'type': 'circle',
-      //   'source': 'draggable-point-source',
-      //   'paint': {
-      //     'circle-radius': 10,
-      //     'circle-color': '#3887be'
-      //     // ,
-      //     // 'stroke-width': 2,
-      //     // 'stroke-color': '#0264b5'
-      //   }
-      // });
-
-      // 'https://geodata.state.nj.us/imagerywms/Natural2015?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&width=256&height=256&layers=Natural2015'
-
-      // map.addLayer({
-      //   'id': 'conservation-sites',
-      //   'type': 'raster',
-      //   'source': {
-      //     'type': 'raster',
-      //     'tiles': [
-      //       'https://geodata.state.nj.us/imagerywms/Natural2015?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&width=256&height=256&layers=Natural2015'
-      //     ],
-      //     'tileSize': 256
-      //   },
-      //   'paint': {}
-      // }, 'water');
-
       // 25m LiDAR DEM Model from GA
       // http://services.ga.gov.au/gis/services/DEM_LiDAR_25m/MapServer/WMSServer?request=GetCapabilities&service=WMS
 
@@ -307,174 +304,6 @@ export class MapboxComponent implements OnInit, AfterViewInit {
       //     // where hillshading sits in the Mapbox Outdoors style
       //     }, 'waterway-river-canal-shadow');
 
-
-      map.addLayer({
-        'id': 'dead_fuel',
-        'type': 'raster',
-        'source': {
-          'type': 'raster',
-          'tiles': [
-            'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2018-01-01'],
-          'tileSize': 256
-        },
-        'paint': {
-          'raster-opacity': 0.2
-        }
-      }, 'water');
-
-      map.addLayer({
-        'id': 'live_fuel',
-        'type': 'raster',
-        'source': {
-          'type': 'raster',
-          'tiles': [
-            'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2018-01-02'],
-          'tileSize': 256
-        },
-        'paint': {
-          'raster-opacity': 0.2
-        }
-      }, 'water');
-
-      map.addLayer({
-        'id': 'awra',
-        'type': 'raster',
-        'source': {
-          'type': 'raster',
-          'tiles': [
-            'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-03'],
-          'tileSize': 256
-        },
-        'paint': {
-          'raster-opacity': 0.2
-        }
-      }, 'water');
-
-      // map.addLayer({
-      //   'id': 'chen',
-      //   'type': 'raster',
-      //   'source': {
-      //     'type': 'raster',
-      //     'tiles': [
-      //       'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-04'],
-      //     'tileSize': 256
-      //   },
-      //   'paint': {
-      //     'raster-opacity': 0.2
-      //   }
-      // }, 'water');
-
-      // map.addLayer({
-      //   'id': 'boer',
-      //   'type': 'raster',
-      //   'source': {
-      //     'type': 'raster',
-      //     'tiles': [
-      //       'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-05'],
-      //     'tileSize': 256
-      //   },
-      //   'paint': {
-      //     'raster-opacity': 0.2
-      //   }
-      // }, 'water');
-
-      map.addLayer({
-        'id': 'matthews',
-        'type': 'raster',
-        'source': {
-          'type': 'raster',
-          'tiles': [
-            'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-06'],
-          'tileSize': 256
-        },
-        'paint': {
-          'raster-opacity': 0.2
-        }
-      }, 'water');
-
-      map.addLayer({
-        'id': 'kbdi',
-        'type': 'raster',
-        'source': {
-          'type': 'raster',
-          'tiles': [
-            'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:KBDI_SFC&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng'],
-          'tileSize': 256
-        },
-        'paint': {
-          'raster-opacity': 0.2
-        }
-      }, 'water');
-
-      map.addLayer({
-        'id': 'ffdi',
-        'type': 'raster',
-        'source': {
-          'type': 'raster',
-          'tiles': [
-            'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:FFDI_SFC&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng'],
-          'tileSize': 256
-        },
-        'paint': {
-          'raster-opacity': 0.2
-        }
-      }, 'water');
-
-      map.addLayer({
-        'id': 'gfdi',
-        'type': 'raster',
-        'source': {
-          'type': 'raster',
-          'tiles': [
-            'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:GFDI_SFC&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng'],
-          'tileSize': 256
-        },
-        'paint': {
-          'raster-opacity': 0.2
-        }
-      }, 'water');
-
-      altmap.addLayer({
-          'id': 'DEM1sec',
-          'type': 'raster',
-          'source': {
-            'type': 'raster',
-            'tiles': [
-              'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:Image&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2fpng'
-            ],
-            'tileSize': 256
-          },
-          'paint': {
-            'raster-opacity': 1.0
-          }
-        },
-        'water');
-
-      // map.addSource('cfaregion', {
-      // 	'type': 'vector',
-      // 	'tiles': ['http://localhost:9090/geoserver/gwc/service/wmts?request=GetTile&service=WMTS&version=1.0.0&layer=victoria:CFA_REGION&style=&tilematrix=EPSG:900913:{z}&tilematrixset=EPSG:900913&format=application/x-protobuf;type=mapbox-vector&tilecol={x}&tilerow={y}'],
-      // 	'tileSize': 512
-      // });
-      //
-      // map.addSource('cfadistrict', {
-      // 	'type': 'vector',
-      // 	'tiles': ['http://localhost:9090/geoserver/gwc/service/wmts?request=GetTile&service=WMTS&version=1.0.0&layer=victoria:CFA_DISTRICT&style=&tilematrix=EPSG:900913:{z}&tilematrixset=EPSG:900913&format=application/x-protobuf;type=mapbox-vector&tilecol={x}&tilerow={y}'],
-      // 	'tileSize': 512
-      // });
-      //
-      // map.addLayer({
-      // 	'id': 'metadata-layer-cfa-regions',
-      // 	'type': 'line',
-      // 	'source': 'cfaregion',
-      // 	'layout': {
-      // 		// 'visibility': 'visible'
-      // 	},
-      // 	'paint': {
-      // 		'line-color': 'hsla(20, 100%, 50%, 0.29)',
-      // 		'line-width': 0.685
-      // 	},
-      // 	'source-layer': 'CFA_REGION'
-      // });
       //
       // map.addLayer({
       // 	'id': 'metadata-layer-cfa-districts',
@@ -738,13 +567,29 @@ export class MapboxComponent implements OnInit, AfterViewInit {
 
   // use turf to save GeoJSON of boundary
   public saveBoundary() {
-    const data = this.drw.getAll();
-    if (data.features.length > 0) {
-      console.log('Preparing GeoJSON for saving boundary locally.');
-      console.log(data);
-      this.setIngestValue(data);
+    if (this.prevBoundary !== {}) {
+      if (this.prevBoundary.features !== [] || this.prevBoundary.features.length > 0) {
+        console.log('Drawing exists.');
+        if (this.prevBoundary !== this.drw.getAll()) { // ie., change detected
+          console.log('Change in boundary detected');
+          const data = this.drw.getAll();
+          if (data.features.length > 0) {
+            console.log(data);
+            this.setIngestValue(data);
+            this.prevBoundary = data;
+            if (this.snapping) {
+              this.zoomToBoundaryView();
+            }
+          } else {
+            console.log('Can\'t use that boundary.');
+          }
+        }
+      }
+    } else {
+      console.log('Empty drawing');
     }
   }
+
 
   getIngestValue() {
     return JSON.parse(this.ingestGeoJson);
@@ -754,7 +599,12 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     try {
       this.ingestGeoJson = JSON.stringify(v, null, '\t');
     } catch (e) {
-      console.log('JSON appears invalid: ' + e);
+      this.modalService
+        .open(new ConfirmModal('Warning', 'JSON appears invalid: ' + e, 'tiny'))
+        .onApprove(() => alert('NYI'))
+        .onDeny(() => {
+        });
+      console.log(e);
     }
   }
 
@@ -764,22 +614,17 @@ export class MapboxComponent implements OnInit, AfterViewInit {
       const data = this.getIngestValue();
       console.log(data);
       this.drw.set(data);
+      this.zoomToBoundaryView();
     }
   }
 
-  // public queryLFMCUsingGeoJSON() {
-  //   console.log('Bounds call test');
-  //   if (this.drw.getAll()) {
-  //     console.log('Got Drawling');
-  //
-  //     // const bounds = bbox(this.drw.getAll());
-  //     // console.log('Using bounds of GeoJSON to query.');
-  //     // console.log(bounds);
-  //     // this.chartComponent.getFuelInBoundsForModels(bounds[0], bounds[3], bounds[2], bounds[1], this.getActiveModels());
-  //
-  //     this.chartComponent.getFuelForShapeWithModels(this.drw.getAll(), this.start.toDateString(), this.finish.toDateString(), this.getActiveModels());
-  //   }
-  // }
+  public zoomToBoundaryView() {
+    if (this.drw.getAll()) {
+      const buffered = turf.buffer(this.drw.getAll(), 1); // Default units is kilometers
+      const bboxDraw = turf.bbox(buffered);
+      this.mapService.map.fitBounds(bboxDraw);
+    }
+  }
 
   public weekView() {
     this.start = moment().subtract(8, 'days').toDate();
@@ -790,18 +635,31 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   // Uses turf to calculate the area of the polygon in square meters
   public calculateArea() {
     const data = this.drw.getAll();
-    const answer = document.getElementById('calculated-area');
     if (data.features.length > 0) {
       const area = turf.area(data);
       // restrict to area to 2 decimal points
       const rounded_area = area.toFixed(2);
       const area_km = turf.convertArea(area, 'meters', 'kilometers');
-      answer.innerHTML = '<p><strong>Area of polygon:</strong> ' + rounded_area
-        + ' square meters, (or ' + area_km.toFixed(2) + ' square kilometers)</p>';
-      answer.style.display = 'block';
+      this.calculated_area = 'Area of all polygons: ' + rounded_area
+        + ' square meters, (or ' + area_km.toFixed(2) + ' square kilometers)';
+
+      this.modalService
+        .open(new ConfirmModal('Information', this.calculated_area, 'tiny'))
+        .onApprove(() => {
+          this.calculated_area = '';
+        })
+        .onDeny(() => {
+        });
+
     } else {
-      alert('Use the draw tools to draw a polygon!');
-      answer.style.display = 'none';
+
+      this.modalService
+        .open(new ConfirmModal('Warning', 'Use the draw tools to draw a polygon!', 'tiny'))
+        .onApprove(() => {
+        })
+        .onDeny(() => {
+        });
+
     }
   }
 
@@ -817,96 +675,6 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     this.altmap.setStyle('mapbox://styles/anthonyrawlinsuom/cj5we9hex7cy82rqimwlky6rz');
   }
 
-  // private filterBy(month) {
-  //   const filters = ['==', 'month', month];
-  //   this.mapService.map.setFilter('incident-circles', filters);
-  //   this.mapService.map.setFilter('incident-labels', filters);
-  //
-  //   // Set the label to the month
-  //   document.getElementById('month').textContent = this.months[month];
-  // }
-
-  // private mouseDown(e: any) {
-  //   if (!this.isCursorOverPoint) {
-  //     return;
-  //   }
-  //   console.log('>>> MouseDown on draggable point.');
-  //   this.isDragging = true;
-  //
-  //   // Set a cursor indicator
-  //   // this.canvas.style.cursor = 'grab';
-  //   this.mapService.map.dragPan.disable();
-  //   // Mouse events
-  //   this.mapService.map.on('mousemove', this.onDragMove.bind(this));
-  //   this.mapService.map.once('mouseup', this.onUp.bind(this));
-  // }
-
-  // private onMove(e: any) {
-  //   const coords = e.lngLat;
-  //   this.cursorLng = coords.lng;
-  //   this.cursorLat = coords.lat;
-  //   this.cursorMoveEW.emit(this.cursorLng);
-  //   this.cursorMoveNS.emit(this.cursorLat);
-  // }
-
-  // private onDragMove(e) {
-  //   if (!this.isDragging) {
-  //     return;
-  //   }
-  //   const coords = e.lngLat;
-  //
-  //   console.log('>>> Dragging draggable point.');
-  //
-  //   // Set a UI indicator for dragging.
-  //   // this.canvas.style.cursor = 'grabbing';
-  //
-  //   this.coordinates.style.display = 'block';
-  //   this.coordinates.innerHTML = 'Longitude: ' + coords.lng + '<br />Latitude: ' + coords.lat;
-  //
-  //   // Update the Point feature in `geojson` coordinates
-  //   // and call setData to the source layer `point` on it.
-  //   this.dragPointGeoJSON.features[0].geometry.coordinates = [coords.lng, coords.lat];
-  //   this.mapService.map.getSource('draggable-point-source').setData(this.dragPointGeoJSON);
-  //
-  // }
-
-  // Re-center
-  // public flyToDragPoint(e, undoaction: boolean = false) {
-  //   let point;
-  //   if (undoaction) {
-  //     point = e;
-  //     this.coordinates.style.display = 'block';
-  //     this.coordinates.innerHTML = 'Longitude: ' + point.center[0] + '<br />Latitude: ' + point.center[1];
-  //
-  //     // Update the Point feature in `geojson` coordinates
-  //     // and call setData to the source layer `point` on it.
-  //     this.dragPointGeoJSON.features[0].geometry.coordinates = point.center;
-  //     this.mapService.map.getSource('draggable-point-source').setData(this.dragPointGeoJSON);
-  //   } else {
-  //     console.log('Flying to: ' + this.dragPointGeoJSON.features[0].geometry.coordinates);
-  //     point = {
-  //       center: this.dragPointGeoJSON.features[0].geometry.coordinates,
-  //       zoom: 9
-  //     };
-  //   }
-  //   this.mapService.map.flyTo(point);
-  //   if (!undoaction) {
-  //     this.undos.push(point);
-  //   }
-  // }
-
-  // public clearHistory() {
-  //   this.undos = [];
-  //   this.redos = [];
-  // }
-
-
-  // Inspect
-  // public repositionDragPoint() {
-  //   this.dragPointGeoJSON.features[0].geometry.coordinates = [this.lng, this.lat];
-  //   this.mapService.map.getSource('draggable-point-source').setData(this.dragPointGeoJSON);
-  //   this.flyToDragPoint(null);
-  // }
 
   // State View
   // public zoomToStateView(e) {
@@ -922,27 +690,6 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   //   this.undos.push(point);
   // }
 
-  // Psuedocode: on(repositionDragPoint) {localStorage.undos += map.serialize() }
-  // Stub
-  // pop map.options from localStorage.undos
-  // stash map.options into localStorage.redos
-  // public undoView() {
-  //   if (this.undos.length > 0) {
-  //     const prev = this.undos.pop();
-  //     this.redos.push(prev);
-  //     // this.flyToDragPoint(prev, true);
-  //   }
-  // }
-  //
-  // // Stub
-  // public redoView() {
-  //   if (this.redos.length > 0) {
-  //     const prev = this.redos.pop();
-  //     this.undos.push(prev);
-  //     // this.flyToDragPoint(prev, true);
-  //   }
-  // }
-
   public mpg() {
     if (this.drw.getAll()) {
       this.showVideo = true;
@@ -950,84 +697,72 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         'geo_json': this.drw.getAll(),
         'start': this.start.toDateString(),
         'finish': this.finish.toDateString(),
-        'models': this.getActiveModels(),
+        'models': this.getActiveModels('R'),
         'response_as': LFMCResponseType.MP4
-      }
+      };
       this.videoComponent.getVideo(json_query);
     }
   }
 
-  toggleModel(m: string) {
-
-    if (this.exclusiveModelMode) {
-      for (let i = 0; i < this.models.length; i++) {
-        if (this.models[i].name === m) {
-          this.models[i].enabled = true;
-        } else {
-          this.models[i].enabled = false;
+  toggleModel(m: string, LRO: string) {
+    switch (LRO) {
+      case 'L':
+        for (let i = 0; i < this.models.length; i++) {
+          this.models[i].enabled_left = this.models[i].name === m;
+          this.models[i].enabled_right = false;
         }
-      }
-    } else {
-      for (let i = 0; i < this.models.length; i++) {
-
-        if (this.models[i].name === m) {
-          this.models[i].enabled = !this.models[i].enabled;
-
+        break;
+      case 'R':
+        for (let i = 0; i < this.models.length; i++) {
+          this.models[i].enabled_right = this.models[i].name === m;
+          this.models[i].enabled_left = false;
         }
-
-      }
+        break;
+      case 'O':
+        for (let i = 0; i < this.models.length; i++) {
+          if (this.models[i].name === m) {
+            this.models[i].enabled_left = false;
+            this.models[i].enabled_right = false;
+          }
+        }
+        break;
     }
-    // this.refreshModelData();
+    this.getActiveModels('R'); // <- or LEFT doesn't matter. Just calling refresh
   }
 
   refreshModelData() {
-    if (this.drw.getAll()) {
+
+    const active = this.getActiveModels('R');
+    const gj = this.drw.getAll();
+
+    if (!gj) {
+      this.modalService
+        .open(new ConfirmModal('Warning', 'Please create or import a boundary in the SPACE Panel, or draw a region using the tools.', 'tiny'))
+        .onApprove(() => {
+        })
+        .onDeny(() => {
+        });
+    } else if (active.length === 0) {
+      this.modalService
+        .open(new ConfirmModal('Warning', 'Please select some models from the TIME Panel to compare.', 'tiny'))
+        .onApprove(() => {
+        })
+        .onDeny(() => {
+        });
+    } else {
+
+      this.updateDatetimeOnWMTSSources();
       this.chartComponent.dimmer = true;
       this.chartComponent.getFuelForShapeWithModels(
         this.drw.getAll(),
         this.start.toDateString(),
         this.finish.toDateString(),
-        this.getActiveModels(),
+        this.getActiveModels('R'),
         LFMCResponseType.TIMESERIES
       );
     }
   }
 
-  allModelsOn() {
-    this.exclusiveModelMode = false;
-    this.allModels = true;
-    for (let i = 0; i < this.models.length; i++) {
-      this.models[i].enabled = true;
-    }
-    // this.refreshModelData();
-  }
-
-  allModelsOff() {
-    this.allModels = false;
-    for (let i = 0; i < this.models.length; i++) {
-      this.models[i].enabled = false;
-    }
-    // this.refreshModelData();
-  }
-
-  private getActiveModels() {
-    const active = [];
-    for (let i = 0; i < this.models.length; i++) {
-      if (this.models[i].enabled) {
-        active.push(this.models[i].name);
-        this.map.setLayoutProperty(this.models[i].name, 'visibility', 'visible');
-      } else {
-        this.map.setLayoutProperty(this.models[i].name, 'visibility', 'none');
-      }
-    }
-    for (let i = 0; i < this.models.length; i++) {
-      if (this.models[i].enabled) {
-        this.map.setPaintProperty(this.models[i].name, 'raster-opacity', (1 / active.length));
-      }
-    }
-
-    return active;
-  }
 
   private toggleTimeBrushing() {
     this.timebrush = !this.timebrush;
@@ -1060,5 +795,155 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     //   this.mapService.map.off('mousemove', this.onDragMove.bind(this));
     //   this.mapService.map.dragPan.enable();
     // }
+  }
+
+  allModelsOwnedByRight() {
+    this.exclusiveModelMode = false;
+    this.allModels = true;
+    for (let i = 0; i < this.models.length; i++) {
+      this.models[i].enabled_right = true;
+    }
+    // this.refreshModelData();
+  }
+
+  allModelsOwnedByLeft() {
+    this.allModels = false;
+    for (let i = 0; i < this.models.length; i++) {
+      this.models[i].enabled_left = true;
+    }
+    // this.refreshModelData();
+  }
+
+  private getActiveModels(L_or_R) {
+    const R = [];
+    const L = [];
+    for (let i = 0; i < this.models.length; i++) {
+      if (this.models[i].enabled_right) {
+        R.push(this.models[i].name);
+        this.ownLayerRight(this.models[i].name);
+      } else if (this.models[i].enabled_left) {
+        L.push(this.models[i].name);
+        this.ownLayerLeft(this.models[i].name);
+      } else {
+        this.layerOff(this.models[i].name);
+      }
+    }
+    return (L_or_R === 'L') ? L : R; // <-- show time-series for left or right?
+    // return L + R; // <-- Get all data for all models but only show active
+    // return R; // Timeseries for right panel only.
+  }
+
+  makeSourceForModel(layer_name) {
+    const layer_url_part_A = 'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:';
+    const layer_url_part_B = '&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng';
+    const time_component = '&time=' + moment(this.finish).format('YYYY-MM-DD');
+    const layer_source = {
+      'type': 'raster',
+      'tiles': [layer_url_part_A + layer_name.toUpperCase() + layer_url_part_B + time_component],
+      'tileSize': 256
+    };
+    try {
+      this.currentmap.removeSource(layer_name + '_source');
+    } catch (e) {
+      console.log('OK that source doesn\'t exist yet.');
+    }
+    this.currentmap.addSource(layer_name + '_source', layer_source);
+    console.log('Added ' + layer_name + '_source.');
+  }
+
+  addLayersForAllModels() {
+    ['L', 'R'].forEach((lr) => {
+      this.setMapContext(lr);
+      for (let i = 0; i < this.models.length; i++) {
+        const layer_id = this.models[i].name;
+        this.makeSourceForModel(layer_id);
+        this.makeLayerForModel(layer_id);
+      }
+    });
+    this.setMapContext('R');
+  }
+
+  makeLayerForModel(layer_id) {
+    if (!(this.currentmap instanceof Map)) {
+      console.log('Current map not set.');
+    } else {
+      try {
+        this.currentmap.removeLayer(layer_id);
+      } catch (e) {
+        console.log('OK that the layer doesn\'t exist yet.');
+      }
+      this.currentmap.addLayer({
+        'id': layer_id,
+        'type': 'raster',
+        'source': layer_id + '_source',
+        'paint': {}
+      }, 'water');
+    }
+  }
+
+  updateDatetimeOnWMTSSources() {
+    ['L', 'R'].forEach((lr) => {
+      this.setMapContext(lr);
+      for (let i = 0; i < this.models.length; i++) {
+        const layer_id = this.models[i].name;
+        this.makeSourceForModel(layer_id);
+      }
+    });
+  }
+
+  layerOff(layer_code) {
+    this.updateDatetimeOnWMTSSources();
+    try {
+      this.altmap.removeLayer(layer_code);
+    } catch (e) {
+      console.log('OK that the layer doesn\'t exist yet.');
+    }
+    try {
+      this.map.removeLayer(layer_code);
+    } catch (e) {
+      console.log('OK that the layer doesn\'t exist yet.');
+    }
+
+  }
+
+  ownLayerRight(layer_code) {
+
+    this.updateDatetimeOnWMTSSources();
+    try {
+      this.altmap.removeLayer(layer_code);
+    } catch (e) {
+      console.log('OK that the layer doesn\'t exist yet.');
+    }
+    this.map.addLayer({
+      'id': layer_code,
+      'type': 'raster',
+      'source': layer_code + '_source',
+      'paint': {}
+    }, 'water');
+  }
+
+  ownLayerLeft(layer_code) {
+    this.updateDatetimeOnWMTSSources();
+    try {
+      this.map.removeLayer(layer_code);
+    } catch (e) {
+      console.log('OK that the layer doesn\'t exist yet.');
+    }
+    this.altmap.addLayer({
+      'id': layer_code,
+      'type': 'raster',
+      'source': layer_code + '_source',
+      'paint': {}
+    }, 'water');
+  }
+
+  setMapContext(L_or_R) {
+    if (L_or_R === 'R') {
+      this.currentmap = this.map;
+    }
+    if (L_or_R === 'L') {
+      this.currentmap = this.altmap;
+    }
+    console.log(this.currentmap);
   }
 }

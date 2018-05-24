@@ -1,0 +1,80 @@
+<div class="ui inverted segment">
+  <div *ngIf="!auth.isAuthenticated()" class="ui icon yellow message">
+    <i class="user circle icon"></i>
+    <div class="content">
+      <div class="header">
+        Login required
+      </div>
+      <p>This feature is for authenticated users only.</p>
+    </div>
+  </div>
+
+  <div *ngIf="auth.isAuthenticated()" class="ui tiny form">
+    <div class="ui middle aligned divided inverted list">
+      <div class="item">
+        <div class="right floated content">
+          <div class="ui compact icon buttons">
+            <button (click)="toggleSelectionOff()" class="ui small icon button">
+              <i class="ui power off icon"></i> Clear
+            </button>
+
+            <button routerLink="/import" class="ui small blue icon button">
+              <i class="ui cloud download icon"></i> Import
+            </button>
+
+            <button (click)="insertNewGeoJSONQuery()" class="ui small green icon button">
+              <i class="ui plus icon"></i> Add
+            </button>
+          </div>
+        </div>
+        <div class="content">
+          <h3 class="ui header"><i class="group object icon"></i> Spatial Boundaries</h3>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="field">
+          <div class="ui icon input">
+            <i class="search icon"></i>
+            <input type="text" name="name" class="ui inverted" placeholder="Search..." (change)="searchForItem()" [(ngModel)]="searchterm"
+                   #searchbox>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scrolling content importeditemspane">
+      <div class="ui middle aligned divided inverted list">
+        <div *ngFor="let q of queries" class="item" [class.selected]="q.enabled">
+          <div class="right floated content">
+            <div class="ui two compact basic icon buttons">
+              <button [disabled]="!q.enabled" (click)="confirmUpdate(q.name)" class="ui basic yellow icon button">
+                <i class="ui pencil alternate icon"></i>
+              </button>
+              <button (click)="confirmRemoval(q.name)" class="ui basic red icon button">
+                <i class="ui ban icon"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="inline fields content" *ngIf="q.enabled">
+            <div class="field">
+              <button class="ui compact black icon button" (click)="toggleSelectionOff();"><i
+                class="ui toggle on icon"></i></button>
+            </div>
+            <div class="field">
+              <!--(click)="this.select()"-->
+              <input type="text" [(ngModel)]="q.name" #editname>
+            </div>
+          </div>
+          <div class="fields content" *ngIf="!q.enabled">
+            <div class="field">
+              <button class="ui compact black icon button" (click)="toggleSelectionOn(q.name);"><i
+                class="ui toggle off icon"></i></button>
+              {{q.name}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

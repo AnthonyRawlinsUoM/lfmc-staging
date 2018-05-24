@@ -1,0 +1,19 @@
+.importeditemspane {
+  max-height: 40vh;
+  overflow-y: scroll;
+}
+
+.item.selected {
+  /*background-color: #0b97c4;*/
+}
+
+.ui.form .inline.fields.content,
+div.fields.content {
+  margin-bottom: 0;
+  vertical-align: center;
+}
+.ui.form .inline.fields input[type='text'] {
+  background-color: #1B1C1D;
+  border: solid 1px #FFFFFF;
+  color: #FFFFFF;
+}

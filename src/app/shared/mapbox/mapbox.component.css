@@ -258,3 +258,13 @@ input.inverted {
 .inverted.pushable>.pusher {
   background-color: transparent;
 }
+
+.dark {
+  background-color: #1b1c1d;
+}
+
+textarea.fillgeoarea {
+  height: 40vh;
+  background: transparent;
+  font-size: 0.745em;
+}

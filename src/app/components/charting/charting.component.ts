@@ -321,6 +321,7 @@ export class ChartingComponent implements OnInit {
       }
       return value;
     }
+
     return this.tss.postAPI(
       name,
       json_query
@@ -329,7 +330,7 @@ export class ChartingComponent implements OnInit {
         this.multi = JSON.parse(JSON.stringify(m), reviver);
         if (this.multi['error'] && this.multi['code']) {
           this.modalService
-            .open(new ConfirmModal('An error occurred: ' + this.multi['code'] , this.multi['error'] + '\nSend Report?', 'tiny'))
+            .open(new ConfirmModal('An error occurred: ' + this.multi['code'], this.multi['error'] + '\nSend Report?', 'tiny'))
             .onApprove(() => alert('Report sent.'))
             .onDeny(() => alert('No report sent.'));
         } else {
@@ -375,5 +376,9 @@ export class ChartingComponent implements OnInit {
       //   this.getFuelByPost('/fuel.nc', json_query);
       //   break;
     }
+  }
+
+  onSelect(e) {
+    console.log('Got select event from chart.');
   }
 }

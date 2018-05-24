@@ -3,3 +3,7 @@
 	height: 100%;
 	position: relative;
 }
+
+.dark {
+  background-color: #1b1c1d;
+}

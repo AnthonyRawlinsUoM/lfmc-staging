@@ -55,6 +55,10 @@
   </div>
   <!-- End: File Chooser -->
 
+  <!-- Start: ImportedItems -->
+  <app-importeditems></app-importeditems>
+  <!-- End: ImportedItems -->
+
 
   <!-- Start: uploader queue -->
   <div *ngIf="uploader.queue.length > 0">
@@ -91,7 +95,7 @@
             <div class="mini ui icon buttons fluid">
               <button type="button" class="mini ui icon button" (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess || item.isError"><i class="green upload icon"></i>Upload file</button>
               <button type="button" class="mini ui icon button" (click)="item.cancel()" [disabled]="!item.isUploading"><i class="blue stop icon"></i>Stop upload</button>
-              <button type="button" class="mini ui icon button" (click)="item.remove()" [disabled]="!item.isSuccess"><i class="red delete icon"></i>Remove file</button>
+              <button type="button" class="mini ui icon button" (click)="item.remove()" [disabled]="item.isSuccess"><i class="red delete icon"></i>Remove file</button>
             </div>
           </div>
         </div>

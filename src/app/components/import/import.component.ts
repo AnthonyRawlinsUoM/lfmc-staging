@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-contribute',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImportComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AuthService) {
+    this.auth = auth;
+  }
 
   ngOnInit() {
   }

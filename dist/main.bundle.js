@@ -337,7 +337,7 @@ module.exports = ".ui.inverted.menu.shadow,\n.ui.inverted.pointing.dropdown .men
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "    <div class=\"ui top following inverted menu shadow\">\n\n      <div class=\"ui inverted pointing dropdown item\" suiDropdown>\n        <div class=\"text\">\n          <i class=\"gray sidebar icon\"></i> Site</div>\n        <div class=\"menu\" suiDropdownMenu>\n          <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/home\">\n            <i class=\"blue map outline icon\"></i>Map\n      </a>\n          <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/models\">\n      <i class=\"blue database icon\"></i>Models\n      </a>\n          <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/import\">\n      <i class=\"blue marker icon\"></i>Import\n      </a>\n          <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/options\">\n      <i class=\"blue options icon\"></i>Options\n      </a>\n          <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/help\">\n      <i class=\"blue help icon\"></i>Help\n      </a>\n        </div>\n      </div>\n      <div class=\"ui inverted header item\"><i class=\"red fire icon\"></i> {{title}} - v{{version}}</div>\n      <div class=\"right menu\">\n        <a class=\"item\" [routerLinkActive]=\"['active']\" *ngIf=\"auth.isAuthenticated()\" routerLink=\"/profile\">\n    <i class=\"blue user circle icon\"></i>\n    Profile\n  </a>\n        <a class=\"item\" *ngIf=\"!auth.isAuthenticated()\" (click)=\"auth.login()\">\n  <i class=\"blue sign in icon\"></i>Login\n  </a>\n        <a class=\"item\" *ngIf=\"auth.isAuthenticated()\" (click)=\"auth.logout()\">\n    <i class=\"red sign out icon\"></i>Logout\n  </a>\n        <div class=\"item\">\n          <div class=\"ui transparent icon input\">\n            <input type=\"text\" placeholder=\"Site Search...\">\n            <i class=\"inverted search link icon\"></i>\n          </div>\n        </div>\n      </div>\n    </div>\n<main>\n  <router-outlet></router-outlet>\n</main>\n"
+module.exports = "    <div class=\"ui top following inverted menu shadow\">\n\n      <div class=\"ui inverted pointing dropdown item\" suiDropdown>\n        <div class=\"text\">\n          <i class=\"gray sidebar icon\"></i> Site</div>\n        <div class=\"menu\" suiDropdownMenu>\n          <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/home\">\n            <i class=\"blue map outline icon\"></i>Map\n      </a>\n          <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/models\">\n      <i class=\"blue database icon\"></i>Models\n      </a>\n          <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/import\">\n      <i class=\"blue marker icon\"></i>Import\n      </a>\n          <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/options\">\n      <i class=\"blue options icon\"></i>Options\n      </a>\n          <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/help\">\n      <i class=\"blue help icon\"></i>Help\n      </a>\n        </div>\n      </div>\n      <div class=\"ui inverted header item\"><i class=\"red fire icon\"></i> {{title}} v{{version}}</div>\n      <div class=\"right menu\">\n        <a class=\"item\" [routerLinkActive]=\"['active']\" *ngIf=\"auth.isAuthenticated()\" routerLink=\"/profile\">\n    <i class=\"blue user circle icon\"></i>\n  </a>\n        <a class=\"item\" *ngIf=\"!auth.isAuthenticated()\" (click)=\"auth.login()\">\n  <i class=\"blue sign in icon\"></i>Login\n  </a>\n        <a class=\"item\" *ngIf=\"auth.isAuthenticated()\" (click)=\"auth.logout()\">\n    <i class=\"red sign out icon\"></i>Logout\n  </a>\n        <div class=\"item\">\n          <div class=\"ui transparent icon input\">\n            <input type=\"text\" placeholder=\"Site Search...\">\n            <i class=\"inverted search link icon\"></i>\n          </div>\n        </div>\n      </div>\n    </div>\n<main>\n  <router-outlet></router-outlet>\n</main>\n"
 
 /***/ }),
 
@@ -426,7 +426,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__components_models_models_component__ = __webpack_require__("./src/app/components/models/models.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__components_modelview_modelview_component__ = __webpack_require__("./src/app/components/modelview/modelview.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__components_importjobs_importjobs_component__ = __webpack_require__("./src/app/components/importjobs/importjobs.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__components_importtasks_importtasks_component__ = __webpack_require__("./src/app/components/importtasks/importtasks.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__components_importeditems_importeditems_component__ = __webpack_require__("./src/app/components/importeditems/importeditems.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__components_fullscreen_fullscreen_component__ = __webpack_require__("./src/app/components/fullscreen/fullscreen.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__components_searchresults_searchresults_component__ = __webpack_require__("./src/app/components/searchresults/searchresults.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__components_datasources_datasources_component__ = __webpack_require__("./src/app/components/datasources/datasources.component.ts");
@@ -529,7 +529,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_32__components_models_models_component__["a" /* ModelsComponent */],
             __WEBPACK_IMPORTED_MODULE_33__components_modelview_modelview_component__["a" /* ModelviewComponent */],
             __WEBPACK_IMPORTED_MODULE_34__components_importjobs_importjobs_component__["a" /* ImportjobsComponent */],
-            __WEBPACK_IMPORTED_MODULE_35__components_importtasks_importtasks_component__["a" /* ImporttasksComponent */],
+            __WEBPACK_IMPORTED_MODULE_35__components_importeditems_importeditems_component__["a" /* ImportedItemsComponent */],
             __WEBPACK_IMPORTED_MODULE_36__components_fullscreen_fullscreen_component__["a" /* FullscreenComponent */],
             __WEBPACK_IMPORTED_MODULE_37__components_searchresults_searchresults_component__["a" /* SearchresultsComponent */],
             __WEBPACK_IMPORTED_MODULE_38__components_datasources_datasources_component__["a" /* DatasourcesComponent */],
@@ -626,14 +626,14 @@ CallbackComponent = __decorate([
 /***/ "./src/app/components/charting/charting.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".chartcontainer {\n\twidth: 100%;\n\theight: 100%;\n\tposition: relative;\n}\n"
+module.exports = ".chartcontainer {\n\twidth: 100%;\n\theight: 100%;\n\tposition: relative;\n}\n\n.dark {\n  background-color: #1b1c1d;\n}\n"
 
 /***/ }),
 
 /***/ "./src/app/components/charting/charting.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui blurring inverted segment\">\n  <div *ngIf=\"dimmer\" class=\"ui active dimmer\">\n    <div class=\"ui indeterminate text loader\">Preparing your chart.</div>\n  </div>\n  <div class=\"chartcontainer\">\n    <ngx-charts-line-chart\n      [view]=\"view\"\n      [scheme]=\"colorScheme\"\n      [results]=\"multi\"\n      [gradient]=\"gradient\"\n      [xAxis]=\"showXAxis\"\n      [yAxis]=\"showYAxis\"\n      [legend]=\"showLegend\"\n      [showXAxisLabel]=\"showXAxisLabel\"\n      [showYAxisLabel]=\"showYAxisLabel\"\n      [xAxisLabel]=\"xAxisLabel\"\n      [yAxisLabel]=\"yAxisLabel\"\n      [autoScale]=\"autoScale\"\n      [showGridLines]=\"showGridLines\"\n      [showRefLines]=\"showRefLines\"\n      [referenceLines]=\"referenceLines\"\n      [roundDomains]=\"roundDomains\"\n      [schemeType]=\"schemeType\"\n      [timeline]=\"timeline\"\n      [curve]=\"curve\"\n      [autoScale]=\"autoScale\"\n      rangeFillOpacity=\"0.13\"\n      (select)=\"onSelect($event)\">\n    </ngx-charts-line-chart>\n  </div>\n</div>\n<!-- Property\tType\tDefault Value\tDescription\nview\tnumber[]\t\tthe dimensions of the chart [width, height]. If left undefined, the chart will fit to the parent container size\nresults\tobject[]\t\tthe chart data\nscheme\tobject\t\tthe color scheme of the chart\nschemeType\tstring\t'ordinal'\tthe color scale type. Can be either 'ordinal' or 'linear'\ncustomColors\tobject\t\tcustom colors for the chart. Used to override a color for a specific value\nrangeFillOpacity\tnumber\t0.15\topacity of the shadow around the line indication the (optional) min and max values. The range shadow is only displayed if min and max values are provided with the data. The color of the shadow is alwas the color of the central line.\nlegend\tboolean\tfalse\tshow or hide the legend\nlegendTitle\tstring\t'Legend'\tthe legend title\nxAxis\tboolean\tfalse\tshow or hide the x axis\nyAxis\tboolean\tfalse\tshow or hide the y axis\nshowGridLines\tboolean\ttrue\tshow or hide the grid lines\nroundDomains\tboolean\tfalse\tround domains for aligned gridlines\nshowXAxisLabel\tboolean\tfalse\tshow or hide the x axis label\nshowYAxisLabel\tboolean\tfalse\tshow or hide the y axis label\nxAxisLabel\tstring\t\tthe x axis label text\nyAxisLabel\tstring\t\tthe y axis label text\nxAxisTickFormatting\tfunction\t\tthe x axis tick formatting\nyAxisTickFormatting\tfunction\t\tthe y axis tick formatting\ntimeline\tboolean\tfalse\tdisplay a timeline control under the chart. Only available if x scale is date\nautoScale\tboolean\tfalse\tset the minimum value of the y axis to the minimum value in the data, instead of 0\ncurve\tfunction\t\tthe interpolation function used to generate the curve. It accepts any d3.curve function\ngradient\tboolean\tfalse\tfill elements with a gradient instead of a solid color\nactiveEntries\tobject[]\t[]\telements to highlight\ntooltipDisabled\tboolean\tfalse\tshow or hide the tooltip\ntooltipTemplate\tTemplateRef\t\ta custom ng-template to be displayed inside the tooltip when hovering a single point\nseriesTooltipTemplate\tTemplateRef\t\ta custom ng-template to be displayed inside the tooltip when hovering series\nreferenceLines\tobject[]\t\tan array of reference lines to be shown behind the chart. Every reference line should be of format {name, value}\nshowRefLines\tboolean\tfalse\tshow or hide the reference lines\nshowRefLabels\tboolean\ttrue\tshow or hide the reference line labels -->\n"
+module.exports = "<div class=\"ui blurring inverted segment\">\n  <div *ngIf=\"dimmer\" class=\"ui active dimmer\">\n    <div class=\"ui indeterminate loader\"></div>\n  </div>\n  <div class=\"chartcontainer\">\n    <ngx-charts-line-chart\n      [view]=\"view\"\n      [scheme]=\"colorScheme\"\n      [results]=\"multi\"\n      [gradient]=\"gradient\"\n      [xAxis]=\"showXAxis\"\n      [yAxis]=\"showYAxis\"\n      [legend]=\"showLegend\"\n      [showXAxisLabel]=\"showXAxisLabel\"\n      [showYAxisLabel]=\"showYAxisLabel\"\n      [xAxisLabel]=\"xAxisLabel\"\n      [yAxisLabel]=\"yAxisLabel\"\n      [autoScale]=\"autoScale\"\n      [showGridLines]=\"showGridLines\"\n      [showRefLines]=\"showRefLines\"\n      [referenceLines]=\"referenceLines\"\n      [roundDomains]=\"roundDomains\"\n      [schemeType]=\"schemeType\"\n      [timeline]=\"timeline\"\n      [curve]=\"curve\"\n      [autoScale]=\"autoScale\"\n      rangeFillOpacity=\"0.13\"\n      (select)=\"onSelect($event)\">\n    </ngx-charts-line-chart>\n  </div>\n</div>\n<!-- Property\tType\tDefault Value\tDescription\nview\tnumber[]\t\tthe dimensions of the chart [width, height]. If left undefined, the chart will fit to the parent container size\nresults\tobject[]\t\tthe chart data\nscheme\tobject\t\tthe color scheme of the chart\nschemeType\tstring\t'ordinal'\tthe color scale type. Can be either 'ordinal' or 'linear'\ncustomColors\tobject\t\tcustom colors for the chart. Used to override a color for a specific value\nrangeFillOpacity\tnumber\t0.15\topacity of the shadow around the line indication the (optional) min and max values. The range shadow is only displayed if min and max values are provided with the data. The color of the shadow is alwas the color of the central line.\nlegend\tboolean\tfalse\tshow or hide the legend\nlegendTitle\tstring\t'Legend'\tthe legend title\nxAxis\tboolean\tfalse\tshow or hide the x axis\nyAxis\tboolean\tfalse\tshow or hide the y axis\nshowGridLines\tboolean\ttrue\tshow or hide the grid lines\nroundDomains\tboolean\tfalse\tround domains for aligned gridlines\nshowXAxisLabel\tboolean\tfalse\tshow or hide the x axis label\nshowYAxisLabel\tboolean\tfalse\tshow or hide the y axis label\nxAxisLabel\tstring\t\tthe x axis label text\nyAxisLabel\tstring\t\tthe y axis label text\nxAxisTickFormatting\tfunction\t\tthe x axis tick formatting\nyAxisTickFormatting\tfunction\t\tthe y axis tick formatting\ntimeline\tboolean\tfalse\tdisplay a timeline control under the chart. Only available if x scale is date\nautoScale\tboolean\tfalse\tset the minimum value of the y axis to the minimum value in the data, instead of 0\ncurve\tfunction\t\tthe interpolation function used to generate the curve. It accepts any d3.curve function\ngradient\tboolean\tfalse\tfill elements with a gradient instead of a solid color\nactiveEntries\tobject[]\t[]\telements to highlight\ntooltipDisabled\tboolean\tfalse\tshow or hide the tooltip\ntooltipTemplate\tTemplateRef\t\ta custom ng-template to be displayed inside the tooltip when hovering a single point\nseriesTooltipTemplate\tTemplateRef\t\ta custom ng-template to be displayed inside the tooltip when hovering series\nreferenceLines\tobject[]\t\tan array of reference lines to be shown behind the chart. Every reference line should be of format {name, value}\nshowRefLines\tboolean\tfalse\tshow or hide the reference lines\nshowRefLabels\tboolean\ttrue\tshow or hide the reference line labels -->\n"
 
 /***/ }),
 
@@ -986,6 +986,9 @@ var ChartingComponent = (function () {
                 this.getFuelByPost('/fuel.json', json_query);
                 break;
         }
+    };
+    ChartingComponent.prototype.onSelect = function (e) {
+        console.log('Got select event from chart.');
     };
     return ChartingComponent;
 }());
@@ -1361,7 +1364,7 @@ module.exports = ""
 /***/ "./src/app/components/import/import.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui container\">\n\t<div class=\"ui segment\">\n\t\t<div class=\"ui grid\">\n\t\t\t<div class=\"ui four wide column\">\n\t\t\t\t<div class=\"ui blue inverted segment\">\n\t\t\t\t\t<h3 class=\"heading\">Limitations</h3>\n\t\t\t\t\t<div class=\"ui inverted relaxed divided list\">\n\t\t\t\t\t\t<div class=\"item\"><i class=\"upload icon\"></i>5 file upload limit.</div>\n\t\t\t\t\t\t<div class=\"item\"><i class=\"disk outline icon\"></i>100MB per file.</div>\n\t\t\t\t\t\t<div class=\"item\"><i class=\"file icon\"></i>GeoJSON</div>\n            <div class=\"item\"><i class=\"file icon\"></i>SHP Files</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<div class=\"ui eight wide column\">\n\t\t\t\t<h2 class=\"heading\"><i class=\"large blue middle aligned info icon\"></i>Visualise your own data</h2>\n\t\t\t\t<p>Need to visualise extra boundaries, features or point data?</p>\n\t\t\t\t<p>Upload your own GeoJSON files and have them visible on your own data layer.</p>\n\t\t\t</div>\n\t\t\t<div class=\"ui four wide column\"></div>\n\t\t</div>\n\t</div>\n</div>\n<app-upload></app-upload>\n\n<app-footer></app-footer>\n"
+module.exports = "<div class=\"ui container\">\n\n  <div *ngIf=\"!auth.isAuthenticated()\" class=\"ui icon yellow message\">\n    <i class=\"user circle icon\"></i>\n    <div class=\"content\">\n      <div class=\"header\">\n        Login required\n      </div>\n      <p>This feature is for authenticated users only.</p>\n    </div>\n  </div>\n\n  <div *ngIf=\"auth.isAuthenticated()\">\n    <div class=\"ui segment\">\n      <div class=\"ui grid\">\n        <div class=\"ui four wide column\">\n          <div class=\"ui blue inverted segment\">\n            <h3 class=\"heading\">Limitations</h3>\n            <div class=\"ui inverted relaxed divided list\">\n              <div class=\"item\"><i class=\"disk outline icon\"></i>100MB per file.</div>\n              <div class=\"item\"><i class=\"file icon\"></i>GeoJSON</div>\n              <div class=\"item\"><i class=\"file icon\"></i>SHP Files</div>\n            </div>\n          </div>\n        </div>\n        <div class=\"ui eight wide column\">\n          <h2 class=\"heading\"><i class=\"large blue middle aligned info icon\"></i>Visualise your own data</h2>\n          <p>Need to visualise extra boundaries, features or point data?</p>\n          <p>Upload your own GeoJSON files and have them visible on your own data layer.</p>\n        </div>\n        <div class=\"ui four wide column\"></div>\n      </div>\n    </div>\n    <app-upload></app-upload>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1371,6 +1374,7 @@ module.exports = "<div class=\"ui container\">\n\t<div class=\"ui segment\">\n\t
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ImportComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("./src/app/services/auth.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1381,8 +1385,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var ImportComponent = (function () {
-    function ImportComponent() {
+    function ImportComponent(auth) {
+        this.auth = auth;
+        this.auth = auth;
     }
     ImportComponent.prototype.ngOnInit = function () {
     };
@@ -1394,10 +1401,508 @@ ImportComponent = __decorate([
         template: __webpack_require__("./src/app/components/import/import.component.html"),
         styles: [__webpack_require__("./src/app/components/import/import.component.css")]
     }),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object])
 ], ImportComponent);
 
+var _a;
 //# sourceMappingURL=import.component.js.map
+
+/***/ }),
+
+/***/ "./src/app/components/importeditems/importeditems.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ".importeditemspane {\n  max-height: 40vh;\n  overflow-y: scroll;\n}\n\n.item.selected {\n  /*background-color: #0b97c4;*/\n}\n\n.ui.form .inline.fields.content,\ndiv.fields.content {\n  margin-bottom: 0;\n  vertical-align: center;\n}\n\n.ui.form .inline.fields input[type='text'] {\n  background-color: #1B1C1D;\n  border: solid 1px #FFFFFF;\n  color: #FFFFFF;\n}\n"
+
+/***/ }),
+
+/***/ "./src/app/components/importeditems/importeditems.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"ui inverted segment\">\n  <div *ngIf=\"!auth.isAuthenticated()\" class=\"ui icon yellow message\">\n    <i class=\"user circle icon\"></i>\n    <div class=\"content\">\n      <div class=\"header\">\n        Login required\n      </div>\n      <p>This feature is for authenticated users only.</p>\n    </div>\n  </div>\n\n  <div *ngIf=\"auth.isAuthenticated()\" class=\"ui tiny form\">\n    <div class=\"ui middle aligned divided inverted list\">\n      <div class=\"item\">\n        <div class=\"right floated content\">\n          <div class=\"ui compact icon buttons\">\n            <button (click)=\"toggleSelectionOff()\" class=\"ui small icon button\">\n              <i class=\"ui power off icon\"></i> Clear\n            </button>\n\n            <button routerLink=\"/import\" class=\"ui small blue icon button\">\n              <i class=\"ui cloud download icon\"></i> Import\n            </button>\n\n            <button (click)=\"insertNewGeoJSONQuery()\" class=\"ui small green icon button\">\n              <i class=\"ui plus icon\"></i> Add\n            </button>\n          </div>\n        </div>\n        <div class=\"content\">\n          <h3 class=\"ui header\"><i class=\"group object icon\"></i> Spatial Boundaries</h3>\n        </div>\n      </div>\n\n      <div class=\"item\">\n        <div class=\"field\">\n          <div class=\"ui icon input\">\n            <i class=\"search icon\"></i>\n            <input type=\"text\" name=\"name\" class=\"ui inverted\" placeholder=\"Search...\" (change)=\"searchForItem()\" [(ngModel)]=\"searchterm\"\n                   #searchbox>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"scrolling content importeditemspane\">\n      <div class=\"ui middle aligned divided inverted list\">\n        <div *ngFor=\"let q of queries\" class=\"item\" [class.selected]=\"q.enabled\">\n          <div class=\"right floated content\">\n            <div class=\"ui two compact basic icon buttons\">\n              <button [disabled]=\"!q.enabled\" (click)=\"confirmUpdate(q.name)\" class=\"ui basic yellow icon button\">\n                <i class=\"ui pencil alternate icon\"></i>\n              </button>\n              <button (click)=\"confirmRemoval(q.name)\" class=\"ui basic red icon button\">\n                <i class=\"ui ban icon\"></i>\n              </button>\n            </div>\n          </div>\n\n          <div class=\"inline fields content\" *ngIf=\"q.enabled\">\n            <div class=\"field\">\n              <button class=\"ui compact black icon button\" (click)=\"toggleSelectionOff();\"><i\n                class=\"ui toggle on icon\"></i></button>\n            </div>\n            <div class=\"field\">\n              <!--(click)=\"this.select()\"-->\n              <input type=\"text\" [(ngModel)]=\"q.name\" #editname>\n            </div>\n          </div>\n          <div class=\"fields content\" *ngIf=\"!q.enabled\">\n            <div class=\"field\">\n              <button class=\"ui compact black icon button\" (click)=\"toggleSelectionOn(q.name);\"><i\n                class=\"ui toggle off icon\"></i></button>\n              {{q.name}}\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/importeditems/importeditems.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ImportedItemsComponent; });
+/* unused harmony export GeoJSONQuery */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("./src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_models_service__ = __webpack_require__("./src/app/services/models.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng2_semantic_ui__ = __webpack_require__("./node_modules/ng2-semantic-ui/dist/public.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__confirm_modal_confirm_modal_component__ = __webpack_require__("./src/app/components/confirm-modal/confirm-modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular_persistence__ = __webpack_require__("./node_modules/angular-persistence/index.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var ImportedItemsComponent = (function () {
+    function ImportedItemsComponent(store, auth, ms, modalService) {
+        this.store = store;
+        this.auth = auth;
+        this.ms = ms;
+        this.modalService = modalService;
+        this.emptyGeoJSON = {
+            'type': 'FeatureCollection',
+            'features': []
+        };
+        this.ms = ms;
+        this.modalService = modalService;
+        var plan1 = new GeoJSONQuery('Planned Burn 1', {
+            'type': 'FeatureCollection',
+            'features': [
+                {
+                    'id': '21aff45153f64d0f8ed9d8827376b768',
+                    'type': 'Feature',
+                    'properties': {},
+                    'geometry': {
+                        'coordinates': [
+                            [
+                                [
+                                    [
+                                        143.9109247537408,
+                                        -37.43137888295225
+                                    ],
+                                    [
+                                        143.9112230604714,
+                                        -37.43167755711089
+                                    ],
+                                    [
+                                        143.91145651790652,
+                                        -37.432017426246
+                                    ],
+                                    [
+                                        143.91128790976666,
+                                        -37.432233705798694
+                                    ],
+                                    [
+                                        143.91097663316316,
+                                        -37.43199682813706
+                                    ],
+                                    [
+                                        143.910743175728,
+                                        -37.431862940456696
+                                    ],
+                                    [
+                                        143.91053565800388,
+                                        -37.43192473479406
+                                    ],
+                                    [
+                                        143.9101854718162,
+                                        -37.4320998185144
+                                    ],
+                                    [
+                                        143.90987419524754,
+                                        -37.43222340677465
+                                    ],
+                                    [
+                                        143.90962776793936,
+                                        -37.43197623005006
+                                    ],
+                                    [
+                                        143.91009468284466,
+                                        -37.43165695893611
+                                    ],
+                                    [
+                                        143.91076911543905,
+                                        -37.43131708816431
+                                    ],
+                                    [
+                                        143.9109247537408,
+                                        -37.43137888295225
+                                    ]
+                                ]
+                            ],
+                            [
+                                [
+                                    [
+                                        143.91294805155906,
+                                        -37.43281044818975
+                                    ],
+                                    [
+                                        143.91292211184788,
+                                        -37.432954633100074
+                                    ],
+                                    [
+                                        143.91263677499052,
+                                        -37.43287224177261
+                                    ],
+                                    [
+                                        143.91236440797115,
+                                        -37.43254267550027
+                                    ],
+                                    [
+                                        143.9119882820723,
+                                        -37.43236759281585
+                                    ],
+                                    [
+                                        143.9116770055037,
+                                        -37.431842342332935
+                                    ],
+                                    [
+                                        143.9113138494779,
+                                        -37.43133768643265
+                                    ],
+                                    [
+                                        143.91088584415667,
+                                        -37.431121404291
+                                    ],
+                                    [
+                                        143.91178076434824,
+                                        -37.43068883813295
+                                    ],
+                                    [
+                                        143.912533016111,
+                                        -37.43017387517765
+                                    ],
+                                    [
+                                        143.9128702324257,
+                                        -37.43061674353025
+                                    ],
+                                    [
+                                        143.9131815090292,
+                                        -37.431069908446915
+                                    ],
+                                    [
+                                        143.9134927855979,
+                                        -37.43108020762964
+                                    ],
+                                    [
+                                        143.9136224841884,
+                                        -37.43137888295225
+                                    ],
+                                    [
+                                        143.9134927855979,
+                                        -37.43185264140943
+                                    ],
+                                    [
+                                        143.91342793630253,
+                                        -37.43226460280689
+                                    ],
+                                    [
+                                        143.91319447886735,
+                                        -37.43234699483094
+                                    ],
+                                    [
+                                        143.91306478027673,
+                                        -37.432449984698806
+                                    ],
+                                    [
+                                        143.91294805155906,
+                                        -37.43281044818975
+                                    ]
+                                ]
+                            ]
+                        ],
+                        'type': 'MultiPolygon'
+                    }
+                }
+            ]
+        });
+        var plan2 = new GeoJSONQuery('Creswick Sample Boundary', {
+            'type': 'FeatureCollection',
+            'features': [
+                {
+                    'id': '014d3e96ebafb1de1c22774a47ab3275',
+                    'type': 'Feature',
+                    'properties': {},
+                    'geometry': {
+                        'coordinates': [
+                            [
+                                [
+                                    144.06698668870644,
+                                    -37.45771431511489
+                                ],
+                                [
+                                    143.90809686715227,
+                                    -37.563346123058274
+                                ],
+                                [
+                                    144.14567498127946,
+                                    -37.61970184870036
+                                ],
+                                [
+                                    144.22587651026043,
+                                    -37.51535019701112
+                                ],
+                                [
+                                    144.06698668870644,
+                                    -37.45771431511489
+                                ]
+                            ]
+                        ],
+                        'type': 'Polygon'
+                    }
+                }
+            ]
+        });
+        var plan3 = new GeoJSONQuery('Creswick Sample Boundary #2', {
+            'type': 'FeatureCollection',
+            'features': [
+                {
+                    'type': 'Feature',
+                    'id': '014d3e96ebafb1de1c22774a47ab3276',
+                    'properties': {},
+                    'geometry': {
+                        'type': 'Polygon',
+                        'coordinates': [
+                            [
+                                [
+                                    143.87901306152344,
+                                    -37.47731025619387
+                                ],
+                                [
+                                    143.92810821533203,
+                                    -37.47731025619387
+                                ],
+                                [
+                                    143.92810821533203,
+                                    -37.45169472198827
+                                ],
+                                [
+                                    143.87901306152344,
+                                    -37.45169472198827
+                                ],
+                                [
+                                    143.87901306152344,
+                                    -37.47731025619387
+                                ]
+                            ]
+                        ]
+                    }
+                }
+            ]
+        });
+        this.sample_queries = [plan1, plan2, plan3];
+    }
+    ImportedItemsComponent.prototype.ngAfterViewInit = function () {
+    };
+    ImportedItemsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        if (this.auth.isAuthenticated()) {
+            if (this.auth.userProfile) {
+                this.profile = this.auth.userProfile;
+            }
+            else {
+                this.auth.getProfile(function (err, profile) {
+                    _this.profile = profile;
+                });
+            }
+            console.log('This profile is: ' + this.profile);
+        }
+        this.queries = this.getAllQueries();
+    };
+    ImportedItemsComponent.prototype.toggleSelectionOn = function (q) {
+        console.log('Got toggle on!');
+        console.log('Selection is now ' + q);
+        for (var i = 0; i < this.queries.length; i++) {
+            this.queries[i].enabled = this.queries[i].name === q;
+            if (this.queries[i].enabled) {
+                var gj = this.queries[i].geojson;
+                console.log(gj);
+                console.log('Setting the selection');
+                this.drawing.set(gj);
+            }
+        }
+        this.saveSession();
+    };
+    ImportedItemsComponent.prototype.toggleSelectionOff = function () {
+        console.log('Got toggle off!');
+        for (var i = 0; i < this.queries.length; i++) {
+            this.queries[i].enabled = false;
+        }
+        this.drawing.set(this.emptyGeoJSON);
+        this.saveSession();
+    };
+    ImportedItemsComponent.prototype.confirmRemoval = function (q) {
+        var _this = this;
+        this.modalService
+            .open(new __WEBPACK_IMPORTED_MODULE_4__confirm_modal_confirm_modal_component__["a" /* ConfirmModal */]('Please confirm removal', 'Are you sure you want to permanently delete ' + q + '?', 'tiny'))
+            .onApprove(function () {
+            _this.removeGeoJSONQuery(q);
+        })
+            .onDeny(function () {
+            console.log('Removal cancelled.');
+        });
+    };
+    ImportedItemsComponent.prototype.confirmUpdate = function (q) {
+        var _this = this;
+        this.modalService
+            .open(new __WEBPACK_IMPORTED_MODULE_4__confirm_modal_confirm_modal_component__["a" /* ConfirmModal */]('Please confirm update', 'Are you sure you want to overwrite ' + q + ' with the current boundary?', 'tiny'))
+            .onApprove(function () {
+            console.log('Updating: ' + q);
+            _this.setGeoJSONQuery(q, _this.drawing.getAll());
+        })
+            .onDeny(function () {
+            console.log('Update cancelled.');
+        });
+    };
+    ImportedItemsComponent.prototype.setGeoJSONQuery = function (name, geojson) {
+        if (!this.isGeoJSONQuery(name)) {
+            this.queries.push(new GeoJSONQuery(name, geojson));
+        }
+        else {
+            this.updateGeoJSONQuery(name, geojson);
+        }
+        this.saveSession();
+    };
+    ImportedItemsComponent.prototype.getAllQueries = function () {
+        if (this.auth.isAuthenticated() && this.profile !== undefined) {
+            console.log('Getting locally-stored queries.');
+            console.log('name for storage is: ' + this.profile.name);
+            var stored_queries = this.store.get(this.profile.name, __WEBPACK_IMPORTED_MODULE_5_angular_persistence__["c" /* StorageType */].LOCAL);
+            console.log(stored_queries);
+            if (stored_queries !== undefined) {
+                this.queries = stored_queries;
+            }
+            else {
+                this.queries = this.sample_queries;
+            }
+        }
+        else {
+            console.log('Using default sample queries.');
+            this.queries = this.sample_queries;
+        }
+        console.log(this.queries);
+        return this.queries;
+    };
+    ImportedItemsComponent.prototype.updateGeoJSONQuery = function (name, geojson) {
+        for (var i = 0; i < this.queries.length; i++) {
+            if (this.queries[i].name === name) {
+                this.queries[i].geojson = geojson;
+                console.log(name + ' updated.');
+            }
+        }
+    };
+    ImportedItemsComponent.prototype.saveSession = function () {
+        if (this.auth.isAuthenticated()) {
+            this.store.set(this.profile.name, this.queries, { type: __WEBPACK_IMPORTED_MODULE_5_angular_persistence__["c" /* StorageType */].LOCAL });
+            console.log('Set the session storage.');
+        }
+    };
+    ImportedItemsComponent.prototype.getGeoJSONQuery = function (name) {
+        for (var i = 0; i < this.queries.length; i++) {
+            if (this.queries[i].name === name) {
+                return this.queries[i];
+            }
+        }
+        return false;
+    };
+    ImportedItemsComponent.prototype.isGeoJSONQuery = function (name) {
+        this.getAllQueries();
+        for (var i = 0; i < this.queries.length; i++) {
+            console.log('Checking if: ' + this.queries[i].name + ' == ' + name);
+            if (this.queries[i].name === name) {
+                return true;
+            }
+        }
+        return false;
+    };
+    ImportedItemsComponent.prototype.removeGeoJSONQuery = function (name) {
+        var index = -1;
+        for (var i = 0; i < this.queries.length; i++) {
+            if (this.queries[i].name === name) {
+                index = i;
+            }
+        }
+        if (index > -1) {
+            if (this.queries[index].enabled) {
+                this.toggleSelectionOff();
+            }
+            this.queries.splice(index, 1);
+            this.saveSession();
+            console.log('Removed: ' + name);
+        }
+        else {
+            console.log('Can\'t remove; doesn\'t exist.');
+        }
+    };
+    ImportedItemsComponent.prototype.insertNewGeoJSONQuery = function () {
+        this.getAllQueries();
+        this.toggleSelectionOff();
+        var new_name = this.generateNewName();
+        var editable = new GeoJSONQuery(new_name, this.emptyGeoJSON);
+        this.queries.push(editable);
+        this.saveSession();
+        editable.enabled = true;
+        this.editname.nativeElement.focus();
+        this.editname.nativeElement.select();
+    };
+    ImportedItemsComponent.prototype.generateNewName = function () {
+        var new_name = 'New Boundary';
+        var i = 0;
+        while (this.isGeoJSONQuery(new_name)) {
+            new_name = new_name.split('#')[0] + '#' + i++;
+        }
+        return new_name;
+    };
+    ImportedItemsComponent.prototype.searchForItem = function () {
+        this.getAllQueries();
+        this.toggleSelectionOff();
+        var i = 0;
+        var found = false;
+        while (i < this.queries.length && !found) {
+            if (this.queries[i].name.toLowerCase().indexOf(this.searchterm.toLowerCase()) !== -1) {
+                this.queries[i].enabled = true;
+                this.editname.nativeElement.focus();
+                this.editname.nativeElement.select();
+                found = true;
+            }
+            i++;
+        }
+    };
+    return ImportedItemsComponent;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __metadata("design:type", Object)
+], ImportedItemsComponent.prototype, "drawing", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __metadata("design:type", Array)
+], ImportedItemsComponent.prototype, "queries", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('editname'),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _a || Object)
+], ImportedItemsComponent.prototype, "editname", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('searchbox'),
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _b || Object)
+], ImportedItemsComponent.prototype, "searchbox", void 0);
+ImportedItemsComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'app-importeditems',
+        template: __webpack_require__("./src/app/components/importeditems/importeditems.component.html"),
+        styles: [__webpack_require__("./src/app/components/importeditems/importeditems.component.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5_angular_persistence__["b" /* PersistenceService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5_angular_persistence__["b" /* PersistenceService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__services_models_service__["a" /* ModelsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_models_service__["a" /* ModelsService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3_ng2_semantic_ui__["d" /* SuiModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ng2_semantic_ui__["d" /* SuiModalService */]) === "function" && _f || Object])
+], ImportedItemsComponent);
+
+var GeoJSONQuery = (function () {
+    function GeoJSONQuery(name, geojson) {
+        this.name = name;
+        this.enabled = false;
+        this.geojson = geojson;
+    }
+    return GeoJSONQuery;
+}());
+
+var _a, _b, _c, _d, _e, _f;
+//# sourceMappingURL=importeditems.component.js.map
 
 /***/ }),
 
@@ -1448,56 +1953,6 @@ ImportjobsComponent = __decorate([
 ], ImportjobsComponent);
 
 //# sourceMappingURL=importjobs.component.js.map
-
-/***/ }),
-
-/***/ "./src/app/components/importtasks/importtasks.component.css":
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./src/app/components/importtasks/importtasks.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  importtasks works!\n</p>\n"
-
-/***/ }),
-
-/***/ "./src/app/components/importtasks/importtasks.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ImporttasksComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var ImporttasksComponent = (function () {
-    function ImporttasksComponent() {
-    }
-    ImporttasksComponent.prototype.ngOnInit = function () {
-    };
-    return ImporttasksComponent;
-}());
-ImporttasksComponent = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'app-importtasks',
-        template: __webpack_require__("./src/app/components/importtasks/importtasks.component.html"),
-        styles: [__webpack_require__("./src/app/components/importtasks/importtasks.component.css")]
-    }),
-    __metadata("design:paramtypes", [])
-], ImporttasksComponent);
-
-//# sourceMappingURL=importtasks.component.js.map
 
 /***/ }),
 
@@ -1771,7 +2226,7 @@ module.exports = ".ui.card .avatar img.full,\n.ui.card .img.avatar.full,\n.ui.ca
 /***/ "./src/app/components/profile/profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui four column grid container\">\n  <div class=\"ui card\">\n  <div class=\"image\">\n    <img src=\"{{profile?.picture}}\" class=\"avatar full\" alt=\"avatar\">\n  </div>\n  <div class=\"content\">\n    <a><h3 class=\"nickname\">{{ profile?.nickname }}</h3></a>\n    <div class=\"meta\">\n      <span class=\"date\">Last updated: {{profile?.updated_at}}</span>\n      <span class=\"email\">{{profile?.name}}</span>\n    </div>\n    <div class=\"description\">\n    </div>\n  </div>\n  <div class=\"extra content\" *ngIf=\"false\">\n    <!--<pre class=\"full-profile\">{{ profile | json }}</pre>-->\n  </div>\n</div>\n</div>\n"
+module.exports = "<div class=\"ui four column grid container\">\n  <div class=\"ui card\">\n  <div class=\"image\">\n    <img src=\"{{profile?.picture}}\" class=\"avatar full\" alt=\"avatar\">\n  </div>\n  <div class=\"content\">\n    <a><h3 class=\"nickname\">{{ profile?.nickname }}</h3></a>\n    <div class=\"meta\">\n      <span class=\"date\">Last updated: {{profile?.updated_at}}</span>\n      <span class=\"email\">{{profile?.name}}</span>\n    </div>\n    <div class=\"description\">\n    </div>\n  </div>\n  <div class=\"extra content\" *ngIf=\"false\">\n    <pre class=\"full-profile\">{{ profile | json }}</pre>\n  </div>\n</div>\n</div>\n"
 
 /***/ }),
 
@@ -1809,7 +2264,7 @@ var ProfileComponent = (function () {
             this.auth.getProfile(function (err, profile) {
                 _this.profile = profile;
             });
-            this.store.set('test', 'success', { type: __WEBPACK_IMPORTED_MODULE_2_angular_persistence__["c" /* StorageType */].SESSION });
+            this.store.set('test', 'success', { type: __WEBPACK_IMPORTED_MODULE_2_angular_persistence__["c" /* StorageType */].LOCAL });
         }
     };
     return ProfileComponent;
@@ -1988,7 +2443,7 @@ module.exports = "ui.segment.dropzone,\n.dropzone {\n  border-style: dashed;\n  
 /***/ "./src/app/components/upload/upload.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui container\">\n    <!-- Steps -->\n  <div class=\"ui fluid steps\">\n    <div class=\"active step\">\n      <i class=\"file outline icon\"></i>\n      <div class=\"content\">\n        <div class=\"title\">Upload File(s)</div>\n        <div class=\"description\">Import for analysis</div>\n      </div>\n    </div>\n    <div class=\"disabled step\">\n      <i class=\"bar chart icon\"></i>\n      <div class=\"content\">\n        <div class=\"title\">Check for consistency</div>\n        <div class=\"description\">Metadata analysis</div>\n      </div>\n    </div>\n    <div class=\"disabled step\">\n      <i class=\"microchip icon\"></i>\n      <div class=\"content\">\n        <div class=\"title\">Conversion to GeoJSON</div>\n      </div>\n    </div>\n    <div class=\"disabled step\">\n      <i class=\"server icon\"></i>\n      <div class=\"content\">\n        <div class=\"title\">Ready for use</div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Start: File Drop Area -->\n  <div ng2FileDrop\n  [ngClass]=\"{'nv-file-over': hasBaseDropZoneOver}\"\n  (fileOver)=\"fileOverBase($event)\"\n  [uploader]=\"uploader\"\n  class=\"well\">\n    <div class=\"ui segment dropzone\">\n      <i class=\"big upload icon disabled\"></i>\n      <h3>Drag and Drop</h3>\n    </div>\n  </div>\n  <!-- End: File Drop Area -->\n  <div class=\"ui horizontal divider\"> Or</div>\n\n  <!-- Start: File Chooser -->\n  <div class=\"ui segment\">\n    <h3>Choose a file to upload: </h3>\n    <input ng2FileSelect\n    [ngClass]=\"{'another-file-over-class': hasAnotherDropZoneOver}\"\n    type=\"file\"\n    (fileOver)=\"fileOverAnother($event)\"\n    [uploader]=\"uploader\"\n    multiple />\n  </div>\n  <!-- End: File Chooser -->\n\n\n  <!-- Start: uploader queue -->\n  <div *ngIf=\"uploader.queue.length > 0\">\n    <!-- Uploader has Items -->\n    <div class=\"ui horizontal divider\"></div>\n    <div class=\"ui attached segment\">\n      <div class=\"mini ui icon buttons right floated\">\n        <button type=\"button\" class=\"mini ui icon positive button\" (click)=\"uploader.uploadAll()\" [disabled]=\"!uploader.getNotUploadedItems().length\"><i class=\"upload icon\"></i>Upload All</button>\n        <button type=\"button\" class=\"mini ui icon blue button\" (click)=\"uploader.cancelAll()\" [disabled]=\"!uploader.isUploading\"><i class=\"ban icon\"></i>Cancel All</button>\n        <button type=\"button\" class=\"mini ui icon negative button\" (click)=\"uploader.clearQueue()\" [disabled]=\"!uploader.queue.length\"><i class=\"delete icon\"></i>Flush Queue</button>\n      </div>\n      <h2 class=\"ui header\">File Upload Queue</h2>\n      <p>Contains {{uploader.queue.length}} item<span *ngIf=\"uploader.queue.length > 1\">s</span>.</p>\n    </div>\n\n    <!-- ITEMS -->\n    <div class=\"ui attached segment\">\n      <div class=\"ui internally celled grid\">\n        <!-- start: item -->\n        <div *ngFor=\"let item of uploader.queue\" class=\"equal height row\">\n          <div class=\"four wide column\">\n            <h5 class=\"header\">{{ item.file.name }}</h5>\n            <div class=\"meta\">\n              <p>{{item.file.size/1024/1024 | number:'.2'}} MB</p>\n              <p>{{item.file.type}}</p>\n            </div>\n          </div>\n          <div class=\"seven wide column middle aligned\">\n              <sui-progress [value]=\"item.progress\" [showProgress]=\"true\" [maximum]=\"maximum\" [precision]=\"precision\">\n                <div class=\"progress\">{{item.progress + '%'}}</div>\n              </sui-progress>\n            </div>\n          <div class=\"five wide column middle aligned\">\n            <div class=\"mini ui icon buttons fluid\">\n              <button type=\"button\" class=\"mini ui icon button\" (click)=\"item.upload()\" [disabled]=\"item.isReady || item.isUploading || item.isSuccess || item.isError\"><i class=\"green upload icon\"></i>Upload file</button>\n              <button type=\"button\" class=\"mini ui icon button\" (click)=\"item.cancel()\" [disabled]=\"!item.isUploading\"><i class=\"blue stop icon\"></i>Stop upload</button>\n              <button type=\"button\" class=\"mini ui icon button\" (click)=\"item.remove()\" [disabled]=\"!item.isSuccess\"><i class=\"red delete icon\"></i>Remove file</button>\n            </div>\n          </div>\n        </div>\n        <!-- end: item -->\n      </div>\n    </div>\n    <!-- End: ITEMS -->\n  </div>\n</div>\n"
+module.exports = "<div class=\"ui container\">\n    <!-- Steps -->\n  <div class=\"ui fluid steps\">\n    <div class=\"active step\">\n      <i class=\"file outline icon\"></i>\n      <div class=\"content\">\n        <div class=\"title\">Upload File(s)</div>\n        <div class=\"description\">Import for analysis</div>\n      </div>\n    </div>\n    <div class=\"disabled step\">\n      <i class=\"bar chart icon\"></i>\n      <div class=\"content\">\n        <div class=\"title\">Check for consistency</div>\n        <div class=\"description\">Metadata analysis</div>\n      </div>\n    </div>\n    <div class=\"disabled step\">\n      <i class=\"microchip icon\"></i>\n      <div class=\"content\">\n        <div class=\"title\">Conversion to GeoJSON</div>\n      </div>\n    </div>\n    <div class=\"disabled step\">\n      <i class=\"server icon\"></i>\n      <div class=\"content\">\n        <div class=\"title\">Ready for use</div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Start: File Drop Area -->\n  <div ng2FileDrop\n  [ngClass]=\"{'nv-file-over': hasBaseDropZoneOver}\"\n  (fileOver)=\"fileOverBase($event)\"\n  [uploader]=\"uploader\"\n  class=\"well\">\n    <div class=\"ui segment dropzone\">\n      <i class=\"big upload icon disabled\"></i>\n      <h3>Drag and Drop</h3>\n    </div>\n  </div>\n  <!-- End: File Drop Area -->\n  <div class=\"ui horizontal divider\"> Or</div>\n\n  <!-- Start: File Chooser -->\n  <div class=\"ui segment\">\n    <h3>Choose a file to upload: </h3>\n    <input ng2FileSelect\n    [ngClass]=\"{'another-file-over-class': hasAnotherDropZoneOver}\"\n    type=\"file\"\n    (fileOver)=\"fileOverAnother($event)\"\n    [uploader]=\"uploader\"\n    multiple />\n  </div>\n  <!-- End: File Chooser -->\n\n  <!-- Start: ImportedItems -->\n  <app-importeditems></app-importeditems>\n  <!-- End: ImportedItems -->\n\n\n  <!-- Start: uploader queue -->\n  <div *ngIf=\"uploader.queue.length > 0\">\n    <!-- Uploader has Items -->\n    <div class=\"ui horizontal divider\"></div>\n    <div class=\"ui attached segment\">\n      <div class=\"mini ui icon buttons right floated\">\n        <button type=\"button\" class=\"mini ui icon positive button\" (click)=\"uploader.uploadAll()\" [disabled]=\"!uploader.getNotUploadedItems().length\"><i class=\"upload icon\"></i>Upload All</button>\n        <button type=\"button\" class=\"mini ui icon blue button\" (click)=\"uploader.cancelAll()\" [disabled]=\"!uploader.isUploading\"><i class=\"ban icon\"></i>Cancel All</button>\n        <button type=\"button\" class=\"mini ui icon negative button\" (click)=\"uploader.clearQueue()\" [disabled]=\"!uploader.queue.length\"><i class=\"delete icon\"></i>Flush Queue</button>\n      </div>\n      <h2 class=\"ui header\">File Upload Queue</h2>\n      <p>Contains {{uploader.queue.length}} item<span *ngIf=\"uploader.queue.length > 1\">s</span>.</p>\n    </div>\n\n    <!-- ITEMS -->\n    <div class=\"ui attached segment\">\n      <div class=\"ui internally celled grid\">\n        <!-- start: item -->\n        <div *ngFor=\"let item of uploader.queue\" class=\"equal height row\">\n          <div class=\"four wide column\">\n            <h5 class=\"header\">{{ item.file.name }}</h5>\n            <div class=\"meta\">\n              <p>{{item.file.size/1024/1024 | number:'.2'}} MB</p>\n              <p>{{item.file.type}}</p>\n            </div>\n          </div>\n          <div class=\"seven wide column middle aligned\">\n              <sui-progress [value]=\"item.progress\" [showProgress]=\"true\" [maximum]=\"maximum\" [precision]=\"precision\">\n                <div class=\"progress\">{{item.progress + '%'}}</div>\n              </sui-progress>\n            </div>\n          <div class=\"five wide column middle aligned\">\n            <div class=\"mini ui icon buttons fluid\">\n              <button type=\"button\" class=\"mini ui icon button\" (click)=\"item.upload()\" [disabled]=\"item.isReady || item.isUploading || item.isSuccess || item.isError\"><i class=\"green upload icon\"></i>Upload file</button>\n              <button type=\"button\" class=\"mini ui icon button\" (click)=\"item.cancel()\" [disabled]=\"!item.isUploading\"><i class=\"blue stop icon\"></i>Stop upload</button>\n              <button type=\"button\" class=\"mini ui icon button\" (click)=\"item.remove()\" [disabled]=\"item.isSuccess\"><i class=\"red delete icon\"></i>Remove file</button>\n            </div>\n          </div>\n        </div>\n        <!-- end: item -->\n      </div>\n    </div>\n    <!-- End: ITEMS -->\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -2021,10 +2476,6 @@ var UploadComponent = (function () {
         };
         this.hasBaseDropZoneOver = false;
         this.hasAnotherDropZoneOver = false;
-        // this.modalService
-        //   .open(new ConfirmModal("Are you sure?", "Are you sure about accepting this?", ModalSize.Small))
-        //   .onApprove(() => alert("User has accepted."))
-        //   .onDeny(() => alert("User has denied."));
     }
     UploadComponent.prototype.fileOverBase = function (e) {
         this.hasBaseDropZoneOver = e;
@@ -2626,14 +3077,14 @@ var _a;
 /***/ "./src/app/shared/mapbox/mapbox.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "html, body {\n  margin: 0;\n  height: 100%;\n  overflow: hidden;\n}\n\nbody {\n  margin: 0;\n  padding: 0;\n}\n\n.coordinates, .calculated-area {\n  background: rgba(0, 0, 0, 0.5);\n  color: #fff;\n  /*position: absolute;*/\n  bottom: 10px;\n  left: 10px;\n  padding: 5px 10px;\n  margin: 0;\n  font-size: 11px;\n  line-height: 18px;\n  border-radius: 3px;\n  display: none;\n  /*z-index: 400;*/\n}\n\n.viewDividerhandle {\n  width: 44px;\n  height: 44px;\n  position: absolute;\n  z-index: 220;\n  top: -22px;\n  /*border-radius: 11px;*/\n  /* IE 9 */\n  -webkit-transform: rotate(45deg);\n  /* Chrome, Safari, Opera */\n  transform: rotate(45deg);\n  background-color: rgb(33, 36, 42);\n  color: white;\n  left: calc(0vw - 22px);\n  cursor: -webkit-grab;\n  cursor: grab;\n  -webkit-box-shadow: 3px 3px 6px rgba(0,0,0,0.45);\n          box-shadow: 3px 3px 6px rgba(0,0,0,0.45);\n  border-radius: 6px;\n}\n\n.viewDividerhandle .icon {\n  display: block;\n  width: 22px;\n  height: 22px;\n  margin-top: 18px;\n  margin-left: 18px;\n  margin-right: 4px;\n  margin-bottom: 4px;\n}\n\n.viewport {\n  overflow: hidden;\n  position: absolute;\n  width: auto;\n  top: 0;\n  bottom: 0;\n}\n\n.viewframe {\n  width: 100vw;\n  height: 100vh;\n  position: relative;\n}\n\n.ui .form .field.json textarea {\n  background: rgba(0, 0, 0, 0.5);\n  color: rgba(255, 255, 255, 0.88);\n}\n\n#backViewport {\n  left: 0;\n  right: 0;\n}\n\n#frontViewport {\n  left: 0;\n  right: 100vw;\n  border-right: 1px outset white;\n}\n\n#backViewport #mymapbox {}\n\n#frontViewport #myAltmapbox {}\n\n#mymapbox, #myAltmapbox {\n  padding: 0em;\n  margin: 0em;\n  position: relative;\n}\n\n#mymapbox {\n  z-index: 200;\n  width: 100vw;\n  left: 0;\n  right: 0;\n}\n\n#myAltmapbox {\n  z-index: 210;\n  width: 100vw;\n  opacity: 1.0;\n  /*background-blend-mode: screen;*/\n  left: 0;\n  right: 0;\n}\n\n.ui.mapbox {\n  position: relative;\n  width: 100vw;\n  height: 95vh;\n}\n\n#mymapbox, #myAltmapbox {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  width: 100%;\n}\n\n#myoverlay {\n  position: absolute;\n  widows: 100vw;\n  ;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 250;\n}\n\n#myoverlay .ui.mini.inverted.black.label,\n#myoverlay input.inverted {\n  opacity: 0.465;\n}\n\n#temp {\n  position: absolute;\n  bottom: 1em;\n  right: 4em;\n  z-index: 400;\n}\n\n#geocoder-container>div {\n  min-width: 50%;\n  margin-left: 25%;\n}\n\ninput.inverted {\n  background-color: #000;\n  color: #fff;\n}\n\n#timestep {\n  background-color: transparent;\n}\n\n.map-overlay input.timestep {\n    -webkit-appearance: none;\n    width: 100%;\n    height: 8px;\n    border-radius: 4px;\n    background: #000;\n    outline: none;\n    opacity: 0.45;\n    -webkit-transition: .2s;\n    -webkit-transition: opacity .2s;\n    transition: opacity .2s;\n    border: 1px inset #333;\n}\n\n.map-overlay input.timestep::-webkit-slider-thumb {\n    -webkit-appearance: none;\n    appearance: none;\n    width: 20px;\n    height: 20px;\n    border-radius: 50%;\n    border-top-left-radius: 4px;\n    border-top-right-radius: 4px;\n    border-top-style: solid;\n    border-bottom-style: outset;\n    border-color: rgb(80, 187, 255);\n    background: rgb(0, 148, 255);\n    cursor: pointer;\n    opacity: 1;\n    -webkit-box-shadow: 0px 2px 10px #000;\n            box-shadow: 0px 2px 10px #000;\n}\n\n.map-overlay input.timestep::-moz-range-thumb {\n    width: 25px;\n    height: 25px;\n    border-radius: 50%;\n    background: rgb(255, 120, 43);\n    cursor: pointer;\n    opacity: 1.0;\n    -moz-box-shadow: 0px 4px 10px #000;\n}\n\n.map-overlay .map-overlay-inner {\n  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0,0.45)), to(rgba(0, 0, 0, 0.85)));\n  background: linear-gradient(0deg, rgba(0, 0, 0,0.45), rgba(0, 0, 0, 0.85));\n    /*opacity: 0.5;*/\n    -webkit-box-shadow:0 3px 10px rgba(0, 0, 0, 0.50);\n            box-shadow:0 3px 10px rgba(0, 0, 0, 0.50);\n    border-radius: .3em;\n}\n\n.map-overlay h2 {\n    line-height: 24px;\n    display: block;\n    margin: 0 0 5px;\n}\n\n.map-overlay .legend .bar {\n    height: 6px;\n    width: 100%;\n    background: -webkit-gradient(linear, right top, left top, from(#440154), color-stop(#482475), color-stop(#414487), color-stop(#355f8d), color-stop(#2a788e), color-stop(#21908d), color-stop(#22a884), color-stop(#42be71), color-stop(#7ad151), color-stop(#bddf26), to(#bddf26));\n    background: linear-gradient(-90deg, #440154, #482475, #414487, #355f8d, #2a788e, #21908d, #22a884, #42be71, #7ad151, #bddf26, #bddf26);\n    border-radius: 3px;\n    opacity:1.0;\n    margin-bottom:.5em;\n}\n\n.map-overlay input {\n    background-color: transparent;\n    display: inline-block;\n    width: 100%;\n    position: relative;\n    margin: 0;\n    cursor: ew-resize;\n}\n\n.ui .map-overlay .map-overlay-inner.dark .sidebar {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n\n.ui .map-overlay .map-overlay-inner.dark .ui.menu,\n.ui .map-overlay .map-overlay-inner.dark .ui.segment,\n.ui .map-overlay .map-overlay-inner.dark .ui.inverted.menu,\n.ui .map-overlay .map-overlay-inner.dark .ui.inverted.segment {\n  /*background-color: transparent !important;*/\n}\n\n.ui .map-overlay .map-overlay-inner.dark .ui.segment {\n  border: 0;\n}\n\n.ui .map-overlay-inner.dark h3.ui.header {\n  color: #fff;\n}\n\n.ui .map-overlay .map-overlay-inner.dark .ui.inverted.menu .item,\n.ui .map-overlay .map-overlay-inner.dark .ui.inverted.segment .item {\n  /*background-color: rgb(28, 28, 28);*/\n  /*opacity: 1.0;*/\n}\n\n.inverted.pushable>.pusher {\n  background-color: transparent;\n}\n"
+module.exports = "html, body {\n  margin: 0;\n  height: 100%;\n  overflow: hidden;\n}\n\nbody {\n  margin: 0;\n  padding: 0;\n}\n\n.coordinates, .calculated-area {\n  background: rgba(0, 0, 0, 0.5);\n  color: #fff;\n  /*position: absolute;*/\n  bottom: 10px;\n  left: 10px;\n  padding: 5px 10px;\n  margin: 0;\n  font-size: 11px;\n  line-height: 18px;\n  border-radius: 3px;\n  display: none;\n  /*z-index: 400;*/\n}\n\n.viewDividerhandle {\n  width: 44px;\n  height: 44px;\n  position: absolute;\n  z-index: 220;\n  top: -22px;\n  /*border-radius: 11px;*/\n  /* IE 9 */\n  -webkit-transform: rotate(45deg);\n  /* Chrome, Safari, Opera */\n  transform: rotate(45deg);\n  background-color: rgb(33, 36, 42);\n  color: white;\n  left: calc(0vw - 22px);\n  cursor: -webkit-grab;\n  cursor: grab;\n  -webkit-box-shadow: 3px 3px 6px rgba(0,0,0,0.45);\n          box-shadow: 3px 3px 6px rgba(0,0,0,0.45);\n  border-radius: 6px;\n}\n\n.viewDividerhandle .icon {\n  display: block;\n  width: 22px;\n  height: 22px;\n  margin-top: 18px;\n  margin-left: 18px;\n  margin-right: 4px;\n  margin-bottom: 4px;\n}\n\n.viewport {\n  overflow: hidden;\n  position: absolute;\n  width: auto;\n  top: 0;\n  bottom: 0;\n}\n\n.viewframe {\n  width: 100vw;\n  height: 100vh;\n  position: relative;\n}\n\n.ui .form .field.json textarea {\n  background: rgba(0, 0, 0, 0.5);\n  color: rgba(255, 255, 255, 0.88);\n}\n\n#backViewport {\n  left: 0;\n  right: 0;\n}\n\n#frontViewport {\n  left: 0;\n  right: 100vw;\n  border-right: 1px outset white;\n}\n\n#backViewport #mymapbox {}\n\n#frontViewport #myAltmapbox {}\n\n#mymapbox, #myAltmapbox {\n  padding: 0em;\n  margin: 0em;\n  position: relative;\n}\n\n#mymapbox {\n  z-index: 200;\n  width: 100vw;\n  left: 0;\n  right: 0;\n}\n\n#myAltmapbox {\n  z-index: 210;\n  width: 100vw;\n  opacity: 1.0;\n  /*background-blend-mode: screen;*/\n  left: 0;\n  right: 0;\n}\n\n.ui.mapbox {\n  position: relative;\n  width: 100vw;\n  height: 95vh;\n}\n\n#mymapbox, #myAltmapbox {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  width: 100%;\n}\n\n#myoverlay {\n  position: absolute;\n  widows: 100vw;\n  ;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 250;\n}\n\n#myoverlay .ui.mini.inverted.black.label,\n#myoverlay input.inverted {\n  opacity: 0.465;\n}\n\n#temp {\n  position: absolute;\n  bottom: 1em;\n  right: 4em;\n  z-index: 400;\n}\n\n#geocoder-container>div {\n  min-width: 50%;\n  margin-left: 25%;\n}\n\ninput.inverted {\n  background-color: #000;\n  color: #fff;\n}\n\n#timestep {\n  background-color: transparent;\n}\n\n.map-overlay input.timestep {\n    -webkit-appearance: none;\n    width: 100%;\n    height: 8px;\n    border-radius: 4px;\n    background: #000;\n    outline: none;\n    opacity: 0.45;\n    -webkit-transition: .2s;\n    -webkit-transition: opacity .2s;\n    transition: opacity .2s;\n    border: 1px inset #333;\n}\n\n.map-overlay input.timestep::-webkit-slider-thumb {\n    -webkit-appearance: none;\n    appearance: none;\n    width: 20px;\n    height: 20px;\n    border-radius: 50%;\n    border-top-left-radius: 4px;\n    border-top-right-radius: 4px;\n    border-top-style: solid;\n    border-bottom-style: outset;\n    border-color: rgb(80, 187, 255);\n    background: rgb(0, 148, 255);\n    cursor: pointer;\n    opacity: 1;\n    -webkit-box-shadow: 0px 2px 10px #000;\n            box-shadow: 0px 2px 10px #000;\n}\n\n.map-overlay input.timestep::-moz-range-thumb {\n    width: 25px;\n    height: 25px;\n    border-radius: 50%;\n    background: rgb(255, 120, 43);\n    cursor: pointer;\n    opacity: 1.0;\n    -moz-box-shadow: 0px 4px 10px #000;\n}\n\n.map-overlay .map-overlay-inner {\n  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0,0.45)), to(rgba(0, 0, 0, 0.85)));\n  background: linear-gradient(0deg, rgba(0, 0, 0,0.45), rgba(0, 0, 0, 0.85));\n    /*opacity: 0.5;*/\n    -webkit-box-shadow:0 3px 10px rgba(0, 0, 0, 0.50);\n            box-shadow:0 3px 10px rgba(0, 0, 0, 0.50);\n    border-radius: .3em;\n}\n\n.map-overlay h2 {\n    line-height: 24px;\n    display: block;\n    margin: 0 0 5px;\n}\n\n.map-overlay .legend .bar {\n    height: 6px;\n    width: 100%;\n    background: -webkit-gradient(linear, right top, left top, from(#440154), color-stop(#482475), color-stop(#414487), color-stop(#355f8d), color-stop(#2a788e), color-stop(#21908d), color-stop(#22a884), color-stop(#42be71), color-stop(#7ad151), color-stop(#bddf26), to(#bddf26));\n    background: linear-gradient(-90deg, #440154, #482475, #414487, #355f8d, #2a788e, #21908d, #22a884, #42be71, #7ad151, #bddf26, #bddf26);\n    border-radius: 3px;\n    opacity:1.0;\n    margin-bottom:.5em;\n}\n\n.map-overlay input {\n    background-color: transparent;\n    display: inline-block;\n    width: 100%;\n    position: relative;\n    margin: 0;\n    cursor: ew-resize;\n}\n\n.ui .map-overlay .map-overlay-inner.dark .sidebar {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n\n.ui .map-overlay .map-overlay-inner.dark .ui.menu,\n.ui .map-overlay .map-overlay-inner.dark .ui.segment,\n.ui .map-overlay .map-overlay-inner.dark .ui.inverted.menu,\n.ui .map-overlay .map-overlay-inner.dark .ui.inverted.segment {\n  /*background-color: transparent !important;*/\n}\n\n.ui .map-overlay .map-overlay-inner.dark .ui.segment {\n  border: 0;\n}\n\n.ui .map-overlay-inner.dark h3.ui.header {\n  color: #fff;\n}\n\n.ui .map-overlay .map-overlay-inner.dark .ui.inverted.menu .item,\n.ui .map-overlay .map-overlay-inner.dark .ui.inverted.segment .item {\n  /*background-color: rgb(28, 28, 28);*/\n  /*opacity: 1.0;*/\n}\n\n.inverted.pushable>.pusher {\n  background-color: transparent;\n}\n\n.dark {\n  background-color: #1b1c1d;\n}\n\ntextarea.fillgeoarea {\n  height: 40vh;\n  background: transparent;\n  font-size: 0.745em;\n}\n"
 
 /***/ }),
 
 /***/ "./src/app/shared/mapbox/mapbox.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui mapbox\" (mouseup)=\"upSplitView($event)\" (mousedown)=\"downSplitView($event)\" (click)=\"onUp($event)\"\n     (drag)=\"dragSplitView($event)\" (mousemove)=\"dragSplitView($event)\">\n  <div class=\"viewport\" id=\"backViewport\">\n    <div class=\"viewframe\">\n      <div id=\"mymapbox\" class=\"ui mapbox mapboxgl-map\"></div>\n    </div>\n  </div>\n  <div class=\"viewport\" id=\"frontViewport\">\n    <div class=\"viewframe\">\n      <div id=\"myAltmapbox\" class=\"ui mapbox mapboxgl-map\"></div>\n    </div>\n  </div>\n  <div id=\"splitViewHandle\" class=\"viewDividerhandle\" (mouseenter)=\"enterSplitViewHandle($event)\"\n       (click)=\"clickSplitView($event)\" (mouseleave)=\"leaveSplitViewHandle($event)\"><i\n    class=\"ui large white expand icon\"></i></div>\n  <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>\n  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>\n  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css'\n        type='text/css'/>\n\n\n  <div id=\"myoverlay\" class='map-overlay'>\n    <div [suiCollapse]=\"!ingesting\" id='ingest-area' class='ingest-area top attached map-overlay-inner dark'>\n      <div class=\"ui top attached fluid tiny inverted menu\">\n\n\n        <a class=\"item\" (click)=\"ingesting = !ingesting; isCopied=false;\">\n          <i class=\"red close icon\"></i>\n        </a>\n        <a class=\"item\">\n          SPACE\n        </a>\n        <a class=\"item\" (click)=\"calculateArea()\" data-content=\"Calculate Area\">\n          <i class=\"white calculator icon\"></i> Area\n        </a>\n\n        <a class=\"item\" (click)=\"importGeoJSON()\" data-content=\"Import GeoJSON\">\n          <i class=\"white file icon\"></i> Import\n        </a>\n        <a class=\"item\" (click)=\"saveBoundary()\" data-content=\"Save GeoJSON\">\n          <i class=\"white group object icon\"></i> Save\n        </a>\n\n        <a class=\"item\" [ngxClipboard]=\"geojsonarea\" (cbOnSuccess)=\"isCopied = true\">\n          <i class=\"icons\">\n            <i class=\"copy icon\"></i>\n            <i *ngIf=\"isCopied\" class=\"green checkmark icon\"></i>\n          </i>\n        </a>\n\n        <a class=\"item\" (click)=\"refreshModelData()\">\n          <i class=\"search icon\"></i> Go\n        </a>\n\n      </div>\n      <div class=\"ui form\">\n        <div class=\"field json\">\n          <!--<h3 class=\"ui header\">GeoJSON (Copy/Paste)</h3>-->\n          <pre id='calculated-area' class='calculated-area'></pre>\n          <textarea [(ngModel)]=\"ingestGeoJson\" #geojsonarea></textarea>\n        </div>\n\n      </div>\n    </div>\n\n    <div [suiCollapse]=\"collapse\" class=\"attached\">\n      <div class=\"map-overlay-inner dark\">\n        <div class=\"ui top attached fluid tiny inverted menu\">\n          <a class=\"item\" (click)=\"collapse = !collapse\">\n            <i class=\"red close icon\"></i>\n          </a>\n\n          <a class=\"item\">\n            TIME\n          </a>\n\n          <a class=\"item\" (click)=\"sidebar.toggle();\">\n            <i class=\"sidebar icon\"></i> Models\n          </a>\n\n          <a class=\"item\" (click)=\"toggleTimeBrushing()\" data-content=\"Timebrushing\">\n            <div *ngIf=\"timebrush\"><i class=\"white paint brush icon\"></i> Timebrush OFF</div>\n            <div *ngIf=\"!timebrush\"><i class=\"white close icon\"></i> Timebrushing ON</div>\n          </a>\n\n          <a class=\"item\" suiDatepicker [pickerMinDate]=\"minStartDate\" [pickerMaxDate]=\"maxStartDate\"\n             [pickerMode]=\"'date'\" [(ngModel)]=\"start\"><i\n            class=\"calendar icon\"></i> From: {{start | date:'dd/MM/y'}}</a>\n\n          <a class=\"item\" suiDatepicker [pickerMinDate]=\"minEndDate\" [pickerMaxDate]=\"maxEndDate\" [pickerMode]=\"'date'\"\n             [(ngModel)]=\"finish\"><i class=\"calendar icon\"></i> To: {{finish |\n            date:'dd/MM/y'}}</a>\n          <a class=\"item\" (click)=\"weekView()\" data-content=\"This past week\"><i class=\"clock icon\"></i> This week</a>\n\n          <a class=\"item\" (click)=\"mpg()\" data-content=\"Get MP4\">\n            <i class=\"file video icon\"></i> Animation\n          </a>\n\n          <a class=\"item\" (click)=\"netCDF()\" data-content=\"NetCDF Export\">\n            <i class=\"archive icon\"></i> DataSet\n          </a>\n\n          <a class=\"item\" (click)=\"pdf()\" data-content=\"PDF\">\n            <i class=\"file pdf icon\"></i> PDF\n          </a>\n\n          <a class=\"item\" (click)=\"refreshModelData()\" data-content=\"Go\">\n            <i class=\"search icon\"></i> Go\n          </a>\n\n\n\n        </div>\n\n        <sui-sidebar-container class=\"ui bottom attached\">\n\n\n          <sui-sidebar class=\"inverted vertical\" #sidebar>\n            <div class=\"ui fluid inverted menu\">\n              <a class=\"item\" (click)=\"exclusiveModelMode = !exclusiveModelMode\">\n                <div *ngIf=\"!exclusiveModelMode\">\n                  <i class=\"inverted toggle on icon\"></i> Compare\n                </div>\n                <div *ngIf=\"exclusiveModelMode\">\n                  <i class=\"inverted toggle off icon\"></i> Exclusive\n                </div>\n              </a>\n\n              <a *ngIf=\"allModels\" class=\"item\" (click)=\"allModelsOff()\"><i class=\"check circle outline icon\"></i> All models</a>\n              <a *ngIf=\"!allModels\" class=\"item\" (click)=\"allModelsOn()\"><i class=\"radio icon\"></i> All models</a>\n            </div>\n            <div class=\"ui fluid vertical inverted menu\">\n              <a *ngFor=\"let m of models\" (click)=\"toggleModel(m.name)\" class=\"ui inverted item\">\n                <i *ngIf=\"m.enabled\" class=\"green toggle on icon\"></i>\n                <i *ngIf=\"!m.enabled\" class=\"toggle off icon\"></i> {{m.ident}} - ({{m.code}})\n              </a>\n            </div>\n          </sui-sidebar>\n          <sui-sidebar-sibling [isDimmedWhenVisible]=\"false\" class=\"inverted\">\n            <!--<div class=\"ui container\">-->\n              <!--<h3 class=\"ui center aligned header\">LFMC (%) vs. Time</h3>-->\n            <!--</div>-->\n            <app-charting id=\"chart\" [lat]=\"lat\" [lng]=\"lng\" [start]=\"start | date:'yMMdd'\"\n                          [finish]=\"finish | date:'yMMdd'\"></app-charting>\n          </sui-sidebar-sibling>\n        </sui-sidebar-container>\n      </div>\n    </div>\n\n\n    <div [suiCollapse]=\"!splitview\" class=\"attached\">\n      <div class=\"ui fluid tiny inverted menu\">\n        <a class=\"item\" (click)=\"toggleSplitView()\">\n          <i class=\"red close icon\"></i>\n        </a>\n        <a class=\"item\" (click)=\"setSatelliteStyle()\" data-content=\"Satellite\">\n          <i class=\"green map icon\"></i>\n        </a>\n        <a class=\"item\" (click)=\"setDatavizStyle()\" data-content=\"DataViz\">\n          <i class=\"green map icon\"></i>\n        </a>\n        <a class=\"item\" (click)=\"setDefaultStyle()\" data-content=\"Outdoors\">\n          <i class=\"green map icon\"></i>\n        </a>\n      </div>\n    </div>\n\n    <div class=\"ui bottom attached inverted horizontal fluid menu\">\n      <a class=\"item\" (click)=\"showtoolBar = !showtoolBar\">\n        <i class=\"sidebar icon\"></i> Tools:\n      </a>\n\n      <a class=\"ui tiny purple icon item\" (click)=\"collapse = !collapse\"  data-content=\"Time-series Chart Panel\">\n        <i class=\"white area chart icon\"></i> TIME\n      </a>\n\n      <a class=\"ui tiny orange icon item\" (click)=\"ingesting = !ingesting;saveBoundary();\" data-content=\"GeoJSON Panel\">\n        <i class=\"white map icon\"></i> SPACE\n      </a>\n\n      <a class=\"ui tiny blue icon item\" (click)=\"toggleSplitView()\"  data-content=\"Split View Panel\">\n        <div *ngIf=\"splitview\"><i class=\"white square outline icon\"></i> Split</div>\n        <div *ngIf=\"!splitview\"><i class=\"white columns icon\"></i> Split</div>\n      </a>\n\n      <!--<a class=\"ui tiny blue icon item\" (click)=\"zoomToStateView()\"><i class=\"white world icon\"></i></a>-->\n      <!--<a class=\"item\" (click)=\"undoView()\">-->\n        <!--<i class=\"angle left icon\"></i> Back-->\n        <!--<span *ngIf=\"undos.length > 0\">({{undos.length}})</span>-->\n      <!--</a>-->\n      <!--<a class=\"item\" (click)=\"redoView()\">-->\n        <!--<i class=\"angle right icon\"></i> Forward-->\n        <!--<span *ngIf=\"redos.length > 0\">({{redos.length}})</span>-->\n      <!--</a>-->\n\n\n    </div>\n  </div>\n</div>\n<lfmc-video></lfmc-video>\n\n\n<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>\n<link rel='stylesheet'\n      href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css'\n      type='text/css'/>\n"
+module.exports = "<div class=\"ui mapbox\" (mouseup)=\"upSplitView($event)\" (mousedown)=\"downSplitView($event)\" (click)=\"onUp($event)\"\n     (drag)=\"dragSplitView($event)\" (mousemove)=\"dragSplitView($event)\">\n  <div class=\"viewport\" id=\"backViewport\">\n    <div class=\"viewframe\">\n      <div id=\"mymapbox\" class=\"ui mapbox mapboxgl-map\"></div>\n    </div>\n  </div>\n  <div class=\"viewport\" id=\"frontViewport\">\n    <div class=\"viewframe\">\n      <div id=\"myAltmapbox\" class=\"ui mapbox mapboxgl-map\"></div>\n    </div>\n  </div>\n  <div id=\"splitViewHandle\" class=\"viewDividerhandle\" (mouseenter)=\"enterSplitViewHandle($event)\"\n       (click)=\"clickSplitView($event)\" (mouseleave)=\"leaveSplitViewHandle($event)\"><i\n    class=\"ui large white expand icon\"></i></div>\n  <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>\n  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>\n  <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css'\n        type='text/css'/>\n\n  <div id=\"myoverlay\" class='map-overlay'>\n  <!--<sui-accordion class=\"styled fluid ui inverted accordion\">-->\n  <!--<sui-accordion-panel [isOpen]=\"false\">-->\n  <!--<div title>-->\n  <!--<i class=\"dropdown icon\"></i>-->\n  <!--TIME-->\n  <!--</div>-->\n  <!--<div content>-->\n  <!--<p>Second panel content.</p>-->\n  <!--</div>-->\n  <!--</sui-accordion-panel>-->\n  <!--<sui-accordion-panel [isOpen]=\"false\">-->\n  <!--<div title>-->\n  <!--<i class=\"dropdown icon\"></i>-->\n  <!--SPACE-->\n  <!--</div>-->\n  <!--<div content>-->\n  <!--<p>Second panel content.</p>-->\n  <!--</div>-->\n  <!--</sui-accordion-panel>-->\n  <!--</sui-accordion>-->\n\n\n  <div [suiCollapse]=\"!ingesting\" id='ingest-area' class='ingest-area top attached dark'>\n    <div class=\"ui top attached fluid tiny inverted menu\">\n      <!--<div class=\"right floated item\" #calculatedarea>{{calculated_area}}</div>-->\n      <a class=\"item\" (click)=\"ingesting = !ingesting; isCopied=false;\">\n        <i class=\"red close icon\"></i>\n      </a>\n      <a class=\"item\">\n        SPACE\n      </a>\n      <a class=\"item\" (click)=\"calculateArea()\" data-content=\"Calculate Area\">\n        <i class=\"white calculator icon\"></i> Calculate Total Area\n      </a>\n\n      <a class=\"item\" (click)=\"importGeoJSON()\" data-content=\"Import GeoJSON\">\n        <i class=\"white file icon\"></i> Import\n      </a>\n      <a class=\"item\" (click)=\"saveBoundary()\" data-content=\"Save GeoJSON\">\n        <i class=\"white group object icon\"></i> Save\n      </a>\n\n      <a class=\"item\" [ngxClipboard]=\"geojsonarea\" (cbOnSuccess)=\"isCopied = true\">\n        <i class=\"icons\">\n          <i class=\"copy icon\"></i>\n          <i *ngIf=\"isCopied\" class=\"green checkmark icon\"></i>\n        </i>\n      </a>\n\n      <a class=\"item\" (click)=\"refreshModelData()\">\n        <i class=\"search icon\"></i> Go\n      </a>\n\n    </div>\n\n    <div class=\"ui two column stackable grid\">\n      <div class=\"column\">\n        <div class=\"ui form\">\n          <div class=\"field json\">\n            <textarea style=\"background-color: transparent;height:40vh;\" class=\"fillgeoarea\" [(ngModel)]=\"ingestGeoJson\" #geojsonarea></textarea>\n          </div>\n        </div>\n      </div>\n      <div class=\"column dark\">\n        <app-importeditems [(drawing)]=\"drw\"></app-importeditems>\n      </div>\n    </div>\n\n  </div>\n  <div [suiCollapse]=\"collapse\" class=\"attached\">\n    <div class=\"map-overlay-inner dark\">\n      <div class=\"ui top attached fluid tiny inverted menu\">\n        <a class=\"item\" (click)=\"collapse = !collapse\">\n          <i class=\"red close icon\"></i>\n        </a>\n\n        <a class=\"item\">\n          TIME\n        </a>\n\n        <a class=\"item\" (click)=\"sidebar.toggle();\">\n          <i class=\"sidebar icon\"></i> Models\n        </a>\n\n        <a class=\"item\" (click)=\"toggleTimeBrushing()\" data-content=\"Timebrushing\">\n          <div *ngIf=\"timebrush\"><i class=\"white paint brush icon\"></i> Timebrush OFF</div>\n          <div *ngIf=\"!timebrush\"><i class=\"white close icon\"></i> Timebrushing ON</div>\n        </a>\n\n        <a class=\"item\" suiDatepicker [pickerMinDate]=\"minStartDate\" [pickerMaxDate]=\"maxStartDate\"\n           [pickerMode]=\"'date'\" [(ngModel)]=\"start\"><i\n          class=\"calendar icon\"></i> From: {{start | date:'dd/MM/y'}}</a>\n\n        <a class=\"item\" suiDatepicker [pickerMinDate]=\"minEndDate\" [pickerMaxDate]=\"maxEndDate\" [pickerMode]=\"'date'\"\n           [(ngModel)]=\"finish\"><i class=\"calendar icon\"></i> To: {{finish |\n          date:'dd/MM/y'}}</a>\n        <a class=\"item\" (click)=\"weekView()\" data-content=\"This past week\"><i class=\"clock icon\"></i> This week</a>\n\n        <a class=\"item\" (click)=\"mpg()\" data-content=\"Get MP4\">\n          <i class=\"file video icon\"></i> Animation\n        </a>\n\n        <a class=\"item\" (click)=\"netCDF()\" data-content=\"NetCDF Export\">\n          <i class=\"archive icon\"></i> DataSet\n        </a>\n\n        <a class=\"item\" (click)=\"pdf()\" data-content=\"PDF\">\n          <i class=\"file pdf icon\"></i> PDF\n        </a>\n\n        <a class=\"item\" (click)=\"refreshModelData()\" data-content=\"Go\">\n          <i class=\"search icon\"></i> Go\n        </a>\n\n\n      </div>\n\n      <sui-sidebar-container class=\"ui bottom attached\">\n\n\n        <sui-sidebar class=\"inverted vertical\" #sidebar>\n          <div class=\"ui fluid inverted menu\">\n            <a class=\"item\" (click)=\"exclusiveModelMode = !exclusiveModelMode\">\n              <div *ngIf=\"!exclusiveModelMode\">\n                <i class=\"inverted toggle on icon\"></i> Compare\n              </div>\n              <div *ngIf=\"exclusiveModelMode\">\n                <i class=\"inverted toggle off icon\"></i> Exclusive\n              </div>\n            </a>\n\n            <a *ngIf=\"allModels\" class=\"item\" (click)=\"allModelsOwnedByLeft()\"><i class=\"check circle outline icon\"></i> All\n              models</a>\n            <a *ngIf=\"!allModels\" class=\"item\" (click)=\"allModelsOwnedByRight()\"><i class=\"radio icon\"></i> All models</a>\n          </div>\n          <div class=\"ui fluid vertical inverted menu\">\n\n            <sui-dimmer [(isDimmed)]=\"model_dimmer\" [isClickable]=\"false\">\n              Loading models. Please wait.\n            </sui-dimmer>\n\n            <div *ngFor=\"let m of models\" class=\"ui inverted item\">\n              <div class=\"ui mini icon buttons\">\n              <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_left\" (click)=\"toggleModel(m.name, 'L')\"><i class=\"blue caret left icon\"></i></button>\n              <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_left\" (click)=\"toggleModel(m.name, 'L')\"><i class=\"angle left icon\"></i></button>\n\n              <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_left && !m.enabled_right\" [disabled]=\"(!m.enabled_left && !m.enabled_right)\"><i class=\"toggle off icon\"></i></button>\n              <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_left || m.enabled_right\" (click)=\"toggleModel(m.name, 'O')\"><i class=\"yellow toggle on icon\"></i></button>\n\n              <!--<button class=\"ui compact black icon button\" *ngIf=\"!splitview && !m.enabled_right\" (click)=\"toggleModel(m.name, 'R')\"><i class=\"toggle off icon\"></i></button>-->\n              <!--<button class=\"ui compact black icon button\" *ngIf=\"!splitview && m.enabled_right\" (click)=\"layerOff(m.name)\"><i class=\"yellow toggle on icon\"></i></button>-->\n\n              <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_right\" (click)=\"toggleModel(m.name, 'R')\"><i class=\"blue caret right icon\"></i></button>\n              <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_right\" (click)=\"toggleModel(m.name, 'R')\"><i class=\"angle right icon\"></i></button>\n              </div>\n              {{m.ident}} - ({{m.code}})\n            </div>\n\n          </div>\n        </sui-sidebar>\n        <sui-sidebar-sibling [isDimmedWhenVisible]=\"false\" class=\"inverted\">\n          <!--<div class=\"ui container\">-->\n          <!--<h3 class=\"ui center aligned header\">LFMC (%) vs. Time</h3>-->\n          <!--</div>-->\n          <app-charting id=\"chart\" [lat]=\"lat\" [lng]=\"lng\" [start]=\"start | date:'yMMdd'\"\n                        [finish]=\"finish | date:'yMMdd'\"></app-charting>\n        </sui-sidebar-sibling>\n      </sui-sidebar-container>\n    </div>\n  </div>\n  <div [suiCollapse]=\"!splitview\" class=\"attached\">\n    <div class=\"ui fluid tiny inverted menu\">\n      <a class=\"item\" (click)=\"toggleSplitView()\">\n        <i class=\"red close icon\"></i>\n      </a>\n      <a class=\"item\" (click)=\"setSatelliteStyle()\" data-content=\"Satellite\">\n        <i class=\"green map icon\"></i>\n      </a>\n      <a class=\"item\" (click)=\"setDatavizStyle()\" data-content=\"DataViz\">\n        <i class=\"green map icon\"></i>\n      </a>\n      <a class=\"item\" (click)=\"setDefaultStyle()\" data-content=\"Outdoors\">\n        <i class=\"green map icon\"></i>\n      </a>\n    </div>\n  </div>\n  <div class=\"ui bottom attached inverted horizontal fluid menu\">\n    <a class=\"item\" (click)=\"showtoolBar = !showtoolBar\">\n      <i class=\"sidebar icon\"></i> Tools:\n    </a>\n\n    <a class=\"ui tiny purple icon item\" (click)=\"collapse = !collapse\" data-content=\"Time-series Chart Panel\">\n      <i class=\"white area chart icon\"></i> TIME\n    </a>\n\n    <a class=\"ui tiny orange icon item\" (click)=\"ingesting = !ingesting;saveBoundary();\" data-content=\"GeoJSON Panel\">\n      <i class=\"white map icon\"></i> SPACE\n    </a>\n\n    <a class=\"ui tiny blue icon item\" (click)=\"toggleSplitView()\" data-content=\"Split View Panel\">\n      <div *ngIf=\"splitview\"><i class=\"white square outline icon\"></i> Split</div>\n      <div *ngIf=\"!splitview\"><i class=\"white columns icon\"></i> Split</div>\n    </a>\n\n    <a class=\"ui tiny blue icon item\" (click)=\"snapping = !snapping\">\n      <div class=\"\" *ngIf=\"snapping\"><i class=\"white crosshairs icon\"></i>Snapping ON</div>\n      <div class=\"\" *ngIf=\"!snapping\"><i class=\"white cog icon\"></i>Snapping OFF</div>\n    </a>\n    <!--<a class=\"item\" (click)=\"undoView()\">-->\n    <!--<i class=\"angle left icon\"></i> Back-->\n    <!--<span *ngIf=\"undos.length > 0\">({{undos.length}})</span>-->\n    <!--</a>-->\n    <!--<a class=\"item\" (click)=\"redoView()\">-->\n    <!--<i class=\"angle right icon\"></i> Forward-->\n    <!--<span *ngIf=\"redos.length > 0\">({{redos.length}})</span>-->\n    <!--</a>-->\n\n\n  </div>\n</div>\n</div>\n<lfmc-video></lfmc-video>\n\n\n<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>\n<link rel='stylesheet'\n      href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css'\n      type='text/css'/>\n"
 
 /***/ }),
 
@@ -2660,6 +3111,9 @@ module.exports = "<div class=\"ui mapbox\" (mouseup)=\"upSplitView($event)\" (mo
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_moment__ = __webpack_require__("./node_modules/moment/moment.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__services_models_service__ = __webpack_require__("./src/app/services/models.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_ng2_semantic_ui__ = __webpack_require__("./node_modules/ng2-semantic-ui/dist/public.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_confirm_modal_confirm_modal_component__ = __webpack_require__("./src/app/components/confirm-modal/confirm-modal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_importeditems_importeditems_component__ = __webpack_require__("./src/app/components/importeditems/importeditems.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2684,6 +3138,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
 var bbox = __webpack_require__("./node_modules/geojson-bbox/geojson-bbox.js");
 var now = __WEBPACK_IMPORTED_MODULE_12_moment__().format('LLLL');
 var syncMove = __webpack_require__("./node_modules/@mapbox/mapbox-gl-sync-move/index.js");
@@ -2694,15 +3151,16 @@ var epsg3112 = __WEBPACK_IMPORTED_MODULE_11_proj4_dist_proj4_js__["defs"]('EPSG:
 var epsg3857 = __WEBPACK_IMPORTED_MODULE_11_proj4_dist_proj4_js__["defs"]('EPSG:3857', '+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext  +no_defs');
 var epsg4326 = __WEBPACK_IMPORTED_MODULE_11_proj4_dist_proj4_js__["defs"]('EPSG:4326', '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs ');
 var MapboxComponent = (function () {
-    function MapboxComponent(mapService, ns, tss, http, ms) {
-        var _this = this;
+    function MapboxComponent(mapService, ns, tss, http, ms, modalService) {
         this.mapService = mapService;
         this.ns = ns;
         this.tss = tss;
         this.http = http;
         this.ms = ms;
+        this.modalService = modalService;
         this.showtoolBar = false;
         this.showVideo = false;
+        this.calculated_area = '';
         this.models = [];
         this.start = __WEBPACK_IMPORTED_MODULE_12_moment__().subtract(31, 'days').toDate();
         this.finish = __WEBPACK_IMPORTED_MODULE_12_moment__().subtract(1, 'days').toDate();
@@ -2728,13 +3186,19 @@ var MapboxComponent = (function () {
         this.lng = this.defaultLng;
         this.collapse = true;
         this.timebrush = true;
+        this.snapping = true;
         this.allModels = false;
+        this.prevBoundary = { 'features': [] };
         this.draggingHandle = false;
         this.canDragSplitView = false;
-        this.exclusiveModelMode = false;
+        this.exclusiveModelMode = true;
         this.isCopied = false;
         // isCursorOverPoint = false;
         this.isDragging = false;
+        this.model_dimmer = true;
+        // Set bounds to Australian Area
+        this.bounds = [108, -45, 155, -10];
+        this.default_bounds = [108, -45, 155, -10];
         // undos: any[] = [];
         // redos: any[] = [];
         this.dragPointGeoJSON = {
@@ -2751,14 +3215,25 @@ var MapboxComponent = (function () {
         this.cursorMoveNS = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["EventEmitter"]();
         this.zoomReading = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["EventEmitter"]();
         this.bearingReading = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["EventEmitter"]();
+        this.modalService = modalService;
         // Old System
         // this.ns.get('/models').subscribe(m => this.models = m);
+    }
+    MapboxComponent.prototype.ngAfterViewInit = function () {
+        var _this = this;
         // New System
         this.ms.get('models').subscribe(function (m) {
             _this.models = m.models;
+        }, function (e) {
+            console.log(e);
+            _this.modalService.open(new __WEBPACK_IMPORTED_MODULE_15__components_confirm_modal_confirm_modal_component__["a" /* ConfirmModal */]('Error', 'While retrieving the list of models: ' + e, 'tiny'))
+                .onApprove(function () {
+            })
+                .onDeny(function () {
+            });
+        }, function () {
+            _this.model_dimmer = false;
         });
-    }
-    MapboxComponent.prototype.ngAfterViewInit = function () {
     };
     MapboxComponent.prototype.ngOnInit = function () {
         this.splitViewHandle = document.getElementById('splitViewHandle');
@@ -2777,7 +3252,7 @@ var MapboxComponent = (function () {
         });
         this.altmap = new __WEBPACK_IMPORTED_MODULE_10_mapbox_gl_dist_mapbox_gl_js__["Map"]({
             container: 'myAltmapbox',
-            style: 'mapbox://styles/mapbox/satellite-v9',
+            style: 'mapbox://styles/anthonyrawlinsuom/cj6eembnj0x4k2smhax6o0ztl',
             center: [this.lng, this.lat],
             zoom: 6.5,
             hash: true,
@@ -2821,7 +3296,7 @@ var MapboxComponent = (function () {
         map.addControl(this.ful, 'top-right');
         map.addControl(this.drw, 'top-right');
         map.addControl(this.scl, 'bottom-right');
-        var dragPointGeoJSON = this.dragPointGeoJSON;
+        // const dragPointGeoJSON = this.dragPointGeoJSON;
         map.on('load', function () {
             map.addSource('single-point', {
                 'type': 'geojson',
@@ -2840,37 +3315,6 @@ var MapboxComponent = (function () {
                     'circle-color': '#f19213'
                 }
             });
-            // Add a single point to the map
-            map.addSource('draggable-point-source', {
-                'type': 'geojson',
-                'data': dragPointGeoJSON
-            });
-            //
-            // map.addLayer({
-            //   'id': 'draggable-point',
-            //   'type': 'circle',
-            //   'source': 'draggable-point-source',
-            //   'paint': {
-            //     'circle-radius': 10,
-            //     'circle-color': '#3887be'
-            //     // ,
-            //     // 'stroke-width': 2,
-            //     // 'stroke-color': '#0264b5'
-            //   }
-            // });
-            // 'https://geodata.state.nj.us/imagerywms/Natural2015?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&width=256&height=256&layers=Natural2015'
-            // map.addLayer({
-            //   'id': 'conservation-sites',
-            //   'type': 'raster',
-            //   'source': {
-            //     'type': 'raster',
-            //     'tiles': [
-            //       'https://geodata.state.nj.us/imagerywms/Natural2015?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&width=256&height=256&layers=Natural2015'
-            //     ],
-            //     'tileSize': 256
-            //   },
-            //   'paint': {}
-            // }, 'water');
             // 25m LiDAR DEM Model from GA
             // http://services.ga.gov.au/gis/services/DEM_LiDAR_25m/MapServer/WMSServer?request=GetCapabilities&service=WMS
             // map.addSource('dem', {
@@ -2884,169 +3328,6 @@ var MapboxComponent = (function () {
             //     // insert below waterway-river-canal-shadow;
             //     // where hillshading sits in the Mapbox Outdoors style
             //     }, 'waterway-river-canal-shadow');
-            map.addLayer({
-                'id': 'dead_fuel',
-                'type': 'raster',
-                'source': {
-                    'type': 'raster',
-                    'tiles': [
-                        'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2018-01-01'
-                    ],
-                    'tileSize': 256
-                },
-                'paint': {
-                    'raster-opacity': 0.2
-                }
-            }, 'water');
-            map.addLayer({
-                'id': 'live_fuel',
-                'type': 'raster',
-                'source': {
-                    'type': 'raster',
-                    'tiles': [
-                        'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2018-01-02'
-                    ],
-                    'tileSize': 256
-                },
-                'paint': {
-                    'raster-opacity': 0.2
-                }
-            }, 'water');
-            map.addLayer({
-                'id': 'awra',
-                'type': 'raster',
-                'source': {
-                    'type': 'raster',
-                    'tiles': [
-                        'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-03'
-                    ],
-                    'tileSize': 256
-                },
-                'paint': {
-                    'raster-opacity': 0.2
-                }
-            }, 'water');
-            // map.addLayer({
-            //   'id': 'chen',
-            //   'type': 'raster',
-            //   'source': {
-            //     'type': 'raster',
-            //     'tiles': [
-            //       'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-04'],
-            //     'tileSize': 256
-            //   },
-            //   'paint': {
-            //     'raster-opacity': 0.2
-            //   }
-            // }, 'water');
-            // map.addLayer({
-            //   'id': 'boer',
-            //   'type': 'raster',
-            //   'source': {
-            //     'type': 'raster',
-            //     'tiles': [
-            //       'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-05'],
-            //     'tileSize': 256
-            //   },
-            //   'paint': {
-            //     'raster-opacity': 0.2
-            //   }
-            // }, 'water');
-            map.addLayer({
-                'id': 'matthews',
-                'type': 'raster',
-                'source': {
-                    'type': 'raster',
-                    'tiles': [
-                        'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:s0_avg&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng&time=2017-01-06'
-                    ],
-                    'tileSize': 256
-                },
-                'paint': {
-                    'raster-opacity': 0.2
-                }
-            }, 'water');
-            map.addLayer({
-                'id': 'kbdi',
-                'type': 'raster',
-                'source': {
-                    'type': 'raster',
-                    'tiles': [
-                        'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:KBDI_SFC&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng'
-                    ],
-                    'tileSize': 256
-                },
-                'paint': {
-                    'raster-opacity': 0.2
-                }
-            }, 'water');
-            map.addLayer({
-                'id': 'ffdi',
-                'type': 'raster',
-                'source': {
-                    'type': 'raster',
-                    'tiles': [
-                        'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:FFDI_SFC&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng'
-                    ],
-                    'tileSize': 256
-                },
-                'paint': {
-                    'raster-opacity': 0.2
-                }
-            }, 'water');
-            map.addLayer({
-                'id': 'gfdi',
-                'type': 'raster',
-                'source': {
-                    'type': 'raster',
-                    'tiles': [
-                        'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:GFDI_SFC&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng'
-                    ],
-                    'tileSize': 256
-                },
-                'paint': {
-                    'raster-opacity': 0.2
-                }
-            }, 'water');
-            altmap.addLayer({
-                'id': 'DEM1sec',
-                'type': 'raster',
-                'source': {
-                    'type': 'raster',
-                    'tiles': [
-                        'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:Image&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2fpng'
-                    ],
-                    'tileSize': 256
-                },
-                'paint': {
-                    'raster-opacity': 1.0
-                }
-            }, 'water');
-            // map.addSource('cfaregion', {
-            // 	'type': 'vector',
-            // 	'tiles': ['http://localhost:9090/geoserver/gwc/service/wmts?request=GetTile&service=WMTS&version=1.0.0&layer=victoria:CFA_REGION&style=&tilematrix=EPSG:900913:{z}&tilematrixset=EPSG:900913&format=application/x-protobuf;type=mapbox-vector&tilecol={x}&tilerow={y}'],
-            // 	'tileSize': 512
-            // });
-            //
-            // map.addSource('cfadistrict', {
-            // 	'type': 'vector',
-            // 	'tiles': ['http://localhost:9090/geoserver/gwc/service/wmts?request=GetTile&service=WMTS&version=1.0.0&layer=victoria:CFA_DISTRICT&style=&tilematrix=EPSG:900913:{z}&tilematrixset=EPSG:900913&format=application/x-protobuf;type=mapbox-vector&tilecol={x}&tilerow={y}'],
-            // 	'tileSize': 512
-            // });
-            //
-            // map.addLayer({
-            // 	'id': 'metadata-layer-cfa-regions',
-            // 	'type': 'line',
-            // 	'source': 'cfaregion',
-            // 	'layout': {
-            // 		// 'visibility': 'visible'
-            // 	},
-            // 	'paint': {
-            // 		'line-color': 'hsla(20, 100%, 50%, 0.29)',
-            // 		'line-width': 0.685
-            // 	},
-            // 	'source-layer': 'CFA_REGION'
-            // });
             //
             // map.addLayer({
             // 	'id': 'metadata-layer-cfa-districts',
@@ -3284,11 +3565,28 @@ var MapboxComponent = (function () {
     };
     // use turf to save GeoJSON of boundary
     MapboxComponent.prototype.saveBoundary = function () {
-        var data = this.drw.getAll();
-        if (data.features.length > 0) {
-            console.log('Preparing GeoJSON for saving boundary locally.');
-            console.log(data);
-            this.setIngestValue(data);
+        if (this.prevBoundary !== {}) {
+            if (this.prevBoundary.features !== [] || this.prevBoundary.features.length > 0) {
+                console.log('Drawing exists.');
+                if (this.prevBoundary !== this.drw.getAll()) {
+                    console.log('Change in boundary detected');
+                    var data = this.drw.getAll();
+                    if (data.features.length > 0) {
+                        console.log(data);
+                        this.setIngestValue(data);
+                        this.prevBoundary = data;
+                        if (this.snapping) {
+                            this.zoomToBoundaryView();
+                        }
+                    }
+                    else {
+                        console.log('Can\'t use that boundary.');
+                    }
+                }
+            }
+        }
+        else {
+            console.log('Empty drawing');
         }
     };
     MapboxComponent.prototype.getIngestValue = function () {
@@ -3299,7 +3597,12 @@ var MapboxComponent = (function () {
             this.ingestGeoJson = JSON.stringify(v, null, '\t');
         }
         catch (e) {
-            console.log('JSON appears invalid: ' + e);
+            this.modalService
+                .open(new __WEBPACK_IMPORTED_MODULE_15__components_confirm_modal_confirm_modal_component__["a" /* ConfirmModal */]('Warning', 'JSON appears invalid: ' + e, 'tiny'))
+                .onApprove(function () { return alert('NYI'); })
+                .onDeny(function () {
+            });
+            console.log(e);
         }
     };
     MapboxComponent.prototype.importGeoJSON = function () {
@@ -3308,41 +3611,46 @@ var MapboxComponent = (function () {
             var data = this.getIngestValue();
             console.log(data);
             this.drw.set(data);
+            this.zoomToBoundaryView();
         }
     };
-    // public queryLFMCUsingGeoJSON() {
-    //   console.log('Bounds call test');
-    //   if (this.drw.getAll()) {
-    //     console.log('Got Drawling');
-    //
-    //     // const bounds = bbox(this.drw.getAll());
-    //     // console.log('Using bounds of GeoJSON to query.');
-    //     // console.log(bounds);
-    //     // this.chartComponent.getFuelInBoundsForModels(bounds[0], bounds[3], bounds[2], bounds[1], this.getActiveModels());
-    //
-    //     this.chartComponent.getFuelForShapeWithModels(this.drw.getAll(), this.start.toDateString(), this.finish.toDateString(), this.getActiveModels());
-    //   }
-    // }
+    MapboxComponent.prototype.zoomToBoundaryView = function () {
+        if (this.drw.getAll()) {
+            var buffered = turf.buffer(this.drw.getAll(), 1); // Default units is kilometers
+            var bboxDraw = turf.bbox(buffered);
+            this.mapService.map.fitBounds(bboxDraw);
+        }
+    };
     MapboxComponent.prototype.weekView = function () {
         this.start = __WEBPACK_IMPORTED_MODULE_12_moment__().subtract(8, 'days').toDate();
         this.finish = __WEBPACK_IMPORTED_MODULE_12_moment__().subtract(1, 'days').toDate();
     };
     // Uses turf to calculate the area of the polygon in square meters
     MapboxComponent.prototype.calculateArea = function () {
+        var _this = this;
         var data = this.drw.getAll();
-        var answer = document.getElementById('calculated-area');
         if (data.features.length > 0) {
             var area = turf.area(data);
             // restrict to area to 2 decimal points
             var rounded_area = area.toFixed(2);
             var area_km = turf.convertArea(area, 'meters', 'kilometers');
-            answer.innerHTML = '<p><strong>Area of polygon:</strong> ' + rounded_area
-                + ' square meters, (or ' + area_km.toFixed(2) + ' square kilometers)</p>';
-            answer.style.display = 'block';
+            this.calculated_area = 'Area of all polygons: ' + rounded_area
+                + ' square meters, (or ' + area_km.toFixed(2) + ' square kilometers)';
+            this.modalService
+                .open(new __WEBPACK_IMPORTED_MODULE_15__components_confirm_modal_confirm_modal_component__["a" /* ConfirmModal */]('Information', this.calculated_area, 'tiny'))
+                .onApprove(function () {
+                _this.calculated_area = '';
+            })
+                .onDeny(function () {
+            });
         }
         else {
-            alert('Use the draw tools to draw a polygon!');
-            answer.style.display = 'none';
+            this.modalService
+                .open(new __WEBPACK_IMPORTED_MODULE_15__components_confirm_modal_confirm_modal_component__["a" /* ConfirmModal */]('Warning', 'Use the draw tools to draw a polygon!', 'tiny'))
+                .onApprove(function () {
+            })
+                .onDeny(function () {
+            });
         }
     };
     MapboxComponent.prototype.setSatelliteStyle = function () {
@@ -3354,89 +3662,6 @@ var MapboxComponent = (function () {
     MapboxComponent.prototype.setDefaultStyle = function () {
         this.altmap.setStyle('mapbox://styles/anthonyrawlinsuom/cj5we9hex7cy82rqimwlky6rz');
     };
-    // private filterBy(month) {
-    //   const filters = ['==', 'month', month];
-    //   this.mapService.map.setFilter('incident-circles', filters);
-    //   this.mapService.map.setFilter('incident-labels', filters);
-    //
-    //   // Set the label to the month
-    //   document.getElementById('month').textContent = this.months[month];
-    // }
-    // private mouseDown(e: any) {
-    //   if (!this.isCursorOverPoint) {
-    //     return;
-    //   }
-    //   console.log('>>> MouseDown on draggable point.');
-    //   this.isDragging = true;
-    //
-    //   // Set a cursor indicator
-    //   // this.canvas.style.cursor = 'grab';
-    //   this.mapService.map.dragPan.disable();
-    //   // Mouse events
-    //   this.mapService.map.on('mousemove', this.onDragMove.bind(this));
-    //   this.mapService.map.once('mouseup', this.onUp.bind(this));
-    // }
-    // private onMove(e: any) {
-    //   const coords = e.lngLat;
-    //   this.cursorLng = coords.lng;
-    //   this.cursorLat = coords.lat;
-    //   this.cursorMoveEW.emit(this.cursorLng);
-    //   this.cursorMoveNS.emit(this.cursorLat);
-    // }
-    // private onDragMove(e) {
-    //   if (!this.isDragging) {
-    //     return;
-    //   }
-    //   const coords = e.lngLat;
-    //
-    //   console.log('>>> Dragging draggable point.');
-    //
-    //   // Set a UI indicator for dragging.
-    //   // this.canvas.style.cursor = 'grabbing';
-    //
-    //   this.coordinates.style.display = 'block';
-    //   this.coordinates.innerHTML = 'Longitude: ' + coords.lng + '<br />Latitude: ' + coords.lat;
-    //
-    //   // Update the Point feature in `geojson` coordinates
-    //   // and call setData to the source layer `point` on it.
-    //   this.dragPointGeoJSON.features[0].geometry.coordinates = [coords.lng, coords.lat];
-    //   this.mapService.map.getSource('draggable-point-source').setData(this.dragPointGeoJSON);
-    //
-    // }
-    // Re-center
-    // public flyToDragPoint(e, undoaction: boolean = false) {
-    //   let point;
-    //   if (undoaction) {
-    //     point = e;
-    //     this.coordinates.style.display = 'block';
-    //     this.coordinates.innerHTML = 'Longitude: ' + point.center[0] + '<br />Latitude: ' + point.center[1];
-    //
-    //     // Update the Point feature in `geojson` coordinates
-    //     // and call setData to the source layer `point` on it.
-    //     this.dragPointGeoJSON.features[0].geometry.coordinates = point.center;
-    //     this.mapService.map.getSource('draggable-point-source').setData(this.dragPointGeoJSON);
-    //   } else {
-    //     console.log('Flying to: ' + this.dragPointGeoJSON.features[0].geometry.coordinates);
-    //     point = {
-    //       center: this.dragPointGeoJSON.features[0].geometry.coordinates,
-    //       zoom: 9
-    //     };
-    //   }
-    //   this.mapService.map.flyTo(point);
-    //   if (!undoaction) {
-    //     this.undos.push(point);
-    //   }
-    // }
-    // public clearHistory() {
-    //   this.undos = [];
-    //   this.redos = [];
-    // }
-    // Inspect
-    // public repositionDragPoint() {
-    //   this.dragPointGeoJSON.features[0].geometry.coordinates = [this.lng, this.lat];
-    //   this.mapService.map.getSource('draggable-point-source').setData(this.dragPointGeoJSON);
-    //   this.flyToDragPoint(null);
-    // }
     // State View
     // public zoomToStateView(e) {
     //   // console.log('Flying to: ' + [this.defaultLng, this.defaultLat]);
@@ -3450,26 +3675,6 @@ var MapboxComponent = (function () {
     //   // this.mapService.map.flyTo(point);
     //   this.undos.push(point);
     // }
-    // Psuedocode: on(repositionDragPoint) {localStorage.undos += map.serialize() }
-    // Stub
-    // pop map.options from localStorage.undos
-    // stash map.options into localStorage.redos
-    // public undoView() {
-    //   if (this.undos.length > 0) {
-    //     const prev = this.undos.pop();
-    //     this.redos.push(prev);
-    //     // this.flyToDragPoint(prev, true);
-    //   }
-    // }
-    //
-    // // Stub
-    // public redoView() {
-    //   if (this.redos.length > 0) {
-    //     const prev = this.redos.pop();
-    //     this.undos.push(prev);
-    //     // this.flyToDragPoint(prev, true);
-    //   }
-    // }
     MapboxComponent.prototype.mpg = function () {
         if (this.drw.getAll()) {
             this.showVideo = true;
@@ -3477,70 +3682,61 @@ var MapboxComponent = (function () {
                 'geo_json': this.drw.getAll(),
                 'start': this.start.toDateString(),
                 'finish': this.finish.toDateString(),
-                'models': this.getActiveModels(),
+                'models': this.getActiveModels('R'),
                 'response_as': __WEBPACK_IMPORTED_MODULE_6__components_charting_charting_component__["b" /* LFMCResponseType */].MP4
             };
             this.videoComponent.getVideo(json_query);
         }
     };
-    MapboxComponent.prototype.toggleModel = function (m) {
-        if (this.exclusiveModelMode) {
-            for (var i = 0; i < this.models.length; i++) {
-                if (this.models[i].name === m) {
-                    this.models[i].enabled = true;
+    MapboxComponent.prototype.toggleModel = function (m, LRO) {
+        switch (LRO) {
+            case 'L':
+                for (var i = 0; i < this.models.length; i++) {
+                    this.models[i].enabled_left = this.models[i].name === m;
+                    this.models[i].enabled_right = false;
                 }
-                else {
-                    this.models[i].enabled = false;
+                break;
+            case 'R':
+                for (var i = 0; i < this.models.length; i++) {
+                    this.models[i].enabled_right = this.models[i].name === m;
+                    this.models[i].enabled_left = false;
                 }
-            }
+                break;
+            case 'O':
+                for (var i = 0; i < this.models.length; i++) {
+                    if (this.models[i].name === m) {
+                        this.models[i].enabled_left = false;
+                        this.models[i].enabled_right = false;
+                    }
+                }
+                break;
         }
-        else {
-            for (var i = 0; i < this.models.length; i++) {
-                if (this.models[i].name === m) {
-                    this.models[i].enabled = !this.models[i].enabled;
-                }
-            }
-        }
-        // this.refreshModelData();
+        this.getActiveModels('R'); // <- or LEFT doesn't matter. Just calling refresh
     };
     MapboxComponent.prototype.refreshModelData = function () {
-        if (this.drw.getAll()) {
+        var active = this.getActiveModels('R');
+        var gj = this.drw.getAll();
+        if (!gj) {
+            this.modalService
+                .open(new __WEBPACK_IMPORTED_MODULE_15__components_confirm_modal_confirm_modal_component__["a" /* ConfirmModal */]('Warning', 'Please create or import a boundary in the SPACE Panel, or draw a region using the tools.', 'tiny'))
+                .onApprove(function () {
+            })
+                .onDeny(function () {
+            });
+        }
+        else if (active.length === 0) {
+            this.modalService
+                .open(new __WEBPACK_IMPORTED_MODULE_15__components_confirm_modal_confirm_modal_component__["a" /* ConfirmModal */]('Warning', 'Please select some models from the TIME Panel to compare.', 'tiny'))
+                .onApprove(function () {
+            })
+                .onDeny(function () {
+            });
+        }
+        else {
+            this.updateDatetimeOnWMTSSources();
             this.chartComponent.dimmer = true;
-            this.chartComponent.getFuelForShapeWithModels(this.drw.getAll(), this.start.toDateString(), this.finish.toDateString(), this.getActiveModels(), __WEBPACK_IMPORTED_MODULE_6__components_charting_charting_component__["b" /* LFMCResponseType */].TIMESERIES);
+            this.chartComponent.getFuelForShapeWithModels(this.drw.getAll(), this.start.toDateString(), this.finish.toDateString(), this.getActiveModels('R'), __WEBPACK_IMPORTED_MODULE_6__components_charting_charting_component__["b" /* LFMCResponseType */].TIMESERIES);
         }
-    };
-    MapboxComponent.prototype.allModelsOn = function () {
-        this.exclusiveModelMode = false;
-        this.allModels = true;
-        for (var i = 0; i < this.models.length; i++) {
-            this.models[i].enabled = true;
-        }
-        // this.refreshModelData();
-    };
-    MapboxComponent.prototype.allModelsOff = function () {
-        this.allModels = false;
-        for (var i = 0; i < this.models.length; i++) {
-            this.models[i].enabled = false;
-        }
-        // this.refreshModelData();
-    };
-    MapboxComponent.prototype.getActiveModels = function () {
-        var active = [];
-        for (var i = 0; i < this.models.length; i++) {
-            if (this.models[i].enabled) {
-                active.push(this.models[i].name);
-                this.map.setLayoutProperty(this.models[i].name, 'visibility', 'visible');
-            }
-            else {
-                this.map.setLayoutProperty(this.models[i].name, 'visibility', 'none');
-            }
-        }
-        for (var i = 0; i < this.models.length; i++) {
-            if (this.models[i].enabled) {
-                this.map.setPaintProperty(this.models[i].name, 'raster-opacity', (1 / active.length));
-            }
-        }
-        return active;
     };
     MapboxComponent.prototype.toggleTimeBrushing = function () {
         this.timebrush = !this.timebrush;
@@ -3566,15 +3762,171 @@ var MapboxComponent = (function () {
         //   this.mapService.map.dragPan.enable();
         // }
     };
+    MapboxComponent.prototype.allModelsOwnedByRight = function () {
+        this.exclusiveModelMode = false;
+        this.allModels = true;
+        for (var i = 0; i < this.models.length; i++) {
+            this.models[i].enabled_right = true;
+        }
+        // this.refreshModelData();
+    };
+    MapboxComponent.prototype.allModelsOwnedByLeft = function () {
+        this.allModels = false;
+        for (var i = 0; i < this.models.length; i++) {
+            this.models[i].enabled_left = true;
+        }
+        // this.refreshModelData();
+    };
+    MapboxComponent.prototype.getActiveModels = function (L_or_R) {
+        var R = [];
+        var L = [];
+        for (var i = 0; i < this.models.length; i++) {
+            if (this.models[i].enabled_right) {
+                R.push(this.models[i].name);
+                this.ownLayerRight(this.models[i].name);
+            }
+            else if (this.models[i].enabled_left) {
+                L.push(this.models[i].name);
+                this.ownLayerLeft(this.models[i].name);
+            }
+            else {
+                this.layerOff(this.models[i].name);
+            }
+        }
+        return (L_or_R === 'L') ? L : R; // <-- show time-series for left or right?
+        // return L + R; // <-- Get all data for all models but only show active
+        // return R; // Timeseries for right panel only.
+    };
+    MapboxComponent.prototype.makeSourceForModel = function (layer_name) {
+        var layer_url_part_A = 'http://webfire.mobility.unimelb.net.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:';
+        var layer_url_part_B = '&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng';
+        var time_component = '&time=' + __WEBPACK_IMPORTED_MODULE_12_moment__(this.finish).format('YYYY-MM-DD');
+        var layer_source = {
+            'type': 'raster',
+            'tiles': [layer_url_part_A + layer_name.toUpperCase() + layer_url_part_B + time_component],
+            'tileSize': 256
+        };
+        try {
+            this.currentmap.removeSource(layer_name + '_source');
+        }
+        catch (e) {
+            console.log('OK that source doesn\'t exist yet.');
+        }
+        this.currentmap.addSource(layer_name + '_source', layer_source);
+        console.log('Added ' + layer_name + '_source.');
+    };
+    MapboxComponent.prototype.addLayersForAllModels = function () {
+        var _this = this;
+        ['L', 'R'].forEach(function (lr) {
+            _this.setMapContext(lr);
+            for (var i = 0; i < _this.models.length; i++) {
+                var layer_id = _this.models[i].name;
+                _this.makeSourceForModel(layer_id);
+                _this.makeLayerForModel(layer_id);
+            }
+        });
+        this.setMapContext('R');
+    };
+    MapboxComponent.prototype.makeLayerForModel = function (layer_id) {
+        if (!(this.currentmap instanceof __WEBPACK_IMPORTED_MODULE_10_mapbox_gl_dist_mapbox_gl_js__["Map"])) {
+            console.log('Current map not set.');
+        }
+        else {
+            try {
+                this.currentmap.removeLayer(layer_id);
+            }
+            catch (e) {
+                console.log('OK that the layer doesn\'t exist yet.');
+            }
+            this.currentmap.addLayer({
+                'id': layer_id,
+                'type': 'raster',
+                'source': layer_id + '_source',
+                'paint': {}
+            }, 'water');
+        }
+    };
+    MapboxComponent.prototype.updateDatetimeOnWMTSSources = function () {
+        var _this = this;
+        ['L', 'R'].forEach(function (lr) {
+            _this.setMapContext(lr);
+            for (var i = 0; i < _this.models.length; i++) {
+                var layer_id = _this.models[i].name;
+                _this.makeSourceForModel(layer_id);
+            }
+        });
+    };
+    MapboxComponent.prototype.layerOff = function (layer_code) {
+        this.updateDatetimeOnWMTSSources();
+        try {
+            this.altmap.removeLayer(layer_code);
+        }
+        catch (e) {
+            console.log('OK that the layer doesn\'t exist yet.');
+        }
+        try {
+            this.map.removeLayer(layer_code);
+        }
+        catch (e) {
+            console.log('OK that the layer doesn\'t exist yet.');
+        }
+    };
+    MapboxComponent.prototype.ownLayerRight = function (layer_code) {
+        this.updateDatetimeOnWMTSSources();
+        try {
+            this.altmap.removeLayer(layer_code);
+        }
+        catch (e) {
+            console.log('OK that the layer doesn\'t exist yet.');
+        }
+        this.map.addLayer({
+            'id': layer_code,
+            'type': 'raster',
+            'source': layer_code + '_source',
+            'paint': {}
+        }, 'water');
+    };
+    MapboxComponent.prototype.ownLayerLeft = function (layer_code) {
+        this.updateDatetimeOnWMTSSources();
+        try {
+            this.map.removeLayer(layer_code);
+        }
+        catch (e) {
+            console.log('OK that the layer doesn\'t exist yet.');
+        }
+        this.altmap.addLayer({
+            'id': layer_code,
+            'type': 'raster',
+            'source': layer_code + '_source',
+            'paint': {}
+        }, 'water');
+    };
+    MapboxComponent.prototype.setMapContext = function (L_or_R) {
+        if (L_or_R === 'R') {
+            this.currentmap = this.map;
+        }
+        if (L_or_R === 'L') {
+            this.currentmap = this.altmap;
+        }
+        console.log(this.currentmap);
+    };
     return MapboxComponent;
 }());
 __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["ViewChild"])('calculatedarea'),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_core__["ElementRef"]) === "function" && _a || Object)
+], MapboxComponent.prototype, "calculatedarea", void 0);
+__decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_6__components_charting_charting_component__["a" /* ChartingComponent */]),
-    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_6__components_charting_charting_component__["a" /* ChartingComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__components_charting_charting_component__["a" /* ChartingComponent */]) === "function" && _a || Object)
+    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_6__components_charting_charting_component__["a" /* ChartingComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__components_charting_charting_component__["a" /* ChartingComponent */]) === "function" && _b || Object)
 ], MapboxComponent.prototype, "chartComponent", void 0);
 __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_16__components_importeditems_importeditems_component__["a" /* ImportedItemsComponent */]),
+    __metadata("design:type", typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_16__components_importeditems_importeditems_component__["a" /* ImportedItemsComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_16__components_importeditems_importeditems_component__["a" /* ImportedItemsComponent */]) === "function" && _c || Object)
+], MapboxComponent.prototype, "importedItemsComponent", void 0);
+__decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_0__components_video_video_component__["a" /* VideoComponent */]),
-    __metadata("design:type", typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__components_video_video_component__["a" /* VideoComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__components_video_video_component__["a" /* VideoComponent */]) === "function" && _b || Object)
+    __metadata("design:type", typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__components_video_video_component__["a" /* VideoComponent */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__components_video_video_component__["a" /* VideoComponent */]) === "function" && _d || Object)
 ], MapboxComponent.prototype, "videoComponent", void 0);
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])(),
@@ -3600,6 +3952,10 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Output"])(),
     __metadata("design:type", Object)
 ], MapboxComponent.prototype, "bearingReading", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])(), Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Output"])(),
+    __metadata("design:type", Object)
+], MapboxComponent.prototype, "drw", void 0);
 MapboxComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
         selector: 'app-mapbox',
@@ -3607,10 +3963,10 @@ MapboxComponent = __decorate([
         styles: [__webpack_require__("./src/app/shared/mapbox/mapbox.component.css")],
         providers: [__WEBPACK_IMPORTED_MODULE_3__services_map_service__["a" /* MapService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_map_service__["a" /* MapService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_map_service__["a" /* MapService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__services_nosql_service__["a" /* NosqlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_nosql_service__["a" /* NosqlService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__services_timeseries_service__["a" /* TimeseriesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_timeseries_service__["a" /* TimeseriesService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_13__services_models_service__["a" /* ModelsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_13__services_models_service__["a" /* ModelsService */]) === "function" && _g || Object])
+    __metadata("design:paramtypes", [typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__services_map_service__["a" /* MapService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_map_service__["a" /* MapService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__services_nosql_service__["a" /* NosqlService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_nosql_service__["a" /* NosqlService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_4__services_timeseries_service__["a" /* TimeseriesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__services_timeseries_service__["a" /* TimeseriesService */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Http */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_13__services_models_service__["a" /* ModelsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_13__services_models_service__["a" /* ModelsService */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_14_ng2_semantic_ui__["d" /* SuiModalService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_14_ng2_semantic_ui__["d" /* SuiModalService */]) === "function" && _k || Object])
 ], MapboxComponent);
 
-var _a, _b, _c, _d, _e, _f, _g;
+var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
 //# sourceMappingURL=mapbox.component.js.map
 
 /***/ }),

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-import { PersistenceService, StorageType } from 'angular-persistence';
+import {Component, Input, Output, OnInit} from '@angular/core';
+import {AuthService} from '../../services/auth.service';
+import {PersistenceService, StorageType} from 'angular-persistence';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +11,8 @@ export class ProfileComponent implements OnInit {
 
   profile: any;
 
-  constructor(private store: PersistenceService, public auth: AuthService) { }
+  constructor(private store: PersistenceService, public auth: AuthService) {
+  }
 
   ngOnInit() {
     if (this.auth.userProfile) {
@@ -20,8 +21,9 @@ export class ProfileComponent implements OnInit {
       this.auth.getProfile((err, profile) => {
         this.profile = profile;
       });
-      this.store.set('test', 'success', {type: StorageType.SESSION});
+      this.store.set('test', 'success', {type: StorageType.LOCAL});
     }
   }
+
 
 }
