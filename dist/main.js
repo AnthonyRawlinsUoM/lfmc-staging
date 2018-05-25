@@ -385,7 +385,7 @@ module.exports = ".ui.inverted.menu.shadow,\n.ui.inverted.pointing.dropdown .men
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui top following inverted menu shadow\">\n  <div class=\"ui inverted pointing dropdown item\" suiDropdown>\n    <div class=\"text\">\n      <i class=\"gray sidebar icon\"></i> Site\n    </div>\n    <div class=\"menu\" suiDropdownMenu>\n      <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/home\">\n        <i class=\"blue map outline icon\"></i>Map\n      </a>\n      <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/models\">\n        <i class=\"blue database icon\"></i>Models\n      </a>\n      <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/import\">\n        <i class=\"blue marker icon\"></i>Import\n      </a>\n      <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/options\">\n        <i class=\"blue options icon\"></i>Options\n      </a>\n      <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/help\">\n        <i class=\"blue help icon\"></i>Help\n      </a>\n    </div>\n  </div>\n  <div class=\"ui inverted header item\"><i class=\"red fire icon\"></i> {{title}} v{{version}}</div>\n  <div class=\"right menu\">\n    <a class=\"item\" [routerLinkActive]=\"['active']\" *ngIf=\"auth.isAuthenticated()\" routerLink=\"/profile\">\n      <i class=\"blue user circle icon\"></i>\n    </a>\n    <a class=\"item\" *ngIf=\"!auth.isAuthenticated()\" (click)=\"auth.login()\">\n      <i class=\"blue sign in icon\"></i>Login\n    </a>\n    <a class=\"item\" *ngIf=\"auth.isAuthenticated()\" (click)=\"auth.logout()\">\n      <i class=\"red sign out icon\"></i>Logout\n    </a>\n    <div class=\"item\">\n      <div class=\"ui transparent icon input\">\n        <input type=\"text\" placeholder=\"Site Search...\">\n        <i class=\"inverted search link icon\"></i>\n      </div>\n    </div>\n  </div>\n</div>\n<main>\n  <router-outlet></router-outlet>\n</main>\n"
+module.exports = "<div class=\"ui top following inverted menu shadow\">\n  <div class=\"ui inverted pointing dropdown item\" suiDropdown>\n    <div class=\"text\">\n      <i class=\"gray sidebar icon\"></i> Site\n    </div>\n    <div class=\"menu\" suiDropdownMenu>\n      <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/home\">\n        <i class=\"blue map outline icon\"></i>Map\n      </a>\n      <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/models\">\n        <i class=\"blue database icon\"></i>Models\n      </a>\n      <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/import\">\n        <i class=\"blue marker icon\"></i>Import\n      </a>\n      <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/options\">\n        <i class=\"blue options icon\"></i>Options\n      </a>\n      <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/help\">\n        <i class=\"blue help icon\"></i>Help\n      </a>\n    </div>\n  </div>\n  <div class=\"ui inverted header item\"><i class=\"red fire icon\"></i> {{title}} v{{version}}</div>\n  <div class=\"right menu\">\n    <a class=\"item\" [routerLinkActive]=\"['active']\" *ngIf=\"auth.authenticated\" routerLink=\"/profile\">\n      <i class=\"blue user circle icon\"></i>\n    </a>\n    <a class=\"item\" *ngIf=\"!auth.isAuthenticated()\" (click)=\"auth.login()\">\n      <i class=\"blue sign in icon\"></i>Login\n    </a>\n    <a class=\"item\" *ngIf=\"auth.isAuthenticated()\" (click)=\"auth.logout()\">\n      <i class=\"red sign out icon\"></i>Logout\n    </a>\n    <div class=\"item\">\n      <div class=\"ui transparent icon input\">\n        <input type=\"text\" placeholder=\"Site Search...\">\n        <i class=\"inverted search link icon\"></i>\n      </div>\n    </div>\n  </div>\n</div>\n<main>\n  <router-outlet></router-outlet>\n</main>\n"
 
 /***/ }),
 
@@ -400,8 +400,7 @@ module.exports = "<div class=\"ui top following inverted menu shadow\">\n  <div 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./services/auth.service */ "./src/app/services/auth.service.ts");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -413,13 +412,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
-
 var AppComponent = /** @class */ (function () {
-    function AppComponent(auth) {
-        this.auth = auth;
+    function AppComponent() {
         this.title = 'Landscape Fuel Moisture Condition';
-        this.version = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].VERSION;
-        auth.handleAuthentication();
+        this.version = _environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].VERSION;
     }
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -427,7 +423,7 @@ var AppComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
         }),
-        __metadata("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"]])
+        __metadata("design:paramtypes", [])
     ], AppComponent);
     return AppComponent;
 }());
@@ -660,6 +656,8 @@ module.exports = "<div class=\"ui active dimmer\">\n  <div class=\"ui text loade
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CallbackComponent", function() { return CallbackComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -670,10 +668,21 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var CallbackComponent = /** @class */ (function () {
-    function CallbackComponent() {
+    function CallbackComponent(auth, router) {
+        this.auth = auth;
+        this.router = router;
+        // Parse authentication hash
+        auth.handleLoginCallback();
     }
     CallbackComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.loggedInSub = this.auth.loggedIn$.subscribe(function (loggedIn) { return loggedIn ? _this.router.navigate(['/']) : null; });
+    };
+    CallbackComponent.prototype.ngOnDestroy = function () {
+        this.loggedInSub.unsubscribe();
     };
     CallbackComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -681,7 +690,7 @@ var CallbackComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./callback.component.html */ "./src/app/components/callback/callback.component.html"),
             styles: [__webpack_require__(/*! ./callback.component.css */ "./src/app/components/callback/callback.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], CallbackComponent);
     return CallbackComponent;
 }());
@@ -1857,16 +1866,8 @@ var ImportedItemsComponent = /** @class */ (function () {
     ImportedItemsComponent.prototype.ngAfterViewInit = function () {
     };
     ImportedItemsComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        if (this.auth.isAuthenticated()) {
-            if (this.auth.userProfile) {
-                this.profile = this.auth.userProfile;
-            }
-            else {
-                this.auth.getProfile(function (err, profile) {
-                    _this.profile = profile;
-                });
-            }
+        if (this.auth.authenticated) {
+            this.auth.getUserInfo(window.location.hash);
             console.log('This profile is: ' + this.profile);
         }
         this.queries = this.getAllQueries();
@@ -1928,7 +1929,7 @@ var ImportedItemsComponent = /** @class */ (function () {
         this.saveSession();
     };
     ImportedItemsComponent.prototype.getAllQueries = function () {
-        if (this.auth.isAuthenticated() && this.profile !== undefined) {
+        if (this.auth.authenticated && this.profile !== undefined) {
             console.log('Getting locally-stored queries.');
             console.log('name for storage is: ' + this.profile.name);
             var stored_queries = this.store.get(this.profile.name, angular_persistence__WEBPACK_IMPORTED_MODULE_5__["StorageType"].LOCAL);
@@ -1956,7 +1957,7 @@ var ImportedItemsComponent = /** @class */ (function () {
         }
     };
     ImportedItemsComponent.prototype.saveSession = function () {
-        if (this.auth.isAuthenticated()) {
+        if (this.auth.authenticated) {
             this.store.set(this.profile.name, this.queries, { type: angular_persistence__WEBPACK_IMPORTED_MODULE_5__["StorageType"].LOCAL });
             console.log('Set the session storage.');
         }
@@ -2500,7 +2501,7 @@ module.exports = "<div class=\"ui four column grid container\">\n  <div class=\"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfileComponent", function() { return ProfileComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../services/auth.service */ "./src/app/services/auth.service.ts");
 /* harmony import */ var angular_persistence__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! angular-persistence */ "./node_modules/angular-persistence/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2520,16 +2521,11 @@ var ProfileComponent = /** @class */ (function () {
         this.auth = auth;
     }
     ProfileComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        if (this.auth.userProfile) {
-            this.profile = this.auth.userProfile;
+        if (this.auth.authenticated) {
+            this.auth.getUserInfo(window.location.hash);
+            console.log('This profile is: ' + this.profile);
         }
-        else {
-            this.auth.getProfile(function (err, profile) {
-                _this.profile = profile;
-            });
-            this.store.set('test', 'success', { type: angular_persistence__WEBPACK_IMPORTED_MODULE_2__["StorageType"].LOCAL });
-        }
+        this.store.set('test', 'success', { type: angular_persistence__WEBPACK_IMPORTED_MODULE_2__["StorageType"].LOCAL });
     };
     ProfileComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -2909,10 +2905,10 @@ var VideoComponent = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return AuthService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _auth0_variables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./auth0-variables */ "./src/app/services/auth0-variables.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var auth0_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! auth0-js */ "./node_modules/auth0-js/src/index.js");
-/* harmony import */ var auth0_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(auth0_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var auth0_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! auth0-js */ "./node_modules/auth0-js/src/index.js");
+/* harmony import */ var auth0_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(auth0_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _auth0_variables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./auth0-variables */ "./src/app/services/auth0-variables.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2925,75 +2921,82 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-//import 'rxjs/add/operator/filter';
 
+window.global = window;
 var AuthService = /** @class */ (function () {
-    function AuthService(router) {
-        this.router = router;
-        this.auth0 = new auth0_js__WEBPACK_IMPORTED_MODULE_3__["WebAuth"]({
-            clientID: _auth0_variables__WEBPACK_IMPORTED_MODULE_1__["AUTH_CONFIG"].clientID,
-            domain: _auth0_variables__WEBPACK_IMPORTED_MODULE_1__["AUTH_CONFIG"].domain,
-            responseType: 'token id_token',
-            audience: "https://" + _auth0_variables__WEBPACK_IMPORTED_MODULE_1__["AUTH_CONFIG"].domain + "/userinfo",
-            redirectUri: _auth0_variables__WEBPACK_IMPORTED_MODULE_1__["AUTH_CONFIG"].callbackURL,
-            scope: 'openid profile'
+    function AuthService() {
+        // Create Auth0 web auth instance
+        // @TODO: Update AUTH_CONFIG and remove .example extension in src/app/auth/auth0-variables.ts.example
+        this._auth0 = new auth0_js__WEBPACK_IMPORTED_MODULE_2__["WebAuth"]({
+            clientID: _auth0_variables__WEBPACK_IMPORTED_MODULE_3__["AUTH_CONFIG"].CLIENT_ID,
+            domain: _auth0_variables__WEBPACK_IMPORTED_MODULE_3__["AUTH_CONFIG"].CLIENT_DOMAIN,
+            responseType: 'token',
+            redirectUri: _auth0_variables__WEBPACK_IMPORTED_MODULE_3__["AUTH_CONFIG"].REDIRECT,
+            audience: _auth0_variables__WEBPACK_IMPORTED_MODULE_3__["AUTH_CONFIG"].AUDIENCE,
+            scope: _auth0_variables__WEBPACK_IMPORTED_MODULE_3__["AUTH_CONFIG"].SCOPE
         });
+        this.loggedIn$ = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](this.loggedIn);
+        // You can restore an unexpired authentication session on init
+        // by using the checkSession() endpoint from auth0.js:
+        // https://auth0.com/docs/libraries/auth0js/v9#using-checksession-to-acquire-new-tokens
     }
-    AuthService.prototype.login = function () {
-        this.auth0.authorize();
+    AuthService.prototype._setLoggedIn = function (value) {
+        // Update login status subject
+        this.loggedIn$.next(value);
+        this.loggedIn = value;
     };
-    AuthService.prototype.handleAuthentication = function () {
+    AuthService.prototype.login = function () {
+        // Auth0 authorize request
+        this._auth0.authorize();
+    };
+    AuthService.prototype.handleLoginCallback = function () {
         var _this = this;
-        this.auth0.parseHash(function (err, authResult) {
-            if (authResult && authResult.accessToken && authResult.idToken) {
+        // When Auth0 hash parsed, get profile
+        this._auth0.parseHash(function (err, authResult) {
+            if (authResult && authResult.accessToken) {
                 window.location.hash = '';
-                _this.setSession(authResult);
-                _this.router.navigate(['/home']);
+                _this.getUserInfo(authResult);
             }
             else if (err) {
-                _this.router.navigate(['/home']);
-                console.log(err);
-                alert("Error: " + err.error + ". Check the console for further details.");
+                console.error("Error: " + err.error);
             }
         });
     };
-    AuthService.prototype.getProfile = function (cb) {
-        var accessToken = localStorage.getItem('access_token');
-        if (!accessToken) {
-            throw new Error('Access token must exist to fetch profile');
-        }
-        var self = this;
-        this.auth0.client.userInfo(accessToken, function (err, profile) {
-            if (profile) {
-                self.userProfile = profile;
-            }
-            cb(err, profile);
+    AuthService.prototype.getUserInfo = function (authResult) {
+        var _this = this;
+        // Use access token to retrieve user's profile and set session
+        this._auth0.client.userInfo(authResult.accessToken, function (err, profile) {
+            _this._setSession(authResult, profile);
         });
     };
-    AuthService.prototype.setSession = function (authResult) {
-        // Set the time that the access token will expire at
-        var expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
-        localStorage.setItem('access_token', authResult.accessToken);
-        localStorage.setItem('id_token', authResult.idToken);
-        localStorage.setItem('expires_at', expiresAt);
+    AuthService.prototype._setSession = function (authResult, profile) {
+        var expTime = authResult.expiresIn * 1000 + Date.now();
+        // Save session data and update login status subject
+        localStorage.setItem('expires_at', JSON.stringify(expTime));
+        this.accessToken = authResult.accessToken;
+        this.userProfile = profile;
+        this._setLoggedIn(true);
     };
     AuthService.prototype.logout = function () {
-        // Remove tokens and expiry time from localStorage
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('id_token');
+        // Remove token and profile and update login status subject
         localStorage.removeItem('expires_at');
-        // Go back to the home route
-        this.router.navigate(['/']);
+        this.accessToken = undefined;
+        this.userProfile = undefined;
+        this._setLoggedIn(false);
     };
-    AuthService.prototype.isAuthenticated = function () {
-        // Check whether the current time is past the
-        // access token's expiry time
-        var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-        return new Date().getTime() < expiresAt;
-    };
+    Object.defineProperty(AuthService.prototype, "authenticated", {
+        get: function () {
+            // Check if current date is greater than expiration
+            // and user is currently logged in
+            var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+            return (Date.now() < expiresAt) && this.loggedIn;
+        },
+        enumerable: true,
+        configurable: true
+    });
     AuthService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+        __metadata("design:paramtypes", [])
     ], AuthService);
     return AuthService;
 }());
@@ -3013,9 +3016,11 @@ var AuthService = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AUTH_CONFIG", function() { return AUTH_CONFIG; });
 var AUTH_CONFIG = {
-    domain: 'bnhcrclfmc.au.auth0.com',
-    clientID: '5pP2Zg470UaUpF44jIdX6Peo2OWuWElX',
-    callbackURL: 'http://lfmc.landfood.unimelb.edu.au:3000/callback'
+    CLIENT_DOMAIN: 'bnhcrclfmc.au.auth0.com',
+    CLIENT_ID: '5pP2Zg470UaUpF44jIdX6Peo2OWuWElX',
+    REDIRECT: 'http://lfmc.landfood.unimelb.edu.au:3000/callback',
+    AUDIENCE: 'http://lfmc.landfood.unimelb.edu.au:3000/',
+    SCOPE: 'openid profile email'
 };
 
 

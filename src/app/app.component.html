@@ -23,7 +23,7 @@
   </div>
   <div class="ui inverted header item"><i class="red fire icon"></i> {{title}} v{{version}}</div>
   <div class="right menu">
-    <a class="item" [routerLinkActive]="['active']" *ngIf="auth.isAuthenticated()" routerLink="/profile">
+    <a class="item" [routerLinkActive]="['active']" *ngIf="auth.authenticated" routerLink="/profile">
       <i class="blue user circle icon"></i>
     </a>
     <a class="item" *ngIf="!auth.isAuthenticated()" (click)="auth.login()">

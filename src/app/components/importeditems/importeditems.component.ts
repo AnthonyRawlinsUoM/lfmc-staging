@@ -1,5 +1,5 @@
 import {Component, OnInit, ElementRef, ViewChild, Input, Output, AfterViewInit} from '@angular/core';
-import {AuthService} from '../../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import {ModelsService} from '../../services/models.service';
 import {SuiModalService} from 'ng2-semantic-ui';
 import {ConfirmModal} from '../confirm-modal/confirm-modal.component';
@@ -273,16 +273,10 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    if (this.auth.isAuthenticated()) {
-      if (this.auth.userProfile) {
-        this.profile = this.auth.userProfile;
-      } else {
-        this.auth.getProfile((err, profile) => {
-            this.profile = profile;
-        });
+      if (this.auth.authenticated) {
+          this.auth.getUserInfo(window.location.hash);
+          console.log('This profile is: ' + this.profile);
       }
-      console.log('This profile is: ' + this.profile);
-    }
     this.queries = this.getAllQueries();
   }
 
@@ -345,7 +339,7 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit {
   }
 
   public getAllQueries() {
-    if (this.auth.isAuthenticated() && this.profile !== undefined) {
+    if (this.auth.authenticated && this.profile !== undefined) {
       console.log('Getting locally-stored queries.');
       console.log('name for storage is: ' + this.profile.name);
       const stored_queries = this.store.get(this.profile.name, StorageType.LOCAL);
@@ -373,7 +367,7 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit {
   }
 
   private saveSession() {
-    if (this.auth.isAuthenticated()) {
+    if (this.auth.authenticated) {
       this.store.set(this.profile.name, this.queries, {type: StorageType.LOCAL});
       console.log('Set the session storage.');
     }

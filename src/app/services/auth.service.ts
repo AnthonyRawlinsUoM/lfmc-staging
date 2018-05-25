@@ -1,80 +1,88 @@
 import { Injectable } from '@angular/core';
-import { AUTH_CONFIG } from './auth0-variables';
-import { Router } from '@angular/router';
-//import 'rxjs/add/operator/filter';
+import { BehaviorSubject } from 'rxjs';
 import * as auth0 from 'auth0-js';
+import { AUTH_CONFIG } from './auth0-variables';
+import { UserProfile } from './profile.model';
+
+(window as any).global = window;
 
 @Injectable()
 export class AuthService {
-
-  auth0 = new auth0.WebAuth({
-    clientID: AUTH_CONFIG.clientID,
-    domain: AUTH_CONFIG.domain,
-    responseType: 'token id_token',
-    audience: `https://${AUTH_CONFIG.domain}/userinfo`,
-    redirectUri: AUTH_CONFIG.callbackURL,
-    scope: 'openid profile'
+  // Create Auth0 web auth instance
+  // @TODO: Update AUTH_CONFIG and remove .example extension in src/app/auth/auth0-variables.ts.example
+  private _auth0 = new auth0.WebAuth({
+    clientID: AUTH_CONFIG.CLIENT_ID,
+    domain: AUTH_CONFIG.CLIENT_DOMAIN,
+    responseType: 'token',
+    redirectUri: AUTH_CONFIG.REDIRECT,
+    audience: AUTH_CONFIG.AUDIENCE,
+    scope: AUTH_CONFIG.SCOPE
   });
+  userProfile: UserProfile;
+  accessToken: string;
 
-  userProfile: any;
+  // Create a stream of logged in status to communicate throughout app
+  loggedIn: boolean;
+  loggedIn$ = new BehaviorSubject<boolean>(this.loggedIn);
 
-  constructor(public router: Router) {}
-
-  public login(): void {
-    this.auth0.authorize();
+  constructor() {
+    // You can restore an unexpired authentication session on init
+    // by using the checkSession() endpoint from auth0.js:
+    // https://auth0.com/docs/libraries/auth0js/v9#using-checksession-to-acquire-new-tokens
   }
 
-  public handleAuthentication(): void {
-    this.auth0.parseHash((err, authResult) => {
-      if (authResult && authResult.accessToken && authResult.idToken) {
+  private _setLoggedIn(value: boolean) {
+    // Update login status subject
+    this.loggedIn$.next(value);
+    this.loggedIn = value;
+  }
+
+  login() {
+    // Auth0 authorize request
+    this._auth0.authorize();
+  }
+
+  handleLoginCallback() {
+    // When Auth0 hash parsed, get profile
+    this._auth0.parseHash((err, authResult) => {
+      if (authResult && authResult.accessToken) {
         window.location.hash = '';
-        this.setSession(authResult);
-        this.router.navigate(['/home']);
+        this.getUserInfo(authResult);
       } else if (err) {
-        this.router.navigate(['/home']);
-        console.log(err);
-        alert(`Error: ${err.error}. Check the console for further details.`);
+        console.error(`Error: ${err.error}`);
       }
     });
   }
 
-  public getProfile(cb): void {
-    const accessToken = localStorage.getItem('access_token');
-    if (!accessToken) {
-      throw new Error('Access token must exist to fetch profile');
-    }
-
-    const self = this;
-    this.auth0.client.userInfo(accessToken, (err, profile) => {
-      if (profile) {
-        self.userProfile = profile;
-      }
-      cb(err, profile);
+  getUserInfo(authResult) {
+    // Use access token to retrieve user's profile and set session
+    this._auth0.client.userInfo(authResult.accessToken, (err, profile) => {
+      this._setSession(authResult, profile);
     });
   }
 
-  private setSession(authResult): void {
-    // Set the time that the access token will expire at
-    const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
-    localStorage.setItem('access_token', authResult.accessToken);
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem('expires_at', expiresAt);
+  private _setSession(authResult, profile) {
+    const expTime = authResult.expiresIn * 1000 + Date.now();
+    // Save session data and update login status subject
+    localStorage.setItem('expires_at', JSON.stringify(expTime));
+    this.accessToken = authResult.accessToken;
+    this.userProfile = profile;
+    this._setLoggedIn(true);
   }
 
-  public logout(): void {
-    // Remove tokens and expiry time from localStorage
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('id_token');
+  logout() {
+    // Remove token and profile and update login status subject
     localStorage.removeItem('expires_at');
-    // Go back to the home route
-    this.router.navigate(['/']);
+    this.accessToken = undefined;
+    this.userProfile = undefined;
+    this._setLoggedIn(false);
   }
 
-  public isAuthenticated(): boolean {
-    // Check whether the current time is past the
-    // access token's expiry time
+  get authenticated(): boolean {
+    // Check if current date is greater than expiration
+    // and user is currently logged in
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return new Date().getTime() < expiresAt;
+    return (Date.now() < expiresAt) && this.loggedIn;
   }
 
 }
