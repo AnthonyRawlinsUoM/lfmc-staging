@@ -1,16 +1,17 @@
-import {Component, OnInit, ElementRef, ViewChild, Input, Output, AfterViewInit} from '@angular/core';
+import {Component, OnInit, ElementRef, ViewChild, Input, Output, AfterViewInit, OnDestroy} from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import {ModelsService} from '../../services/models.service';
 import {SuiModalService} from 'ng2-semantic-ui';
 import {ConfirmModal} from '../confirm-modal/confirm-modal.component';
 import {PersistenceService, StorageType} from 'angular-persistence';
+import {Subscription} from 'rxjs/index';
 
 @Component({
   selector: 'app-importeditems',
   templateUrl: './importeditems.component.html',
   styleUrls: ['./importeditems.component.css']
 })
-export class ImportedItemsComponent implements OnInit, AfterViewInit {
+export class ImportedItemsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Input() @Output() drawing: any;
   @Input() @Output() altdrawing: any;
@@ -21,9 +22,10 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit {
   @ViewChild('searchbox') searchbox: ElementRef;
 
   sample_queries: GeoJSONQuery[];
-
   searchterm: any;
   profile: any;
+
+  authSubscription: Subscription;
 
   private emptyGeoJSON = {
     'type': 'FeatureCollection',
@@ -31,7 +33,7 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit {
   };
 
   constructor(private store: PersistenceService,
-              private auth: AuthService,
+              public auth: AuthService,
               private ms: ModelsService,
               private modalService: SuiModalService) {
     this.ms = ms;
@@ -273,11 +275,30 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-      if (this.auth.authenticated) {
-          this.auth.getUserInfo(window.location.hash);
-          console.log('This profile is: ' + this.profile);
-      }
-    this.queries = this.getAllQueries();
+
+    this.authSubscription = this.auth.loggedIn$
+      .subscribe(loggedIn => {
+          if (loggedIn) {
+            console.log('Getting locally-stored queries.');
+            console.log('name for storage is: ' + this.auth.userProfile.name);
+            const stored_queries = this.store.get(this.auth.userProfile.name, StorageType.LOCAL);
+            console.log(stored_queries);
+            if (stored_queries !== undefined) {
+              this.queries = stored_queries;
+            } else {
+              this.queries = this.sample_queries;
+            }
+          } else {
+            console.log('Using default sample queries.');
+            this.queries = this.sample_queries;
+          }
+        }
+      );
+    console.log(this.queries);
+  }
+
+  ngOnDestroy() {
+    this.authSubscription.unsubscribe();
   }
 
   toggleSelectionOn(q) {
@@ -338,24 +359,7 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit {
     this.saveSession();
   }
 
-  public getAllQueries() {
-    if (this.auth.authenticated && this.profile !== undefined) {
-      console.log('Getting locally-stored queries.');
-      console.log('name for storage is: ' + this.profile.name);
-      const stored_queries = this.store.get(this.profile.name, StorageType.LOCAL);
-      console.log(stored_queries);
-      if (stored_queries !== undefined) {
-        this.queries = stored_queries;
-      } else {
-        this.queries = this.sample_queries;
-      }
-    } else {
-      console.log('Using default sample queries.');
-      this.queries = this.sample_queries;
-    }
-    console.log(this.queries);
-    return this.queries;
-  }
+
 
   public updateGeoJSONQuery(name, geojson) {
     for (let i = 0; i < this.queries.length; i++) {
@@ -368,7 +372,7 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit {
 
   private saveSession() {
     if (this.auth.authenticated) {
-      this.store.set(this.profile.name, this.queries, {type: StorageType.LOCAL});
+      this.store.set(this.auth.userProfile.name, this.queries, {type: StorageType.LOCAL});
       console.log('Set the session storage.');
     }
   }
@@ -383,9 +387,6 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit {
   }
 
   public isGeoJSONQuery(name) {
-
-    this.getAllQueries();
-
     for (let i = 0; i < this.queries.length; i++) {
       console.log('Checking if: ' + this.queries[i].name + ' == ' + name);
       if (this.queries[i].name === name) {
@@ -415,16 +416,16 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit {
   }
 
   public insertNewGeoJSONQuery() {
-    this.getAllQueries();
-    this.toggleSelectionOff();
-    const new_name = this.generateNewName();
-
-    const editable = new GeoJSONQuery(new_name, this.emptyGeoJSON);
-    this.queries.push(editable);
-    this.saveSession();
-    editable.enabled_right = true;
-    this.editname.nativeElement.focus();
-    this.editname.nativeElement.select();
+    if (this.auth.authenticated) {
+      this.toggleSelectionOff();
+      const new_name = this.generateNewName();
+      const editable = new GeoJSONQuery(new_name, this.emptyGeoJSON);
+      this.queries.push(editable);
+      this.saveSession();
+      editable.enabled_right = true;
+      this.editname.nativeElement.focus();
+      this.editname.nativeElement.select();
+    }
   }
 
   private generateNewName() {
@@ -437,7 +438,6 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit {
   }
 
   public searchForItem() {
-    this.getAllQueries();
     this.toggleSelectionOff();
     let i = 0;
     let found = false;

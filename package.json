@@ -1,6 +1,6 @@
 {
   "name": "lfmc-staging",
-  "version": "0.6.0",
+  "version": "0.6.3",
   "license": "MIT",
   "main": "app.js",
   "scripts": {
@@ -75,6 +75,7 @@
     "passport-auth0": "^0.6.1",
     "proj4": "^2.4.4",
     "rxjs": "^6.2.0",
+    "semver": "^5.5.0",
     "terraformer": "^1.0.8",
     "terraformer-wkt-parser": "^1.2.0",
     "wellknown": "^0.5.0",

@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 set -ex
 
 USERNAME=anthonyrawlinsuom
@@ -6,6 +7,9 @@ IMAGE=lfmc-staging
 # ensure we're up to date
 git pull
 
+npm version patch
+PACKAGE_VERSION= node -pe "require('./package.json').version"
+echo $PACKAGE_VERSION>"VERSION"
 # bump version
 old_version=`cat VERSION`
 docker run --rm -v "$PWD":/app treeder/bump patch
