@@ -340,7 +340,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 /*! exports provided: name, version, license, main, scripts, engines, private, dependencies, devDependencies, default */
 /***/ (function(module) {
 
-module.exports = {"name":"lfmc-staging","version":"0.6.0","license":"MIT","main":"app.js","scripts":{"ng":"ng","start":"ng serve --host 0.0.0.0","build":"ng build","test":"ng test","lint":"ng lint","e2e":"ng e2e","postinstall":"ng build"},"engines":{"node":"~8.2.1","npm":"~5.3.0"},"private":true,"dependencies":{"@agm/core":"^1.0.0-beta.2","@angular/animations":"^6.0.3","@angular/common":"^6.0.3","@angular/compiler":"^6.0.3","@angular/core":"^6.0.3","@angular/forms":"^6.0.3","@angular/http":"^6.0.3","@angular/platform-browser":"^6.0.3","@angular/platform-browser-dynamic":"^6.0.3","@angular/router":"^6.0.3","@mapbox/geojson-area":"^0.2.2","@mapbox/mapbox-data-cli":"^2.0.0","@mapbox/mapbox-gl-draw":"^1.0.9","@mapbox/mapbox-gl-geocoder":"^2.2.0","@mapbox/mapbox-gl-sync-move":"^0.2.0","@mapbox/point-geometry":"^0.1.0","@mapbox/vector-tile":"^1.3.1","@swimlane/ngx-charts":"^8.0.2","@turf/turf":"^5.1.6","@types/geojson":"^7946.0.3","@types/mapbox-gl":"^0.44.4","@types/proj4":"^2.3.4","angular-persistence":"^1.0.1","auth0":"^2.9.1","auth0-js":"^9.5.1","auth0-lock":"^11.6.1","aws-sdk":"^2.245.1","bootstrap":"^4.1.1","colormap":"^2.3.0","connect-ensure-login":"^0.1.1","core-js":"^2.5.6","d3":"^5.4.0","d3-ng2-service":"^2.2.0","express":"^4.16.3","express-graphql":"^0.6.12","geojson-bbox":"0.0.0","graphql":"^0.13.2","graphql-server":"^0.3.2","graphql-server-express":"^1.3.6","grunt":"^1.0.2","json":"^9.0.6","json-loader":"^0.5.7","mapbox-gl":"^0.45.0","mapbox-gl-supported":"^1.2.0","moment":"^2.22.1","mongoose":"^5.1.2","netcdf":"^1.1.1","ng2-file-upload":"^1.3.0","ng2-localstorage":"^0.5.1","ng2-semantic-ui":"^0.9.7","ng2-slider-component":"^1.0.9","ng2-timeline":"^0.1.1","ngx-clipboard":"^11.1.0","passport":"^0.4.0","passport-auth0":"^0.6.1","proj4":"^2.4.4","rxjs":"^6.2.0","terraformer":"^1.0.8","terraformer-wkt-parser":"^1.2.0","wellknown":"^0.5.0","zone.js":"^0.8.26"},"devDependencies":{"@angular-devkit/build-angular":"~0.6.3","@angular/cli":"^6.0.3","@angular/compiler-cli":"^6.0.3","@angular/language-service":"^6.0.3","@types/d3":"^5.0.0","@types/googlemaps":"^3.30.8","@types/jasmine":"^2.8.7","@types/jasminewd2":"^2.0.3","@types/node":"^10.1.2","codelyzer":"~4.3.0","jasmine-core":"~3.1.0","jasmine-spec-reporter":"~4.2.1","karma":"^2.0.2","karma-chrome-launcher":"~2.2.0","karma-cli":"~1.0.1","karma-coverage-istanbul-reporter":"^2.0.1","karma-jasmine":"^1.1.2","karma-jasmine-html-reporter":"^1.1.0","protractor":"~5.3.2","ts-node":"~6.0.4","tslint":"~5.10.0","typescript":"^2.7.2"}};
+module.exports = {"name":"lfmc-staging","version":"0.6.1","license":"MIT","main":"app.js","scripts":{"ng":"ng","start":"ng serve --host 0.0.0.0","build":"ng build","test":"ng test","lint":"ng lint","e2e":"ng e2e","postinstall":"ng build"},"engines":{"node":"~8.2.1","npm":"~5.3.0"},"private":true,"dependencies":{"@agm/core":"^1.0.0-beta.2","@angular/animations":"^6.0.3","@angular/common":"^6.0.3","@angular/compiler":"^6.0.3","@angular/core":"^6.0.3","@angular/forms":"^6.0.3","@angular/http":"^6.0.3","@angular/platform-browser":"^6.0.3","@angular/platform-browser-dynamic":"^6.0.3","@angular/router":"^6.0.3","@mapbox/geojson-area":"^0.2.2","@mapbox/mapbox-data-cli":"^2.0.0","@mapbox/mapbox-gl-draw":"^1.0.9","@mapbox/mapbox-gl-geocoder":"^2.2.0","@mapbox/mapbox-gl-sync-move":"^0.2.0","@mapbox/point-geometry":"^0.1.0","@mapbox/vector-tile":"^1.3.1","@swimlane/ngx-charts":"^8.0.2","@turf/turf":"^5.1.6","@types/geojson":"^7946.0.3","@types/mapbox-gl":"^0.44.4","@types/proj4":"^2.3.4","angular-persistence":"^1.0.1","auth0":"^2.9.1","auth0-js":"^9.5.1","auth0-lock":"^11.6.1","aws-sdk":"^2.245.1","bootstrap":"^4.1.1","colormap":"^2.3.0","connect-ensure-login":"^0.1.1","core-js":"^2.5.6","d3":"^5.4.0","d3-ng2-service":"^2.2.0","express":"^4.16.3","express-graphql":"^0.6.12","geojson-bbox":"0.0.0","graphql":"^0.13.2","graphql-server":"^0.3.2","graphql-server-express":"^1.3.6","grunt":"^1.0.2","json":"^9.0.6","json-loader":"^0.5.7","mapbox-gl":"^0.45.0","mapbox-gl-supported":"^1.2.0","moment":"^2.22.1","mongoose":"^5.1.2","netcdf":"^1.1.1","ng2-file-upload":"^1.3.0","ng2-localstorage":"^0.5.1","ng2-semantic-ui":"^0.9.7","ng2-slider-component":"^1.0.9","ng2-timeline":"^0.1.1","ngx-clipboard":"^11.1.0","passport":"^0.4.0","passport-auth0":"^0.6.1","proj4":"^2.4.4","rxjs":"^6.2.0","terraformer":"^1.0.8","terraformer-wkt-parser":"^1.2.0","wellknown":"^0.5.0","zone.js":"^0.8.26"},"devDependencies":{"@angular-devkit/build-angular":"~0.6.3","@angular/cli":"^6.0.3","@angular/compiler-cli":"^6.0.3","@angular/language-service":"^6.0.3","@types/d3":"^5.0.0","@types/googlemaps":"^3.30.8","@types/jasmine":"^2.8.7","@types/jasminewd2":"^2.0.3","@types/node":"^10.1.2","codelyzer":"~4.3.0","jasmine-core":"~3.1.0","jasmine-spec-reporter":"~4.2.1","karma":"^2.0.2","karma-chrome-launcher":"~2.2.0","karma-cli":"~1.0.1","karma-coverage-istanbul-reporter":"^2.0.1","karma-jasmine":"^1.1.2","karma-jasmine-html-reporter":"^1.1.0","protractor":"~5.3.2","ts-node":"~6.0.4","tslint":"~5.10.0","typescript":"^2.7.2"}};
 
 /***/ }),
 
@@ -1866,11 +1866,30 @@ var ImportedItemsComponent = /** @class */ (function () {
     ImportedItemsComponent.prototype.ngAfterViewInit = function () {
     };
     ImportedItemsComponent.prototype.ngOnInit = function () {
-        if (this.auth.authenticated) {
-            this.auth.getUserInfo(window.location.hash);
-            console.log('This profile is: ' + this.profile);
-        }
-        this.queries = this.getAllQueries();
+        var _this = this;
+        this.authSubscription = this.auth.loggedIn$
+            .subscribe(function (loggedIn) {
+            if (loggedIn) {
+                console.log('Getting locally-stored queries.');
+                console.log('name for storage is: ' + _this.profile.name);
+                var stored_queries = _this.store.get(_this.profile.name, angular_persistence__WEBPACK_IMPORTED_MODULE_5__["StorageType"].LOCAL);
+                console.log(stored_queries);
+                if (stored_queries !== undefined) {
+                    _this.queries = stored_queries;
+                }
+                else {
+                    _this.queries = _this.sample_queries;
+                }
+            }
+            else {
+                console.log('Using default sample queries.');
+                _this.queries = _this.sample_queries;
+            }
+        });
+        console.log(this.queries);
+    };
+    ImportedItemsComponent.prototype.ngOnDestroy = function () {
+        this.authSubscription.unsubscribe();
     };
     ImportedItemsComponent.prototype.toggleSelectionOn = function (q) {
         console.log('Got toggle on!');
@@ -1928,26 +1947,6 @@ var ImportedItemsComponent = /** @class */ (function () {
         }
         this.saveSession();
     };
-    ImportedItemsComponent.prototype.getAllQueries = function () {
-        if (this.auth.authenticated && this.profile !== undefined) {
-            console.log('Getting locally-stored queries.');
-            console.log('name for storage is: ' + this.profile.name);
-            var stored_queries = this.store.get(this.profile.name, angular_persistence__WEBPACK_IMPORTED_MODULE_5__["StorageType"].LOCAL);
-            console.log(stored_queries);
-            if (stored_queries !== undefined) {
-                this.queries = stored_queries;
-            }
-            else {
-                this.queries = this.sample_queries;
-            }
-        }
-        else {
-            console.log('Using default sample queries.');
-            this.queries = this.sample_queries;
-        }
-        console.log(this.queries);
-        return this.queries;
-    };
     ImportedItemsComponent.prototype.updateGeoJSONQuery = function (name, geojson) {
         for (var i = 0; i < this.queries.length; i++) {
             if (this.queries[i].name === name) {
@@ -1971,7 +1970,6 @@ var ImportedItemsComponent = /** @class */ (function () {
         return false;
     };
     ImportedItemsComponent.prototype.isGeoJSONQuery = function (name) {
-        this.getAllQueries();
         for (var i = 0; i < this.queries.length; i++) {
             console.log('Checking if: ' + this.queries[i].name + ' == ' + name);
             if (this.queries[i].name === name) {
@@ -2000,15 +1998,16 @@ var ImportedItemsComponent = /** @class */ (function () {
         }
     };
     ImportedItemsComponent.prototype.insertNewGeoJSONQuery = function () {
-        this.getAllQueries();
-        this.toggleSelectionOff();
-        var new_name = this.generateNewName();
-        var editable = new GeoJSONQuery(new_name, this.emptyGeoJSON);
-        this.queries.push(editable);
-        this.saveSession();
-        editable.enabled_right = true;
-        this.editname.nativeElement.focus();
-        this.editname.nativeElement.select();
+        if (this.auth.authenticated) {
+            this.toggleSelectionOff();
+            var new_name = this.generateNewName();
+            var editable = new GeoJSONQuery(new_name, this.emptyGeoJSON);
+            this.queries.push(editable);
+            this.saveSession();
+            editable.enabled_right = true;
+            this.editname.nativeElement.focus();
+            this.editname.nativeElement.select();
+        }
     };
     ImportedItemsComponent.prototype.generateNewName = function () {
         var new_name = 'New Boundary';
@@ -2019,7 +2018,6 @@ var ImportedItemsComponent = /** @class */ (function () {
         return new_name;
     };
     ImportedItemsComponent.prototype.searchForItem = function () {
-        this.getAllQueries();
         this.toggleSelectionOff();
         var i = 0;
         var found = false;
@@ -2522,7 +2520,7 @@ var ProfileComponent = /** @class */ (function () {
     }
     ProfileComponent.prototype.ngOnInit = function () {
         if (this.auth.authenticated) {
-            this.auth.getUserInfo(window.location.hash);
+            this.profile = this.auth.userProfile;
             console.log('This profile is: ' + this.profile);
         }
         this.store.set('test', 'success', { type: angular_persistence__WEBPACK_IMPORTED_MODULE_2__["StorageType"].LOCAL });

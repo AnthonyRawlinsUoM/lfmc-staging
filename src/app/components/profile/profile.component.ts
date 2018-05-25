@@ -17,8 +17,8 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
       if (this.auth.authenticated) {
-          this.auth.getUserInfo(window.location.hash);
-          console.log('This profile is: ' + this.profile);
+        this.profile = this.auth.userProfile;
+        console.log('This profile is: ' + this.profile);
       }
       this.store.set('test', 'success', {type: StorageType.LOCAL});
   }
