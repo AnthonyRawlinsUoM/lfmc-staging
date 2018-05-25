@@ -4,13 +4,21 @@ interface AuthConfig {
   REDIRECT: string;
   AUDIENCE: string;
   SCOPE: string;
+  RESPONSE_TYPE: string;
 }
 
 export const AUTH_CONFIG: AuthConfig = {
-  CLIENT_DOMAIN: 'bnhcrclfmc.au.auth0.com',
+  // CLIENT_DOMAIN: 'bnhcrclfmc.au.auth0.com',
+  // CLIENT_ID: '5pP2Zg470UaUpF44jIdX6Peo2OWuWElX',
+  // REDIRECT: 'http://lfmc.landfood.unimelb.edu.au:3000/callback',
+  // AUDIENCE: 'http://lfmc.landfood.unimelb.edu.au:3000/profile',
+  // SCOPE: 'openid profile email',
+  // RESPONSE_TYPE: 'token id_token',
   CLIENT_ID: '5pP2Zg470UaUpF44jIdX6Peo2OWuWElX',
+  CLIENT_DOMAIN: 'bnhcrclfmc.au.auth0.com',
+  RESPONSE_TYPE: 'token id_token',
+  AUDIENCE: 'https://bnhcrclfmc.au.auth0.com/userinfo',
   REDIRECT: 'http://lfmc.landfood.unimelb.edu.au:3000/callback',
-  AUDIENCE: 'http://lfmc.landfood.unimelb.edu.au:3000/',
-  SCOPE: 'openid profile email'
+  SCOPE: 'openid profile'
 };
 

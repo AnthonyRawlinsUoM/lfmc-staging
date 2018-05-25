@@ -4,7 +4,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 import {PersistenceModule} from 'angular-persistence';
 import {SuiModule} from 'ng2-semantic-ui';
@@ -105,7 +104,6 @@ const appRoutes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpModule,
     HttpClientModule,
     PersistenceModule,
     RouterModule.forRoot(appRoutes),

@@ -340,7 +340,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 /*! exports provided: name, version, license, main, scripts, engines, private, dependencies, devDependencies, default */
 /***/ (function(module) {
 
-module.exports = {"name":"lfmc-staging","version":"0.5.37","license":"MIT","main":"app.js","scripts":{"ng":"ng","start":"ng serve --host 0.0.0.0","build":"ng build","test":"ng test","lint":"ng lint","e2e":"ng e2e","postinstall":"ng build"},"engines":{"node":"~8.2.1","npm":"~5.3.0"},"private":true,"dependencies":{"@agm/core":"^1.0.0-beta.2","@angular/animations":"^6.0.3","@angular/common":"^6.0.3","@angular/compiler":"^6.0.3","@angular/core":"^6.0.3","@angular/forms":"^6.0.3","@angular/http":"^6.0.3","@angular/platform-browser":"^6.0.3","@angular/platform-browser-dynamic":"^6.0.3","@angular/router":"^6.0.3","@mapbox/geojson-area":"^0.2.2","@mapbox/mapbox-data-cli":"^2.0.0","@mapbox/mapbox-gl-draw":"^1.0.9","@mapbox/mapbox-gl-geocoder":"^2.2.0","@mapbox/mapbox-gl-sync-move":"^0.2.0","@mapbox/point-geometry":"^0.1.0","@mapbox/vector-tile":"^1.3.1","@swimlane/ngx-charts":"^8.0.2","@turf/turf":"^5.1.6","@types/geojson":"^7946.0.3","@types/mapbox-gl":"^0.44.4","@types/proj4":"^2.3.4","angular-persistence":"^1.0.1","auth0":"^2.9.1","auth0-js":"^9.5.1","auth0-lock":"^11.6.1","aws-sdk":"^2.245.1","bootstrap":"^4.1.1","colormap":"^2.3.0","connect-ensure-login":"^0.1.1","core-js":"^2.5.6","d3":"^5.4.0","d3-ng2-service":"^2.2.0","express":"^4.16.3","express-graphql":"^0.6.12","geojson-bbox":"0.0.0","graphql":"^0.13.2","graphql-server":"^0.3.2","graphql-server-express":"^1.3.6","grunt":"^1.0.2","json":"^9.0.6","json-loader":"^0.5.7","mapbox-gl":"^0.45.0","mapbox-gl-supported":"^1.2.0","moment":"^2.22.1","mongoose":"^5.1.2","netcdf":"^1.1.1","ng2-file-upload":"^1.3.0","ng2-localstorage":"^0.5.1","ng2-semantic-ui":"^0.9.7","ng2-slider-component":"^1.0.9","ng2-timeline":"^0.1.1","ngx-clipboard":"^11.1.0","passport":"^0.4.0","passport-auth0":"^0.6.1","proj4":"^2.4.4","rxjs":"^6.2.0","terraformer":"^1.0.8","terraformer-wkt-parser":"^1.2.0","wellknown":"^0.5.0","zone.js":"^0.8.26"},"devDependencies":{"@angular-devkit/build-angular":"~0.6.3","@angular/cli":"^6.0.3","@angular/compiler-cli":"^6.0.3","@angular/language-service":"^6.0.3","@types/d3":"^5.0.0","@types/googlemaps":"^3.30.8","@types/jasmine":"^2.8.7","@types/jasminewd2":"^2.0.3","@types/node":"^10.1.2","codelyzer":"~4.3.0","jasmine-core":"~3.1.0","jasmine-spec-reporter":"~4.2.1","karma":"^2.0.2","karma-chrome-launcher":"~2.2.0","karma-cli":"~1.0.1","karma-coverage-istanbul-reporter":"^2.0.1","karma-jasmine":"^1.1.2","karma-jasmine-html-reporter":"^1.1.0","protractor":"~5.3.2","ts-node":"~6.0.4","tslint":"~5.10.0","typescript":"^2.7.2"}};
+module.exports = {"name":"lfmc-staging","version":"0.6.0","license":"MIT","main":"app.js","scripts":{"ng":"ng","start":"ng serve --host 0.0.0.0","build":"ng build","test":"ng test","lint":"ng lint","e2e":"ng e2e","postinstall":"ng build"},"engines":{"node":"~8.2.1","npm":"~5.3.0"},"private":true,"dependencies":{"@agm/core":"^1.0.0-beta.2","@angular/animations":"^6.0.3","@angular/common":"^6.0.3","@angular/compiler":"^6.0.3","@angular/core":"^6.0.3","@angular/forms":"^6.0.3","@angular/http":"^6.0.3","@angular/platform-browser":"^6.0.3","@angular/platform-browser-dynamic":"^6.0.3","@angular/router":"^6.0.3","@mapbox/geojson-area":"^0.2.2","@mapbox/mapbox-data-cli":"^2.0.0","@mapbox/mapbox-gl-draw":"^1.0.9","@mapbox/mapbox-gl-geocoder":"^2.2.0","@mapbox/mapbox-gl-sync-move":"^0.2.0","@mapbox/point-geometry":"^0.1.0","@mapbox/vector-tile":"^1.3.1","@swimlane/ngx-charts":"^8.0.2","@turf/turf":"^5.1.6","@types/geojson":"^7946.0.3","@types/mapbox-gl":"^0.44.4","@types/proj4":"^2.3.4","angular-persistence":"^1.0.1","auth0":"^2.9.1","auth0-js":"^9.5.1","auth0-lock":"^11.6.1","aws-sdk":"^2.245.1","bootstrap":"^4.1.1","colormap":"^2.3.0","connect-ensure-login":"^0.1.1","core-js":"^2.5.6","d3":"^5.4.0","d3-ng2-service":"^2.2.0","express":"^4.16.3","express-graphql":"^0.6.12","geojson-bbox":"0.0.0","graphql":"^0.13.2","graphql-server":"^0.3.2","graphql-server-express":"^1.3.6","grunt":"^1.0.2","json":"^9.0.6","json-loader":"^0.5.7","mapbox-gl":"^0.45.0","mapbox-gl-supported":"^1.2.0","moment":"^2.22.1","mongoose":"^5.1.2","netcdf":"^1.1.1","ng2-file-upload":"^1.3.0","ng2-localstorage":"^0.5.1","ng2-semantic-ui":"^0.9.7","ng2-slider-component":"^1.0.9","ng2-timeline":"^0.1.1","ngx-clipboard":"^11.1.0","passport":"^0.4.0","passport-auth0":"^0.6.1","proj4":"^2.4.4","rxjs":"^6.2.0","terraformer":"^1.0.8","terraformer-wkt-parser":"^1.2.0","wellknown":"^0.5.0","zone.js":"^0.8.26"},"devDependencies":{"@angular-devkit/build-angular":"~0.6.3","@angular/cli":"^6.0.3","@angular/compiler-cli":"^6.0.3","@angular/language-service":"^6.0.3","@types/d3":"^5.0.0","@types/googlemaps":"^3.30.8","@types/jasmine":"^2.8.7","@types/jasminewd2":"^2.0.3","@types/node":"^10.1.2","codelyzer":"~4.3.0","jasmine-core":"~3.1.0","jasmine-spec-reporter":"~4.2.1","karma":"^2.0.2","karma-chrome-launcher":"~2.2.0","karma-cli":"~1.0.1","karma-coverage-istanbul-reporter":"^2.0.1","karma-jasmine":"^1.1.2","karma-jasmine-html-reporter":"^1.1.0","protractor":"~5.3.2","ts-node":"~6.0.4","tslint":"~5.10.0","typescript":"^2.7.2"}};
 
 /***/ }),
 
@@ -450,47 +450,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var angular_persistence__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! angular-persistence */ "./node_modules/angular-persistence/index.js");
-/* harmony import */ var ng2_semantic_ui__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ng2-semantic-ui */ "./node_modules/ng2-semantic-ui/dist/public.js");
-/* harmony import */ var ng2_file_upload__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ng2-file-upload */ "./node_modules/ng2-file-upload/index.js");
-/* harmony import */ var ng2_file_upload__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(ng2_file_upload__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _swimlane_ngx_charts__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @swimlane/ngx-charts */ "./node_modules/@swimlane/ngx-charts/release/index.js");
-/* harmony import */ var _swimlane_ngx_charts__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_swimlane_ngx_charts__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var ngx_clipboard__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ngx-clipboard */ "./node_modules/ngx-clipboard/fesm5/ngx-clipboard.js");
-/* harmony import */ var _services_models_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/models.service */ "./src/app/services/models.service.ts");
-/* harmony import */ var _services_timeseries_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./services/timeseries.service */ "./src/app/services/timeseries.service.ts");
-/* harmony import */ var _services_nosql_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./services/nosql.service */ "./src/app/services/nosql.service.ts");
-/* harmony import */ var _services_map_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/map.service */ "./src/app/services/map.service.ts");
-/* harmony import */ var _services_mapbox_upload_api_s3_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./services/mapbox-upload-api-s3.service */ "./src/app/services/mapbox-upload-api-s3.service.ts");
-/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./services/auth.service */ "./src/app/services/auth.service.ts");
-/* harmony import */ var d3_ng2_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! d3-ng2-service */ "./node_modules/d3-ng2-service/index.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _components_help_help_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/help/help.component */ "./src/app/components/help/help.component.ts");
-/* harmony import */ var _components_options_options_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/options/options.component */ "./src/app/components/options/options.component.ts");
-/* harmony import */ var _components_import_import_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/import/import.component */ "./src/app/components/import/import.component.ts");
-/* harmony import */ var _components_layer_map_layer_map_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/layer-map/layer-map.component */ "./src/app/components/layer-map/layer-map.component.ts");
-/* harmony import */ var _components_toolbar_toolbar_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/toolbar/toolbar.component */ "./src/app/components/toolbar/toolbar.component.ts");
-/* harmony import */ var _shared_d3map_d3map_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./shared/d3map/d3map.component */ "./src/app/shared/d3map/d3map.component.ts");
-/* harmony import */ var _components_callback_callback_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/callback/callback.component */ "./src/app/components/callback/callback.component.ts");
-/* harmony import */ var _components_profile_profile_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/profile/profile.component */ "./src/app/components/profile/profile.component.ts");
-/* harmony import */ var _components_home_home_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/home/home.component */ "./src/app/components/home/home.component.ts");
-/* harmony import */ var _shared_mapbox_mapbox_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./shared/mapbox/mapbox.component */ "./src/app/shared/mapbox/mapbox.component.ts");
-/* harmony import */ var _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/footer/footer.component */ "./src/app/components/footer/footer.component.ts");
-/* harmony import */ var _components_upload_upload_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/upload/upload.component */ "./src/app/components/upload/upload.component.ts");
-/* harmony import */ var _components_models_models_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/models/models.component */ "./src/app/components/models/models.component.ts");
-/* harmony import */ var _components_modelview_modelview_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/modelview/modelview.component */ "./src/app/components/modelview/modelview.component.ts");
-/* harmony import */ var _components_importjobs_importjobs_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/importjobs/importjobs.component */ "./src/app/components/importjobs/importjobs.component.ts");
-/* harmony import */ var _components_importeditems_importeditems_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/importeditems/importeditems.component */ "./src/app/components/importeditems/importeditems.component.ts");
-/* harmony import */ var _components_fullscreen_fullscreen_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/fullscreen/fullscreen.component */ "./src/app/components/fullscreen/fullscreen.component.ts");
-/* harmony import */ var _components_searchresults_searchresults_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/searchresults/searchresults.component */ "./src/app/components/searchresults/searchresults.component.ts");
-/* harmony import */ var _components_datasources_datasources_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./components/datasources/datasources.component */ "./src/app/components/datasources/datasources.component.ts");
-/* harmony import */ var _components_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/confirm-modal/confirm-modal.component */ "./src/app/components/confirm-modal/confirm-modal.component.ts");
-/* harmony import */ var _components_legend_legend_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./components/legend/legend.component */ "./src/app/components/legend/legend.component.ts");
-/* harmony import */ var _components_charting_charting_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./components/charting/charting.component */ "./src/app/components/charting/charting.component.ts");
-/* harmony import */ var _components_video_video_component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./components/video/video.component */ "./src/app/components/video/video.component.ts");
-/* harmony import */ var _components_serverlog_serverlog_component__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./components/serverlog/serverlog.component */ "./src/app/components/serverlog/serverlog.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var angular_persistence__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! angular-persistence */ "./node_modules/angular-persistence/index.js");
+/* harmony import */ var ng2_semantic_ui__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ng2-semantic-ui */ "./node_modules/ng2-semantic-ui/dist/public.js");
+/* harmony import */ var ng2_file_upload__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ng2-file-upload */ "./node_modules/ng2-file-upload/index.js");
+/* harmony import */ var ng2_file_upload__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(ng2_file_upload__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _swimlane_ngx_charts__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @swimlane/ngx-charts */ "./node_modules/@swimlane/ngx-charts/release/index.js");
+/* harmony import */ var _swimlane_ngx_charts__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_swimlane_ngx_charts__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var ngx_clipboard__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ngx-clipboard */ "./node_modules/ngx-clipboard/fesm5/ngx-clipboard.js");
+/* harmony import */ var _services_models_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./services/models.service */ "./src/app/services/models.service.ts");
+/* harmony import */ var _services_timeseries_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/timeseries.service */ "./src/app/services/timeseries.service.ts");
+/* harmony import */ var _services_nosql_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./services/nosql.service */ "./src/app/services/nosql.service.ts");
+/* harmony import */ var _services_map_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./services/map.service */ "./src/app/services/map.service.ts");
+/* harmony import */ var _services_mapbox_upload_api_s3_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/mapbox-upload-api-s3.service */ "./src/app/services/mapbox-upload-api-s3.service.ts");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var d3_ng2_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! d3-ng2-service */ "./node_modules/d3-ng2-service/index.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _components_help_help_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/help/help.component */ "./src/app/components/help/help.component.ts");
+/* harmony import */ var _components_options_options_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/options/options.component */ "./src/app/components/options/options.component.ts");
+/* harmony import */ var _components_import_import_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/import/import.component */ "./src/app/components/import/import.component.ts");
+/* harmony import */ var _components_layer_map_layer_map_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/layer-map/layer-map.component */ "./src/app/components/layer-map/layer-map.component.ts");
+/* harmony import */ var _components_toolbar_toolbar_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/toolbar/toolbar.component */ "./src/app/components/toolbar/toolbar.component.ts");
+/* harmony import */ var _shared_d3map_d3map_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./shared/d3map/d3map.component */ "./src/app/shared/d3map/d3map.component.ts");
+/* harmony import */ var _components_callback_callback_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/callback/callback.component */ "./src/app/components/callback/callback.component.ts");
+/* harmony import */ var _components_profile_profile_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/profile/profile.component */ "./src/app/components/profile/profile.component.ts");
+/* harmony import */ var _components_home_home_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/home/home.component */ "./src/app/components/home/home.component.ts");
+/* harmony import */ var _shared_mapbox_mapbox_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./shared/mapbox/mapbox.component */ "./src/app/shared/mapbox/mapbox.component.ts");
+/* harmony import */ var _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/footer/footer.component */ "./src/app/components/footer/footer.component.ts");
+/* harmony import */ var _components_upload_upload_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/upload/upload.component */ "./src/app/components/upload/upload.component.ts");
+/* harmony import */ var _components_models_models_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/models/models.component */ "./src/app/components/models/models.component.ts");
+/* harmony import */ var _components_modelview_modelview_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/modelview/modelview.component */ "./src/app/components/modelview/modelview.component.ts");
+/* harmony import */ var _components_importjobs_importjobs_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/importjobs/importjobs.component */ "./src/app/components/importjobs/importjobs.component.ts");
+/* harmony import */ var _components_importeditems_importeditems_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/importeditems/importeditems.component */ "./src/app/components/importeditems/importeditems.component.ts");
+/* harmony import */ var _components_fullscreen_fullscreen_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/fullscreen/fullscreen.component */ "./src/app/components/fullscreen/fullscreen.component.ts");
+/* harmony import */ var _components_searchresults_searchresults_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/searchresults/searchresults.component */ "./src/app/components/searchresults/searchresults.component.ts");
+/* harmony import */ var _components_datasources_datasources_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/datasources/datasources.component */ "./src/app/components/datasources/datasources.component.ts");
+/* harmony import */ var _components_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./components/confirm-modal/confirm-modal.component */ "./src/app/components/confirm-modal/confirm-modal.component.ts");
+/* harmony import */ var _components_legend_legend_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/legend/legend.component */ "./src/app/components/legend/legend.component.ts");
+/* harmony import */ var _components_charting_charting_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./components/charting/charting.component */ "./src/app/components/charting/charting.component.ts");
+/* harmony import */ var _components_video_video_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./components/video/video.component */ "./src/app/components/video/video.component.ts");
+/* harmony import */ var _components_serverlog_serverlog_component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./components/serverlog/serverlog.component */ "./src/app/components/serverlog/serverlog.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -498,7 +497,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 // Modules
-
 
 
 
@@ -545,15 +543,15 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 var appRoutes = [
-    { path: '', component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_28__["HomeComponent"] },
-    { path: 'home', component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_28__["HomeComponent"] },
-    { path: 'profile', component: _components_profile_profile_component__WEBPACK_IMPORTED_MODULE_27__["ProfileComponent"] },
-    { path: 'help', component: _components_help_help_component__WEBPACK_IMPORTED_MODULE_20__["HelpComponent"] },
-    { path: 'options', component: _components_options_options_component__WEBPACK_IMPORTED_MODULE_21__["OptionsComponent"] },
-    { path: 'import', component: _components_import_import_component__WEBPACK_IMPORTED_MODULE_22__["ImportComponent"] },
-    { path: 'models', component: _components_models_models_component__WEBPACK_IMPORTED_MODULE_32__["ModelsComponent"] },
-    { path: 'fullscreen', component: _components_fullscreen_fullscreen_component__WEBPACK_IMPORTED_MODULE_36__["FullscreenComponent"] },
-    { path: 'callback', component: _components_callback_callback_component__WEBPACK_IMPORTED_MODULE_26__["CallbackComponent"] }
+    { path: '', component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_27__["HomeComponent"] },
+    { path: 'home', component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_27__["HomeComponent"] },
+    { path: 'profile', component: _components_profile_profile_component__WEBPACK_IMPORTED_MODULE_26__["ProfileComponent"] },
+    { path: 'help', component: _components_help_help_component__WEBPACK_IMPORTED_MODULE_19__["HelpComponent"] },
+    { path: 'options', component: _components_options_options_component__WEBPACK_IMPORTED_MODULE_20__["OptionsComponent"] },
+    { path: 'import', component: _components_import_import_component__WEBPACK_IMPORTED_MODULE_21__["ImportComponent"] },
+    { path: 'models', component: _components_models_models_component__WEBPACK_IMPORTED_MODULE_31__["ModelsComponent"] },
+    { path: 'fullscreen', component: _components_fullscreen_fullscreen_component__WEBPACK_IMPORTED_MODULE_35__["FullscreenComponent"] },
+    { path: 'callback', component: _components_callback_callback_component__WEBPACK_IMPORTED_MODULE_25__["CallbackComponent"] }
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -561,62 +559,61 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             entryComponents: [
-                _components_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_39__["ConfirmModalComponent"]
+                _components_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_38__["ConfirmModalComponent"]
             ],
             // Components
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_19__["AppComponent"],
-                _components_help_help_component__WEBPACK_IMPORTED_MODULE_20__["HelpComponent"],
-                _components_options_options_component__WEBPACK_IMPORTED_MODULE_21__["OptionsComponent"],
-                _components_import_import_component__WEBPACK_IMPORTED_MODULE_22__["ImportComponent"],
-                _components_layer_map_layer_map_component__WEBPACK_IMPORTED_MODULE_23__["LayerMapComponent"],
-                _components_toolbar_toolbar_component__WEBPACK_IMPORTED_MODULE_24__["ToolbarComponent"],
-                _shared_d3map_d3map_component__WEBPACK_IMPORTED_MODULE_25__["D3mapComponent"],
-                _components_callback_callback_component__WEBPACK_IMPORTED_MODULE_26__["CallbackComponent"],
-                _components_profile_profile_component__WEBPACK_IMPORTED_MODULE_27__["ProfileComponent"],
-                _components_home_home_component__WEBPACK_IMPORTED_MODULE_28__["HomeComponent"],
-                _shared_mapbox_mapbox_component__WEBPACK_IMPORTED_MODULE_29__["MapboxComponent"],
-                _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_30__["FooterComponent"],
-                _components_upload_upload_component__WEBPACK_IMPORTED_MODULE_31__["UploadComponent"],
-                _components_models_models_component__WEBPACK_IMPORTED_MODULE_32__["ModelsComponent"],
-                _components_modelview_modelview_component__WEBPACK_IMPORTED_MODULE_33__["ModelviewComponent"],
-                _components_importjobs_importjobs_component__WEBPACK_IMPORTED_MODULE_34__["ImportjobsComponent"],
-                _components_importeditems_importeditems_component__WEBPACK_IMPORTED_MODULE_35__["ImportedItemsComponent"],
-                _components_fullscreen_fullscreen_component__WEBPACK_IMPORTED_MODULE_36__["FullscreenComponent"],
-                _components_searchresults_searchresults_component__WEBPACK_IMPORTED_MODULE_37__["SearchresultsComponent"],
-                _components_datasources_datasources_component__WEBPACK_IMPORTED_MODULE_38__["DatasourcesComponent"],
-                _components_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_39__["ConfirmModalComponent"],
-                _components_legend_legend_component__WEBPACK_IMPORTED_MODULE_40__["LegendComponent"],
-                _components_charting_charting_component__WEBPACK_IMPORTED_MODULE_41__["ChartingComponent"],
-                _components_video_video_component__WEBPACK_IMPORTED_MODULE_42__["VideoComponent"],
-                _components_serverlog_serverlog_component__WEBPACK_IMPORTED_MODULE_43__["ServerlogComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_18__["AppComponent"],
+                _components_help_help_component__WEBPACK_IMPORTED_MODULE_19__["HelpComponent"],
+                _components_options_options_component__WEBPACK_IMPORTED_MODULE_20__["OptionsComponent"],
+                _components_import_import_component__WEBPACK_IMPORTED_MODULE_21__["ImportComponent"],
+                _components_layer_map_layer_map_component__WEBPACK_IMPORTED_MODULE_22__["LayerMapComponent"],
+                _components_toolbar_toolbar_component__WEBPACK_IMPORTED_MODULE_23__["ToolbarComponent"],
+                _shared_d3map_d3map_component__WEBPACK_IMPORTED_MODULE_24__["D3mapComponent"],
+                _components_callback_callback_component__WEBPACK_IMPORTED_MODULE_25__["CallbackComponent"],
+                _components_profile_profile_component__WEBPACK_IMPORTED_MODULE_26__["ProfileComponent"],
+                _components_home_home_component__WEBPACK_IMPORTED_MODULE_27__["HomeComponent"],
+                _shared_mapbox_mapbox_component__WEBPACK_IMPORTED_MODULE_28__["MapboxComponent"],
+                _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_29__["FooterComponent"],
+                _components_upload_upload_component__WEBPACK_IMPORTED_MODULE_30__["UploadComponent"],
+                _components_models_models_component__WEBPACK_IMPORTED_MODULE_31__["ModelsComponent"],
+                _components_modelview_modelview_component__WEBPACK_IMPORTED_MODULE_32__["ModelviewComponent"],
+                _components_importjobs_importjobs_component__WEBPACK_IMPORTED_MODULE_33__["ImportjobsComponent"],
+                _components_importeditems_importeditems_component__WEBPACK_IMPORTED_MODULE_34__["ImportedItemsComponent"],
+                _components_fullscreen_fullscreen_component__WEBPACK_IMPORTED_MODULE_35__["FullscreenComponent"],
+                _components_searchresults_searchresults_component__WEBPACK_IMPORTED_MODULE_36__["SearchresultsComponent"],
+                _components_datasources_datasources_component__WEBPACK_IMPORTED_MODULE_37__["DatasourcesComponent"],
+                _components_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_38__["ConfirmModalComponent"],
+                _components_legend_legend_component__WEBPACK_IMPORTED_MODULE_39__["LegendComponent"],
+                _components_charting_charting_component__WEBPACK_IMPORTED_MODULE_40__["ChartingComponent"],
+                _components_video_video_component__WEBPACK_IMPORTED_MODULE_41__["VideoComponent"],
+                _components_serverlog_serverlog_component__WEBPACK_IMPORTED_MODULE_42__["ServerlogComponent"]
             ],
             // Modules
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_1__["BrowserAnimationsModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
-                _angular_http__WEBPACK_IMPORTED_MODULE_5__["HttpModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
-                angular_persistence__WEBPACK_IMPORTED_MODULE_7__["PersistenceModule"],
-                _angular_router__WEBPACK_IMPORTED_MODULE_6__["RouterModule"].forRoot(appRoutes),
+                angular_persistence__WEBPACK_IMPORTED_MODULE_6__["PersistenceModule"],
+                _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"].forRoot(appRoutes),
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                ng2_file_upload__WEBPACK_IMPORTED_MODULE_9__["FileUploadModule"],
-                ng2_semantic_ui__WEBPACK_IMPORTED_MODULE_8__["SuiModule"],
-                _swimlane_ngx_charts__WEBPACK_IMPORTED_MODULE_10__["NgxChartsModule"],
-                ngx_clipboard__WEBPACK_IMPORTED_MODULE_11__["ClipboardModule"]
+                ng2_file_upload__WEBPACK_IMPORTED_MODULE_8__["FileUploadModule"],
+                ng2_semantic_ui__WEBPACK_IMPORTED_MODULE_7__["SuiModule"],
+                _swimlane_ngx_charts__WEBPACK_IMPORTED_MODULE_9__["NgxChartsModule"],
+                ngx_clipboard__WEBPACK_IMPORTED_MODULE_10__["ClipboardModule"]
             ],
             // Services
             providers: [
-                _services_map_service__WEBPACK_IMPORTED_MODULE_15__["MapService"],
-                _services_auth_service__WEBPACK_IMPORTED_MODULE_17__["AuthService"],
-                _services_models_service__WEBPACK_IMPORTED_MODULE_12__["ModelsService"],
-                _services_timeseries_service__WEBPACK_IMPORTED_MODULE_13__["TimeseriesService"],
-                _services_mapbox_upload_api_s3_service__WEBPACK_IMPORTED_MODULE_16__["MapboxUploadAPIS3Service"],
-                d3_ng2_service__WEBPACK_IMPORTED_MODULE_18__["D3Service"],
-                _services_nosql_service__WEBPACK_IMPORTED_MODULE_14__["NosqlService"]
+                _services_map_service__WEBPACK_IMPORTED_MODULE_14__["MapService"],
+                _services_auth_service__WEBPACK_IMPORTED_MODULE_16__["AuthService"],
+                _services_models_service__WEBPACK_IMPORTED_MODULE_11__["ModelsService"],
+                _services_timeseries_service__WEBPACK_IMPORTED_MODULE_12__["TimeseriesService"],
+                _services_mapbox_upload_api_s3_service__WEBPACK_IMPORTED_MODULE_15__["MapboxUploadAPIS3Service"],
+                d3_ng2_service__WEBPACK_IMPORTED_MODULE_17__["D3Service"],
+                _services_nosql_service__WEBPACK_IMPORTED_MODULE_13__["NosqlService"]
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_19__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_18__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -3019,11 +3016,18 @@ var AuthService = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AUTH_CONFIG", function() { return AUTH_CONFIG; });
 var AUTH_CONFIG = {
-    CLIENT_DOMAIN: 'bnhcrclfmc.au.auth0.com',
+    // CLIENT_DOMAIN: 'bnhcrclfmc.au.auth0.com',
+    // CLIENT_ID: '5pP2Zg470UaUpF44jIdX6Peo2OWuWElX',
+    // REDIRECT: 'http://lfmc.landfood.unimelb.edu.au:3000/callback',
+    // AUDIENCE: 'http://lfmc.landfood.unimelb.edu.au:3000/profile',
+    // SCOPE: 'openid profile email',
+    // RESPONSE_TYPE: 'token id_token',
     CLIENT_ID: '5pP2Zg470UaUpF44jIdX6Peo2OWuWElX',
+    CLIENT_DOMAIN: 'bnhcrclfmc.au.auth0.com',
+    RESPONSE_TYPE: 'token id_token',
+    AUDIENCE: 'https://bnhcrclfmc.au.auth0.com/userinfo',
     REDIRECT: 'http://lfmc.landfood.unimelb.edu.au:3000/callback',
-    AUDIENCE: 'http://lfmc.landfood.unimelb.edu.au:3000/',
-    SCOPE: 'openid profile email'
+    SCOPE: 'openid profile'
 };
 
 
