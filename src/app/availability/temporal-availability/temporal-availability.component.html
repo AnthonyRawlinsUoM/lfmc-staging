@@ -1,0 +1,39 @@
+<div class="ui blurring inverted segment">
+  <div class="chartcontainer">
+    <h5 class="ui center aligned inverted header">Temporal Availability by Model</h5>
+    <div class="ui grid">
+
+      <div class="ui row">
+        <div class="ui two wide column"></div>
+        <div class="ui thirteen wide column">
+          <div class="labelling">
+            <div *ngFor="let l of years_range" class="label_group" [style.width]="percentage_width + '%'">
+              <a class="floating ui blue bottom pointing label">{{l}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="ui one wide column"></div>
+      </div>
+
+      <app-availability-row *ngFor="let a of availability"
+                            [name]="a.model"
+                            [series]="a.series"
+                            [columnWidth]="percentage_width"
+                            [years]="years_range"
+                            class="ui row model_availability"></app-availability-row>
+
+
+      <div class="ui row">
+        <div class="ui two wide column"></div>
+        <div class="ui thirteen wide column">
+          <div class="labelling">
+            <div *ngFor="let l of years_range" class="label_group" [style.width]="percentage_width + '%'">
+              <a class="floating ui blue top pointing label">{{l}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="ui one wide column"></div>
+      </div>
+    </div>
+  </div>
+</div>

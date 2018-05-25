@@ -193,3 +193,15 @@ body {
 .mapboxgl-popup-close-button {
 	color: #f00 !important;
 }
+
+.ui.modal>.header.inverted,
+.ui.modal>.ui.header.inverted,
+video.inverted {
+  background-color: #1B1C1D;
+  color: #FFFFFF;
+}
+
+html, body, a, h1, h2, h3, h4, h5, h6, button,
+.header, .item, input, table, td, th {
+  font-family: Roboto,Helvetica,Arial,sans-serif !important;
+}

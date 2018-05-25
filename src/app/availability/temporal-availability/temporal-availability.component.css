@@ -1,0 +1,20 @@
+.label_group {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+.label_group {
+  position: relative;
+  border-right: 1px dotted #3e3f41;
+}
+.label_group .ui.floating.label {
+  left: 0;
+}
+
+.model_availability.row {
+  border-bottom: 1px solid black;
+  border-top: 1px solid #2b2c2d;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+}

@@ -8,9 +8,7 @@ import {MapService} from '../../services/map.service';
 import {TimeseriesService} from '../../services/timeseries.service';
 import {NosqlService} from '../../services/nosql.service';
 import {ChartingComponent, LFMCResponseType} from '../../components/charting/charting.component';
-//import 'rxjs/add/operator/toPromise';
-//import 'rxjs/add/operator/map';
-//import 'rxjs/add/operator/catch';
+
 import {
   GeolocateControl,
   ScaleControl,
@@ -20,7 +18,7 @@ import {
 } from 'mapbox-gl/dist/mapbox-gl.js';
 import * as proj4 from 'proj4/dist/proj4.js';
 import * as moment from 'moment';
-import {ModelsService} from '../../services/models.service';
+import {ModelsService, Model, ModelMetaData, ModelOutputs, ModelParameters} from '../../services/models.service';
 import {SuiModalService} from 'ng2-semantic-ui';
 import {ConfirmModal} from '../../components/confirm-modal/confirm-modal.component';
 import {ImportedItemsComponent} from '../../components/importeditems/importeditems.component';
@@ -41,6 +39,7 @@ const epsg3857 = proj4.defs('EPSG:3857',
 const epsg4326 = proj4.defs('EPSG:4326',
   '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs ');
 
+
 @Component({
   selector: 'app-mapbox',
   templateUrl: './mapbox.component.html',
@@ -58,12 +57,28 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   @ViewChild(VideoComponent)
   private videoComponent: VideoComponent;
 
+
+  // Boolean Hell...
   showtoolBar = false;
   showVideo = false;
+  availview = false;
+  splitview = false;
+  ingesting = false;
+  collapse = false;
+  timebrush = true;
+  snapping = true;
+  allModels = false;
+
   calculated_area = '';
-  models: any[] = [];
+  model_names: any[] = [];
+  models: Model[] = [];
   start: Date = moment().subtract(31, 'days').toDate();
   finish: Date = moment().subtract(1, 'days').toDate();
+
+  selectedDate: string;
+
+  modelA = '';
+  modelB = '';
 
   months = [
     'January',
@@ -80,8 +95,57 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     'December'
   ];
 
-  splitview = false;
-  ingesting = false;
+  availability_data = [
+    {
+      'model': 'AWRA',
+      'series': [['2010-01-01', '2018-03-31']]
+    },
+    {
+      'model': 'Jasmin',
+      'series': [['2008-01-01', '2018-03-31']]
+    },
+    {
+      'model': 'DEAD_FUEL',
+      'series': [['2008-01-01', '2018-06-06']]
+    },
+    {
+      'model': 'LIVE_FUEL',
+      'series': [['2008-01-01', '2018-06-06']]
+    },
+    {
+      'model': 'DF',
+      'series': [['2018-05-09', '2018-05-11'],
+        ['2018-05-19', '2018-06-06']]
+    },
+    {
+      'model': 'KBDI',
+      'series': [['2008-01-01', '2018-06-06']]
+    },
+    {
+      'model': 'FFDI',
+      'series': [['2018-05-09', '2018-05-11'],
+        ['2018-05-19', '2018-06-06']]
+    },
+    {
+      'model': 'Matthews',
+      'series': [['2008-01-01', '2018-06-06']]
+    },
+    {
+      'model': 'Yebra',
+      'series': [['2018-01-01', '2018-06-06']]
+    },
+    {
+      'model': 'GFDI',
+      'series': [['2018-05-09', '2018-05-11'],
+        ['2018-05-19', '2018-06-06']]
+    },
+    {
+      'model': 'Temp',
+      'series': [['2018-05-09', '2018-05-11'],
+        ['2018-05-19', '2018-06-06']]
+    }
+  ];
+
 
   @Input() cursorLat: number | string;
   @Input() cursorLng: number | string;
@@ -100,10 +164,6 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   coloroptions: any;
   colorLegend: any;
 
-  collapse = true;
-  timebrush = true;
-  snapping = true;
-  allModels = false;
 
   prevBoundary = {'features': []};
 
@@ -166,23 +226,34 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     this.modalService = modalService;
 
     // Old System
-    // this.ns.get('/models').subscribe(m => this.models = m);
+    // this.ns.get('/model_names').subscribe(m => this.model_names = m);
 
 
   }
 
-  ngAfterViewInit() {
+  getModelNamesOnly(models: Model[]): string[] {
+    return models.sort((a: Model, b: Model) => {
+      return a.name.localeCompare(b.name);
+    }).map((m: Model) => {
+      console.log(m);
+      return m.ident;
+    });
+  }
 
-    // New System
-    this.ms.get('models').subscribe(m => {
-        this.models = m.models;
+  ngAfterViewInit() {
+    this.ms.getModels().subscribe(result => {
+        console.log(result.models);
+        this.model_names = this.getModelNamesOnly(result.models);
+        this.models = result.models;
       },
       (e) => {
         console.log(e);
-        this.modalService.open(new ConfirmModal('Error', 'While retrieving the list of models: ' + e, 'tiny'))
+        this.modalService.open(new ConfirmModal('Error', 'While retrieving the list of models: ' + e + 'Notify webmaster?', 'tiny'))
           .onApprove(() => {
+            // Notify the webmaster here...
           })
           .onDeny(() => {
+            // Don't send bug reports...
           });
       },
       () => {
@@ -510,32 +581,35 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     // map.on('mouseup', this.onUp.bind(this));
 
     this.mapService.map = map;
+
+
+    // Layers REST call... 'http://128.250.160.167:8080/geoserver/rest/workspaces/lfmc/layergroups.json'
   }
 
   public toggleSplitView() {
     this.splitview = !this.splitview;
     if (!this.splitview) {
       this.bView.style.right = '100vw';
-      this.splitViewHandle.style.left = '-33px';
+      this.splitViewHandle.style.left = '0px';
     } else {
       this.bView.style.right = '50vw';
-      this.splitViewHandle.style.left = 'calc(50vw - 33px)';
+      this.splitViewHandle.style.left = '50vw';
     }
   }
 
   enterSplitViewHandle(e: any) {
-    this.splitViewHandle.style['background-color'] = 'rgb(58, 64, 74)';
+    // this.splitViewHandle.style['background-color'] = 'rgb(58, 64, 74)';
     this.mapService.map.dragPan.disable();
     this.canDragSplitView = true;
-    console.log('Dragging SplitView is enabled...');
+    // console.log('Dragging SplitView is enabled...');
   }
 
   leaveSplitViewHandle(e: any) {
     if (!this.draggingHandle) {
-      this.splitViewHandle.style['background-color'] = 'rgb(33, 36, 42)';
+      // this.splitViewHandle.style['background-color'] = 'rgb(33, 36, 42)';
       this.mapService.map.dragPan.enable();
       this.canDragSplitView = false;
-      console.log('Dragging SplitView is now disabled.');
+      // console.log('Dragging SplitView is now disabled.');
     }
   }
 
@@ -543,63 +617,83 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     if (this.canDragSplitView) {
       this.draggingHandle = true;
       this.splitview = true;
-      console.log('Dragging SplitView...');
-      this.bView.style.right = 'calc(100vw - ' + e.screenX + 'px)';
-      this.splitViewHandle.style.left = 'calc(' + e.screenX + 'px - 33px)';
+      // console.log('Dragging SplitView...');
+      this.bView.style.right = 'calc(100vw - ' + e.clientX + 'px)';
+      // this.splitViewHandle.style.left = 'calc(' + e.clientX + 'px - 33px)';
+      this.splitViewHandle.style.left = e.clientX + 'px';
+      this.splitViewHandle.style.top = e.clientY + 'px';
+      this.splitViewHandle.style.opacity = '0.5';
     }
+    e.stopPropagation();
   }
 
   upSplitView(e: any) {
     if (this.canDragSplitView) {
-      this.bView.style.right = 'calc(100vw - ' + e.screenX + 'px)';
-      this.splitViewHandle.style.left = 'calc(' + e.screenX + 'px - 33px)';
+      this.bView.style.right = 'calc(100vw - ' + e.clientX + 'px)';
+      // this.splitViewHandle.style.left = 'calc(' + e.clientX + 'px - 33px)';
+
+      this.splitViewHandle.style.left = e.clientX + 'px';
+
       this.draggingHandle = false;
       this.canDragSplitView = false;
       console.log('Not dragging SplitView...');
       if (!this.splitview) {
         this.splitview = true;
       }
+      this.splitViewHandle.style.opacity = '1';
+      this.splitViewHandle.style.top = '0px';
     }
     this.mapService.map.dragPan.enable();
   }
 
-  clickSplitView(e: any) {
-  }
-
   dragSplitView(e: any) {
     if (this.canDragSplitView && this.draggingHandle) {
-      this.bView.style.right = 'calc(100vw - ' + e.screenX + 'px)';
-      this.splitViewHandle.style.left = 'calc(' + e.screenX + 'px - 33px)';
+      this.bView.style.right = 'calc(100vw - ' + e.clientX + 'px)';
+      // this.splitViewHandle.style.left = 'calc(' + e.clientX + 'px - 33px)';
+
+      this.splitViewHandle.style.left = e.clientX + 'px';
+      this.splitViewHandle.style.top = e.clientY + 'px';
     }
+    e.stopPropagation();
   }
 
   // use turf to save GeoJSON of boundary
   public saveBoundary() {
     console.log(this.prevBoundary);
 
-      if (this.prevBoundary.features !== [] || this.prevBoundary.features.length > 0) {
-        console.log('Drawing exists.');
-        if (this.prevBoundary !== this.drw.getAll()) { // ie., change detected
-          console.log('Change in boundary detected');
-          const data = this.drw.getAll();
-          if (data.features.length > 0) {
-            console.log(data);
-            this.setIngestValue(data);
-            this.prevBoundary = data;
-            if (this.snapping) {
-              this.zoomToBoundaryView();
-            }
-          } else {
-            console.log('No boundary.');
+    if (this.prevBoundary.features !== [] || this.prevBoundary.features.length > 0) {
+      console.log('Drawing exists.');
+      if (this.prevBoundary !== this.drw.getAll()) { // ie., change detected
+        console.log('Change in boundary detected');
+        const data = this.drw.getAll();
+        if (data.features.length > 0) {
+          console.log(data);
+          this.setIngestValue(data);
+          this.prevBoundary = data;
+          if (this.snapping) {
+            this.zoomToBoundaryView();
           }
+        } else {
+          console.log('No boundary.');
         }
       }
+    }
 
   }
 
 
   getIngestValue() {
-    return JSON.parse(this.ingestGeoJson);
+    let json_parsed;
+    try {
+      json_parsed = JSON.parse(this.ingestGeoJson);
+    } catch (e) {
+      this.modalService
+        .open(new ConfirmModal('Warning', 'JSON appears invalid: ' + e, 'tiny'))
+        .onApprove(() => alert('NYI'))
+        .onDeny(() => {
+        });
+    }
+    return json_parsed;
   }
 
   setIngestValue(v) {
@@ -616,14 +710,14 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   }
 
   public importGeoJSON() {
-    if (this.ingesting) {
-      console.log('Parsing GeoJSON');
-      const data = this.getIngestValue();
-      console.log(data);
-      this.drw.set(data);
-      this.altdrw.set(data); // Mirror the data on the alternate view!
-      this.zoomToBoundaryView();
-    }
+    // if (this.ingesting) {
+    console.log('Parsing GeoJSON');
+    const data = this.getIngestValue();
+    console.log(data);
+    this.drw.set(data);
+    this.altdrw.set(data); // Mirror the data on the alternate view!
+    this.zoomToBoundaryView();
+    // }
   }
 
   public zoomToBoundaryView() {
@@ -637,6 +731,8 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   public weekView() {
     this.start = moment().subtract(8, 'days').toDate();
     this.finish = moment().subtract(1, 'days').toDate();
+
+    this.updateDatetimeOnWMTSSources();
   }
 
 
@@ -706,6 +802,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
           if (this.models[i].name === m) {
             this.models[i].enabled_left = !this.models[i].enabled_left;
             this.models[i].enabled_right = false;
+            this.modelA = m;
           }
         }
         break;
@@ -714,6 +811,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
           if (this.models[i].name === m) {
             this.models[i].enabled_right = !this.models[i].enabled_right;
             this.models[i].enabled_left = false;
+            this.modelB = m;
           }
         }
         break;
@@ -729,34 +827,37 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     this.getActiveModels('R'); // <- or LEFT doesn't matter. Just calling refresh
   }
 
-  refreshModelData() {
+  public refreshModelData() {
+
+    console.log('>>> Refreshing Model Data...');
 
     const active = this.getActiveModels('R');
     const gj = this.drw.getAll();
 
-    if (!gj) {
-      this.modalService
-        .open(new ConfirmModal('Warning', 'Please create or import a boundary in the SPACE Panel, or draw a region using the tools.', 'tiny'))
-        .onApprove(() => {
-        })
-        .onDeny(() => {
-        });
-    } else if (active.length === 0) {
-      this.modalService
-        .open(new ConfirmModal('Warning', 'Please select some models from the TIME Panel to compare.', 'tiny'))
-        .onApprove(() => {
-        })
-        .onDeny(() => {
-        });
+    if ((!((gj.features).length > 0)) || (active.length === 0)) {
+      if (!((gj.features).length > 0)) {
+        this.modalService
+          .open(new ConfirmModal('Warning', 'Please create or import a boundary in the SPACE Panel, or draw a region using the tools.', 'tiny'))
+          .onApprove(() => {
+          })
+          .onDeny(() => {
+          });
+      } else if (active.length === 0) {
+        this.modalService
+          .open(new ConfirmModal('Warning', 'Please select some models from the TIME Panel to compare.', 'tiny'))
+          .onApprove(() => {
+          })
+          .onDeny(() => {
+          });
+      }
     } else {
-
-      this.updateDatetimeOnWMTSSources();
+      console.log('>>> Getting Query Results...');
       this.chartComponent.dimmer = true;
       this.chartComponent.getFuelForShapeWithModels(
-        this.drw.getAll(),
+        gj,
         this.start.toDateString(),
         this.finish.toDateString(),
-        this.getActiveModels('R'),
+        this.getActiveModels('Both'),
         LFMCResponseType.TIMESERIES
       );
     }
@@ -796,55 +897,107 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     // }
   }
 
-  allModelsOwnedByRight() {
+  ownAllByRight() {
     this.exclusiveModelMode = false;
     this.allModels = true;
     for (let i = 0; i < this.models.length; i++) {
+      this.models[i].enabled_left = false;
       this.models[i].enabled_right = true;
     }
-    // this.refreshModelData();
   }
 
-  allModelsOwnedByLeft() {
+  ownAllByLeft() {
     this.allModels = false;
     for (let i = 0; i < this.models.length; i++) {
       this.models[i].enabled_left = true;
+      this.models[i].enabled_right = false;
     }
-    // this.refreshModelData();
   }
 
-  private getActiveModels(L_or_R) {
+  private getActiveModels(L_or_R_or_Both) {
     const R = [];
     const L = [];
     for (let i = 0; i < this.models.length; i++) {
       if (this.models[i].enabled_right) {
+        this.models[i].enabled_left = false;
         R.push(this.models[i].name);
         this.ownLayerRight(this.models[i].name);
       } else if (this.models[i].enabled_left) {
+        this.models[i].enabled_right = false;
         L.push(this.models[i].name);
         this.ownLayerLeft(this.models[i].name);
       } else {
         this.layerOff(this.models[i].name);
       }
     }
-    return (L_or_R === 'L') ? L : R; // <-- show time-series for left or right?
-    // return L + R; // <-- Get all data for all models but only show active
-    // return R; // Timeseries for right panel only.
+    console.log('Models on Left:' + L);
+    console.log('Models on Right:' + R);
+
+    this.modelA = L.toString().replace(',', ', ');
+    this.modelB = R.toString().replace(',', ', ');
+
+
+    // Show time-series for left, right, or both?
+    if (L_or_R_or_Both === 'R') {
+      return R;
+    }
+    if (L_or_R_or_Both === 'L') {
+      return L;
+    }
+    if (L_or_R_or_Both === 'Both') {
+      return L.concat(R);
+    }
+  }
+
+  date_range(startDate, stopDate) {
+    const dateArray = [];
+    let currentDate = moment(startDate);
+    const stop = moment(stopDate);
+    while (currentDate <= stop) {
+      dateArray.push(moment(currentDate).format('YYYY-MM-DD'));
+      currentDate = moment(currentDate).add(1, 'days');
+    }
+    return dateArray;
   }
 
   makeSourceForModel(layer_name) {
-    const layer_url_part_A = 'http://lfmc.landfood.unimelb.edu.au:8080/geoserver/lfmc/wms?service=WMS&version=1.1.0&request=GetMap&layers=lfmc:';
-    const layer_url_part_B = '&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857&format=image%2Fpng';
-    const time_component = '&time=' + moment(this.finish).format('YYYY-MM-DD');
+
+
+    const layer_url_part_A = 'http://geoserver.landscapefuelmoisture.bushfirebehaviour.net.au/geoserver/lfmc/wms?service=WMS&version=1.3.0&request=GetMap&layers=lfmc:';
+    const layer_url_part_B = '&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857';
+
+    let time_component;
+
+    if (this.selectedDate !== undefined) {
+      time_component = '&time=' + moment(this.selectedDate).format('YYYY-MM-DD');
+    } else {
+      time_component = '&time=' + moment(this.start).format('YYYY-MM-DD');
+    }
+    // It is possible to animate the map using the WMS Animator function of GeoServer,
+    // however Mapbox doesn't support rendering because you can't sync animation frames
+    // const anim_component = '/' + moment(this.finish).format('YYYY-MM-DD') + '&format=image/gif;subtype=animated&aparam=time&avalues=' +
+    // this.date_range(this.start, this.finish);
+    const anim_component = '&format=image%2fpng&transparent=true';
+
     const layer_source = {
       'type': 'raster',
-      'tiles': [layer_url_part_A + layer_name.toUpperCase() + layer_url_part_B + time_component],
+      'tiles': [layer_url_part_A + layer_name.toUpperCase() + layer_url_part_B + anim_component + time_component],
       'tileSize': 256
     };
-    try {
-      this.currentmap.removeSource(layer_name + '_source');
-    } catch (e) {
-      console.log('OK that source doesn\'t exist yet.');
+
+    if (this.currentmap.getLayer(layer_name)) {
+      try {
+        this.currentmap.removeLayer(layer_name);
+      } catch (e) {
+        console.log('OK that the layer doesn\'t exist yet.');
+      }
+    }
+    if (this.currentmap.getSource(layer_name + '_source')) {
+      try {
+        this.currentmap.removeSource(layer_name + '_source');
+      } catch (e) {
+        console.log('OK that source doesn\'t exist yet.');
+      }
     }
     this.currentmap.addSource(layer_name + '_source', layer_source);
     console.log('Added ' + layer_name + '_source.');
@@ -866,10 +1019,22 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     if (!(this.currentmap instanceof Map)) {
       console.log('Current map not set.');
     } else {
-      try {
-        this.currentmap.removeLayer(layer_id);
-      } catch (e) {
-        console.log('OK that the layer doesn\'t exist yet.');
+
+
+      if (this.currentmap.getLayer(layer_id)) {
+        try {
+          this.currentmap.removeLayer(layer_id);
+        } catch (e) {
+          console.log('OK that the layer doesn\'t exist yet.');
+        }
+      }
+      if (this.currentmap.getSource(layer_id + '_source')) {
+        try {
+          this.currentmap.removeSource(layer_id + '_source');
+        } catch (e) {
+          console.log('OK that the source doesn\'t exist yet.');
+        }
+        this.makeSourceForModel(layer_id);
       }
       this.currentmap.addLayer({
         'id': layer_id,
@@ -880,59 +1045,134 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     }
   }
 
+  shuntFuture() {
+    this.start = moment(this.start).add(1, 'day').toDate();
+    this.finish = moment(this.finish).add(1, 'day').toDate();
+  }
+
+  shuntPast() {
+    this.start = moment(this.start).subtract(1, 'day').toDate();
+    this.finish = moment(this.finish).subtract(1, 'day').toDate();
+  }
+
+  shuntFutureWeek() {
+    const diff = this.durationWindow();
+
+    this.start = moment(this.start).add(diff, 'day').toDate();
+    this.finish = moment(this.finish).add(diff, 'day').toDate();
+  }
+
+  shuntPastWeek() {
+
+    const diff = this.durationWindow();
+
+    this.start = moment(this.start).subtract(diff, 'day').toDate();
+    this.finish = moment(this.finish).subtract(diff, 'day').toDate();
+  }
+
+  reducePast() {
+    this.start = moment(this.start).add(1, 'day').toDate();
+  }
+
+  reduceFuture() {
+    this.finish = moment(this.finish).subtract(1, 'day').toDate();
+  }
+
+  extendFuture() {
+    this.finish = moment(this.finish).add(1, 'day').toDate();
+  }
+
+  extendPast() {
+    this.start = moment(this.start).subtract(1, 'day').toDate();
+  }
+
+  durationWindow() {
+    return moment(this.finish).diff(moment(this.start), 'day');
+  }
+
+  onSelectDate(e) {
+    this.selectedDate = moment(e.name).format('YYYY-MM-DD');
+    console.log('Got new date Selection: ', this.selectedDate);
+    this.updateDatetimeOnWMTSSources();
+  }
+
   updateDatetimeOnWMTSSources() {
+
+    console.log('Start is: ', this.start.toDateString());
+    console.log('Finish is: ', this.finish.toDateString());
+
+
     ['L', 'R'].forEach((lr) => {
       this.setMapContext(lr);
       for (let i = 0; i < this.models.length; i++) {
         const layer_id = this.models[i].name;
         this.makeSourceForModel(layer_id);
+        if ((this.models[i].enabled_left && lr === 'L') || (this.models[i].enabled_right && lr === 'R')) {
+          this.makeLayerForModel(layer_id);
+        }
       }
     });
   }
 
   layerOff(layer_code) {
-    this.updateDatetimeOnWMTSSources();
-    try {
-      this.altmap.removeLayer(layer_code);
-    } catch (e) {
-      console.log('OK that the layer doesn\'t exist yet.');
+    if (this.altmap.getLayer(layer_code)) {
+      try {
+        this.altmap.removeLayer(layer_code);
+      } catch (e) {
+        console.log('OK that the layer doesn\'t exist yet.');
+      }
     }
-    try {
-      this.map.removeLayer(layer_code);
-    } catch (e) {
-      console.log('OK that the layer doesn\'t exist yet.');
+    if (this.map.getLayer(layer_code)) {
+      try {
+        this.map.removeLayer(layer_code);
+      } catch (e) {
+        console.log('OK that the layer doesn\'t exist yet.');
+      }
     }
   }
 
   ownLayerRight(layer_code) {
-
-    this.updateDatetimeOnWMTSSources();
-    try {
-      this.altmap.removeLayer(layer_code);
-    } catch (e) {
-      console.log('OK that the layer doesn\'t exist yet.');
+    if (!this.map.getSource(layer_code + '_source')) {
+      this.setMapContext('R');
+      this.makeSourceForModel(layer_code);
     }
-    this.map.addLayer({
-      'id': layer_code,
-      'type': 'raster',
-      'source': layer_code + '_source',
-      'paint': {}
-    }, 'water');
+    if (!this.map.getLayer(layer_code)) {
+      this.map.addLayer({
+        'id': layer_code,
+        'type': 'raster',
+        'source': layer_code + '_source',
+        'paint': {}
+      }, 'water');
+    }
+    if (this.altmap.getLayer(layer_code)) {
+      try {
+        this.altmap.removeLayer(layer_code);
+      } catch (e) {
+        console.log('OK that the layer doesn\'t exist yet.');
+      }
+    }
   }
 
   ownLayerLeft(layer_code) {
-    this.updateDatetimeOnWMTSSources();
-    try {
-      this.map.removeLayer(layer_code);
-    } catch (e) {
-      console.log('OK that the layer doesn\'t exist yet.');
+    if (!this.altmap.getSource(layer_code + '_source')) {
+      this.setMapContext('L');
+      this.makeSourceForModel(layer_code);
     }
-    this.altmap.addLayer({
-      'id': layer_code,
-      'type': 'raster',
-      'source': layer_code + '_source',
-      'paint': {}
-    }, 'water');
+    if (!this.altmap.getLayer(layer_code)) {
+      this.altmap.addLayer({
+        'id': layer_code,
+        'type': 'raster',
+        'source': layer_code + '_source',
+        'paint': {}
+      }, 'water');
+    }
+    if (this.map.getLayer(layer_code)) {
+      try {
+        this.map.removeLayer(layer_code);
+      } catch (e) {
+        console.log('OK that the layer doesn\'t exist yet.');
+      }
+    }
   }
 
   setMapContext(L_or_R) {
@@ -943,5 +1183,23 @@ export class MapboxComponent implements OnInit, AfterViewInit {
       this.currentmap = this.altmap;
     }
     console.log(this.currentmap);
+  }
+
+  toggleAvailabilityView() {
+    this.availview = !this.availview;
+  }
+
+  refreshAvailability() {
+
+    // Just sort the static dummy data as a proxy to the real thing for now...
+    return this.availability_data.sort((a, b) => {
+      if (a.model > b.model) {
+        return 1;
+      }
+      if (a.model < b.model) {
+        return -1;
+      }
+      return 0;
+    });
   }
 }

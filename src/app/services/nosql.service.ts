@@ -9,7 +9,7 @@ export class NosqlService {
   constructor(private http: HttpClient) {
   }
 
-  private url = 'http://lfmc.landfood.unimelb.edu.au:1880';
+  private url = 'http://nosql.landscapefuelmoisture.bushfirebehaviour.net.au';
 
   get(name: string): Observable<any> {
     const model$ = this.http

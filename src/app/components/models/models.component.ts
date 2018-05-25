@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ModelsService} from '../../services/models.service';
+import {ModelsService, Model} from '../../services/models.service';
 
 @Component({
   selector: 'app-models',
@@ -7,12 +7,12 @@ import {ModelsService} from '../../services/models.service';
   styleUrls: ['./models.component.css']
 })
 export class ModelsComponent implements OnInit {
-  models: any[] = [];
+  models: Model[] = [];
 
   constructor(private ms: ModelsService) {
   }
 
   ngOnInit() {
-    this.ms.get('models').subscribe(m => this.models = m.models);
+    this.ms.getModels().subscribe(m => this.models = m);
   }
 }

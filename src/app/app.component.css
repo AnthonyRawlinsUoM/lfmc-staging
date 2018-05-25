@@ -14,3 +14,9 @@
 main {
 	overflow: hidden;
 }
+
+.ui.modal {
+  top: 50%;
+  position: fixed;
+}
+

@@ -1,8 +1,10 @@
-import {Component, OnInit, Input, Output} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {TimeseriesService} from '../../services/timeseries.service';
 import * as shape from 'd3-shape';
 import {ConfirmModal} from '../confirm-modal/confirm-modal.component';
 import {SuiModalService} from 'ng2-semantic-ui';
+import {ErrorReportingService} from '../../services/error-reporting.service';
+import * as moment from 'moment';
 
 export enum LFMCResponseType {
   TIMESERIES = 0,
@@ -23,6 +25,8 @@ export class ChartingComponent implements OnInit {
   @Input() @Output() start: string;
   @Input() @Output() finish: string;
 
+  @Output() select: EventEmitter<any> = new EventEmitter();
+
   dimmer: boolean;
 
   single: any[];
@@ -38,7 +42,7 @@ export class ChartingComponent implements OnInit {
   showXAxisLabel = true;
   xAxisLabel = 'Time';
   showYAxisLabel = true;
-  yAxisLabel = 'Fuel Moisture (%)';
+  yAxisLabel = 'Landscape Fuel Moisture Condition';
   showGridLines = true;
   timeline = false;
   roundDomains = true;
@@ -48,6 +52,10 @@ export class ChartingComponent implements OnInit {
   schemeType = 'linear';
   selectedColorScheme = 'viridis';
   autoScale = true;
+
+  chart_is_ready = false;
+
+  highlights: any[] = [];
 
   curves = {
     Linear: shape.curveLinear,
@@ -240,7 +248,9 @@ export class ChartingComponent implements OnInit {
     }
   ];
 
-  constructor(private tss: TimeseriesService, private modalService: SuiModalService) {
+  constructor(private tss: TimeseriesService,
+              private modalService: SuiModalService,
+              private errorReportingService: ErrorReportingService) {
 
     this.lat = 0;
     this.lng = 0;
@@ -305,6 +315,9 @@ export class ChartingComponent implements OnInit {
   // Reconstitutes the time-series dates to format suitable for D3 consumption
   // as required by ngx-charts
   getFuelByPost(name: string, json_query) {
+
+    console.log('Calling API');
+
     const dateFormat = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$/;
 
     function reviver(key, value) {
@@ -320,11 +333,23 @@ export class ChartingComponent implements OnInit {
     ).subscribe(
       (m) => {
         this.multi = JSON.parse(JSON.stringify(m), reviver);
+
+        console.log(this.multi);
+
         if (this.multi['error'] && this.multi['code']) {
+
+          const error_mesg = {
+            'err': this.multi['error'],
+            'code': this.multi['code'],
+          };
+
           this.modalService
             .open(new ConfirmModal('An error occurred: ' + this.multi['code'], this.multi['error'] + '\nSend Report?', 'tiny'))
-            .onApprove(() => alert('Report sent.'))
-            .onDeny(() => alert('No report sent.'));
+            .onApprove(() => {
+              this.errorReportingService.notifyAuthorOfError(error_mesg);
+            })
+            .onDeny(() => {
+            });
         } else {
           this.dimmer = false;
         }
@@ -345,6 +370,10 @@ export class ChartingComponent implements OnInit {
   // TODO - Toggle weighted selections ON/OFF
   // Eg., Doesn't make sense to weight a categorical index by area.
   public getFuelForShapeWithModels(geo_json: any, start: string, finish: string, models: any[], response_as: LFMCResponseType) {
+
+    console.log('>>> Creating query');
+    this.chart_is_ready = true;
+
     const json_query = {
       'geo_json': geo_json,
       'models': models,
@@ -359,11 +388,11 @@ export class ChartingComponent implements OnInit {
 
         this.getFuelByPost('/fuel.json', json_query);
         break;
-      // case LFMCResponseType.MP4:
-      //   this.tss.postAPI('/fuel.mp4', json_query).subscribe(m => {
-      //     // this.multi = JSON.parse(JSON.stringify(m), reviver);
-      //   });
-      //   break;
+      case LFMCResponseType.MP4:
+        this.tss.postAPI('/fuel.mp4', json_query).subscribe(m => {
+          // this.multi = JSON.parse(JSON.stringify(m), reviver);
+        });
+        break;
       // case LFMCResponseType.NETCDF:
       //   this.getFuelByPost('/fuel.nc', json_query);
       //   break;
@@ -372,5 +401,14 @@ export class ChartingComponent implements OnInit {
 
   onSelect(e) {
     console.log('Got select event from chart.');
+    console.log(e);
+    this.select.emit(e);
+    // this.selectedDate = moment(e.name).format('YYYY-MM-DD');
+    // console.log('Setting selected date to: ', this.selectedDate);
+  }
+
+  onActivateAndDeactivate() {
+    console.log(this.highlights);
+    // this.select.emit();
   }
 }

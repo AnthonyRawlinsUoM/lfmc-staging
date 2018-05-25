@@ -12,10 +12,10 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {MapboxDraw} from '@mapbox/mapbox-gl-draw';
 import {ClipboardModule} from 'ngx-clipboard';
 
-
 // Services
 import {ModelsService} from './services/models.service';
 import {TimeseriesService} from './services/timeseries.service';
+import {ErrorReportingService} from './services/error-reporting.service';
 import {NosqlService} from './services/nosql.service';
 import {MapService} from './services/map.service';
 import {MapboxUploadAPIS3Service} from './services/mapbox-upload-api-s3.service';
@@ -50,16 +50,19 @@ import {ChartingComponent} from './components/charting/charting.component';
 import {VideoComponent} from './components/video/video.component';
 import {ServerlogComponent} from './components/serverlog/serverlog.component';
 
+import {BarGroupComponent} from './availability/temporal-availability/bar-group/bar-group.component';
+import {IndicatorBarComponent} from './availability/temporal-availability/indicator-bar/indicator-bar.component';
+import {AvailabilityRowComponent} from './availability/temporal-availability/availability-row/availability-row.component';
+import {TemporalAvailabilityComponent} from './availability/temporal-availability/temporal-availability.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'help', component: HelpComponent},
-  {path: 'options', component: OptionsComponent},
+  // {path: 'options', component: OptionsComponent},
   {path: 'import', component: ImportComponent},
   {path: 'models', component: ModelsComponent},
-  {path: 'fullscreen', component: FullscreenComponent},
   {path: 'callback', component: CallbackComponent}
 
 ];
@@ -96,7 +99,11 @@ const appRoutes: Routes = [
     LegendComponent,
     ChartingComponent,
     VideoComponent,
-    ServerlogComponent
+    ServerlogComponent,
+    BarGroupComponent,
+    IndicatorBarComponent,
+    AvailabilityRowComponent,
+    TemporalAvailabilityComponent
   ],
 
   // Modules
@@ -120,6 +127,7 @@ const appRoutes: Routes = [
     AuthService,
     ModelsService,
     TimeseriesService,
+    ErrorReportingService,
     MapboxUploadAPIS3Service,
     D3Service,
     NosqlService

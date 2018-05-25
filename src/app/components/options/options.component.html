@@ -1,48 +1,6 @@
 <div class="ui container">
 
-  <table class="ui celled striped table">
-  <thead>
-    <tr>
-      <th>Optional Layers</th>
-      <th>Icon</th>
-      <th>Description</th>
-      <th>Active</th>
-  </tr>
-</thead>
-  <tbody>
-    <tr>
-      <td class="collapsing">
-        <i class="folder icon"></i> Bushfires
-      </td>
-      <td class="collapsing">
 
-      </td>
-      <td>Bushfires </td>
-      <td class="right aligned collapsing"><sui-checkbox [(ngModel)]="bushfires" class="toggle"><span *ngIf="bushfires">Enabled</span><span *ngIf="!bushfires">Disabled</span></sui-checkbox></td>
-    </tr>
-    <tr>
-      <td class="collapsing">
-        <i class="folder icon"></i> Housefires
-      </td>
-      <td class="collapsing">
-
-      </td>
-      <td>Other fire incidents </td>
-      <td class="right aligned collapsing"><sui-checkbox [(ngModel)]="fires" class="toggle"><span *ngIf="fires">Enabled</span><span *ngIf="!fires">Disabled</span></sui-checkbox></td>
-    </tr>
-    <tr>
-      <td class="collapsing">
-        <i class="folder icon"></i> Sentinel
-      </td>
-      <td class="collapsing">
-
-      </td>
-      <td>Hotspots as detected by thermal imaging from the Sentinel Satellite </td>
-      <td class="right aligned collapsing"><sui-checkbox [(ngModel)]="hotspots" class="toggle"><span *ngIf="hotspots">Enabled</span><span *ngIf="!hotspots">Disabled</span></sui-checkbox></td>
-    </tr>
-
-  </tbody>
-</table>
 
   <div class="ui grid">
     <div class="ui eight wide column">

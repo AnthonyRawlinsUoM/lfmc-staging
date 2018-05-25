@@ -1,35 +1,33 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/index';
 import {DomSanitizer} from '@angular/platform-browser';
 
-//import 'rxjs/add/operator/map';
-//import 'rxjs/add/operator/catch';
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+  })
+};
 
 @Injectable()
 export class TimeseriesService {
 
-  constructor(private http: HttpClient, private sanitizer: DomSanitizer) {
+  constructor(private http: HttpClient,
+              private sanitizer: DomSanitizer) {
   }
 
-  private apiUrl = 'http://lfmc.landfood.unimelb.edu.au:8002/v1';
+  private apiUrl = 'http://api.landscapefuelmoisture.bushfirebehaviour.net.au/v1';
 
   // Trying version 2
   // private apiUrl = 'http://lfmc.landfood.unimelb.edu.au:8002/v2';
 
-  // // Utility function
-  private getHeaders() {
-    // I included these headers because otherwise FireFox
-    // will request text/html
-    const headers = new Headers();
-    headers.append('Accept', 'application/json');
-    headers.append('Access-Control-Allow-Origin', '*');
-    headers.append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    return headers;
-  }
-
   postAPI(path: string, json_query: any) {
-    return this.http.post(`${this.apiUrl}${path}`, json_query);
+    console.log(`${this.apiUrl}${path}`);
+    console.log(json_query);
+    return this.http.post(`${this.apiUrl}${path}`, json_query, httpOptions);
   }
 
   mpgAPI(path: string, json_query: any) {
@@ -37,7 +35,7 @@ export class TimeseriesService {
   }
 
   getAPI(path: string, jq: any) {
-    const qs = `?start=${jq.start}&finish=${jq.finish}&models=${jq.models}&weighted=${jq.weighted}&geo_json=${jq.geo_json}&response_as=${jq.response_as}`;
+    const qs = `?start=${jq.start}&finish=${jq.finish}&models=${jq.model_names}&weighted=${jq.weighted}&geo_json=${jq.geo_json}&response_as=${jq.response_as}`;
     return this.http.get(`${this.apiUrl}${path}${qs}`);
   }
 }

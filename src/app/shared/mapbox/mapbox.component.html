@@ -12,238 +12,295 @@
   </div>
   <div id="splitViewHandle" class="viewDividerhandle" (mouseenter)="enterSplitViewHandle($event)"
        (click)="clickSplitView($event)" (mouseleave)="leaveSplitViewHandle($event)">
-    <!--<i class="ui huge white expand icon"></i>-->
+    <div class="ui straight_labels">
+      <div *ngIf="splitview" class="left_label">
+        <div class="ui blue left pointing label">{{ (modelA | uppercase) || 'NONE' }}</div>
+      </div>
+      <div *ngIf="splitview" class="right_label">
+        <div class="ui blue right pointing label">{{ (modelB | uppercase) || 'NONE' }}</div>
+      </div>
+
+      <div *ngIf="!splitview" class="right_label">
+        <div class="ui blue right pointing label">SPLIT</div>
+      </div>
+    </div>
+
   </div>
 
 
   <div id="myoverlay" class='map-overlay'>
-    <!--<sui-accordion class="styled fluid ui inverted accordion">-->
-    <!--<sui-accordion-panel [isOpen]="false">-->
-    <!--<div title>-->
-    <!--<i class="dropdown icon"></i>-->
-    <!--TIME-->
-    <!--</div>-->
-    <!--<div content>-->
-    <!--<p>Second panel content.</p>-->
-    <!--</div>-->
-    <!--</sui-accordion-panel>-->
-    <!--<sui-accordion-panel [isOpen]="false">-->
-    <!--<div title>-->
-    <!--<i class="dropdown icon"></i>-->
-    <!--SPACE-->
-    <!--</div>-->
-    <!--<div content>-->
-    <!--<p>Second panel content.</p>-->
-    <!--</div>-->
-    <!--</sui-accordion-panel>-->
-    <!--</sui-accordion>-->
 
+    <sui-tabset #bottomToolSet>
+      <div class="ui top attached inverted horizontal fluid menu">
 
-    <div [suiCollapse]="!ingesting" id='ingest-area' class='ingest-area top attached dark'>
-      <div class="ui top attached fluid tiny inverted menu">
-        <!--<div class="right floated item" #calculatedarea>{{calculated_area}}</div>-->
-        <a class="item" (click)="ingesting = !ingesting; isCopied=false;">
-          <i class="red close icon"></i>
-        </a>
-        <a class="item">
-          SPACE
-        </a>
-        <a class="item" (click)="calculateArea()" data-content="Calculate Area">
-          <i class="white calculator icon"></i> Calculate Total Area
+        <div class="item">View Options:</div>
+
+        <a class="item" (click)="toggleSplitView()" data-content="Split View Panel">
+          <div *ngIf="!splitview"><i class="white square outline icon"></i> Split is Off</div>
+          <div *ngIf="splitview"><i class="white columns icon"></i> Split is On</div>
         </a>
 
-        <a class="item" (click)="importGeoJSON()" data-content="Import GeoJSON">
-          <i class="white file icon"></i> Import
-        </a>
-        <a class="item" (click)="saveBoundary()" data-content="Save GeoJSON">
-          <i class="white group object icon"></i> Save
-        </a>
-
-        <a class="item" [ngxClipboard]="geojsonarea" (cbOnSuccess)="isCopied = true">
-          <i class="icons">
-            <i class="copy icon"></i>
-            <i *ngIf="isCopied" class="green checkmark icon"></i>
-          </i>
+        <a class="item" (click)="snapping = !snapping">
+          <i *ngIf="snapping" class="linkify icon"></i>
+          <i *ngIf="!snapping" class="unlink icon"></i>
+          Snap to Boundary
         </a>
 
+        <a class="green right aligned item" (click)="refreshModelData()" data-content="Go">
+          <i class="white angle double right icon"></i> Go
+        </a>
       </div>
 
-      <div class="ui two column stackable grid">
-        <div class="column">
-          <div class="ui form">
-            <div class="field json">
+      <div class="attached inverted segment" suiTabContent="1" [suiCollapse]="!collapse">
+        <!-- Start: TIME Panel -->
+        <div class="ui panel">
+          <div class="ui top attached fluid tiny inverted menu">
+            <a class="item" (click)="collapse = !collapse">
+              <i class="red close icon"></i>
+            </a>
+
+            <a class="item" (click)="sidebar.toggle();">
+              <i class="sidebar icon"></i> Models
+            </a>
+            <a class="right aligned item" (click)="toggleTimeBrushing()" data-content="Timebrushing">
+              <div *ngIf="timebrush"><i class="white paint brush icon"></i> Timebrush OFF</div>
+              <div *ngIf="!timebrush"><i class="white close icon"></i> Timebrushing ON</div>
+            </a>
+
+            <a class="item" (click)="mpg()" data-content="Get MP4">
+              <i class="file video icon"></i> Animation
+            </a>
+
+            <a class="item" (click)="netCDF()" data-content="NetCDF Export">
+              <i class="archive icon"></i> DataSet
+            </a>
+
+            <a class="item" (click)="pdf()" data-content="PDF">
+              <i class="file pdf icon"></i> PDF
+            </a>
+          </div>
+          <div class="ui three column stackable grid">
+
+            <div class="column">
+              <div class="ui tiny inverted menu">
+                <a class="item" (click)="extendPast()">
+                  <i class="left angle icon"></i>
+                </a>
+                <a class="stretch item" suiDatepicker [pickerMinDate]="minStartDate" [pickerMaxDate]="maxStartDate"
+                   [pickerMode]="'date'" [(ngModel)]="start" (ngModelChange)="updateDatetimeOnWMTSSources()"><i
+                  class="calendar icon"></i> From: {{start | date:'fullDate'}}</a>
+                <a class="right aligned item" (click)="reducePast()">
+                  <i class="right angle icon"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="ui tiny inverted menu">
+                <a class="item" (click)="shuntPastWeek()">
+                  <i class="angle double left icon"></i>
+                </a>
+                <a class="item" (click)="shuntPast()">
+                  <i class="left caret icon"></i>
+                </a>
+                <a class="stretch item" (click)="weekView()" data-content="This past week"><i class="clock icon"></i> Current
+                  {{durationWindow()}}-day Window</a>
+                <a class="right aligned item" (click)="shuntFuture()">
+                  <i class="right caret icon"></i>
+                </a>
+                <a class="right aligned item" (click)="shuntFutureWeek()">
+                  <i class="angle double right icon"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="ui tiny inverted menu">
+                <a class="item" (click)="reduceFuture()">
+                  <i class="left angle icon"></i>
+                </a>
+                <a class="stretch item" suiDatepicker [pickerMinDate]="minEndDate" [pickerMaxDate]="maxEndDate"
+                   [pickerMode]="'date'"
+                   [(ngModel)]="finish" (change)="updateDatetimeOnWMTSSources()">
+                  <i class="calendar icon"></i> To:
+                  {{finish
+                  |
+                  date:'fullDate'}}</a>
+                <a class="right aligned item" (click)="extendFuture()">
+                  <i class="right angle icon"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <sui-sidebar-container class="ui bottom attached map-overlay-inner">
+
+
+            <sui-sidebar class="inverted vertical" #sidebar>
+              <!--<div class="ui fluid inverted menu">-->
+              <!--<a class="item" (click)="exclusiveModelMode = !exclusiveModelMode">-->
+              <!--<div *ngIf="!exclusiveModelMode">-->
+              <!--<i class="inverted toggle on icon"></i> Compare-->
+              <!--</div>-->
+              <!--<div *ngIf="exclusiveModelMode">-->
+              <!--<i class="inverted toggle off icon"></i> Exclusive-->
+              <!--</div>-->
+              <!--</a>-->
+
+              <!--<a *ngIf="allModels" class="item" (click)="allModelsOwnedByLeft()"><i class="check circle outline icon"></i> All-->
+              <!--model_names</a>-->
+              <!--<a *ngIf="!allModels" class="item" (click)="allModelsOwnedByRight()"><i class="radio icon"></i> All model_names</a>-->
+              <!--</div>-->
+
+              <sui-dimmer [(isDimmed)]="model_dimmer" [isClickable]="false">
+                <div class="ui indeterminate text loader">Loading models. Please wait.</div>
+              </sui-dimmer>
+              <!-- Start: Model List/Selection Table -->
+              <table class="ui selectable inverted table" id="modelList">
+                <thead>
+                <tr>
+                  <th>Model</th>
+                  <th *ngIf="!splitview" class="right aligned">Actions</th>
+                  <th *ngIf="splitview" class="right aligned">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let m of models">
+                  <td>{{m.ident}}</td>
+
+                  <td *ngIf="!splitview" class="right aligned">
+                    <div class="ui mini compact icon buttons">
+                      <button class="ui compact black icon button" *ngIf="!m.enabled_right"
+                              (click)="toggleModel(m.name, 'R')"><i class="toggle off icon"></i></button>
+                      <button class="ui compact black icon button" *ngIf="m.enabled_right"
+                              (click)="toggleModel(m.name, 'O')"><i class="yellow toggle on icon"></i></button>
+                    </div>
+                  </td>
+
+                  <td *ngIf="splitview" class="right aligned">
+                    <div class="ui mini compact icon buttons">
+                      <button class="ui compact black icon button" *ngIf="m.enabled_left"
+                              (click)="toggleModel(m.name, 'L')"><i class="blue caret left icon"></i></button>
+                      <button class="ui compact black icon button" *ngIf="!m.enabled_left"
+                              (click)="toggleModel(m.name, 'L')"><i class="angle left icon"></i></button>
+
+                      <button class="ui compact black icon button" *ngIf="!m.enabled_left && !m.enabled_right"
+                              [disabled]="(!m.enabled_left && !m.enabled_right)"><i class="toggle off icon"></i>
+                      </button>
+                      <button class="ui compact black icon button" *ngIf="m.enabled_left || m.enabled_right"
+                              (click)="toggleModel(m.name, 'O')"><i class="yellow toggle on icon"></i></button>
+
+                      <button class="ui compact black icon button" *ngIf="m.enabled_right"
+                              (click)="toggleModel(m.name, 'R')"><i class="blue caret right icon"></i></button>
+                      <button class="ui compact black icon button" *ngIf="!m.enabled_right"
+                              (click)="toggleModel(m.name, 'R')"><i class="angle right icon"></i></button>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+              <!-- End: Model List/Selection Table -->
+            </sui-sidebar>
+            <sui-sidebar-sibling [isDimmedWhenVisible]="false" class="inverted">
+
+              <app-charting id="chart" [lat]="lat" [lng]="lng" [start]="start | date:'yMMdd'"
+                            [finish]="finish | date:'yMMdd'" (select)="onSelectDate($event)"></app-charting>
+            </sui-sidebar-sibling>
+          </sui-sidebar-container>
+        </div>
+        <!-- End: TIME Panel -->
+      </div>
+      <div class="attached inverted segment" suiTabContent="2" [suiCollapse]="!ingesting">
+        <!-- Start: SPACE Panel -->
+        <div class="ui panel">
+          <div id='ingest-area' class='ui ingest-area'>
+            <div class="ui top attached fluid tiny inverted menu">
+              <!--<div class="right floated item" #calculatedarea>{{calculated_area}}</div>-->
+              <a class="item" (click)="ingesting = !ingesting; isCopied=false;">
+                <i class="red close icon"></i>
+              </a>
+
+              <a class="item" [ngxClipboard]="geojsonarea" (cbOnSuccess)="isCopied = true">
+                <i class="icons">
+                  <i class="copy icon"></i>
+                  <i *ngIf="isCopied" class="large green checkmark icon"></i>
+                </i>
+                Copy
+              </a>
+              <a class="item" (click)="saveBoundary()" data-content="Save GeoJSON">
+                <i class="white group object icon"></i> Save
+              </a>
+
+              <a class="item" (click)="importGeoJSON()" data-content="Import GeoJSON">
+                <i class="white file icon"></i> Import
+              </a>
+
+
+              <a class="right aligned item" (click)="calculateArea()" data-content="Calculate Area">
+                <i class="white calculator icon"></i> Calculate Total Area
+              </a>
+
+
+            </div>
+
+            <div class="ui two column stackable grid" style="margin:0;">
+              <div class="row">
+                <div class="column">
+                  <div class="ui form">
+                    <div class="field json">
               <textarea style="background-color: transparent;height:40vh;" class="fillgeoarea"
-                        [(ngModel)]="ingestGeoJson" #geojsonarea></textarea>
+                        [(ngModel)]="ingestGeoJson" (change)="importGeoJSON()" #geojsonarea></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="column">
+                  <app-importeditems [(drawing)]="drw" [(altdrawing)]="altdrw"></app-importeditems>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="column dark">
-          <app-importeditems [(drawing)]="drw" [(altdrawing)]="altdrw"></app-importeditems>
+        <!-- End: SPACE Panel -->
+      </div>
+      <div class="attached inverted segment" suiTabContent="3" [suiCollapse]="!availview">
+        <!-- Start: AVAIL Panel -->
+        <div class="ui panel">
+          <div class="ui top attached fluid tiny inverted menu">
+            <a class="item" (click)="availview = !availview">
+              <i class="red close icon"></i>
+            </a>
+            <a class="item" (click)="refreshAvailability()">
+              <i class="refresh icon"></i> Refresh
+            </a>
+          </div>
+          <app-temporal-availability [availability]="availability_data"></app-temporal-availability>
         </div>
+        <!-- End: AVAIL Panel -->
       </div>
 
-    </div>
-    <div [suiCollapse]="collapse" class="attached">
-      <div class="map-overlay-inner dark">
-        <div class="ui top attached fluid tiny inverted menu">
-          <a class="item" (click)="collapse = !collapse">
-            <i class="red close icon"></i>
-          </a>
 
-          <a class="item">
-            TIME
-          </a>
+      <div class="ui bottom attached inverted tabular menu">
+        <a class="inverted item" suiTabHeader="1" [(isActive)]="firstActive"
+           (click)="collapse = !collapse; ingesting = false; availview = false"
+           data-content="Time-series Chart Panel"><i class="white area chart icon"></i> TIME</a>
 
-          <a class="item" (click)="sidebar.toggle();">
-            <i class="sidebar icon"></i> Models
-          </a>
+        <a class="inverted item" suiTabHeader="2" [(isActive)]="secondActive"
+           (click)="ingesting = !ingesting; collapse = false; availview = false; saveBoundary();"
+           data-content="GeoJSON Panel"><i class="white map icon"></i> SPACE</a>
 
-          <a class="item" (click)="toggleTimeBrushing()" data-content="Timebrushing">
-            <div *ngIf="timebrush"><i class="white paint brush icon"></i> Timebrush OFF</div>
-            <div *ngIf="!timebrush"><i class="white close icon"></i> Timebrushing ON</div>
-          </a>
-
-          <a class="item" suiDatepicker [pickerMinDate]="minStartDate" [pickerMaxDate]="maxStartDate"
-             [pickerMode]="'date'" [(ngModel)]="start"><i
-            class="calendar icon"></i> From: {{start | date:'dd/MM/y'}}</a>
-
-          <a class="item" suiDatepicker [pickerMinDate]="minEndDate" [pickerMaxDate]="maxEndDate" [pickerMode]="'date'"
-             [(ngModel)]="finish"><i class="calendar icon"></i> To: {{finish |
-            date:'dd/MM/y'}}</a>
-          <a class="item" (click)="weekView()" data-content="This past week"><i class="clock icon"></i> This week</a>
-
-          <a class="item" (click)="mpg()" data-content="Get MP4">
-            <i class="file video icon"></i> Animation
-          </a>
-
-          <a class="item" (click)="netCDF()" data-content="NetCDF Export">
-            <i class="archive icon"></i> DataSet
-          </a>
-
-          <a class="item" (click)="pdf()" data-content="PDF">
-            <i class="file pdf icon"></i> PDF
-          </a>
+        <a class="right aligned inverted item" suiTabHeader="3" [(isActive)]="thirdActive"
+           (click)="ingesting = false; collapse = false; toggleAvailabilityView()" data-content="Availability Panel">
+          <div *ngIf="!availview"><i class="white calendar alternate outline icon"></i> Model Data Availability</div>
+          <div *ngIf="availview"><i class="white calendar check outline icon"></i> Model Data Availability</div>
+        </a>
 
 
-        </div>
-
-        <sui-sidebar-container class="ui bottom attached">
-
-
-          <sui-sidebar class="inverted vertical" #sidebar>
-            <!--<div class="ui fluid inverted menu">-->
-            <!--<a class="item" (click)="exclusiveModelMode = !exclusiveModelMode">-->
-            <!--<div *ngIf="!exclusiveModelMode">-->
-            <!--<i class="inverted toggle on icon"></i> Compare-->
-            <!--</div>-->
-            <!--<div *ngIf="exclusiveModelMode">-->
-            <!--<i class="inverted toggle off icon"></i> Exclusive-->
-            <!--</div>-->
-            <!--</a>-->
-
-            <!--<a *ngIf="allModels" class="item" (click)="allModelsOwnedByLeft()"><i class="check circle outline icon"></i> All-->
-            <!--models</a>-->
-            <!--<a *ngIf="!allModels" class="item" (click)="allModelsOwnedByRight()"><i class="radio icon"></i> All models</a>-->
-            <!--</div>-->
-
-            <sui-dimmer [(isDimmed)]="model_dimmer" [isClickable]="false">
-              Loading models. Please wait.
-            </sui-dimmer>
-
-            <table class="ui selectable inverted table" id="modelList">
-              <thead>
-              <tr>
-                <th>Model</th>
-                <th *ngIf="!splitview" class="right aligned">Actions</th>
-                <th *ngIf="splitview" class="right aligned">Actions</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let m of models">
-                <td>{{m.ident}}</td>
-
-                <td *ngIf="!splitview" class="right aligned">
-                  <div class="ui mini compact icon buttons">
-                    <button class="ui compact black icon button" *ngIf="!m.enabled_right"
-                            (click)="toggleModel(m.name, 'R')"><i class="toggle off icon"></i></button>
-                    <button class="ui compact black icon button" *ngIf="m.enabled_right"
-                            (click)="toggleModel(m.name, 'O')"><i class="yellow toggle on icon"></i></button>
-                  </div>
-                </td>
-
-                <td *ngIf="splitview" class="right aligned">
-                  <div class="ui mini compact icon buttons">
-                    <button class="ui compact black icon button" *ngIf="m.enabled_left"
-                            (click)="toggleModel(m.name, 'L')"><i class="blue caret left icon"></i></button>
-                    <button class="ui compact black icon button" *ngIf="!m.enabled_left"
-                            (click)="toggleModel(m.name, 'L')"><i class="angle left icon"></i></button>
-
-                    <button class="ui compact black icon button" *ngIf="!m.enabled_left && !m.enabled_right"
-                            [disabled]="(!m.enabled_left && !m.enabled_right)"><i class="toggle off icon"></i>
-                    </button>
-                    <button class="ui compact black icon button" *ngIf="m.enabled_left || m.enabled_right"
-                            (click)="toggleModel(m.name, 'O')"><i class="yellow toggle on icon"></i></button>
-
-                    <button class="ui compact black icon button" *ngIf="m.enabled_right"
-                            (click)="toggleModel(m.name, 'R')"><i class="blue caret right icon"></i></button>
-                    <button class="ui compact black icon button" *ngIf="!m.enabled_right"
-                            (click)="toggleModel(m.name, 'R')"><i class="angle right icon"></i></button>
-                  </div>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-          </sui-sidebar>
-          <sui-sidebar-sibling [isDimmedWhenVisible]="false" class="inverted">
-            <!--<div class="ui container">-->
-            <!--<h3 class="ui center aligned header">LFMC (%) vs. Time</h3>-->
-            <!--</div>-->
-            <app-charting id="chart" [lat]="lat" [lng]="lng" [start]="start | date:'yMMdd'"
-                          [finish]="finish | date:'yMMdd'"></app-charting>
-          </sui-sidebar-sibling>
-        </sui-sidebar-container>
       </div>
-    </div>
-
-    <div class="ui bottom attached inverted horizontal fluid menu">
-      <a class="item" (click)="showtoolBar = !showtoolBar">
-        <i class="blue sidebar icon"></i> Tools:
-      </a>
-
-      <a class="item" (click)="collapse = !collapse" data-content="Time-series Chart Panel">
-        <i class="white area chart icon"></i> TIME
-      </a>
-
-      <a class="item" (click)="ingesting = !ingesting;saveBoundary();" data-content="GeoJSON Panel">
-        <i class="white map icon"></i> SPACE
-      </a>
-
-      <a class="item" (click)="toggleSplitView()" data-content="Split View Panel">
-        <div *ngIf="splitview"><i class="white square outline icon"></i> Split</div>
-        <div *ngIf="!splitview"><i class="white columns icon"></i> Split</div>
-      </a>
-
-      <a class="item" (click)="snapping = !snapping">
-        <div class="" *ngIf="snapping"><i class="white crosshairs icon"></i>Snapping ON</div>
-        <div class="" *ngIf="!snapping"><i class="white cog icon"></i>Snapping OFF</div>
-      </a>
-
-      <a class="item" (click)="refreshModelData()" data-content="Go">
-        <i class="green search icon"></i> Go
-      </a>
-      <!--<a class="item" (click)="undoView()">-->
-      <!--<i class="angle left icon"></i> Back-->
-      <!--<span *ngIf="undos.length > 0">({{undos.length}})</span>-->
-      <!--</a>-->
-      <!--<a class="item" (click)="redoView()">-->
-      <!--<i class="angle right icon"></i> Forward-->
-      <!--<span *ngIf="redos.length > 0">({{redos.length}})</span>-->
-      <!--</a>-->
-
-
-    </div>
+    </sui-tabset>
   </div>
 </div>
+
 <lfmc-video></lfmc-video>
 
 <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>

@@ -1,8 +1,12 @@
 <div class="ui blurring inverted segment">
-  <div *ngIf="dimmer" class="ui active dimmer">
-    <div class="ui indeterminate loader"></div>
-  </div>
-  <div class="chartcontainer">
+  <div class="chartcontainer dark">
+    <div *ngIf="dimmer" class="ui active dimmer">
+      <div class="ui indeterminate text loader">
+
+        <div *ngIf="chart_is_ready">Preparing your results.</div>
+        <div *ngIf="!chart_is_ready">Make boundary, model, and temporal selections.</div>
+      </div>
+    </div>
     <ngx-charts-line-chart
       [view]="view"
       [scheme]="colorScheme"
@@ -25,10 +29,16 @@
       [curve]="curve"
       [autoScale]="autoScale"
       rangeFillOpacity="0.13"
+
+      [activeEntries] = "highlights"
+      (deactivate) = "onActivateAndDeactivate()"
+      (active) = "onActivateAndDeactivate()"
+
       (select)="onSelect($event)">
     </ngx-charts-line-chart>
   </div>
 </div>
+
 <!-- Property	Type	Default Value	Description
 view	number[]		the dimensions of the chart [width, height]. If left undefined, the chart will fit to the parent container size
 results	object[]		the chart data

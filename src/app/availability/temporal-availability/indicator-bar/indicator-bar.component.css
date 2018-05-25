@@ -1,0 +1,10 @@
+.indicator {
+  margin: auto 0;
+  display: flex;
+  border: 1px solid #3e3f41;
+  background: linear-gradient(#0b0c0d, #1B1C1D);
+}
+.bar {
+  width: 100%;
+  height: 1em;
+}

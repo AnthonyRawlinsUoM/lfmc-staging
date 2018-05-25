@@ -16,12 +16,12 @@
       <a class="item" [routerLinkActive]="['active']" routerLink="/options">
         <i class="blue options icon"></i>Options
       </a>
-      <a class="item" [routerLinkActive]="['active']" routerLink="/help">
+      <a class="item" [routerLinkActive]="['active']" href="http://documentation.landscapefuelmoisture.bushfirebehaviour.net.au/" target="_blank">
         <i class="blue help icon"></i>Help
       </a>
     </div>
   </div>
-  <div class="ui inverted header item"><i class="red fire icon"></i> {{title}} v{{version}}</div>
+  <div class="ui inverted header item"><img class="ui circular mini spaced image" src="/assets/fire.png"> {{title}} v{{version}}</div>
   <div class="right menu">
     <a class="item" [routerLinkActive]="['active']" *ngIf="auth.authenticated" routerLink="/profile">
       <i class="blue user circle icon"></i>

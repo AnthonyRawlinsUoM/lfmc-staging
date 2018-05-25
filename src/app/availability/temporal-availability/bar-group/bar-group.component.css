@@ -1,0 +1,28 @@
+.bar_group {
+  display: inline-block !important;
+  margin: 0;
+  padding: 0;
+  position: inherit;
+  line-height: 0;
+  border-left: 1px solid rgba(255, 255, 255, .125);
+}
+.have,
+.missing {
+  height: 1em;
+  margin: 0;
+  padding: 0;
+}
+
+.have {
+  /*background: linear-gradient(#146380, #00d6b2, #afd616, #36b94f, #146380, #2b2865, #2b2865);*/
+  background: linear-gradient(#146380, #2b2865);
+}
+
+.missing {
+  background-color: transparent;
+}
+
+.have,
+.missing {
+  display: inline-flex;
+}

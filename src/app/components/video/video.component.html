@@ -1,21 +1,21 @@
-<sui-modal [isClosable]="true" *ngIf="hasVideoQuery">
-           <!--(dismissed)="alert($event)" #modal>-->
-  <div class="header">Animation</div>
-  <div class="content">
-    <sui-dimmer [(isDimmed)]="preloadDimmed">
-      <div class="ui indeterminate text loader">Preparing your animation.</div>
-    </sui-dimmer>
+<sui-modal [isClosable]="true" *ngIf="hasVideoQuery" class="ui segment">
+  <!--(dismissed)="alert($event)" #modal>-->
+  <!--<sui-dimmer [(isDimmed)]="preloadDimmed">-->
+    <!--<div class="ui indeterminate text loader">Preparing your animation.</div>-->
+  <!--</sui-dimmer>-->
 
-    <div  style="position:relative;height:0;padding-bottom:56.25%">
-      <video width="640" height="480" controls>
-        <source src="{{videoSource}}" type="video/mp4">
+    <div class="ui inverted header">Animation (Placeholder...)</div>
+    <div class="ui center aligned">
+
+      <video width="100%" height="480" class="inverted" controls>
+        <source src="https://github.com/mediaelement/mediaelement-files/blob/master/big_buck_bunny.mp4?raw=true"
+                type="video/mp4">
         Your browser does not support the video tag.
       </video>
-    </div>
 
-  </div>
+    </div>
   <!--<div class="actions">-->
-    <!--<button class="ui red button" (click)="modal.deny()">Cancel</button>-->
-    <!--<button class="ui green button" (click)="modal.approve('done')" autofocus>OK</button>-->
+  <!--<button class="ui red button" (click)="modal.deny()">Cancel</button>-->
+  <!--<button class="ui green button" (click)="modal.approve('done')" autofocus>OK</button>-->
   <!--</div>-->
 </sui-modal>

@@ -1,0 +1,6 @@
+<div class="bar_group" [style.width]="columnWidth + '%'" #group>
+  <div *ngFor="let sub of sub_bars"
+       [class.have]="sub.have"
+       [class.missing]="!sub.have"
+       [style.width]="(sub.days / days_in_year)*100 + '%'"></div>
+</div>

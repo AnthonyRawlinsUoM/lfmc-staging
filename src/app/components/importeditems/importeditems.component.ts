@@ -1,9 +1,10 @@
 import {Component, OnInit, ElementRef, ViewChild, Input, Output, AfterViewInit, OnDestroy} from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import {AuthService} from '../../services/auth.service';
 import {ModelsService} from '../../services/models.service';
 import {SuiModalService} from 'ng2-semantic-ui';
 import {ConfirmModal} from '../confirm-modal/confirm-modal.component';
 import {PersistenceService, StorageType} from 'angular-persistence';
+import {UUID} from 'angular2-uuid';
 import {Subscription} from 'rxjs/index';
 
 @Component({
@@ -191,73 +192,36 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit, OnDestroy 
         }
       ]
     });
-    const plan2 = new GeoJSONQuery('Creswick Sample Boundary', {
-      'type': 'FeatureCollection',
-      'features': [
+
+    const state = new GeoJSONQuery('Victoria', {
+      "type": "FeatureCollection",
+      "features": [
         {
-          'id': '014d3e96ebafb1de1c22774a47ab3275',
-          'type': 'Feature',
-          'properties': {},
-          'geometry': {
-            'coordinates': [
+          "type": "Feature",
+          "properties": {},
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
               [
                 [
-                  144.06698668870644,
-                  -37.45771431511489
+                  140.64697265625,
+                  -39.35978526869
                 ],
                 [
-                  143.90809686715227,
-                  -37.563346123058274
+                  150.216064453125,
+                  -39.35978526869
                 ],
                 [
-                  144.14567498127946,
-                  -37.61970184870036
+                  150.216064453125,
+                  -33.87953701355922
                 ],
                 [
-                  144.22587651026043,
-                  -37.51535019701112
+                  140.64697265625,
+                  -33.87953701355922
                 ],
                 [
-                  144.06698668870644,
-                  -37.45771431511489
-                ]
-              ]
-            ],
-            'type': 'Polygon'
-          }
-        }
-      ]
-    });
-    const plan3 = new GeoJSONQuery('Creswick Sample Boundary #2', {
-      'type': 'FeatureCollection',
-      'features': [
-        {
-          'type': 'Feature',
-          'id': '014d3e96ebafb1de1c22774a47ab3276',
-          'properties': {},
-          'geometry': {
-            'type': 'Polygon',
-            'coordinates': [
-              [
-                [
-                  143.87901306152344,
-                  -37.47731025619387
-                ],
-                [
-                  143.92810821533203,
-                  -37.47731025619387
-                ],
-                [
-                  143.92810821533203,
-                  -37.45169472198827
-                ],
-                [
-                  143.87901306152344,
-                  -37.45169472198827
-                ],
-                [
-                  143.87901306152344,
-                  -37.47731025619387
+                  140.64697265625,
+                  -39.35978526869
                 ]
               ]
             ]
@@ -266,7 +230,7 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit, OnDestroy 
       ]
     });
 
-    this.sample_queries = [plan1, plan2, plan3];
+    this.sample_queries = [plan1, state];
 
   }
 
@@ -301,71 +265,70 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit, OnDestroy 
     this.authSubscription.unsubscribe();
   }
 
-  toggleSelectionOn(q) {
+  toggleSelectionOn(gjq: GeoJSONQuery) {
     console.log('Got toggle on!');
-    console.log('Selection is now ' + q);
-    for (let i = 0; i < this.queries.length; i++) {
-      this.queries[i].enabled_right = this.queries[i].name === q;
-      if (this.queries[i].enabled_right) {
-        const gj = this.queries[i].geojson;
-        console.log(gj);
-        console.log('Setting the selection');
-        this.drawing.set(gj);
-        this.altdrawing.set(gj);
-      }
-    }
+    console.log('Selection is now ' + gjq.name);
+    this.toggleAllOff();
+    gjq.enabled_right = true;
+    const gj = gjq.geojson;
+    console.log(gj);
+    console.log('Setting the selection');
+    this.drawing.set(gj);
+    this.altdrawing.set(gj);
     this.saveSession();
   }
 
-  toggleSelectionOff() {
+  toggleSelectionOff(gjq: GeoJSONQuery) {
     console.log('Got toggle off!');
-    for (let i = 0; i < this.queries.length; i++) {
-      this.queries[i].enabled_right = false;
-    }
+    gjq.enabled_right = false;
     this.drawing.set(this.emptyGeoJSON);
+    this.altdrawing.set(this.emptyGeoJSON);
     // this.drawing.deleteAll().getAll();
     this.saveSession();
   }
 
-  confirmRemoval(q) {
+  confirmRemoval(gjq: GeoJSONQuery) {
     this.modalService
-      .open(new ConfirmModal('Please confirm removal', 'Are you sure you want to permanently delete ' + q + '?', 'tiny'))
+      .open(new ConfirmModal('Please confirm removal', 'Are you sure you want to permanently delete ' + gjq.name + '?', 'tiny'))
       .onApprove(() => {
-        this.removeGeoJSONQuery(q);
+        this.removeGeoJSONQuery(gjq);
       })
       .onDeny(() => {
         console.log('Removal cancelled.');
       });
+
   }
 
-  confirmUpdate(q) {
+  confirmUpdate(gjq: GeoJSONQuery) {
     this.modalService
-      .open(new ConfirmModal('Please confirm update', 'Are you sure you want to overwrite ' + q + ' with the current boundary?', 'tiny'))
+      .open(new ConfirmModal('Please confirm update', 'Are you sure you want to overwrite ' + gjq.name +
+        ' with the current boundary?', 'tiny'))
       .onApprove(() => {
-        console.log('Updating: ' + q);
-        this.setGeoJSONQuery(q, this.drawing.getAll());
+        console.log('Updating: ' + gjq.uuid);
+        gjq.geojson = this.drawing.getAll();
       })
       .onDeny(() => {
         console.log('Update cancelled.');
       });
+
   }
 
-  public setGeoJSONQuery(name: string, geojson: any) {
-    if (!this.isGeoJSONQuery(name)) {
+  public setGeoJSONQuery(uuid: string, name: string, geojson: any) {
+    if (!this.isGeoJSONQuery(uuid)) {
       this.queries.push(new GeoJSONQuery(name, geojson));
     } else {
-      this.updateGeoJSONQuery(name, geojson);
+      this.updateGeoJSONQuery(uuid, name, geojson);
     }
     this.saveSession();
   }
 
 
-
-  public updateGeoJSONQuery(name, geojson) {
+  public updateGeoJSONQuery(uuid, name, geojson) {
     for (let i = 0; i < this.queries.length; i++) {
-      if (this.queries[i].name === name) {
+      if (this.queries[i].uuid === uuid) {
+        this.queries[i].name = name;
         this.queries[i].geojson = geojson;
-        console.log(name + ' updated.');
+        console.log(this.queries[i].name + ' updated.');
       }
     }
   }
@@ -377,55 +340,40 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit, OnDestroy 
     }
   }
 
-  public getGeoJSONQuery(name) {
+  public toggleAllOff() {
     for (let i = 0; i < this.queries.length; i++) {
-      if (this.queries[i].name === name) {
-        return this.queries[i];
-      }
+      this.queries[i].enabled_right = false;
     }
-    return false;
+    this.drawing.set(this.emptyGeoJSON);
+    this.altdrawing.set(this.emptyGeoJSON);
+    this.saveSession();
   }
 
-  public isGeoJSONQuery(name) {
+  public isGeoJSONQuery(uuid) {
     for (let i = 0; i < this.queries.length; i++) {
-      console.log('Checking if: ' + this.queries[i].name + ' == ' + name);
-      if (this.queries[i].name === name) {
+      console.log('Checking if: ' + this.queries[i].uuid + ' == ' + uuid);
+      if (this.queries[i].uuid === uuid) {
         return true;
       }
     }
     return false;
   }
 
-  public removeGeoJSONQuery(name) {
-    let index = -1;
-    for (let i = 0; i < this.queries.length; i++) {
-      if (this.queries[i].name === name) {
-        index = i;
-      }
-    }
-    if (index > -1) {
-      if (this.queries[index].enabled_right) {
-        this.toggleSelectionOff();
-      }
-      this.queries.splice(index, 1);
-      this.saveSession();
-      console.log('Removed: ' + name);
-    } else {
-      console.log('Can\'t remove; doesn\'t exist.');
-    }
+  public removeGeoJSONQuery(gjq) {
+    this.toggleSelectionOff(gjq);
+    this.queries = this.queries.filter(obj => obj !== gjq);
+    this.saveSession();
   }
 
   public insertNewGeoJSONQuery() {
-    if (this.auth.authenticated) {
-      this.toggleSelectionOff();
-      const new_name = this.generateNewName();
-      const editable = new GeoJSONQuery(new_name, this.emptyGeoJSON);
-      this.queries.push(editable);
-      this.saveSession();
-      editable.enabled_right = true;
-      this.editname.nativeElement.focus();
-      this.editname.nativeElement.select();
-    }
+    this.toggleAllOff();
+    const new_name = this.generateNewName();
+    const editable = new GeoJSONQuery(new_name, this.emptyGeoJSON);
+    this.queries.push(editable);
+    this.saveSession();
+    editable.enabled_right = true;
+    this.editname.nativeElement.focus();
+    this.editname.nativeElement.select();
   }
 
   private generateNewName() {
@@ -438,7 +386,7 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   public searchForItem() {
-    this.toggleSelectionOff();
+    this.toggleAllOff();
     let i = 0;
     let found = false;
     while (i < this.queries.length && !found) {
@@ -455,12 +403,14 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit, OnDestroy 
 
 
 export class GeoJSONQuery {
+  uuid: string;
   name: string;
   geojson: any;
   enabled_left: boolean;
   enabled_right: boolean;
 
   constructor(name, geojson) {
+    this.uuid = UUID.UUID();
     this.name = name;
     this.enabled_left = false;
     this.enabled_right = false;

@@ -1,6 +1,6 @@
 <div class="ui container">
 
-  <div *ngIf="!auth.isAuthenticated()" class="ui icon yellow message">
+  <div *ngIf="!auth.authenticated" class="ui icon yellow message">
     <i class="user circle icon"></i>
     <div class="content">
       <div class="header">
@@ -10,7 +10,7 @@
     </div>
   </div>
 
-  <div *ngIf="auth.isAuthenticated()">
+  <div *ngIf="auth.authenticated">
     <div class="ui segment">
       <div class="ui grid">
         <div class="ui four wide column">
@@ -34,3 +34,4 @@
     <app-upload></app-upload>
   </div>
 </div>
+<app-footer></app-footer>

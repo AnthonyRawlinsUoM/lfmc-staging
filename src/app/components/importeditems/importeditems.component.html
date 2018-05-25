@@ -1,20 +1,20 @@
 <div class="ui inverted segment">
-  <div *ngIf="!auth.authenticated" class="ui icon yellow message">
-    <i class="user circle icon"></i>
-    <div class="content">
-      <div class="header">
-        Login required
-      </div>
-      <p>This feature is for authenticated users only.</p>
-    </div>
-  </div>
+  <!--<div *ngIf="!auth.authenticated" class="ui icon yellow message">-->
+    <!--<i class="user circle icon"></i>-->
+    <!--<div class="content">-->
+      <!--<div class="header">-->
+        <!--Login required-->
+      <!--</div>-->
+      <!--<p>This feature is for authenticated users only.</p>-->
+    <!--</div>-->
+  <!--</div>-->
 
-  <div *ngIf="auth.authenticated" class="ui tiny form">
+  <div class="ui tiny form">
     <div class="ui middle aligned divided inverted list">
       <div class="item">
         <div class="right floated content">
           <div class="ui compact icon buttons">
-            <button (click)="toggleSelectionOff()" class="ui small icon button">
+            <button (click)="toggleAllOff()" class="ui small icon button">
               <i class="ui power off icon"></i> Clear
             </button>
 
@@ -44,33 +44,33 @@
     </div>
     <div class="scrolling content importeditemspane">
       <div class="ui middle aligned divided inverted list">
-        <div *ngFor="let q of queries" class="item" [class.selected]="q.enabled_right">
+        <div *ngFor="let gjq of queries" class="item" [class.selected]="gjq.enabled_right">
           <div class="right floated content">
             <div class="ui two compact basic icon buttons">
-              <button [disabled]="!q.enabled_right" (click)="confirmUpdate(q.name)" class="ui basic yellow icon button">
+              <button [disabled]="!gjq.enabled_right" (click)="confirmUpdate(gjq)" class="ui basic yellow icon button">
                 <i class="ui pencil alternate icon"></i>
               </button>
-              <button (click)="confirmRemoval(q.name)" class="ui basic red icon button">
+              <button (click)="confirmRemoval(gjq)" class="ui basic red icon button">
                 <i class="ui ban icon"></i>
               </button>
             </div>
           </div>
 
-          <div class="inline fields content" *ngIf="q.enabled_right">
+          <div class="inline fields content" *ngIf="gjq.enabled_right">
             <div class="field">
-              <button class="ui compact black icon button" (click)="toggleSelectionOff();"><i
+              <button class="ui compact black icon button" (click)="toggleSelectionOff(gjq);"><i
                 class="ui toggle on icon"></i></button>
             </div>
             <div class="field">
               <!--(click)="this.select()"-->
-              <input type="text" [(ngModel)]="q.name" #editname>
+              <input type="text" [(ngModel)]="gjq.name" #editname>
             </div>
           </div>
-          <div class="fields content" *ngIf="!q.enabled_right">
+          <div class="fields content" *ngIf="!gjq.enabled_right">
             <div class="field">
-              <button class="ui compact black icon button" (click)="toggleSelectionOn(q.name);"><i
+              <button class="ui compact black icon button" (click)="toggleSelectionOn(gjq);"><i
                 class="ui toggle off icon"></i></button>
-              {{q.name}}
+              {{gjq.name}}
             </div>
           </div>
         </div>
