@@ -7,11 +7,13 @@ IMAGE=lfmc-staging
 # ensure we're up to date
 git pull
 
+OLD_PACKAGE_VERSION=`node -pe "require('./package.json').version"`
+echo "previous version: $OLD_PACKAGE_VERSION"
 npm version patch
 PACKAGE_VERSION=`node -pe "require('./package.json').version"`
 echo $PACKAGE_VERSION>"VERSION"
 version=`cat VERSION`
-echo "version: $version"
+echo "build version: $version"
 
 # run build
 make build

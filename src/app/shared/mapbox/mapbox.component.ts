@@ -575,7 +575,8 @@ export class MapboxComponent implements OnInit, AfterViewInit {
 
   // use turf to save GeoJSON of boundary
   public saveBoundary() {
-    if (!this.prevBoundary) {
+    console.log(this.prevBoundary);
+
       if (this.prevBoundary.features !== [] || this.prevBoundary.features.length > 0) {
         console.log('Drawing exists.');
         if (this.prevBoundary !== this.drw.getAll()) { // ie., change detected
@@ -589,13 +590,11 @@ export class MapboxComponent implements OnInit, AfterViewInit {
               this.zoomToBoundaryView();
             }
           } else {
-            console.log('Can\'t use that boundary.');
+            console.log('No boundary.');
           }
         }
       }
-    } else {
-      console.log('Empty drawing');
-    }
+
   }
 
 

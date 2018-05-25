@@ -44,10 +44,10 @@
     </div>
     <div class="scrolling content importeditemspane">
       <div class="ui middle aligned divided inverted list">
-        <div *ngFor="let q of queries" class="item" [class.selected]="q.enabled">
+        <div *ngFor="let q of queries" class="item" [class.selected]="q.enabled_right">
           <div class="right floated content">
             <div class="ui two compact basic icon buttons">
-              <button [disabled]="!q.enabled" (click)="confirmUpdate(q.name)" class="ui basic yellow icon button">
+              <button [disabled]="!q.enabled_right" (click)="confirmUpdate(q.name)" class="ui basic yellow icon button">
                 <i class="ui pencil alternate icon"></i>
               </button>
               <button (click)="confirmRemoval(q.name)" class="ui basic red icon button">
@@ -56,7 +56,7 @@
             </div>
           </div>
 
-          <div class="inline fields content" *ngIf="q.enabled">
+          <div class="inline fields content" *ngIf="q.enabled_right">
             <div class="field">
               <button class="ui compact black icon button" (click)="toggleSelectionOff();"><i
                 class="ui toggle on icon"></i></button>
@@ -66,7 +66,7 @@
               <input type="text" [(ngModel)]="q.name" #editname>
             </div>
           </div>
-          <div class="fields content" *ngIf="!q.enabled">
+          <div class="fields content" *ngIf="!q.enabled_right">
             <div class="field">
               <button class="ui compact black icon button" (click)="toggleSelectionOn(q.name);"><i
                 class="ui toggle off icon"></i></button>
