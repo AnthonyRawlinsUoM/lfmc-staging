@@ -1,5 +1,5 @@
 <div class="ui inverted segment">
-  <div *ngIf="!auth.isAuthenticated()" class="ui icon yellow message">
+  <div *ngIf="!auth.authenticated" class="ui icon yellow message">
     <i class="user circle icon"></i>
     <div class="content">
       <div class="header">
@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <div *ngIf="auth.isAuthenticated()" class="ui tiny form">
+  <div *ngIf="auth.authenticated" class="ui tiny form">
     <div class="ui middle aligned divided inverted list">
       <div class="item">
         <div class="right floated content">

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service'
 import { environment } from '../environments/environment';
 
 @Component({
@@ -10,6 +11,6 @@ export class AppComponent {
   title = 'Landscape Fuel Moisture Condition';
   public version: string = environment.VERSION;
 
-  constructor() {
+  constructor(private auth: AuthService) {
   }
 }

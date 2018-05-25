@@ -26,10 +26,10 @@
     <a class="item" [routerLinkActive]="['active']" *ngIf="auth.authenticated" routerLink="/profile">
       <i class="blue user circle icon"></i>
     </a>
-    <a class="item" *ngIf="!auth.isAuthenticated()" (click)="auth.login()">
+    <a class="item" *ngIf="!auth.authenticated" (click)="auth.login()">
       <i class="blue sign in icon"></i>Login
     </a>
-    <a class="item" *ngIf="auth.isAuthenticated()" (click)="auth.logout()">
+    <a class="item" *ngIf="auth.authenticated" (click)="auth.logout()">
       <i class="red sign out icon"></i>Logout
     </a>
     <div class="item">
