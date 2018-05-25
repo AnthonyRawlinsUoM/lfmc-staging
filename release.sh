@@ -9,7 +9,9 @@ git pull
 
 npm version patch
 PACKAGE_VERSION= node -pe "require('./package.json').version"
-version= echo $PACKAGE_VERSION
+echo $PACKAGE_VERSION>"VERSION"
+version=`cat VERSION`
+echo "version: $version"
 
 # run build
 make build
