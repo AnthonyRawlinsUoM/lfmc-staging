@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -ex
 
 USERNAME=anthonyrawlinsuom
 IMAGE=lfmc-staging
@@ -8,7 +7,7 @@ IMAGE=lfmc-staging
 git pull
 
 npm version patch
-PACKAGE_VERSION= node -pe "require('./package.json').version"
+PACKAGE_VERSION=`node -pe "require('./package.json').version"`
 echo $PACKAGE_VERSION>"VERSION"
 version=`cat VERSION`
 echo "version: $version"
