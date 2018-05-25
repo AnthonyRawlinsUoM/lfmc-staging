@@ -1,6 +1,6 @@
 {
-  "name": "v1",
-  "version": "0.5.36",
+  "name": "lfmc-staging",
+  "version": "0.5.37",
   "license": "MIT",
   "main": "app.js",
   "scripts": {
