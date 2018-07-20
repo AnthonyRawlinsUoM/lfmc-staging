@@ -578,7 +578,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
 
     // map.on('mousedown', this.mouseDown.bind(this));
     // map.on('mousemove', this.onMove.bind(this));
-    // map.on('mouseup', this.onUp.bind(this));
+    map.on('mouseup', this.onUp.bind(this));
 
     this.mapService.map = map;
 
@@ -669,10 +669,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         if (data.features.length > 0) {
           console.log(data);
           this.setIngestValue(data);
-          // this.prevBoundary = data;
-          // if (this.snapping) {
-          //   this.zoomToBoundaryView();
-          // }
+          this.prevBoundary = data;
         } else {
           console.log('No boundary.');
         }
@@ -687,6 +684,8 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     try {
       json_parsed = JSON.parse(this.ingestGeoJson);
     } catch (e) {
+
+      console.log(e);
       this.modalService
         .open(new ConfirmModal('Warning', 'JSON appears invalid: ' + e, 'tiny'))
         .onApprove(() => alert('NYI'))
@@ -699,25 +698,27 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   setIngestValue(v) {
     try {
       this.ingestGeoJson = JSON.stringify(v, null, '\t');
+      console.log('Boundary updated.');
+
     } catch (e) {
+      console.log('Error setting ingest JSON:' + e);
       this.modalService
         .open(new ConfirmModal('Warning', 'JSON appears invalid: ' + e, 'tiny'))
         .onApprove(() => alert('NYI'))
         .onDeny(() => {
         });
-      console.log(e);
     }
   }
 
   public importGeoJSON() {
-    // if (this.ingesting) {
+
     console.log('Parsing GeoJSON');
     const data = this.getIngestValue();
     console.log(data);
     this.drw.set(data);
     this.altdrw.set(data); // Mirror the data on the alternate view!
     this.zoomToBoundaryView();
-    // }
+
   }
 
   public zoomToBoundaryView() {
@@ -870,7 +871,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   }
 
   private onUp(e) {
-
+    console.log('Got onUp');
     this.saveBoundary();
 
     // if(this.draggingHandle) return this.upSplitViewHandle;

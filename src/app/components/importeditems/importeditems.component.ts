@@ -197,6 +197,7 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit, OnDestroy 
       "type": "FeatureCollection",
       "features": [
         {
+          'id': '21aff45153f64d0f8ed9d8827376b778',
           "type": "Feature",
           "properties": {},
           "geometry": {
@@ -276,6 +277,7 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit, OnDestroy 
     this.drawing.set(gj);
     this.altdrawing.set(gj);
     this.saveSession();
+    console.log('Done.');
   }
 
   toggleSelectionOff(gjq: GeoJSONQuery) {
@@ -285,6 +287,7 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit, OnDestroy 
     this.altdrawing.set(this.emptyGeoJSON);
     // this.drawing.deleteAll().getAll();
     this.saveSession();
+    console.log('Done.');
   }
 
   confirmRemoval(gjq: GeoJSONQuery) {
@@ -292,6 +295,7 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit, OnDestroy 
       .open(new ConfirmModal('Please confirm removal', 'Are you sure you want to permanently delete ' + gjq.name + '?', 'tiny'))
       .onApprove(() => {
         this.removeGeoJSONQuery(gjq);
+        this.saveSession();
       })
       .onDeny(() => {
         console.log('Removal cancelled.');
@@ -304,28 +308,28 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit, OnDestroy 
       .open(new ConfirmModal('Please confirm update', 'Are you sure you want to overwrite ' + gjq.name +
         ' with the current boundary?', 'tiny'))
       .onApprove(() => {
-        console.log('Updating: ' + gjq.u_id);
+        console.log('Updating: ' + gjq.uuid);
         gjq.geojson = this.drawing.getAll();
+        this.saveSession();
       })
       .onDeny(() => {
         console.log('Update cancelled.');
       });
-
   }
 
-  public setGeoJSONQuery(u_id: string, name: string, geojson: any) {
-    if (!this.isGeoJSONQuery(u_id)) {
+  public setGeoJSONQuery(uuid: string, name: string, geojson: any) {
+    if (!this.isGeoJSONQuery(uuid)) {
       this.queries.push(new GeoJSONQuery(name, geojson));
     } else {
-      this.updateGeoJSONQuery(u_id, name, geojson);
+      this.updateGeoJSONQuery(uuid, name, geojson);
     }
     this.saveSession();
   }
 
 
-  public updateGeoJSONQuery(u_id, name, geojson) {
+  public updateGeoJSONQuery(uuid, name, geojson) {
     for (let i = 0; i < this.queries.length; i++) {
-      if (this.queries[i].u_id === u_id) {
+      if (this.queries[i].uuid === uuid) {
         this.queries[i].name = name;
         this.queries[i].geojson = geojson;
         console.log(this.queries[i].name + ' updated.');
@@ -404,14 +408,14 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit, OnDestroy 
 
 
 export class GeoJSONQuery {
-  u_id: string;
+  uuid: string;
   name: string;
   geojson: any;
   enabled_left: boolean;
   enabled_right: boolean;
 
   constructor(name, geojson) {
-    this.u_id = UUID.UUID();
+    this.uuid = UUID.UUID();
     this.name = name;
     this.enabled_left = false;
     this.enabled_right = false;
