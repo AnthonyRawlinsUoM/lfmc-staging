@@ -304,7 +304,7 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit, OnDestroy 
       .open(new ConfirmModal('Please confirm update', 'Are you sure you want to overwrite ' + gjq.name +
         ' with the current boundary?', 'tiny'))
       .onApprove(() => {
-        console.log('Updating: ' + gjq.uuid);
+        console.log('Updating: ' + gjq.u_id);
         gjq.geojson = this.drawing.getAll();
       })
       .onDeny(() => {
@@ -313,19 +313,19 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit, OnDestroy 
 
   }
 
-  public setGeoJSONQuery(uuid: string, name: string, geojson: any) {
-    if (!this.isGeoJSONQuery(uuid)) {
+  public setGeoJSONQuery(u_id: string, name: string, geojson: any) {
+    if (!this.isGeoJSONQuery(u_id)) {
       this.queries.push(new GeoJSONQuery(name, geojson));
     } else {
-      this.updateGeoJSONQuery(uuid, name, geojson);
+      this.updateGeoJSONQuery(u_id, name, geojson);
     }
     this.saveSession();
   }
 
 
-  public updateGeoJSONQuery(uuid, name, geojson) {
+  public updateGeoJSONQuery(u_id, name, geojson) {
     for (let i = 0; i < this.queries.length; i++) {
-      if (this.queries[i].uuid === uuid) {
+      if (this.queries[i].u_id === u_id) {
         this.queries[i].name = name;
         this.queries[i].geojson = geojson;
         console.log(this.queries[i].name + ' updated.');
@@ -349,10 +349,10 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit, OnDestroy 
     this.saveSession();
   }
 
-  public isGeoJSONQuery(uuid) {
+  public isGeoJSONQuery(name) {
     for (let i = 0; i < this.queries.length; i++) {
-      console.log('Checking if: ' + this.queries[i].uuid + ' == ' + uuid);
-      if (this.queries[i].uuid === uuid) {
+      console.log('Checking if: ' + this.queries[i].name + ' == ' + name);
+      if (this.queries[i].name === name) {
         return true;
       }
     }
@@ -377,10 +377,11 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   private generateNewName() {
-    let new_name = 'New Boundary';
+    let new_name = 'New Boundary #0';
     let i = 0;
     while (this.isGeoJSONQuery(new_name)) {
-      new_name = new_name.split('#')[0] + '#' + i++;
+      i += 1;
+      new_name = new_name.split('#')[0] + '#' + i;
     }
     return new_name;
   }
@@ -403,14 +404,14 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit, OnDestroy 
 
 
 export class GeoJSONQuery {
-  uuid: string;
+  u_id: string;
   name: string;
   geojson: any;
   enabled_left: boolean;
   enabled_right: boolean;
 
   constructor(name, geojson) {
-    this.uuid = UUID.UUID();
+    this.u_id = UUID.UUID();
     this.name = name;
     this.enabled_left = false;
     this.enabled_right = false;

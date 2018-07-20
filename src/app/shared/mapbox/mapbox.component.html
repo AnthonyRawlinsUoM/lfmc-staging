@@ -40,9 +40,8 @@
           <div *ngIf="splitview"><i class="white columns icon"></i> Split is On</div>
         </a>
 
-        <a class="item" (click)="snapping = !snapping">
-          <i *ngIf="snapping" class="linkify icon"></i>
-          <i *ngIf="!snapping" class="unlink icon"></i>
+        <a class="item" (click)="zoomToBoundaryView()">
+          <i class="linkify icon"></i>
           Snap to Boundary
         </a>
 
@@ -138,20 +137,7 @@
 
 
             <sui-sidebar class="inverted vertical" #sidebar>
-              <!--<div class="ui fluid inverted menu">-->
-              <!--<a class="item" (click)="exclusiveModelMode = !exclusiveModelMode">-->
-              <!--<div *ngIf="!exclusiveModelMode">-->
-              <!--<i class="inverted toggle on icon"></i> Compare-->
-              <!--</div>-->
-              <!--<div *ngIf="exclusiveModelMode">-->
-              <!--<i class="inverted toggle off icon"></i> Exclusive-->
-              <!--</div>-->
-              <!--</a>-->
 
-              <!--<a *ngIf="allModels" class="item" (click)="allModelsOwnedByLeft()"><i class="check circle outline icon"></i> All-->
-              <!--model_names</a>-->
-              <!--<a *ngIf="!allModels" class="item" (click)="allModelsOwnedByRight()"><i class="radio icon"></i> All model_names</a>-->
-              <!--</div>-->
 
               <sui-dimmer [(isDimmed)]="model_dimmer" [isClickable]="false">
                 <div class="ui indeterminate text loader">Loading models. Please wait.</div>
@@ -172,29 +158,29 @@
                   <td *ngIf="!splitview" class="right aligned">
                     <div class="ui mini compact icon buttons">
                       <button class="ui compact black icon button" *ngIf="!m.enabled_right"
-                              (click)="toggleModel(m.name, 'R')"><i class="toggle off icon"></i></button>
+                              (click)="toggleModel(m.code, 'R')"><i class="toggle off icon"></i></button>
                       <button class="ui compact black icon button" *ngIf="m.enabled_right"
-                              (click)="toggleModel(m.name, 'O')"><i class="yellow toggle on icon"></i></button>
+                              (click)="toggleModel(m.code, 'O')"><i class="yellow toggle on icon"></i></button>
                     </div>
                   </td>
 
                   <td *ngIf="splitview" class="right aligned">
                     <div class="ui mini compact icon buttons">
                       <button class="ui compact black icon button" *ngIf="m.enabled_left"
-                              (click)="toggleModel(m.name, 'L')"><i class="blue caret left icon"></i></button>
+                              (click)="toggleModel(m.code, 'L')"><i class="blue caret left icon"></i></button>
                       <button class="ui compact black icon button" *ngIf="!m.enabled_left"
-                              (click)="toggleModel(m.name, 'L')"><i class="angle left icon"></i></button>
+                              (click)="toggleModel(m.code, 'L')"><i class="angle left icon"></i></button>
 
                       <button class="ui compact black icon button" *ngIf="!m.enabled_left && !m.enabled_right"
                               [disabled]="(!m.enabled_left && !m.enabled_right)"><i class="toggle off icon"></i>
                       </button>
                       <button class="ui compact black icon button" *ngIf="m.enabled_left || m.enabled_right"
-                              (click)="toggleModel(m.name, 'O')"><i class="yellow toggle on icon"></i></button>
+                              (click)="toggleModel(m.code, 'O')"><i class="yellow toggle on icon"></i></button>
 
                       <button class="ui compact black icon button" *ngIf="m.enabled_right"
-                              (click)="toggleModel(m.name, 'R')"><i class="blue caret right icon"></i></button>
+                              (click)="toggleModel(m.code, 'R')"><i class="blue caret right icon"></i></button>
                       <button class="ui compact black icon button" *ngIf="!m.enabled_right"
-                              (click)="toggleModel(m.name, 'R')"><i class="angle right icon"></i></button>
+                              (click)="toggleModel(m.code, 'R')"><i class="angle right icon"></i></button>
                     </div>
                   </td>
                 </tr>
@@ -244,17 +230,17 @@
 
             </div>
 
-            <div class="ui two column stackable grid" style="margin:0;">
+            <div class="ui one column stackable grid" style="margin:0;">
               <div class="row">
                 <div class="column">
-                  <div class="ui form">
-                    <div class="field json">
-              <textarea style="background-color: transparent;height:40vh;" class="fillgeoarea"
-                        [(ngModel)]="ingestGeoJson" (change)="importGeoJSON()" #geojsonarea></textarea>
-                    </div>
-                  </div>
-                </div>
-                <div class="column">
+                  <!--<div class="ui form">-->
+                    <!--<div class="field json">-->
+              <!--&lt;!&ndash;<textarea style="background-color: transparent;height:40vh;" class="fillgeoarea"&ndash;&gt;-->
+                        <!--&lt;!&ndash;[(ngModel)]="ingestGeoJson" (change)="importGeoJSON()" #geojsonarea></textarea>&ndash;&gt;-->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
+                <!--<div class="column">-->
                   <app-importeditems [(drawing)]="drw" [(altdrawing)]="altdrw"></app-importeditems>
                 </div>
               </div>

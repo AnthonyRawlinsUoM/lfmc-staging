@@ -385,7 +385,7 @@ module.exports = ".ui.inverted.menu.shadow,\n.ui.inverted.pointing.dropdown .men
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui top following inverted menu shadow\">\n  <div class=\"ui inverted pointing dropdown item\" suiDropdown>\n    <div class=\"text\">\n      <i class=\"gray sidebar icon\"></i> Site\n    </div>\n    <div class=\"menu\" suiDropdownMenu>\n      <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/home\">\n        <i class=\"blue map outline icon\"></i>Map\n      </a>\n      <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/models\">\n        <i class=\"blue database icon\"></i>Models\n      </a>\n      <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/import\">\n        <i class=\"blue marker icon\"></i>Import\n      </a>\n      <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/options\">\n        <i class=\"blue options icon\"></i>Options\n      </a>\n      <a class=\"item\" [routerLinkActive]=\"['active']\" href=\"http://documentation.landscapefuelmoisture.bushfirebehaviour.net.au/\" target=\"_blank\">\n        <i class=\"blue help icon\"></i>Help\n      </a>\n    </div>\n  </div>\n  <div class=\"ui inverted header item\"><img class=\"ui circular mini spaced image\" src=\"/assets/fire.png\"> {{title}} v{{version}}</div>\n  <div class=\"right menu\">\n    <a class=\"item\" [routerLinkActive]=\"['active']\" *ngIf=\"auth.authenticated\" routerLink=\"/profile\">\n      <i class=\"blue user circle icon\"></i>\n    </a>\n    <a class=\"item\" *ngIf=\"!auth.authenticated\" (click)=\"auth.login()\">\n      <i class=\"blue sign in icon\"></i>Login\n    </a>\n    <a class=\"item\" *ngIf=\"auth.authenticated\" (click)=\"auth.logout()\">\n      <i class=\"red sign out icon\"></i>Logout\n    </a>\n    <div class=\"item\">\n      <div class=\"ui transparent icon input\">\n        <input type=\"text\" placeholder=\"Site Search...\">\n        <i class=\"inverted search link icon\"></i>\n      </div>\n    </div>\n  </div>\n</div>\n<main>\n  <router-outlet></router-outlet>\n</main>\n"
+module.exports = "<div class=\"ui top following inverted menu shadow\">\n  <div class=\"ui inverted pointing dropdown item\" suiDropdown>\n    <div class=\"text\">\n      <i class=\"gray sidebar icon\"></i> Site\n    </div>\n    <div class=\"menu\" suiDropdownMenu>\n      <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/home\">\n        <i class=\"blue map outline icon\"></i>Map\n      </a>\n      <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/models\">\n        <i class=\"blue database icon\"></i>Models\n      </a>\n      <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/import\">\n        <i class=\"blue marker icon\"></i>Import\n      </a>\n      <a class=\"item\" [routerLinkActive]=\"['active']\" routerLink=\"/options\">\n        <i class=\"blue options icon\"></i>Options\n      </a>\n      <a class=\"item\" [routerLinkActive]=\"['active']\" href=\"http://documentation.landscapefuelmoisture.bushfirebehaviour.net.au/\" target=\"_blank\">\n        <i class=\"blue help icon\"></i>Help\n      </a>\n    </div>\n  </div>\n  <a class=\"ui inverted header item\" routerLink=\"/home\"><i class=\"ui white home icon\"></i></a>\n  <div class=\"ui inverted header item\"><img class=\"ui circular mini spaced image\" src=\"/assets/fire.png\"> {{title}} v{{version}}</div>\n  <div class=\"right menu\">\n    <a class=\"item\" [routerLinkActive]=\"['active']\" *ngIf=\"auth.authenticated\" routerLink=\"/profile\">\n      <i class=\"blue user circle icon\"></i>\n    </a>\n    <a class=\"item\" *ngIf=\"!auth.authenticated\" (click)=\"auth.login()\">\n      <i class=\"blue sign in icon\"></i>Login\n    </a>\n    <a class=\"item\" *ngIf=\"auth.authenticated\" (click)=\"auth.logout()\">\n      <i class=\"red sign out icon\"></i>Logout\n    </a>\n    <!--<div class=\"item\">-->\n      <!--<div class=\"ui transparent icon input\">-->\n        <!--<input type=\"text\" placeholder=\"Site Search...\">-->\n        <!--<i class=\"inverted search link icon\"></i>-->\n      <!--</div>-->\n    <!--</div>-->\n  </div>\n</div>\n<main>\n  <router-outlet></router-outlet>\n</main>\n"
 
 /***/ }),
 
@@ -2062,7 +2062,7 @@ module.exports = ".importeditemspane {\n  max-height: 40vh;\n  overflow-y: scrol
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui inverted segment\">\n  <!--<div *ngIf=\"!auth.authenticated\" class=\"ui icon yellow message\">-->\n    <!--<i class=\"user circle icon\"></i>-->\n    <!--<div class=\"content\">-->\n      <!--<div class=\"header\">-->\n        <!--Login required-->\n      <!--</div>-->\n      <!--<p>This feature is for authenticated users only.</p>-->\n    <!--</div>-->\n  <!--</div>-->\n\n  <div class=\"ui tiny form\">\n    <div class=\"ui middle aligned divided inverted list\">\n      <div class=\"item\">\n        <div class=\"right floated content\">\n          <div class=\"ui compact icon buttons\">\n            <button (click)=\"toggleAllOff()\" class=\"ui small icon button\">\n              <i class=\"ui power off icon\"></i> Clear\n            </button>\n\n            <button routerLink=\"/import\" class=\"ui small blue icon button\">\n              <i class=\"ui cloud download icon\"></i> Import\n            </button>\n\n            <button (click)=\"insertNewGeoJSONQuery()\" class=\"ui small green icon button\">\n              <i class=\"ui plus icon\"></i> Add\n            </button>\n          </div>\n        </div>\n        <div class=\"content\">\n          <h3 class=\"ui header\"><i class=\"group object icon\"></i> Spatial Boundaries</h3>\n        </div>\n      </div>\n\n      <div class=\"item\">\n        <div class=\"field\">\n          <div class=\"ui icon input\">\n            <i class=\"search icon\"></i>\n            <input type=\"text\" name=\"name\" class=\"ui inverted\" placeholder=\"Search...\" (change)=\"searchForItem()\" [(ngModel)]=\"searchterm\"\n                   #searchbox>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"scrolling content importeditemspane\">\n      <div class=\"ui middle aligned divided inverted list\">\n        <div *ngFor=\"let gjq of queries\" class=\"item\" [class.selected]=\"gjq.enabled_right\">\n          <div class=\"right floated content\">\n            <div class=\"ui two compact basic icon buttons\">\n              <button [disabled]=\"!gjq.enabled_right\" (click)=\"confirmUpdate(gjq)\" class=\"ui basic yellow icon button\">\n                <i class=\"ui pencil alternate icon\"></i>\n              </button>\n              <button (click)=\"confirmRemoval(gjq)\" class=\"ui basic red icon button\">\n                <i class=\"ui ban icon\"></i>\n              </button>\n            </div>\n          </div>\n\n          <div class=\"inline fields content\" *ngIf=\"gjq.enabled_right\">\n            <div class=\"field\">\n              <button class=\"ui compact black icon button\" (click)=\"toggleSelectionOff(gjq);\"><i\n                class=\"ui toggle on icon\"></i></button>\n            </div>\n            <div class=\"field\">\n              <!--(click)=\"this.select()\"-->\n              <input type=\"text\" [(ngModel)]=\"gjq.name\" #editname>\n            </div>\n          </div>\n          <div class=\"fields content\" *ngIf=\"!gjq.enabled_right\">\n            <div class=\"field\">\n              <button class=\"ui compact black icon button\" (click)=\"toggleSelectionOn(gjq);\"><i\n                class=\"ui toggle off icon\"></i></button>\n              {{gjq.name}}\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"ui inverted segment\">\n  <!--<div *ngIf=\"!auth.authenticated\" class=\"ui icon yellow message\">-->\n    <!--<i class=\"user circle icon\"></i>-->\n    <!--<div class=\"content\">-->\n      <!--<div class=\"header\">-->\n        <!--Login required-->\n      <!--</div>-->\n      <!--<p>This feature is for authenticated users only.</p>-->\n    <!--</div>-->\n  <!--</div>-->\n\n  <div class=\"ui tiny form\">\n    <div class=\"ui middle aligned divided inverted list\">\n      <div class=\"item\">\n        <div class=\"right floated content\">\n          <div class=\"ui compact icon buttons\">\n            <button (click)=\"toggleAllOff()\" class=\"ui small icon button\">\n              <i class=\"ui power off icon\"></i> Clear\n            </button>\n\n            <button routerLink=\"/import\" class=\"ui small blue icon button\">\n              <i class=\"ui cloud download icon\"></i> Import\n            </button>\n\n            <button (click)=\"insertNewGeoJSONQuery()\" class=\"ui small green icon button\">\n              <i class=\"ui plus icon\"></i> Add\n            </button>\n          </div>\n        </div>\n        <div class=\"content\">\n          <h3 class=\"ui header\"><i class=\"group object icon\"></i> Spatial Boundaries</h3>\n        </div>\n      </div>\n\n      <div class=\"item\">\n        <div class=\"field\">\n          <div class=\"ui icon input\">\n            <i class=\"search icon\"></i>\n            <input type=\"text\" name=\"name\" class=\"ui inverted\" placeholder=\"Search...\" (change)=\"searchForItem()\" [(ngModel)]=\"searchterm\"\n                   #searchbox>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class=\"scrolling content importeditemspane\">\n      <div class=\"ui middle aligned divided inverted list\">\n        <div *ngFor=\"let gjq of queries\" class=\"item\" [class.selected]=\"gjq.enabled_right\">\n          <div class=\"right floated content\">\n            <div class=\"ui two compact basic icon buttons\">\n              <button [disabled]=\"!gjq.enabled_right\" (click)=\"confirmUpdate(gjq)\" class=\"ui basic yellow icon button\">\n                <i class=\"ui pencil alternate icon\"></i>\n              </button>\n              <button (click)=\"confirmRemoval(gjq)\" class=\"ui basic red icon button\">\n                <i class=\"ui ban icon\"></i>\n              </button>\n            </div>\n          </div>\n\n          <div class=\"inline fields content\" *ngIf=\"gjq.enabled_right\">\n            <div class=\"field\">\n              <button class=\"ui compact black icon button\" (click)=\"toggleSelectionOff(gjq);\"><i\n                class=\"ui green toggle on icon\"></i></button>\n            </div>\n            <div class=\"field\">\n              <input type=\"text\" [(ngModel)]=\"gjq.name\" #editname>\n            </div>\n          </div>\n          <div class=\"fields content\" *ngIf=\"!gjq.enabled_right\">\n            <div class=\"field\">\n              <button class=\"ui compact black icon button\" (click)=\"toggleSelectionOn(gjq);\"><i\n                class=\"ui toggle off icon\"></i></button>\n              {{gjq.name}}\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -2367,25 +2367,25 @@ var ImportedItemsComponent = /** @class */ (function () {
             .open(new _confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_4__["ConfirmModal"]('Please confirm update', 'Are you sure you want to overwrite ' + gjq.name +
             ' with the current boundary?', 'tiny'))
             .onApprove(function () {
-            console.log('Updating: ' + gjq.uuid);
+            console.log('Updating: ' + gjq.u_id);
             gjq.geojson = _this.drawing.getAll();
         })
             .onDeny(function () {
             console.log('Update cancelled.');
         });
     };
-    ImportedItemsComponent.prototype.setGeoJSONQuery = function (uuid, name, geojson) {
-        if (!this.isGeoJSONQuery(uuid)) {
+    ImportedItemsComponent.prototype.setGeoJSONQuery = function (u_id, name, geojson) {
+        if (!this.isGeoJSONQuery(u_id)) {
             this.queries.push(new GeoJSONQuery(name, geojson));
         }
         else {
-            this.updateGeoJSONQuery(uuid, name, geojson);
+            this.updateGeoJSONQuery(u_id, name, geojson);
         }
         this.saveSession();
     };
-    ImportedItemsComponent.prototype.updateGeoJSONQuery = function (uuid, name, geojson) {
+    ImportedItemsComponent.prototype.updateGeoJSONQuery = function (u_id, name, geojson) {
         for (var i = 0; i < this.queries.length; i++) {
-            if (this.queries[i].uuid === uuid) {
+            if (this.queries[i].u_id === u_id) {
                 this.queries[i].name = name;
                 this.queries[i].geojson = geojson;
                 console.log(this.queries[i].name + ' updated.');
@@ -2406,10 +2406,10 @@ var ImportedItemsComponent = /** @class */ (function () {
         this.altdrawing.set(this.emptyGeoJSON);
         this.saveSession();
     };
-    ImportedItemsComponent.prototype.isGeoJSONQuery = function (uuid) {
+    ImportedItemsComponent.prototype.isGeoJSONQuery = function (name) {
         for (var i = 0; i < this.queries.length; i++) {
-            console.log('Checking if: ' + this.queries[i].uuid + ' == ' + uuid);
-            if (this.queries[i].uuid === uuid) {
+            console.log('Checking if: ' + this.queries[i].name + ' == ' + name);
+            if (this.queries[i].name === name) {
                 return true;
             }
         }
@@ -2431,10 +2431,11 @@ var ImportedItemsComponent = /** @class */ (function () {
         this.editname.nativeElement.select();
     };
     ImportedItemsComponent.prototype.generateNewName = function () {
-        var new_name = 'New Boundary';
+        var new_name = 'New Boundary #0';
         var i = 0;
         while (this.isGeoJSONQuery(new_name)) {
-            new_name = new_name.split('#')[0] + '#' + i++;
+            i += 1;
+            new_name = new_name.split('#')[0] + '#' + i;
         }
         return new_name;
     };
@@ -2488,7 +2489,7 @@ var ImportedItemsComponent = /** @class */ (function () {
 
 var GeoJSONQuery = /** @class */ (function () {
     function GeoJSONQuery(name, geojson) {
-        this.uuid = angular2_uuid__WEBPACK_IMPORTED_MODULE_6__["UUID"].UUID();
+        this.u_id = angular2_uuid__WEBPACK_IMPORTED_MODULE_6__["UUID"].UUID();
         this.name = name;
         this.enabled_left = false;
         this.enabled_right = false;
@@ -3197,7 +3198,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 // TODO
-var URL = 'http://webfire.mobility.unimelb.edu.au:1880/upload';
+var URL = 'http://pipeline.landscapefuelmoisture.bushfirebehaviour.net.au/upload';
 var UploadComponent = /** @class */ (function () {
     function UploadComponent() {
         this.uploader = new ng2_file_upload__WEBPACK_IMPORTED_MODULE_1__["FileUploader"]({ url: URL });
@@ -3873,7 +3874,7 @@ module.exports = "html, body {\n  margin: 0;\n  height: 100%;\n  overflow: hidde
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui mapbox\" (mouseup)=\"upSplitView($event)\" (mousedown)=\"downSplitView($event)\" (click)=\"onUp($event)\"\n     (drag)=\"dragSplitView($event)\" (mousemove)=\"dragSplitView($event)\">\n  <div class=\"viewport\" id=\"backViewport\">\n    <div class=\"viewframe\">\n      <div id=\"mymapbox\" class=\"ui mapbox mapboxgl-map\"></div>\n    </div>\n  </div>\n  <div class=\"viewport\" id=\"frontViewport\">\n    <div class=\"viewframe\">\n      <div id=\"myAltmapbox\" class=\"ui mapbox mapboxgl-map\"></div>\n    </div>\n  </div>\n  <div id=\"splitViewHandle\" class=\"viewDividerhandle\" (mouseenter)=\"enterSplitViewHandle($event)\"\n       (click)=\"clickSplitView($event)\" (mouseleave)=\"leaveSplitViewHandle($event)\">\n    <div class=\"ui straight_labels\">\n      <div *ngIf=\"splitview\" class=\"left_label\">\n        <div class=\"ui blue left pointing label\">{{ (modelA | uppercase) || 'NONE' }}</div>\n      </div>\n      <div *ngIf=\"splitview\" class=\"right_label\">\n        <div class=\"ui blue right pointing label\">{{ (modelB | uppercase) || 'NONE' }}</div>\n      </div>\n\n      <div *ngIf=\"!splitview\" class=\"right_label\">\n        <div class=\"ui blue right pointing label\">SPLIT</div>\n      </div>\n    </div>\n\n  </div>\n\n\n  <div id=\"myoverlay\" class='map-overlay'>\n\n    <sui-tabset #bottomToolSet>\n      <div class=\"ui top attached inverted horizontal fluid menu\">\n\n        <div class=\"item\">View Options:</div>\n\n        <a class=\"item\" (click)=\"toggleSplitView()\" data-content=\"Split View Panel\">\n          <div *ngIf=\"!splitview\"><i class=\"white square outline icon\"></i> Split is Off</div>\n          <div *ngIf=\"splitview\"><i class=\"white columns icon\"></i> Split is On</div>\n        </a>\n\n        <a class=\"item\" (click)=\"snapping = !snapping\">\n          <i *ngIf=\"snapping\" class=\"linkify icon\"></i>\n          <i *ngIf=\"!snapping\" class=\"unlink icon\"></i>\n          Snap to Boundary\n        </a>\n\n        <a class=\"green right aligned item\" (click)=\"refreshModelData()\" data-content=\"Go\">\n          <i class=\"white angle double right icon\"></i> Go\n        </a>\n      </div>\n\n      <div class=\"attached inverted segment\" suiTabContent=\"1\" [suiCollapse]=\"!collapse\">\n        <!-- Start: TIME Panel -->\n        <div class=\"ui panel\">\n          <div class=\"ui top attached fluid tiny inverted menu\">\n            <a class=\"item\" (click)=\"collapse = !collapse\">\n              <i class=\"red close icon\"></i>\n            </a>\n\n            <a class=\"item\" (click)=\"sidebar.toggle();\">\n              <i class=\"sidebar icon\"></i> Models\n            </a>\n            <a class=\"right aligned item\" (click)=\"toggleTimeBrushing()\" data-content=\"Timebrushing\">\n              <div *ngIf=\"timebrush\"><i class=\"white paint brush icon\"></i> Timebrush OFF</div>\n              <div *ngIf=\"!timebrush\"><i class=\"white close icon\"></i> Timebrushing ON</div>\n            </a>\n\n            <a class=\"item\" (click)=\"mpg()\" data-content=\"Get MP4\">\n              <i class=\"file video icon\"></i> Animation\n            </a>\n\n            <a class=\"item\" (click)=\"netCDF()\" data-content=\"NetCDF Export\">\n              <i class=\"archive icon\"></i> DataSet\n            </a>\n\n            <a class=\"item\" (click)=\"pdf()\" data-content=\"PDF\">\n              <i class=\"file pdf icon\"></i> PDF\n            </a>\n          </div>\n          <div class=\"ui three column stackable grid\">\n\n            <div class=\"column\">\n              <div class=\"ui tiny inverted menu\">\n                <a class=\"item\" (click)=\"extendPast()\">\n                  <i class=\"left angle icon\"></i>\n                </a>\n                <a class=\"stretch item\" suiDatepicker [pickerMinDate]=\"minStartDate\" [pickerMaxDate]=\"maxStartDate\"\n                   [pickerMode]=\"'date'\" [(ngModel)]=\"start\" (ngModelChange)=\"updateDatetimeOnWMTSSources()\"><i\n                  class=\"calendar icon\"></i> From: {{start | date:'fullDate'}}</a>\n                <a class=\"right aligned item\" (click)=\"reducePast()\">\n                  <i class=\"right angle icon\"></i>\n                </a>\n              </div>\n            </div>\n\n            <div class=\"column\">\n              <div class=\"ui tiny inverted menu\">\n                <a class=\"item\" (click)=\"shuntPastWeek()\">\n                  <i class=\"angle double left icon\"></i>\n                </a>\n                <a class=\"item\" (click)=\"shuntPast()\">\n                  <i class=\"left caret icon\"></i>\n                </a>\n                <a class=\"stretch item\" (click)=\"weekView()\" data-content=\"This past week\"><i class=\"clock icon\"></i> Current\n                  {{durationWindow()}}-day Window</a>\n                <a class=\"right aligned item\" (click)=\"shuntFuture()\">\n                  <i class=\"right caret icon\"></i>\n                </a>\n                <a class=\"right aligned item\" (click)=\"shuntFutureWeek()\">\n                  <i class=\"angle double right icon\"></i>\n                </a>\n              </div>\n            </div>\n\n            <div class=\"column\">\n              <div class=\"ui tiny inverted menu\">\n                <a class=\"item\" (click)=\"reduceFuture()\">\n                  <i class=\"left angle icon\"></i>\n                </a>\n                <a class=\"stretch item\" suiDatepicker [pickerMinDate]=\"minEndDate\" [pickerMaxDate]=\"maxEndDate\"\n                   [pickerMode]=\"'date'\"\n                   [(ngModel)]=\"finish\" (change)=\"updateDatetimeOnWMTSSources()\">\n                  <i class=\"calendar icon\"></i> To:\n                  {{finish\n                  |\n                  date:'fullDate'}}</a>\n                <a class=\"right aligned item\" (click)=\"extendFuture()\">\n                  <i class=\"right angle icon\"></i>\n                </a>\n              </div>\n            </div>\n\n          </div>\n\n          <sui-sidebar-container class=\"ui bottom attached map-overlay-inner\">\n\n\n            <sui-sidebar class=\"inverted vertical\" #sidebar>\n              <!--<div class=\"ui fluid inverted menu\">-->\n              <!--<a class=\"item\" (click)=\"exclusiveModelMode = !exclusiveModelMode\">-->\n              <!--<div *ngIf=\"!exclusiveModelMode\">-->\n              <!--<i class=\"inverted toggle on icon\"></i> Compare-->\n              <!--</div>-->\n              <!--<div *ngIf=\"exclusiveModelMode\">-->\n              <!--<i class=\"inverted toggle off icon\"></i> Exclusive-->\n              <!--</div>-->\n              <!--</a>-->\n\n              <!--<a *ngIf=\"allModels\" class=\"item\" (click)=\"allModelsOwnedByLeft()\"><i class=\"check circle outline icon\"></i> All-->\n              <!--model_names</a>-->\n              <!--<a *ngIf=\"!allModels\" class=\"item\" (click)=\"allModelsOwnedByRight()\"><i class=\"radio icon\"></i> All model_names</a>-->\n              <!--</div>-->\n\n              <sui-dimmer [(isDimmed)]=\"model_dimmer\" [isClickable]=\"false\">\n                <div class=\"ui indeterminate text loader\">Loading models. Please wait.</div>\n              </sui-dimmer>\n              <!-- Start: Model List/Selection Table -->\n              <table class=\"ui selectable inverted table\" id=\"modelList\">\n                <thead>\n                <tr>\n                  <th>Model</th>\n                  <th *ngIf=\"!splitview\" class=\"right aligned\">Actions</th>\n                  <th *ngIf=\"splitview\" class=\"right aligned\">Actions</th>\n                </tr>\n                </thead>\n                <tbody>\n                <tr *ngFor=\"let m of models\">\n                  <td>{{m.ident}}</td>\n\n                  <td *ngIf=\"!splitview\" class=\"right aligned\">\n                    <div class=\"ui mini compact icon buttons\">\n                      <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_right\"\n                              (click)=\"toggleModel(m.name, 'R')\"><i class=\"toggle off icon\"></i></button>\n                      <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_right\"\n                              (click)=\"toggleModel(m.name, 'O')\"><i class=\"yellow toggle on icon\"></i></button>\n                    </div>\n                  </td>\n\n                  <td *ngIf=\"splitview\" class=\"right aligned\">\n                    <div class=\"ui mini compact icon buttons\">\n                      <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_left\"\n                              (click)=\"toggleModel(m.name, 'L')\"><i class=\"blue caret left icon\"></i></button>\n                      <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_left\"\n                              (click)=\"toggleModel(m.name, 'L')\"><i class=\"angle left icon\"></i></button>\n\n                      <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_left && !m.enabled_right\"\n                              [disabled]=\"(!m.enabled_left && !m.enabled_right)\"><i class=\"toggle off icon\"></i>\n                      </button>\n                      <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_left || m.enabled_right\"\n                              (click)=\"toggleModel(m.name, 'O')\"><i class=\"yellow toggle on icon\"></i></button>\n\n                      <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_right\"\n                              (click)=\"toggleModel(m.name, 'R')\"><i class=\"blue caret right icon\"></i></button>\n                      <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_right\"\n                              (click)=\"toggleModel(m.name, 'R')\"><i class=\"angle right icon\"></i></button>\n                    </div>\n                  </td>\n                </tr>\n                </tbody>\n              </table>\n              <!-- End: Model List/Selection Table -->\n            </sui-sidebar>\n            <sui-sidebar-sibling [isDimmedWhenVisible]=\"false\" class=\"inverted\">\n\n              <app-charting id=\"chart\" [lat]=\"lat\" [lng]=\"lng\" [start]=\"start | date:'yMMdd'\"\n                            [finish]=\"finish | date:'yMMdd'\" (select)=\"onSelectDate($event)\"></app-charting>\n            </sui-sidebar-sibling>\n          </sui-sidebar-container>\n        </div>\n        <!-- End: TIME Panel -->\n      </div>\n      <div class=\"attached inverted segment\" suiTabContent=\"2\" [suiCollapse]=\"!ingesting\">\n        <!-- Start: SPACE Panel -->\n        <div class=\"ui panel\">\n          <div id='ingest-area' class='ui ingest-area'>\n            <div class=\"ui top attached fluid tiny inverted menu\">\n              <!--<div class=\"right floated item\" #calculatedarea>{{calculated_area}}</div>-->\n              <a class=\"item\" (click)=\"ingesting = !ingesting; isCopied=false;\">\n                <i class=\"red close icon\"></i>\n              </a>\n\n              <a class=\"item\" [ngxClipboard]=\"geojsonarea\" (cbOnSuccess)=\"isCopied = true\">\n                <i class=\"icons\">\n                  <i class=\"copy icon\"></i>\n                  <i *ngIf=\"isCopied\" class=\"large green checkmark icon\"></i>\n                </i>\n                Copy\n              </a>\n              <a class=\"item\" (click)=\"saveBoundary()\" data-content=\"Save GeoJSON\">\n                <i class=\"white group object icon\"></i> Save\n              </a>\n\n              <a class=\"item\" (click)=\"importGeoJSON()\" data-content=\"Import GeoJSON\">\n                <i class=\"white file icon\"></i> Import\n              </a>\n\n\n              <a class=\"right aligned item\" (click)=\"calculateArea()\" data-content=\"Calculate Area\">\n                <i class=\"white calculator icon\"></i> Calculate Total Area\n              </a>\n\n\n            </div>\n\n            <div class=\"ui two column stackable grid\" style=\"margin:0;\">\n              <div class=\"row\">\n                <div class=\"column\">\n                  <div class=\"ui form\">\n                    <div class=\"field json\">\n              <textarea style=\"background-color: transparent;height:40vh;\" class=\"fillgeoarea\"\n                        [(ngModel)]=\"ingestGeoJson\" (change)=\"importGeoJSON()\" #geojsonarea></textarea>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"column\">\n                  <app-importeditems [(drawing)]=\"drw\" [(altdrawing)]=\"altdrw\"></app-importeditems>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n        <!-- End: SPACE Panel -->\n      </div>\n      <div class=\"attached inverted segment\" suiTabContent=\"3\" [suiCollapse]=\"!availview\">\n        <!-- Start: AVAIL Panel -->\n        <div class=\"ui panel\">\n          <div class=\"ui top attached fluid tiny inverted menu\">\n            <a class=\"item\" (click)=\"availview = !availview\">\n              <i class=\"red close icon\"></i>\n            </a>\n            <a class=\"item\" (click)=\"refreshAvailability()\">\n              <i class=\"refresh icon\"></i> Refresh\n            </a>\n          </div>\n          <app-temporal-availability [availability]=\"availability_data\"></app-temporal-availability>\n        </div>\n        <!-- End: AVAIL Panel -->\n      </div>\n\n\n      <div class=\"ui bottom attached inverted tabular menu\">\n        <a class=\"inverted item\" suiTabHeader=\"1\" [(isActive)]=\"firstActive\"\n           (click)=\"collapse = !collapse; ingesting = false; availview = false\"\n           data-content=\"Time-series Chart Panel\"><i class=\"white area chart icon\"></i> TIME</a>\n\n        <a class=\"inverted item\" suiTabHeader=\"2\" [(isActive)]=\"secondActive\"\n           (click)=\"ingesting = !ingesting; collapse = false; availview = false; saveBoundary();\"\n           data-content=\"GeoJSON Panel\"><i class=\"white map icon\"></i> SPACE</a>\n\n        <a class=\"right aligned inverted item\" suiTabHeader=\"3\" [(isActive)]=\"thirdActive\"\n           (click)=\"ingesting = false; collapse = false; toggleAvailabilityView()\" data-content=\"Availability Panel\">\n          <div *ngIf=\"!availview\"><i class=\"white calendar alternate outline icon\"></i> Model Data Availability</div>\n          <div *ngIf=\"availview\"><i class=\"white calendar check outline icon\"></i> Model Data Availability</div>\n        </a>\n\n\n      </div>\n    </sui-tabset>\n  </div>\n</div>\n\n<lfmc-video></lfmc-video>\n\n<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>\n<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>\n<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css'\n      type='text/css'/>\n<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>\n<link rel='stylesheet'\n      href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css'\n      type='text/css'/>\n"
+module.exports = "<div class=\"ui mapbox\" (mouseup)=\"upSplitView($event)\" (mousedown)=\"downSplitView($event)\" (click)=\"onUp($event)\"\n     (drag)=\"dragSplitView($event)\" (mousemove)=\"dragSplitView($event)\">\n  <div class=\"viewport\" id=\"backViewport\">\n    <div class=\"viewframe\">\n      <div id=\"mymapbox\" class=\"ui mapbox mapboxgl-map\"></div>\n    </div>\n  </div>\n  <div class=\"viewport\" id=\"frontViewport\">\n    <div class=\"viewframe\">\n      <div id=\"myAltmapbox\" class=\"ui mapbox mapboxgl-map\"></div>\n    </div>\n  </div>\n  <div id=\"splitViewHandle\" class=\"viewDividerhandle\" (mouseenter)=\"enterSplitViewHandle($event)\"\n       (click)=\"clickSplitView($event)\" (mouseleave)=\"leaveSplitViewHandle($event)\">\n    <div class=\"ui straight_labels\">\n      <div *ngIf=\"splitview\" class=\"left_label\">\n        <div class=\"ui blue left pointing label\">{{ (modelA | uppercase) || 'NONE' }}</div>\n      </div>\n      <div *ngIf=\"splitview\" class=\"right_label\">\n        <div class=\"ui blue right pointing label\">{{ (modelB | uppercase) || 'NONE' }}</div>\n      </div>\n\n      <div *ngIf=\"!splitview\" class=\"right_label\">\n        <div class=\"ui blue right pointing label\">SPLIT</div>\n      </div>\n    </div>\n\n  </div>\n\n\n  <div id=\"myoverlay\" class='map-overlay'>\n\n    <sui-tabset #bottomToolSet>\n      <div class=\"ui top attached inverted horizontal fluid menu\">\n\n        <div class=\"item\">View Options:</div>\n\n        <a class=\"item\" (click)=\"toggleSplitView()\" data-content=\"Split View Panel\">\n          <div *ngIf=\"!splitview\"><i class=\"white square outline icon\"></i> Split is Off</div>\n          <div *ngIf=\"splitview\"><i class=\"white columns icon\"></i> Split is On</div>\n        </a>\n\n        <a class=\"item\" (click)=\"zoomToBoundaryView()\">\n          <i class=\"linkify icon\"></i>\n          Snap to Boundary\n        </a>\n\n        <a class=\"green right aligned item\" (click)=\"refreshModelData()\" data-content=\"Go\">\n          <i class=\"white angle double right icon\"></i> Go\n        </a>\n      </div>\n\n      <div class=\"attached inverted segment\" suiTabContent=\"1\" [suiCollapse]=\"!collapse\">\n        <!-- Start: TIME Panel -->\n        <div class=\"ui panel\">\n          <div class=\"ui top attached fluid tiny inverted menu\">\n            <a class=\"item\" (click)=\"collapse = !collapse\">\n              <i class=\"red close icon\"></i>\n            </a>\n\n            <a class=\"item\" (click)=\"sidebar.toggle();\">\n              <i class=\"sidebar icon\"></i> Models\n            </a>\n            <a class=\"right aligned item\" (click)=\"toggleTimeBrushing()\" data-content=\"Timebrushing\">\n              <div *ngIf=\"timebrush\"><i class=\"white paint brush icon\"></i> Timebrush OFF</div>\n              <div *ngIf=\"!timebrush\"><i class=\"white close icon\"></i> Timebrushing ON</div>\n            </a>\n\n            <a class=\"item\" (click)=\"mpg()\" data-content=\"Get MP4\">\n              <i class=\"file video icon\"></i> Animation\n            </a>\n\n            <a class=\"item\" (click)=\"netCDF()\" data-content=\"NetCDF Export\">\n              <i class=\"archive icon\"></i> DataSet\n            </a>\n\n            <a class=\"item\" (click)=\"pdf()\" data-content=\"PDF\">\n              <i class=\"file pdf icon\"></i> PDF\n            </a>\n          </div>\n          <div class=\"ui three column stackable grid\">\n\n            <div class=\"column\">\n              <div class=\"ui tiny inverted menu\">\n                <a class=\"item\" (click)=\"extendPast()\">\n                  <i class=\"left angle icon\"></i>\n                </a>\n                <a class=\"stretch item\" suiDatepicker [pickerMinDate]=\"minStartDate\" [pickerMaxDate]=\"maxStartDate\"\n                   [pickerMode]=\"'date'\" [(ngModel)]=\"start\" (ngModelChange)=\"updateDatetimeOnWMTSSources()\"><i\n                  class=\"calendar icon\"></i> From: {{start | date:'fullDate'}}</a>\n                <a class=\"right aligned item\" (click)=\"reducePast()\">\n                  <i class=\"right angle icon\"></i>\n                </a>\n              </div>\n            </div>\n\n            <div class=\"column\">\n              <div class=\"ui tiny inverted menu\">\n                <a class=\"item\" (click)=\"shuntPastWeek()\">\n                  <i class=\"angle double left icon\"></i>\n                </a>\n                <a class=\"item\" (click)=\"shuntPast()\">\n                  <i class=\"left caret icon\"></i>\n                </a>\n                <a class=\"stretch item\" (click)=\"weekView()\" data-content=\"This past week\"><i class=\"clock icon\"></i> Current\n                  {{durationWindow()}}-day Window</a>\n                <a class=\"right aligned item\" (click)=\"shuntFuture()\">\n                  <i class=\"right caret icon\"></i>\n                </a>\n                <a class=\"right aligned item\" (click)=\"shuntFutureWeek()\">\n                  <i class=\"angle double right icon\"></i>\n                </a>\n              </div>\n            </div>\n\n            <div class=\"column\">\n              <div class=\"ui tiny inverted menu\">\n                <a class=\"item\" (click)=\"reduceFuture()\">\n                  <i class=\"left angle icon\"></i>\n                </a>\n                <a class=\"stretch item\" suiDatepicker [pickerMinDate]=\"minEndDate\" [pickerMaxDate]=\"maxEndDate\"\n                   [pickerMode]=\"'date'\"\n                   [(ngModel)]=\"finish\" (change)=\"updateDatetimeOnWMTSSources()\">\n                  <i class=\"calendar icon\"></i> To:\n                  {{finish\n                  |\n                  date:'fullDate'}}</a>\n                <a class=\"right aligned item\" (click)=\"extendFuture()\">\n                  <i class=\"right angle icon\"></i>\n                </a>\n              </div>\n            </div>\n\n          </div>\n\n          <sui-sidebar-container class=\"ui bottom attached map-overlay-inner\">\n\n\n            <sui-sidebar class=\"inverted vertical\" #sidebar>\n\n\n              <sui-dimmer [(isDimmed)]=\"model_dimmer\" [isClickable]=\"false\">\n                <div class=\"ui indeterminate text loader\">Loading models. Please wait.</div>\n              </sui-dimmer>\n              <!-- Start: Model List/Selection Table -->\n              <table class=\"ui selectable inverted table\" id=\"modelList\">\n                <thead>\n                <tr>\n                  <th>Model</th>\n                  <th *ngIf=\"!splitview\" class=\"right aligned\">Actions</th>\n                  <th *ngIf=\"splitview\" class=\"right aligned\">Actions</th>\n                </tr>\n                </thead>\n                <tbody>\n                <tr *ngFor=\"let m of models\">\n                  <td>{{m.ident}}</td>\n\n                  <td *ngIf=\"!splitview\" class=\"right aligned\">\n                    <div class=\"ui mini compact icon buttons\">\n                      <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_right\"\n                              (click)=\"toggleModel(m.code, 'R')\"><i class=\"toggle off icon\"></i></button>\n                      <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_right\"\n                              (click)=\"toggleModel(m.code, 'O')\"><i class=\"yellow toggle on icon\"></i></button>\n                    </div>\n                  </td>\n\n                  <td *ngIf=\"splitview\" class=\"right aligned\">\n                    <div class=\"ui mini compact icon buttons\">\n                      <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_left\"\n                              (click)=\"toggleModel(m.code, 'L')\"><i class=\"blue caret left icon\"></i></button>\n                      <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_left\"\n                              (click)=\"toggleModel(m.code, 'L')\"><i class=\"angle left icon\"></i></button>\n\n                      <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_left && !m.enabled_right\"\n                              [disabled]=\"(!m.enabled_left && !m.enabled_right)\"><i class=\"toggle off icon\"></i>\n                      </button>\n                      <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_left || m.enabled_right\"\n                              (click)=\"toggleModel(m.code, 'O')\"><i class=\"yellow toggle on icon\"></i></button>\n\n                      <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_right\"\n                              (click)=\"toggleModel(m.code, 'R')\"><i class=\"blue caret right icon\"></i></button>\n                      <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_right\"\n                              (click)=\"toggleModel(m.code, 'R')\"><i class=\"angle right icon\"></i></button>\n                    </div>\n                  </td>\n                </tr>\n                </tbody>\n              </table>\n              <!-- End: Model List/Selection Table -->\n            </sui-sidebar>\n            <sui-sidebar-sibling [isDimmedWhenVisible]=\"false\" class=\"inverted\">\n\n              <app-charting id=\"chart\" [lat]=\"lat\" [lng]=\"lng\" [start]=\"start | date:'yMMdd'\"\n                            [finish]=\"finish | date:'yMMdd'\" (select)=\"onSelectDate($event)\"></app-charting>\n            </sui-sidebar-sibling>\n          </sui-sidebar-container>\n        </div>\n        <!-- End: TIME Panel -->\n      </div>\n      <div class=\"attached inverted segment\" suiTabContent=\"2\" [suiCollapse]=\"!ingesting\">\n        <!-- Start: SPACE Panel -->\n        <div class=\"ui panel\">\n          <div id='ingest-area' class='ui ingest-area'>\n            <div class=\"ui top attached fluid tiny inverted menu\">\n              <!--<div class=\"right floated item\" #calculatedarea>{{calculated_area}}</div>-->\n              <a class=\"item\" (click)=\"ingesting = !ingesting; isCopied=false;\">\n                <i class=\"red close icon\"></i>\n              </a>\n\n              <a class=\"item\" [ngxClipboard]=\"geojsonarea\" (cbOnSuccess)=\"isCopied = true\">\n                <i class=\"icons\">\n                  <i class=\"copy icon\"></i>\n                  <i *ngIf=\"isCopied\" class=\"large green checkmark icon\"></i>\n                </i>\n                Copy\n              </a>\n              <a class=\"item\" (click)=\"saveBoundary()\" data-content=\"Save GeoJSON\">\n                <i class=\"white group object icon\"></i> Save\n              </a>\n\n              <a class=\"item\" (click)=\"importGeoJSON()\" data-content=\"Import GeoJSON\">\n                <i class=\"white file icon\"></i> Import\n              </a>\n\n\n              <a class=\"right aligned item\" (click)=\"calculateArea()\" data-content=\"Calculate Area\">\n                <i class=\"white calculator icon\"></i> Calculate Total Area\n              </a>\n\n\n            </div>\n\n            <div class=\"ui one column stackable grid\" style=\"margin:0;\">\n              <div class=\"row\">\n                <div class=\"column\">\n                  <!--<div class=\"ui form\">-->\n                    <!--<div class=\"field json\">-->\n              <!--&lt;!&ndash;<textarea style=\"background-color: transparent;height:40vh;\" class=\"fillgeoarea\"&ndash;&gt;-->\n                        <!--&lt;!&ndash;[(ngModel)]=\"ingestGeoJson\" (change)=\"importGeoJSON()\" #geojsonarea></textarea>&ndash;&gt;-->\n                    <!--</div>-->\n                  <!--</div>-->\n                <!--</div>-->\n                <!--<div class=\"column\">-->\n                  <app-importeditems [(drawing)]=\"drw\" [(altdrawing)]=\"altdrw\"></app-importeditems>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n        <!-- End: SPACE Panel -->\n      </div>\n      <div class=\"attached inverted segment\" suiTabContent=\"3\" [suiCollapse]=\"!availview\">\n        <!-- Start: AVAIL Panel -->\n        <div class=\"ui panel\">\n          <div class=\"ui top attached fluid tiny inverted menu\">\n            <a class=\"item\" (click)=\"availview = !availview\">\n              <i class=\"red close icon\"></i>\n            </a>\n            <a class=\"item\" (click)=\"refreshAvailability()\">\n              <i class=\"refresh icon\"></i> Refresh\n            </a>\n          </div>\n          <app-temporal-availability [availability]=\"availability_data\"></app-temporal-availability>\n        </div>\n        <!-- End: AVAIL Panel -->\n      </div>\n\n\n      <div class=\"ui bottom attached inverted tabular menu\">\n        <a class=\"inverted item\" suiTabHeader=\"1\" [(isActive)]=\"firstActive\"\n           (click)=\"collapse = !collapse; ingesting = false; availview = false\"\n           data-content=\"Time-series Chart Panel\"><i class=\"white area chart icon\"></i> TIME</a>\n\n        <a class=\"inverted item\" suiTabHeader=\"2\" [(isActive)]=\"secondActive\"\n           (click)=\"ingesting = !ingesting; collapse = false; availview = false; saveBoundary();\"\n           data-content=\"GeoJSON Panel\"><i class=\"white map icon\"></i> SPACE</a>\n\n        <a class=\"right aligned inverted item\" suiTabHeader=\"3\" [(isActive)]=\"thirdActive\"\n           (click)=\"ingesting = false; collapse = false; toggleAvailabilityView()\" data-content=\"Availability Panel\">\n          <div *ngIf=\"!availview\"><i class=\"white calendar alternate outline icon\"></i> Model Data Availability</div>\n          <div *ngIf=\"availview\"><i class=\"white calendar check outline icon\"></i> Model Data Availability</div>\n        </a>\n\n\n      </div>\n    </sui-tabset>\n  </div>\n</div>\n\n<lfmc-video></lfmc-video>\n\n<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>\n<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>\n<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css'\n      type='text/css'/>\n<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>\n<link rel='stylesheet'\n      href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css'\n      type='text/css'/>\n"
 
 /***/ }),
 
@@ -3950,7 +3951,7 @@ var MapboxComponent = /** @class */ (function () {
         this.ingesting = false;
         this.collapse = false;
         this.timebrush = true;
-        this.snapping = true;
+        this.snapping = false;
         this.allModels = false;
         this.calculated_area = '';
         this.model_names = [];
@@ -4441,10 +4442,10 @@ var MapboxComponent = /** @class */ (function () {
                 if (data.features.length > 0) {
                     console.log(data);
                     this.setIngestValue(data);
-                    this.prevBoundary = data;
-                    if (this.snapping) {
-                        this.zoomToBoundaryView();
-                    }
+                    // this.prevBoundary = data;
+                    // if (this.snapping) {
+                    //   this.zoomToBoundaryView();
+                    // }
                 }
                 else {
                     console.log('No boundary.');
@@ -4559,7 +4560,7 @@ var MapboxComponent = /** @class */ (function () {
         switch (LRO) {
             case 'L':
                 for (var i = 0; i < this.models.length; i++) {
-                    if (this.models[i].name === m) {
+                    if (this.models[i].code === m) {
                         this.models[i].enabled_left = !this.models[i].enabled_left;
                         this.models[i].enabled_right = false;
                         this.modelA = m;
@@ -4568,7 +4569,7 @@ var MapboxComponent = /** @class */ (function () {
                 break;
             case 'R':
                 for (var i = 0; i < this.models.length; i++) {
-                    if (this.models[i].name === m) {
+                    if (this.models[i].code === m) {
                         this.models[i].enabled_right = !this.models[i].enabled_right;
                         this.models[i].enabled_left = false;
                         this.modelB = m;
@@ -4577,7 +4578,7 @@ var MapboxComponent = /** @class */ (function () {
                 break;
             case 'O':
                 for (var i = 0; i < this.models.length; i++) {
-                    if (this.models[i].name === m) {
+                    if (this.models[i].code === m) {
                         this.models[i].enabled_left = false;
                         this.models[i].enabled_right = false;
                     }
@@ -4659,16 +4660,16 @@ var MapboxComponent = /** @class */ (function () {
         for (var i = 0; i < this.models.length; i++) {
             if (this.models[i].enabled_right) {
                 this.models[i].enabled_left = false;
-                R.push(this.models[i].name);
-                this.ownLayerRight(this.models[i].name);
+                R.push(this.models[i].code);
+                this.ownLayerRight(this.models[i].code);
             }
             else if (this.models[i].enabled_left) {
                 this.models[i].enabled_right = false;
-                L.push(this.models[i].name);
-                this.ownLayerLeft(this.models[i].name);
+                L.push(this.models[i].code);
+                this.ownLayerLeft(this.models[i].code);
             }
             else {
-                this.layerOff(this.models[i].name);
+                this.layerOff(this.models[i].code);
             }
         }
         console.log('Models on Left:' + L);
@@ -4696,7 +4697,7 @@ var MapboxComponent = /** @class */ (function () {
         }
         return dateArray;
     };
-    MapboxComponent.prototype.makeSourceForModel = function (layer_name) {
+    MapboxComponent.prototype.makeSourceForModel = function (layer_code) {
         var layer_url_part_A = 'http://geoserver.landscapefuelmoisture.bushfirebehaviour.net.au/geoserver/lfmc/wms?service=WMS&version=1.3.0&request=GetMap&layers=lfmc:';
         var layer_url_part_B = '&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857';
         var time_component;
@@ -4713,66 +4714,66 @@ var MapboxComponent = /** @class */ (function () {
         var anim_component = '&format=image%2fpng&transparent=true';
         var layer_source = {
             'type': 'raster',
-            'tiles': [layer_url_part_A + layer_name.toUpperCase() + layer_url_part_B + anim_component + time_component],
+            'tiles': [layer_url_part_A + layer_code.toUpperCase() + layer_url_part_B + anim_component + time_component],
             'tileSize': 256
         };
-        if (this.currentmap.getLayer(layer_name)) {
+        if (this.currentmap.getLayer(layer_code)) {
             try {
-                this.currentmap.removeLayer(layer_name);
+                this.currentmap.removeLayer(layer_code);
             }
             catch (e) {
                 console.log('OK that the layer doesn\'t exist yet.');
             }
         }
-        if (this.currentmap.getSource(layer_name + '_source')) {
+        if (this.currentmap.getSource(layer_code + '_source')) {
             try {
-                this.currentmap.removeSource(layer_name + '_source');
+                this.currentmap.removeSource(layer_code + '_source');
             }
             catch (e) {
                 console.log('OK that source doesn\'t exist yet.');
             }
         }
-        this.currentmap.addSource(layer_name + '_source', layer_source);
-        console.log('Added ' + layer_name + '_source.');
+        this.currentmap.addSource(layer_code + '_source', layer_source);
+        console.log('Added ' + layer_code + '_source.');
     };
     MapboxComponent.prototype.addLayersForAllModels = function () {
         var _this = this;
         ['L', 'R'].forEach(function (lr) {
             _this.setMapContext(lr);
             for (var i = 0; i < _this.models.length; i++) {
-                var layer_id = _this.models[i].name;
-                _this.makeSourceForModel(layer_id);
-                _this.makeLayerForModel(layer_id);
+                var layer_code = _this.models[i].code;
+                _this.makeSourceForModel(layer_code);
+                _this.makeLayerForModel(layer_code);
             }
         });
         this.setMapContext('R');
     };
-    MapboxComponent.prototype.makeLayerForModel = function (layer_id) {
+    MapboxComponent.prototype.makeLayerForModel = function (layer_code) {
         if (!(this.currentmap instanceof mapbox_gl_dist_mapbox_gl_js__WEBPACK_IMPORTED_MODULE_6__["Map"])) {
             console.log('Current map not set.');
         }
         else {
-            if (this.currentmap.getLayer(layer_id)) {
+            if (this.currentmap.getLayer(layer_code)) {
                 try {
-                    this.currentmap.removeLayer(layer_id);
+                    this.currentmap.removeLayer(layer_code);
                 }
                 catch (e) {
                     console.log('OK that the layer doesn\'t exist yet.');
                 }
             }
-            if (this.currentmap.getSource(layer_id + '_source')) {
+            if (this.currentmap.getSource(layer_code + '_source')) {
                 try {
-                    this.currentmap.removeSource(layer_id + '_source');
+                    this.currentmap.removeSource(layer_code + '_source');
                 }
                 catch (e) {
                     console.log('OK that the source doesn\'t exist yet.');
                 }
-                this.makeSourceForModel(layer_id);
+                this.makeSourceForModel(layer_code);
             }
             this.currentmap.addLayer({
-                'id': layer_id,
+                'id': layer_code,
                 'type': 'raster',
-                'source': layer_id + '_source',
+                'source': layer_code + '_source',
                 'paint': {}
             }, 'water');
         }
@@ -4822,10 +4823,10 @@ var MapboxComponent = /** @class */ (function () {
         ['L', 'R'].forEach(function (lr) {
             _this.setMapContext(lr);
             for (var i = 0; i < _this.models.length; i++) {
-                var layer_id = _this.models[i].name;
-                _this.makeSourceForModel(layer_id);
+                var layer_code = _this.models[i].code;
+                _this.makeSourceForModel(layer_code);
                 if ((_this.models[i].enabled_left && lr === 'L') || (_this.models[i].enabled_right && lr === 'R')) {
-                    _this.makeLayerForModel(layer_id);
+                    _this.makeLayerForModel(layer_code);
                 }
             }
         });

@@ -59,10 +59,9 @@
           <div class="inline fields content" *ngIf="gjq.enabled_right">
             <div class="field">
               <button class="ui compact black icon button" (click)="toggleSelectionOff(gjq);"><i
-                class="ui toggle on icon"></i></button>
+                class="ui green toggle on icon"></i></button>
             </div>
             <div class="field">
-              <!--(click)="this.select()"-->
               <input type="text" [(ngModel)]="gjq.name" #editname>
             </div>
           </div>

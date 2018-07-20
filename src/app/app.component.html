@@ -21,6 +21,7 @@
       </a>
     </div>
   </div>
+  <a class="ui inverted header item" routerLink="/home"><i class="ui white home icon"></i></a>
   <div class="ui inverted header item"><img class="ui circular mini spaced image" src="/assets/fire.png"> {{title}} v{{version}}</div>
   <div class="right menu">
     <a class="item" [routerLinkActive]="['active']" *ngIf="auth.authenticated" routerLink="/profile">
@@ -32,12 +33,12 @@
     <a class="item" *ngIf="auth.authenticated" (click)="auth.logout()">
       <i class="red sign out icon"></i>Logout
     </a>
-    <div class="item">
-      <div class="ui transparent icon input">
-        <input type="text" placeholder="Site Search...">
-        <i class="inverted search link icon"></i>
-      </div>
-    </div>
+    <!--<div class="item">-->
+      <!--<div class="ui transparent icon input">-->
+        <!--<input type="text" placeholder="Site Search...">-->
+        <!--<i class="inverted search link icon"></i>-->
+      <!--</div>-->
+    <!--</div>-->
   </div>
 </div>
 <main>

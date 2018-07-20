@@ -66,7 +66,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   ingesting = false;
   collapse = false;
   timebrush = true;
-  snapping = true;
+  snapping = false;
   allModels = false;
 
   calculated_area = '';
@@ -669,10 +669,10 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         if (data.features.length > 0) {
           console.log(data);
           this.setIngestValue(data);
-          this.prevBoundary = data;
-          if (this.snapping) {
-            this.zoomToBoundaryView();
-          }
+          // this.prevBoundary = data;
+          // if (this.snapping) {
+          //   this.zoomToBoundaryView();
+          // }
         } else {
           console.log('No boundary.');
         }
@@ -799,7 +799,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     switch (LRO) {
       case 'L':
         for (let i = 0; i < this.models.length; i++) {
-          if (this.models[i].name === m) {
+          if (this.models[i].code === m) {
             this.models[i].enabled_left = !this.models[i].enabled_left;
             this.models[i].enabled_right = false;
             this.modelA = m;
@@ -808,7 +808,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         break;
       case 'R':
         for (let i = 0; i < this.models.length; i++) {
-          if (this.models[i].name === m) {
+          if (this.models[i].code === m) {
             this.models[i].enabled_right = !this.models[i].enabled_right;
             this.models[i].enabled_left = false;
             this.modelB = m;
@@ -817,7 +817,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
         break;
       case 'O':
         for (let i = 0; i < this.models.length; i++) {
-          if (this.models[i].name === m) {
+          if (this.models[i].code === m) {
             this.models[i].enabled_left = false;
             this.models[i].enabled_right = false;
           }
@@ -920,14 +920,14 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     for (let i = 0; i < this.models.length; i++) {
       if (this.models[i].enabled_right) {
         this.models[i].enabled_left = false;
-        R.push(this.models[i].name);
-        this.ownLayerRight(this.models[i].name);
+        R.push(this.models[i].code);
+        this.ownLayerRight(this.models[i].code);
       } else if (this.models[i].enabled_left) {
         this.models[i].enabled_right = false;
-        L.push(this.models[i].name);
-        this.ownLayerLeft(this.models[i].name);
+        L.push(this.models[i].code);
+        this.ownLayerLeft(this.models[i].code);
       } else {
-        this.layerOff(this.models[i].name);
+        this.layerOff(this.models[i].code);
       }
     }
     console.log('Models on Left:' + L);
@@ -960,7 +960,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     return dateArray;
   }
 
-  makeSourceForModel(layer_name) {
+  makeSourceForModel(layer_code) {
 
 
     const layer_url_part_A = 'http://geoserver.landscapefuelmoisture.bushfirebehaviour.net.au/geoserver/lfmc/wms?service=WMS&version=1.3.0&request=GetMap&layers=lfmc:';
@@ -981,65 +981,65 @@ export class MapboxComponent implements OnInit, AfterViewInit {
 
     const layer_source = {
       'type': 'raster',
-      'tiles': [layer_url_part_A + layer_name.toUpperCase() + layer_url_part_B + anim_component + time_component],
+      'tiles': [layer_url_part_A + layer_code.toUpperCase() + layer_url_part_B + anim_component + time_component],
       'tileSize': 256
     };
 
-    if (this.currentmap.getLayer(layer_name)) {
+    if (this.currentmap.getLayer(layer_code)) {
       try {
-        this.currentmap.removeLayer(layer_name);
+        this.currentmap.removeLayer(layer_code);
       } catch (e) {
         console.log('OK that the layer doesn\'t exist yet.');
       }
     }
-    if (this.currentmap.getSource(layer_name + '_source')) {
+    if (this.currentmap.getSource(layer_code + '_source')) {
       try {
-        this.currentmap.removeSource(layer_name + '_source');
+        this.currentmap.removeSource(layer_code + '_source');
       } catch (e) {
         console.log('OK that source doesn\'t exist yet.');
       }
     }
-    this.currentmap.addSource(layer_name + '_source', layer_source);
-    console.log('Added ' + layer_name + '_source.');
+    this.currentmap.addSource(layer_code + '_source', layer_source);
+    console.log('Added ' + layer_code + '_source.');
   }
 
   addLayersForAllModels() {
     ['L', 'R'].forEach((lr) => {
       this.setMapContext(lr);
       for (let i = 0; i < this.models.length; i++) {
-        const layer_id = this.models[i].name;
-        this.makeSourceForModel(layer_id);
-        this.makeLayerForModel(layer_id);
+        const layer_code = this.models[i].code;
+        this.makeSourceForModel(layer_code);
+        this.makeLayerForModel(layer_code);
       }
     });
     this.setMapContext('R');
   }
 
-  makeLayerForModel(layer_id) {
+  makeLayerForModel(layer_code) {
     if (!(this.currentmap instanceof Map)) {
       console.log('Current map not set.');
     } else {
 
 
-      if (this.currentmap.getLayer(layer_id)) {
+      if (this.currentmap.getLayer(layer_code)) {
         try {
-          this.currentmap.removeLayer(layer_id);
+          this.currentmap.removeLayer(layer_code);
         } catch (e) {
           console.log('OK that the layer doesn\'t exist yet.');
         }
       }
-      if (this.currentmap.getSource(layer_id + '_source')) {
+      if (this.currentmap.getSource(layer_code + '_source')) {
         try {
-          this.currentmap.removeSource(layer_id + '_source');
+          this.currentmap.removeSource(layer_code + '_source');
         } catch (e) {
           console.log('OK that the source doesn\'t exist yet.');
         }
-        this.makeSourceForModel(layer_id);
+        this.makeSourceForModel(layer_code);
       }
       this.currentmap.addLayer({
-        'id': layer_id,
+        'id': layer_code,
         'type': 'raster',
-        'source': layer_id + '_source',
+        'source': layer_code + '_source',
         'paint': {}
       }, 'water');
     }
@@ -1105,10 +1105,10 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     ['L', 'R'].forEach((lr) => {
       this.setMapContext(lr);
       for (let i = 0; i < this.models.length; i++) {
-        const layer_id = this.models[i].name;
-        this.makeSourceForModel(layer_id);
+        const layer_code = this.models[i].code;
+        this.makeSourceForModel(layer_code);
         if ((this.models[i].enabled_left && lr === 'L') || (this.models[i].enabled_right && lr === 'R')) {
-          this.makeLayerForModel(layer_id);
+          this.makeLayerForModel(layer_code);
         }
       }
     });

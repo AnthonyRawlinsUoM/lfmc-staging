@@ -6,7 +6,7 @@ import {SuiModal, ComponentModalConfig, ModalSize} from 'ng2-semantic-ui';
 import {Headers} from '@angular/http';
 
 // TODO
-const URL = 'http://webfire.mobility.unimelb.edu.au:1880/upload';
+const URL = 'http://pipeline.landscapefuelmoisture.bushfirebehaviour.net.au/upload';
 
 @Component({
   selector: 'app-upload',
