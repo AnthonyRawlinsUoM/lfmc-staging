@@ -51,14 +51,14 @@
 }
 
 .viewport {
-  /*overflow: hidden;*/
-  /*position: absolute;*/
+  overflow: hidden;
+  position: absolute;
   width: auto;
 }
 
 .viewframe {
   width: 100vw;
-  /*height: 100vh;*/
+  height: 95vh;
   position: relative;
   flex-shrink: 0;
 }
