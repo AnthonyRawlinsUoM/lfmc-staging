@@ -7,12 +7,31 @@
 }
 
 .ui.inverted.menu.shadow {
-	max-height: 5vh;
+	/*max-height: 5vh;*/
 	z-index: 250;
 }
 
+header {
+  flex-shrink: 0;
+}
+
+#overlay-toolbar {
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+
+footer {
+  flex-shrink: 0;
+}
+
 main {
-	overflow: hidden;
+  flex: 1 0 auto;
+}
+
+.app_container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .ui.modal {
@@ -20,3 +39,6 @@ main {
   position: fixed;
 }
 
+.middle.menu {
+  margin: 0 auto;
+}

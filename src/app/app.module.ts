@@ -59,7 +59,7 @@ const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'help', component: HelpComponent},
+  // {path: 'help', component: HelpComponent},
   // {path: 'options', component: OptionsComponent},
   {path: 'import', component: ImportComponent},
   {path: 'models', component: ModelsComponent},

@@ -1,46 +1,47 @@
-<div class="ui top following inverted menu shadow">
-  <div class="ui inverted pointing dropdown item" suiDropdown>
-    <div class="text">
-      <i class="gray sidebar icon"></i> Site
+<div class="app_container">
+  <header>
+    <div class="ui top following inverted menu shadow">
+
+      <a class="ui inverted header item" [routerLinkActive]="['active']" routerLink="/home">
+        <i class="white home outline icon"></i>Home
+      </a>
+
+      <a class="ui inverted header item" [routerLinkActive]="['active']" routerLink="/models">
+        <i class="white database icon"></i>Models
+      </a>
+
+      <a class="ui inverted header item" [routerLinkActive]="['active']" routerLink="/import">
+        <i class="white marker icon"></i>Import
+      </a>
+
+      <a class="ui inverted header item" [routerLinkActive]="['active']"
+         href="http://documentation.landscapefuelmoisture.bushfirebehaviour.net.au/" target="_blank">
+        <i class="white help icon"></i>Help
+      </a>
+
+      <div class="middle menu">
+      <div class="ui inverted header item"><img class="ui circular mini spaced image" src="/assets/fire.png"> {{title}}
+        v{{version}}
+      </div>
+      </div>
+
+      <div class="right menu">
+        <a class="ui inverted header item" [routerLinkActive]="['active']" *ngIf="auth.authenticated" routerLink="/profile">
+          <i class="blue user circle icon"></i>
+        </a>
+        <a class="ui inverted header item" *ngIf="!auth.authenticated" (click)="auth.login()">
+          <i class="blue sign in icon"></i>Login
+        </a>
+        <a class="ui inverted header item" *ngIf="auth.authenticated" (click)="auth.logout()">
+          <i class="red sign out icon"></i>Logout
+        </a>
+      </div>
     </div>
-    <div class="menu" suiDropdownMenu>
-      <a class="item" [routerLinkActive]="['active']" routerLink="/home">
-        <i class="blue map outline icon"></i>Map
-      </a>
-      <a class="item" [routerLinkActive]="['active']" routerLink="/models">
-        <i class="blue database icon"></i>Models
-      </a>
-      <a class="item" [routerLinkActive]="['active']" routerLink="/import">
-        <i class="blue marker icon"></i>Import
-      </a>
-      <a class="item" [routerLinkActive]="['active']" routerLink="/options">
-        <i class="blue options icon"></i>Options
-      </a>
-      <a class="item" [routerLinkActive]="['active']" href="http://documentation.landscapefuelmoisture.bushfirebehaviour.net.au/" target="_blank">
-        <i class="blue help icon"></i>Help
-      </a>
-    </div>
-  </div>
-  <a class="ui inverted header item" routerLink="/home"><i class="ui white home icon"></i></a>
-  <div class="ui inverted header item"><img class="ui circular mini spaced image" src="/assets/fire.png"> {{title}} v{{version}}</div>
-  <div class="right menu">
-    <a class="item" [routerLinkActive]="['active']" *ngIf="auth.authenticated" routerLink="/profile">
-      <i class="blue user circle icon"></i>
-    </a>
-    <a class="item" *ngIf="!auth.authenticated" (click)="auth.login()">
-      <i class="blue sign in icon"></i>Login
-    </a>
-    <a class="item" *ngIf="auth.authenticated" (click)="auth.logout()">
-      <i class="red sign out icon"></i>Logout
-    </a>
-    <!--<div class="item">-->
-      <!--<div class="ui transparent icon input">-->
-        <!--<input type="text" placeholder="Site Search...">-->
-        <!--<i class="inverted search link icon"></i>-->
-      <!--</div>-->
-    <!--</div>-->
-  </div>
+  </header>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+  <footer>
+    <app-footer></app-footer>
+  </footer>
 </div>
-<main>
-  <router-outlet></router-outlet>
-</main>
