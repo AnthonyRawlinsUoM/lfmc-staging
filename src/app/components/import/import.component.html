@@ -1,5 +1,8 @@
-<div class="ui container">
-  <div *ngIf="!auth.authenticated" class="ui icon yellow message">
+<div class="ui page container">
+
+  <div *ngIf="!auth.authenticated">
+    <h2 class="header">Sorry</h2>
+  <div class="ui icon yellow message">
     <i class="user circle icon"></i>
     <div class="content">
       <div class="header">
@@ -7,6 +10,7 @@
       </div>
       <p>This feature is for authenticated users only.</p>
     </div>
+  </div>
   </div>
 
   <div *ngIf="auth.authenticated">

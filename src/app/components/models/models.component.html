@@ -4,27 +4,35 @@
     <h2>Select from the best-of-class numeric models</h2>
   </div>
 </div>
+
 <!-- Models -->
-<div class="ui vertical stripe container">
+<div class="ui vertical stripe page container">
   <sui-accordion class="ui bottom attached styled fluid accordion">
     <sui-accordion-panel *ngFor="let m of models" [isOpen]="false">
       <div title>
-        <i class="large dropdown icon"></i> <span class="ui header">{{m.name}}</span>
+        <i class="large dropdown icon"></i> <span class="ui header">{{m.ident}}</span>
       </div>
       <div content>
         <div class="ui list">
           <div class="ui item">
             <div class="ui internally divided grid">
+
               <div class="ui row">
                 <div class="ui twelve wide column">
-                  <h2 class="ui header"><a [href]="m.href" target="_blank">{{m.title}}</a></h2>
-                  <p>{{m.date}}</p>
-                  <p>{{m.validated.references[0].authors}}</p>
-                  <h4 class="heading">Introduction</h4>
-                  <p>{{m.onefloor}}</p>
-                  <h4 class="heading">Abstract</h4>
-                  <p>{{m.description.abstract}}</p>
+                  <h2 class="ui header"><a [href]="m.href" target="_blank">{{m.ident}} </a> <span style="font-size: xx-small">({{m.code}})</span></h2>
+
+                  <p>{{m.metadata.published_date | date}}</p>
+                  <p *ngIf="m.metadata.doi">DOI: <a href="{{m.metadata.doi}}" target="_blank">{{m.metadata.doi}}</a></p>
+                  <!--<code><pre>{{m.outputs}}</pre></code>-->
+                  <h5>Authors</h5>
+                  <div *ngFor="let a of m.metadata.authors">
+                    <a [href]="a.email">{{a.name}} <!-- {{a.organisation}} --></a>
+                  </div>
+
+                  <h4 class="heading">Description</h4>
+                  <p>{{m.metadata.abstract.abstract}}</p>
                 </div>
+
                 <div class="ui four wide column">
                   <div class="ui attached warning icon message">
                     <i class="attention icon"></i>
@@ -33,14 +41,16 @@
                       <p>This model might not be suitable for certain areas.</p>
                     </div>
                   </div>
+
                   <div class="ui bottom attached black message">
                     <sui-checkbox [(ngModel)]="m.enabled" class="toggle"></sui-checkbox>
-                    <span *ngIf="m.enabled">Enabled</span><span *ngIf="!m.enabled">Disabled</span>
+                    <span *ngIf="m.enabled">Enabled</span>
+                    <span *ngIf="!m.enabled">Disabled</span>
                   </div>
-                  <label>Rating</label>
-                  <sui-rating [(ngModel)]="m.rating" [maximum]="10" [isReadonly]="true"></sui-rating>
+                  <!--<label>Rating</label>-->
+                  <!--<sui-rating [(ngModel)]="m.rating" [maximum]="10" [isReadonly]="true"></sui-rating>-->
                   <div class="ui divider"></div>
-                  <app-datasources [model]="m"></app-datasources>
+                  <!--<app-datasources [model]="m"></app-datasources>-->
                 </div>
               </div>
               <div class="ui row">
@@ -49,16 +59,19 @@
                   </div>
                   <div class="ui gray attached segment"><div class="ui relaxed divided list">
                     <div class="item">
-                      <div class="ui red horizontal label">Min</div>{{m.description.resolutions.minimum.spatial.value}}
-                      {{m.description.resolutions.minimum.spatial.units}}
+                      <div class="ui red horizontal label">Min</div>
+                      <!--{{m.description.resolutions.minimum.spatial.value}}-->
+                      <!--{{m.description.resolutions.minimum.spatial.units}}-->
                     </div>
                     <div class="item">
-                      <div class="ui orange horizontal label">Opt</div>{{m.description.resolutions.optimum.spatial.value}}
-                      {{m.description.resolutions.optimum.spatial.units}}
+                      <div class="ui orange horizontal label">Opt</div>
+                      <!--{{m.description.resolutions.optimum.spatial.value}}-->
+                      <!--{{m.description.resolutions.optimum.spatial.units}}-->
                     </div>
                     <div class="item">
-                      <div class="ui green horizontal label">Max</div>{{m.description.resolutions.maximum.spatial.value}}
-                      {{m.description.resolutions.maximum.spatial.units}}
+                      <div class="ui green horizontal label">Max</div>
+                      <!--{{m.description.resolutions.maximum.spatial.value}}-->
+                      <!--{{m.description.resolutions.maximum.spatial.units}}-->
                     </div>
                   </div>
                 </div>
@@ -68,16 +81,19 @@
                   </div>
                   <div class="ui gray attached segment"><div class="ui relaxed divided list">
                     <div class="item">
-                      <div class="ui red horizontal label">Min</div>{{m.description.resolutions.minimum.temporal.value}}
-                      {{m.description.resolutions.minimum.temporal.units}}
+                      <div class="ui red horizontal label">Min</div>
+                      <!--{{m.description.resolutions.minimum.temporal.value}}-->
+                      <!--{{m.description.resolutions.minimum.temporal.units}}-->
                     </div>
                     <div class="item">
-                      <div class="ui orange horizontal label">Opt</div>{{m.description.resolutions.optimum.temporal.value}}
-                      {{m.description.resolutions.optimum.temporal.units}}
+                      <div class="ui orange horizontal label">Opt</div>
+                      <!--{{m.description.resolutions.optimum.temporal.value}}-->
+                      <!--{{m.description.resolutions.optimum.temporal.units}}-->
                     </div>
                     <div class="item">
-                      <div class="ui green horizontal label">Max</div>{{m.description.resolutions.maximum.temporal.value}}
-                      {{m.description.resolutions.maximum.temporal.units}}
+                      <div class="ui green horizontal label">Max</div>
+                      <!--{{m.description.resolutions.maximum.temporal.value}}-->
+                      <!--{{m.description.resolutions.maximum.temporal.units}}-->
                     </div>
                   </div>
                 </div>
@@ -87,9 +103,9 @@
                   </div>
                   <div class="ui gray attached segment">
                     <div class="ui relaxed divided list">
-                      <div class="item" *ngFor="let ft of m.description.fuel.types">
-                        <div class="ui green horizontal label"> Fuel </div> {{m.description.fuel}}
-                      </div>
+                      <!--<div class="item" *ngFor="let ft of m.description.fuel.types">-->
+                        <!--<div class="ui green horizontal label"> Fuel </div> {{m.description.fuel}}-->
+                      <!--</div>-->
                     </div>
                   </div>
                 </div>

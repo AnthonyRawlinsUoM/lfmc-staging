@@ -54,6 +54,7 @@ import {BarGroupComponent} from './availability/temporal-availability/bar-group/
 import {IndicatorBarComponent} from './availability/temporal-availability/indicator-bar/indicator-bar.component';
 import {AvailabilityRowComponent} from './availability/temporal-availability/availability-row/availability-row.component';
 import {TemporalAvailabilityComponent} from './availability/temporal-availability/temporal-availability.component';
+import { DisclaimerComponent } from './components/disclaimer/disclaimer.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -103,7 +104,8 @@ const appRoutes: Routes = [
     BarGroupComponent,
     IndicatorBarComponent,
     AvailabilityRowComponent,
-    TemporalAvailabilityComponent
+    TemporalAvailabilityComponent,
+    DisclaimerComponent
   ],
 
   // Modules

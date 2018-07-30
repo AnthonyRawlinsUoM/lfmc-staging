@@ -340,7 +340,7 @@ export class ImportedItemsComponent implements OnInit, AfterViewInit, OnDestroy 
   private saveSession() {
     if (this.auth.authenticated) {
       this.store.set(this.auth.userProfile.name, this.queries, {type: StorageType.LOCAL});
-      console.log('Set the session storage.');
+      console.log('Session stored.');
     }
   }
 

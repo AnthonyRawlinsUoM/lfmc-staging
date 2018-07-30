@@ -1,7 +1,10 @@
 import {Injectable} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 
-import {BehaviorSubject, Observable} from 'rxjs/index';
+import {Observable} from 'rxjs/index';
+import {map} from 'rxjs/internal/operators';
+
+
 // import List = Immutable.List;
 
 
@@ -30,24 +33,12 @@ export class ModelsService {
   }
 
   getModels(): Observable<any> {
-    return this.http.get(`${this.modelsUrl}/models`);
+    return this.http.get(`${this.modelsUrl}/models`, {});
+      // .pipe(map((response) => response.pipe(map(
+      //   Object.keys(response).pipe(map(r => <Model>response[r]))))));
+
   }
 }
-
-// @Injectable()
-// export class ModelStore {
-//   private _models: BehaviorSubject<List<Model>> = new BehaviorSubject(List([]));
-//
-//   public readonly models: Observable<List<Model>> = this._models.asObservable();
-//
-//   constructor(private modelBackendService: ModelsService) {
-//     this.loadInitialData();
-//   }
-//
-//   loadInitialData() {
-//
-//   }
-// }
 
 export interface Model {
   name: string;
