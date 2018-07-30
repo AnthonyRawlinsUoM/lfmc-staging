@@ -1,19 +1,23 @@
-<div class="ui four column grid container">
-  <div class="ui card">
-  <div class="image">
-    <img src="{{profile?.picture}}" class="avatar full" alt="avatar">
-  </div>
-  <div class="content">
-    <a><h3 class="nickname">{{ profile?.nickname }}</h3></a>
-    <div class="meta">
-      <span class="date">Last updated: {{profile?.updated_at}}</span>
-      <span class="email">{{profile?.name}}</span>
+<div class="ui container">
+  <div class="ui four column stacking grid">
+    <div class="ui column">
+      <div class="ui spaced card">
+        <div class="image">
+          <img src="{{profile?.picture}}" class="avatar full" alt="avatar">
+        </div>
+        <div class="content">
+          <a><h3 class="nickname">{{ profile?.nickname }}</h3></a>
+          <div class="meta">
+            <span class="date">Last updated: {{profile?.updated_at}}</span>
+            <span class="email">{{profile?.name}}</span>
+          </div>
+          <div class="description">
+          </div>
+        </div>
+        <div class="extra content">
+          <pre class="full-profile">{{ profile | json }}</pre>
+        </div>
+      </div>
     </div>
-    <div class="description">
-    </div>
   </div>
-  <div class="extra content" *ngIf="false">
-    <pre class="full-profile">{{ profile | json }}</pre>
-  </div>
-</div>
 </div>

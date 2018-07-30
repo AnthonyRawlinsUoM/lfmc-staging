@@ -231,8 +231,9 @@ export class MapboxComponent implements OnInit, AfterViewInit {
 
   }
 
-  getModelNamesOnly(models: Model[]): string[] {
-    return models.sort((a: Model, b: Model) => {
+  getModelNamesOnly(): string[] {
+
+    return this.models.sort((a: Model, b: Model) => {
       return a.name.localeCompare(b.name);
     }).map((m: Model) => {
       console.log(m);
@@ -242,9 +243,8 @@ export class MapboxComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.ms.getModels().subscribe(result => {
-        console.log(result.models);
-        this.model_names = this.getModelNamesOnly(result.models);
-        this.models = result.models;
+        this.models = <Model[]>(result.models);
+        this.model_names = this.getModelNamesOnly();
       },
       (e) => {
         console.log(e);

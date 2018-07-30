@@ -1,38 +1,38 @@
 <div class="app_container">
   <header>
-    <div class="ui top following inverted menu shadow">
+    <div class="ui top inverted menu shadow">
 
-      <a class="ui inverted header item" [routerLinkActive]="['active']" routerLink="/home">
+      <a class="ui inverted item" [routerLinkActive]="['active']" routerLink="/home">
         <i class="white home outline icon"></i>Home
       </a>
 
-      <a class="ui inverted header item" [routerLinkActive]="['active']" routerLink="/models">
+      <a class="ui inverted item" [routerLinkActive]="['active']" routerLink="/models">
         <i class="white database icon"></i>Models
       </a>
 
-      <a class="ui inverted header item" [routerLinkActive]="['active']" routerLink="/import">
+      <a class="ui inverted item" [routerLinkActive]="['active']" routerLink="/import">
         <i class="white marker icon"></i>Import
       </a>
 
-      <a class="ui inverted header item" [routerLinkActive]="['active']"
+      <a class="ui inverted item" [routerLinkActive]="['active']"
          href="http://documentation.landscapefuelmoisture.bushfirebehaviour.net.au/" target="_blank">
         <i class="white help icon"></i>Help
       </a>
 
       <div class="middle menu">
-      <div class="ui inverted header item"><img class="ui circular mini spaced image" src="/assets/fire.png"> {{title}}
+      <div class="ui inverted item"><img class="ui circular mini spaced image" src="/assets/fire.png"> {{title}}
         v{{version}}
       </div>
       </div>
 
       <div class="right menu">
-        <a class="ui inverted header item" [routerLinkActive]="['active']" *ngIf="auth.authenticated" routerLink="/profile">
+        <a class="ui inverted item" [routerLinkActive]="['active']" *ngIf="auth.authenticated" routerLink="/profile">
           <i class="blue user circle icon"></i>
         </a>
-        <a class="ui inverted header item" *ngIf="!auth.authenticated" (click)="auth.login()">
+        <a class="ui inverted item" *ngIf="!auth.authenticated" (click)="auth.login()">
           <i class="blue sign in icon"></i>Login
         </a>
-        <a class="ui inverted header item" *ngIf="auth.authenticated" (click)="auth.logout()">
+        <a class="ui inverted item" *ngIf="auth.authenticated" (click)="auth.logout()">
           <i class="red sign out icon"></i>Logout
         </a>
       </div>

@@ -14,3 +14,7 @@ ui.segment.dropzone,
 .another-file-over-class {
   border: dashed 1px green;
 }
+
+.ui.steps .step>.icon {
+  font-size: 1.5em !important;
+}
