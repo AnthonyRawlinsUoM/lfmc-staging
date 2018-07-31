@@ -340,7 +340,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 /*! exports provided: name, version, license, main, scripts, engines, private, dependencies, devDependencies, default */
 /***/ (function(module) {
 
-module.exports = {"name":"lfmc-staging","version":"0.6.16","license":"MIT","main":"app.js","scripts":{"ng":"ng","start":"ng serve --host 0.0.0.0 --disable-host-check","build":"ng build","test":"ng test","lint":"ng lint","e2e":"ng e2e","postinstall":"ng build"},"engines":{"node":"~8.2.1","npm":"~5.3.0"},"private":true,"dependencies":{"@agm/core":"^1.0.0-beta.2","@angular/animations":"^6.0.3","@angular/cdk":"^6.2.0","@angular/common":"^6.0.3","@angular/compiler":"^6.0.3","@angular/core":"^6.0.3","@angular/forms":"^6.0.3","@angular/http":"^6.0.3","@angular/platform-browser":"^6.0.3","@angular/platform-browser-dynamic":"^6.0.3","@angular/router":"^6.0.3","@mapbox/geojson-area":"^0.2.2","@mapbox/mapbox-data-cli":"^2.0.0","@mapbox/mapbox-gl-draw":"^1.0.9","@mapbox/mapbox-gl-geocoder":"^2.2.0","@mapbox/mapbox-gl-sync-move":"^0.2.0","@mapbox/point-geometry":"^0.1.0","@mapbox/vector-tile":"^1.3.1","@swimlane/ngx-charts":"^8.0.2","@turf/turf":"^5.1.6","@types/geojson":"^7946.0.3","@types/mapbox-gl":"^0.44.4","@types/proj4":"^2.3.4","angular-persistence":"^1.0.1","angular2-uuid":"^1.1.1","auth0":"^2.9.1","auth0-js":"^9.5.1","auth0-lock":"^11.6.1","aws-sdk":"^2.245.1","bootstrap":"^4.1.1","colormap":"^2.3.0","connect-ensure-login":"^0.1.1","core-js":"^2.5.6","d3":"^5.4.0","d3-ng2-service":"^2.2.0","express":"^4.16.3","express-graphql":"^0.6.12","geojson-bbox":"0.0.0","graphql":"^0.13.2","graphql-server":"^0.3.2","graphql-server-express":"^1.3.6","grunt":"^1.0.2","json":"^9.0.6","json-loader":"^0.5.7","mapbox-gl":"^0.45.0","mapbox-gl-supported":"^1.2.0","moment":"^2.22.1","mongoose":"^5.1.2","netcdf":"^1.1.1","ng2-file-upload":"^1.3.0","ng2-localstorage":"^0.5.1","ng2-semantic-ui":"^0.9.7","ng2-slider-component":"^1.0.9","ng2-timeline":"^0.1.1","ngx-clipboard":"^11.1.0","ngx-drag-to-select":"^1.1.1","passport":"^0.4.0","passport-auth0":"^0.6.1","proj4":"^2.4.4","rxjs":"^6.2.0","semver":"^5.5.0","terraformer":"^1.0.8","terraformer-wkt-parser":"^1.2.0","web-animations-js":"^2.3.1","wellknown":"^0.5.0","zone.js":"^0.8.26"},"devDependencies":{"@angular-devkit/build-angular":"~0.6.3","@angular/cli":"^6.0.3","@angular/compiler-cli":"^6.0.3","@angular/language-service":"^6.0.3","@types/d3":"^5.0.0","@types/googlemaps":"^3.30.8","@types/jasmine":"^2.8.7","@types/jasminewd2":"^2.0.3","@types/node":"^10.1.2","codelyzer":"~4.3.0","jasmine-core":"~3.1.0","jasmine-spec-reporter":"~4.2.1","karma":"^2.0.2","karma-chrome-launcher":"~2.2.0","karma-cli":"~1.0.1","karma-coverage-istanbul-reporter":"^2.0.1","karma-jasmine":"^1.1.2","karma-jasmine-html-reporter":"^1.1.0","protractor":"~5.3.2","ts-node":"~6.0.4","tslint":"~5.10.0","typescript":"^2.7.2"}};
+module.exports = {"name":"lfmc-staging","version":"0.6.16","license":"MIT","main":"app.js","scripts":{"ng":"ng","start":"ng serve --host 0.0.0.0 --disable-host-check","build":"ng build","test":"ng test","lint":"ng lint","e2e":"ng e2e","postinstall":"ng build"},"engines":{"node":"~8.2.1","npm":"~5.3.0"},"private":true,"dependencies":{"@agm/core":"^1.0.0-beta.2","@angular/animations":"^6.0.3","@angular/cdk":"^6.2.0","@angular/common":"^6.0.3","@angular/compiler":"^6.0.3","@angular/core":"^6.0.3","@angular/forms":"^6.0.3","@angular/http":"^6.0.3","@angular/platform-browser":"^6.0.3","@angular/platform-browser-dynamic":"^6.0.3","@angular/router":"^6.0.3","@mapbox/geojson-area":"^0.2.2","@mapbox/mapbox-data-cli":"^2.0.0","@mapbox/mapbox-gl-draw":"^1.0.9","@mapbox/mapbox-gl-geocoder":"^2.2.0","@mapbox/mapbox-gl-sync-move":"^0.2.0","@mapbox/point-geometry":"^0.1.0","@mapbox/vector-tile":"^1.3.1","@swimlane/ngx-charts":"^8.0.2","@turf/turf":"^5.1.6","@types/geojson":"^7946.0.3","@types/mapbox-gl":"^0.44.4","@types/proj4":"^2.3.4","angular-persistence":"^1.0.1","angular2-uuid":"^1.1.1","auth0":"^2.9.1","auth0-js":"^9.5.1","auth0-lock":"^11.6.1","aws-sdk":"^2.245.1","bootstrap":"^4.1.1","colormap":"^2.3.0","connect-ensure-login":"^0.1.1","cookieconsent":"^3.1.0","core-js":"^2.5.6","d3":"^5.4.0","d3-ng2-service":"^2.2.0","express":"^4.16.3","express-graphql":"^0.6.12","geojson-bbox":"0.0.0","graphql":"^0.13.2","graphql-server":"^0.3.2","graphql-server-express":"^1.3.6","grunt":"^1.0.2","json":"^9.0.6","json-loader":"^0.5.7","mapbox-gl":"^0.45.0","mapbox-gl-supported":"^1.2.0","moment":"^2.22.1","mongoose":"^5.1.2","netcdf":"^1.1.1","ng2-file-upload":"^1.3.0","ng2-localstorage":"^0.5.1","ng2-semantic-ui":"^0.9.7","ng2-slider-component":"^1.0.9","ng2-timeline":"^0.1.1","ngx-clipboard":"^11.1.0","ngx-cookieconsent":"^2.0.0","ngx-drag-to-select":"^1.1.1","passport":"^0.4.0","passport-auth0":"^0.6.1","proj4":"^2.4.4","rxjs":"^6.2.0","semver":"^5.5.0","terraformer":"^1.0.8","terraformer-wkt-parser":"^1.2.0","web-animations-js":"^2.3.1","wellknown":"^0.5.0","zone.js":"^0.8.26"},"devDependencies":{"@angular-devkit/build-angular":"~0.6.3","@angular/cli":"^6.0.3","@angular/compiler-cli":"^6.0.3","@angular/language-service":"^6.0.3","@types/d3":"^5.0.0","@types/googlemaps":"^3.30.8","@types/jasmine":"^2.8.7","@types/jasminewd2":"^2.0.3","@types/node":"^10.1.2","codelyzer":"~4.3.0","jasmine-core":"~3.1.0","jasmine-spec-reporter":"~4.2.1","karma":"^2.0.2","karma-chrome-launcher":"~2.2.0","karma-cli":"~1.0.1","karma-coverage-istanbul-reporter":"^2.0.1","karma-jasmine":"^1.1.2","karma-jasmine-html-reporter":"^1.1.0","protractor":"~5.3.2","ts-node":"~6.0.4","tslint":"~5.10.0","typescript":"^2.7.2"}};
 
 /***/ }),
 
@@ -495,6 +495,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _availability_temporal_availability_indicator_bar_indicator_bar_component__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./availability/temporal-availability/indicator-bar/indicator-bar.component */ "./src/app/availability/temporal-availability/indicator-bar/indicator-bar.component.ts");
 /* harmony import */ var _availability_temporal_availability_availability_row_availability_row_component__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./availability/temporal-availability/availability-row/availability-row.component */ "./src/app/availability/temporal-availability/availability-row/availability-row.component.ts");
 /* harmony import */ var _availability_temporal_availability_temporal_availability_component__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./availability/temporal-availability/temporal-availability.component */ "./src/app/availability/temporal-availability/temporal-availability.component.ts");
+/* harmony import */ var _components_disclaimer_disclaimer_component__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./components/disclaimer/disclaimer.component */ "./src/app/components/disclaimer/disclaimer.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -523,6 +524,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 // Components
+
 
 
 
@@ -600,7 +602,8 @@ var AppModule = /** @class */ (function () {
                 _availability_temporal_availability_bar_group_bar_group_component__WEBPACK_IMPORTED_MODULE_44__["BarGroupComponent"],
                 _availability_temporal_availability_indicator_bar_indicator_bar_component__WEBPACK_IMPORTED_MODULE_45__["IndicatorBarComponent"],
                 _availability_temporal_availability_availability_row_availability_row_component__WEBPACK_IMPORTED_MODULE_46__["AvailabilityRowComponent"],
-                _availability_temporal_availability_temporal_availability_component__WEBPACK_IMPORTED_MODULE_47__["TemporalAvailabilityComponent"]
+                _availability_temporal_availability_temporal_availability_component__WEBPACK_IMPORTED_MODULE_47__["TemporalAvailabilityComponent"],
+                _components_disclaimer_disclaimer_component__WEBPACK_IMPORTED_MODULE_48__["DisclaimerComponent"]
             ],
             // Modules
             imports: [
@@ -1717,6 +1720,72 @@ var DatasourcesComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_services_nosql_service__WEBPACK_IMPORTED_MODULE_1__["NosqlService"]])
     ], DatasourcesComponent);
     return DatasourcesComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/components/disclaimer/disclaimer.component.css":
+/*!****************************************************************!*\
+  !*** ./src/app/components/disclaimer/disclaimer.component.css ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/components/disclaimer/disclaimer.component.html":
+/*!*****************************************************************!*\
+  !*** ./src/app/components/disclaimer/disclaimer.component.html ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  disclaimer works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/disclaimer/disclaimer.component.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/components/disclaimer/disclaimer.component.ts ***!
+  \***************************************************************/
+/*! exports provided: DisclaimerComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DisclaimerComponent", function() { return DisclaimerComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var ng2_semantic_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ng2-semantic-ui */ "./node_modules/ng2-semantic-ui/dist/public.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var DisclaimerComponent = /** @class */ (function () {
+    function DisclaimerComponent(modal) {
+        this.modal = modal;
+    }
+    DisclaimerComponent.prototype.ngOnInit = function () {
+    };
+    DisclaimerComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'lfmc-disclaimer',
+            template: __webpack_require__(/*! ./disclaimer.component.html */ "./src/app/components/disclaimer/disclaimer.component.html"),
+            styles: [__webpack_require__(/*! ./disclaimer.component.css */ "./src/app/components/disclaimer/disclaimer.component.css")]
+        }),
+        __metadata("design:paramtypes", [ng2_semantic_ui__WEBPACK_IMPORTED_MODULE_1__["SuiModalService"]])
+    ], DisclaimerComponent);
+    return DisclaimerComponent;
 }());
 
 
@@ -3318,8 +3387,8 @@ var UploadComponent = /** @class */ (function () {
         this.http.get(cdnl, {}).subscribe(function (data) {
             geo = new _importeditems_importeditems_component__WEBPACK_IMPORTED_MODULE_5__["GeoJSONQuery"](c, data);
             console.log(geo);
-            _this.queries.push(geo);
             if (_this.auth.authenticated) {
+                _this.queries.push(geo);
                 _this.store.set(_this.auth.userProfile.name, _this.queries, { type: angular_persistence__WEBPACK_IMPORTED_MODULE_4__["StorageType"].LOCAL });
             }
         });
@@ -5161,7 +5230,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Work/LFMC/lfmc-staging/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Work/BitBucket/lfmc/lfmc-staging/src/main.ts */"./src/main.ts");
 
 
 /***/ }),
