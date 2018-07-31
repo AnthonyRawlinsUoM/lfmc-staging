@@ -11,7 +11,7 @@ export class DisclaimerComponent implements OnInit {
   constructor(private modal: SuiModalService) { }
 
   ngOnInit() {
-    
+
   }
 
 }
