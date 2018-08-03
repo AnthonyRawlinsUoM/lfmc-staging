@@ -35,8 +35,8 @@ export class DisclaimerComponent implements OnInit {
 
   approve() {
     this.disclaim.acknowledge();
-    // if (!this.auth.authenticated) {
-    //   this.auth.login();
-    // }
+    if (!this.auth.authenticated) {
+      this.auth.login();
+    }
   }
 }
