@@ -1,3 +1,8 @@
-<p>
-  disclaimer works!
-</p>
+<sui-modal [isClosable]="false" #modal>
+  <div class="ui top attached inverted segment header"><img class="ui circular mini image" src="/assets/fire.png">Landscape Fuel Moisture Condition</div>
+  <div class="header">Disclaimer</div>
+  <div class="legal content" [innerHTML]="disclaimer_content" style="font-size: 0.75em;"></div>
+  <div class="ui bottom attached inverted segment right aligned">
+    <button class="ui green button" (click)="modal.approve();approve()" autofocus>I acknowledge&hellip;, continue.</button>
+  </div>
+</sui-modal>

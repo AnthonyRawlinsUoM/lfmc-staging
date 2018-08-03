@@ -74,6 +74,7 @@
     "ng2-slider-component": "^1.0.9",
     "ng2-timeline": "^0.1.1",
     "ngx-clipboard": "^11.1.0",
+    "ngx-cookie-service": "^1.0.10",
     "ngx-cookieconsent": "^2.0.0",
     "ngx-drag-to-select": "^1.1.1",
     "passport": "^0.4.0",

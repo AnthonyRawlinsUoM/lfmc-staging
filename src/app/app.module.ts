@@ -20,8 +20,9 @@ import {NosqlService} from './services/nosql.service';
 import {MapService} from './services/map.service';
 import {MapboxUploadAPIS3Service} from './services/mapbox-upload-api-s3.service';
 import {AuthService} from './services/auth.service';
+import {DisclaimationService} from './services/disclaimation.service';
 import {D3Service} from 'd3-ng2-service';
-
+import { CookieService } from 'ngx-cookie-service';
 
 // Components
 import {AppComponent} from './app.component';
@@ -132,7 +133,9 @@ const appRoutes: Routes = [
     ErrorReportingService,
     MapboxUploadAPIS3Service,
     D3Service,
-    NosqlService
+    NosqlService,
+    DisclaimationService,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })
