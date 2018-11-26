@@ -68,6 +68,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   timebrush = true;
   snapping = false;
   allModels = false;
+  jasminLevel = 0.1;
 
   calculated_area = '';
   model_names: any[] = [];
@@ -102,7 +103,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     },
     {
       'model': 'Jasmin',
-      'series': [['2008-01-01', '2018-03-31']]
+      'series': [['2010-01-01', '2018-09-31']]
     },
     {
       'model': 'DEAD_FUEL',
@@ -961,6 +962,10 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     return dateArray;
   }
 
+  setJasminLevel(v) {
+    this.jasminLevel = v;
+  }
+
   makeSourceForModel(layer_code) {
 
 
@@ -969,10 +974,17 @@ export class MapboxComponent implements OnInit, AfterViewInit {
 
     let time_component;
 
+
+    // WORKAROUND - GeoServer expects datetime format to be zero offset for month and days.
+    // So we use M and D instead of MM and DD in the formatting string.
     if (this.selectedDate !== undefined) {
-      time_component = '&time=' + moment(this.selectedDate).format('YYYY-MM-DD');
+      const sel = moment(this.selectedDate).toArray();
+      time_component = '&time=' + sel[0] +'-'+ sel[1] +'-'+ sel[2];
     } else {
-      time_component = '&time=' + moment(this.start).format('YYYY-MM-DD');
+      const s = moment(this.start).toArray();
+      const f = moment(this.finish).toArray();
+      // Use last day of selection by default
+      time_component = '&time=' + s[0] +'-'+ s[1] +'-'+ s[2] + ',' + f[0] +'-'+ f[1] +'-'+ f[2];
     }
     // It is possible to animate the map using the WMS Animator function of GeoServer,
     // however Mapbox doesn't support rendering because you can't sync animation frames
@@ -980,9 +992,21 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     // this.date_range(this.start, this.finish);
     const anim_component = '&format=image%2fpng&transparent=true';
 
+
+    // The JASMIN model requires an extra DIMENSION (LEVEL)
+    // set the LEVEL if this is a JASMIN model
+    let level_fix = '';
+
+    if (layer_code === 'JASMIN') {
+      level_fix = '&level=' + this.jasminLevel;
+    } else {
+      console.log(layer_code);
+      level_fix = '';
+    }
+
     const layer_source = {
       'type': 'raster',
-      'tiles': [layer_url_part_A + layer_code.toUpperCase() + layer_url_part_B + anim_component + time_component],
+      'tiles': [layer_url_part_A + layer_code.toUpperCase() + layer_url_part_B + anim_component + time_component + level_fix ],
       'tileSize': 256
     };
 

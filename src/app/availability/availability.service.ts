@@ -7,7 +7,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class AvailabilityService {
 
-  private WMTS_Dimensions_Url = 'http://geoserver:8080/geoserver/gwc/service/wmts?REQUEST=DescribeDomains&Version=1.0.0&TileMatrixSet=EPSG:4326&Layer=lfmc:';
+  private WMTS_Dimensions_Url = 'http://geoserver.landscapefuelmoisture.bushfirebehaviour.net.au/geoserver/gwc/service/wmts?REQUEST=DescribeDomains&Version=1.0.0&TileMatrixSet=EPSG:4326&Layer=lfmc:';
 
   constructor(private http: HttpClient) { }
 

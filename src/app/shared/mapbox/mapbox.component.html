@@ -153,7 +153,20 @@
                   </thead>
                   <tbody>
                   <tr *ngFor="let m of models">
-                    <td>{{m.ident}}</td>
+                    <td>{{m.ident}}
+
+                    <div *ngIf="m.code === 'JASMIN'" class="ui mini compact buttons">
+                      <button *ngIf="jasminLevel === 0.1" class="ui compact blue button" (click)="setJasminLevel(0.1)">0.1</button>
+                      <button *ngIf="jasminLevel === 0.25" class="ui compact blue button" (click)="setJasminLevel(0.25)">0.25</button>
+                      <button *ngIf="jasminLevel === 0.65" class="ui compact blue button" (click)="setJasminLevel(0.65)">0.65</button>
+                      <button *ngIf="jasminLevel === 2" class="ui compact blue button" (click)="setJasminLevel(2)">2</button>
+
+                      <button *ngIf="jasminLevel !== 0.1" class="ui compact black button" (click)="setJasminLevel(0.1)">0.1</button>
+                      <button *ngIf="jasminLevel !== 0.25" class="ui compact black button" (click)="setJasminLevel(0.25)">0.25</button>
+                      <button *ngIf="jasminLevel !== 0.65" class="ui compact black button" (click)="setJasminLevel(0.65)">0.65</button>
+                      <button *ngIf="jasminLevel !== 2" class="ui compact black button" (click)="setJasminLevel(2)">2</button>
+                    </div>
+                    </td>
 
                     <td *ngIf="!splitview" class="right aligned">
                       <div class="ui mini compact icon buttons">

@@ -19,10 +19,7 @@ export class TimeseriesService {
               private sanitizer: DomSanitizer) {
   }
 
-  private apiUrl = 'http://api.landscapefuelmoisture.bushfirebehaviour.net.au/v1';
-
-  // Trying version 2
-  // private apiUrl = 'http://lfmc.landfood.unimelb.edu.au:8002/v2';
+  private apiUrl = 'http://cache.landscapefuelmoisture.bushfirebehaviour.net.au/v1';
 
   postAPI(path: string, json_query: any) {
     console.log(`${this.apiUrl}${path}`);

@@ -5,6 +5,7 @@ import {ConfirmModal} from '../confirm-modal/confirm-modal.component';
 import {SuiModalService} from 'ng2-semantic-ui';
 import {ErrorReportingService} from '../../services/error-reporting.service';
 import * as moment from 'moment';
+import {isNullOrUndefined} from 'util';
 
 export enum LFMCResponseType {
   TIMESERIES = 0,
@@ -326,16 +327,15 @@ export class ChartingComponent implements OnInit {
       }
       return value;
     }
-
+    this.multi = [];
+    
     return this.tss.postAPI(
       name,
       json_query
     ).subscribe(
       (m) => {
-        this.multi = JSON.parse(JSON.stringify(m), reviver);
-
-        console.log(this.multi);
-
+        const results = JSON.parse(JSON.stringify(m), reviver);
+        this.multi = results;
         if (this.multi['error'] && this.multi['code']) {
 
           const error_mesg = {
@@ -351,18 +351,36 @@ export class ChartingComponent implements OnInit {
             .onDeny(() => {
             });
         } else {
-          this.dimmer = false;
+
+          for (const ts in this.multi) {
+            if (ts['error'] || ts['code']) {
+
+              const error_mesg = {
+                'err': ts['error'],
+                'code': ts['code'],
+              };
+
+              this.modalService
+                .open(new ConfirmModal('An error occurred: ' + ts['code'], ts['error'] + '\nSend Report?', 'tiny'))
+                .onApprove(() => {
+                  this.errorReportingService.notifyAuthorOfError(error_mesg);
+                })
+                .onDeny(() => {
+                });
+            }
+          }
+
         }
       },
       e => {
         this.multi = [];
+        console.log(e);
         this.modalService
-          .open(new ConfirmModal('An error occurred', e, 'tiny'));
+          .open(new ConfirmModal('An error occurred', e.message, 'tiny'));
         this.dimmer = true;
       },
       () => {
-        // this.modalService
-        //   .open(new ConfirmModal('Success!', 'Your chart is ready.', 'tiny'));
+
         this.dimmer = false;
       });
   }
@@ -378,14 +396,11 @@ export class ChartingComponent implements OnInit {
       'geo_json': geo_json,
       'models': models,
       'start': start,
-      'finish': finish,
-      'weighted': 'True',
-      'response_as': response_as
+      'finish': finish
     };
 
     switch (+response_as) {
       case LFMCResponseType.TIMESERIES:
-
         this.getFuelByPost('/fuel.json', json_query);
         break;
       case LFMCResponseType.MP4:
@@ -393,9 +408,9 @@ export class ChartingComponent implements OnInit {
           // this.multi = JSON.parse(JSON.stringify(m), reviver);
         });
         break;
-      // case LFMCResponseType.NETCDF:
-      //   this.getFuelByPost('/fuel.nc', json_query);
-      //   break;
+      case LFMCResponseType.NETCDF:
+        this.getFuelByPost('/fuel.nc', json_query);
+        break;
     }
   }
 
