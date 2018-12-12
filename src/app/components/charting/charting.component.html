@@ -1,11 +1,16 @@
 <div class="ui blurring inverted segment">
   <div class="chartcontainer dark">
-    <div *ngIf="dimmer" class="ui active dimmer">
-      <div class="ui indeterminate text loader">
+    <div *ngIf="dimmer">
+      <!--<div class="ui active dimmer">-->
+      <!--<div class="ui indeterminate text loader">-->
+      <!--&lt;!&ndash;<div *ngIf="chart_is_ready">Preparing your results.</div>&ndash;&gt;-->
+      <!--<div *ngIf="!chart_is_ready">Make boundary, model, and temporal selections.</div>-->
+      <!--</div>-->
+      <!--</div>-->
 
-        <div *ngIf="chart_is_ready">Preparing your results.</div>
-        <div *ngIf="!chart_is_ready">Make boundary, model, and temporal selections.</div>
-      </div>
+
+      <app-queryprogress [querytasks]="qt" (cancel)="do_cancel()"></app-queryprogress>
+
     </div>
     <ngx-charts-line-chart
       [view]="view"
@@ -34,7 +39,8 @@
       (deactivate) = "onActivateAndDeactivate()"
       (active) = "onActivateAndDeactivate()"
 
-      (select)="onSelect($event)">
+      (select)="onSelect($event)"
+      *ngIf="!dimmer">
     </ngx-charts-line-chart>
   </div>
 </div>

@@ -503,6 +503,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _availability_temporal_availability_availability_row_availability_row_component__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./availability/temporal-availability/availability-row/availability-row.component */ "./src/app/availability/temporal-availability/availability-row/availability-row.component.ts");
 /* harmony import */ var _availability_temporal_availability_temporal_availability_component__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./availability/temporal-availability/temporal-availability.component */ "./src/app/availability/temporal-availability/temporal-availability.component.ts");
 /* harmony import */ var _components_disclaimer_disclaimer_component__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./components/disclaimer/disclaimer.component */ "./src/app/components/disclaimer/disclaimer.component.ts");
+/* harmony import */ var _components_queryprogress_queryprogress_component__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./components/queryprogress/queryprogress.component */ "./src/app/components/queryprogress/queryprogress.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -533,6 +534,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 // Components
+
 
 
 
@@ -612,7 +614,8 @@ var AppModule = /** @class */ (function () {
                 _availability_temporal_availability_indicator_bar_indicator_bar_component__WEBPACK_IMPORTED_MODULE_47__["IndicatorBarComponent"],
                 _availability_temporal_availability_availability_row_availability_row_component__WEBPACK_IMPORTED_MODULE_48__["AvailabilityRowComponent"],
                 _availability_temporal_availability_temporal_availability_component__WEBPACK_IMPORTED_MODULE_49__["TemporalAvailabilityComponent"],
-                _components_disclaimer_disclaimer_component__WEBPACK_IMPORTED_MODULE_50__["DisclaimerComponent"]
+                _components_disclaimer_disclaimer_component__WEBPACK_IMPORTED_MODULE_50__["DisclaimerComponent"],
+                _components_queryprogress_queryprogress_component__WEBPACK_IMPORTED_MODULE_51__["QueryprogressComponent"]
             ],
             // Modules
             imports: [
@@ -1169,7 +1172,7 @@ module.exports = ".chartcontainer {\n\twidth: 100%;\n\theight: 100%;\n\tposition
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui blurring inverted segment\">\n  <div class=\"chartcontainer dark\">\n    <div *ngIf=\"dimmer\" class=\"ui active dimmer\">\n      <div class=\"ui indeterminate text loader\">\n\n        <div *ngIf=\"chart_is_ready\">Preparing your results.</div>\n        <div *ngIf=\"!chart_is_ready\">Make boundary, model, and temporal selections.</div>\n      </div>\n    </div>\n    <ngx-charts-line-chart\n      [view]=\"view\"\n      [scheme]=\"colorScheme\"\n      [results]=\"multi\"\n      [gradient]=\"gradient\"\n      [xAxis]=\"showXAxis\"\n      [yAxis]=\"showYAxis\"\n      [legend]=\"showLegend\"\n      [showXAxisLabel]=\"showXAxisLabel\"\n      [showYAxisLabel]=\"showYAxisLabel\"\n      [xAxisLabel]=\"xAxisLabel\"\n      [yAxisLabel]=\"yAxisLabel\"\n      [autoScale]=\"autoScale\"\n      [showGridLines]=\"showGridLines\"\n      [showRefLines]=\"showRefLines\"\n      [referenceLines]=\"referenceLines\"\n      [roundDomains]=\"roundDomains\"\n      [schemeType]=\"schemeType\"\n      [timeline]=\"timeline\"\n      [curve]=\"curve\"\n      [autoScale]=\"autoScale\"\n      rangeFillOpacity=\"0.13\"\n\n      [activeEntries] = \"highlights\"\n      (deactivate) = \"onActivateAndDeactivate()\"\n      (active) = \"onActivateAndDeactivate()\"\n\n      (select)=\"onSelect($event)\">\n    </ngx-charts-line-chart>\n  </div>\n</div>\n\n<!-- Property\tType\tDefault Value\tDescription\nview\tnumber[]\t\tthe dimensions of the chart [width, height]. If left undefined, the chart will fit to the parent container size\nresults\tobject[]\t\tthe chart data\nscheme\tobject\t\tthe color scheme of the chart\nschemeType\tstring\t'ordinal'\tthe color scale type. Can be either 'ordinal' or 'linear'\ncustomColors\tobject\t\tcustom colors for the chart. Used to override a color for a specific value\nrangeFillOpacity\tnumber\t0.15\topacity of the shadow around the line indication the (optional) min and max values. The range shadow is only displayed if min and max values are provided with the data. The color of the shadow is alwas the color of the central line.\nlegend\tboolean\tfalse\tshow or hide the legend\nlegendTitle\tstring\t'Legend'\tthe legend title\nxAxis\tboolean\tfalse\tshow or hide the x axis\nyAxis\tboolean\tfalse\tshow or hide the y axis\nshowGridLines\tboolean\ttrue\tshow or hide the grid lines\nroundDomains\tboolean\tfalse\tround domains for aligned gridlines\nshowXAxisLabel\tboolean\tfalse\tshow or hide the x axis label\nshowYAxisLabel\tboolean\tfalse\tshow or hide the y axis label\nxAxisLabel\tstring\t\tthe x axis label text\nyAxisLabel\tstring\t\tthe y axis label text\nxAxisTickFormatting\tfunction\t\tthe x axis tick formatting\nyAxisTickFormatting\tfunction\t\tthe y axis tick formatting\ntimeline\tboolean\tfalse\tdisplay a timeline control under the chart. Only available if x scale is date\nautoScale\tboolean\tfalse\tset the minimum value of the y axis to the minimum value in the data, instead of 0\ncurve\tfunction\t\tthe interpolation function used to generate the curve. It accepts any d3.curve function\ngradient\tboolean\tfalse\tfill elements with a gradient instead of a solid color\nactiveEntries\tobject[]\t[]\telements to highlight\ntooltipDisabled\tboolean\tfalse\tshow or hide the tooltip\ntooltipTemplate\tTemplateRef\t\ta custom ng-template to be displayed inside the tooltip when hovering a single point\nseriesTooltipTemplate\tTemplateRef\t\ta custom ng-template to be displayed inside the tooltip when hovering series\nreferenceLines\tobject[]\t\tan array of reference lines to be shown behind the chart. Every reference line should be of format {name, value}\nshowRefLines\tboolean\tfalse\tshow or hide the reference lines\nshowRefLabels\tboolean\ttrue\tshow or hide the reference line labels -->\n"
+module.exports = "<div class=\"ui blurring inverted segment\">\n  <div class=\"chartcontainer dark\">\n    <div *ngIf=\"dimmer\">\n      <!--<div class=\"ui active dimmer\">-->\n      <!--<div class=\"ui indeterminate text loader\">-->\n      <!--&lt;!&ndash;<div *ngIf=\"chart_is_ready\">Preparing your results.</div>&ndash;&gt;-->\n      <!--<div *ngIf=\"!chart_is_ready\">Make boundary, model, and temporal selections.</div>-->\n      <!--</div>-->\n      <!--</div>-->\n\n\n      <app-queryprogress [querytasks]=\"qt\" (cancel)=\"do_cancel()\"></app-queryprogress>\n\n    </div>\n    <ngx-charts-line-chart\n      [view]=\"view\"\n      [scheme]=\"colorScheme\"\n      [results]=\"multi\"\n      [gradient]=\"gradient\"\n      [xAxis]=\"showXAxis\"\n      [yAxis]=\"showYAxis\"\n      [legend]=\"showLegend\"\n      [showXAxisLabel]=\"showXAxisLabel\"\n      [showYAxisLabel]=\"showYAxisLabel\"\n      [xAxisLabel]=\"xAxisLabel\"\n      [yAxisLabel]=\"yAxisLabel\"\n      [autoScale]=\"autoScale\"\n      [showGridLines]=\"showGridLines\"\n      [showRefLines]=\"showRefLines\"\n      [referenceLines]=\"referenceLines\"\n      [roundDomains]=\"roundDomains\"\n      [schemeType]=\"schemeType\"\n      [timeline]=\"timeline\"\n      [curve]=\"curve\"\n      [autoScale]=\"autoScale\"\n      rangeFillOpacity=\"0.13\"\n\n      [activeEntries] = \"highlights\"\n      (deactivate) = \"onActivateAndDeactivate()\"\n      (active) = \"onActivateAndDeactivate()\"\n\n      (select)=\"onSelect($event)\"\n      *ngIf=\"!dimmer\">\n    </ngx-charts-line-chart>\n  </div>\n</div>\n\n<!-- Property\tType\tDefault Value\tDescription\nview\tnumber[]\t\tthe dimensions of the chart [width, height]. If left undefined, the chart will fit to the parent container size\nresults\tobject[]\t\tthe chart data\nscheme\tobject\t\tthe color scheme of the chart\nschemeType\tstring\t'ordinal'\tthe color scale type. Can be either 'ordinal' or 'linear'\ncustomColors\tobject\t\tcustom colors for the chart. Used to override a color for a specific value\nrangeFillOpacity\tnumber\t0.15\topacity of the shadow around the line indication the (optional) min and max values. The range shadow is only displayed if min and max values are provided with the data. The color of the shadow is alwas the color of the central line.\nlegend\tboolean\tfalse\tshow or hide the legend\nlegendTitle\tstring\t'Legend'\tthe legend title\nxAxis\tboolean\tfalse\tshow or hide the x axis\nyAxis\tboolean\tfalse\tshow or hide the y axis\nshowGridLines\tboolean\ttrue\tshow or hide the grid lines\nroundDomains\tboolean\tfalse\tround domains for aligned gridlines\nshowXAxisLabel\tboolean\tfalse\tshow or hide the x axis label\nshowYAxisLabel\tboolean\tfalse\tshow or hide the y axis label\nxAxisLabel\tstring\t\tthe x axis label text\nyAxisLabel\tstring\t\tthe y axis label text\nxAxisTickFormatting\tfunction\t\tthe x axis tick formatting\nyAxisTickFormatting\tfunction\t\tthe y axis tick formatting\ntimeline\tboolean\tfalse\tdisplay a timeline control under the chart. Only available if x scale is date\nautoScale\tboolean\tfalse\tset the minimum value of the y axis to the minimum value in the data, instead of 0\ncurve\tfunction\t\tthe interpolation function used to generate the curve. It accepts any d3.curve function\ngradient\tboolean\tfalse\tfill elements with a gradient instead of a solid color\nactiveEntries\tobject[]\t[]\telements to highlight\ntooltipDisabled\tboolean\tfalse\tshow or hide the tooltip\ntooltipTemplate\tTemplateRef\t\ta custom ng-template to be displayed inside the tooltip when hovering a single point\nseriesTooltipTemplate\tTemplateRef\t\ta custom ng-template to be displayed inside the tooltip when hovering series\nreferenceLines\tobject[]\t\tan array of reference lines to be shown behind the chart. Every reference line should be of format {name, value}\nshowRefLines\tboolean\tfalse\tshow or hide the reference lines\nshowRefLabels\tboolean\ttrue\tshow or hide the reference line labels -->\n"
 
 /***/ }),
 
@@ -1190,6 +1193,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../confirm-modal/confirm-modal.component */ "./src/app/components/confirm-modal/confirm-modal.component.ts");
 /* harmony import */ var ng2_semantic_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ng2-semantic-ui */ "./node_modules/ng2-semantic-ui/dist/public.js");
 /* harmony import */ var _services_error_reporting_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/error-reporting.service */ "./src/app/services/error-reporting.service.ts");
+/* harmony import */ var _services_florist_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/florist.service */ "./src/app/services/florist.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1205,6 +1209,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var LFMCResponseType;
 (function (LFMCResponseType) {
     LFMCResponseType[LFMCResponseType["TIMESERIES"] = 0] = "TIMESERIES";
@@ -1212,11 +1217,13 @@ var LFMCResponseType;
     LFMCResponseType[LFMCResponseType["NETCDF"] = 2] = "NETCDF";
 })(LFMCResponseType || (LFMCResponseType = {}));
 var ChartingComponent = /** @class */ (function () {
-    function ChartingComponent(tss, modalService, errorReportingService) {
+    function ChartingComponent(tss, modalService, errorReportingService, florist) {
         this.tss = tss;
         this.modalService = modalService;
         this.errorReportingService = errorReportingService;
+        this.florist = florist;
         this.select = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.qt = [];
         // view = [1900, 350];
         this.view = undefined;
         // options
@@ -1264,128 +1271,6 @@ var ChartingComponent = /** @class */ (function () {
         this.showRefLines = true; // show or hide the reference lines
         this.colorSets = [
             {
-                name: 'vivid',
-                selectable: true,
-                group: 'Ordinal',
-                domain: [
-                    '#647c8a', '#3f51b5', '#2196f3', '#00b862', '#afdf0a', '#a7b61a', '#f3e562', '#ff9800', '#ff5722', '#ff4514'
-                ]
-            },
-            {
-                name: 'natural',
-                selectable: true,
-                group: 'Ordinal',
-                domain: [
-                    '#bf9d76', '#e99450', '#d89f59', '#f2dfa7', '#a5d7c6', '#7794b1', '#afafaf', '#707160', '#ba9383', '#d9d5c3'
-                ]
-            },
-            {
-                name: 'cool',
-                selectable: true,
-                group: 'Ordinal',
-                domain: [
-                    '#a8385d', '#7aa3e5', '#a27ea8', '#aae3f5', '#adcded', '#a95963', '#8796c0', '#7ed3ed', '#50abcc', '#ad6886'
-                ]
-            },
-            {
-                name: 'fire',
-                selectable: true,
-                group: 'Ordinal',
-                domain: [
-                    '#ff3d00', '#bf360c', '#ff8f00', '#ff6f00', '#ff5722', '#e65100', '#ffca28', '#ffab00'
-                ]
-            },
-            {
-                name: 'solar',
-                selectable: true,
-                group: 'Continuous',
-                domain: [
-                    '#fff8e1', '#ffecb3', '#ffe082', '#ffd54f', '#ffca28', '#ffc107', '#ffb300', '#ffa000', '#ff8f00', '#ff6f00'
-                ]
-            },
-            {
-                name: 'air',
-                selectable: true,
-                group: 'Continuous',
-                domain: [
-                    '#e1f5fe', '#b3e5fc', '#81d4fa', '#4fc3f7', '#29b6f6', '#03a9f4', '#039be5', '#0288d1', '#0277bd', '#01579b'
-                ]
-            },
-            {
-                name: 'aqua',
-                selectable: true,
-                group: 'Continuous',
-                domain: [
-                    '#e0f7fa', '#b2ebf2', '#80deea', '#4dd0e1', '#26c6da', '#00bcd4', '#00acc1', '#0097a7', '#00838f', '#006064'
-                ]
-            },
-            {
-                name: 'flame',
-                selectable: false,
-                group: 'Ordinal',
-                domain: [
-                    '#A10A28', '#D3342D', '#EF6D49', '#FAAD67', '#FDDE90', '#DBED91', '#A9D770', '#6CBA67', '#2C9653', '#146738'
-                ]
-            },
-            {
-                name: 'ocean',
-                selectable: false,
-                group: 'Ordinal',
-                domain: [
-                    '#1D68FB', '#33C0FC', '#4AFFFE', '#AFFFFF', '#FFFC63', '#FDBD2D', '#FC8A25', '#FA4F1E', '#FA141B', '#BA38D1'
-                ]
-            },
-            {
-                name: 'forest',
-                selectable: false,
-                group: 'Ordinal',
-                domain: [
-                    '#55C22D', '#C1F33D', '#3CC099', '#AFFFFF', '#8CFC9D', '#76CFFA', '#BA60FB', '#EE6490', '#C42A1C', '#FC9F32'
-                ]
-            },
-            {
-                name: 'horizon',
-                selectable: false,
-                group: 'Ordinal',
-                domain: [
-                    '#2597FB', '#65EBFD', '#99FDD0', '#FCEE4B', '#FEFCFA', '#FDD6E3', '#FCB1A8', '#EF6F7B', '#CB96E8', '#EFDEE0'
-                ]
-            },
-            {
-                name: 'neons',
-                selectable: false,
-                group: 'Ordinal',
-                domain: [
-                    '#FF3333', '#FF33FF', '#CC33FF', '#0000FF', '#33CCFF', '#33FFFF', '#33FF66', '#CCFF33', '#FFCC00', '#FF6600'
-                ]
-            },
-            {
-                name: 'picnic',
-                selectable: false,
-                group: 'Ordinal',
-                domain: [
-                    '#FAC51D', '#66BD6D', '#FAA026', '#29BB9C', '#E96B56', '#55ACD2', '#B7332F', '#2C83C9', '#9166B8', '#92E7E8'
-                ]
-            },
-            {
-                name: 'night',
-                selectable: false,
-                group: 'Ordinal',
-                domain: [
-                    '#2B1B5A', '#501356', '#183356', '#28203F', '#391B3C', '#1E2B3C', '#120634',
-                    '#2D0432', '#051932', '#453080', '#75267D', '#2C507D', '#4B3880', '#752F7D', '#35547D'
-                ]
-            },
-            {
-                name: 'nightLights',
-                selectable: false,
-                group: 'Ordinal',
-                domain: [
-                    '#4e31a5', '#9c25a7', '#3065ab', '#57468b', '#904497', '#46648b',
-                    '#32118d', '#a00fb3', '#1052a2', '#6e51bd', '#b63cc3', '#6c97cb', '#8671c1', '#b455be', '#7496c3'
-                ]
-            },
-            {
                 name: 'viridis',
                 selectable: true,
                 group: 'Continuous',
@@ -1425,15 +1310,13 @@ var ChartingComponent = /** @class */ (function () {
                 ]
             }
         ];
-        this.lat = 0;
-        this.lng = 0;
-        var single = [
+        this.default_single = [
             {
                 'name': 'Nolan',
                 'value': 10
             }
         ];
-        var multi = [
+        this.default_multi = [
             {
                 'name': 'dead_fuel',
                 'series': [
@@ -1467,7 +1350,10 @@ var ChartingComponent = /** @class */ (function () {
                 ]
             }
         ];
-        Object.assign(this, { single: single, multi: multi });
+        this.lat = 0;
+        this.lng = 0;
+        this.multi = this.default_multi;
+        this.single = this.default_single;
     }
     ChartingComponent.prototype.ngOnInit = function () {
         this.setColorScheme('viridis');
@@ -1490,54 +1376,76 @@ var ChartingComponent = /** @class */ (function () {
             return value;
         }
         this.multi = [];
-        return this.tss.postAPI(name, json_query).subscribe(function (m) {
-            var results = JSON.parse(JSON.stringify(m), reviver);
-            _this.multi = results;
-            if (_this.multi['error'] && _this.multi['code']) {
-                var error_mesg_1 = {
-                    'err': _this.multi['error'],
-                    'code': _this.multi['code'],
-                };
-                _this.modalService
-                    .open(new _confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_3__["ConfirmModal"]('An error occurred: ' + _this.multi['code'], _this.multi['error'] + '\nSend Report?', 'tiny'))
-                    .onApprove(function () {
-                    _this.errorReportingService.notifyAuthorOfError(error_mesg_1);
-                })
-                    .onDeny(function () {
-                });
-            }
-            else {
-                var _loop_1 = function (ts) {
-                    if (ts['error'] || ts['code']) {
-                        var error_mesg_2 = {
-                            'err': ts['error'],
-                            'code': ts['code'],
-                        };
-                        _this.modalService
-                            .open(new _confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_3__["ConfirmModal"]('An error occurred: ' + ts['code'], ts['error'] + '\nSend Report?', 'tiny'))
-                            .onApprove(function () {
-                            _this.errorReportingService.notifyAuthorOfError(error_mesg_2);
-                        })
-                            .onDeny(function () {
-                        });
-                    }
-                };
-                for (var ts in _this.multi) {
-                    _loop_1(ts);
-                }
-            }
+        this.tss.postAPI(name, json_query).subscribe(function (m) {
+            console.log(m);
+            _this.qt = m;
         }, function (e) {
-            _this.multi = [];
             console.log(e);
             _this.modalService
                 .open(new _confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_3__["ConfirmModal"]('An error occurred', e.message, 'tiny'));
             _this.dimmer = true;
         }, function () {
-            _this.dimmer = false;
+            _this.qt.map(function (st) {
+                console.log('Subtask Result:' + st);
+                _this.florist.state(st.uuid).subscribe(function (res) {
+                    console.log(st.uuid + ' has state: ' + res.state);
+                    if (res.state === 'SUCCESS') {
+                        _this.multi.push(JSON.parse(JSON.stringify(res.result), reviver));
+                    }
+                }, function (e) {
+                    console.log(e);
+                }, function () {
+                    console.log('Finished adding results for subtask.');
+                });
+            });
+            // console.log(this.multi);
+            // this.dimmer = false;
         });
     };
-    // TODO - Toggle weighted selections ON/OFF
-    // Eg., Doesn't make sense to weight a categorical index by area.
+    // const subtasks = m;
+    //
+    // if (!subtasks) {
+    //   console.log('Nothing returned?');
+    // } else {
+    //   for (const st in subtasks) {
+    //     console.log(st);
+    //     // subscribe to Redis using st as uuid
+    //   }
+    // }
+    // if (this.multi['error'] && this.multi['code']) {
+    //
+    //   const error_mesg = {
+    //     'err': this.multi['error'],
+    //     'code': this.multi['code'],
+    //   };
+    //
+    //   this.modalService
+    //     .open(new ConfirmModal('An error occurred: ' + this.multi['code'], this.multi['error'] + '\nSend Report?', 'tiny'))
+    //     .onApprove(() => {
+    //       this.errorReportingService.notifyAuthorOfError(error_mesg);
+    //     })
+    //     .onDeny(() => {
+    //     });
+    // } else {
+    //
+    //   for (const ts in this.multi) {
+    //     if (ts['error'] || ts['code']) {
+    //
+    //       const error_mesg = {
+    //         'err': ts['error'],
+    //         'code': ts['code'],
+    //       };
+    //
+    //       this.modalService
+    //         .open(new ConfirmModal('An error occurred: ' + ts['code'], ts['error'] + '\nSend Report?', 'tiny'))
+    //         .onApprove(() => {
+    //           this.errorReportingService.notifyAuthorOfError(error_mesg);
+    //         })
+    //         .onDeny(() => {
+    //         });
+    //     }
+    //   }
+    // }
     ChartingComponent.prototype.getFuelForShapeWithModels = function (geo_json, start, finish, models, response_as) {
         console.log('>>> Creating query');
         this.chart_is_ready = true;
@@ -1549,7 +1457,7 @@ var ChartingComponent = /** @class */ (function () {
         };
         switch (+response_as) {
             case LFMCResponseType.TIMESERIES:
-                this.getFuelByPost('/fuel.json', json_query);
+                this.getFuelByPost('/submit_query.json', json_query);
                 break;
             case LFMCResponseType.MP4:
                 this.tss.postAPI('/fuel.mp4', json_query).subscribe(function (m) {
@@ -1565,12 +1473,14 @@ var ChartingComponent = /** @class */ (function () {
         console.log('Got select event from chart.');
         console.log(e);
         this.select.emit(e);
-        // this.selectedDate = moment(e.name).format('YYYY-MM-DD');
-        // console.log('Setting selected date to: ', this.selectedDate);
     };
     ChartingComponent.prototype.onActivateAndDeactivate = function () {
         console.log(this.highlights);
         // this.select.emit();
+    };
+    ChartingComponent.prototype.do_cancel = function () {
+        this.dimmer = false;
+        this.multi = this.default_multi;
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -1600,7 +1510,8 @@ var ChartingComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_services_timeseries_service__WEBPACK_IMPORTED_MODULE_1__["TimeseriesService"],
             ng2_semantic_ui__WEBPACK_IMPORTED_MODULE_4__["SuiModalService"],
-            _services_error_reporting_service__WEBPACK_IMPORTED_MODULE_5__["ErrorReportingService"]])
+            _services_error_reporting_service__WEBPACK_IMPORTED_MODULE_5__["ErrorReportingService"],
+            _services_florist_service__WEBPACK_IMPORTED_MODULE_6__["FloristService"]])
     ], ChartingComponent);
     return ChartingComponent;
 }());
@@ -3119,6 +3030,118 @@ var ProfileComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/components/queryprogress/queryprogress.component.css":
+/*!**********************************************************************!*\
+  !*** ./src/app/components/queryprogress/queryprogress.component.css ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".progresspane {\n  max-height: 40vh;\n  overflow-y: scroll;\n}\n"
+
+/***/ }),
+
+/***/ "./src/app/components/queryprogress/queryprogress.component.html":
+/*!***********************************************************************!*\
+  !*** ./src/app/components/queryprogress/queryprogress.component.html ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!-- Query has been submitted -->\n<div *ngIf=\"querytasks && querytasks.length > 0\">\n  <div class=\"inverted segment\">\n    <!-- Controls for whole Query (including all subtasks). -->\n    <div class=\"ui top attached inverted menu\">\n      <div class=\"item\">\n        Overall Query Progress:\n      </div>\n      <div class=\"right menu\">\n\n        <div class=\"item\">\n          <div class=\"ui right aligned compact basic icon buttons\">\n            <button class=\"ui basic yellow icon button\" (click)=\"abort(uuid)\">\n              <i class=\"pause icon\"></i>\n            </button>\n            <button class=\"ui basic orange icon  button\" (click)=\"revoke(uuid)\">\n              <i class=\"close icon\"></i>\n            </button>\n            <button class=\"ui basic red icon  button\" (click)=\"cancel_query()\">\n              <i class=\"ban icon\"></i>\n            </button>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <!--<div class=\"ui bottom attached tiny form\">-->\n      <!--<div class=\"scrolling content progresspane\">-->\n        <div class=\"ui three column grid\">\n          <!-- Sub tasks that contribute to this query -->\n          <div *ngFor=\"let subtask of querytasks\" class=\"middle aligned row\">\n\n            <div class=\"three wide column\">\n              <i class=\"download icon\"></i>\n              Model <!-- {{ state(subtask.uuid) | json }} -->\n            </div>\n            <div class=\"eleven wide column\">\n              <sui-progress class=\"inverted indicating active\" [value]=\"progress(subtask.uuid)\"></sui-progress>\n            </div>\n            <div class=\"two wide column\">\n              <div class=\"ui three mini compact basic icon buttons\">\n                <button class=\"ui mini basic blue icon button\" (click)=\"console.log(subtask.uuid)\">\n                  <i class=\"refresh icon\"></i>\n                </button>\n                <button class=\"ui mini basic yellow icon button\" (click)=\"abort(subtask.uuid)\">\n                  <i class=\"pause icon\"></i>\n                </button>\n                <button class=\"ui mini basic orange icon button\" (click)=\"revoke(subtask.uuid)\">\n                  <i class=\"close icon\"></i>\n                </button>\n              </div>\n            </div>\n\n          </div>\n        </div>\n      <!--</div>-->\n    <!--</div>-->\n  </div>\n</div>\n\n<!-- Query has NOT been submitted yet -->\n<div *ngIf=\"querytasks.length === 0\">\n  <div>Make all MODEL, SPACE, & TIME selections to continue.</div>\n</div>\n\n"
+
+/***/ }),
+
+/***/ "./src/app/components/queryprogress/queryprogress.component.ts":
+/*!*********************************************************************!*\
+  !*** ./src/app/components/queryprogress/queryprogress.component.ts ***!
+  \*********************************************************************/
+/*! exports provided: QueryprogressComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QueryprogressComponent", function() { return QueryprogressComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_florist_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/florist.service */ "./src/app/services/florist.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var QueryprogressComponent = /** @class */ (function () {
+    function QueryprogressComponent(florist) {
+        this.florist = florist;
+        this.cancel = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+    }
+    QueryprogressComponent.prototype.ngOnInit = function () {
+    };
+    QueryprogressComponent.prototype.revoke = function (uuid) {
+        this.florist.revoke(uuid);
+    };
+    QueryprogressComponent.prototype.abort = function (uuid) {
+        this.florist.abort(uuid);
+    };
+    QueryprogressComponent.prototype.state = function (uuid) {
+        var s;
+        return this.florist.state(uuid).subscribe(function (r) {
+            s = r.state;
+        }, function (e) {
+            console.log(e);
+        }, function () {
+            return s;
+        });
+    };
+    QueryprogressComponent.prototype.progress = function (uuid) {
+        var progress = 0;
+        return this.florist.state(uuid).subscribe(function (r) {
+            if (r.state === 'PENDING') {
+                progress = 0;
+            }
+            else if (r.state === 'STARTED') {
+                progress = 50;
+            }
+            else if (r.state === 'SUCCESS') {
+                progress = 100;
+            }
+        }, function (e) {
+            console.log(e);
+        }, function () {
+            return progress;
+        });
+    };
+    QueryprogressComponent.prototype.cancel_query = function () {
+        this.cancel.emit();
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], QueryprogressComponent.prototype, "querytasks", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", Object)
+    ], QueryprogressComponent.prototype, "cancel", void 0);
+    QueryprogressComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-queryprogress',
+            template: __webpack_require__(/*! ./queryprogress.component.html */ "./src/app/components/queryprogress/queryprogress.component.html"),
+            styles: [__webpack_require__(/*! ./queryprogress.component.css */ "./src/app/components/queryprogress/queryprogress.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_florist_service__WEBPACK_IMPORTED_MODULE_1__["FloristService"]])
+    ], QueryprogressComponent);
+    return QueryprogressComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/components/searchresults/searchresults.component.css":
 /*!**********************************************************************!*\
   !*** ./src/app/components/searchresults/searchresults.component.css ***!
@@ -3844,6 +3867,82 @@ var ErrorReportingService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/florist.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/services/florist.service.ts ***!
+  \*********************************************/
+/*! exports provided: FloristService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FloristService", function() { return FloristService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var httpOptions = {
+    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
+        'Content-Type': 'application/json',
+        'Accept': '*/*',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+    })
+};
+var FloristService = /** @class */ (function () {
+    function FloristService(http) {
+        this.http = http;
+        /* Couples with the Flower API for task management via Celery.
+         * https://flower.readthedocs.io/en/latest/index.html
+         *
+         * Here we expose just a few selected API calls as an Injectable service.
+         * https://flower.readthedocs.io/en/latest/api.html
+         *
+         */
+        this.flower = 'http://flower.landscapefuelmoisture.bushfirebehaviour.net.au/api';
+        this.lfmcapi = 'http://api.landscapefuelmoisture.bushfirebehaviour.net.au/v1';
+    }
+    FloristService.prototype.postAPI = function (path, json) {
+        this.http.post("" + this.flower + path, json, httpOptions);
+    };
+    // Revoke task
+    FloristService.prototype.revoke = function (uuid) {
+        this.http.post(this.flower + "/task/revoke/" + uuid, '{"terminate": true }', httpOptions);
+    };
+    // Get the cached result of the task
+    FloristService.prototype.result = function (uuid) {
+        return this.http.get(this.flower + "/task/result/" + uuid, httpOptions);
+    };
+    // Abort a running task
+    FloristService.prototype.abort = function (uuid) {
+        return this.http.post(this.flower + "/task/abort/" + uuid, {}, httpOptions);
+    };
+    FloristService.prototype.state = function (uuid) {
+        return this.http.get(this.flower + "/task/info/" + uuid, httpOptions);
+        // return this.http.get(`${this.lfmcapi}/progress.json?uuid=${uuid}`, httpOptions);
+    };
+    FloristService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], FloristService);
+    return FloristService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/map.service.ts":
 /*!*****************************************!*\
   !*** ./src/app/services/map.service.ts ***!
@@ -4080,7 +4179,7 @@ var TimeseriesService = /** @class */ (function () {
     function TimeseriesService(http, sanitizer) {
         this.http = http;
         this.sanitizer = sanitizer;
-        this.apiUrl = 'http://cache.landscapefuelmoisture.bushfirebehaviour.net.au/v1';
+        this.apiUrl = 'http://api.landscapefuelmoisture.bushfirebehaviour.net.au/v1';
     }
     TimeseriesService.prototype.postAPI = function (path, json_query) {
         console.log("" + this.apiUrl + path);
@@ -4089,10 +4188,6 @@ var TimeseriesService = /** @class */ (function () {
     };
     TimeseriesService.prototype.mpgAPI = function (path, json_query) {
         return this.http.post(this.apiUrl + "/fuel.mp4", json_query);
-    };
-    TimeseriesService.prototype.getAPI = function (path, jq) {
-        var qs = "?start=" + jq.start + "&finish=" + jq.finish + "&models=" + jq.model_names + "&weighted=" + jq.weighted + "&geo_json=" + jq.geo_json + "&response_as=" + jq.response_as;
-        return this.http.get("" + this.apiUrl + path + qs);
     };
     TimeseriesService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
@@ -4187,7 +4282,7 @@ module.exports = ".coordinates, .calculated-area {\n  background: rgba(0, 0, 0, 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"shrinker\">\n  <div class=\"ui mapbox\" (mouseup)=\"upSplitView($event)\" (mousedown)=\"downSplitView($event)\" (click)=\"onUp($event)\"\n       (drag)=\"dragSplitView($event)\" (mousemove)=\"dragSplitView($event)\">\n    <div class=\"viewport\" id=\"backViewport\">\n      <div class=\"viewframe\">\n        <div id=\"mymapbox\" class=\"ui mapbox mapboxgl-map\"></div>\n      </div>\n    </div>\n    <div class=\"viewport\" id=\"frontViewport\">\n      <div class=\"viewframe\">\n        <div id=\"myAltmapbox\" class=\"ui mapbox mapboxgl-map\"></div>\n      </div>\n    </div>\n    <div id=\"splitViewHandle\" class=\"viewDividerhandle\" (mouseenter)=\"enterSplitViewHandle($event)\"\n         (click)=\"clickSplitView($event)\" (mouseleave)=\"leaveSplitViewHandle($event)\">\n      <div class=\"ui straight_labels\">\n        <div *ngIf=\"splitview\" class=\"left_label\">\n          <div class=\"ui blue left pointing label\">{{ (modelA | uppercase) || 'NONE' }}</div>\n        </div>\n        <div *ngIf=\"splitview\" class=\"right_label\">\n          <div class=\"ui blue right pointing label\">{{ (modelB | uppercase) || 'NONE' }}</div>\n        </div>\n\n        <div *ngIf=\"!splitview\" class=\"right_label\">\n          <div class=\"ui blue right pointing label\">SPLIT</div>\n        </div>\n      </div>\n\n    </div>\n  </div>\n  <div class=\"overlay-toolbar\">\n    <div id=\"myoverlay\" class='map-overlay'>\n      <sui-tabset #bottomToolSet>\n        <div class=\"ui top attached inverted horizontal fluid menu\">\n\n          <div class=\"item\">View Options:</div>\n\n          <a class=\"item\" (click)=\"toggleSplitView()\" data-content=\"Split View Panel\">\n            <div *ngIf=\"!splitview\"><i class=\"white square outline icon\"></i> Split is Off</div>\n            <div *ngIf=\"splitview\"><i class=\"white columns icon\"></i> Split is On</div>\n          </a>\n\n          <a class=\"item\" (click)=\"zoomToBoundaryView()\">\n            <i class=\"linkify icon\"></i>\n            Snap to Boundary\n          </a>\n\n          <a class=\"green right aligned item\" (click)=\"refreshModelData()\" data-content=\"Go\">\n            <i class=\"white angle double right icon\"></i> Go\n          </a>\n        </div>\n        <div class=\"attached inverted segment\" suiTabContent=\"1\" [suiCollapse]=\"!collapse\">\n          <!-- Start: TIME Panel -->\n          <div class=\"ui panel\">\n            <div class=\"ui top attached fluid tiny inverted menu\">\n              <a class=\"item\" (click)=\"collapse = !collapse\">\n                <i class=\"red close icon\"></i>\n              </a>\n\n              <a class=\"item\" (click)=\"sidebar.toggle();\">\n                <i class=\"sidebar icon\"></i> Models\n              </a>\n              <a class=\"right aligned item\" (click)=\"toggleTimeBrushing()\" data-content=\"Timebrushing\">\n                <div *ngIf=\"timebrush\"><i class=\"white paint brush icon\"></i> Timebrush OFF</div>\n                <div *ngIf=\"!timebrush\"><i class=\"white close icon\"></i> Timebrushing ON</div>\n              </a>\n\n              <!--<a class=\"item\" (click)=\"mpg()\" data-content=\"Get MP4\">-->\n              <!--<i class=\"file video icon\"></i> Animation-->\n              <!--</a>-->\n\n              <!--<a class=\"item\" (click)=\"netCDF()\" data-content=\"NetCDF Export\">-->\n              <!--<i class=\"archive icon\"></i> DataSet-->\n              <!--</a>-->\n\n              <!--<a class=\"item\" (click)=\"pdf()\" data-content=\"PDF\">-->\n              <!--<i class=\"file pdf icon\"></i> PDF-->\n              <!--</a>-->\n            </div>\n            <div class=\"ui three column stackable grid\">\n\n              <div class=\"column\">\n                <div class=\"ui tiny inverted menu\">\n                  <a class=\"item\" (click)=\"extendPast()\">\n                    <i class=\"left angle icon\"></i>\n                  </a>\n                  <a class=\"stretch item\" suiDatepicker [pickerMinDate]=\"minStartDate\" [pickerMaxDate]=\"maxStartDate\"\n                     [pickerMode]=\"'date'\" [(ngModel)]=\"start\" (ngModelChange)=\"updateDatetimeOnWMTSSources()\"><i\n                    class=\"calendar icon\"></i> From: {{start | date:'fullDate'}}</a>\n                  <a class=\"right aligned item\" (click)=\"reducePast()\">\n                    <i class=\"right angle icon\"></i>\n                  </a>\n                </div>\n              </div>\n\n              <div class=\"column\">\n                <div class=\"ui tiny inverted menu\">\n                  <a class=\"item\" (click)=\"shuntPastWeek()\">\n                    <i class=\"angle double left icon\"></i>\n                  </a>\n                  <a class=\"item\" (click)=\"shuntPast()\">\n                    <i class=\"left caret icon\"></i>\n                  </a>\n                  <a class=\"stretch item\" (click)=\"weekView()\" data-content=\"This past week\"><i class=\"clock icon\"></i>\n                    Current\n                    {{durationWindow()}}-day Window</a>\n                  <a class=\"right aligned item\" (click)=\"shuntFuture()\">\n                    <i class=\"right caret icon\"></i>\n                  </a>\n                  <a class=\"right aligned item\" (click)=\"shuntFutureWeek()\">\n                    <i class=\"angle double right icon\"></i>\n                  </a>\n                </div>\n              </div>\n\n              <div class=\"column\">\n                <div class=\"ui tiny inverted menu\">\n                  <a class=\"item\" (click)=\"reduceFuture()\">\n                    <i class=\"left angle icon\"></i>\n                  </a>\n                  <a class=\"stretch item\" suiDatepicker [pickerMinDate]=\"minEndDate\" [pickerMaxDate]=\"maxEndDate\"\n                     [pickerMode]=\"'date'\"\n                     [(ngModel)]=\"finish\" (change)=\"updateDatetimeOnWMTSSources()\">\n                    <i class=\"calendar icon\"></i> To:\n                    {{finish\n                    |\n                    date:'fullDate'}}</a>\n                  <a class=\"right aligned item\" (click)=\"extendFuture()\">\n                    <i class=\"right angle icon\"></i>\n                  </a>\n                </div>\n              </div>\n\n            </div>\n\n            <sui-sidebar-container class=\"ui bottom attached map-overlay-inner\">\n\n\n              <sui-sidebar class=\"inverted vertical\" #sidebar>\n\n\n                <sui-dimmer [(isDimmed)]=\"model_dimmer\" [isClickable]=\"false\">\n                  <div class=\"ui indeterminate text loader\">Loading models. Please wait.</div>\n                </sui-dimmer>\n                <!-- Start: Model List/Selection Table -->\n                <table class=\"ui selectable inverted table\" id=\"modelList\">\n                  <thead>\n                  <tr>\n                    <th>Model</th>\n                    <th *ngIf=\"!splitview\" class=\"right aligned\">Actions</th>\n                    <th *ngIf=\"splitview\" class=\"right aligned\">Actions</th>\n                  </tr>\n                  </thead>\n                  <tbody>\n                  <tr *ngFor=\"let m of models\">\n                    <td>{{m.ident}}\n\n                    <div *ngIf=\"m.code === 'JASMIN'\" class=\"ui mini compact buttons\">\n                      <button *ngIf=\"jasminLevel === 0.1\" class=\"ui compact blue button\" (click)=\"setJasminLevel(0.1)\">0.1</button>\n                      <button *ngIf=\"jasminLevel === 0.25\" class=\"ui compact blue button\" (click)=\"setJasminLevel(0.25)\">0.25</button>\n                      <button *ngIf=\"jasminLevel === 0.65\" class=\"ui compact blue button\" (click)=\"setJasminLevel(0.65)\">0.65</button>\n                      <button *ngIf=\"jasminLevel === 2\" class=\"ui compact blue button\" (click)=\"setJasminLevel(2)\">2</button>\n\n                      <button class=\"ui compact black button\" (click)=\"setJasminLevel(0.1)\">0.1</button>\n                      <button class=\"ui compact black button\" (click)=\"setJasminLevel(0.25)\">0.25</button>\n                      <button class=\"ui compact black button\" (click)=\"setJasminLevel(0.65)\">0.65</button>\n                      <button class=\"ui compact black button\" (click)=\"setJasminLevel(2)\">2</button>\n                    </div>\n                    </td>\n\n                    <td *ngIf=\"!splitview\" class=\"right aligned\">\n                      <div class=\"ui mini compact icon buttons\">\n                        <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_right\"\n                                (click)=\"toggleModel(m.code, 'R')\"><i class=\"toggle off icon\"></i></button>\n                        <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_right\"\n                                (click)=\"toggleModel(m.code, 'O')\"><i class=\"yellow toggle on icon\"></i></button>\n                      </div>\n                    </td>\n\n                    <td *ngIf=\"splitview\" class=\"right aligned\">\n                      <div class=\"ui mini compact icon buttons\">\n                        <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_left\"\n                                (click)=\"toggleModel(m.code, 'L')\"><i class=\"blue caret left icon\"></i></button>\n                        <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_left\"\n                                (click)=\"toggleModel(m.code, 'L')\"><i class=\"angle left icon\"></i></button>\n\n                        <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_left && !m.enabled_right\"\n                                [disabled]=\"(!m.enabled_left && !m.enabled_right)\"><i class=\"toggle off icon\"></i>\n                        </button>\n                        <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_left || m.enabled_right\"\n                                (click)=\"toggleModel(m.code, 'O')\"><i class=\"yellow toggle on icon\"></i></button>\n\n                        <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_right\"\n                                (click)=\"toggleModel(m.code, 'R')\"><i class=\"blue caret right icon\"></i></button>\n                        <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_right\"\n                                (click)=\"toggleModel(m.code, 'R')\"><i class=\"angle right icon\"></i></button>\n                      </div>\n                    </td>\n                  </tr>\n                  </tbody>\n                </table>\n                <!-- End: Model List/Selection Table -->\n              </sui-sidebar>\n              <sui-sidebar-sibling [isDimmedWhenVisible]=\"false\" class=\"inverted\">\n\n                <app-charting id=\"chart\" [lat]=\"lat\" [lng]=\"lng\" [start]=\"start | date:'yMMdd'\"\n                              [finish]=\"finish | date:'yMMdd'\" (select)=\"onSelectDate($event)\"></app-charting>\n              </sui-sidebar-sibling>\n            </sui-sidebar-container>\n          </div>\n          <!-- End: TIME Panel -->\n        </div>\n        <div class=\"attached inverted segment\" suiTabContent=\"2\" [suiCollapse]=\"!ingesting\">\n          <!-- Start: SPACE Panel -->\n          <div class=\"ui panel\">\n            <div id='ingest-area' class='ui ingest-area'>\n              <div class=\"ui top attached fluid tiny inverted menu\">\n                <!--<div class=\"right floated item\" #calculatedarea>{{calculated_area}}</div>-->\n                <a class=\"item\" (click)=\"ingesting = !ingesting; isCopied=false;\">\n                  <i class=\"red close icon\"></i>\n                </a>\n\n                <a class=\"item\" [ngxClipboard]=\"geojsonarea\" (cbOnSuccess)=\"isCopied = true\">\n                  <i class=\"icons\">\n                    <i class=\"copy icon\"></i>\n                    <i *ngIf=\"isCopied\" class=\"large green checkmark icon\"></i>\n                  </i>\n                  Copy\n                </a>\n                <a class=\"item\" (click)=\"saveBoundary()\" data-content=\"Save GeoJSON\">\n                  <i class=\"white group object icon\"></i> Save\n                </a>\n\n                <a class=\"item\" (click)=\"importGeoJSON()\" data-content=\"Import GeoJSON\">\n                  <i class=\"white file icon\"></i> Import\n                </a>\n\n\n                <a class=\"right aligned item\" (click)=\"calculateArea()\" data-content=\"Calculate Area\">\n                  <i class=\"white calculator icon\"></i> Calculate Total Area\n                </a>\n\n\n              </div>\n\n              <div class=\"ui two column stackable grid\" style=\"margin:0;\">\n                <div class=\"row\">\n                  <div class=\"column\">\n                    <div class=\"ui form\">\n                    <div class=\"field json\">\n                    <textarea style=\"background-color: transparent;height:40vh;\" class=\"fillgeoarea\"\n                    [(ngModel)]=\"ingestGeoJson\" (change)=\"importGeoJSON()\" #geojsonarea></textarea>\n\n                      <!--<input type=\"hidden\" [(ngModel)]=\"ingestGeoJson\" (change)=\"importGeoJSON()\" #geojsonarea/>-->\n                    </div>\n                    </div>\n                    </div>\n                    <div class=\"column\">\n                    <app-importeditems [(drawing)]=\"drw\" [(altdrawing)]=\"altdrw\"></app-importeditems>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n          <!-- End: SPACE Panel -->\n        </div>\n        <div class=\"attached inverted segment\" suiTabContent=\"3\" [suiCollapse]=\"!availview\">\n          <!-- Start: AVAIL Panel -->\n          <div class=\"ui panel\">\n            <div class=\"ui top attached fluid tiny inverted menu\">\n              <a class=\"item\" (click)=\"availview = !availview\">\n                <i class=\"red close icon\"></i>\n              </a>\n              <a class=\"item\" (click)=\"refreshAvailability()\">\n                <i class=\"refresh icon\"></i> Refresh\n              </a>\n            </div>\n            <app-temporal-availability [availability]=\"availability_data\"></app-temporal-availability>\n          </div>\n          <!-- End: AVAIL Panel -->\n        </div>\n        <div id=\"overlay_menu\" class=\"ui bottom attached inverted tabular menu\">\n          <a class=\"inverted item\" suiTabHeader=\"1\" [(isActive)]=\"firstActive\"\n             (click)=\"collapse = !collapse; ingesting = false; availview = false\"\n             data-content=\"Time-series Chart Panel\"><i class=\"white area chart icon\"></i> TIME</a>\n          <a class=\"inverted item\" suiTabHeader=\"2\" [(isActive)]=\"secondActive\"\n             (click)=\"ingesting = !ingesting; collapse = false; availview = false; saveBoundary();\"\n             data-content=\"GeoJSON Panel\"><i class=\"white map icon\"></i> SPACE</a>\n          <a class=\"right aligned inverted item\" suiTabHeader=\"3\" [(isActive)]=\"thirdActive\"\n             (click)=\"ingesting = false; collapse = false; toggleAvailabilityView()\" data-content=\"Availability Panel\">\n            <div *ngIf=\"!availview\"><i class=\"white calendar alternate outline icon\"></i> Model Data Availability</div>\n            <div *ngIf=\"availview\"><i class=\"white calendar check outline icon\"></i> Model Data Availability</div>\n          </a>\n        </div>\n      </sui-tabset>\n    </div>\n  </div>\n</div>\n\n<lfmc-video></lfmc-video>\n\n<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>\n<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>\n<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css'\n      type='text/css'/>\n<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>\n<link rel='stylesheet'\n      href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css'\n      type='text/css'/>\n"
+module.exports = "<div class=\"shrinker\">\n  <div class=\"ui mapbox\" (mouseup)=\"upSplitView($event)\" (mousedown)=\"downSplitView($event)\" (click)=\"onUp($event)\"\n       (drag)=\"dragSplitView($event)\" (mousemove)=\"dragSplitView($event)\">\n    <div class=\"viewport\" id=\"backViewport\">\n      <div class=\"viewframe\">\n        <div id=\"mymapbox\" class=\"ui mapbox mapboxgl-map\"></div>\n      </div>\n    </div>\n    <div class=\"viewport\" id=\"frontViewport\">\n      <div class=\"viewframe\">\n        <div id=\"myAltmapbox\" class=\"ui mapbox mapboxgl-map\"></div>\n      </div>\n    </div>\n    <div id=\"splitViewHandle\" class=\"viewDividerhandle\" (mouseenter)=\"enterSplitViewHandle($event)\"\n         (click)=\"clickSplitView($event)\" (mouseleave)=\"leaveSplitViewHandle($event)\">\n      <div class=\"ui straight_labels\">\n        <div *ngIf=\"splitview\" class=\"left_label\">\n          <div class=\"ui blue left pointing label\">{{ (modelA | uppercase) || 'NONE' }}</div>\n        </div>\n        <div *ngIf=\"splitview\" class=\"right_label\">\n          <div class=\"ui blue right pointing label\">{{ (modelB | uppercase) || 'NONE' }}</div>\n        </div>\n\n        <div *ngIf=\"!splitview\" class=\"right_label\">\n          <div class=\"ui blue right pointing label\">SPLIT</div>\n        </div>\n      </div>\n\n    </div>\n  </div>\n  <div class=\"overlay-toolbar\">\n    <div id=\"myoverlay\" class='map-overlay'>\n      <sui-tabset #bottomToolSet>\n        <div class=\"attached inverted segment\" suiTabContent=\"0\" [suiCollapse]=\"!modelise\">\n          <!-- Start: MODEL Panel -->\n          <div class=\"ui panel\">\n            <div class=\"ui top attached fluid tiny inverted menu\">\n              <a class=\"item\" (click)=\"modelise = !modelise\"><i class=\"red close icon\"></i></a>\n              <a class=\"item\" (click)=\"toggleSplitView()\" data-content=\"Split View Panel\">\n                <div *ngIf=\"!splitview\"><i class=\"white square outline icon\"></i> Split is Off</div>\n                <div *ngIf=\"splitview\"><i class=\"white columns icon\"></i> Split is On</div>\n              </a>\n            </div>\n            <!--<sui-dimmer [(isDimmed)]=\"model_dimmer\" [isClickable]=\"false\">-->\n              <!--<div class=\"ui indeterminate text loader\">Loading models. Please wait.</div>-->\n            <!--</sui-dimmer>-->\n            <!-- Start: Model List/Selection Table -->\n            <table class=\"ui selectable inverted table\" id=\"modelList\">\n              <thead>\n              <tr>\n                <th *ngIf=\"!splitview\" class=\"right aligned\" [width]=\"'10%'\">Select</th>\n                <th *ngIf=\"splitview\" class=\"right aligned\" [width]=\"'10%'\">Assign</th>\n                <th [width]=\"'auto'\">Model</th>\n              </tr>\n              </thead>\n              <tbody>\n              <tr *ngFor=\"let m of models\">\n\n\n                <td *ngIf=\"!splitview\" class=\"right aligned\">\n                  <div class=\"ui mini compact icon buttons\">\n                    <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_right\"\n                            (click)=\"toggleModel(m.code, 'R')\"><i class=\"toggle off icon\"></i></button>\n                    <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_right\"\n                            (click)=\"toggleModel(m.code, 'O')\"><i class=\"yellow toggle on icon\"></i></button>\n                  </div>\n                </td>\n\n                <td *ngIf=\"splitview\" class=\"right aligned\">\n                  <div class=\"ui mini compact icon buttons\">\n                    <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_left\"\n                            (click)=\"toggleModel(m.code, 'L')\"><i class=\"blue caret left icon\"></i></button>\n                    <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_left\"\n                            (click)=\"toggleModel(m.code, 'L')\"><i class=\"angle left icon\"></i></button>\n\n                    <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_left && !m.enabled_right\"\n                            [disabled]=\"(!m.enabled_left && !m.enabled_right)\"><i class=\"toggle off icon\"></i>\n                    </button>\n                    <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_left || m.enabled_right\"\n                            (click)=\"toggleModel(m.code, 'O')\"><i class=\"yellow toggle on icon\"></i></button>\n\n                    <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_right\"\n                            (click)=\"toggleModel(m.code, 'R')\"><i class=\"blue caret right icon\"></i></button>\n                    <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_right\"\n                            (click)=\"toggleModel(m.code, 'R')\"><i class=\"angle right icon\"></i></button>\n                  </div>\n                </td>\n                <td>\n                  <div class=\"\" *ngIf=\"!splitview\" (click)=\"toggleModel(m.code, 'R')\">\n                    {{m.ident}}\n                  </div>\n\n                  <div class=\"\" *ngIf=\"splitview\">\n                    {{m.ident}}\n                  </div>\n\n\n                  <!--<div *ngIf=\"m.code === 'JASMIN'\" class=\"ui mini compact buttons\">-->\n                  <!--<button *ngIf=\"jasminLevel === 0.1\" class=\"ui compact blue button\" (click)=\"setJasminLevel(0.1)\">0.1</button>-->\n                  <!--<button *ngIf=\"jasminLevel === 0.25\" class=\"ui compact blue button\" (click)=\"setJasminLevel(0.25)\">0.25</button>-->\n                  <!--<button *ngIf=\"jasminLevel === 0.65\" class=\"ui compact blue button\" (click)=\"setJasminLevel(0.65)\">0.65</button>-->\n                  <!--<button *ngIf=\"jasminLevel === 2\" class=\"ui compact blue button\" (click)=\"setJasminLevel(2)\">2</button>-->\n\n                  <!--<button *ngIf=\"jasminLevel !== 0.1\" class=\"ui compact black button\" (click)=\"setJasminLevel(0.1)\">0.1</button>-->\n                  <!--<button *ngIf=\"jasminLevel !== 0.25\" class=\"ui compact black button\" (click)=\"setJasminLevel(0.25)\">0.25</button>-->\n                  <!--<button *ngIf=\"jasminLevel !== 0.65\" class=\"ui compact black button\" (click)=\"setJasminLevel(0.65)\">0.65</button>-->\n                  <!--<button *ngIf=\"jasminLevel !== 2\" class=\"ui compact black button\" (click)=\"setJasminLevel(2)\">2</button>-->\n                  <!--</div>-->\n                </td>\n              </tr>\n              </tbody>\n            </table>\n            <!-- End: Model List/Selection Table -->\n          </div>\n          <!-- End: MODEL Panel -->\n        </div>\n        <div class=\"attached inverted segment\" suiTabContent=\"1\" [suiCollapse]=\"!collapse\">\n          <!-- Start: TIME Panel -->\n          <div class=\"ui panel\">\n            <div class=\"ui top attached fluid tiny inverted menu\">\n              <a class=\"item\" (click)=\"collapse = !collapse\">\n                <i class=\"red close icon\"></i>\n              </a>\n              <a class=\"item\" (click)=\"toggleTimeBrushing()\" data-content=\"Timebrushing\">\n                <div *ngIf=\"timebrush\"><i class=\"white paint brush icon\"></i> Timebrush OFF</div>\n                <div *ngIf=\"!timebrush\"><i class=\"white close icon\"></i> Timebrushing ON</div>\n              </a>\n\n              <a class=\"green right aligned item\" (click)=\"refreshModelData()\" data-content=\"Go\">\n                <i class=\"white angle double right icon\"></i> Go\n              </a>\n\n              <!--<a class=\"item\" (click)=\"mpg()\" data-content=\"Get MP4\">-->\n              <!--<i class=\"file video icon\"></i> Animation-->\n              <!--</a>-->\n\n              <!--<a class=\"item\" (click)=\"netCDF()\" data-content=\"NetCDF Export\">-->\n              <!--<i class=\"archive icon\"></i> DataSet-->\n              <!--</a>-->\n\n              <!--<a class=\"item\" (click)=\"pdf()\" data-content=\"PDF\">-->\n              <!--<i class=\"file pdf icon\"></i> PDF-->\n              <!--</a>-->\n            </div>\n            <div class=\"ui three column stackable grid\">\n\n              <div class=\"column\">\n                <div class=\"ui tiny inverted menu\">\n                  <a class=\"item\" (click)=\"extendPast()\">\n                    <i class=\"left angle icon\"></i>\n                  </a>\n                  <a class=\"stretch item\" suiDatepicker [pickerMinDate]=\"minStartDate\" [pickerMaxDate]=\"maxStartDate\"\n                     [pickerMode]=\"'date'\" [(ngModel)]=\"start\" (ngModelChange)=\"updateDatetimeOnWMTSSources()\"><i\n                    class=\"calendar icon\"></i> From: {{start | date:'fullDate'}}</a>\n                  <a class=\"right aligned item\" (click)=\"reducePast()\">\n                    <i class=\"right angle icon\"></i>\n                  </a>\n                </div>\n              </div>\n\n              <div class=\"column\">\n                <div class=\"ui tiny inverted menu\">\n                  <a class=\"item\" (click)=\"shuntPastWeek()\">\n                    <i class=\"angle double left icon\"></i>\n                  </a>\n                  <a class=\"item\" (click)=\"shuntPast()\">\n                    <i class=\"left caret icon\"></i>\n                  </a>\n                  <a class=\"stretch item\" (click)=\"weekView()\" data-content=\"This past week\"><i class=\"clock icon\"></i>\n                    Current\n                    {{durationWindow()}}-day Window</a>\n                  <a class=\"right aligned item\" (click)=\"shuntFuture()\">\n                    <i class=\"right caret icon\"></i>\n                  </a>\n                  <a class=\"right aligned item\" (click)=\"shuntFutureWeek()\">\n                    <i class=\"angle double right icon\"></i>\n                  </a>\n                </div>\n              </div>\n\n              <div class=\"column\">\n                <div class=\"ui tiny inverted menu\">\n                  <a class=\"item\" (click)=\"reduceFuture()\">\n                    <i class=\"left angle icon\"></i>\n                  </a>\n                  <a class=\"stretch item\" suiDatepicker [pickerMinDate]=\"minEndDate\" [pickerMaxDate]=\"maxEndDate\"\n                     [pickerMode]=\"'date'\"\n                     [(ngModel)]=\"finish\" (change)=\"updateDatetimeOnWMTSSources()\">\n                    <i class=\"calendar icon\"></i> To:\n                    {{finish\n                    |\n                    date:'fullDate'}}</a>\n                  <a class=\"right aligned item\" (click)=\"extendFuture()\">\n                    <i class=\"right angle icon\"></i>\n                  </a>\n                </div>\n              </div>\n\n            </div>\n\n            <div class=\"ui bottom attached map-overlay-inner\">\n\n\n              <!--<sui-sidebar class=\"inverted vertical\" #sidebar>-->\n\n\n                <!---->\n              <!--</sui-sidebar>-->\n              <!--<sui-sidebar-sibling [isDimmedWhenVisible]=\"false\" class=\"inverted\">-->\n\n                <app-charting id=\"chart\" [lat]=\"lat\" [lng]=\"lng\" [start]=\"start | date:'yMMdd'\"\n                              [finish]=\"finish | date:'yMMdd'\" (select)=\"onSelectDate($event)\"></app-charting>\n              <!--</sui-sidebar-sibling>-->\n            </div>\n          </div>\n          <!-- End: TIME Panel -->\n        </div>\n        <div class=\"attached inverted segment\" suiTabContent=\"2\" [suiCollapse]=\"!ingesting\">\n          <!-- Start: SPACE Panel -->\n          <div class=\"ui panel\">\n            <div id='ingest-area' class='ui ingest-area'>\n              <div class=\"ui top attached fluid tiny inverted menu\">\n                <!--<div class=\"right floated item\" #calculatedarea>{{calculated_area}}</div>-->\n                <a class=\"item\" (click)=\"ingesting = !ingesting; isCopied=false;\">\n                  <i class=\"red close icon\"></i>\n                </a>\n\n\n                <a class=\"item\" (click)=\"zoomToBoundaryView()\">\n                  <i class=\"linkify icon\"></i>\n                  Snap to Boundary\n                </a>\n\n                <a class=\"item\" [ngxClipboard]=\"geojsonarea\" (cbOnSuccess)=\"isCopied = true\">\n                  <i class=\"icons\">\n                    <i class=\"copy icon\"></i>\n                    <i *ngIf=\"isCopied\" class=\"large green checkmark icon\"></i>\n                  </i>\n                  Copy\n                </a>\n                <a class=\"item\" (click)=\"saveBoundary()\" data-content=\"Save GeoJSON\">\n                  <i class=\"white group object icon\"></i> Save\n                </a>\n\n                <a class=\"item\" (click)=\"importGeoJSON()\" data-content=\"Import GeoJSON\">\n                  <i class=\"white file icon\"></i> Import\n                </a>\n\n\n                <a class=\"right aligned item\" (click)=\"calculateArea()\" data-content=\"Calculate Area\">\n                  <i class=\"white calculator icon\"></i> Calculate Total Area\n                </a>\n\n\n              </div>\n\n              <div class=\"ui two column stackable grid\" style=\"margin:0;\">\n                <div class=\"row\">\n                  <div class=\"column\">\n                    <div class=\"ui form\">\n                    <div class=\"field json\">\n                    <textarea style=\"background-color: transparent;height:40vh;\" class=\"fillgeoarea\"\n                    [(ngModel)]=\"ingestGeoJson\" (change)=\"importGeoJSON()\" #geojsonarea></textarea>\n\n                      <!--<input type=\"hidden\" [(ngModel)]=\"ingestGeoJson\" (change)=\"importGeoJSON()\" #geojsonarea/>-->\n                    </div>\n                    </div>\n                    </div>\n                    <div class=\"column\">\n                    <app-importeditems [(drawing)]=\"drw\" [(altdrawing)]=\"altdrw\"></app-importeditems>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n          <!-- End: SPACE Panel -->\n        </div>\n        <div class=\"attached inverted segment\" suiTabContent=\"3\" [suiCollapse]=\"!availview\">\n          <!-- Start: AVAIL Panel -->\n          <div class=\"ui panel\">\n            <div class=\"ui top attached fluid tiny inverted menu\">\n              <a class=\"item\" (click)=\"availview = !availview\">\n                <i class=\"red close icon\"></i>\n              </a>\n              <a class=\"item\" (click)=\"refreshAvailability()\">\n                <i class=\"refresh icon\"></i> Refresh\n              </a>\n            </div>\n            <app-temporal-availability [availability]=\"availability_data\"></app-temporal-availability>\n          </div>\n          <!-- End: AVAIL Panel -->\n        </div>\n        <div id=\"overlay_menu\" class=\"ui bottom attached inverted tabular menu\">\n\n          <a class=\"inverted item\" suiTabHeader=\"0\" [(isActive)]=\"zeroActive\"\n             (click)=\"modelise = !modelise; collapse=false; ingesting = false; availview = false\"\n             data-content=\"Model Selection Panel\"><i class=\"white area chart icon\"></i> MODELS</a>\n\n          <a class=\"inverted item\" suiTabHeader=\"1\" [(isActive)]=\"firstActive\"\n             (click)=\"collapse = !collapse; ingesting = false; availview = false; modelise = false\"\n             data-content=\"Time-series Chart Panel\"><i class=\"white area chart icon\"></i> TIME</a>\n\n          <a class=\"inverted item\" suiTabHeader=\"2\" [(isActive)]=\"secondActive\"\n             (click)=\"ingesting = !ingesting; collapse = false; availview = false; saveBoundary(); modelise = false\"\n             data-content=\"GeoJSON Panel\"><i class=\"white map icon\"></i> SPACE</a>\n\n          <a class=\"right aligned inverted item\" suiTabHeader=\"3\" [(isActive)]=\"thirdActive\"\n             (click)=\"ingesting = false; collapse = false; toggleAvailabilityView(); modelise = false\" data-content=\"Availability Panel\">\n            <div *ngIf=\"!availview\"><i class=\"white calendar alternate outline icon\"></i> Model Data Availability</div>\n            <div *ngIf=\"availview\"><i class=\"white calendar check outline icon\"></i> Model Data Availability</div>\n          </a>\n        </div>\n      </sui-tabset>\n    </div>\n  </div>\n</div>\n\n<lfmc-video></lfmc-video>\n\n<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>\n<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>\n<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css'\n      type='text/css'/>\n<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>\n<link rel='stylesheet'\n      href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css'\n      type='text/css'/>\n"
 
 /***/ }),
 
@@ -4266,6 +4361,7 @@ var MapboxComponent = /** @class */ (function () {
         this.timebrush = true;
         this.snapping = false;
         this.allModels = false;
+        this.modelise = false;
         this.jasminLevel = 0.1;
         this.calculated_area = '';
         this.model_names = [];

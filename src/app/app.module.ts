@@ -22,7 +22,7 @@ import {MapboxUploadAPIS3Service} from './services/mapbox-upload-api-s3.service'
 import {AuthService} from './services/auth.service';
 import {DisclaimationService} from './services/disclaimation.service';
 import {D3Service} from 'd3-ng2-service';
-import { CookieService } from 'ngx-cookie-service';
+import {CookieService} from 'ngx-cookie-service';
 
 // Components
 import {AppComponent} from './app.component';
@@ -55,7 +55,9 @@ import {BarGroupComponent} from './availability/temporal-availability/bar-group/
 import {IndicatorBarComponent} from './availability/temporal-availability/indicator-bar/indicator-bar.component';
 import {AvailabilityRowComponent} from './availability/temporal-availability/availability-row/availability-row.component';
 import {TemporalAvailabilityComponent} from './availability/temporal-availability/temporal-availability.component';
-import { DisclaimerComponent } from './components/disclaimer/disclaimer.component';
+import {DisclaimerComponent} from './components/disclaimer/disclaimer.component';
+import {QueryprogressComponent} from './components/queryprogress/queryprogress.component';
+import { ModelprogressComponent } from './components/queryprogress/modelprogress/modelprogress.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -106,7 +108,9 @@ const appRoutes: Routes = [
     IndicatorBarComponent,
     AvailabilityRowComponent,
     TemporalAvailabilityComponent,
-    DisclaimerComponent
+    DisclaimerComponent,
+    QueryprogressComponent,
+    ModelprogressComponent
   ],
 
   // Modules

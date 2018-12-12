@@ -31,23 +31,88 @@
   <div class="overlay-toolbar">
     <div id="myoverlay" class='map-overlay'>
       <sui-tabset #bottomToolSet>
-        <div class="ui top attached inverted horizontal fluid menu">
+        <div class="attached inverted segment" suiTabContent="0" [suiCollapse]="!modelise">
+          <!-- Start: MODEL Panel -->
+          <div class="ui panel">
+            <div class="ui top attached fluid tiny inverted menu">
+              <a class="item" (click)="modelise = !modelise"><i class="red close icon"></i></a>
+              <a class="item" (click)="toggleSplitView()" data-content="Split View Panel">
+                <div *ngIf="!splitview"><i class="white square outline icon"></i> Split is Off</div>
+                <div *ngIf="splitview"><i class="white columns icon"></i> Split is On</div>
+              </a>
+            </div>
+            <!--<sui-dimmer [(isDimmed)]="model_dimmer" [isClickable]="false">-->
+              <!--<div class="ui indeterminate text loader">Loading models. Please wait.</div>-->
+            <!--</sui-dimmer>-->
+            <!-- Start: Model List/Selection Table -->
+            <table class="ui selectable inverted table" id="modelList">
+              <thead>
+              <tr>
+                <th *ngIf="!splitview" class="right aligned" [width]="'10%'">Select</th>
+                <th *ngIf="splitview" class="right aligned" [width]="'10%'">Assign</th>
+                <th [width]="'auto'">Model</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let m of models">
 
-          <div class="item">View Options:</div>
 
-          <a class="item" (click)="toggleSplitView()" data-content="Split View Panel">
-            <div *ngIf="!splitview"><i class="white square outline icon"></i> Split is Off</div>
-            <div *ngIf="splitview"><i class="white columns icon"></i> Split is On</div>
-          </a>
+                <td *ngIf="!splitview" class="right aligned">
+                  <div class="ui mini compact icon buttons">
+                    <button class="ui compact black icon button" *ngIf="!m.enabled_right"
+                            (click)="toggleModel(m.code, 'R')"><i class="toggle off icon"></i></button>
+                    <button class="ui compact black icon button" *ngIf="m.enabled_right"
+                            (click)="toggleModel(m.code, 'O')"><i class="yellow toggle on icon"></i></button>
+                  </div>
+                </td>
 
-          <a class="item" (click)="zoomToBoundaryView()">
-            <i class="linkify icon"></i>
-            Snap to Boundary
-          </a>
+                <td *ngIf="splitview" class="right aligned">
+                  <div class="ui mini compact icon buttons">
+                    <button class="ui compact black icon button" *ngIf="m.enabled_left"
+                            (click)="toggleModel(m.code, 'L')"><i class="blue caret left icon"></i></button>
+                    <button class="ui compact black icon button" *ngIf="!m.enabled_left"
+                            (click)="toggleModel(m.code, 'L')"><i class="angle left icon"></i></button>
 
-          <a class="green right aligned item" (click)="refreshModelData()" data-content="Go">
-            <i class="white angle double right icon"></i> Go
-          </a>
+                    <button class="ui compact black icon button" *ngIf="!m.enabled_left && !m.enabled_right"
+                            [disabled]="(!m.enabled_left && !m.enabled_right)"><i class="toggle off icon"></i>
+                    </button>
+                    <button class="ui compact black icon button" *ngIf="m.enabled_left || m.enabled_right"
+                            (click)="toggleModel(m.code, 'O')"><i class="yellow toggle on icon"></i></button>
+
+                    <button class="ui compact black icon button" *ngIf="m.enabled_right"
+                            (click)="toggleModel(m.code, 'R')"><i class="blue caret right icon"></i></button>
+                    <button class="ui compact black icon button" *ngIf="!m.enabled_right"
+                            (click)="toggleModel(m.code, 'R')"><i class="angle right icon"></i></button>
+                  </div>
+                </td>
+                <td>
+                  <div class="" *ngIf="!splitview" (click)="toggleModel(m.code, 'R')">
+                    {{m.ident}}
+                  </div>
+
+                  <div class="" *ngIf="splitview">
+                    {{m.ident}}
+                  </div>
+
+
+                  <!--<div *ngIf="m.code === 'JASMIN'" class="ui mini compact buttons">-->
+                  <!--<button *ngIf="jasminLevel === 0.1" class="ui compact blue button" (click)="setJasminLevel(0.1)">0.1</button>-->
+                  <!--<button *ngIf="jasminLevel === 0.25" class="ui compact blue button" (click)="setJasminLevel(0.25)">0.25</button>-->
+                  <!--<button *ngIf="jasminLevel === 0.65" class="ui compact blue button" (click)="setJasminLevel(0.65)">0.65</button>-->
+                  <!--<button *ngIf="jasminLevel === 2" class="ui compact blue button" (click)="setJasminLevel(2)">2</button>-->
+
+                  <!--<button *ngIf="jasminLevel !== 0.1" class="ui compact black button" (click)="setJasminLevel(0.1)">0.1</button>-->
+                  <!--<button *ngIf="jasminLevel !== 0.25" class="ui compact black button" (click)="setJasminLevel(0.25)">0.25</button>-->
+                  <!--<button *ngIf="jasminLevel !== 0.65" class="ui compact black button" (click)="setJasminLevel(0.65)">0.65</button>-->
+                  <!--<button *ngIf="jasminLevel !== 2" class="ui compact black button" (click)="setJasminLevel(2)">2</button>-->
+                  <!--</div>-->
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <!-- End: Model List/Selection Table -->
+          </div>
+          <!-- End: MODEL Panel -->
         </div>
         <div class="attached inverted segment" suiTabContent="1" [suiCollapse]="!collapse">
           <!-- Start: TIME Panel -->
@@ -56,13 +121,13 @@
               <a class="item" (click)="collapse = !collapse">
                 <i class="red close icon"></i>
               </a>
-
-              <a class="item" (click)="sidebar.toggle();">
-                <i class="sidebar icon"></i> Models
-              </a>
-              <a class="right aligned item" (click)="toggleTimeBrushing()" data-content="Timebrushing">
+              <a class="item" (click)="toggleTimeBrushing()" data-content="Timebrushing">
                 <div *ngIf="timebrush"><i class="white paint brush icon"></i> Timebrush OFF</div>
                 <div *ngIf="!timebrush"><i class="white close icon"></i> Timebrushing ON</div>
+              </a>
+
+              <a class="green right aligned item" (click)="refreshModelData()" data-content="Go">
+                <i class="white angle double right icon"></i> Go
               </a>
 
               <!--<a class="item" (click)="mpg()" data-content="Get MP4">-->
@@ -133,80 +198,20 @@
 
             </div>
 
-            <sui-sidebar-container class="ui bottom attached map-overlay-inner">
+            <div class="ui bottom attached map-overlay-inner">
 
 
-              <sui-sidebar class="inverted vertical" #sidebar>
+              <!--<sui-sidebar class="inverted vertical" #sidebar>-->
 
 
-                <sui-dimmer [(isDimmed)]="model_dimmer" [isClickable]="false">
-                  <div class="ui indeterminate text loader">Loading models. Please wait.</div>
-                </sui-dimmer>
-                <!-- Start: Model List/Selection Table -->
-                <table class="ui selectable inverted table" id="modelList">
-                  <thead>
-                  <tr>
-                    <th>Model</th>
-                    <th *ngIf="!splitview" class="right aligned">Actions</th>
-                    <th *ngIf="splitview" class="right aligned">Actions</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr *ngFor="let m of models">
-                    <td>{{m.ident}}
-
-                    <div *ngIf="m.code === 'JASMIN'" class="ui mini compact buttons">
-                      <button *ngIf="jasminLevel === 0.1" class="ui compact blue button" (click)="setJasminLevel(0.1)">0.1</button>
-                      <button *ngIf="jasminLevel === 0.25" class="ui compact blue button" (click)="setJasminLevel(0.25)">0.25</button>
-                      <button *ngIf="jasminLevel === 0.65" class="ui compact blue button" (click)="setJasminLevel(0.65)">0.65</button>
-                      <button *ngIf="jasminLevel === 2" class="ui compact blue button" (click)="setJasminLevel(2)">2</button>
-
-                      <button *ngIf="jasminLevel !== 0.1" class="ui compact black button" (click)="setJasminLevel(0.1)">0.1</button>
-                      <button *ngIf="jasminLevel !== 0.25" class="ui compact black button" (click)="setJasminLevel(0.25)">0.25</button>
-                      <button *ngIf="jasminLevel !== 0.65" class="ui compact black button" (click)="setJasminLevel(0.65)">0.65</button>
-                      <button *ngIf="jasminLevel !== 2" class="ui compact black button" (click)="setJasminLevel(2)">2</button>
-                    </div>
-                    </td>
-
-                    <td *ngIf="!splitview" class="right aligned">
-                      <div class="ui mini compact icon buttons">
-                        <button class="ui compact black icon button" *ngIf="!m.enabled_right"
-                                (click)="toggleModel(m.code, 'R')"><i class="toggle off icon"></i></button>
-                        <button class="ui compact black icon button" *ngIf="m.enabled_right"
-                                (click)="toggleModel(m.code, 'O')"><i class="yellow toggle on icon"></i></button>
-                      </div>
-                    </td>
-
-                    <td *ngIf="splitview" class="right aligned">
-                      <div class="ui mini compact icon buttons">
-                        <button class="ui compact black icon button" *ngIf="m.enabled_left"
-                                (click)="toggleModel(m.code, 'L')"><i class="blue caret left icon"></i></button>
-                        <button class="ui compact black icon button" *ngIf="!m.enabled_left"
-                                (click)="toggleModel(m.code, 'L')"><i class="angle left icon"></i></button>
-
-                        <button class="ui compact black icon button" *ngIf="!m.enabled_left && !m.enabled_right"
-                                [disabled]="(!m.enabled_left && !m.enabled_right)"><i class="toggle off icon"></i>
-                        </button>
-                        <button class="ui compact black icon button" *ngIf="m.enabled_left || m.enabled_right"
-                                (click)="toggleModel(m.code, 'O')"><i class="yellow toggle on icon"></i></button>
-
-                        <button class="ui compact black icon button" *ngIf="m.enabled_right"
-                                (click)="toggleModel(m.code, 'R')"><i class="blue caret right icon"></i></button>
-                        <button class="ui compact black icon button" *ngIf="!m.enabled_right"
-                                (click)="toggleModel(m.code, 'R')"><i class="angle right icon"></i></button>
-                      </div>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-                <!-- End: Model List/Selection Table -->
-              </sui-sidebar>
-              <sui-sidebar-sibling [isDimmedWhenVisible]="false" class="inverted">
+                <!---->
+              <!--</sui-sidebar>-->
+              <!--<sui-sidebar-sibling [isDimmedWhenVisible]="false" class="inverted">-->
 
                 <app-charting id="chart" [lat]="lat" [lng]="lng" [start]="start | date:'yMMdd'"
                               [finish]="finish | date:'yMMdd'" (select)="onSelectDate($event)"></app-charting>
-              </sui-sidebar-sibling>
-            </sui-sidebar-container>
+              <!--</sui-sidebar-sibling>-->
+            </div>
           </div>
           <!-- End: TIME Panel -->
         </div>
@@ -218,6 +223,12 @@
                 <!--<div class="right floated item" #calculatedarea>{{calculated_area}}</div>-->
                 <a class="item" (click)="ingesting = !ingesting; isCopied=false;">
                   <i class="red close icon"></i>
+                </a>
+
+
+                <a class="item" (click)="zoomToBoundaryView()">
+                  <i class="linkify icon"></i>
+                  Snap to Boundary
                 </a>
 
                 <a class="item" [ngxClipboard]="geojsonarea" (cbOnSuccess)="isCopied = true">
@@ -280,14 +291,21 @@
           <!-- End: AVAIL Panel -->
         </div>
         <div id="overlay_menu" class="ui bottom attached inverted tabular menu">
+
+          <a class="inverted item" suiTabHeader="0" [(isActive)]="zeroActive"
+             (click)="modelise = !modelise; collapse=false; ingesting = false; availview = false"
+             data-content="Model Selection Panel"><i class="white area chart icon"></i> MODELS</a>
+
           <a class="inverted item" suiTabHeader="1" [(isActive)]="firstActive"
-             (click)="collapse = !collapse; ingesting = false; availview = false"
+             (click)="collapse = !collapse; ingesting = false; availview = false; modelise = false"
              data-content="Time-series Chart Panel"><i class="white area chart icon"></i> TIME</a>
+
           <a class="inverted item" suiTabHeader="2" [(isActive)]="secondActive"
-             (click)="ingesting = !ingesting; collapse = false; availview = false; saveBoundary();"
+             (click)="ingesting = !ingesting; collapse = false; availview = false; saveBoundary(); modelise = false"
              data-content="GeoJSON Panel"><i class="white map icon"></i> SPACE</a>
+
           <a class="right aligned inverted item" suiTabHeader="3" [(isActive)]="thirdActive"
-             (click)="ingesting = false; collapse = false; toggleAvailabilityView()" data-content="Availability Panel">
+             (click)="ingesting = false; collapse = false; toggleAvailabilityView(); modelise = false" data-content="Availability Panel">
             <div *ngIf="!availview"><i class="white calendar alternate outline icon"></i> Model Data Availability</div>
             <div *ngIf="availview"><i class="white calendar check outline icon"></i> Model Data Availability</div>
           </a>

@@ -15,24 +15,34 @@ const httpOptions = {
 @Injectable()
 export class TimeseriesService {
 
-  constructor(private http: HttpClient,
-              private sanitizer: DomSanitizer) {
+  constructor(private http: HttpClient) {
   }
 
-  private apiUrl = 'http://cache.landscapefuelmoisture.bushfirebehaviour.net.au/v1';
+  private pipeline = 'http://pipeline.landscapefuelmoisture.bushfirebehaviour.net.au/';
+  // private apiUrl = 'http://api.landscapefuelmoisture.bushfirebehaviour.net.au/v1';
 
-  postAPI(path: string, json_query: any) {
-    console.log(`${this.apiUrl}${path}`);
-    console.log(json_query);
-    return this.http.post(`${this.apiUrl}${path}`, json_query, httpOptions);
+  submit(path: string, json_query: any) {
+    return this.http.post(`${this.pipeline}${path}`, json_query, httpOptions);
   }
 
-  mpgAPI(path: string, json_query: any) {
-    return this.http.post(`${this.apiUrl}/fuel.mp4`, json_query);
+  // Revoke task
+  revoke(uuid) {
+    this.http.get(`${this.pipeline}/revoke?uuid=${uuid}`, httpOptions);
   }
 
-  getAPI(path: string, jq: any) {
-    const qs = `?start=${jq.start}&finish=${jq.finish}&models=${jq.model_names}&weighted=${jq.weighted}&geo_json=${jq.geo_json}&response_as=${jq.response_as}`;
-    return this.http.get(`${this.apiUrl}${path}${qs}`);
+  // Get the cached result of the task
+  result(uuid) {
+    return this.http.get(`${this.pipeline}/result?uuid=${uuid}`, httpOptions);
+  }
+
+  // Abort a running task
+  abort(uuid) {
+    this.http.get(`${this.pipeline}/abort?uuid=${uuid}`, httpOptions);
+  }
+
+  // Observe the progress of a task
+  progress(uuid): Observable<any> {
+    // return this.http.get(`${this.flower}/task/info/${uuid}`, httpOptions);
+    return this.http.get(`${this.pipeline}/progress?uuid=${uuid}`, httpOptions);
   }
 }

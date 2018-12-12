@@ -68,6 +68,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   timebrush = true;
   snapping = false;
   allModels = false;
+  modelise = false;
   jasminLevel = 0.1;
 
   calculated_area = '';

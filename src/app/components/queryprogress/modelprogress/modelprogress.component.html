@@ -1,0 +1,20 @@
+<div class="three wide column">
+  <i class="download icon"></i>
+  Model <!-- {{ state(subtask.uuid) | json }} -->
+</div>
+<div class="eleven wide column">
+  <sui-progress class="inverted indicating active" [value]="progress(uuid)"></sui-progress>
+</div>
+<div class="two wide column">
+  <div class="ui three mini compact basic icon buttons">
+    <button class="ui mini basic blue icon button" (click)="console.log(uuid)">
+      <i class="refresh icon"></i>
+    </button>
+    <button class="ui mini basic yellow icon button" (click)="abort(uuid)">
+      <i class="pause icon"></i>
+    </button>
+    <button class="ui mini basic orange icon button" (click)="revoke(uuid)">
+      <i class="close icon"></i>
+    </button>
+  </div>
+</div>
