@@ -142,62 +142,68 @@
               <!--<i class="file pdf icon"></i> PDF-->
               <!--</a>-->
             </div>
-            <div class="ui three column stackable grid">
 
-              <div class="column">
-                <div class="ui tiny inverted menu">
-                  <a class="item" (click)="extendPast()">
-                    <i class="left angle icon"></i>
-                  </a>
-                  <a class="stretch item" suiDatepicker [pickerMinDate]="minStartDate" [pickerMaxDate]="maxStartDate"
-                     [pickerMode]="'date'" [(ngModel)]="start" (ngModelChange)="updateDatetimeOnWMTSSources()"><i
-                    class="calendar icon"></i> From: {{start | date:'fullDate'}}</a>
-                  <a class="right aligned item" (click)="reducePast()">
-                    <i class="right angle icon"></i>
-                  </a>
-                </div>
-              </div>
 
-              <div class="column">
-                <div class="ui tiny inverted menu">
-                  <a class="item" (click)="shuntPastWeek()">
-                    <i class="angle double left icon"></i>
-                  </a>
-                  <a class="item" (click)="shuntPast()">
-                    <i class="left caret icon"></i>
-                  </a>
-                  <a class="stretch item" (click)="weekView()" data-content="This past week"><i class="clock icon"></i>
-                    Current
-                    {{durationWindow()}}-day Window</a>
-                  <a class="right aligned item" (click)="shuntFuture()">
-                    <i class="right caret icon"></i>
-                  </a>
-                  <a class="right aligned item" (click)="shuntFutureWeek()">
-                    <i class="angle double right icon"></i>
-                  </a>
-                </div>
-              </div>
 
-              <div class="column">
-                <div class="ui tiny inverted menu">
-                  <a class="item" (click)="reduceFuture()">
-                    <i class="left angle icon"></i>
-                  </a>
-                  <a class="stretch item" suiDatepicker [pickerMinDate]="minEndDate" [pickerMaxDate]="maxEndDate"
-                     [pickerMode]="'date'"
-                     [(ngModel)]="finish" (change)="updateDatetimeOnWMTSSources()">
-                    <i class="calendar icon"></i> To:
-                    {{finish
-                    |
-                    date:'fullDate'}}</a>
-                  <a class="right aligned item" (click)="extendFuture()">
-                    <i class="right angle icon"></i>
-                  </a>
-                </div>
-              </div>
+            <!--<div class="ui three column stackable grid">-->
 
-            </div>
+              <!--<div class="column">-->
+                <!--<div class="ui tiny inverted menu">-->
+                  <!--<a class="item" (click)="extendPast()">-->
+                    <!--<i class="left angle icon"></i>-->
+                  <!--</a>-->
+                  <!--<a class="stretch item" suiDatepicker [pickerMinDate]="minStartDate" [pickerMaxDate]="maxStartDate"-->
+                     <!--[pickerMode]="'date'" [(ngModel)]="start" (ngModelChange)="updateDatetimeOnWMTSSources()"><i-->
+                    <!--class="calendar icon"></i> From: {{start | date:'fullDate'}}</a>-->
+                  <!--<a class="right aligned item" (click)="reducePast()">-->
+                    <!--<i class="right angle icon"></i>-->
+                  <!--</a>-->
+                <!--</div>-->
+              <!--</div>-->
 
+              <!--<div class="column">-->
+                <!--<div class="ui tiny inverted menu">-->
+                  <!--<a class="item" (click)="shuntPastWeek()">-->
+                    <!--<i class="angle double left icon"></i>-->
+                  <!--</a>-->
+                  <!--<a class="item" (click)="shuntPast()">-->
+                    <!--<i class="left caret icon"></i>-->
+                  <!--</a>-->
+                  <!--<a class="stretch item" (click)="weekView()" data-content="This past week"><i class="clock icon"></i>-->
+                    <!--Current-->
+                    <!--{{durationWindow()}}-day Window</a>-->
+                  <!--<a class="right aligned item" (click)="shuntFuture()">-->
+                    <!--<i class="right caret icon"></i>-->
+                  <!--</a>-->
+                  <!--<a class="right aligned item" (click)="shuntFutureWeek()">-->
+                    <!--<i class="angle double right icon"></i>-->
+                  <!--</a>-->
+                <!--</div>-->
+              <!--</div>-->
+
+              <!--<div class="column">-->
+                <!--<div class="ui tiny inverted menu">-->
+                  <!--<a class="item" (click)="reduceFuture()">-->
+                    <!--<i class="left angle icon"></i>-->
+                  <!--</a>-->
+                  <!--<a class="stretch item" suiDatepicker [pickerMinDate]="minEndDate" [pickerMaxDate]="maxEndDate"-->
+                     <!--[pickerMode]="'date'"-->
+                     <!--[(ngModel)]="finish" (change)="updateDatetimeOnWMTSSources()">-->
+                    <!--<i class="calendar icon"></i> To:-->
+                    <!--{{finish-->
+                    <!--|-->
+                    <!--date:'fullDate'}}</a>-->
+                  <!--<a class="right aligned item" (click)="extendFuture()">-->
+                    <!--<i class="right angle icon"></i>-->
+                  <!--</a>-->
+                <!--</div>-->
+              <!--</div>-->
+
+            <!--</div>-->
+
+
+
+            <app-range-selector (rangeChange)="updateDates($event)"></app-range-selector>
             <div class="ui bottom attached map-overlay-inner">
 
 

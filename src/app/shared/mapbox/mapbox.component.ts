@@ -233,6 +233,20 @@ export class MapboxComponent implements OnInit, AfterViewInit {
 
   }
 
+  updateDates(ev) {
+    console.log(ev);
+    this.start = ev.from;
+    this.finish = ev.to;
+    const gj = this.drw.getAll();
+
+    this.updateDatetimeOnWMTSSources();
+    if (this.getActiveModels('Both').length > 0) {
+      if (gj.features.length > 0) {
+        this.refreshModelData();
+      }
+    }
+  }
+
   getModelNamesOnly(): string[] {
 
     return this.models.sort((a: Model, b: Model) => {

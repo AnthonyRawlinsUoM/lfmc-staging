@@ -205,3 +205,168 @@ html, body, a, h1, h2, h3, h4, h5, h6, button,
 .header, .item, input, table, td, th {
   font-family: Roboto,Helvetica,Arial,sans-serif !important;
 }
+
+
+
+.inverted .jqx-rangeselector-ticks-container {
+  box-shadow: 0rem 0.5rem 0.5rem rgba(0, 0, 0, 0.51) inset !important;
+  border: solid 2px rgba(89, 89, 89, 1);
+  border-radius: 0.36rem !important;
+  padding-right: 1px;
+}
+
+.inverted .jqx-widget {
+  background-color: #1B1C1D;
+}
+.inverted .jqx-rangeselector {
+}
+/* applied to RangeSelector widget. */
+.inverted * .jqx-rangeselector-slider.jqx-scrollbar-thumb-state-normal {
+  background-color: #404788 !important;
+  box-shadow: 0rem 0.45rem 0.15rem #29AF7F inset !important;
+  opacity: 0.86 !important;
+
+  /* border-radius: 0.32rem !important; */
+  /* box-shadow: 0px 0px 10px 1px rgba(12, 196, 245, 1) !important; */
+  /* border: solid 2px rgba(0, 70, 89, 1) !important; */
+}
+/* applied to RangeSelector's Slider element. */
+.inverted .jqx-rangeselector-shutter {
+}
+/* applied to the areas which are situated on the Left and Right side of the Slider. */
+.inverted .jqx-scrollbar-state-normal {
+  background-color: rgba(46, 46, 46, 0.85);
+}
+/* applied to the areas which are situated on the Left and Right side of the Slider. */
+.inverted .jqx-rangeselector-markers {
+  background-color: rgba(0, 0, 0, 1);
+  box-shadow: 0rem 0.25rem 0.55rem rgba(0, 0, 0, 0.80) !important;
+  border-radius: 0.245rem 0.245rem 0 0;
+  color: rgba(255, 255, 255, 1) !important;
+}
+/* applied to RangeSelector's Left and Right markers. */
+.inverted .jqx-fill-state-normal {
+  border-color: rgba(0, 0, 0, 1);
+}
+/* applied to RangeSelector's Left and Right markers. */
+.inverted .jqx-fill-state-hover {
+}
+/* applied to RangeSelector's Left and Right markers on Hover. */
+.inverted .jqx-fill-state-pressed {
+}
+/* applied to RangeSelector's Left and Right markers on Drag. */
+
+.inverted .jqx-rangeselector-markers {
+  opacity: 1.0 !important;
+}
+
+.inverted .jqx-rangeselector-markers-value {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 1) !important;
+}
+/* applied to the element which displays the value in the markers. */
+.inverted .jqx-rangeselector-marker-arrow {
+}
+/* applied to the Left and Right marker arrows. */
+.inverted .jqx-rangeselector-marker-left-arrow {
+}
+/* applied to the Left marker arrow. */
+.inverted .jqx-rangeselector-marker-right-arrow {
+}
+/* applied to the Right marker arrow. */
+.inverted .jqx-rangeselector-marker-arrow-bottom {
+}
+/* applied to the markers markersPosition is set to "bottom" */
+.inverted .jqx-rangeselector-marker-arrow-top {
+}
+/* applied to the markers markersPosition is set to "top" */
+.inverted .jqx-rangeselector-labels {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+/* applied to RangeSelector's labels. */
+.inverted .jqx-rangeselector-group-labels {
+}
+/* applied to the Group labels. */
+.inverted .jqx-rangeselector-ticks {
+  background: rgba(255, 255, 255, 0.94) !important;
+  box-shadow: 0px 0px 10px 1px rgba(12, 196, 245, 1) !important;
+}
+/* applied to RangeSelector's ticks. */
+.inverted .jqx-fill-state-disabled {
+}
+/* applied to the RangeSelector when it is disabled. */
+
+
+/* Indicating ==> VIRIDIS 0-100% */
+.ui.indicating.progress[data-percent^="0"] .bar {
+  background-color: #fde725 !important;
+}
+.ui.indicating.progress[data-percent^="5"] .bar {
+  background-color:  #eae51a !important;
+}
+.ui.indicating.progress[data-percent^="10"] .bar {
+  background-color: #d5e21a !important;
+}
+.ui.indicating.progress[data-percent^="15"] .bar {
+  background-color: #c0df25 !important;
+}
+.ui.indicating.progress[data-percent^="20"] .bar {
+  background-color: #a8db34 !important;
+}
+.ui.indicating.progress[data-percent^="25"] .bar {
+  background-color: #93d741 !important;
+}
+.ui.indicating.progress[data-percent^="30"] .bar {
+  background-color: #7fd34e !important;
+}
+.ui.indicating.progress[data-percent^="35"] .bar {
+  background-color: #6ccd5a !important;
+}
+.ui.indicating.progress[data-percent^="40"] .bar {
+  background-color: #58c765 !important;
+}
+.ui.indicating.progress[data-percent^="45"] .bar {
+  background-color: #48c16e !important;
+}
+.ui.indicating.progress[data-percent^="50"] .bar {
+  background-color: #3aba76 !important;
+}
+.ui.indicating.progress[data-percent^="55"] .bar {
+  background-color: #2eb37c !important;
+}
+.ui.indicating.progress[data-percent^="60"] .bar {
+  background-color: #25ab82 !important;
+}
+.ui.indicating.progress[data-percent^="65"] .bar {
+  background-color: #20a386 !important;
+}
+.ui.indicating.progress[data-percent^="70"] .bar {
+  background-color: #1e9c89 !important;
+}
+.ui.indicating.progress[data-percent^="75"] .bar {
+  background-color: #1f948c !important;
+}
+.ui.indicating.progress[data-percent^="80"] .bar {
+  background-color: #228c8d !important;
+}
+.ui.indicating.progress[data-percent^="85"] .bar {
+  background-color: #25848e !important;
+}
+.ui.indicating.progress[data-percent^="90"] .bar {
+  background-color: #287d8e !important;
+}
+.ui.indicating.progress[data-percent^="95"] .bar {
+  background-color: #2b758e !important;
+}
+.ui.indicating.progress[data-percent^="100"] .bar {
+  background-color: #2e6d8e !important;
+}
+
+
+.inverted * .jqx-rangeselector-slider.jqx-scrollbar-thumb-state-normal:hover {
+  cursor: grab;
+}
+.grab {cursor: grab;}
+.grabbing {cursor: grabbing;}

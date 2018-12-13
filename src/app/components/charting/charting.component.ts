@@ -236,98 +236,6 @@ export class ChartingComponent implements OnInit {
   }
 
 
-  a(result) {
-    const test = source.pipe(mergeMap(q => forkJoin(...q.map(something))));
-  }
-
-  this;
-.
-  qt;
-.
-
-  map(st
-
-=> {
-  console;
-.
-
-  log(
-
-  'Subtask Result:';
-+
-  st;
-);
-  this;
-.
-  tss;
-.
-
-  progress(st
-
-.
-  uuid;
-).
-
-  subscribe(res
-
-=> {
-  console;
-.
-
-  log(st
-
-.
-  uuid;
-+
-  ' has state: ';
-+
-  res;
-.
-  state;
-);
-
-  if(res
-
-.
-  state;
-===
-  'SUCCESS';
-) {
-  const;
-  final_result;
-  this;
-.
-  tss;
-.
-
-  result(uuid)
-
-.
-
-  subscribe(result
-
-=> {
-  final_result = result;
-}
-
-,
-(e) => {
-  console.log(e);
-}, () => {
-  this.multi.push(JSON.parse(JSON.stringify(final_result), reviver));
-};
-)
-;
-}
-},
-(e) => {
-  console.log(e);
-},
-  () => {
-    console.log('Finished adding results for subtask.');
-  };
-)
-;
 
 // if (this.multi['error'] && this.multi['code']) {
 //
@@ -366,62 +274,47 @@ export class ChartingComponent implements OnInit {
 // }
 
 
-public
-getFuelForShapeWithModels(geo_json
-:
-any, start;
-:
-string, finish;
-:
-string, models;
-:
-any[], response_as;
-:
-LFMCResponseType;
-)
-{
+  public getFuelForShapeWithModels(geo_json: any, start: string, finish: string, models: any[], response_as: LFMCResponseType) {
 
-  console.log('>>> Creating query');
-  this.chart_is_ready = true;
+    console.log('>>> Creating query');
+    this.chart_is_ready = true;
 
-  const json_query = {
-    'geo_json': geo_json,
-    'models': models,
-    'start': start,
-    'finish': finish
-  };
+    const json_query = {
+      'geo_json': geo_json,
+      'models': models,
+      'start': start,
+      'finish': finish
+    };
 
-  switch (+response_as) {
-    case LFMCResponseType.TIMESERIES:
-      this.getFuelByPost('/submit_query.json', json_query);
-      break;
-    case LFMCResponseType.MP4:
-      this.tss.postAPI('/fuel.mp4', json_query).subscribe(m => {
-        // this.multi = JSON.parse(JSON.stringify(m), reviver);
-      });
-      break;
-    case LFMCResponseType.NETCDF:
-      this.getFuelByPost('/fuel.nc', json_query);
-      break;
+    switch (+response_as) {
+      case LFMCResponseType.TIMESERIES:
+        this.getFuelByPost('/submit_query.json', json_query);
+        break;
+      // case LFMCResponseType.MP4:
+      //   this.tss.postAPI('/fuel.mp4', json_query).subscribe(m => {
+      //     // this.multi = JSON.parse(JSON.stringify(m), reviver);
+      //   });
+      //   break;
+      // case LFMCResponseType.NETCDF:
+      //   this.getFuelByPost('/fuel.nc', json_query);
+      //   break;
+    }
   }
-}
 
-onSelect(e);
-{
-  console.log('Got select event from chart.');
-  console.log(e);
-  this.select.emit(e);
-}
+  onSelect(e) {
+    console.log('Got select event from chart.');
+    console.log(e);
 
-onActivateAndDeactivate();
-{
-  console.log(this.highlights);
-  // this.select.emit();
-}
+    this.select.emit(e);
+  }
 
-do_cancel();
-{
-  this.dimmer = false;
-  this.multi = this.default_multi;
-}
+  onActivateAndDeactivate() {
+    console.log(this.highlights);
+    // this.select.emit();
+  }
+
+  do_cancel() {
+    this.dimmer = false;
+    this.multi = this.default_multi;
+  }
 }

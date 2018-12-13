@@ -18,7 +18,7 @@ export class TimeseriesService {
   constructor(private http: HttpClient) {
   }
 
-  private pipeline = 'http://pipeline.landscapefuelmoisture.bushfirebehaviour.net.au/';
+  private pipeline = 'http://pipeline.landscapefuelmoisture.bushfirebehaviour.net.au';
   // private apiUrl = 'http://api.landscapefuelmoisture.bushfirebehaviour.net.au/v1';
 
   submit(path: string, json_query: any) {

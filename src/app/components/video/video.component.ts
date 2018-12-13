@@ -23,18 +23,19 @@ export class VideoComponent implements OnInit {
   }
 
   getVideo(json: any) {
-    this.query = json;
-    this.query.weighted = true,
-    this.query.response_as = LFMCResponseType.MP4
-    console.log(this.query);
-    this.hasVideoQuery = true;
-
-    return this.tss.mpgAPI(
-      '/fuel.mp4', this.query).subscribe(m => {
-      console.log('Got video response');
-      this.videoSource = m;
-      this.preloadDimmed = false;
-    });
+    // this.query = json;
+    // this.query.weighted = true,
+    // this.query.response_as = LFMCResponseType.MP4
+    // console.log(this.query);
+    // this.hasVideoQuery = true;
+    //
+    // return this.tss.mpgAPI(
+    //   '/fuel.mp4', this.query).subscribe(m => {
+    //   console.log('Got video response');
+    //   this.videoSource = m;
+    //   this.preloadDimmed = false;
+    // });
+    return '';
   }
 
 }

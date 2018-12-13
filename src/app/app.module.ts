@@ -11,6 +11,7 @@ import {FileUploadModule} from 'ng2-file-upload';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {MapboxDraw} from '@mapbox/mapbox-gl-draw';
 import {ClipboardModule} from 'ngx-clipboard';
+import {QueryprogressModule} from './queryprogress/queryprogress.module';
 
 // Services
 import {ModelsService} from './services/models.service';
@@ -56,8 +57,13 @@ import {IndicatorBarComponent} from './availability/temporal-availability/indica
 import {AvailabilityRowComponent} from './availability/temporal-availability/availability-row/availability-row.component';
 import {TemporalAvailabilityComponent} from './availability/temporal-availability/temporal-availability.component';
 import {DisclaimerComponent} from './components/disclaimer/disclaimer.component';
-import {QueryprogressComponent} from './components/queryprogress/queryprogress.component';
-import { ModelprogressComponent } from './components/queryprogress/modelprogress/modelprogress.component';
+import {RangeSelectorComponent} from './components/range-selector/range-selector.component';
+import { jqxBarGaugeComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxbargauge';
+import { jqxRangeSelectorComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxrangeselector';
+
+
+// import {QueryprogressComponent} from './components/queryprogress/queryprogress.component';
+// import { ModelprogressComponent } from './components/queryprogress/modelprogress/modelprogress.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -109,8 +115,11 @@ const appRoutes: Routes = [
     AvailabilityRowComponent,
     TemporalAvailabilityComponent,
     DisclaimerComponent,
-    QueryprogressComponent,
-    ModelprogressComponent
+    // QueryprogressComponent,
+    // ModelprogressComponent
+    RangeSelectorComponent,
+    jqxRangeSelectorComponent,
+    jqxBarGaugeComponent
   ],
 
   // Modules
@@ -125,7 +134,8 @@ const appRoutes: Routes = [
     FileUploadModule,
     SuiModule,
     NgxChartsModule,
-    ClipboardModule
+    ClipboardModule,
+    QueryprogressModule
   ],
 
   // Services

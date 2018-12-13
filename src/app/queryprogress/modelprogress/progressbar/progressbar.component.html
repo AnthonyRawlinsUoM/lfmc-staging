@@ -1,0 +1,29 @@
+<!--<td class="collapsing">-->
+  <!--<div class="ui fitted slider inverted checkbox">-->
+    <!--<div class="ui small form">-->
+      <!--<div class="field">-->
+        <!--<sui-checkbox class="toggle" (checkChange)="onCheckChange($event)" [isReadonly]="false"-->
+                      <!--[isDisabled]="taskDisabled"></sui-checkbox>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</td>-->
+<td data-label="Model Name" class="collapsing">{{uuid}}</td>
+<td class="collapsing">{{ptime | date:'h:mm:ss' }}</td>
+<td data-label="Model Progress" class="middle aligned">
+  <sui-progress
+    [value]="progression"
+    class="indicating active"
+  ></sui-progress>
+</td>
+<td class="collapsing">{{p.state}}</td>
+<td data-label="Model Actions" class="right aligned collapsing">
+  <div class="ui inverted tiny icon buttons">
+    <button class="ui button" (click)="abort(uuid)" [disabled]="actionDisabled">
+      <i class="ui stop icon"></i>
+    </button>
+    <button class="ui purple button" (click)="revoke(uuid)" [disabled]="trashDisabled">
+      <i class="ui trash alternate outline icon"></i>
+    </button>
+  </div>
+</td>

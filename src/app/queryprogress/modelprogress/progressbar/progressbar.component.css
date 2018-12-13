@@ -1,0 +1,8 @@
+.ui.progress:last-child,
+sui-progress {
+  margin-bottom: 0;
+}
+
+sui-progress .label {
+  display: none;
+}
