@@ -218,8 +218,51 @@ html, body, a, h1, h2, h3, h4, h5, h6, button,
 .inverted .jqx-widget {
   background-color: #1B1C1D;
 }
-.inverted .jqx-rangeselector {
+
+
+
+
+
+.rangecontainer {
+  display: block;
+  margin: 0 auto;
+  width: 90vw;
 }
+
+
+.inverted .jqx-rangeselector {
+
+}
+.jqx-rangeselector-shutter {
+  padding: 0;
+}
+/*
+ *
+jqx-widget - applied to the RangeSelector widget.
+jqx-rangeselector - applied to RangeSelector widget.
+jqx-rangeselector-slider - applied to RangeSelector's Slider element.
+jqx-scrollbar-thumb-state-normal - applied to RangeSelector's Slider element.
+jqx-rangeselector-shutter - applied to the areas which are situated on the Left and Right side of the Slider.
+jqx-scrollbar-state-normal - applied to the areas which are situated on the Left and Right side of the Slider.
+jqx-rangeselector-markers - applied to RangeSelector's Left and Right markers.
+jqx-fill-state-normal - applied to RangeSelector's Left and Right markers.
+jqx-fill-state-hover - applied to RangeSelector's Left and Right markers on Hover.
+jqx-fill-state-pressed - applied to RangeSelector's Left and Right markers on Drag.
+jqx-rangeselector-markers-value - applied to the element which displays the value in the markers.
+jqx-rangeselector-marker-arrow - applied to the Left and Right marker arrows.
+jqx-rangeselector-marker-left-arrow - applied to the Left marker arrow.
+jqx-rangeselector-marker-right-arrow - applied to the Right marker arrow.
+jqx-rangeselector-marker-arrow-bottom - applied to the markers markersPosition is set to "bottom"
+jqx-rangeselector-marker-arrow-top - applied to the markers markersPosition is set to "top"
+jqx-rangeselector-labels - applied to RangeSelector's labels.
+jqx-rangeselector-group-labels - applied to the Group labels.
+jqx-rangeselector-ticks - applied to RangeSelector's ticks.
+jqx-fill-state-disabled - applied to the RangeSelector when it is disabled.
+ *
+ */
+
+
+
 /* applied to RangeSelector widget. */
 .inverted * .jqx-rangeselector-slider.jqx-scrollbar-thumb-state-normal {
   background-color: #404788 !important;
@@ -368,5 +411,52 @@ html, body, a, h1, h2, h3, h4, h5, h6, button,
 .inverted * .jqx-rangeselector-slider.jqx-scrollbar-thumb-state-normal:hover {
   cursor: grab;
 }
-.grab {cursor: grab;}
-.grabbing {cursor: grabbing;}
+.inverted * .jqx-rangeselector-slider.jqx-scrollbar-thumb-state-normal:active {
+  cursor: grabbing;
+}
+.jqx-rangeselector-markers.jqx-disableselect.jqx-fill-state-normal:hover,
+.jqx-rangeselector-markers.jqx-disableselect.jqx-fill-state-normal:active {
+  cursor: ew-resize;
+}
+
+.chartcontainer {
+  min-height: 33vh;
+}
+
+
+td.timebar {
+  max-height: 2.5rem !important;
+}
+
+div.timebar {
+  margin: 0;
+  padding: 0;
+}
+div.timebar > .field {
+  display: inline-block;
+  white-space: nowrap;
+}
+div.timebar > .ui.fluid.indicator {
+  box-sizing: content-box;
+}
+div.timebar > .indicator > .ui.label {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+div.timebar > .indicator {
+  display: flex;
+  overflow: hidden;
+  max-height: 2.5rem !important;
+}
+
+.indicator > .ngx-charts-outer {
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: available;
+}
+
+svg.ngx-charts {
+  padding: 0;
+}

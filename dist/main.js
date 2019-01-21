@@ -32,13 +32,12 @@ var map = {
 
 function webpackContext(req) {
 	var id = webpackContextResolve(req);
-	var module = __webpack_require__(id);
-	return module;
+	return __webpack_require__(id);
 }
 function webpackContextResolve(req) {
 	var id = map[req];
 	if(!(id + 1)) { // check for number or string
-		var e = new Error('Cannot find module "' + req + '".');
+		var e = new Error("Cannot find module '" + req + "'");
 		e.code = 'MODULE_NOT_FOUND';
 		throw e;
 	}
@@ -312,13 +311,12 @@ var map = {
 
 function webpackContext(req) {
 	var id = webpackContextResolve(req);
-	var module = __webpack_require__(id);
-	return module;
+	return __webpack_require__(id);
 }
 function webpackContextResolve(req) {
 	var id = map[req];
 	if(!(id + 1)) { // check for number or string
-		var e = new Error('Cannot find module "' + req + '".');
+		var e = new Error("Cannot find module '" + req + "'");
 		e.code = 'MODULE_NOT_FOUND';
 		throw e;
 	}
@@ -340,7 +338,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 /*! exports provided: name, version, license, main, scripts, engines, private, dependencies, devDependencies, default */
 /***/ (function(module) {
 
-module.exports = {"name":"lfmc-staging","version":"0.6.18","license":"MIT","main":"app.js","scripts":{"ng":"ng","start":"ng serve --host 0.0.0.0 --disable-host-check","build":"ng build","test":"ng test","lint":"ng lint","e2e":"ng e2e","postinstall":"ng build"},"engines":{"node":"~8.2.1","npm":"~5.3.0"},"private":true,"dependencies":{"@agm/core":"^1.0.0-beta.2","@angular/animations":"^6.0.3","@angular/cdk":"^6.2.0","@angular/common":"^6.0.3","@angular/compiler":"^6.0.3","@angular/core":"^6.0.3","@angular/forms":"^6.0.3","@angular/http":"^6.0.3","@angular/platform-browser":"^6.0.3","@angular/platform-browser-dynamic":"^6.0.3","@angular/router":"^6.0.3","@mapbox/geojson-area":"^0.2.2","@mapbox/mapbox-data-cli":"^2.0.0","@mapbox/mapbox-gl-draw":"^1.0.9","@mapbox/mapbox-gl-geocoder":"^2.2.0","@mapbox/mapbox-gl-sync-move":"^0.2.0","@mapbox/point-geometry":"^0.1.0","@mapbox/vector-tile":"^1.3.1","@swimlane/ngx-charts":"^8.0.2","@turf/turf":"^5.1.6","@types/geojson":"^7946.0.3","@types/mapbox-gl":"^0.44.4","@types/proj4":"^2.3.4","angular-persistence":"^1.0.1","angular2-uuid":"^1.1.1","auth0":"^2.9.1","auth0-js":"^9.5.1","auth0-lock":"^11.6.1","aws-sdk":"^2.245.1","bootstrap":"^4.1.1","colormap":"^2.3.0","connect-ensure-login":"^0.1.1","cookieconsent":"^3.1.0","core-js":"^2.5.6","d3":"^5.4.0","d3-ng2-service":"^2.2.0","express":"^4.16.3","express-graphql":"^0.6.12","geojson-bbox":"0.0.0","graphql":"^0.13.2","graphql-server":"^0.3.2","graphql-server-express":"^1.3.6","grunt":"^1.0.2","json":"^9.0.6","json-loader":"^0.5.7","mapbox-gl":"^0.45.0","mapbox-gl-supported":"^1.2.0","moment":"^2.22.1","mongoose":"^5.1.2","netcdf":"^1.1.1","ng2-file-upload":"^1.3.0","ng2-localstorage":"^0.5.1","ng2-semantic-ui":"^0.9.7","ng2-slider-component":"^1.0.9","ng2-timeline":"^0.1.1","ngx-clipboard":"^11.1.0","ngx-cookie-service":"^1.0.10","ngx-cookieconsent":"^2.0.0","ngx-drag-to-select":"^1.1.1","passport":"^0.4.0","passport-auth0":"^0.6.1","proj4":"^2.4.4","rxjs":"^6.2.2","rxjs-compat":"^6.2.2","semver":"^5.5.0","terraformer":"^1.0.8","terraformer-wkt-parser":"^1.2.0","web-animations-js":"^2.3.1","wellknown":"^0.5.0","zone.js":"^0.8.26"},"devDependencies":{"@angular-devkit/build-angular":"~0.6.3","@angular/cli":"^6.0.3","@angular/compiler-cli":"^6.0.3","@angular/language-service":"^6.0.3","@types/d3":"^5.0.0","@types/googlemaps":"^3.30.8","@types/jasmine":"^2.8.7","@types/jasminewd2":"^2.0.3","@types/node":"^10.1.2","codelyzer":"~4.3.0","jasmine-core":"~3.1.0","jasmine-spec-reporter":"~4.2.1","karma":"^2.0.2","karma-chrome-launcher":"~2.2.0","karma-cli":"~1.0.1","karma-coverage-istanbul-reporter":"^2.0.1","karma-jasmine":"^1.1.2","karma-jasmine-html-reporter":"^1.1.0","protractor":"~5.3.2","ts-node":"~6.0.4","tslint":"~5.10.0","typescript":"^2.7.2"}};
+module.exports = {"name":"lfmc-staging","version":"0.6.18","license":"MIT","main":"app.js","scripts":{"ng":"ng","start":"ng serve --host 0.0.0.0 --disable-host-check","build":"ng build","test":"ng test","lint":"ng lint","e2e":"ng e2e","postinstall":"ng build"},"engines":{"node":"~8.2.1","npm":"~5.3.0"},"private":true,"dependencies":{"@agm/core":"^1.0.0-beta.2","@angular/animations":"^6.0.3","@angular/cdk":"^6.2.0","@angular/common":"^6.0.3","@angular/compiler":"^6.0.3","@angular/core":"^6.0.3","@angular/forms":"^6.0.3","@angular/http":"^6.0.3","@angular/platform-browser":"^6.0.3","@angular/platform-browser-dynamic":"^6.0.3","@angular/router":"^6.0.3","@mapbox/geojson-area":"^0.2.2","@mapbox/mapbox-data-cli":"^2.0.0","@mapbox/mapbox-gl-draw":"^1.0.9","@mapbox/mapbox-gl-geocoder":"^2.2.0","@mapbox/mapbox-gl-sync-move":"^0.2.0","@mapbox/point-geometry":"^0.1.0","@mapbox/vector-tile":"^1.3.1","@swimlane/ngx-charts":"^8.0.2","@turf/turf":"^5.1.6","@types/geojson":"^7946.0.3","@types/mapbox-gl":"^0.44.4","@types/proj4":"^2.3.4","angular-persistence":"^1.0.1","angular2-uuid":"^1.1.1","auth0":"^2.14.0","auth0-js":"^9.5.1","auth0-lock":"^11.6.1","aws-sdk":"^2.245.1","bootstrap":"^4.1.1","colormap":"^2.3.0","connect-ensure-login":"^0.1.1","cookieconsent":"^3.1.0","core-js":"^2.5.6","d3":"^5.4.0","d3-ng2-service":"^2.2.0","express":"^4.16.3","express-graphql":"^0.6.12","geojson-bbox":"0.0.0","graphql":"^0.13.2","graphql-server":"^0.3.2","graphql-server-express":"^1.3.6","grunt":"^1.0.3","jqwidgets-scripts":"^6.2.0","json":"^9.0.6","json-loader":"^0.5.7","mapbox-gl":"^0.45.0","mapbox-gl-supported":"^1.2.0","moment":"^2.22.1","mongoose":"^5.1.2","netcdf":"^1.1.1","ng2-file-upload":"^1.3.0","ng2-localstorage":"^0.5.1","ng2-semantic-ui":"^0.9.7","ng2-slider-component":"^1.0.9","ng2-timeline":"^0.1.1","ngx-clipboard":"^11.1.0","ngx-cookie-service":"^1.0.10","ngx-cookieconsent":"^2.0.0","ngx-drag-to-select":"^1.1.1","passport":"^0.4.0","passport-auth0":"^0.6.1","proj4":"^2.4.4","rxjs":"^6.2.2","rxjs-compat":"^6.2.2","semver":"^5.5.0","terraformer":"^1.0.8","terraformer-wkt-parser":"^1.2.0","web-animations-js":"^2.3.1","wellknown":"^0.5.0","zone.js":"^0.8.26"},"devDependencies":{"@angular-devkit/build-angular":"^0.11.3","@angular/cli":"^7.1.3","@angular/compiler-cli":"^6.0.3","@angular/language-service":"^6.0.3","@types/d3":"^5.0.0","@types/googlemaps":"^3.30.8","@types/jasmine":"^2.8.7","@types/jasminewd2":"^2.0.3","@types/node":"^10.1.2","codelyzer":"~4.3.0","jasmine-core":"~3.1.0","jasmine-spec-reporter":"~4.2.1","karma":"^2.0.2","karma-chrome-launcher":"~2.2.0","karma-cli":"~1.0.1","karma-coverage-istanbul-reporter":"^2.0.1","karma-jasmine":"^1.1.2","karma-jasmine-html-reporter":"^1.1.0","protractor":"^5.4.1","ts-node":"~6.0.4","tslint":"~5.10.0","typescript":"^2.7.2"}};
 
 /***/ }),
 
@@ -355,7 +353,7 @@ function webpackEmptyAsyncContext(req) {
 	// Here Promise.resolve().then() is used instead of new Promise() to prevent
 	// uncaught exception popping up in devtools
 	return Promise.resolve().then(function() {
-		var e = new Error('Cannot find module "' + req + '".');
+		var e = new Error("Cannot find module '" + req + "'");
 		e.code = 'MODULE_NOT_FOUND';
 		throw e;
 	});
@@ -374,7 +372,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".ui.inverted.menu.shadow,\n.ui.inverted.pointing.dropdown .menu {\n\tbox-shadow: 0px 4px 13px hsla(0, 0%, 0%, 0.5);\n\t-moz-box-shadow: 0px 0px 13px hsla(0, 0%, 0%, 0.5);\n\tmargin-bottom: 0;\n\tz-index : 400;\n}\n\n.ui.inverted.menu.shadow {\n\t/*max-height: 5vh;*/\n\tz-index: 250;\n}\n\nheader {\n  flex-shrink: 0;\n}\n\n#overlay-toolbar {\n  flex-shrink: 0;\n  flex-grow: 1;\n}\n\nfooter {\n  flex-shrink: 0;\n}\n\nmain {\n  flex: 1 0 auto;\n}\n\n.app_container {\n  display: flex;\n  flex-direction: column;\n  height: 100vh;\n}\n\n.ui.modal {\n  top: 50%;\n  position: fixed;\n}\n\n.middle.menu {\n  margin: 0 auto;\n}\n"
+module.exports = ".ui.inverted.menu.shadow,\n.ui.inverted.pointing.dropdown .menu {\n\tbox-shadow: 0px 4px 13px hsla(0, 0%, 0%, 0.5);\n\t-moz-box-shadow: 0px 0px 13px hsla(0, 0%, 0%, 0.5);\n\tmargin-bottom: 0;\n\tz-index : 400;\n}\n\n.ui.inverted.menu.shadow {\n\t/*max-height: 5vh;*/\n\tz-index: 250;\n}\n\nheader {\n  flex-shrink: 0;\n}\n\n#overlay-toolbar {\n  flex-shrink: 0;\n  flex-grow: 1;\n}\n\nfooter {\n  flex-shrink: 0;\n}\n\nmain {\n  flex: 1 0 auto;\n}\n\n.app_container {\n  display: flex;\n  flex-direction: column;\n  height: 100vh;\n}\n\n.ui.modal {\n  top: 50%;\n  position: fixed;\n}\n\n.middle.menu {\n  margin: 0 auto;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7O0NBRUMsOENBQThDO0NBQzlDLG1EQUFtRDtDQUNuRCxpQkFBaUI7Q0FDakIsY0FBYztDQUNkOztBQUVEO0NBQ0Msb0JBQW9CO0NBQ3BCLGFBQWE7Q0FDYjs7QUFFRDtFQUNFLGVBQWU7Q0FDaEI7O0FBRUQ7RUFDRSxlQUFlO0VBQ2YsYUFBYTtDQUNkOztBQUVEO0VBQ0UsZUFBZTtDQUNoQjs7QUFFRDtFQUNFLGVBQWU7Q0FDaEI7O0FBRUQ7RUFDRSxjQUFjO0VBQ2QsdUJBQXVCO0VBQ3ZCLGNBQWM7Q0FDZjs7QUFFRDtFQUNFLFNBQVM7RUFDVCxnQkFBZ0I7Q0FDakI7O0FBRUQ7RUFDRSxlQUFlO0NBQ2hCIiwiZmlsZSI6InNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudWkuaW52ZXJ0ZWQubWVudS5zaGFkb3csXG4udWkuaW52ZXJ0ZWQucG9pbnRpbmcuZHJvcGRvd24gLm1lbnUge1xuXHRib3gtc2hhZG93OiAwcHggNHB4IDEzcHggaHNsYSgwLCAwJSwgMCUsIDAuNSk7XG5cdC1tb3otYm94LXNoYWRvdzogMHB4IDBweCAxM3B4IGhzbGEoMCwgMCUsIDAlLCAwLjUpO1xuXHRtYXJnaW4tYm90dG9tOiAwO1xuXHR6LWluZGV4IDogNDAwO1xufVxuXG4udWkuaW52ZXJ0ZWQubWVudS5zaGFkb3cge1xuXHQvKm1heC1oZWlnaHQ6IDV2aDsqL1xuXHR6LWluZGV4OiAyNTA7XG59XG5cbmhlYWRlciB7XG4gIGZsZXgtc2hyaW5rOiAwO1xufVxuXG4jb3ZlcmxheS10b29sYmFyIHtcbiAgZmxleC1zaHJpbms6IDA7XG4gIGZsZXgtZ3JvdzogMTtcbn1cblxuZm9vdGVyIHtcbiAgZmxleC1zaHJpbms6IDA7XG59XG5cbm1haW4ge1xuICBmbGV4OiAxIDAgYXV0bztcbn1cblxuLmFwcF9jb250YWluZXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBoZWlnaHQ6IDEwMHZoO1xufVxuXG4udWkubW9kYWwge1xuICB0b3A6IDUwJTtcbiAgcG9zaXRpb246IGZpeGVkO1xufVxuXG4ubWlkZGxlLm1lbnUge1xuICBtYXJnaW46IDAgYXV0bztcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -463,47 +461,51 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _swimlane_ngx_charts__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @swimlane/ngx-charts */ "./node_modules/@swimlane/ngx-charts/release/index.js");
 /* harmony import */ var _swimlane_ngx_charts__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_swimlane_ngx_charts__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var ngx_clipboard__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ngx-clipboard */ "./node_modules/ngx-clipboard/fesm5/ngx-clipboard.js");
-/* harmony import */ var _services_models_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./services/models.service */ "./src/app/services/models.service.ts");
-/* harmony import */ var _services_timeseries_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/timeseries.service */ "./src/app/services/timeseries.service.ts");
-/* harmony import */ var _services_error_reporting_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./services/error-reporting.service */ "./src/app/services/error-reporting.service.ts");
-/* harmony import */ var _services_nosql_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./services/nosql.service */ "./src/app/services/nosql.service.ts");
-/* harmony import */ var _services_map_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/map.service */ "./src/app/services/map.service.ts");
-/* harmony import */ var _services_mapbox_upload_api_s3_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./services/mapbox-upload-api-s3.service */ "./src/app/services/mapbox-upload-api-s3.service.ts");
-/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./services/auth.service */ "./src/app/services/auth.service.ts");
-/* harmony import */ var _services_disclaimation_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./services/disclaimation.service */ "./src/app/services/disclaimation.service.ts");
-/* harmony import */ var d3_ng2_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! d3-ng2-service */ "./node_modules/d3-ng2-service/index.js");
-/* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ngx-cookie-service */ "./node_modules/ngx-cookie-service/index.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _components_help_help_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/help/help.component */ "./src/app/components/help/help.component.ts");
-/* harmony import */ var _components_options_options_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/options/options.component */ "./src/app/components/options/options.component.ts");
-/* harmony import */ var _components_import_import_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/import/import.component */ "./src/app/components/import/import.component.ts");
-/* harmony import */ var _components_layer_map_layer_map_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/layer-map/layer-map.component */ "./src/app/components/layer-map/layer-map.component.ts");
-/* harmony import */ var _components_toolbar_toolbar_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/toolbar/toolbar.component */ "./src/app/components/toolbar/toolbar.component.ts");
-/* harmony import */ var _shared_d3map_d3map_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./shared/d3map/d3map.component */ "./src/app/shared/d3map/d3map.component.ts");
-/* harmony import */ var _components_callback_callback_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/callback/callback.component */ "./src/app/components/callback/callback.component.ts");
-/* harmony import */ var _components_profile_profile_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/profile/profile.component */ "./src/app/components/profile/profile.component.ts");
-/* harmony import */ var _components_home_home_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/home/home.component */ "./src/app/components/home/home.component.ts");
-/* harmony import */ var _shared_mapbox_mapbox_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./shared/mapbox/mapbox.component */ "./src/app/shared/mapbox/mapbox.component.ts");
-/* harmony import */ var _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/footer/footer.component */ "./src/app/components/footer/footer.component.ts");
-/* harmony import */ var _components_upload_upload_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/upload/upload.component */ "./src/app/components/upload/upload.component.ts");
-/* harmony import */ var _components_models_models_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/models/models.component */ "./src/app/components/models/models.component.ts");
-/* harmony import */ var _components_modelview_modelview_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/modelview/modelview.component */ "./src/app/components/modelview/modelview.component.ts");
-/* harmony import */ var _components_importjobs_importjobs_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/importjobs/importjobs.component */ "./src/app/components/importjobs/importjobs.component.ts");
-/* harmony import */ var _components_importeditems_importeditems_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/importeditems/importeditems.component */ "./src/app/components/importeditems/importeditems.component.ts");
-/* harmony import */ var _components_fullscreen_fullscreen_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./components/fullscreen/fullscreen.component */ "./src/app/components/fullscreen/fullscreen.component.ts");
-/* harmony import */ var _components_searchresults_searchresults_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/searchresults/searchresults.component */ "./src/app/components/searchresults/searchresults.component.ts");
-/* harmony import */ var _components_datasources_datasources_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./components/datasources/datasources.component */ "./src/app/components/datasources/datasources.component.ts");
-/* harmony import */ var _components_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./components/confirm-modal/confirm-modal.component */ "./src/app/components/confirm-modal/confirm-modal.component.ts");
-/* harmony import */ var _components_legend_legend_component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./components/legend/legend.component */ "./src/app/components/legend/legend.component.ts");
-/* harmony import */ var _components_charting_charting_component__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./components/charting/charting.component */ "./src/app/components/charting/charting.component.ts");
-/* harmony import */ var _components_video_video_component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./components/video/video.component */ "./src/app/components/video/video.component.ts");
-/* harmony import */ var _components_serverlog_serverlog_component__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./components/serverlog/serverlog.component */ "./src/app/components/serverlog/serverlog.component.ts");
-/* harmony import */ var _availability_temporal_availability_bar_group_bar_group_component__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./availability/temporal-availability/bar-group/bar-group.component */ "./src/app/availability/temporal-availability/bar-group/bar-group.component.ts");
-/* harmony import */ var _availability_temporal_availability_indicator_bar_indicator_bar_component__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./availability/temporal-availability/indicator-bar/indicator-bar.component */ "./src/app/availability/temporal-availability/indicator-bar/indicator-bar.component.ts");
-/* harmony import */ var _availability_temporal_availability_availability_row_availability_row_component__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./availability/temporal-availability/availability-row/availability-row.component */ "./src/app/availability/temporal-availability/availability-row/availability-row.component.ts");
-/* harmony import */ var _availability_temporal_availability_temporal_availability_component__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./availability/temporal-availability/temporal-availability.component */ "./src/app/availability/temporal-availability/temporal-availability.component.ts");
-/* harmony import */ var _components_disclaimer_disclaimer_component__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./components/disclaimer/disclaimer.component */ "./src/app/components/disclaimer/disclaimer.component.ts");
-/* harmony import */ var _components_queryprogress_queryprogress_component__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./components/queryprogress/queryprogress.component */ "./src/app/components/queryprogress/queryprogress.component.ts");
+/* harmony import */ var _queryprogress_queryprogress_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./queryprogress/queryprogress.module */ "./src/app/queryprogress/queryprogress.module.ts");
+/* harmony import */ var _services_models_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/models.service */ "./src/app/services/models.service.ts");
+/* harmony import */ var _services_timeseries_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./services/timeseries.service */ "./src/app/services/timeseries.service.ts");
+/* harmony import */ var _services_error_reporting_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./services/error-reporting.service */ "./src/app/services/error-reporting.service.ts");
+/* harmony import */ var _services_nosql_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/nosql.service */ "./src/app/services/nosql.service.ts");
+/* harmony import */ var _services_map_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./services/map.service */ "./src/app/services/map.service.ts");
+/* harmony import */ var _services_mapbox_upload_api_s3_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./services/mapbox-upload-api-s3.service */ "./src/app/services/mapbox-upload-api-s3.service.ts");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _services_disclaimation_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./services/disclaimation.service */ "./src/app/services/disclaimation.service.ts");
+/* harmony import */ var d3_ng2_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! d3-ng2-service */ "./node_modules/d3-ng2-service/index.js");
+/* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ngx-cookie-service */ "./node_modules/ngx-cookie-service/index.js");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _components_help_help_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/help/help.component */ "./src/app/components/help/help.component.ts");
+/* harmony import */ var _components_options_options_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/options/options.component */ "./src/app/components/options/options.component.ts");
+/* harmony import */ var _components_import_import_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/import/import.component */ "./src/app/components/import/import.component.ts");
+/* harmony import */ var _components_layer_map_layer_map_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/layer-map/layer-map.component */ "./src/app/components/layer-map/layer-map.component.ts");
+/* harmony import */ var _components_toolbar_toolbar_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/toolbar/toolbar.component */ "./src/app/components/toolbar/toolbar.component.ts");
+/* harmony import */ var _shared_d3map_d3map_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./shared/d3map/d3map.component */ "./src/app/shared/d3map/d3map.component.ts");
+/* harmony import */ var _components_callback_callback_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/callback/callback.component */ "./src/app/components/callback/callback.component.ts");
+/* harmony import */ var _components_profile_profile_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/profile/profile.component */ "./src/app/components/profile/profile.component.ts");
+/* harmony import */ var _components_home_home_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/home/home.component */ "./src/app/components/home/home.component.ts");
+/* harmony import */ var _shared_mapbox_mapbox_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./shared/mapbox/mapbox.component */ "./src/app/shared/mapbox/mapbox.component.ts");
+/* harmony import */ var _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/footer/footer.component */ "./src/app/components/footer/footer.component.ts");
+/* harmony import */ var _components_upload_upload_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/upload/upload.component */ "./src/app/components/upload/upload.component.ts");
+/* harmony import */ var _components_models_models_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/models/models.component */ "./src/app/components/models/models.component.ts");
+/* harmony import */ var _components_modelview_modelview_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/modelview/modelview.component */ "./src/app/components/modelview/modelview.component.ts");
+/* harmony import */ var _components_importjobs_importjobs_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/importjobs/importjobs.component */ "./src/app/components/importjobs/importjobs.component.ts");
+/* harmony import */ var _components_importeditems_importeditems_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./components/importeditems/importeditems.component */ "./src/app/components/importeditems/importeditems.component.ts");
+/* harmony import */ var _components_fullscreen_fullscreen_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/fullscreen/fullscreen.component */ "./src/app/components/fullscreen/fullscreen.component.ts");
+/* harmony import */ var _components_searchresults_searchresults_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./components/searchresults/searchresults.component */ "./src/app/components/searchresults/searchresults.component.ts");
+/* harmony import */ var _components_datasources_datasources_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./components/datasources/datasources.component */ "./src/app/components/datasources/datasources.component.ts");
+/* harmony import */ var _components_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./components/confirm-modal/confirm-modal.component */ "./src/app/components/confirm-modal/confirm-modal.component.ts");
+/* harmony import */ var _components_legend_legend_component__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./components/legend/legend.component */ "./src/app/components/legend/legend.component.ts");
+/* harmony import */ var _components_charting_charting_component__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./components/charting/charting.component */ "./src/app/components/charting/charting.component.ts");
+/* harmony import */ var _components_video_video_component__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./components/video/video.component */ "./src/app/components/video/video.component.ts");
+/* harmony import */ var _components_serverlog_serverlog_component__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./components/serverlog/serverlog.component */ "./src/app/components/serverlog/serverlog.component.ts");
+/* harmony import */ var _availability_temporal_availability_bar_group_bar_group_component__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./availability/temporal-availability/bar-group/bar-group.component */ "./src/app/availability/temporal-availability/bar-group/bar-group.component.ts");
+/* harmony import */ var _availability_temporal_availability_indicator_bar_indicator_bar_component__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./availability/temporal-availability/indicator-bar/indicator-bar.component */ "./src/app/availability/temporal-availability/indicator-bar/indicator-bar.component.ts");
+/* harmony import */ var _availability_temporal_availability_availability_row_availability_row_component__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./availability/temporal-availability/availability-row/availability-row.component */ "./src/app/availability/temporal-availability/availability-row/availability-row.component.ts");
+/* harmony import */ var _availability_temporal_availability_temporal_availability_component__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./availability/temporal-availability/temporal-availability.component */ "./src/app/availability/temporal-availability/temporal-availability.component.ts");
+/* harmony import */ var _components_disclaimer_disclaimer_component__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./components/disclaimer/disclaimer.component */ "./src/app/components/disclaimer/disclaimer.component.ts");
+/* harmony import */ var _components_range_selector_range_selector_component__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./components/range-selector/range-selector.component */ "./src/app/components/range-selector/range-selector.component.ts");
+/* harmony import */ var jqwidgets_scripts_jqwidgets_ts_angular_jqxbargauge__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! jqwidgets-scripts/jqwidgets-ts/angular_jqxbargauge */ "./node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxbargauge.ts");
+/* harmony import */ var jqwidgets_scripts_jqwidgets_ts_angular_jqxrangeselector__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! jqwidgets-scripts/jqwidgets-ts/angular_jqxrangeselector */ "./node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxrangeselector.ts");
+/* harmony import */ var _timescope_time_bar_time_bar_component__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./timescope/time-bar/time-bar.component */ "./src/app/timescope/time-bar/time-bar.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -511,6 +513,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 // Modules
+
 
 
 
@@ -565,15 +568,20 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
+
+// import {QueryprogressComponent} from './components/queryprogress/queryprogress.component';
+// import { ModelprogressComponent } from './components/queryprogress/modelprogress/modelprogress.component';
 var appRoutes = [
-    { path: '', component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_30__["HomeComponent"] },
-    { path: 'home', component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_30__["HomeComponent"] },
-    { path: 'profile', component: _components_profile_profile_component__WEBPACK_IMPORTED_MODULE_29__["ProfileComponent"] },
+    { path: '', component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_31__["HomeComponent"] },
+    { path: 'home', component: _components_home_home_component__WEBPACK_IMPORTED_MODULE_31__["HomeComponent"] },
+    { path: 'profile', component: _components_profile_profile_component__WEBPACK_IMPORTED_MODULE_30__["ProfileComponent"] },
     // {path: 'help', component: HelpComponent},
     // {path: 'options', component: OptionsComponent},
-    { path: 'import', component: _components_import_import_component__WEBPACK_IMPORTED_MODULE_24__["ImportComponent"] },
-    { path: 'models', component: _components_models_models_component__WEBPACK_IMPORTED_MODULE_34__["ModelsComponent"] },
-    { path: 'callback', component: _components_callback_callback_component__WEBPACK_IMPORTED_MODULE_28__["CallbackComponent"] }
+    { path: 'import', component: _components_import_import_component__WEBPACK_IMPORTED_MODULE_25__["ImportComponent"] },
+    { path: 'models', component: _components_models_models_component__WEBPACK_IMPORTED_MODULE_35__["ModelsComponent"] },
+    { path: 'callback', component: _components_callback_callback_component__WEBPACK_IMPORTED_MODULE_29__["CallbackComponent"] }
 ];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -581,41 +589,46 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             entryComponents: [
-                _components_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_41__["ConfirmModalComponent"]
+                _components_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_42__["ConfirmModalComponent"]
             ],
             // Components
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_21__["AppComponent"],
-                _components_help_help_component__WEBPACK_IMPORTED_MODULE_22__["HelpComponent"],
-                _components_options_options_component__WEBPACK_IMPORTED_MODULE_23__["OptionsComponent"],
-                _components_import_import_component__WEBPACK_IMPORTED_MODULE_24__["ImportComponent"],
-                _components_layer_map_layer_map_component__WEBPACK_IMPORTED_MODULE_25__["LayerMapComponent"],
-                _components_toolbar_toolbar_component__WEBPACK_IMPORTED_MODULE_26__["ToolbarComponent"],
-                _shared_d3map_d3map_component__WEBPACK_IMPORTED_MODULE_27__["D3mapComponent"],
-                _components_callback_callback_component__WEBPACK_IMPORTED_MODULE_28__["CallbackComponent"],
-                _components_profile_profile_component__WEBPACK_IMPORTED_MODULE_29__["ProfileComponent"],
-                _components_home_home_component__WEBPACK_IMPORTED_MODULE_30__["HomeComponent"],
-                _shared_mapbox_mapbox_component__WEBPACK_IMPORTED_MODULE_31__["MapboxComponent"],
-                _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_32__["FooterComponent"],
-                _components_upload_upload_component__WEBPACK_IMPORTED_MODULE_33__["UploadComponent"],
-                _components_models_models_component__WEBPACK_IMPORTED_MODULE_34__["ModelsComponent"],
-                _components_modelview_modelview_component__WEBPACK_IMPORTED_MODULE_35__["ModelviewComponent"],
-                _components_importjobs_importjobs_component__WEBPACK_IMPORTED_MODULE_36__["ImportjobsComponent"],
-                _components_importeditems_importeditems_component__WEBPACK_IMPORTED_MODULE_37__["ImportedItemsComponent"],
-                _components_fullscreen_fullscreen_component__WEBPACK_IMPORTED_MODULE_38__["FullscreenComponent"],
-                _components_searchresults_searchresults_component__WEBPACK_IMPORTED_MODULE_39__["SearchresultsComponent"],
-                _components_datasources_datasources_component__WEBPACK_IMPORTED_MODULE_40__["DatasourcesComponent"],
-                _components_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_41__["ConfirmModalComponent"],
-                _components_legend_legend_component__WEBPACK_IMPORTED_MODULE_42__["LegendComponent"],
-                _components_charting_charting_component__WEBPACK_IMPORTED_MODULE_43__["ChartingComponent"],
-                _components_video_video_component__WEBPACK_IMPORTED_MODULE_44__["VideoComponent"],
-                _components_serverlog_serverlog_component__WEBPACK_IMPORTED_MODULE_45__["ServerlogComponent"],
-                _availability_temporal_availability_bar_group_bar_group_component__WEBPACK_IMPORTED_MODULE_46__["BarGroupComponent"],
-                _availability_temporal_availability_indicator_bar_indicator_bar_component__WEBPACK_IMPORTED_MODULE_47__["IndicatorBarComponent"],
-                _availability_temporal_availability_availability_row_availability_row_component__WEBPACK_IMPORTED_MODULE_48__["AvailabilityRowComponent"],
-                _availability_temporal_availability_temporal_availability_component__WEBPACK_IMPORTED_MODULE_49__["TemporalAvailabilityComponent"],
-                _components_disclaimer_disclaimer_component__WEBPACK_IMPORTED_MODULE_50__["DisclaimerComponent"],
-                _components_queryprogress_queryprogress_component__WEBPACK_IMPORTED_MODULE_51__["QueryprogressComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_22__["AppComponent"],
+                _components_help_help_component__WEBPACK_IMPORTED_MODULE_23__["HelpComponent"],
+                _components_options_options_component__WEBPACK_IMPORTED_MODULE_24__["OptionsComponent"],
+                _components_import_import_component__WEBPACK_IMPORTED_MODULE_25__["ImportComponent"],
+                _components_layer_map_layer_map_component__WEBPACK_IMPORTED_MODULE_26__["LayerMapComponent"],
+                _components_toolbar_toolbar_component__WEBPACK_IMPORTED_MODULE_27__["ToolbarComponent"],
+                _shared_d3map_d3map_component__WEBPACK_IMPORTED_MODULE_28__["D3mapComponent"],
+                _components_callback_callback_component__WEBPACK_IMPORTED_MODULE_29__["CallbackComponent"],
+                _components_profile_profile_component__WEBPACK_IMPORTED_MODULE_30__["ProfileComponent"],
+                _components_home_home_component__WEBPACK_IMPORTED_MODULE_31__["HomeComponent"],
+                _shared_mapbox_mapbox_component__WEBPACK_IMPORTED_MODULE_32__["MapboxComponent"],
+                _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_33__["FooterComponent"],
+                _components_upload_upload_component__WEBPACK_IMPORTED_MODULE_34__["UploadComponent"],
+                _components_models_models_component__WEBPACK_IMPORTED_MODULE_35__["ModelsComponent"],
+                _components_modelview_modelview_component__WEBPACK_IMPORTED_MODULE_36__["ModelviewComponent"],
+                _components_importjobs_importjobs_component__WEBPACK_IMPORTED_MODULE_37__["ImportjobsComponent"],
+                _components_importeditems_importeditems_component__WEBPACK_IMPORTED_MODULE_38__["ImportedItemsComponent"],
+                _components_fullscreen_fullscreen_component__WEBPACK_IMPORTED_MODULE_39__["FullscreenComponent"],
+                _components_searchresults_searchresults_component__WEBPACK_IMPORTED_MODULE_40__["SearchresultsComponent"],
+                _components_datasources_datasources_component__WEBPACK_IMPORTED_MODULE_41__["DatasourcesComponent"],
+                _components_confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_42__["ConfirmModalComponent"],
+                _components_legend_legend_component__WEBPACK_IMPORTED_MODULE_43__["LegendComponent"],
+                _components_charting_charting_component__WEBPACK_IMPORTED_MODULE_44__["ChartingComponent"],
+                _components_video_video_component__WEBPACK_IMPORTED_MODULE_45__["VideoComponent"],
+                _components_serverlog_serverlog_component__WEBPACK_IMPORTED_MODULE_46__["ServerlogComponent"],
+                _availability_temporal_availability_bar_group_bar_group_component__WEBPACK_IMPORTED_MODULE_47__["BarGroupComponent"],
+                _availability_temporal_availability_indicator_bar_indicator_bar_component__WEBPACK_IMPORTED_MODULE_48__["IndicatorBarComponent"],
+                _availability_temporal_availability_availability_row_availability_row_component__WEBPACK_IMPORTED_MODULE_49__["AvailabilityRowComponent"],
+                _availability_temporal_availability_temporal_availability_component__WEBPACK_IMPORTED_MODULE_50__["TemporalAvailabilityComponent"],
+                _components_disclaimer_disclaimer_component__WEBPACK_IMPORTED_MODULE_51__["DisclaimerComponent"],
+                // QueryprogressComponent,
+                // ModelprogressComponent
+                _components_range_selector_range_selector_component__WEBPACK_IMPORTED_MODULE_52__["RangeSelectorComponent"],
+                jqwidgets_scripts_jqwidgets_ts_angular_jqxrangeselector__WEBPACK_IMPORTED_MODULE_54__["jqxRangeSelectorComponent"],
+                jqwidgets_scripts_jqwidgets_ts_angular_jqxbargauge__WEBPACK_IMPORTED_MODULE_53__["jqxBarGaugeComponent"],
+                _timescope_time_bar_time_bar_component__WEBPACK_IMPORTED_MODULE_55__["TimeBarComponent"]
             ],
             // Modules
             imports: [
@@ -629,22 +642,23 @@ var AppModule = /** @class */ (function () {
                 ng2_file_upload__WEBPACK_IMPORTED_MODULE_8__["FileUploadModule"],
                 ng2_semantic_ui__WEBPACK_IMPORTED_MODULE_7__["SuiModule"],
                 _swimlane_ngx_charts__WEBPACK_IMPORTED_MODULE_9__["NgxChartsModule"],
-                ngx_clipboard__WEBPACK_IMPORTED_MODULE_10__["ClipboardModule"]
+                ngx_clipboard__WEBPACK_IMPORTED_MODULE_10__["ClipboardModule"],
+                _queryprogress_queryprogress_module__WEBPACK_IMPORTED_MODULE_11__["QueryprogressModule"]
             ],
             // Services
             providers: [
-                _services_map_service__WEBPACK_IMPORTED_MODULE_15__["MapService"],
-                _services_auth_service__WEBPACK_IMPORTED_MODULE_17__["AuthService"],
-                _services_models_service__WEBPACK_IMPORTED_MODULE_11__["ModelsService"],
-                _services_timeseries_service__WEBPACK_IMPORTED_MODULE_12__["TimeseriesService"],
-                _services_error_reporting_service__WEBPACK_IMPORTED_MODULE_13__["ErrorReportingService"],
-                _services_mapbox_upload_api_s3_service__WEBPACK_IMPORTED_MODULE_16__["MapboxUploadAPIS3Service"],
-                d3_ng2_service__WEBPACK_IMPORTED_MODULE_19__["D3Service"],
-                _services_nosql_service__WEBPACK_IMPORTED_MODULE_14__["NosqlService"],
-                _services_disclaimation_service__WEBPACK_IMPORTED_MODULE_18__["DisclaimationService"],
-                ngx_cookie_service__WEBPACK_IMPORTED_MODULE_20__["CookieService"]
+                _services_map_service__WEBPACK_IMPORTED_MODULE_16__["MapService"],
+                _services_auth_service__WEBPACK_IMPORTED_MODULE_18__["AuthService"],
+                _services_models_service__WEBPACK_IMPORTED_MODULE_12__["ModelsService"],
+                _services_timeseries_service__WEBPACK_IMPORTED_MODULE_13__["TimeseriesService"],
+                _services_error_reporting_service__WEBPACK_IMPORTED_MODULE_14__["ErrorReportingService"],
+                _services_mapbox_upload_api_s3_service__WEBPACK_IMPORTED_MODULE_17__["MapboxUploadAPIS3Service"],
+                d3_ng2_service__WEBPACK_IMPORTED_MODULE_20__["D3Service"],
+                _services_nosql_service__WEBPACK_IMPORTED_MODULE_15__["NosqlService"],
+                _services_disclaimation_service__WEBPACK_IMPORTED_MODULE_19__["DisclaimationService"],
+                ngx_cookie_service__WEBPACK_IMPORTED_MODULE_21__["CookieService"]
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_21__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_22__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -661,7 +675,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".ui.thirteen.wide.column {\n  /*background: linear-gradient( to right, #1f2022, #1b1c1d);*/\n  vertical-align: middle;\n  padding-top: 0.25em;\n  padding-bottom: 0.25em;\n}\n"
+module.exports = ".ui.thirteen.wide.column {\n  /*background: linear-gradient( to right, #1f2022, #1b1c1d);*/\n  vertical-align: middle;\n  padding-top: 0.25em;\n  padding-bottom: 0.25em;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXZhaWxhYmlsaXR5L3RlbXBvcmFsLWF2YWlsYWJpbGl0eS9hdmFpbGFiaWxpdHktcm93L2F2YWlsYWJpbGl0eS1yb3cuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDZEQUE2RDtFQUM3RCx1QkFBdUI7RUFDdkIsb0JBQW9CO0VBQ3BCLHVCQUF1QjtDQUN4QiIsImZpbGUiOiJzcmMvYXBwL2F2YWlsYWJpbGl0eS90ZW1wb3JhbC1hdmFpbGFiaWxpdHkvYXZhaWxhYmlsaXR5LXJvdy9hdmFpbGFiaWxpdHktcm93LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudWkudGhpcnRlZW4ud2lkZS5jb2x1bW4ge1xuICAvKmJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCggdG8gcmlnaHQsICMxZjIwMjIsICMxYjFjMWQpOyovXG4gIHZlcnRpY2FsLWFsaWduOiBtaWRkbGU7XG4gIHBhZGRpbmctdG9wOiAwLjI1ZW07XG4gIHBhZGRpbmctYm90dG9tOiAwLjI1ZW07XG59XG4iXX0= */"
 
 /***/ }),
 
@@ -672,7 +686,7 @@ module.exports = ".ui.thirteen.wide.column {\n  /*background: linear-gradient( t
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n  <div class=\"ui two wide right aligned column\">\n    <a class=\"ui black right pointing label\">{{name}}</a>\n  </div>\n\n  <div class=\"ui thirteen wide column\">\n    <!--{{series}}-->\n    <app-indicator-bar [series]=\"series\"\n                       [columnWidth]=\"columnWidth\"\n                       [years]=\"years\"></app-indicator-bar>\n  </div>\n\n  <div class=\"ui one wide left aligned column\">\n    <a class=\"ui black left pointing label\"><i class=\"info icon\"></i></a>\n  </div>\n"
+module.exports = "\n  <div class=\"ui two wide right aligned column\">\n    <a class=\"ui black right pointing label\">{{name}}</a>\n  </div>\n\n  <div class=\"ui thirteen wide column\">\n    <!--{{series}}-->\n    <app-indicator-bar [series]=\"series\"\n                       [columnWidth]=\"columnWidth\"\n                       [years]=\"years\"></app-indicator-bar>\n  </div>\n\n  <div class=\"ui one wide left aligned column\">\n    <a class=\"ui black left pointing label\" routerLink=\"models\"><i class=\"info icon\"></i></a>\n  </div>\n"
 
 /***/ }),
 
@@ -748,7 +762,7 @@ var AvailabilityRowComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".bar_group {\n  display: inline-block !important;\n  margin: 0;\n  padding: 0;\n  position: inherit;\n  line-height: 0;\n  border-left: 1px solid rgba(255, 255, 255, .125);\n}\n.have,\n.missing {\n  height: 1em;\n  margin: 0;\n  padding: 0;\n}\n.have {\n  /*background: linear-gradient(#146380, #00d6b2, #afd616, #36b94f, #146380, #2b2865, #2b2865);*/\n  background: linear-gradient(#146380, #2b2865);\n}\n.missing {\n  background-color: transparent;\n}\n.have,\n.missing {\n  display: inline-flex;\n}\n"
+module.exports = ".bar_group {\n  display: inline-block !important;\n  margin: 0;\n  padding: 0;\n  position: inherit;\n  line-height: 0;\n  border-left: 1px solid rgba(255, 255, 255, .125);\n}\n.have,\n.missing {\n  height: 1em;\n  margin: 0;\n  padding: 0;\n}\n.have {\n  /*background: linear-gradient(#146380, #00d6b2, #afd616, #36b94f, #146380, #2b2865, #2b2865);*/\n  background: linear-gradient(#146380, #2b2865);\n}\n.missing {\n  background-color: transparent;\n}\n.have,\n.missing {\n  display: inline-flex;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXZhaWxhYmlsaXR5L3RlbXBvcmFsLWF2YWlsYWJpbGl0eS9iYXItZ3JvdXAvYmFyLWdyb3VwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxpQ0FBaUM7RUFDakMsVUFBVTtFQUNWLFdBQVc7RUFDWCxrQkFBa0I7RUFDbEIsZUFBZTtFQUNmLGlEQUFpRDtDQUNsRDtBQUNEOztFQUVFLFlBQVk7RUFDWixVQUFVO0VBQ1YsV0FBVztDQUNaO0FBRUQ7RUFDRSwrRkFBK0Y7RUFDL0YsOENBQThDO0NBQy9DO0FBRUQ7RUFDRSw4QkFBOEI7Q0FDL0I7QUFFRDs7RUFFRSxxQkFBcUI7Q0FDdEIiLCJmaWxlIjoic3JjL2FwcC9hdmFpbGFiaWxpdHkvdGVtcG9yYWwtYXZhaWxhYmlsaXR5L2Jhci1ncm91cC9iYXItZ3JvdXAuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5iYXJfZ3JvdXAge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2sgIWltcG9ydGFudDtcbiAgbWFyZ2luOiAwO1xuICBwYWRkaW5nOiAwO1xuICBwb3NpdGlvbjogaW5oZXJpdDtcbiAgbGluZS1oZWlnaHQ6IDA7XG4gIGJvcmRlci1sZWZ0OiAxcHggc29saWQgcmdiYSgyNTUsIDI1NSwgMjU1LCAuMTI1KTtcbn1cbi5oYXZlLFxuLm1pc3Npbmcge1xuICBoZWlnaHQ6IDFlbTtcbiAgbWFyZ2luOiAwO1xuICBwYWRkaW5nOiAwO1xufVxuXG4uaGF2ZSB7XG4gIC8qYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KCMxNDYzODAsICMwMGQ2YjIsICNhZmQ2MTYsICMzNmI5NGYsICMxNDYzODAsICMyYjI4NjUsICMyYjI4NjUpOyovXG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCgjMTQ2MzgwLCAjMmIyODY1KTtcbn1cblxuLm1pc3Npbmcge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB0cmFuc3BhcmVudDtcbn1cblxuLmhhdmUsXG4ubWlzc2luZyB7XG4gIGRpc3BsYXk6IGlubGluZS1mbGV4O1xufVxuIl19 */"
 
 /***/ }),
 
@@ -881,7 +895,7 @@ var BarGroupComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".indicator {\n  margin: auto 0;\n  display: flex;\n  border: 1px solid #3e3f41;\n  background: linear-gradient(#0b0c0d, #1B1C1D);\n}\n.bar {\n  width: 100%;\n  height: 1em;\n}\n"
+module.exports = ".indicator {\n  margin: auto 0;\n  display: flex;\n  border: 1px solid #3e3f41;\n  background: linear-gradient(#0b0c0d, #1B1C1D);\n}\n.bar {\n  width: 100%;\n  height: 1em;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXZhaWxhYmlsaXR5L3RlbXBvcmFsLWF2YWlsYWJpbGl0eS9pbmRpY2F0b3ItYmFyL2luZGljYXRvci1iYXIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGVBQWU7RUFDZixjQUFjO0VBQ2QsMEJBQTBCO0VBQzFCLDhDQUE4QztDQUMvQztBQUNEO0VBQ0UsWUFBWTtFQUNaLFlBQVk7Q0FDYiIsImZpbGUiOiJzcmMvYXBwL2F2YWlsYWJpbGl0eS90ZW1wb3JhbC1hdmFpbGFiaWxpdHkvaW5kaWNhdG9yLWJhci9pbmRpY2F0b3ItYmFyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaW5kaWNhdG9yIHtcbiAgbWFyZ2luOiBhdXRvIDA7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGJvcmRlcjogMXB4IHNvbGlkICMzZTNmNDE7XG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCgjMGIwYzBkLCAjMUIxQzFEKTtcbn1cbi5iYXIge1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxZW07XG59XG4iXX0= */"
 
 /***/ }),
 
@@ -968,7 +982,7 @@ var IndicatorBarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".label_group {\n  margin: 0;\n  padding: 0;\n  display: inline-block;\n}\n\n.label_group {\n  position: relative;\n  border-right: 1px dotted #3e3f41;\n}\n\n.label_group .ui.floating.label {\n  left: 0;\n}\n\n.model_availability.row {\n  border-bottom: 1px solid black;\n  border-top: 1px solid #2b2c2d;\n  padding-top: 0.25em;\n  padding-bottom: 0.25em;\n}\n"
+module.exports = ".label_group {\n  margin: 0;\n  padding: 0;\n  display: inline-block;\n}\n\n.label_group {\n  position: relative;\n  border-right: 1px dotted #3e3f41;\n}\n\n.label_group .ui.floating.label {\n  left: 0;\n}\n\n.model_availability.row {\n  border-bottom: 1px solid black;\n  border-top: 1px solid #2b2c2d;\n  padding-top: 0.25em;\n  padding-bottom: 0.25em;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXZhaWxhYmlsaXR5L3RlbXBvcmFsLWF2YWlsYWJpbGl0eS90ZW1wb3JhbC1hdmFpbGFiaWxpdHkuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixXQUFXO0VBQ1gsc0JBQXNCO0NBQ3ZCOztBQUVEO0VBQ0UsbUJBQW1CO0VBQ25CLGlDQUFpQztDQUNsQzs7QUFDRDtFQUNFLFFBQVE7Q0FDVDs7QUFFRDtFQUNFLCtCQUErQjtFQUMvQiw4QkFBOEI7RUFDOUIsb0JBQW9CO0VBQ3BCLHVCQUF1QjtDQUN4QiIsImZpbGUiOiJzcmMvYXBwL2F2YWlsYWJpbGl0eS90ZW1wb3JhbC1hdmFpbGFiaWxpdHkvdGVtcG9yYWwtYXZhaWxhYmlsaXR5LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubGFiZWxfZ3JvdXAge1xuICBtYXJnaW46IDA7XG4gIHBhZGRpbmc6IDA7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbn1cblxuLmxhYmVsX2dyb3VwIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBib3JkZXItcmlnaHQ6IDFweCBkb3R0ZWQgIzNlM2Y0MTtcbn1cbi5sYWJlbF9ncm91cCAudWkuZmxvYXRpbmcubGFiZWwge1xuICBsZWZ0OiAwO1xufVxuXG4ubW9kZWxfYXZhaWxhYmlsaXR5LnJvdyB7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCBibGFjaztcbiAgYm9yZGVyLXRvcDogMXB4IHNvbGlkICMyYjJjMmQ7XG4gIHBhZGRpbmctdG9wOiAwLjI1ZW07XG4gIHBhZGRpbmctYm90dG9tOiAwLjI1ZW07XG59XG4iXX0= */"
 
 /***/ }),
 
@@ -1013,8 +1027,59 @@ var TemporalAvailabilityComponent = /** @class */ (function () {
     function TemporalAvailabilityComponent() {
         this.percentage_width = 100;
         this.columns = 1;
+        this.availability_data = [
+            {
+                'model': 'AWRA',
+                'series': [['2010-01-01', '2018-03-31']]
+            },
+            {
+                'model': 'Jasmin',
+                'series': [['2010-01-01', '2018-09-31']]
+            },
+            {
+                'model': 'DEAD_FUEL',
+                'series': [['2008-01-01', '2018-06-06']]
+            },
+            {
+                'model': 'LIVE_FUEL',
+                'series': [['2008-01-01', '2018-06-06']]
+            },
+            {
+                'model': 'DF',
+                'series': [['2018-05-09', '2018-05-11'],
+                    ['2018-05-19', '2018-06-06']]
+            },
+            {
+                'model': 'KBDI',
+                'series': [['2008-01-01', '2018-06-06']]
+            },
+            {
+                'model': 'FFDI',
+                'series': [['2018-05-09', '2018-05-11'],
+                    ['2018-05-19', '2018-06-06']]
+            },
+            {
+                'model': 'Matthews',
+                'series': [['2008-01-01', '2018-06-06']]
+            },
+            {
+                'model': 'Yebra',
+                'series': [['2018-01-01', '2018-06-06']]
+            },
+            {
+                'model': 'GFDI',
+                'series': [['2018-05-09', '2018-05-11'],
+                    ['2018-05-19', '2018-06-06']]
+            },
+            {
+                'model': 'Temp',
+                'series': [['2018-05-09', '2018-05-11'],
+                    ['2018-05-19', '2018-06-06']]
+            }
+        ];
     }
     TemporalAvailabilityComponent.prototype.ngOnInit = function () {
+        this.availability = this.availability_data;
         console.log(this.availability);
         var r = [3000, 2001];
         for (var i = 0; i < this.availability.length; i++) {
@@ -1085,7 +1150,7 @@ var TemporalAvailabilityComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".loading {\n  position: absolute;\n  display: flex;\n  justify-content: center;\n  height: 100vh;\n  width: 100vw;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  background-color: #fff;\n}"
+module.exports = ".loading {\n  position: absolute;\n  display: flex;\n  justify-content: center;\n  height: 100vh;\n  width: 100vw;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  background-color: #fff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9jYWxsYmFjay9jYWxsYmFjay5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsbUJBQW1CO0VBQ25CLGNBQWM7RUFDZCx3QkFBd0I7RUFDeEIsY0FBYztFQUNkLGFBQWE7RUFDYixPQUFPO0VBQ1AsVUFBVTtFQUNWLFFBQVE7RUFDUixTQUFTO0VBQ1QsdUJBQXVCO0NBQ3hCIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9jYWxsYmFjay9jYWxsYmFjay5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmxvYWRpbmcge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBoZWlnaHQ6IDEwMHZoO1xuICB3aWR0aDogMTAwdnc7XG4gIHRvcDogMDtcbiAgYm90dG9tOiAwO1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2ZmZjtcbn0iXX0= */"
 
 /***/ }),
 
@@ -1161,7 +1226,7 @@ var CallbackComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".chartcontainer {\n\twidth: 100%;\n\theight: 100%;\n\tposition: relative;\n}\n\n.chartcontainer.dark {\n  background-color: #1b1c1d;\n}\n\n.ui.inverted.segment> .ui.dimmer,\n.ui.segment>.ui.dimmer,\n* .dimmed.dimmable>.ui.animating.dimmer,\n* .dimmed.dimmable>.ui.visible.dimmer,\n* .ui.active.dimmer {\n  background-color: rgba(27,28,29,.85)!important;\n}\n"
+module.exports = ".chartcontainer {\n\twidth: 100%;\n\theight: 100%;\n\tposition: relative;\n}\n\n.chartcontainer.dark {\n  background-color: #1b1c1d;\n}\n\n.ui.inverted.segment> .ui.dimmer,\n.ui.segment>.ui.dimmer,\n* .dimmed.dimmable>.ui.animating.dimmer,\n* .dimmed.dimmable>.ui.visible.dimmer,\n* .ui.active.dimmer {\n  background-color: rgba(27,28,29,.85)!important;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9jaGFydGluZy9jaGFydGluZy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0NBQ0MsWUFBWTtDQUNaLGFBQWE7Q0FDYixtQkFBbUI7Q0FDbkI7O0FBRUQ7RUFDRSwwQkFBMEI7Q0FDM0I7O0FBRUQ7Ozs7O0VBS0UsK0NBQStDO0NBQ2hEIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9jaGFydGluZy9jaGFydGluZy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNoYXJ0Y29udGFpbmVyIHtcblx0d2lkdGg6IDEwMCU7XG5cdGhlaWdodDogMTAwJTtcblx0cG9zaXRpb246IHJlbGF0aXZlO1xufVxuXG4uY2hhcnRjb250YWluZXIuZGFyayB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMxYjFjMWQ7XG59XG5cbi51aS5pbnZlcnRlZC5zZWdtZW50PiAudWkuZGltbWVyLFxuLnVpLnNlZ21lbnQ+LnVpLmRpbW1lcixcbiogLmRpbW1lZC5kaW1tYWJsZT4udWkuYW5pbWF0aW5nLmRpbW1lcixcbiogLmRpbW1lZC5kaW1tYWJsZT4udWkudmlzaWJsZS5kaW1tZXIsXG4qIC51aS5hY3RpdmUuZGltbWVyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNywyOCwyOSwuODUpIWltcG9ydGFudDtcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -1172,7 +1237,7 @@ module.exports = ".chartcontainer {\n\twidth: 100%;\n\theight: 100%;\n\tposition
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ui blurring inverted segment\">\n  <div class=\"chartcontainer dark\">\n    <div *ngIf=\"dimmer\">\n      <!--<div class=\"ui active dimmer\">-->\n      <!--<div class=\"ui indeterminate text loader\">-->\n      <!--&lt;!&ndash;<div *ngIf=\"chart_is_ready\">Preparing your results.</div>&ndash;&gt;-->\n      <!--<div *ngIf=\"!chart_is_ready\">Make boundary, model, and temporal selections.</div>-->\n      <!--</div>-->\n      <!--</div>-->\n\n\n      <app-queryprogress [querytasks]=\"qt\" (cancel)=\"do_cancel()\"></app-queryprogress>\n\n    </div>\n    <ngx-charts-line-chart\n      [view]=\"view\"\n      [scheme]=\"colorScheme\"\n      [results]=\"multi\"\n      [gradient]=\"gradient\"\n      [xAxis]=\"showXAxis\"\n      [yAxis]=\"showYAxis\"\n      [legend]=\"showLegend\"\n      [showXAxisLabel]=\"showXAxisLabel\"\n      [showYAxisLabel]=\"showYAxisLabel\"\n      [xAxisLabel]=\"xAxisLabel\"\n      [yAxisLabel]=\"yAxisLabel\"\n      [autoScale]=\"autoScale\"\n      [showGridLines]=\"showGridLines\"\n      [showRefLines]=\"showRefLines\"\n      [referenceLines]=\"referenceLines\"\n      [roundDomains]=\"roundDomains\"\n      [schemeType]=\"schemeType\"\n      [timeline]=\"timeline\"\n      [curve]=\"curve\"\n      [autoScale]=\"autoScale\"\n      rangeFillOpacity=\"0.13\"\n\n      [activeEntries] = \"highlights\"\n      (deactivate) = \"onActivateAndDeactivate()\"\n      (active) = \"onActivateAndDeactivate()\"\n\n      (select)=\"onSelect($event)\"\n      *ngIf=\"!dimmer\">\n    </ngx-charts-line-chart>\n  </div>\n</div>\n\n<!-- Property\tType\tDefault Value\tDescription\nview\tnumber[]\t\tthe dimensions of the chart [width, height]. If left undefined, the chart will fit to the parent container size\nresults\tobject[]\t\tthe chart data\nscheme\tobject\t\tthe color scheme of the chart\nschemeType\tstring\t'ordinal'\tthe color scale type. Can be either 'ordinal' or 'linear'\ncustomColors\tobject\t\tcustom colors for the chart. Used to override a color for a specific value\nrangeFillOpacity\tnumber\t0.15\topacity of the shadow around the line indication the (optional) min and max values. The range shadow is only displayed if min and max values are provided with the data. The color of the shadow is alwas the color of the central line.\nlegend\tboolean\tfalse\tshow or hide the legend\nlegendTitle\tstring\t'Legend'\tthe legend title\nxAxis\tboolean\tfalse\tshow or hide the x axis\nyAxis\tboolean\tfalse\tshow or hide the y axis\nshowGridLines\tboolean\ttrue\tshow or hide the grid lines\nroundDomains\tboolean\tfalse\tround domains for aligned gridlines\nshowXAxisLabel\tboolean\tfalse\tshow or hide the x axis label\nshowYAxisLabel\tboolean\tfalse\tshow or hide the y axis label\nxAxisLabel\tstring\t\tthe x axis label text\nyAxisLabel\tstring\t\tthe y axis label text\nxAxisTickFormatting\tfunction\t\tthe x axis tick formatting\nyAxisTickFormatting\tfunction\t\tthe y axis tick formatting\ntimeline\tboolean\tfalse\tdisplay a timeline control under the chart. Only available if x scale is date\nautoScale\tboolean\tfalse\tset the minimum value of the y axis to the minimum value in the data, instead of 0\ncurve\tfunction\t\tthe interpolation function used to generate the curve. It accepts any d3.curve function\ngradient\tboolean\tfalse\tfill elements with a gradient instead of a solid color\nactiveEntries\tobject[]\t[]\telements to highlight\ntooltipDisabled\tboolean\tfalse\tshow or hide the tooltip\ntooltipTemplate\tTemplateRef\t\ta custom ng-template to be displayed inside the tooltip when hovering a single point\nseriesTooltipTemplate\tTemplateRef\t\ta custom ng-template to be displayed inside the tooltip when hovering series\nreferenceLines\tobject[]\t\tan array of reference lines to be shown behind the chart. Every reference line should be of format {name, value}\nshowRefLines\tboolean\tfalse\tshow or hide the reference lines\nshowRefLabels\tboolean\ttrue\tshow or hide the reference line labels -->\n"
+module.exports = "<div class=\"ui blurring inverted segment\">\n  <div class=\"chartcontainer dark\">\n    <div *ngIf=\"dimmer\">\n      <!--<div class=\"ui active dimmer\">-->\n      <!--<div class=\"ui indeterminate text loader\">-->\n      <!--&lt;!&ndash;<div *ngIf=\"chart_is_ready\">Preparing your results.</div>&ndash;&gt;-->\n      <!--<div *ngIf=\"!chart_is_ready\">Make boundary, model, and temporal selections.</div>-->\n      <!--</div>-->\n      <!--</div>-->\n\n      <app-queryprogress (queueComplete)=\"showResults($event)\" #queryprogress></app-queryprogress>\n\n\n    </div>\n    <ngx-charts-line-chart\n      [view]=\"view\"\n      [scheme]=\"colorScheme\"\n      [results]=\"multi\"\n      [gradient]=\"gradient\"\n      [xAxis]=\"showXAxis\"\n      [yAxis]=\"showYAxis\"\n      [legend]=\"showLegend\"\n      [showXAxisLabel]=\"showXAxisLabel\"\n      [showYAxisLabel]=\"showYAxisLabel\"\n      [xAxisLabel]=\"xAxisLabel\"\n      [yAxisLabel]=\"yAxisLabel\"\n      [showGridLines]=\"showGridLines\"\n      [showRefLines]=\"showRefLines\"\n      [referenceLines]=\"referenceLines\"\n      [roundDomains]=\"roundDomains\"\n      [schemeType]=\"schemeType\"\n      [timeline]=\"timeline\"\n      [curve]=\"curve\"\n      [autoScale]=\"autoScale\"\n      rangeFillOpacity=\"0.13\"\n\n      [activeEntries] = \"highlights\"\n      (deactivate) = \"onActivateAndDeactivate()\"\n      (active) = \"onActivateAndDeactivate()\"\n\n      (select)=\"onSelect($event)\"\n      *ngIf=\"!dimmer\" #resultViewer>\n    </ngx-charts-line-chart>\n  </div>\n</div>\n\n<!-- Property\tType\tDefault Value\tDescription\nview\tnumber[]\t\tthe dimensions of the chart [width, height]. If left undefined, the chart will fit to the parent container size\nresults\tobject[]\t\tthe chart data\nscheme\tobject\t\tthe color scheme of the chart\nschemeType\tstring\t'ordinal'\tthe color scale type. Can be either 'ordinal' or 'linear'\ncustomColors\tobject\t\tcustom colors for the chart. Used to override a color for a specific value\nrangeFillOpacity\tnumber\t0.15\topacity of the shadow around the line indication the (optional) min and max values. The range shadow is only displayed if min and max values are provided with the data. The color of the shadow is alwas the color of the central line.\nlegend\tboolean\tfalse\tshow or hide the legend\nlegendTitle\tstring\t'Legend'\tthe legend title\nxAxis\tboolean\tfalse\tshow or hide the x axis\nyAxis\tboolean\tfalse\tshow or hide the y axis\nshowGridLines\tboolean\ttrue\tshow or hide the grid lines\nroundDomains\tboolean\tfalse\tround domains for aligned gridlines\nshowXAxisLabel\tboolean\tfalse\tshow or hide the x axis label\nshowYAxisLabel\tboolean\tfalse\tshow or hide the y axis label\nxAxisLabel\tstring\t\tthe x axis label text\nyAxisLabel\tstring\t\tthe y axis label text\nxAxisTickFormatting\tfunction\t\tthe x axis tick formatting\nyAxisTickFormatting\tfunction\t\tthe y axis tick formatting\ntimeline\tboolean\tfalse\tdisplay a timeline control under the chart. Only available if x scale is date\nautoScale\tboolean\tfalse\tset the minimum value of the y axis to the minimum value in the data, instead of 0\ncurve\tfunction\t\tthe interpolation function used to generate the curve. It accepts any d3.curve function\ngradient\tboolean\tfalse\tfill elements with a gradient instead of a solid color\nactiveEntries\tobject[]\t[]\telements to highlight\ntooltipDisabled\tboolean\tfalse\tshow or hide the tooltip\ntooltipTemplate\tTemplateRef\t\ta custom ng-template to be displayed inside the tooltip when hovering a single point\nseriesTooltipTemplate\tTemplateRef\t\ta custom ng-template to be displayed inside the tooltip when hovering series\nreferenceLines\tobject[]\t\tan array of reference lines to be shown behind the chart. Every reference line should be of format {name, value}\nshowRefLines\tboolean\tfalse\tshow or hide the reference lines\nshowRefLabels\tboolean\ttrue\tshow or hide the reference line labels -->\n"
 
 /***/ }),
 
@@ -1193,7 +1258,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../confirm-modal/confirm-modal.component */ "./src/app/components/confirm-modal/confirm-modal.component.ts");
 /* harmony import */ var ng2_semantic_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ng2-semantic-ui */ "./node_modules/ng2-semantic-ui/dist/public.js");
 /* harmony import */ var _services_error_reporting_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/error-reporting.service */ "./src/app/services/error-reporting.service.ts");
-/* harmony import */ var _services_florist_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/florist.service */ "./src/app/services/florist.service.ts");
+/* harmony import */ var _queryprogress_queryprogress_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../queryprogress/queryprogress.component */ "./src/app/queryprogress/queryprogress.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1217,11 +1282,10 @@ var LFMCResponseType;
     LFMCResponseType[LFMCResponseType["NETCDF"] = 2] = "NETCDF";
 })(LFMCResponseType || (LFMCResponseType = {}));
 var ChartingComponent = /** @class */ (function () {
-    function ChartingComponent(tss, modalService, errorReportingService, florist) {
+    function ChartingComponent(tss, modalService, errorReportingService) {
         this.tss = tss;
         this.modalService = modalService;
         this.errorReportingService = errorReportingService;
-        this.florist = florist;
         this.select = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.qt = [];
         // view = [1900, 350];
@@ -1368,15 +1432,8 @@ var ChartingComponent = /** @class */ (function () {
     ChartingComponent.prototype.getFuelByPost = function (name, json_query) {
         var _this = this;
         console.log('Calling API');
-        var dateFormat = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$/;
-        function reviver(key, value) {
-            if (typeof value === 'string' && dateFormat.test(value)) {
-                return new Date(value);
-            }
-            return value;
-        }
         this.multi = [];
-        this.tss.postAPI(name, json_query).subscribe(function (m) {
+        this.tss.submit(name, json_query).subscribe(function (m) {
             console.log(m);
             _this.qt = m;
         }, function (e) {
@@ -1385,33 +1442,33 @@ var ChartingComponent = /** @class */ (function () {
                 .open(new _confirm_modal_confirm_modal_component__WEBPACK_IMPORTED_MODULE_3__["ConfirmModal"]('An error occurred', e.message, 'tiny'));
             _this.dimmer = true;
         }, function () {
-            _this.qt.map(function (st) {
-                console.log('Subtask Result:' + st);
-                _this.florist.state(st.uuid).subscribe(function (res) {
-                    console.log(st.uuid + ' has state: ' + res.state);
-                    if (res.state === 'SUCCESS') {
-                        _this.multi.push(JSON.parse(JSON.stringify(res.result), reviver));
-                    }
-                }, function (e) {
-                    console.log(e);
-                }, function () {
-                    console.log('Finished adding results for subtask.');
-                });
+            // Ask task manager to start queue of tasks...
+            var p = new Promise(function () {
+                _this.progressComponent.doQuery(json_query);
+            }).then(function () {
+                _this.dimmer = false;
             });
-            // console.log(this.multi);
-            // this.dimmer = false;
         });
     };
-    // const subtasks = m;
-    //
-    // if (!subtasks) {
-    //   console.log('Nothing returned?');
-    // } else {
-    //   for (const st in subtasks) {
-    //     console.log(st);
-    //     // subscribe to Redis using st as uuid
-    //   }
-    // }
+    ChartingComponent.prototype.showResults = function (ev) {
+        console.log('Showing results now...');
+        console.log(ev);
+        var dateFormat = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$/;
+        for (var _i = 0, ev_1 = ev; _i < ev_1.length; _i++) {
+            var mr = ev_1[_i];
+            console.log(typeof mr);
+            // const model_result = mr.replace(/'/g, '"');
+            var cleaned = JSON.parse(JSON.stringify(mr), function (key, value) {
+                if (key === 'name' && typeof value === 'string' && dateFormat.test(value)) {
+                    return new Date(value);
+                }
+                return value;
+            });
+            console.log(cleaned);
+            this.multi.push(cleaned);
+        }
+        this.dimmer = false;
+    };
     // if (this.multi['error'] && this.multi['code']) {
     //
     //   const error_mesg = {
@@ -1459,14 +1516,6 @@ var ChartingComponent = /** @class */ (function () {
             case LFMCResponseType.TIMESERIES:
                 this.getFuelByPost('/submit_query.json', json_query);
                 break;
-            case LFMCResponseType.MP4:
-                this.tss.postAPI('/fuel.mp4', json_query).subscribe(function (m) {
-                    // this.multi = JSON.parse(JSON.stringify(m), reviver);
-                });
-                break;
-            case LFMCResponseType.NETCDF:
-                this.getFuelByPost('/fuel.nc', json_query);
-                break;
         }
     };
     ChartingComponent.prototype.onSelect = function (e) {
@@ -1502,6 +1551,10 @@ var ChartingComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
     ], ChartingComponent.prototype, "select", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_queryprogress_queryprogress_component__WEBPACK_IMPORTED_MODULE_6__["QueryprogressComponent"]),
+        __metadata("design:type", _queryprogress_queryprogress_component__WEBPACK_IMPORTED_MODULE_6__["QueryprogressComponent"])
+    ], ChartingComponent.prototype, "progressComponent", void 0);
     ChartingComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-charting',
@@ -1510,8 +1563,7 @@ var ChartingComponent = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [_services_timeseries_service__WEBPACK_IMPORTED_MODULE_1__["TimeseriesService"],
             ng2_semantic_ui__WEBPACK_IMPORTED_MODULE_4__["SuiModalService"],
-            _services_error_reporting_service__WEBPACK_IMPORTED_MODULE_5__["ErrorReportingService"],
-            _services_florist_service__WEBPACK_IMPORTED_MODULE_6__["FloristService"]])
+            _services_error_reporting_service__WEBPACK_IMPORTED_MODULE_5__["ErrorReportingService"]])
     ], ChartingComponent);
     return ChartingComponent;
 }());
@@ -1592,7 +1644,7 @@ var ConfirmModal = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvZGF0YXNvdXJjZXMvZGF0YXNvdXJjZXMuY29tcG9uZW50LmNzcyJ9 */"
 
 /***/ }),
 
@@ -1673,7 +1725,7 @@ var DatasourcesComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvZGlzY2xhaW1lci9kaXNjbGFpbWVyLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -1768,7 +1820,7 @@ var DisclaimerComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".footer.segment {\n  margin-top: 2rem;\n  margin-bottom: 0em;\n  padding-top: 5rem;\n  padding-bottom: 5rem;\n  background-color: rgb(9,65,131);\n  /*background-color: #0c304a;*/\n  flex-shrink: 0;\n}\n\n.footer > a {\n  color: white;\n}\n\n.uom_blue_background {\n  background-color: rgb(9,65,131);\n  /*background-color: #0c304a;*/\n  color: #FFFFFF;\n}\n\n.uom_blue_background > * {\n  color: #FFFFFF;\n}\n\n.uom_blue_background * a {\n  color: #FFFFFF !important;\n  text-decoration: none;\n}\n\n.uom_blue {\n  color: rgb(9,65,131);\n}\n"
+module.exports = ".footer.segment {\n  margin-top: 2rem;\n  margin-bottom: 0em;\n  padding-top: 5rem;\n  padding-bottom: 5rem;\n  background-color: rgb(9,65,131);\n  /*background-color: #0c304a;*/\n  flex-shrink: 0;\n}\n\n.footer > a {\n  color: white;\n}\n\n.uom_blue_background {\n  background-color: rgb(9,65,131);\n  /*background-color: #0c304a;*/\n  color: #FFFFFF;\n}\n\n.uom_blue_background > * {\n  color: #FFFFFF;\n}\n\n.uom_blue_background * a {\n  color: #FFFFFF !important;\n  text-decoration: none;\n}\n\n.uom_blue {\n  color: rgb(9,65,131);\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9mb290ZXIvZm9vdGVyLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxpQkFBaUI7RUFDakIsbUJBQW1CO0VBQ25CLGtCQUFrQjtFQUNsQixxQkFBcUI7RUFDckIsZ0NBQWdDO0VBQ2hDLDhCQUE4QjtFQUM5QixlQUFlO0NBQ2hCOztBQUVEO0VBQ0UsYUFBYTtDQUNkOztBQUVEO0VBQ0UsZ0NBQWdDO0VBQ2hDLDhCQUE4QjtFQUM5QixlQUFlO0NBQ2hCOztBQUVEO0VBQ0UsZUFBZTtDQUNoQjs7QUFFRDtFQUNFLDBCQUEwQjtFQUMxQixzQkFBc0I7Q0FDdkI7O0FBRUQ7RUFDRSxxQkFBcUI7Q0FDdEIiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5mb290ZXIuc2VnbWVudCB7XG4gIG1hcmdpbi10b3A6IDJyZW07XG4gIG1hcmdpbi1ib3R0b206IDBlbTtcbiAgcGFkZGluZy10b3A6IDVyZW07XG4gIHBhZGRpbmctYm90dG9tOiA1cmVtO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoOSw2NSwxMzEpO1xuICAvKmJhY2tncm91bmQtY29sb3I6ICMwYzMwNGE7Ki9cbiAgZmxleC1zaHJpbms6IDA7XG59XG5cbi5mb290ZXIgPiBhIHtcbiAgY29sb3I6IHdoaXRlO1xufVxuXG4udW9tX2JsdWVfYmFja2dyb3VuZCB7XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYig5LDY1LDEzMSk7XG4gIC8qYmFja2dyb3VuZC1jb2xvcjogIzBjMzA0YTsqL1xuICBjb2xvcjogI0ZGRkZGRjtcbn1cblxuLnVvbV9ibHVlX2JhY2tncm91bmQgPiAqIHtcbiAgY29sb3I6ICNGRkZGRkY7XG59XG5cbi51b21fYmx1ZV9iYWNrZ3JvdW5kICogYSB7XG4gIGNvbG9yOiAjRkZGRkZGICFpbXBvcnRhbnQ7XG4gIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbn1cblxuLnVvbV9ibHVlIHtcbiAgY29sb3I6IHJnYig5LDY1LDEzMSk7XG59XG4iXX0= */"
 
 /***/ }),
 
@@ -1831,7 +1883,7 @@ var FooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvZnVsbHNjcmVlbi9mdWxsc2NyZWVuLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -1894,7 +1946,7 @@ var FullscreenComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvaGVscC9oZWxwLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -1957,7 +2009,7 @@ var HelpComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".hidden.menu {\n     display: none;\n   }\n\n   .masthead.segment {\n     min-height: 700px;\n     padding: 1em 0em;\n   }\n\n   .masthead .logo.item img {\n     margin-right: 1em;\n   }\n\n   .masthead .ui.menu .ui.button {\n     margin-left: 0.5em;\n   }\n\n   .masthead h1.ui.header {\n     margin-top: 3em;\n     margin-bottom: 0em;\n     font-size: 4em;\n     font-weight: normal;\n   }\n\n   .masthead h2 {\n     font-size: 1.7em;\n     font-weight: normal;\n   }\n\n   .ui.vertical.stripe {\n     padding: 8em 0em;\n   }\n\n   .ui.vertical.stripe h3 {\n     font-size: 2em;\n   }\n\n   .ui.vertical.stripe .button + h3,\n   .ui.vertical.stripe p + h3 {\n     margin-top: 3em;\n   }\n\n   .ui.vertical.stripe .floated.image {\n     clear: both;\n   }\n\n   .ui.vertical.stripe p {\n     font-size: 1.33em;\n   }\n\n   .ui.vertical.stripe .horizontal.divider {\n     margin: 3em 0em;\n   }\n\n   .quote.stripe.segment {\n     padding: 0em;\n   }\n\n   .quote.stripe.segment .grid .column {\n     padding-top: 5em;\n     padding-bottom: 5em;\n   }\n\n   .footer.segment {\n     padding: 5em 0em;\n   }\n\n   .secondary.pointing.menu .toc.item {\n     display: none;\n   }\n\n   @media only screen and (max-width: 700px) {\n     .ui.fixed.menu {\n       display: none !important;\n     }\n     .secondary.pointing.menu .item,\n     .secondary.pointing.menu .menu {\n       display: none;\n     }\n     .secondary.pointing.menu .toc.item {\n       display: block;\n     }\n     .masthead.segment {\n       min-height: 350px;\n     }\n     .masthead h1.ui.header {\n       font-size: 2em;\n       margin-top: 1.5em;\n     }\n     .masthead h2 {\n       margin-top: 0.5em;\n       font-size: 1.5em;\n     }\n   }\n"
+module.exports = ".hidden.menu {\n     display: none;\n   }\n\n   .masthead.segment {\n     min-height: 700px;\n     padding: 1em 0em;\n   }\n\n   .masthead .logo.item img {\n     margin-right: 1em;\n   }\n\n   .masthead .ui.menu .ui.button {\n     margin-left: 0.5em;\n   }\n\n   .masthead h1.ui.header {\n     margin-top: 3em;\n     margin-bottom: 0em;\n     font-size: 4em;\n     font-weight: normal;\n   }\n\n   .masthead h2 {\n     font-size: 1.7em;\n     font-weight: normal;\n   }\n\n   .ui.vertical.stripe {\n     padding: 8em 0em;\n   }\n\n   .ui.vertical.stripe h3 {\n     font-size: 2em;\n   }\n\n   .ui.vertical.stripe .button + h3,\n   .ui.vertical.stripe p + h3 {\n     margin-top: 3em;\n   }\n\n   .ui.vertical.stripe .floated.image {\n     clear: both;\n   }\n\n   .ui.vertical.stripe p {\n     font-size: 1.33em;\n   }\n\n   .ui.vertical.stripe .horizontal.divider {\n     margin: 3em 0em;\n   }\n\n   .quote.stripe.segment {\n     padding: 0em;\n   }\n\n   .quote.stripe.segment .grid .column {\n     padding-top: 5em;\n     padding-bottom: 5em;\n   }\n\n   .footer.segment {\n     padding: 5em 0em;\n   }\n\n   .secondary.pointing.menu .toc.item {\n     display: none;\n   }\n\n   @media only screen and (max-width: 700px) {\n     .ui.fixed.menu {\n       display: none !important;\n     }\n     .secondary.pointing.menu .item,\n     .secondary.pointing.menu .menu {\n       display: none;\n     }\n     .secondary.pointing.menu .toc.item {\n       display: block;\n     }\n     .masthead.segment {\n       min-height: 350px;\n     }\n     .masthead h1.ui.header {\n       font-size: 2em;\n       margin-top: 1.5em;\n     }\n     .masthead h2 {\n       margin-top: 0.5em;\n       font-size: 1.5em;\n     }\n   }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9ob21lL2hvbWUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtLQUNLLGNBQWM7SUFDZjs7R0FFRDtLQUNFLGtCQUFrQjtLQUNsQixpQkFBaUI7SUFDbEI7O0dBQ0Q7S0FDRSxrQkFBa0I7SUFDbkI7O0dBQ0Q7S0FDRSxtQkFBbUI7SUFDcEI7O0dBQ0Q7S0FDRSxnQkFBZ0I7S0FDaEIsbUJBQW1CO0tBQ25CLGVBQWU7S0FDZixvQkFBb0I7SUFDckI7O0dBQ0Q7S0FDRSxpQkFBaUI7S0FDakIsb0JBQW9CO0lBQ3JCOztHQUVEO0tBQ0UsaUJBQWlCO0lBQ2xCOztHQUNEO0tBQ0UsZUFBZTtJQUNoQjs7R0FDRDs7S0FFRSxnQkFBZ0I7SUFDakI7O0dBQ0Q7S0FDRSxZQUFZO0lBQ2I7O0dBQ0Q7S0FDRSxrQkFBa0I7SUFDbkI7O0dBQ0Q7S0FDRSxnQkFBZ0I7SUFDakI7O0dBRUQ7S0FDRSxhQUFhO0lBQ2Q7O0dBQ0Q7S0FDRSxpQkFBaUI7S0FDakIsb0JBQW9CO0lBQ3JCOztHQUVEO0tBQ0UsaUJBQWlCO0lBQ2xCOztHQUVEO0tBQ0UsY0FBYztJQUNmOztHQUVEO0tBQ0U7T0FDRSx5QkFBeUI7TUFDMUI7S0FDRDs7T0FFRSxjQUFjO01BQ2Y7S0FDRDtPQUNFLGVBQWU7TUFDaEI7S0FDRDtPQUNFLGtCQUFrQjtNQUNuQjtLQUNEO09BQ0UsZUFBZTtPQUNmLGtCQUFrQjtNQUNuQjtLQUNEO09BQ0Usa0JBQWtCO09BQ2xCLGlCQUFpQjtNQUNsQjtJQUNGIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9ob21lL2hvbWUuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5oaWRkZW4ubWVudSB7XG4gICAgIGRpc3BsYXk6IG5vbmU7XG4gICB9XG5cbiAgIC5tYXN0aGVhZC5zZWdtZW50IHtcbiAgICAgbWluLWhlaWdodDogNzAwcHg7XG4gICAgIHBhZGRpbmc6IDFlbSAwZW07XG4gICB9XG4gICAubWFzdGhlYWQgLmxvZ28uaXRlbSBpbWcge1xuICAgICBtYXJnaW4tcmlnaHQ6IDFlbTtcbiAgIH1cbiAgIC5tYXN0aGVhZCAudWkubWVudSAudWkuYnV0dG9uIHtcbiAgICAgbWFyZ2luLWxlZnQ6IDAuNWVtO1xuICAgfVxuICAgLm1hc3RoZWFkIGgxLnVpLmhlYWRlciB7XG4gICAgIG1hcmdpbi10b3A6IDNlbTtcbiAgICAgbWFyZ2luLWJvdHRvbTogMGVtO1xuICAgICBmb250LXNpemU6IDRlbTtcbiAgICAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbiAgIH1cbiAgIC5tYXN0aGVhZCBoMiB7XG4gICAgIGZvbnQtc2l6ZTogMS43ZW07XG4gICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gICB9XG5cbiAgIC51aS52ZXJ0aWNhbC5zdHJpcGUge1xuICAgICBwYWRkaW5nOiA4ZW0gMGVtO1xuICAgfVxuICAgLnVpLnZlcnRpY2FsLnN0cmlwZSBoMyB7XG4gICAgIGZvbnQtc2l6ZTogMmVtO1xuICAgfVxuICAgLnVpLnZlcnRpY2FsLnN0cmlwZSAuYnV0dG9uICsgaDMsXG4gICAudWkudmVydGljYWwuc3RyaXBlIHAgKyBoMyB7XG4gICAgIG1hcmdpbi10b3A6IDNlbTtcbiAgIH1cbiAgIC51aS52ZXJ0aWNhbC5zdHJpcGUgLmZsb2F0ZWQuaW1hZ2Uge1xuICAgICBjbGVhcjogYm90aDtcbiAgIH1cbiAgIC51aS52ZXJ0aWNhbC5zdHJpcGUgcCB7XG4gICAgIGZvbnQtc2l6ZTogMS4zM2VtO1xuICAgfVxuICAgLnVpLnZlcnRpY2FsLnN0cmlwZSAuaG9yaXpvbnRhbC5kaXZpZGVyIHtcbiAgICAgbWFyZ2luOiAzZW0gMGVtO1xuICAgfVxuXG4gICAucXVvdGUuc3RyaXBlLnNlZ21lbnQge1xuICAgICBwYWRkaW5nOiAwZW07XG4gICB9XG4gICAucXVvdGUuc3RyaXBlLnNlZ21lbnQgLmdyaWQgLmNvbHVtbiB7XG4gICAgIHBhZGRpbmctdG9wOiA1ZW07XG4gICAgIHBhZGRpbmctYm90dG9tOiA1ZW07XG4gICB9XG5cbiAgIC5mb290ZXIuc2VnbWVudCB7XG4gICAgIHBhZGRpbmc6IDVlbSAwZW07XG4gICB9XG5cbiAgIC5zZWNvbmRhcnkucG9pbnRpbmcubWVudSAudG9jLml0ZW0ge1xuICAgICBkaXNwbGF5OiBub25lO1xuICAgfVxuXG4gICBAbWVkaWEgb25seSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDcwMHB4KSB7XG4gICAgIC51aS5maXhlZC5tZW51IHtcbiAgICAgICBkaXNwbGF5OiBub25lICFpbXBvcnRhbnQ7XG4gICAgIH1cbiAgICAgLnNlY29uZGFyeS5wb2ludGluZy5tZW51IC5pdGVtLFxuICAgICAuc2Vjb25kYXJ5LnBvaW50aW5nLm1lbnUgLm1lbnUge1xuICAgICAgIGRpc3BsYXk6IG5vbmU7XG4gICAgIH1cbiAgICAgLnNlY29uZGFyeS5wb2ludGluZy5tZW51IC50b2MuaXRlbSB7XG4gICAgICAgZGlzcGxheTogYmxvY2s7XG4gICAgIH1cbiAgICAgLm1hc3RoZWFkLnNlZ21lbnQge1xuICAgICAgIG1pbi1oZWlnaHQ6IDM1MHB4O1xuICAgICB9XG4gICAgIC5tYXN0aGVhZCBoMS51aS5oZWFkZXIge1xuICAgICAgIGZvbnQtc2l6ZTogMmVtO1xuICAgICAgIG1hcmdpbi10b3A6IDEuNWVtO1xuICAgICB9XG4gICAgIC5tYXN0aGVhZCBoMiB7XG4gICAgICAgbWFyZ2luLXRvcDogMC41ZW07XG4gICAgICAgZm9udC1zaXplOiAxLjVlbTtcbiAgICAgfVxuICAgfVxuIl19 */"
 
 /***/ }),
 
@@ -2022,7 +2074,7 @@ var HomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".page {\n  margin: 1em auto;\n}\n"
+module.exports = ".page {\n  margin: 1em auto;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9pbXBvcnQvaW1wb3J0LmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxpQkFBaUI7Q0FDbEIiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL2ltcG9ydC9pbXBvcnQuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5wYWdlIHtcbiAgbWFyZ2luOiAxZW0gYXV0bztcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -2089,7 +2141,7 @@ var ImportComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".importeditemspane {\n  max-height: 40vh;\n  overflow-y: scroll;\n}\n\n.item.selected {\n  /*background-color: #0b97c4;*/\n}\n\n.ui.form .inline.fields.content,\ndiv.fields.content {\n  margin-bottom: 0;\n  vertical-align: center;\n}\n\n.ui.form .inline.fields input[type='text'] {\n  background-color: #1B1C1D;\n  border: solid 1px #FFFFFF;\n  color: #FFFFFF;\n}\n"
+module.exports = ".importeditemspane {\n  max-height: 40vh;\n  overflow-y: scroll;\n}\n\n.item.selected {\n  /*background-color: #0b97c4;*/\n}\n\n.ui.form .inline.fields.content,\ndiv.fields.content {\n  margin-bottom: 0;\n  vertical-align: center;\n}\n\n.ui.form .inline.fields input[type='text'] {\n  background-color: #1B1C1D;\n  border: solid 1px #FFFFFF;\n  color: #FFFFFF;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9pbXBvcnRlZGl0ZW1zL2ltcG9ydGVkaXRlbXMuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGlCQUFpQjtFQUNqQixtQkFBbUI7Q0FDcEI7O0FBRUQ7RUFDRSw4QkFBOEI7Q0FDL0I7O0FBRUQ7O0VBRUUsaUJBQWlCO0VBQ2pCLHVCQUF1QjtDQUN4Qjs7QUFDRDtFQUNFLDBCQUEwQjtFQUMxQiwwQkFBMEI7RUFDMUIsZUFBZTtDQUNoQiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvaW1wb3J0ZWRpdGVtcy9pbXBvcnRlZGl0ZW1zLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaW1wb3J0ZWRpdGVtc3BhbmUge1xuICBtYXgtaGVpZ2h0OiA0MHZoO1xuICBvdmVyZmxvdy15OiBzY3JvbGw7XG59XG5cbi5pdGVtLnNlbGVjdGVkIHtcbiAgLypiYWNrZ3JvdW5kLWNvbG9yOiAjMGI5N2M0OyovXG59XG5cbi51aS5mb3JtIC5pbmxpbmUuZmllbGRzLmNvbnRlbnQsXG5kaXYuZmllbGRzLmNvbnRlbnQge1xuICBtYXJnaW4tYm90dG9tOiAwO1xuICB2ZXJ0aWNhbC1hbGlnbjogY2VudGVyO1xufVxuLnVpLmZvcm0gLmlubGluZS5maWVsZHMgaW5wdXRbdHlwZT0ndGV4dCddIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzFCMUMxRDtcbiAgYm9yZGVyOiBzb2xpZCAxcHggI0ZGRkZGRjtcbiAgY29sb3I6ICNGRkZGRkY7XG59XG4iXX0= */"
 
 /***/ }),
 
@@ -2552,7 +2604,7 @@ var GeoJSONQuery = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvaW1wb3J0am9icy9pbXBvcnRqb2JzLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -2615,7 +2667,7 @@ var ImportjobsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbGF5ZXItbWFwL2xheWVyLW1hcC5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -2678,7 +2730,7 @@ var LayerMapComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbGVnZW5kL2xlZ2VuZC5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -2741,7 +2793,7 @@ var LegendComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".masthead.segment {\n  min-height: 360px;\n  padding: 1em 0em;\n}\n\n.masthead .logo.item img {\n  margin-right: 1em;\n}\n\n.masthead .ui.menu .ui.button {\n  margin-left: 0.5em;\n}\n\n.masthead h1.ui.header {\n  margin-top: 1em;\n  margin-bottom: 0em;\n  font-size: 4em;\n  /*font-weight: normal;*/\n}\n\n.masthead h2 {\n  font-size: 1.7em;\n  font-weight: normal;\n}\n\n.ui.vertical.stripe {\n  padding: 4em 0em;\n}\n\n.ui.vertical.stripe h3 {\n  /*font-size: 2em;*/\n}\n\n.ui.vertical.stripe .button+h3, .ui.vertical.stripe p+h3 {\n  margin-top: 3em;\n}\n\n.ui.vertical.stripe .floated.image {\n  clear: both;\n}\n\n.ui.vertical.stripe p {\n  /*font-size: 1.33em;*/\n}\n\n.ui.vertical.stripe .horizontal.divider {\n  margin: 3em 0em;\n}\n\n/* Text Container */\n\n.ui.text.container {\n  max-width: 700px !important;\n  line-height: 1.5;\n}\n\n.ui.text.container {\n  /*font-size: 1.14285714rem;*/\n}\n\n.page {\n  margin: 1em auto;\n}\n\n@media only screen and (max-width: 700px) {\n\t\t .ui.fixed.menu {\n\t\t\t display: none !important;\n\t\t }\n\t\t .secondary.pointing.menu .item,\n\t\t .secondary.pointing.menu .menu {\n\t\t\t display: none;\n\t\t }\n\t\t .secondary.pointing.menu .toc.item {\n\t\t\t display: block;\n\t\t }\n\t\t .masthead.segment {\n\t\t\t min-height: 350px;\n\t\t\t background-color: #1B1C1D;\n\t\t }\n\t\t .masthead h1.ui.header {\n\t\t\t font-size: 2em;\n\t\t\t margin-top: 1.5em;\n\t\t }\n\t\t .masthead h2 {\n\t\t\t margin-top: 0.5em;\n\t\t\t font-size: 1.5em;\n\t\t }\n\t }\n"
+module.exports = ".masthead.segment {\n  min-height: 360px;\n  padding: 1em 0em;\n}\n\n.masthead .logo.item img {\n  margin-right: 1em;\n}\n\n.masthead .ui.menu .ui.button {\n  margin-left: 0.5em;\n}\n\n.masthead h1.ui.header {\n  margin-top: 1em;\n  margin-bottom: 0em;\n  font-size: 4em;\n  /*font-weight: normal;*/\n}\n\n.masthead h2 {\n  font-size: 1.7em;\n  font-weight: normal;\n}\n\n.ui.vertical.stripe {\n  padding: 4em 0em;\n}\n\n.ui.vertical.stripe h3 {\n  /*font-size: 2em;*/\n}\n\n.ui.vertical.stripe .button+h3, .ui.vertical.stripe p+h3 {\n  margin-top: 3em;\n}\n\n.ui.vertical.stripe .floated.image {\n  clear: both;\n}\n\n.ui.vertical.stripe p {\n  /*font-size: 1.33em;*/\n}\n\n.ui.vertical.stripe .horizontal.divider {\n  margin: 3em 0em;\n}\n\n/* Text Container */\n\n.ui.text.container {\n  max-width: 700px !important;\n  line-height: 1.5;\n}\n\n.ui.text.container {\n  /*font-size: 1.14285714rem;*/\n}\n\n.page {\n  margin: 1em auto;\n}\n\n@media only screen and (max-width: 700px) {\n\t\t .ui.fixed.menu {\n\t\t\t display: none !important;\n\t\t }\n\t\t .secondary.pointing.menu .item,\n\t\t .secondary.pointing.menu .menu {\n\t\t\t display: none;\n\t\t }\n\t\t .secondary.pointing.menu .toc.item {\n\t\t\t display: block;\n\t\t }\n\t\t .masthead.segment {\n\t\t\t min-height: 350px;\n\t\t\t background-color: #1B1C1D;\n\t\t }\n\t\t .masthead h1.ui.header {\n\t\t\t font-size: 2em;\n\t\t\t margin-top: 1.5em;\n\t\t }\n\t\t .masthead h2 {\n\t\t\t margin-top: 0.5em;\n\t\t\t font-size: 1.5em;\n\t\t }\n\t }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9tb2RlbHMvbW9kZWxzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxrQkFBa0I7RUFDbEIsaUJBQWlCO0NBQ2xCOztBQUVEO0VBQ0Usa0JBQWtCO0NBQ25COztBQUVEO0VBQ0UsbUJBQW1CO0NBQ3BCOztBQUVEO0VBQ0UsZ0JBQWdCO0VBQ2hCLG1CQUFtQjtFQUNuQixlQUFlO0VBQ2Ysd0JBQXdCO0NBQ3pCOztBQUVEO0VBQ0UsaUJBQWlCO0VBQ2pCLG9CQUFvQjtDQUNyQjs7QUFFRDtFQUNFLGlCQUFpQjtDQUNsQjs7QUFFRDtFQUNFLG1CQUFtQjtDQUNwQjs7QUFFRDtFQUNFLGdCQUFnQjtDQUNqQjs7QUFFRDtFQUNFLFlBQVk7Q0FDYjs7QUFFRDtFQUNFLHNCQUFzQjtDQUN2Qjs7QUFFRDtFQUNFLGdCQUFnQjtDQUNqQjs7QUFHRCxvQkFBb0I7O0FBRXBCO0VBQ0UsNEJBQTRCO0VBQzVCLGlCQUFpQjtDQUNsQjs7QUFFRDtFQUNFLDZCQUE2QjtDQUM5Qjs7QUFFRDtFQUNFLGlCQUFpQjtDQUNsQjs7QUFFRDtHQUNHO0lBQ0MseUJBQXlCO0lBQ3pCO0dBQ0Q7O0lBRUMsY0FBYztJQUNkO0dBQ0Q7SUFDQyxlQUFlO0lBQ2Y7R0FDRDtJQUNDLGtCQUFrQjtJQUNsQiwwQkFBMEI7SUFDMUI7R0FDRDtJQUNDLGVBQWU7SUFDZixrQkFBa0I7SUFDbEI7R0FDRDtJQUNDLGtCQUFrQjtJQUNsQixpQkFBaUI7SUFDakI7R0FDRCIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbW9kZWxzL21vZGVscy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm1hc3RoZWFkLnNlZ21lbnQge1xuICBtaW4taGVpZ2h0OiAzNjBweDtcbiAgcGFkZGluZzogMWVtIDBlbTtcbn1cblxuLm1hc3RoZWFkIC5sb2dvLml0ZW0gaW1nIHtcbiAgbWFyZ2luLXJpZ2h0OiAxZW07XG59XG5cbi5tYXN0aGVhZCAudWkubWVudSAudWkuYnV0dG9uIHtcbiAgbWFyZ2luLWxlZnQ6IDAuNWVtO1xufVxuXG4ubWFzdGhlYWQgaDEudWkuaGVhZGVyIHtcbiAgbWFyZ2luLXRvcDogMWVtO1xuICBtYXJnaW4tYm90dG9tOiAwZW07XG4gIGZvbnQtc2l6ZTogNGVtO1xuICAvKmZvbnQtd2VpZ2h0OiBub3JtYWw7Ki9cbn1cblxuLm1hc3RoZWFkIGgyIHtcbiAgZm9udC1zaXplOiAxLjdlbTtcbiAgZm9udC13ZWlnaHQ6IG5vcm1hbDtcbn1cblxuLnVpLnZlcnRpY2FsLnN0cmlwZSB7XG4gIHBhZGRpbmc6IDRlbSAwZW07XG59XG5cbi51aS52ZXJ0aWNhbC5zdHJpcGUgaDMge1xuICAvKmZvbnQtc2l6ZTogMmVtOyovXG59XG5cbi51aS52ZXJ0aWNhbC5zdHJpcGUgLmJ1dHRvbitoMywgLnVpLnZlcnRpY2FsLnN0cmlwZSBwK2gzIHtcbiAgbWFyZ2luLXRvcDogM2VtO1xufVxuXG4udWkudmVydGljYWwuc3RyaXBlIC5mbG9hdGVkLmltYWdlIHtcbiAgY2xlYXI6IGJvdGg7XG59XG5cbi51aS52ZXJ0aWNhbC5zdHJpcGUgcCB7XG4gIC8qZm9udC1zaXplOiAxLjMzZW07Ki9cbn1cblxuLnVpLnZlcnRpY2FsLnN0cmlwZSAuaG9yaXpvbnRhbC5kaXZpZGVyIHtcbiAgbWFyZ2luOiAzZW0gMGVtO1xufVxuXG5cbi8qIFRleHQgQ29udGFpbmVyICovXG5cbi51aS50ZXh0LmNvbnRhaW5lciB7XG4gIG1heC13aWR0aDogNzAwcHggIWltcG9ydGFudDtcbiAgbGluZS1oZWlnaHQ6IDEuNTtcbn1cblxuLnVpLnRleHQuY29udGFpbmVyIHtcbiAgLypmb250LXNpemU6IDEuMTQyODU3MTRyZW07Ki9cbn1cblxuLnBhZ2Uge1xuICBtYXJnaW46IDFlbSBhdXRvO1xufVxuXG5AbWVkaWEgb25seSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDcwMHB4KSB7XG5cdFx0IC51aS5maXhlZC5tZW51IHtcblx0XHRcdCBkaXNwbGF5OiBub25lICFpbXBvcnRhbnQ7XG5cdFx0IH1cblx0XHQgLnNlY29uZGFyeS5wb2ludGluZy5tZW51IC5pdGVtLFxuXHRcdCAuc2Vjb25kYXJ5LnBvaW50aW5nLm1lbnUgLm1lbnUge1xuXHRcdFx0IGRpc3BsYXk6IG5vbmU7XG5cdFx0IH1cblx0XHQgLnNlY29uZGFyeS5wb2ludGluZy5tZW51IC50b2MuaXRlbSB7XG5cdFx0XHQgZGlzcGxheTogYmxvY2s7XG5cdFx0IH1cblx0XHQgLm1hc3RoZWFkLnNlZ21lbnQge1xuXHRcdFx0IG1pbi1oZWlnaHQ6IDM1MHB4O1xuXHRcdFx0IGJhY2tncm91bmQtY29sb3I6ICMxQjFDMUQ7XG5cdFx0IH1cblx0XHQgLm1hc3RoZWFkIGgxLnVpLmhlYWRlciB7XG5cdFx0XHQgZm9udC1zaXplOiAyZW07XG5cdFx0XHQgbWFyZ2luLXRvcDogMS41ZW07XG5cdFx0IH1cblx0XHQgLm1hc3RoZWFkIGgyIHtcblx0XHRcdCBtYXJnaW4tdG9wOiAwLjVlbTtcblx0XHRcdCBmb250LXNpemU6IDEuNWVtO1xuXHRcdCB9XG5cdCB9XG4iXX0= */"
 
 /***/ }),
 
@@ -2835,7 +2887,7 @@ var ModelsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvbW9kZWx2aWV3L21vZGVsdmlldy5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -2898,7 +2950,7 @@ var ModelviewComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvb3B0aW9ucy9vcHRpb25zLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -2964,7 +3016,7 @@ var OptionsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".ui.card .avatar img.full,\n.ui.card .img.avatar.full,\n.ui.cards > .card img.avatar,\nimg.avatar.full {\n  width: 100%;\n  height: inherit;\n}\n"
+module.exports = ".ui.card .avatar img.full,\n.ui.card .img.avatar.full,\n.ui.cards > .card img.avatar,\nimg.avatar.full {\n  width: 100%;\n  height: inherit;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9wcm9maWxlL3Byb2ZpbGUuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7OztFQUlFLFlBQVk7RUFDWixnQkFBZ0I7Q0FDakIiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3Byb2ZpbGUvcHJvZmlsZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnVpLmNhcmQgLmF2YXRhciBpbWcuZnVsbCxcbi51aS5jYXJkIC5pbWcuYXZhdGFyLmZ1bGwsXG4udWkuY2FyZHMgPiAuY2FyZCBpbWcuYXZhdGFyLFxuaW1nLmF2YXRhci5mdWxsIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogaW5oZXJpdDtcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -3030,40 +3082,40 @@ var ProfileComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/components/queryprogress/queryprogress.component.css":
-/*!**********************************************************************!*\
-  !*** ./src/app/components/queryprogress/queryprogress.component.css ***!
-  \**********************************************************************/
+/***/ "./src/app/components/range-selector/range-selector.component.css":
+/*!************************************************************************!*\
+  !*** ./src/app/components/range-selector/range-selector.component.css ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".progresspane {\n  max-height: 40vh;\n  overflow-y: scroll;\n}\n"
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvcmFuZ2Utc2VsZWN0b3IvcmFuZ2Utc2VsZWN0b3IuY29tcG9uZW50LmNzcyJ9 */"
 
 /***/ }),
 
-/***/ "./src/app/components/queryprogress/queryprogress.component.html":
+/***/ "./src/app/components/range-selector/range-selector.component.html":
+/*!*************************************************************************!*\
+  !*** ./src/app/components/range-selector/range-selector.component.html ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<jqxRangeSelector #rangeSelector\n                  [width]=\"'inherit'\"\n                  [height]=\"'1rem'\"\n                  [min]=\"min\"\n                  [max]=\"max\"\n                  [range]=\"range\"\n                  [labelsOnTicks]=\"true\"\n                  [majorTicksInterval]=\"'month'\"\n                  [minorTicksInterval]=\"'day'\"\n                  [labelsFormat]=\"'MMM'\"\n                  [markersFormat]=\"'d'\"\n                  [showGroupLabels]=\"true\"\n\n                  (onChange)=\"update()\" class=\"daterange\">\n</jqxRangeSelector>\n"
+
+/***/ }),
+
+/***/ "./src/app/components/range-selector/range-selector.component.ts":
 /*!***********************************************************************!*\
-  !*** ./src/app/components/queryprogress/queryprogress.component.html ***!
+  !*** ./src/app/components/range-selector/range-selector.component.ts ***!
   \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<!-- Query has been submitted -->\n<div *ngIf=\"querytasks && querytasks.length > 0\">\n  <div class=\"inverted segment\">\n    <!-- Controls for whole Query (including all subtasks). -->\n    <div class=\"ui top attached inverted menu\">\n      <div class=\"item\">\n        Overall Query Progress:\n      </div>\n      <div class=\"right menu\">\n\n        <div class=\"item\">\n          <div class=\"ui right aligned compact basic icon buttons\">\n            <button class=\"ui basic yellow icon button\" (click)=\"abort(uuid)\">\n              <i class=\"pause icon\"></i>\n            </button>\n            <button class=\"ui basic orange icon  button\" (click)=\"revoke(uuid)\">\n              <i class=\"close icon\"></i>\n            </button>\n            <button class=\"ui basic red icon  button\" (click)=\"cancel_query()\">\n              <i class=\"ban icon\"></i>\n            </button>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <!--<div class=\"ui bottom attached tiny form\">-->\n      <!--<div class=\"scrolling content progresspane\">-->\n        <div class=\"ui three column grid\">\n          <!-- Sub tasks that contribute to this query -->\n          <div *ngFor=\"let subtask of querytasks\" class=\"middle aligned row\">\n\n            <div class=\"three wide column\">\n              <i class=\"download icon\"></i>\n              Model <!-- {{ state(subtask.uuid) | json }} -->\n            </div>\n            <div class=\"eleven wide column\">\n              <sui-progress class=\"inverted indicating active\" [value]=\"progress(subtask.uuid)\"></sui-progress>\n            </div>\n            <div class=\"two wide column\">\n              <div class=\"ui three mini compact basic icon buttons\">\n                <button class=\"ui mini basic blue icon button\" (click)=\"console.log(subtask.uuid)\">\n                  <i class=\"refresh icon\"></i>\n                </button>\n                <button class=\"ui mini basic yellow icon button\" (click)=\"abort(subtask.uuid)\">\n                  <i class=\"pause icon\"></i>\n                </button>\n                <button class=\"ui mini basic orange icon button\" (click)=\"revoke(subtask.uuid)\">\n                  <i class=\"close icon\"></i>\n                </button>\n              </div>\n            </div>\n\n          </div>\n        </div>\n      <!--</div>-->\n    <!--</div>-->\n  </div>\n</div>\n\n<!-- Query has NOT been submitted yet -->\n<div *ngIf=\"querytasks.length === 0\">\n  <div>Make all MODEL, SPACE, & TIME selections to continue.</div>\n</div>\n\n"
-
-/***/ }),
-
-/***/ "./src/app/components/queryprogress/queryprogress.component.ts":
-/*!*********************************************************************!*\
-  !*** ./src/app/components/queryprogress/queryprogress.component.ts ***!
-  \*********************************************************************/
-/*! exports provided: QueryprogressComponent */
+/*! exports provided: RangeSelectorComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QueryprogressComponent", function() { return QueryprogressComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RangeSelectorComponent", function() { return RangeSelectorComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_florist_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/florist.service */ "./src/app/services/florist.service.ts");
+/* harmony import */ var jqwidgets_scripts_jqwidgets_ts_angular_jqxrangeselector__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jqwidgets-scripts/jqwidgets-ts/angular_jqxrangeselector */ "./node_modules/jqwidgets-scripts/jqwidgets-ts/angular_jqxrangeselector.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3075,67 +3127,54 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
-var QueryprogressComponent = /** @class */ (function () {
-    function QueryprogressComponent(florist) {
-        this.florist = florist;
-        this.cancel = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+var RangeSelectorComponent = /** @class */ (function () {
+    function RangeSelectorComponent() {
+        this.min = new Date(2017, 0, 1);
+        this.max = new Date(2018, 11, 31);
+        this.range = { from: this.start, to: this.finish };
+        this.rangeChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
-    QueryprogressComponent.prototype.ngOnInit = function () {
+    RangeSelectorComponent.prototype.ngOnInit = function () {
     };
-    QueryprogressComponent.prototype.revoke = function (uuid) {
-        this.florist.revoke(uuid);
+    RangeSelectorComponent.prototype.ngAfterViewInit = function () {
+        this.myRangeSelector.refresh();
     };
-    QueryprogressComponent.prototype.abort = function (uuid) {
-        this.florist.abort(uuid);
+    RangeSelectorComponent.prototype.update = function () {
+        this.rangeChange.emit(this.myRangeSelector.getRange());
     };
-    QueryprogressComponent.prototype.state = function (uuid) {
-        var s;
-        return this.florist.state(uuid).subscribe(function (r) {
-            s = r.state;
-        }, function (e) {
-            console.log(e);
-        }, function () {
-            return s;
-        });
-    };
-    QueryprogressComponent.prototype.progress = function (uuid) {
-        var progress = 0;
-        return this.florist.state(uuid).subscribe(function (r) {
-            if (r.state === 'PENDING') {
-                progress = 0;
-            }
-            else if (r.state === 'STARTED') {
-                progress = 50;
-            }
-            else if (r.state === 'SUCCESS') {
-                progress = 100;
-            }
-        }, function (e) {
-            console.log(e);
-        }, function () {
-            return progress;
-        });
-    };
-    QueryprogressComponent.prototype.cancel_query = function () {
-        this.cancel.emit();
-    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('rangeSelector'),
+        __metadata("design:type", jqwidgets_scripts_jqwidgets_ts_angular_jqxrangeselector__WEBPACK_IMPORTED_MODULE_1__["jqxRangeSelectorComponent"])
+    ], RangeSelectorComponent.prototype, "myRangeSelector", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Object)
-    ], QueryprogressComponent.prototype, "querytasks", void 0);
+        __metadata("design:type", Date)
+    ], RangeSelectorComponent.prototype, "min", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Date)
+    ], RangeSelectorComponent.prototype, "max", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Date)
+    ], RangeSelectorComponent.prototype, "start", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Date)
+    ], RangeSelectorComponent.prototype, "finish", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
-        __metadata("design:type", Object)
-    ], QueryprogressComponent.prototype, "cancel", void 0);
-    QueryprogressComponent = __decorate([
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
+    ], RangeSelectorComponent.prototype, "rangeChange", void 0);
+    RangeSelectorComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-queryprogress',
-            template: __webpack_require__(/*! ./queryprogress.component.html */ "./src/app/components/queryprogress/queryprogress.component.html"),
-            styles: [__webpack_require__(/*! ./queryprogress.component.css */ "./src/app/components/queryprogress/queryprogress.component.css")]
+            selector: 'app-range-selector',
+            template: __webpack_require__(/*! ./range-selector.component.html */ "./src/app/components/range-selector/range-selector.component.html"),
+            styles: [__webpack_require__(/*! ./range-selector.component.css */ "./src/app/components/range-selector/range-selector.component.css")]
         }),
-        __metadata("design:paramtypes", [_services_florist_service__WEBPACK_IMPORTED_MODULE_1__["FloristService"]])
-    ], QueryprogressComponent);
-    return QueryprogressComponent;
+        __metadata("design:paramtypes", [])
+    ], RangeSelectorComponent);
+    return RangeSelectorComponent;
 }());
 
 
@@ -3149,7 +3188,7 @@ var QueryprogressComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvc2VhcmNocmVzdWx0cy9zZWFyY2hyZXN1bHRzLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -3212,7 +3251,7 @@ var SearchresultsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvc2VydmVybG9nL3NlcnZlcmxvZy5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -3275,7 +3314,7 @@ var ServerlogComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvdG9vbGJhci90b29sYmFyLmNvbXBvbmVudC5jc3MifQ== */"
 
 /***/ }),
 
@@ -3338,7 +3377,7 @@ var ToolbarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "ui.segment.dropzone,\n.dropzone {\n  border-style: dashed;\n  border-color: lightgray;\n  min-height:150px;\n  text-align: center;\n  padding-top: 3rem;\n  background-color: rgba(225,225,245,0.35);\n}\n.nv-file-over {\n  border-color: green;\n  background-color: rgba(225,245,225,0.35);\n}\n.another-file-over-class {\n  border: dashed 1px green;\n}\n.ui.steps .step>.icon {\n  font-size: 1.5em !important;\n}\n"
+module.exports = "ui.segment.dropzone,\n.dropzone {\n  border-style: dashed;\n  border-color: lightgray;\n  min-height:150px;\n  text-align: center;\n  padding-top: 3rem;\n  background-color: rgba(225,225,245,0.35);\n}\n.nv-file-over {\n  border-color: green;\n  background-color: rgba(225,245,225,0.35);\n}\n.another-file-over-class {\n  border: dashed 1px green;\n}\n.ui.steps .step>.icon {\n  font-size: 1.5em !important;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy91cGxvYWQvdXBsb2FkLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7O0VBRUUscUJBQXFCO0VBQ3JCLHdCQUF3QjtFQUN4QixpQkFBaUI7RUFDakIsbUJBQW1CO0VBQ25CLGtCQUFrQjtFQUNsQix5Q0FBeUM7Q0FDMUM7QUFDRDtFQUNFLG9CQUFvQjtFQUNwQix5Q0FBeUM7Q0FDMUM7QUFDRDtFQUNFLHlCQUF5QjtDQUMxQjtBQUVEO0VBQ0UsNEJBQTRCO0NBQzdCIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy91cGxvYWQvdXBsb2FkLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ1aS5zZWdtZW50LmRyb3B6b25lLFxuLmRyb3B6b25lIHtcbiAgYm9yZGVyLXN0eWxlOiBkYXNoZWQ7XG4gIGJvcmRlci1jb2xvcjogbGlnaHRncmF5O1xuICBtaW4taGVpZ2h0OjE1MHB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBhZGRpbmctdG9wOiAzcmVtO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDIyNSwyMjUsMjQ1LDAuMzUpO1xufVxuLm52LWZpbGUtb3ZlciB7XG4gIGJvcmRlci1jb2xvcjogZ3JlZW47XG4gIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjI1LDI0NSwyMjUsMC4zNSk7XG59XG4uYW5vdGhlci1maWxlLW92ZXItY2xhc3Mge1xuICBib3JkZXI6IGRhc2hlZCAxcHggZ3JlZW47XG59XG5cbi51aS5zdGVwcyAuc3RlcD4uaWNvbiB7XG4gIGZvbnQtc2l6ZTogMS41ZW0gIWltcG9ydGFudDtcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -3511,7 +3550,7 @@ var UploadComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n.ui.modal>.ui.header.inverted,\nvideo.inverted {\n  background-color: #1B1C1D;\n  color: #FFFFFF;\n}\n"
+module.exports = "\n.ui.modal>.ui.header.inverted,\nvideo.inverted {\n  background-color: #1B1C1D;\n  color: #FFFFFF;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy92aWRlby92aWRlby5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTs7RUFFRSwwQkFBMEI7RUFDMUIsZUFBZTtDQUNoQiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvdmlkZW8vdmlkZW8uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxuLnVpLm1vZGFsPi51aS5oZWFkZXIuaW52ZXJ0ZWQsXG52aWRlby5pbnZlcnRlZCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMxQjFDMUQ7XG4gIGNvbG9yOiAjRkZGRkZGO1xufVxuIl19 */"
 
 /***/ }),
 
@@ -3538,7 +3577,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VideoComponent", function() { return VideoComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_timeseries_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/timeseries.service */ "./src/app/services/timeseries.service.ts");
-/* harmony import */ var _charting_charting_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../charting/charting.component */ "./src/app/components/charting/charting.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3550,7 +3588,6 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
-
 var VideoComponent = /** @class */ (function () {
     function VideoComponent(tss) {
         this.tss = tss;
@@ -3560,17 +3597,19 @@ var VideoComponent = /** @class */ (function () {
         this.hasVideoQuery = false;
     };
     VideoComponent.prototype.getVideo = function (json) {
-        var _this = this;
-        this.query = json;
-        this.query.weighted = true,
-            this.query.response_as = _charting_charting_component__WEBPACK_IMPORTED_MODULE_2__["LFMCResponseType"].MP4;
-        console.log(this.query);
-        this.hasVideoQuery = true;
-        return this.tss.mpgAPI('/fuel.mp4', this.query).subscribe(function (m) {
-            console.log('Got video response');
-            _this.videoSource = m;
-            _this.preloadDimmed = false;
-        });
+        // this.query = json;
+        // this.query.weighted = true,
+        // this.query.response_as = LFMCResponseType.MP4
+        // console.log(this.query);
+        // this.hasVideoQuery = true;
+        //
+        // return this.tss.mpgAPI(
+        //   '/fuel.mp4', this.query).subscribe(m => {
+        //   console.log('Got video response');
+        //   this.videoSource = m;
+        //   this.preloadDimmed = false;
+        // });
+        return '';
     };
     VideoComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -3581,6 +3620,524 @@ var VideoComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_services_timeseries_service__WEBPACK_IMPORTED_MODULE_1__["TimeseriesService"]])
     ], VideoComponent);
     return VideoComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/queryprogress/modelprogress/progressbar/progressbar.component.css":
+/*!***********************************************************************************!*\
+  !*** ./src/app/queryprogress/modelprogress/progressbar/progressbar.component.css ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".ui.progress:last-child,\nsui-progress {\n  margin-bottom: 0;\n}\n\nsui-progress .label {\n  display: none;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcXVlcnlwcm9ncmVzcy9tb2RlbHByb2dyZXNzL3Byb2dyZXNzYmFyL3Byb2dyZXNzYmFyLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7O0VBRUUsaUJBQWlCO0NBQ2xCOztBQUVEO0VBQ0UsY0FBYztDQUNmIiwiZmlsZSI6InNyYy9hcHAvcXVlcnlwcm9ncmVzcy9tb2RlbHByb2dyZXNzL3Byb2dyZXNzYmFyL3Byb2dyZXNzYmFyLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudWkucHJvZ3Jlc3M6bGFzdC1jaGlsZCxcbnN1aS1wcm9ncmVzcyB7XG4gIG1hcmdpbi1ib3R0b206IDA7XG59XG5cbnN1aS1wcm9ncmVzcyAubGFiZWwge1xuICBkaXNwbGF5OiBub25lO1xufVxuIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/queryprogress/modelprogress/progressbar/progressbar.component.html":
+/*!************************************************************************************!*\
+  !*** ./src/app/queryprogress/modelprogress/progressbar/progressbar.component.html ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!--<td class=\"collapsing\">-->\n  <!--<div class=\"ui fitted slider inverted checkbox\">-->\n    <!--<div class=\"ui small form\">-->\n      <!--<div class=\"field\">-->\n        <!--<sui-checkbox class=\"toggle\" (checkChange)=\"onCheckChange($event)\" [isReadonly]=\"false\"-->\n                      <!--[isDisabled]=\"taskDisabled\"></sui-checkbox>-->\n      <!--</div>-->\n    <!--</div>-->\n  <!--</div>-->\n<!--</td>-->\n<td data-label=\"Model Name\" class=\"collapsing\">{{uuid}}</td>\n<td class=\"collapsing\">{{ptime | date:'h:mm:ss' }}</td>\n<td data-label=\"Model Progress\" class=\"middle aligned\">\n  <sui-progress\n    [value]=\"progression\"\n    class=\"indicating active\"\n  ></sui-progress>\n</td>\n<td class=\"collapsing\">{{p.state}}</td>\n<td data-label=\"Model Actions\" class=\"right aligned collapsing\">\n  <div class=\"ui inverted tiny icon buttons\">\n    <button class=\"ui button\" (click)=\"abort(uuid)\" [disabled]=\"actionDisabled\">\n      <i class=\"ui stop icon\"></i>\n    </button>\n    <button class=\"ui purple button\" (click)=\"revoke(uuid)\" [disabled]=\"trashDisabled\">\n      <i class=\"ui trash alternate outline icon\"></i>\n    </button>\n  </div>\n</td>\n"
+
+/***/ }),
+
+/***/ "./src/app/queryprogress/modelprogress/progressbar/progressbar.component.ts":
+/*!**********************************************************************************!*\
+  !*** ./src/app/queryprogress/modelprogress/progressbar/progressbar.component.ts ***!
+  \**********************************************************************************/
+/*! exports provided: ProgressbarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProgressbarComponent", function() { return ProgressbarComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _progression_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../progression.service */ "./src/app/queryprogress/progression.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+var ProgressbarComponent = /** @class */ (function () {
+    function ProgressbarComponent(prog) {
+        this.prog = prog;
+        this.progress = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.complete = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.actionDisabled = false;
+        this.trashDisabled = true;
+        this.p = { 'state': 'PENDING' };
+        this.progression = 0;
+        this.ptime = 0;
+        this.taskActive = true;
+        this.taskDisabled = false;
+    }
+    ProgressbarComponent.prototype.ngOnInit = function () {
+        console.log('Init called on ProgressBarComponent');
+        console.log('UUID is: ' + this.uuid);
+    };
+    ProgressbarComponent.prototype.ngAfterViewInit = function () {
+        console.log('AfterViewInit called on ProgressBarComponent');
+        this.retry();
+    };
+    ProgressbarComponent.prototype.retry = function () {
+        var _this = this;
+        if (this.taskActive) {
+            this.prog.getProgress(this.uuid).subscribe(function (d) {
+                console.log(d);
+                _this.p = d;
+                console.log('P State is: ' + _this.p.state);
+                if (_this.p.state === 'PENDING') {
+                    _this.progression = 10;
+                    _this.ptime = _this.p.timestamp - _this.p.started;
+                }
+                else if (_this.p.state === 'STARTED') {
+                    _this.progression = 50;
+                    _this.ptime = _this.p.timestamp - _this.p.started;
+                }
+                else if (_this.p.state === 'SUCCESS') {
+                    _this.progression = 100;
+                    _this.ptime = _this.p.timestamp - _this.p.started;
+                    _this.actionDisabled = true;
+                    _this.trashDisabled = false;
+                }
+                else if (_this.p.state === 'FAILURE') {
+                    _this.progression = 100;
+                    _this.ptime = _this.p.timestamp - _this.p.started;
+                    _this.actionDisabled = true;
+                    _this.trashDisabled = false;
+                }
+                else if (_this.p.state === 'REVOKED') {
+                    _this.progression = 0;
+                    _this.actionDisabled = true;
+                    _this.trashDisabled = false;
+                }
+                else if (_this.p.state === 'ABORTED') {
+                    _this.progression = 0;
+                    _this.actionDisabled = true;
+                    _this.trashDisabled = false;
+                }
+                _this.progress.emit(_this.progression);
+            }, function (e) {
+                console.log(e);
+            }, function () {
+                if (_this.p.state === 'SUCCESS') {
+                    console.log('Progress for ' + _this.uuid + ' has completed.');
+                    _this.prog.getResult(_this.uuid)
+                        .subscribe(function (n) {
+                        _this.timeseries = n;
+                    }, function (e) {
+                        console.log(e);
+                    }, function () {
+                        console.log(_this.timeseries);
+                        _this.complete.emit(_this.timeseries);
+                    });
+                }
+                else if (_this.p.state === 'PENDING' || _this.p.state === 'STARTED') {
+                    _this.delay(1000).then(function () {
+                        _this.retry(); // TODO - Observable WebSocket instead of polling.
+                    });
+                }
+            });
+        }
+    };
+    ProgressbarComponent.prototype.delay = function (ms) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve) { return setTimeout(resolve, ms); })];
+            });
+        });
+    };
+    ProgressbarComponent.prototype.abort = function (uuid) {
+        this.prog.abort(uuid).subscribe();
+    };
+    ProgressbarComponent.prototype.revoke = function (uuid) {
+        this.prog.revoke(uuid).subscribe();
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], ProgressbarComponent.prototype, "uuid", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], ProgressbarComponent.prototype, "doStart", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], ProgressbarComponent.prototype, "doStop", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
+    ], ProgressbarComponent.prototype, "progress", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
+    ], ProgressbarComponent.prototype, "complete", void 0);
+    ProgressbarComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: '[model-progress]',
+            template: __webpack_require__(/*! ./progressbar.component.html */ "./src/app/queryprogress/modelprogress/progressbar/progressbar.component.html"),
+            styles: [__webpack_require__(/*! ./progressbar.component.css */ "./src/app/queryprogress/modelprogress/progressbar/progressbar.component.css")]
+        }),
+        __metadata("design:paramtypes", [_progression_service__WEBPACK_IMPORTED_MODULE_1__["ProgressionService"]])
+    ], ProgressbarComponent);
+    return ProgressbarComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/queryprogress/progression.service.ts":
+/*!******************************************************!*\
+  !*** ./src/app/queryprogress/progression.service.ts ***!
+  \******************************************************/
+/*! exports provided: ProgressionService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProgressionService", function() { return ProgressionService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var httpOptions = {
+    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+    })
+};
+var ProgressionService = /** @class */ (function () {
+    function ProgressionService(http) {
+        this.http = http;
+        this.pipeline = 'http://pipeline.landscapefuelmoisture.bushfirebehaviour.net.au';
+    }
+    ProgressionService.prototype.getProgress = function (uuid) {
+        return this.http.get(this.pipeline + "/progress?uuid=" + uuid, httpOptions);
+        // return this.http.get(`http://localhost:5555/api/task/info/${uuid}`, httpOptions);
+    };
+    ProgressionService.prototype.getResult = function (uuid) {
+        return this.http.get(this.pipeline + "/result?uuid=" + uuid, httpOptions);
+    };
+    ProgressionService.prototype.abort = function (uuid) {
+        return this.http.post(this.pipeline + "/abort/" + uuid, { 'terminate': 'true' }, httpOptions);
+    };
+    ProgressionService.prototype.revoke = function (uuid) {
+        return this.http.post(this.pipeline + "/revoke/" + uuid, { 'terminate': 'true' }, httpOptions);
+    };
+    ProgressionService.prototype.submit = function (json) {
+        return this.http.post(this.pipeline + "/submit", json, httpOptions);
+    };
+    ProgressionService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], ProgressionService);
+    return ProgressionService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/queryprogress/queryprogress.component.css":
+/*!***********************************************************!*\
+  !*** ./src/app/queryprogress/queryprogress.component.css ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3F1ZXJ5cHJvZ3Jlc3MvcXVlcnlwcm9ncmVzcy5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/queryprogress/queryprogress.component.html":
+/*!************************************************************!*\
+  !*** ./src/app/queryprogress/queryprogress.component.html ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"ui inverted segment\">\n  <sui-dimmer [(isDimmed)]=\"isDimmed\" [isClickable]=\"isClickable\">\n    <h3 class=\"ui inverted header\">Disabled</h3>\n  </sui-dimmer>\n\n  <!--<div class=\"ui top attached grey menu\">-->\n    <!--<div class=\"ui active item\"><i class=\"ui tasks icon\"></i> Tasks</div>-->\n    <!--<div class=\"ui disabled item\"><i class=\"ui chart line icon\"></i> Results</div>-->\n    <!--<div class=\"right menu\">-->\n      <!--<div class=\"ui item\"><i class=\"ui sort amount down icon\"></i> First Completed</div>-->\n      <!--<div class=\"ui item\"><i class=\"ui sort amount up icon\"></i> Time remaining</div>-->\n      <!--<div class=\"ui red item\"><i class=\"ui delete icon\"></i> Cancell All</div>-->\n\n      <!--<div class=\"ui green item\" (click)=\"go()\"><i class=\"ui green play icon\"></i></div>-->\n      <!--<div class=\"ui red item\" (click)=\"stop()\"><i class=\"ui red stop icon\"></i></div>-->\n    <!--</div>-->\n  <!--</div>-->\n  <table class=\"ui selectable grey inverted table\" *ngIf=\"subtasks.length > 0\">\n    <thead>\n    <tr>\n      <th class=\"left aligned\">Task ID</th>\n      <th class=\"single line\">Process Time</th>\n      <th>Progress</th>\n      <th class=\"left aligned\">Status</th>\n      <th class=\"center aligned\">Actions</th>\n    </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let st of subtasks\" [uuid]=\"st.uuid\" model-progress #group (complete)=\"onComplete($event)\"></tr>\n    </tbody>\n  </table>\n</div>\n\n<!--<button class=\"ui button\" (click)=\"isDimmed = !isDimmed\">Toggle Dimmer</button>-->\n<!--<button class=\"ui primary button\" (click)=\"test()\">Send Example Query</button>-->\n"
+
+/***/ }),
+
+/***/ "./src/app/queryprogress/queryprogress.component.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/queryprogress/queryprogress.component.ts ***!
+  \**********************************************************/
+/*! exports provided: QueryprogressComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QueryprogressComponent", function() { return QueryprogressComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _progression_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./progression.service */ "./src/app/queryprogress/progression.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var QueryprogressComponent = /** @class */ (function () {
+    function QueryprogressComponent(prog) {
+        this.prog = prog;
+        this.subtasks = [];
+        this.isDimmed = false;
+        this.multi = [];
+        this.overall_progress = 0;
+        this.newQuery = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.queueStartEvent = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.queueStopEvent = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        this.queueComplete = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+    }
+    QueryprogressComponent_1 = QueryprogressComponent;
+    QueryprogressComponent.prototype.ngOnInit = function () {
+    };
+    QueryprogressComponent.prototype.test = function () {
+        var _this = this;
+        this.multi = [];
+        var example_query = {
+            'geo_json': {
+                'type': 'FeatureCollection',
+                'features': [
+                    {
+                        'type': 'Feature',
+                        'properties': {},
+                        'geometry': {
+                            'type': 'Polygon',
+                            'coordinates': [
+                                [
+                                    [
+                                        148.42529296875,
+                                        -37.42252593456306
+                                    ],
+                                    [
+                                        148.68896484375,
+                                        -37.42252593456306
+                                    ],
+                                    [
+                                        148.68896484375,
+                                        -37.256566086115214
+                                    ],
+                                    [
+                                        148.42529296875,
+                                        -37.256566086115214
+                                    ],
+                                    [
+                                        148.42529296875,
+                                        -37.42252593456306
+                                    ]
+                                ]
+                            ]
+                        }
+                    }
+                ]
+            },
+            'start': '2018-11-20',
+            'finish': '2018-11-22',
+            'hashkey': 'test',
+            'models': 'DFMC,AWRA-L-R,AWRA-L-L,FFDI'
+        };
+        this.prog.submit(example_query).subscribe(function (j) {
+            console.log(j);
+            _this.subtasks = j;
+        }, function (e) { return console.log('Error: ' + e.message); }, function () {
+            _this.subtasks.map(function (a) { return _this.newQuery.emit(a); });
+        });
+        this.newQuery.subscribe(function (u) {
+            console.log(u);
+        }, function (e) {
+        }, function () {
+        });
+    };
+    QueryprogressComponent.prototype.doQuery = function (json_query) {
+        var _this = this;
+        this.multi = [];
+        this.prog.submit(json_query).subscribe(function (j) {
+            console.log(j);
+            _this.subtasks = j;
+        }, function (e) { return console.log('Error: ' + e.message); }, function () {
+            _this.subtasks.map(function (a) { return _this.newQuery.emit(a); });
+        });
+        this.newQuery.subscribe(function (u) {
+            console.log(u);
+        }, function (e) {
+        }, function () {
+        });
+    };
+    QueryprogressComponent.prototype.onComplete = function (res) {
+        this.multi.push(res);
+        // console.log(this.multi);
+        if (this.multi.length === this.subtasks.length) {
+            console.log('ALL Tasks complete!');
+            this.queueComplete.emit(this.multi);
+        }
+    };
+    QueryprogressComponent.prototype.go = function () {
+        this.queueStartEvent.emit();
+    };
+    QueryprogressComponent.prototype.stop = function () {
+        this.queueStopEvent.emit();
+    };
+    QueryprogressComponent.prototype.cancel = function () {
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('group'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], QueryprogressComponent.prototype, "group", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"])(QueryprogressComponent_1),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["QueryList"])
+    ], QueryprogressComponent.prototype, "rows", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
+    ], QueryprogressComponent.prototype, "newQuery", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
+    ], QueryprogressComponent.prototype, "queueStartEvent", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
+    ], QueryprogressComponent.prototype, "queueStopEvent", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"])
+    ], QueryprogressComponent.prototype, "queueComplete", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], QueryprogressComponent.prototype, "query_params", void 0);
+    QueryprogressComponent = QueryprogressComponent_1 = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-queryprogress',
+            template: __webpack_require__(/*! ./queryprogress.component.html */ "./src/app/queryprogress/queryprogress.component.html"),
+            styles: [__webpack_require__(/*! ./queryprogress.component.css */ "./src/app/queryprogress/queryprogress.component.css")]
+        }),
+        __metadata("design:paramtypes", [_progression_service__WEBPACK_IMPORTED_MODULE_1__["ProgressionService"]])
+    ], QueryprogressComponent);
+    return QueryprogressComponent;
+    var QueryprogressComponent_1;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/queryprogress/queryprogress.module.ts":
+/*!*******************************************************!*\
+  !*** ./src/app/queryprogress/queryprogress.module.ts ***!
+  \*******************************************************/
+/*! exports provided: QueryprogressModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QueryprogressModule", function() { return QueryprogressModule; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var ng2_semantic_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ng2-semantic-ui */ "./node_modules/ng2-semantic-ui/dist/public.js");
+/* harmony import */ var _modelprogress_progressbar_progressbar_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modelprogress/progressbar/progressbar.component */ "./src/app/queryprogress/modelprogress/progressbar/progressbar.component.ts");
+/* harmony import */ var _queryprogress_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./queryprogress.component */ "./src/app/queryprogress/queryprogress.component.ts");
+/* harmony import */ var _progression_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./progression.service */ "./src/app/queryprogress/progression.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+
+var QueryprogressModule = /** @class */ (function () {
+    function QueryprogressModule() {
+    }
+    QueryprogressModule = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
+            declarations: [_modelprogress_progressbar_progressbar_component__WEBPACK_IMPORTED_MODULE_3__["ProgressbarComponent"], _queryprogress_component__WEBPACK_IMPORTED_MODULE_4__["QueryprogressComponent"]],
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
+                ng2_semantic_ui__WEBPACK_IMPORTED_MODULE_2__["SuiModule"],
+                ng2_semantic_ui__WEBPACK_IMPORTED_MODULE_2__["SuiCheckboxModule"]
+            ],
+            exports: [_queryprogress_component__WEBPACK_IMPORTED_MODULE_4__["QueryprogressComponent"]],
+            providers: [_progression_service__WEBPACK_IMPORTED_MODULE_5__["ProgressionService"]]
+        })
+    ], QueryprogressModule);
+    return QueryprogressModule;
 }());
 
 
@@ -3867,82 +4424,6 @@ var ErrorReportingService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/services/florist.service.ts":
-/*!*********************************************!*\
-  !*** ./src/app/services/florist.service.ts ***!
-  \*********************************************/
-/*! exports provided: FloristService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FloristService", function() { return FloristService; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var httpOptions = {
-    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
-        'Content-Type': 'application/json',
-        'Accept': '*/*',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-    })
-};
-var FloristService = /** @class */ (function () {
-    function FloristService(http) {
-        this.http = http;
-        /* Couples with the Flower API for task management via Celery.
-         * https://flower.readthedocs.io/en/latest/index.html
-         *
-         * Here we expose just a few selected API calls as an Injectable service.
-         * https://flower.readthedocs.io/en/latest/api.html
-         *
-         */
-        this.flower = 'http://flower.landscapefuelmoisture.bushfirebehaviour.net.au/api';
-        this.lfmcapi = 'http://api.landscapefuelmoisture.bushfirebehaviour.net.au/v1';
-    }
-    FloristService.prototype.postAPI = function (path, json) {
-        this.http.post("" + this.flower + path, json, httpOptions);
-    };
-    // Revoke task
-    FloristService.prototype.revoke = function (uuid) {
-        this.http.post(this.flower + "/task/revoke/" + uuid, '{"terminate": true }', httpOptions);
-    };
-    // Get the cached result of the task
-    FloristService.prototype.result = function (uuid) {
-        return this.http.get(this.flower + "/task/result/" + uuid, httpOptions);
-    };
-    // Abort a running task
-    FloristService.prototype.abort = function (uuid) {
-        return this.http.post(this.flower + "/task/abort/" + uuid, {}, httpOptions);
-    };
-    FloristService.prototype.state = function (uuid) {
-        return this.http.get(this.flower + "/task/info/" + uuid, httpOptions);
-        // return this.http.get(`${this.lfmcapi}/progress.json?uuid=${uuid}`, httpOptions);
-    };
-    FloristService = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
-            providedIn: 'root'
-        }),
-        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
-    ], FloristService);
-    return FloristService;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/services/map.service.ts":
 /*!*****************************************!*\
   !*** ./src/app/services/map.service.ts ***!
@@ -4154,7 +4635,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TimeseriesService", function() { return TimeseriesService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4166,7 +4646,6 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
-
 var httpOptions = {
     headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
         'Content-Type': 'application/json',
@@ -4176,23 +4655,34 @@ var httpOptions = {
     })
 };
 var TimeseriesService = /** @class */ (function () {
-    function TimeseriesService(http, sanitizer) {
+    function TimeseriesService(http) {
         this.http = http;
-        this.sanitizer = sanitizer;
-        this.apiUrl = 'http://api.landscapefuelmoisture.bushfirebehaviour.net.au/v1';
+        this.pipeline = 'http://pipeline.landscapefuelmoisture.bushfirebehaviour.net.au';
     }
-    TimeseriesService.prototype.postAPI = function (path, json_query) {
-        console.log("" + this.apiUrl + path);
-        console.log(json_query);
-        return this.http.post("" + this.apiUrl + path, json_query, httpOptions);
+    // private apiUrl = 'http://api.landscapefuelmoisture.bushfirebehaviour.net.au/v1';
+    TimeseriesService.prototype.submit = function (path, json_query) {
+        return this.http.post("" + this.pipeline + path, json_query, httpOptions);
     };
-    TimeseriesService.prototype.mpgAPI = function (path, json_query) {
-        return this.http.post(this.apiUrl + "/fuel.mp4", json_query);
+    // Revoke task
+    TimeseriesService.prototype.revoke = function (uuid) {
+        this.http.post(this.pipeline + "/revoke", { 'uuid': uuid }, httpOptions);
+    };
+    // Get the cached result of the task
+    TimeseriesService.prototype.result = function (uuid) {
+        return this.http.get(this.pipeline + "/result?uuid=" + uuid, httpOptions);
+    };
+    // Abort a running task
+    TimeseriesService.prototype.abort = function (uuid) {
+        this.http.post(this.pipeline + "/abort", { 'uuid': uuid }, httpOptions);
+    };
+    // Observe the progress of a task
+    TimeseriesService.prototype.progress = function (uuid) {
+        // return this.http.get(`${this.flower}/task/info/${uuid}`, httpOptions);
+        return this.http.get(this.pipeline + "/progress?uuid=" + uuid, httpOptions);
     };
     TimeseriesService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
-        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"],
-            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["DomSanitizer"]])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
     ], TimeseriesService);
     return TimeseriesService;
 }());
@@ -4208,7 +4698,7 @@ var TimeseriesService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NoYXJlZC9kM21hcC9kM21hcC5jb21wb25lbnQuY3NzIn0= */"
 
 /***/ }),
 
@@ -4271,7 +4761,7 @@ var D3mapComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".coordinates, .calculated-area {\n  background: rgba(0, 0, 0, 0.5);\n  color: #fff;\n  /*position: absolute;*/\n  bottom: 10px;\n  left: 10px;\n  padding: 5px 10px;\n  margin: 0;\n  font-size: 11px;\n  line-height: 18px;\n  border-radius: 3px;\n  display: none;\n  /*z-index: 400;*/\n}\n\n.viewDividerhandle {\n  margin-top: 0.25rem;\n  position: absolute;\n  z-index: 220;\n  /*left: calc(0vw - 22px);*/\n  cursor: -webkit-grab;\n  cursor: grab;\n  overflow: visible;\n}\n\n.viewDividerhandle .icon {\n  display: block;\n  /*width: 22px;*/\n  /*height: 22px;*/\n  /*margin-top: 18px;*/\n  /*margin-left: 18px;*/\n  /*margin-right: 4px;*/\n  /*margin-bottom: 4px;*/\n}\n\n.viewDividerhandle .straight_labels {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  display: block;\n  /*-ms-transform: rotate(-45deg);*/\n  /*-webkit-transform: rotate(-45deg);*/\n  position: relative;\n}\n\n.viewDividerhandle .straight_labels .left_label {\n  position: absolute;\n  right: 1px;\n}\n\n.viewDividerhandle .straight_labels .right_label {\n  position: absolute;\n  left: 1px;\n}\n\n.viewport {\n  overflow: hidden;\n  position: absolute;\n  width: auto;\n}\n\n.viewframe {\n  width: 100vw;\n  height: 95vh;\n  position: relative;\n  flex-shrink: 0;\n}\n\n.ui .form .field.json textarea {\n  background: rgba(0, 0, 0, 0.5);\n  color: rgba(255, 255, 255, 0.88);\n}\n\n#backViewport {\n  left: 0;\n  right: 0;\n}\n\n#frontViewport {\n  left: 0;\n  right: 100vw;\n  border-right: 1px outset white;\n}\n\n#backViewport #mymapbox {\n}\n\n#frontViewport #myAltmapbox {\n}\n\n#mymapbox, #myAltmapbox {\n  padding: 0em;\n  margin: 0em;\n  position: relative;\n}\n\n#mymapbox {\n  z-index: 200;\n  width: 100vw;\n  left: 0;\n  right: 0;\n}\n\n#myAltmapbox {\n  z-index: 210;\n  width: 100vw;\n  opacity: 1.0;\n  /*background-blend-mode: screen;*/\n  left: 0;\n  right: 0;\n}\n\n.shrinker {\n  flex-shrink: 1;\n}\n\n.ui.mapbox {\n  position: relative;\n  width: 100vw;\n  height: 95vh;\n}\n\n#mymapbox, #myAltmapbox {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  width: 100%;\n}\n\n#myoverlay {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 250;\n  display: flex;\n  flex-direction: column-reverse;\n}\n\n#overlay-toolbar {\n  flex-shrink: 0;\n  flex-grow: 1;\n}\n\n#myoverlay .ui.mini.inverted.black.label,\n#myoverlay input.inverted {\n  opacity: 0.465;\n}\n\n#temp {\n  position: absolute;\n  bottom: 1em;\n  right: 4em;\n  z-index: 400;\n}\n\n#geocoder-container > div {\n  min-width: 50%;\n  margin-left: 25%;\n}\n\ninput.inverted {\n  background-color: #000;\n  color: #fff;\n}\n\n#timestep {\n  background-color: transparent;\n}\n\n.map-overlay {\n  background-color: #1b1c1d;\n}\n\n.map-overlay input.timestep {\n  -webkit-appearance: none;\n  width: 100%;\n  height: 8px;\n  border-radius: 4px;\n  background: #000;\n  outline: none;\n  opacity: 0.45;\n  transition: opacity .2s;\n  border: 1px inset #333;\n}\n\n.map-overlay input.timestep::-webkit-slider-thumb {\n  -webkit-appearance: none;\n  appearance: none;\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n  border-top-left-radius: 4px;\n  border-top-right-radius: 4px;\n  border-top-style: solid;\n  border-bottom-style: outset;\n  border-color: rgb(80, 187, 255);\n  background: rgb(0, 148, 255);\n  cursor: pointer;\n  opacity: 1;\n}\n\n.map-overlay input.timestep::-moz-range-thumb {\n  width: 25px;\n  height: 25px;\n  border-radius: 50%;\n  background: rgb(255, 120, 43);\n  cursor: pointer;\n  opacity: 1.0;\n  -moz-box-shadow: 0px 4px 10px #000;\n}\n\n.map-overlay .map-overlay-inner {\n  background: linear-gradient(0deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.85));\n  /*opacity: 0.5;*/\n  border-radius: .3em;\n}\n\n.map-overlay h2 {\n  line-height: 24px;\n  display: block;\n  margin: 0 0 5px;\n}\n\n.map-overlay .legend .bar {\n  height: 6px;\n  width: 100%;\n  background: linear-gradient(-90deg, #440154, #482475, #414487, #355f8d, #2a788e, #21908d, #22a884, #42be71, #7ad151, #bddf26, #bddf26);\n  border-radius: 3px;\n  opacity: 1.0;\n  margin-bottom: .5em;\n}\n\n.map-overlay input {\n  background-color: transparent;\n  display: inline-block;\n  width: 100%;\n  position: relative;\n  margin: 0;\n  cursor: ew-resize;\n}\n\n.ui .map-overlay .map-overlay-inner.dark .sidebar {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n\n.ui .map-overlay .map-overlay-inner.dark .ui.segment {\n  border: 0;\n}\n\n.ui .map-overlay-inner.dark h3.ui.header {\n  color: #fff;\n}\n\n.ui .map-overlay .map-overlay-inner.dark .ui.inverted.menu .item,\n.ui .map-overlay .map-overlay-inner.dark .ui.inverted.segment .item {\n  /*background-color: rgb(28, 28, 28);*/\n  /*opacity: 1.0;*/\n}\n\n.inverted.pushable > .pusher {\n  background-color: #1B1C1D;\n}\n\n.panel {\n  margin-top: 0 !important;\n  margin-bottom: 0 !important;\n}\n\n.dark {\n  background-color: #1b1c1d;\n}\n\ntextarea.fillgeoarea {\n  height: 40vh;\n  background: transparent;\n  font-size: 0.745em;\n}\n\n.fillgeoarea {\n\n}\n\n#modelList {\n  margin: 0;\n}\n\n.top.attached.inverted.menu {\n  border-bottom: 1px solid #0f0f0f;\n}\n\n.ui.bottom.tabular.menu {\n  border-top: 1px solid #6d6e71;\n}\n\n.ui.bottom.tabular.menu .active.item {\n  background: #1b1c1d;\n  color: rgba(255, 255, 255, .95);\n  border-color: #555;\n}\n\n.ui.bottom.tabular.menu .item {\n  background: none #1b1c1d;\n  color: rgba(255, 255, 255, 0.95);\n}\n\n.ui.bottom.tabular.menu .item {\n  background: transparent;\n  color: rgba(255,255,255, 0.5);\n}\n\n.ui.bottom.tabular.menu .active.item {\n  box-shadow: none;\n  color: rgba(255,255,255, 1.0);\n}\n\n.tab.active.expanded {\n  background-color: #1B1C1D;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.50);\n}\n\n.stretch.item {\n  flex: 1;\n}\n"
+module.exports = ".coordinates, .calculated-area {\n  background: rgba(0, 0, 0, 0.5);\n  color: #fff;\n  /*position: absolute;*/\n  bottom: 10px;\n  left: 10px;\n  padding: 5px 10px;\n  margin: 0;\n  font-size: 11px;\n  line-height: 18px;\n  border-radius: 3px;\n  display: none;\n  /*z-index: 400;*/\n}\n\n.viewDividerhandle {\n  margin-top: 0.25rem;\n  position: absolute;\n  z-index: 220;\n  /*left: calc(0vw - 22px);*/\n  cursor: -webkit-grab;\n  cursor: grab;\n  overflow: visible;\n}\n\n.viewDividerhandle .icon {\n  display: block;\n  /*width: 22px;*/\n  /*height: 22px;*/\n  /*margin-top: 18px;*/\n  /*margin-left: 18px;*/\n  /*margin-right: 4px;*/\n  /*margin-bottom: 4px;*/\n}\n\n.viewDividerhandle .straight_labels {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  display: block;\n  /*-ms-transform: rotate(-45deg);*/\n  /*-webkit-transform: rotate(-45deg);*/\n  position: relative;\n}\n\n.viewDividerhandle .straight_labels .left_label {\n  position: absolute;\n  right: 1px;\n}\n\n.viewDividerhandle .straight_labels .right_label {\n  position: absolute;\n  left: 1px;\n}\n\n.viewport {\n  overflow: hidden;\n  position: absolute;\n  width: auto;\n}\n\n.viewframe {\n  width: 100vw;\n  height: 95vh;\n  position: relative;\n  flex-shrink: 0;\n}\n\n.ui .form .field.json textarea {\n  background: rgba(0, 0, 0, 0.5);\n  color: rgba(255, 255, 255, 0.88);\n}\n\n#backViewport {\n  left: 0;\n  right: 0;\n}\n\n#frontViewport {\n  left: 0;\n  right: 100vw;\n  border-right: 1px outset white;\n}\n\n#backViewport #mymapbox {\n}\n\n#frontViewport #myAltmapbox {\n}\n\n#mymapbox, #myAltmapbox {\n  padding: 0em;\n  margin: 0em;\n  position: relative;\n}\n\n#mymapbox {\n  z-index: 200;\n  width: 100vw;\n  left: 0;\n  right: 0;\n}\n\n#myAltmapbox {\n  z-index: 210;\n  width: 100vw;\n  opacity: 1.0;\n  /*background-blend-mode: screen;*/\n  left: 0;\n  right: 0;\n}\n\n.shrinker {\n  flex-shrink: 1;\n}\n\n.ui.mapbox {\n  position: relative;\n  width: 100vw;\n  height: 95vh;\n}\n\n#mymapbox, #myAltmapbox {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  width: 100%;\n}\n\n#myoverlay {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 250;\n  display: flex;\n  flex-direction: column-reverse;\n}\n\n#overlay-toolbar {\n  flex-shrink: 0;\n  flex-grow: 1;\n}\n\n#myoverlay .ui.mini.inverted.black.label,\n#myoverlay input.inverted {\n  opacity: 0.465;\n}\n\n#temp {\n  position: absolute;\n  bottom: 1em;\n  right: 4em;\n  z-index: 400;\n}\n\n#geocoder-container > div {\n  min-width: 50%;\n  margin-left: 25%;\n}\n\ninput.inverted {\n  background-color: #000;\n  color: #fff;\n}\n\n#timestep {\n  background-color: transparent;\n}\n\n.map-overlay {\n  background-color: #1b1c1d;\n}\n\n.map-overlay input.timestep {\n  -webkit-appearance: none;\n  width: 100%;\n  height: 8px;\n  border-radius: 4px;\n  background: #000;\n  outline: none;\n  opacity: 0.45;\n  transition: opacity .2s;\n  border: 1px inset #333;\n}\n\n.map-overlay input.timestep::-webkit-slider-thumb {\n  -webkit-appearance: none;\n  appearance: none;\n  width: 20px;\n  height: 20px;\n  border-radius: 50%;\n  border-top-left-radius: 4px;\n  border-top-right-radius: 4px;\n  border-top-style: solid;\n  border-bottom-style: outset;\n  border-color: rgb(80, 187, 255);\n  background: rgb(0, 148, 255);\n  cursor: pointer;\n  opacity: 1;\n}\n\n.map-overlay input.timestep::-moz-range-thumb {\n  width: 25px;\n  height: 25px;\n  border-radius: 50%;\n  background: rgb(255, 120, 43);\n  cursor: pointer;\n  opacity: 1.0;\n  -moz-box-shadow: 0px 4px 10px #000;\n}\n\n.map-overlay .map-overlay-inner {\n  background: linear-gradient(0deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.85));\n  /*opacity: 0.5;*/\n  border-radius: .3em;\n}\n\n.map-overlay h2 {\n  line-height: 24px;\n  display: block;\n  margin: 0 0 5px;\n}\n\n.map-overlay .legend .bar {\n  height: 6px;\n  width: 100%;\n  background: linear-gradient(-90deg, #440154, #482475, #414487, #355f8d, #2a788e, #21908d, #22a884, #42be71, #7ad151, #bddf26, #bddf26);\n  border-radius: 3px;\n  opacity: 1.0;\n  margin-bottom: .5em;\n}\n\n.map-overlay input {\n  background-color: transparent;\n  display: inline-block;\n  width: 100%;\n  position: relative;\n  margin: 0;\n  cursor: ew-resize;\n}\n\n.ui .map-overlay .map-overlay-inner.dark .sidebar {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n\n.ui .map-overlay .map-overlay-inner.dark .ui.segment {\n  border: 0;\n}\n\n.ui .map-overlay-inner.dark h3.ui.header {\n  color: #fff;\n}\n\n.ui .map-overlay .map-overlay-inner.dark .ui.inverted.menu .item,\n.ui .map-overlay .map-overlay-inner.dark .ui.inverted.segment .item {\n  /*background-color: rgb(28, 28, 28);*/\n  /*opacity: 1.0;*/\n}\n\n.inverted.pushable > .pusher {\n  background-color: #1B1C1D;\n}\n\n.panel {\n  margin-top: 0 !important;\n  margin-bottom: 0 !important;\n}\n\n.dark {\n  background-color: #1b1c1d;\n}\n\ntextarea.fillgeoarea {\n  height: 40vh;\n  background: transparent;\n  font-size: 0.745em;\n}\n\n.fillgeoarea {\n\n}\n\n#modelList {\n  margin: 0;\n}\n\n.top.attached.inverted.menu {\n  border-bottom: 1px solid #0f0f0f;\n}\n\n.ui.bottom.tabular.menu {\n  border-top: 1px solid #6d6e71;\n}\n\n.ui.bottom.tabular.menu .active.item {\n  background: #1b1c1d;\n  color: rgba(255, 255, 255, .95);\n  border-color: #555;\n}\n\n.ui.bottom.tabular.menu .item {\n  background: none #1b1c1d;\n  color: rgba(255, 255, 255, 0.95);\n}\n\n.ui.bottom.tabular.menu .item {\n  background: transparent;\n  color: rgba(255,255,255, 0.5);\n}\n\n.ui.bottom.tabular.menu .active.item {\n  box-shadow: none;\n  color: rgba(255,255,255, 1.0);\n}\n\n.tab.active.expanded {\n  background-color: #1B1C1D;\n  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.50);\n}\n\n.stretch.item {\n  flex: 1;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmVkL21hcGJveC9tYXBib3guY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLCtCQUErQjtFQUMvQixZQUFZO0VBQ1osdUJBQXVCO0VBQ3ZCLGFBQWE7RUFDYixXQUFXO0VBQ1gsa0JBQWtCO0VBQ2xCLFVBQVU7RUFDVixnQkFBZ0I7RUFDaEIsa0JBQWtCO0VBQ2xCLG1CQUFtQjtFQUNuQixjQUFjO0VBQ2QsaUJBQWlCO0NBQ2xCOztBQUVEO0VBQ0Usb0JBQW9CO0VBQ3BCLG1CQUFtQjtFQUNuQixhQUFhO0VBQ2IsMkJBQTJCO0VBQzNCLHFCQUFhO0VBQWIsYUFBYTtFQUNiLGtCQUFrQjtDQUNuQjs7QUFFRDtFQUNFLGVBQWU7RUFDZixnQkFBZ0I7RUFDaEIsaUJBQWlCO0VBQ2pCLHFCQUFxQjtFQUNyQixzQkFBc0I7RUFDdEIsc0JBQXNCO0VBQ3RCLHVCQUF1QjtDQUN4Qjs7QUFFRDtFQUNFLDJCQUFtQjtFQUFuQix3QkFBbUI7RUFBbkIsbUJBQW1CO0VBQ25CLGVBQWU7RUFDZixrQ0FBa0M7RUFDbEMsc0NBQXNDO0VBQ3RDLG1CQUFtQjtDQUNwQjs7QUFFRDtFQUNFLG1CQUFtQjtFQUNuQixXQUFXO0NBQ1o7O0FBRUQ7RUFDRSxtQkFBbUI7RUFDbkIsVUFBVTtDQUNYOztBQUVEO0VBQ0UsaUJBQWlCO0VBQ2pCLG1CQUFtQjtFQUNuQixZQUFZO0NBQ2I7O0FBRUQ7RUFDRSxhQUFhO0VBQ2IsYUFBYTtFQUNiLG1CQUFtQjtFQUNuQixlQUFlO0NBQ2hCOztBQUVEO0VBQ0UsK0JBQStCO0VBQy9CLGlDQUFpQztDQUNsQzs7QUFFRDtFQUNFLFFBQVE7RUFDUixTQUFTO0NBQ1Y7O0FBRUQ7RUFDRSxRQUFRO0VBQ1IsYUFBYTtFQUNiLCtCQUErQjtDQUNoQzs7QUFFRDtDQUNDOztBQUVEO0NBQ0M7O0FBRUQ7RUFDRSxhQUFhO0VBQ2IsWUFBWTtFQUNaLG1CQUFtQjtDQUNwQjs7QUFFRDtFQUNFLGFBQWE7RUFDYixhQUFhO0VBQ2IsUUFBUTtFQUNSLFNBQVM7Q0FDVjs7QUFFRDtFQUNFLGFBQWE7RUFDYixhQUFhO0VBQ2IsYUFBYTtFQUNiLGtDQUFrQztFQUNsQyxRQUFRO0VBQ1IsU0FBUztDQUNWOztBQUlEO0VBQ0UsZUFBZTtDQUNoQjs7QUFJRDtFQUNFLG1CQUFtQjtFQUNuQixhQUFhO0VBQ2IsYUFBYTtDQUNkOztBQUVEO0VBQ0UsbUJBQW1CO0VBQ25CLE9BQU87RUFDUCxVQUFVO0VBQ1YsWUFBWTtDQUNiOztBQUVEO0VBQ0UsbUJBQW1CO0VBQ25CLFVBQVU7RUFDVixRQUFRO0VBQ1IsU0FBUztFQUNULGFBQWE7RUFDYixjQUFjO0VBQ2QsK0JBQStCO0NBQ2hDOztBQUVEO0VBQ0UsZUFBZTtFQUNmLGFBQWE7Q0FDZDs7QUFFRDs7RUFFRSxlQUFlO0NBQ2hCOztBQUVEO0VBQ0UsbUJBQW1CO0VBQ25CLFlBQVk7RUFDWixXQUFXO0VBQ1gsYUFBYTtDQUNkOztBQUVEO0VBQ0UsZUFBZTtFQUNmLGlCQUFpQjtDQUNsQjs7QUFFRDtFQUNFLHVCQUF1QjtFQUN2QixZQUFZO0NBQ2I7O0FBRUQ7RUFDRSw4QkFBOEI7Q0FDL0I7O0FBRUQ7RUFDRSwwQkFBMEI7Q0FDM0I7O0FBRUQ7RUFDRSx5QkFBeUI7RUFDekIsWUFBWTtFQUNaLFlBQVk7RUFDWixtQkFBbUI7RUFDbkIsaUJBQWlCO0VBQ2pCLGNBQWM7RUFDZCxjQUFjO0VBRWQsd0JBQXdCO0VBQ3hCLHVCQUF1QjtDQUN4Qjs7QUFFRDtFQUNFLHlCQUF5QjtFQUN6QixpQkFBaUI7RUFDakIsWUFBWTtFQUNaLGFBQWE7RUFDYixtQkFBbUI7RUFDbkIsNEJBQTRCO0VBQzVCLDZCQUE2QjtFQUM3Qix3QkFBd0I7RUFDeEIsNEJBQTRCO0VBQzVCLGdDQUFnQztFQUNoQyw2QkFBNkI7RUFDN0IsZ0JBQWdCO0VBQ2hCLFdBQVc7Q0FDWjs7QUFFRDtFQUNFLFlBQVk7RUFDWixhQUFhO0VBQ2IsbUJBQW1CO0VBQ25CLDhCQUE4QjtFQUM5QixnQkFBZ0I7RUFDaEIsYUFBYTtFQUNiLG1DQUFtQztDQUNwQzs7QUFFRDtFQUlFLDRFQUE0RTtFQUM1RSxpQkFBaUI7RUFDakIsb0JBQW9CO0NBQ3JCOztBQUVEO0VBQ0Usa0JBQWtCO0VBQ2xCLGVBQWU7RUFDZixnQkFBZ0I7Q0FDakI7O0FBRUQ7RUFDRSxZQUFZO0VBQ1osWUFBWTtFQUNaLHVJQUF1STtFQUN2SSxtQkFBbUI7RUFDbkIsYUFBYTtFQUNiLG9CQUFvQjtDQUNyQjs7QUFFRDtFQUNFLDhCQUE4QjtFQUM5QixzQkFBc0I7RUFDdEIsWUFBWTtFQUNaLG1CQUFtQjtFQUNuQixVQUFVO0VBQ1Ysa0JBQWtCO0NBQ25COztBQUVEO0VBQ0UsbUJBQW1CO0VBQ25CLGlCQUFpQjtDQUNsQjs7QUFFRDtFQUNFLFVBQVU7Q0FDWDs7QUFFRDtFQUNFLFlBQVk7Q0FDYjs7QUFFRDs7RUFFRSxzQ0FBc0M7RUFDdEMsaUJBQWlCO0NBQ2xCOztBQUVEO0VBQ0UsMEJBQTBCO0NBQzNCOztBQUVEO0VBQ0UseUJBQXlCO0VBQ3pCLDRCQUE0QjtDQUM3Qjs7QUFFRDtFQUNFLDBCQUEwQjtDQUMzQjs7QUFFRDtFQUNFLGFBQWE7RUFDYix3QkFBd0I7RUFDeEIsbUJBQW1CO0NBQ3BCOztBQUNEOztDQUVDOztBQUVEO0VBQ0UsVUFBVTtDQUNYOztBQUVEO0VBQ0UsaUNBQWlDO0NBQ2xDOztBQUVEO0VBQ0UsOEJBQThCO0NBQy9COztBQUVEO0VBQ0Usb0JBQW9CO0VBQ3BCLGdDQUFnQztFQUNoQyxtQkFBbUI7Q0FDcEI7O0FBRUQ7RUFDRSx5QkFBeUI7RUFDekIsaUNBQWlDO0NBQ2xDOztBQUNEO0VBQ0Usd0JBQXdCO0VBQ3hCLDhCQUE4QjtDQUMvQjs7QUFDRDtFQUNFLGlCQUFpQjtFQUNqQiw4QkFBOEI7Q0FDL0I7O0FBQ0Q7RUFDRSwwQkFBMEI7RUFDMUIsMkNBQTJDO0NBQzVDOztBQUVEO0VBQ0UsUUFBUTtDQUNUIiwiZmlsZSI6InNyYy9hcHAvc2hhcmVkL21hcGJveC9tYXBib3guY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb29yZGluYXRlcywgLmNhbGN1bGF0ZWQtYXJlYSB7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcbiAgY29sb3I6ICNmZmY7XG4gIC8qcG9zaXRpb246IGFic29sdXRlOyovXG4gIGJvdHRvbTogMTBweDtcbiAgbGVmdDogMTBweDtcbiAgcGFkZGluZzogNXB4IDEwcHg7XG4gIG1hcmdpbjogMDtcbiAgZm9udC1zaXplOiAxMXB4O1xuICBsaW5lLWhlaWdodDogMThweDtcbiAgYm9yZGVyLXJhZGl1czogM3B4O1xuICBkaXNwbGF5OiBub25lO1xuICAvKnotaW5kZXg6IDQwMDsqL1xufVxuXG4udmlld0RpdmlkZXJoYW5kbGUge1xuICBtYXJnaW4tdG9wOiAwLjI1cmVtO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHotaW5kZXg6IDIyMDtcbiAgLypsZWZ0OiBjYWxjKDB2dyAtIDIycHgpOyovXG4gIGN1cnNvcjogZ3JhYjtcbiAgb3ZlcmZsb3c6IHZpc2libGU7XG59XG5cbi52aWV3RGl2aWRlcmhhbmRsZSAuaWNvbiB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICAvKndpZHRoOiAyMnB4OyovXG4gIC8qaGVpZ2h0OiAyMnB4OyovXG4gIC8qbWFyZ2luLXRvcDogMThweDsqL1xuICAvKm1hcmdpbi1sZWZ0OiAxOHB4OyovXG4gIC8qbWFyZ2luLXJpZ2h0OiA0cHg7Ki9cbiAgLyptYXJnaW4tYm90dG9tOiA0cHg7Ki9cbn1cblxuLnZpZXdEaXZpZGVyaGFuZGxlIC5zdHJhaWdodF9sYWJlbHMge1xuICB3aWR0aDogZml0LWNvbnRlbnQ7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICAvKi1tcy10cmFuc2Zvcm06IHJvdGF0ZSgtNDVkZWcpOyovXG4gIC8qLXdlYmtpdC10cmFuc2Zvcm06IHJvdGF0ZSgtNDVkZWcpOyovXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbn1cblxuLnZpZXdEaXZpZGVyaGFuZGxlIC5zdHJhaWdodF9sYWJlbHMgLmxlZnRfbGFiZWwge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHJpZ2h0OiAxcHg7XG59XG5cbi52aWV3RGl2aWRlcmhhbmRsZSAuc3RyYWlnaHRfbGFiZWxzIC5yaWdodF9sYWJlbCB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgbGVmdDogMXB4O1xufVxuXG4udmlld3BvcnQge1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHdpZHRoOiBhdXRvO1xufVxuXG4udmlld2ZyYW1lIHtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDk1dmg7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgZmxleC1zaHJpbms6IDA7XG59XG5cbi51aSAuZm9ybSAuZmllbGQuanNvbiB0ZXh0YXJlYSB7XG4gIGJhY2tncm91bmQ6IHJnYmEoMCwgMCwgMCwgMC41KTtcbiAgY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC44OCk7XG59XG5cbiNiYWNrVmlld3BvcnQge1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbn1cblxuI2Zyb250Vmlld3BvcnQge1xuICBsZWZ0OiAwO1xuICByaWdodDogMTAwdnc7XG4gIGJvcmRlci1yaWdodDogMXB4IG91dHNldCB3aGl0ZTtcbn1cblxuI2JhY2tWaWV3cG9ydCAjbXltYXBib3gge1xufVxuXG4jZnJvbnRWaWV3cG9ydCAjbXlBbHRtYXBib3gge1xufVxuXG4jbXltYXBib3gsICNteUFsdG1hcGJveCB7XG4gIHBhZGRpbmc6IDBlbTtcbiAgbWFyZ2luOiAwZW07XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbn1cblxuI215bWFwYm94IHtcbiAgei1pbmRleDogMjAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGxlZnQ6IDA7XG4gIHJpZ2h0OiAwO1xufVxuXG4jbXlBbHRtYXBib3gge1xuICB6LWluZGV4OiAyMTA7XG4gIHdpZHRoOiAxMDB2dztcbiAgb3BhY2l0eTogMS4wO1xuICAvKmJhY2tncm91bmQtYmxlbmQtbW9kZTogc2NyZWVuOyovXG4gIGxlZnQ6IDA7XG4gIHJpZ2h0OiAwO1xufVxuXG5cblxuLnNocmlua2VyIHtcbiAgZmxleC1zaHJpbms6IDE7XG59XG5cblxuXG4udWkubWFwYm94IHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogOTV2aDtcbn1cblxuI215bWFwYm94LCAjbXlBbHRtYXBib3gge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogMDtcbiAgYm90dG9tOiAwO1xuICB3aWR0aDogMTAwJTtcbn1cblxuI215b3ZlcmxheSB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgYm90dG9tOiAwO1xuICBsZWZ0OiAwO1xuICByaWdodDogMDtcbiAgei1pbmRleDogMjUwO1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uLXJldmVyc2U7XG59XG5cbiNvdmVybGF5LXRvb2xiYXIge1xuICBmbGV4LXNocmluazogMDtcbiAgZmxleC1ncm93OiAxO1xufVxuXG4jbXlvdmVybGF5IC51aS5taW5pLmludmVydGVkLmJsYWNrLmxhYmVsLFxuI215b3ZlcmxheSBpbnB1dC5pbnZlcnRlZCB7XG4gIG9wYWNpdHk6IDAuNDY1O1xufVxuXG4jdGVtcCB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgYm90dG9tOiAxZW07XG4gIHJpZ2h0OiA0ZW07XG4gIHotaW5kZXg6IDQwMDtcbn1cblxuI2dlb2NvZGVyLWNvbnRhaW5lciA+IGRpdiB7XG4gIG1pbi13aWR0aDogNTAlO1xuICBtYXJnaW4tbGVmdDogMjUlO1xufVxuXG5pbnB1dC5pbnZlcnRlZCB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMwMDA7XG4gIGNvbG9yOiAjZmZmO1xufVxuXG4jdGltZXN0ZXAge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB0cmFuc3BhcmVudDtcbn1cblxuLm1hcC1vdmVybGF5IHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzFiMWMxZDtcbn1cblxuLm1hcC1vdmVybGF5IGlucHV0LnRpbWVzdGVwIHtcbiAgLXdlYmtpdC1hcHBlYXJhbmNlOiBub25lO1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiA4cHg7XG4gIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgYmFja2dyb3VuZDogIzAwMDtcbiAgb3V0bGluZTogbm9uZTtcbiAgb3BhY2l0eTogMC40NTtcbiAgLXdlYmtpdC10cmFuc2l0aW9uOiAuMnM7XG4gIHRyYW5zaXRpb246IG9wYWNpdHkgLjJzO1xuICBib3JkZXI6IDFweCBpbnNldCAjMzMzO1xufVxuXG4ubWFwLW92ZXJsYXkgaW5wdXQudGltZXN0ZXA6Oi13ZWJraXQtc2xpZGVyLXRodW1iIHtcbiAgLXdlYmtpdC1hcHBlYXJhbmNlOiBub25lO1xuICBhcHBlYXJhbmNlOiBub25lO1xuICB3aWR0aDogMjBweDtcbiAgaGVpZ2h0OiAyMHB4O1xuICBib3JkZXItcmFkaXVzOiA1MCU7XG4gIGJvcmRlci10b3AtbGVmdC1yYWRpdXM6IDRweDtcbiAgYm9yZGVyLXRvcC1yaWdodC1yYWRpdXM6IDRweDtcbiAgYm9yZGVyLXRvcC1zdHlsZTogc29saWQ7XG4gIGJvcmRlci1ib3R0b20tc3R5bGU6IG91dHNldDtcbiAgYm9yZGVyLWNvbG9yOiByZ2IoODAsIDE4NywgMjU1KTtcbiAgYmFja2dyb3VuZDogcmdiKDAsIDE0OCwgMjU1KTtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICBvcGFjaXR5OiAxO1xufVxuXG4ubWFwLW92ZXJsYXkgaW5wdXQudGltZXN0ZXA6Oi1tb3otcmFuZ2UtdGh1bWIge1xuICB3aWR0aDogMjVweDtcbiAgaGVpZ2h0OiAyNXB4O1xuICBib3JkZXItcmFkaXVzOiA1MCU7XG4gIGJhY2tncm91bmQ6IHJnYigyNTUsIDEyMCwgNDMpO1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIG9wYWNpdHk6IDEuMDtcbiAgLW1vei1ib3gtc2hhZG93OiAwcHggNHB4IDEwcHggIzAwMDtcbn1cblxuLm1hcC1vdmVybGF5IC5tYXAtb3ZlcmxheS1pbm5lciB7XG5cbiAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQoMGRlZywgcmdiYSgwLCAwLCAwLCAwLjQ1KSwgcmdiYSgwLCAwLCAwLCAwLjg1KSk7XG4gIGJhY2tncm91bmQ6IC1vLWxpbmVhci1ncmFkaWVudCgwZGVnLCByZ2JhKDAsIDAsIDAsIDAuNDUpLCByZ2JhKDAsIDAsIDAsIDAuODUpKTtcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KDBkZWcsIHJnYmEoMCwgMCwgMCwgMC40NSksIHJnYmEoMCwgMCwgMCwgMC44NSkpO1xuICAvKm9wYWNpdHk6IDAuNTsqL1xuICBib3JkZXItcmFkaXVzOiAuM2VtO1xufVxuXG4ubWFwLW92ZXJsYXkgaDIge1xuICBsaW5lLWhlaWdodDogMjRweDtcbiAgZGlzcGxheTogYmxvY2s7XG4gIG1hcmdpbjogMCAwIDVweDtcbn1cblxuLm1hcC1vdmVybGF5IC5sZWdlbmQgLmJhciB7XG4gIGhlaWdodDogNnB4O1xuICB3aWR0aDogMTAwJTtcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KC05MGRlZywgIzQ0MDE1NCwgIzQ4MjQ3NSwgIzQxNDQ4NywgIzM1NWY4ZCwgIzJhNzg4ZSwgIzIxOTA4ZCwgIzIyYTg4NCwgIzQyYmU3MSwgIzdhZDE1MSwgI2JkZGYyNiwgI2JkZGYyNik7XG4gIGJvcmRlci1yYWRpdXM6IDNweDtcbiAgb3BhY2l0eTogMS4wO1xuICBtYXJnaW4tYm90dG9tOiAuNWVtO1xufVxuXG4ubWFwLW92ZXJsYXkgaW5wdXQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB0cmFuc3BhcmVudDtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICB3aWR0aDogMTAwJTtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBtYXJnaW46IDA7XG4gIGN1cnNvcjogZXctcmVzaXplO1xufVxuXG4udWkgLm1hcC1vdmVybGF5IC5tYXAtb3ZlcmxheS1pbm5lci5kYXJrIC5zaWRlYmFyIHtcbiAgb3ZlcmZsb3cteDogaGlkZGVuO1xuICBvdmVyZmxvdy15OiBhdXRvO1xufVxuXG4udWkgLm1hcC1vdmVybGF5IC5tYXAtb3ZlcmxheS1pbm5lci5kYXJrIC51aS5zZWdtZW50IHtcbiAgYm9yZGVyOiAwO1xufVxuXG4udWkgLm1hcC1vdmVybGF5LWlubmVyLmRhcmsgaDMudWkuaGVhZGVyIHtcbiAgY29sb3I6ICNmZmY7XG59XG5cbi51aSAubWFwLW92ZXJsYXkgLm1hcC1vdmVybGF5LWlubmVyLmRhcmsgLnVpLmludmVydGVkLm1lbnUgLml0ZW0sXG4udWkgLm1hcC1vdmVybGF5IC5tYXAtb3ZlcmxheS1pbm5lci5kYXJrIC51aS5pbnZlcnRlZC5zZWdtZW50IC5pdGVtIHtcbiAgLypiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMjgsIDI4LCAyOCk7Ki9cbiAgLypvcGFjaXR5OiAxLjA7Ki9cbn1cblxuLmludmVydGVkLnB1c2hhYmxlID4gLnB1c2hlciB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMxQjFDMUQ7XG59XG5cbi5wYW5lbCB7XG4gIG1hcmdpbi10b3A6IDAgIWltcG9ydGFudDtcbiAgbWFyZ2luLWJvdHRvbTogMCAhaW1wb3J0YW50O1xufVxuXG4uZGFyayB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMxYjFjMWQ7XG59XG5cbnRleHRhcmVhLmZpbGxnZW9hcmVhIHtcbiAgaGVpZ2h0OiA0MHZoO1xuICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcbiAgZm9udC1zaXplOiAwLjc0NWVtO1xufVxuLmZpbGxnZW9hcmVhIHtcblxufVxuXG4jbW9kZWxMaXN0IHtcbiAgbWFyZ2luOiAwO1xufVxuXG4udG9wLmF0dGFjaGVkLmludmVydGVkLm1lbnUge1xuICBib3JkZXItYm90dG9tOiAxcHggc29saWQgIzBmMGYwZjtcbn1cblxuLnVpLmJvdHRvbS50YWJ1bGFyLm1lbnUge1xuICBib3JkZXItdG9wOiAxcHggc29saWQgIzZkNmU3MTtcbn1cblxuLnVpLmJvdHRvbS50YWJ1bGFyLm1lbnUgLmFjdGl2ZS5pdGVtIHtcbiAgYmFja2dyb3VuZDogIzFiMWMxZDtcbiAgY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgLjk1KTtcbiAgYm9yZGVyLWNvbG9yOiAjNTU1O1xufVxuXG4udWkuYm90dG9tLnRhYnVsYXIubWVudSAuaXRlbSB7XG4gIGJhY2tncm91bmQ6IG5vbmUgIzFiMWMxZDtcbiAgY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC45NSk7XG59XG4udWkuYm90dG9tLnRhYnVsYXIubWVudSAuaXRlbSB7XG4gIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xuICBjb2xvcjogcmdiYSgyNTUsMjU1LDI1NSwgMC41KTtcbn1cbi51aS5ib3R0b20udGFidWxhci5tZW51IC5hY3RpdmUuaXRlbSB7XG4gIGJveC1zaGFkb3c6IG5vbmU7XG4gIGNvbG9yOiByZ2JhKDI1NSwyNTUsMjU1LCAxLjApO1xufVxuLnRhYi5hY3RpdmUuZXhwYW5kZWQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMUIxQzFEO1xuICBib3gtc2hhZG93OiAwIDNweCAxMHB4IHJnYmEoMCwgMCwgMCwgMC41MCk7XG59XG5cbi5zdHJldGNoLml0ZW0ge1xuICBmbGV4OiAxO1xufVxuIl19 */"
 
 /***/ }),
 
@@ -4282,7 +4772,7 @@ module.exports = ".coordinates, .calculated-area {\n  background: rgba(0, 0, 0, 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"shrinker\">\n  <div class=\"ui mapbox\" (mouseup)=\"upSplitView($event)\" (mousedown)=\"downSplitView($event)\" (click)=\"onUp($event)\"\n       (drag)=\"dragSplitView($event)\" (mousemove)=\"dragSplitView($event)\">\n    <div class=\"viewport\" id=\"backViewport\">\n      <div class=\"viewframe\">\n        <div id=\"mymapbox\" class=\"ui mapbox mapboxgl-map\"></div>\n      </div>\n    </div>\n    <div class=\"viewport\" id=\"frontViewport\">\n      <div class=\"viewframe\">\n        <div id=\"myAltmapbox\" class=\"ui mapbox mapboxgl-map\"></div>\n      </div>\n    </div>\n    <div id=\"splitViewHandle\" class=\"viewDividerhandle\" (mouseenter)=\"enterSplitViewHandle($event)\"\n         (click)=\"clickSplitView($event)\" (mouseleave)=\"leaveSplitViewHandle($event)\">\n      <div class=\"ui straight_labels\">\n        <div *ngIf=\"splitview\" class=\"left_label\">\n          <div class=\"ui blue left pointing label\">{{ (modelA | uppercase) || 'NONE' }}</div>\n        </div>\n        <div *ngIf=\"splitview\" class=\"right_label\">\n          <div class=\"ui blue right pointing label\">{{ (modelB | uppercase) || 'NONE' }}</div>\n        </div>\n\n        <div *ngIf=\"!splitview\" class=\"right_label\">\n          <div class=\"ui blue right pointing label\">SPLIT</div>\n        </div>\n      </div>\n\n    </div>\n  </div>\n  <div class=\"overlay-toolbar\">\n    <div id=\"myoverlay\" class='map-overlay'>\n      <sui-tabset #bottomToolSet>\n        <div class=\"attached inverted segment\" suiTabContent=\"0\" [suiCollapse]=\"!modelise\">\n          <!-- Start: MODEL Panel -->\n          <div class=\"ui panel\">\n            <div class=\"ui top attached fluid tiny inverted menu\">\n              <a class=\"item\" (click)=\"modelise = !modelise\"><i class=\"red close icon\"></i></a>\n              <a class=\"item\" (click)=\"toggleSplitView()\" data-content=\"Split View Panel\">\n                <div *ngIf=\"!splitview\"><i class=\"white square outline icon\"></i> Split is Off</div>\n                <div *ngIf=\"splitview\"><i class=\"white columns icon\"></i> Split is On</div>\n              </a>\n            </div>\n            <!--<sui-dimmer [(isDimmed)]=\"model_dimmer\" [isClickable]=\"false\">-->\n              <!--<div class=\"ui indeterminate text loader\">Loading models. Please wait.</div>-->\n            <!--</sui-dimmer>-->\n            <!-- Start: Model List/Selection Table -->\n            <table class=\"ui selectable inverted table\" id=\"modelList\">\n              <thead>\n              <tr>\n                <th *ngIf=\"!splitview\" class=\"right aligned\" [width]=\"'10%'\">Select</th>\n                <th *ngIf=\"splitview\" class=\"right aligned\" [width]=\"'10%'\">Assign</th>\n                <th [width]=\"'auto'\">Model</th>\n              </tr>\n              </thead>\n              <tbody>\n              <tr *ngFor=\"let m of models\">\n\n\n                <td *ngIf=\"!splitview\" class=\"right aligned\">\n                  <div class=\"ui mini compact icon buttons\">\n                    <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_right\"\n                            (click)=\"toggleModel(m.code, 'R')\"><i class=\"toggle off icon\"></i></button>\n                    <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_right\"\n                            (click)=\"toggleModel(m.code, 'O')\"><i class=\"yellow toggle on icon\"></i></button>\n                  </div>\n                </td>\n\n                <td *ngIf=\"splitview\" class=\"right aligned\">\n                  <div class=\"ui mini compact icon buttons\">\n                    <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_left\"\n                            (click)=\"toggleModel(m.code, 'L')\"><i class=\"blue caret left icon\"></i></button>\n                    <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_left\"\n                            (click)=\"toggleModel(m.code, 'L')\"><i class=\"angle left icon\"></i></button>\n\n                    <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_left && !m.enabled_right\"\n                            [disabled]=\"(!m.enabled_left && !m.enabled_right)\"><i class=\"toggle off icon\"></i>\n                    </button>\n                    <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_left || m.enabled_right\"\n                            (click)=\"toggleModel(m.code, 'O')\"><i class=\"yellow toggle on icon\"></i></button>\n\n                    <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_right\"\n                            (click)=\"toggleModel(m.code, 'R')\"><i class=\"blue caret right icon\"></i></button>\n                    <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_right\"\n                            (click)=\"toggleModel(m.code, 'R')\"><i class=\"angle right icon\"></i></button>\n                  </div>\n                </td>\n                <td>\n                  <div class=\"\" *ngIf=\"!splitview\" (click)=\"toggleModel(m.code, 'R')\">\n                    {{m.ident}}\n                  </div>\n\n                  <div class=\"\" *ngIf=\"splitview\">\n                    {{m.ident}}\n                  </div>\n\n\n                  <!--<div *ngIf=\"m.code === 'JASMIN'\" class=\"ui mini compact buttons\">-->\n                  <!--<button *ngIf=\"jasminLevel === 0.1\" class=\"ui compact blue button\" (click)=\"setJasminLevel(0.1)\">0.1</button>-->\n                  <!--<button *ngIf=\"jasminLevel === 0.25\" class=\"ui compact blue button\" (click)=\"setJasminLevel(0.25)\">0.25</button>-->\n                  <!--<button *ngIf=\"jasminLevel === 0.65\" class=\"ui compact blue button\" (click)=\"setJasminLevel(0.65)\">0.65</button>-->\n                  <!--<button *ngIf=\"jasminLevel === 2\" class=\"ui compact blue button\" (click)=\"setJasminLevel(2)\">2</button>-->\n\n                  <!--<button *ngIf=\"jasminLevel !== 0.1\" class=\"ui compact black button\" (click)=\"setJasminLevel(0.1)\">0.1</button>-->\n                  <!--<button *ngIf=\"jasminLevel !== 0.25\" class=\"ui compact black button\" (click)=\"setJasminLevel(0.25)\">0.25</button>-->\n                  <!--<button *ngIf=\"jasminLevel !== 0.65\" class=\"ui compact black button\" (click)=\"setJasminLevel(0.65)\">0.65</button>-->\n                  <!--<button *ngIf=\"jasminLevel !== 2\" class=\"ui compact black button\" (click)=\"setJasminLevel(2)\">2</button>-->\n                  <!--</div>-->\n                </td>\n              </tr>\n              </tbody>\n            </table>\n            <!-- End: Model List/Selection Table -->\n          </div>\n          <!-- End: MODEL Panel -->\n        </div>\n        <div class=\"attached inverted segment\" suiTabContent=\"1\" [suiCollapse]=\"!collapse\">\n          <!-- Start: TIME Panel -->\n          <div class=\"ui panel\">\n            <div class=\"ui top attached fluid tiny inverted menu\">\n              <a class=\"item\" (click)=\"collapse = !collapse\">\n                <i class=\"red close icon\"></i>\n              </a>\n              <a class=\"item\" (click)=\"toggleTimeBrushing()\" data-content=\"Timebrushing\">\n                <div *ngIf=\"timebrush\"><i class=\"white paint brush icon\"></i> Timebrush OFF</div>\n                <div *ngIf=\"!timebrush\"><i class=\"white close icon\"></i> Timebrushing ON</div>\n              </a>\n\n              <a class=\"green right aligned item\" (click)=\"refreshModelData()\" data-content=\"Go\">\n                <i class=\"white angle double right icon\"></i> Go\n              </a>\n\n              <!--<a class=\"item\" (click)=\"mpg()\" data-content=\"Get MP4\">-->\n              <!--<i class=\"file video icon\"></i> Animation-->\n              <!--</a>-->\n\n              <!--<a class=\"item\" (click)=\"netCDF()\" data-content=\"NetCDF Export\">-->\n              <!--<i class=\"archive icon\"></i> DataSet-->\n              <!--</a>-->\n\n              <!--<a class=\"item\" (click)=\"pdf()\" data-content=\"PDF\">-->\n              <!--<i class=\"file pdf icon\"></i> PDF-->\n              <!--</a>-->\n            </div>\n            <div class=\"ui three column stackable grid\">\n\n              <div class=\"column\">\n                <div class=\"ui tiny inverted menu\">\n                  <a class=\"item\" (click)=\"extendPast()\">\n                    <i class=\"left angle icon\"></i>\n                  </a>\n                  <a class=\"stretch item\" suiDatepicker [pickerMinDate]=\"minStartDate\" [pickerMaxDate]=\"maxStartDate\"\n                     [pickerMode]=\"'date'\" [(ngModel)]=\"start\" (ngModelChange)=\"updateDatetimeOnWMTSSources()\"><i\n                    class=\"calendar icon\"></i> From: {{start | date:'fullDate'}}</a>\n                  <a class=\"right aligned item\" (click)=\"reducePast()\">\n                    <i class=\"right angle icon\"></i>\n                  </a>\n                </div>\n              </div>\n\n              <div class=\"column\">\n                <div class=\"ui tiny inverted menu\">\n                  <a class=\"item\" (click)=\"shuntPastWeek()\">\n                    <i class=\"angle double left icon\"></i>\n                  </a>\n                  <a class=\"item\" (click)=\"shuntPast()\">\n                    <i class=\"left caret icon\"></i>\n                  </a>\n                  <a class=\"stretch item\" (click)=\"weekView()\" data-content=\"This past week\"><i class=\"clock icon\"></i>\n                    Current\n                    {{durationWindow()}}-day Window</a>\n                  <a class=\"right aligned item\" (click)=\"shuntFuture()\">\n                    <i class=\"right caret icon\"></i>\n                  </a>\n                  <a class=\"right aligned item\" (click)=\"shuntFutureWeek()\">\n                    <i class=\"angle double right icon\"></i>\n                  </a>\n                </div>\n              </div>\n\n              <div class=\"column\">\n                <div class=\"ui tiny inverted menu\">\n                  <a class=\"item\" (click)=\"reduceFuture()\">\n                    <i class=\"left angle icon\"></i>\n                  </a>\n                  <a class=\"stretch item\" suiDatepicker [pickerMinDate]=\"minEndDate\" [pickerMaxDate]=\"maxEndDate\"\n                     [pickerMode]=\"'date'\"\n                     [(ngModel)]=\"finish\" (change)=\"updateDatetimeOnWMTSSources()\">\n                    <i class=\"calendar icon\"></i> To:\n                    {{finish\n                    |\n                    date:'fullDate'}}</a>\n                  <a class=\"right aligned item\" (click)=\"extendFuture()\">\n                    <i class=\"right angle icon\"></i>\n                  </a>\n                </div>\n              </div>\n\n            </div>\n\n            <div class=\"ui bottom attached map-overlay-inner\">\n\n\n              <!--<sui-sidebar class=\"inverted vertical\" #sidebar>-->\n\n\n                <!---->\n              <!--</sui-sidebar>-->\n              <!--<sui-sidebar-sibling [isDimmedWhenVisible]=\"false\" class=\"inverted\">-->\n\n                <app-charting id=\"chart\" [lat]=\"lat\" [lng]=\"lng\" [start]=\"start | date:'yMMdd'\"\n                              [finish]=\"finish | date:'yMMdd'\" (select)=\"onSelectDate($event)\"></app-charting>\n              <!--</sui-sidebar-sibling>-->\n            </div>\n          </div>\n          <!-- End: TIME Panel -->\n        </div>\n        <div class=\"attached inverted segment\" suiTabContent=\"2\" [suiCollapse]=\"!ingesting\">\n          <!-- Start: SPACE Panel -->\n          <div class=\"ui panel\">\n            <div id='ingest-area' class='ui ingest-area'>\n              <div class=\"ui top attached fluid tiny inverted menu\">\n                <!--<div class=\"right floated item\" #calculatedarea>{{calculated_area}}</div>-->\n                <a class=\"item\" (click)=\"ingesting = !ingesting; isCopied=false;\">\n                  <i class=\"red close icon\"></i>\n                </a>\n\n\n                <a class=\"item\" (click)=\"zoomToBoundaryView()\">\n                  <i class=\"linkify icon\"></i>\n                  Snap to Boundary\n                </a>\n\n                <a class=\"item\" [ngxClipboard]=\"geojsonarea\" (cbOnSuccess)=\"isCopied = true\">\n                  <i class=\"icons\">\n                    <i class=\"copy icon\"></i>\n                    <i *ngIf=\"isCopied\" class=\"large green checkmark icon\"></i>\n                  </i>\n                  Copy\n                </a>\n                <a class=\"item\" (click)=\"saveBoundary()\" data-content=\"Save GeoJSON\">\n                  <i class=\"white group object icon\"></i> Save\n                </a>\n\n                <a class=\"item\" (click)=\"importGeoJSON()\" data-content=\"Import GeoJSON\">\n                  <i class=\"white file icon\"></i> Import\n                </a>\n\n\n                <a class=\"right aligned item\" (click)=\"calculateArea()\" data-content=\"Calculate Area\">\n                  <i class=\"white calculator icon\"></i> Calculate Total Area\n                </a>\n\n\n              </div>\n\n              <div class=\"ui two column stackable grid\" style=\"margin:0;\">\n                <div class=\"row\">\n                  <div class=\"column\">\n                    <div class=\"ui form\">\n                    <div class=\"field json\">\n                    <textarea style=\"background-color: transparent;height:40vh;\" class=\"fillgeoarea\"\n                    [(ngModel)]=\"ingestGeoJson\" (change)=\"importGeoJSON()\" #geojsonarea></textarea>\n\n                      <!--<input type=\"hidden\" [(ngModel)]=\"ingestGeoJson\" (change)=\"importGeoJSON()\" #geojsonarea/>-->\n                    </div>\n                    </div>\n                    </div>\n                    <div class=\"column\">\n                    <app-importeditems [(drawing)]=\"drw\" [(altdrawing)]=\"altdrw\"></app-importeditems>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n          <!-- End: SPACE Panel -->\n        </div>\n        <div class=\"attached inverted segment\" suiTabContent=\"3\" [suiCollapse]=\"!availview\">\n          <!-- Start: AVAIL Panel -->\n          <div class=\"ui panel\">\n            <div class=\"ui top attached fluid tiny inverted menu\">\n              <a class=\"item\" (click)=\"availview = !availview\">\n                <i class=\"red close icon\"></i>\n              </a>\n              <a class=\"item\" (click)=\"refreshAvailability()\">\n                <i class=\"refresh icon\"></i> Refresh\n              </a>\n            </div>\n            <app-temporal-availability [availability]=\"availability_data\"></app-temporal-availability>\n          </div>\n          <!-- End: AVAIL Panel -->\n        </div>\n        <div id=\"overlay_menu\" class=\"ui bottom attached inverted tabular menu\">\n\n          <a class=\"inverted item\" suiTabHeader=\"0\" [(isActive)]=\"zeroActive\"\n             (click)=\"modelise = !modelise; collapse=false; ingesting = false; availview = false\"\n             data-content=\"Model Selection Panel\"><i class=\"white area chart icon\"></i> MODELS</a>\n\n          <a class=\"inverted item\" suiTabHeader=\"1\" [(isActive)]=\"firstActive\"\n             (click)=\"collapse = !collapse; ingesting = false; availview = false; modelise = false\"\n             data-content=\"Time-series Chart Panel\"><i class=\"white area chart icon\"></i> TIME</a>\n\n          <a class=\"inverted item\" suiTabHeader=\"2\" [(isActive)]=\"secondActive\"\n             (click)=\"ingesting = !ingesting; collapse = false; availview = false; saveBoundary(); modelise = false\"\n             data-content=\"GeoJSON Panel\"><i class=\"white map icon\"></i> SPACE</a>\n\n          <a class=\"right aligned inverted item\" suiTabHeader=\"3\" [(isActive)]=\"thirdActive\"\n             (click)=\"ingesting = false; collapse = false; toggleAvailabilityView(); modelise = false\" data-content=\"Availability Panel\">\n            <div *ngIf=\"!availview\"><i class=\"white calendar alternate outline icon\"></i> Model Data Availability</div>\n            <div *ngIf=\"availview\"><i class=\"white calendar check outline icon\"></i> Model Data Availability</div>\n          </a>\n        </div>\n      </sui-tabset>\n    </div>\n  </div>\n</div>\n\n<lfmc-video></lfmc-video>\n\n<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>\n<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>\n<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css'\n      type='text/css'/>\n<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>\n<link rel='stylesheet'\n      href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css'\n      type='text/css'/>\n"
+module.exports = "<div class=\"shrinker\">\n  <div class=\"ui mapbox\" (mouseup)=\"upSplitView($event)\" (mousedown)=\"downSplitView($event)\" (click)=\"onUp($event)\"\n       (drag)=\"dragSplitView($event)\" (mousemove)=\"dragSplitView($event)\">\n    <div class=\"viewport\" id=\"backViewport\">\n      <div class=\"viewframe\">\n        <div id=\"mymapbox\" class=\"ui mapbox mapboxgl-map\"></div>\n      </div>\n    </div>\n    <div class=\"viewport\" id=\"frontViewport\">\n      <div class=\"viewframe\">\n        <div id=\"myAltmapbox\" class=\"ui mapbox mapboxgl-map\"></div>\n      </div>\n    </div>\n    <div id=\"splitViewHandle\" class=\"viewDividerhandle\" (mouseenter)=\"enterSplitViewHandle($event)\"\n         (click)=\"clickSplitView($event)\" (mouseleave)=\"leaveSplitViewHandle($event)\">\n      <div class=\"ui straight_labels\">\n        <div *ngIf=\"splitview\" class=\"left_label\">\n          <div class=\"ui blue left pointing label\">{{ (modelA | uppercase) || 'NONE' }}</div>\n        </div>\n        <div *ngIf=\"splitview\" class=\"right_label\">\n          <div class=\"ui blue right pointing label\">{{ (modelB | uppercase) || 'NONE' }}</div>\n        </div>\n\n        <div *ngIf=\"!splitview\" class=\"right_label\">\n          <div class=\"ui blue right pointing label\">SPLIT</div>\n        </div>\n      </div>\n\n    </div>\n  </div>\n  <div class=\"overlay-toolbar\">\n    <div id=\"myoverlay\" class='map-overlay'>\n      <sui-tabset #bottomToolSet>\n        <div class=\"attached inverted segment\" suiTabContent=\"0\" [suiCollapse]=\"!modelise\">\n          <!-- Start: MODEL Panel -->\n          <div class=\"ui panel\">\n            <div class=\"ui top attached fluid tiny inverted menu\">\n              <a class=\"item\" (click)=\"modelise = !modelise\"><i class=\"red close icon\"></i></a>\n              <a class=\"item\" (click)=\"toggleSplitView()\" data-content=\"Split View Panel\">\n                <div *ngIf=\"!splitview\"><i class=\"white square outline icon\"></i> Split is Off</div>\n                <div *ngIf=\"splitview\"><i class=\"white columns icon\"></i> Split is On</div>\n              </a>\n            </div>\n            <!--<sui-dimmer [(isDimmed)]=\"model_dimmer\" [isClickable]=\"false\">-->\n            <!--<div class=\"ui indeterminate text loader\">Loading models. Please wait.</div>-->\n            <!--</sui-dimmer>-->\n            <!-- Start: Model List/Selection Table -->\n            <table class=\"ui selectable inverted table\" id=\"modelList\">\n              <thead>\n              <tr>\n                <th *ngIf=\"!splitview\" class=\"right aligned collapsing\">Select</th>\n                <th *ngIf=\"splitview\" class=\"right aligned collapsing\">Assign</th>\n                <th class=\"collapsing single line\">Model</th>\n                <th class=\"center aligned\">Data Availability</th>\n                <th class=\"collapsing\"></th>\n              </tr>\n              </thead>\n              <tbody>\n              <tr *ngFor=\"let m of models\">\n\n\n                <td *ngIf=\"!splitview\" class=\"right aligned\">\n                  <div class=\"ui mini compact icon buttons\">\n                    <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_right\"\n                            (click)=\"toggleModel(m.code, 'R')\"><i class=\"toggle off icon\"></i></button>\n                    <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_right\"\n                            (click)=\"toggleModel(m.code, 'O')\"><i class=\"yellow toggle on icon\"></i></button>\n                  </div>\n                </td>\n\n                <td *ngIf=\"splitview\" class=\"right aligned\">\n                  <div class=\"ui mini compact icon buttons\">\n                    <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_left\"\n                            (click)=\"toggleModel(m.code, 'L')\"><i class=\"blue caret left icon\"></i></button>\n                    <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_left\"\n                            (click)=\"toggleModel(m.code, 'L')\"><i class=\"angle left icon\"></i></button>\n\n                    <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_left && !m.enabled_right\"\n                            [disabled]=\"(!m.enabled_left && !m.enabled_right)\"><i class=\"toggle off icon\"></i>\n                    </button>\n                    <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_left || m.enabled_right\"\n                            (click)=\"toggleModel(m.code, 'O')\"><i class=\"yellow toggle on icon\"></i></button>\n\n                    <button class=\"ui compact black icon button\" *ngIf=\"m.enabled_right\"\n                            (click)=\"toggleModel(m.code, 'R')\"><i class=\"blue caret right icon\"></i></button>\n                    <button class=\"ui compact black icon button\" *ngIf=\"!m.enabled_right\"\n                            (click)=\"toggleModel(m.code, 'R')\"><i class=\"angle right icon\"></i></button>\n                  </div>\n                </td>\n                <td class=\"single line\">\n                  <div class=\"\" *ngIf=\"!splitview\" (click)=\"toggleModel(m.code, 'R')\">\n                    {{m.ident}}\n                  </div>\n\n                  <div class=\"\" *ngIf=\"splitview\">\n                    {{m.ident}}\n                  </div>\n\n\n                  <!--<div *ngIf=\"m.code === 'JASMIN'\" class=\"ui mini compact buttons\">-->\n                  <!--<button *ngIf=\"jasminLevel === 0.1\" class=\"ui compact blue button\" (click)=\"setJasminLevel(0.1)\">0.1</button>-->\n                  <!--<button *ngIf=\"jasminLevel === 0.25\" class=\"ui compact blue button\" (click)=\"setJasminLevel(0.25)\">0.25</button>-->\n                  <!--<button *ngIf=\"jasminLevel === 0.65\" class=\"ui compact blue button\" (click)=\"setJasminLevel(0.65)\">0.65</button>-->\n                  <!--<button *ngIf=\"jasminLevel === 2\" class=\"ui compact blue button\" (click)=\"setJasminLevel(2)\">2</button>-->\n\n                  <!--<button *ngIf=\"jasminLevel !== 0.1\" class=\"ui compact black button\" (click)=\"setJasminLevel(0.1)\">0.1</button>-->\n                  <!--<button *ngIf=\"jasminLevel !== 0.25\" class=\"ui compact black button\" (click)=\"setJasminLevel(0.25)\">0.25</button>-->\n                  <!--<button *ngIf=\"jasminLevel !== 0.65\" class=\"ui compact black button\" (click)=\"setJasminLevel(0.65)\">0.65</button>-->\n                  <!--<button *ngIf=\"jasminLevel !== 2\" class=\"ui compact black button\" (click)=\"setJasminLevel(2)\">2</button>-->\n                  <!--</div>-->\n                </td>\n                <td class=\"single line timebar\">\n                  <app-time-bar *ngIf=\"m.enabled_right\" [model_layer_group]=\"m.code\"></app-time-bar>\n                </td>\n                <td>\n                  <div class=\"ui mini compact icon buttons\">\n                    <button class=\"ui inverted compact icon button\" routerLink=\"models\"><i class=\"info icon\"></i>\n                    </button>\n                  </div>\n                </td>\n              </tr>\n              </tbody>\n            </table>\n            <!-- End: Model List/Selection Table -->\n          </div>\n          <!-- End: MODEL Panel -->\n        </div>\n        <div class=\"attached inverted segment\" suiTabContent=\"1\" [suiCollapse]=\"!collapse\">\n          <!-- Start: TIME Panel -->\n          <div class=\"ui panel\">\n            <div class=\"ui top attached fluid tiny inverted menu\">\n              <a class=\"item\" (click)=\"collapse = !collapse\">\n                <i class=\"red close icon\"></i>\n              </a>\n              <a class=\"item\" (click)=\"toggleTimeBrushing()\" data-content=\"Timebrushing\">\n                <div *ngIf=\"timebrush\"><i class=\"white paint brush icon\"></i> Timebrush OFF</div>\n                <div *ngIf=\"!timebrush\"><i class=\"white close icon\"></i> Timebrushing ON</div>\n              </a>\n\n              <a class=\"green right aligned item\" (click)=\"refreshModelData()\" data-content=\"Go\">\n                <i class=\"white angle double right icon\"></i> Go\n              </a>\n            </div>\n            <div class=\"ui attached inverted segment\">\n            <div class=\"ui three column stackable grid\">\n              <div class=\"left aligned column\">\n                <div class=\"ui bottom pointing blue label\">\n\n                  <h4 class=\"center aligned heading\">First date</h4>\n                  <div class=\"ui tiny blue inverted menu\">\n                    <a class=\"item\" (click)=\"extendPast()\">\n                      <i class=\"left angle icon\"></i>\n                    </a>\n                    <a class=\"stretch item\" suiDatepicker [pickerMinDate]=\"minStartDate\" [pickerMaxDate]=\"maxStartDate\"\n                       [pickerMode]=\"'date'\" [(ngModel)]=\"rangeStart\" (ngModelChange)=\"updateRangeSelector()\"><i\n                      class=\"calendar icon\"></i> From: {{rangeStart | date:'fullDate'}}</a>\n                    <a class=\"right aligned item\" (click)=\"reducePast()\">\n                      <i class=\"right angle icon\"></i>\n                    </a>\n                  </div>\n                </div>\n              </div>\n\n              <div class=\"column\">\n                <!--<div class=\"ui tiny inverted menu\">-->\n                <!--<a class=\"item\" (click)=\"shuntPastWeek()\">-->\n                <!--<i class=\"angle double left icon\"></i>-->\n                <!--</a>-->\n                <!--<a class=\"item\" (click)=\"shuntPast()\">-->\n                <!--<i class=\"left caret icon\"></i>-->\n                <!--</a>-->\n                <!--<a class=\"stretch item\" (click)=\"weekView()\" data-content=\"This past week\"><i class=\"clock icon\"></i>-->\n                <!--Current-->\n                <!--{{durationWindow()}}-day Window</a>-->\n                <!--<a class=\"right aligned item\" (click)=\"shuntFuture()\">-->\n                <!--<i class=\"right caret icon\"></i>-->\n                <!--</a>-->\n                <!--<a class=\"right aligned item\" (click)=\"shuntFutureWeek()\">-->\n                <!--<i class=\"angle double right icon\"></i>-->\n                <!--</a>-->\n                <!--</div>-->\n              </div>\n\n              <div class=\"right aligned column\">\n                <div class=\"ui bottom pointing blue label\">\n                  <h4 class=\"center aligned heading\">Last date</h4>\n                  <div class=\"ui tiny blue inverted menu\">\n                    <a class=\"item\" (click)=\"reduceFuture()\">\n                      <i class=\"left angle icon\"></i>\n                    </a>\n                    <a class=\"stretch item\" suiDatepicker [pickerMinDate]=\"minEndDate\" [pickerMaxDate]=\"maxEndDate\"\n                       [pickerMode]=\"'date'\"\n                       [(ngModel)]=\"rangeFinish\" (ngModelChange)=\"updateRangeSelector()\">\n                      <i class=\"calendar icon\"></i> To:\n                      {{rangeFinish\n                      |\n                      date:'fullDate'}}</a>\n                    <a class=\"right aligned item\" (click)=\"extendFuture()\">\n                      <i class=\"right angle icon\"></i>\n                    </a>\n                  </div>\n                </div>\n              </div>\n\n            </div>\n            <app-range-selector [min]=\"rangeStart\"\n                                [max]=\"rangeFinish\"\n                                (rangeChange)=\"updateDates($event)\"></app-range-selector>\n\n            </div>\n            <div class=\"ui bottom attached map-overlay-inner\">\n              <app-charting id=\"chart\" [lat]=\"lat\" [lng]=\"lng\" [start]=\"start | date:'yMMdd'\"\n                            [finish]=\"finish | date:'yMMdd'\" (select)=\"onSelectDate($event)\"></app-charting>\n\n            </div>\n          </div>\n          <!-- End: TIME Panel -->\n        </div>\n        <div class=\"attached inverted segment\" suiTabContent=\"2\" [suiCollapse]=\"!ingesting\">\n          <!-- Start: SPACE Panel -->\n          <div class=\"ui panel\">\n            <div id='ingest-area' class='ui ingest-area'>\n              <div class=\"ui top attached fluid tiny inverted menu\">\n                <!--<div class=\"right floated item\" #calculatedarea>{{calculated_area}}</div>-->\n                <a class=\"item\" (click)=\"ingesting = !ingesting; isCopied=false;\">\n                  <i class=\"red close icon\"></i>\n                </a>\n\n\n                <a class=\"item\" (click)=\"zoomToBoundaryView()\">\n                  <i class=\"linkify icon\"></i>\n                  Snap to Boundary\n                </a>\n\n                <a class=\"item\" [ngxClipboard]=\"geojsonarea\" (cbOnSuccess)=\"isCopied = true\">\n                  <i class=\"icons\">\n                    <i class=\"copy icon\"></i>\n                    <i *ngIf=\"isCopied\" class=\"large green checkmark icon\"></i>\n                  </i>\n                  Copy\n                </a>\n                <a class=\"item\" (click)=\"saveBoundary()\" data-content=\"Save GeoJSON\">\n                  <i class=\"white group object icon\"></i> Save\n                </a>\n\n                <a class=\"item\" (click)=\"importGeoJSON()\" data-content=\"Import GeoJSON\">\n                  <i class=\"white file icon\"></i> Import\n                </a>\n\n\n                <a class=\"right aligned item\" (click)=\"calculateArea()\" data-content=\"Calculate Area\">\n                  <i class=\"white calculator icon\"></i> Calculate Total Area\n                </a>\n\n\n              </div>\n\n              <div class=\"ui two column stackable grid\" style=\"margin:0;\">\n                <div class=\"row\">\n                  <div class=\"column\">\n                    <div class=\"ui form\">\n                      <div class=\"field json\">\n                    <textarea style=\"background-color: transparent;height:40vh;\" class=\"fillgeoarea\"\n                              [(ngModel)]=\"ingestGeoJson\" (change)=\"importGeoJSON()\" #geojsonarea></textarea>\n\n                        <!--<input type=\"hidden\" [(ngModel)]=\"ingestGeoJson\" (change)=\"importGeoJSON()\" #geojsonarea/>-->\n                      </div>\n                    </div>\n                  </div>\n                  <div class=\"column\">\n                    <app-importeditems [(drawing)]=\"drw\" [(altdrawing)]=\"altdrw\"></app-importeditems>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n          <!-- End: SPACE Panel -->\n        </div>\n\n        <div id=\"overlay_menu\" class=\"ui bottom attached inverted tabular menu\">\n\n          <a class=\"inverted item\" suiTabHeader=\"0\" [(isActive)]=\"zeroActive\"\n             (click)=\"modelise = !modelise; collapse=false; ingesting = false; availview = false\"\n             data-content=\"Model Selection Panel\"><i class=\"white area chart icon\"></i> MODELS</a>\n\n          <a class=\"inverted item\" suiTabHeader=\"1\" [(isActive)]=\"firstActive\"\n             (click)=\"collapse = !collapse; ingesting = false; availview = false; modelise = false\"\n             data-content=\"Time-series Chart Panel\"><i class=\"white area chart icon\"></i> TIME</a>\n\n          <a class=\"inverted item\" suiTabHeader=\"2\" [(isActive)]=\"secondActive\"\n             (click)=\"ingesting = !ingesting; collapse = false; availview = false; saveBoundary(); modelise = false\"\n             data-content=\"GeoJSON Panel\"><i class=\"white map icon\"></i> SPACE</a>\n\n        </div>\n      </sui-tabset>\n    </div>\n  </div>\n</div>\n\n<lfmc-video></lfmc-video>\n\n<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>\n<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>\n<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css'\n      type='text/css'/>\n<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.min.js'></script>\n<link rel='stylesheet'\n      href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.1.0/mapbox-gl-geocoder.css'\n      type='text/css'/>\n"
 
 /***/ }),
 
@@ -4384,60 +4874,12 @@ var MapboxComponent = /** @class */ (function () {
             'November',
             'December'
         ];
-        this.availability_data = [
-            {
-                'model': 'AWRA',
-                'series': [['2010-01-01', '2018-03-31']]
-            },
-            {
-                'model': 'Jasmin',
-                'series': [['2010-01-01', '2018-09-31']]
-            },
-            {
-                'model': 'DEAD_FUEL',
-                'series': [['2008-01-01', '2018-06-06']]
-            },
-            {
-                'model': 'LIVE_FUEL',
-                'series': [['2008-01-01', '2018-06-06']]
-            },
-            {
-                'model': 'DF',
-                'series': [['2018-05-09', '2018-05-11'],
-                    ['2018-05-19', '2018-06-06']]
-            },
-            {
-                'model': 'KBDI',
-                'series': [['2008-01-01', '2018-06-06']]
-            },
-            {
-                'model': 'FFDI',
-                'series': [['2018-05-09', '2018-05-11'],
-                    ['2018-05-19', '2018-06-06']]
-            },
-            {
-                'model': 'Matthews',
-                'series': [['2008-01-01', '2018-06-06']]
-            },
-            {
-                'model': 'Yebra',
-                'series': [['2018-01-01', '2018-06-06']]
-            },
-            {
-                'model': 'GFDI',
-                'series': [['2018-05-09', '2018-05-11'],
-                    ['2018-05-19', '2018-06-06']]
-            },
-            {
-                'model': 'Temp',
-                'series': [['2018-05-09', '2018-05-11'],
-                    ['2018-05-19', '2018-06-06']]
-            }
-        ];
         this.defaultLat = -36.568;
         this.defaultLng = 145.062;
         this.lat = this.defaultLat;
         this.lng = this.defaultLng;
+        this.rangeStart = new Date(2018, 0, 1); // Eventually this will come from extents of TemporalAvailability Module
+        this.rangeFinish = new Date(2019, 0, 1); // TODO -> TemporalAvailability
         this.prevBoundary = { 'features': [] };
         this.draggingHandle = false;
         this.canDragSplitView = false;
@@ -4469,6 +4911,21 @@ var MapboxComponent = /** @class */ (function () {
         // Old System
         // this.ns.get('/model_names').subscribe(m => this.model_names = m);
     }
+    MapboxComponent.prototype.updateRangeSelector = function () {
+        console.log('Updating extents of temporal range availability.');
+    };
+    MapboxComponent.prototype.updateDates = function (ev) {
+        console.log(ev);
+        this.start = ev.from;
+        this.finish = ev.to;
+        var gj = this.drw.getAll();
+        this.updateDatetimeOnWMTSSources();
+        if (this.getActiveModels('Both').length > 0) {
+            if (gj.features.length > 0) {
+                this.refreshModelData();
+            }
+        }
+    };
     MapboxComponent.prototype.getModelNamesOnly = function () {
         return this.models.sort(function (a, b) {
             return a.name.localeCompare(b.name);
@@ -5094,16 +5551,6 @@ var MapboxComponent = /** @class */ (function () {
             return L.concat(R);
         }
     };
-    MapboxComponent.prototype.date_range = function (startDate, stopDate) {
-        var dateArray = [];
-        var currentDate = moment__WEBPACK_IMPORTED_MODULE_8__(startDate);
-        var stop = moment__WEBPACK_IMPORTED_MODULE_8__(stopDate);
-        while (currentDate <= stop) {
-            dateArray.push(moment__WEBPACK_IMPORTED_MODULE_8__(currentDate).format('YYYY-MM-DD'));
-            currentDate = moment__WEBPACK_IMPORTED_MODULE_8__(currentDate).add(1, 'days');
-        }
-        return dateArray;
-    };
     MapboxComponent.prototype.setJasminLevel = function (v) {
         this.jasminLevel = v;
     };
@@ -5122,6 +5569,7 @@ var MapboxComponent = /** @class */ (function () {
             var f = moment__WEBPACK_IMPORTED_MODULE_8__(this.finish).toArray();
             // Use last day of selection by default
             time_component = '&time=' + s[0] + '-' + s[1] + '-' + s[2] + ',' + f[0] + '-' + f[1] + '-' + f[2];
+            console.log(time_component);
         }
         // It is possible to animate the map using the WMS Animator function of GeoServer,
         // however Mapbox doesn't support rendering because you can't sync animation frames
@@ -5162,18 +5610,17 @@ var MapboxComponent = /** @class */ (function () {
         this.currentmap.addSource(layer_code + '_source', layer_source);
         console.log('Added ' + layer_code + '_source.');
     };
-    MapboxComponent.prototype.addLayersForAllModels = function () {
-        var _this = this;
-        ['L', 'R'].forEach(function (lr) {
-            _this.setMapContext(lr);
-            for (var i = 0; i < _this.models.length; i++) {
-                var layer_code = _this.models[i].code;
-                _this.makeSourceForModel(layer_code);
-                _this.makeLayerForModel(layer_code);
-            }
-        });
-        this.setMapContext('R');
-    };
+    // addLayersForAllModels() {
+    //   ['L', 'R'].forEach((lr) => {
+    //     this.setMapContext(lr);
+    //     for (let i = 0; i < this.models.length; i++) {
+    //       const layer_code = this.models[i].code;
+    //       this.makeSourceForModel(layer_code);
+    //       this.makeLayerForModel(layer_code);
+    //     }
+    //   });
+    //   this.setMapContext('R');
+    // }
     MapboxComponent.prototype.makeLayerForModel = function (layer_code) {
         if (!(this.currentmap instanceof mapbox_gl_dist_mapbox_gl_js__WEBPACK_IMPORTED_MODULE_6__["Map"])) {
             console.log('Current map not set.');
@@ -5204,24 +5651,30 @@ var MapboxComponent = /** @class */ (function () {
             }, 'water');
         }
     };
-    MapboxComponent.prototype.shuntFuture = function () {
-        this.start = moment__WEBPACK_IMPORTED_MODULE_8__(this.start).add(1, 'day').toDate();
-        this.finish = moment__WEBPACK_IMPORTED_MODULE_8__(this.finish).add(1, 'day').toDate();
-    };
-    MapboxComponent.prototype.shuntPast = function () {
-        this.start = moment__WEBPACK_IMPORTED_MODULE_8__(this.start).subtract(1, 'day').toDate();
-        this.finish = moment__WEBPACK_IMPORTED_MODULE_8__(this.finish).subtract(1, 'day').toDate();
-    };
-    MapboxComponent.prototype.shuntFutureWeek = function () {
-        var diff = this.durationWindow();
-        this.start = moment__WEBPACK_IMPORTED_MODULE_8__(this.start).add(diff, 'day').toDate();
-        this.finish = moment__WEBPACK_IMPORTED_MODULE_8__(this.finish).add(diff, 'day').toDate();
-    };
-    MapboxComponent.prototype.shuntPastWeek = function () {
-        var diff = this.durationWindow();
-        this.start = moment__WEBPACK_IMPORTED_MODULE_8__(this.start).subtract(diff, 'day').toDate();
-        this.finish = moment__WEBPACK_IMPORTED_MODULE_8__(this.finish).subtract(diff, 'day').toDate();
-    };
+    // shuntFuture() {
+    //   this.start = moment(this.start).add(1, 'day').toDate();
+    //   this.finish = moment(this.finish).add(1, 'day').toDate();
+    // }
+    //
+    // shuntPast() {
+    //   this.start = moment(this.start).subtract(1, 'day').toDate();
+    //   this.finish = moment(this.finish).subtract(1, 'day').toDate();
+    // }
+    //
+    // shuntFutureWeek() {
+    //   const diff = this.durationWindow();
+    //
+    //   this.start = moment(this.start).add(diff, 'day').toDate();
+    //   this.finish = moment(this.finish).add(diff, 'day').toDate();
+    // }
+    //
+    // shuntPastWeek() {
+    //
+    //   const diff = this.durationWindow();
+    //
+    //   this.start = moment(this.start).subtract(diff, 'day').toDate();
+    //   this.finish = moment(this.finish).subtract(diff, 'day').toDate();
+    // }
     MapboxComponent.prototype.reducePast = function () {
         this.start = moment__WEBPACK_IMPORTED_MODULE_8__(this.start).add(1, 'day').toDate();
     };
@@ -5234,9 +5687,9 @@ var MapboxComponent = /** @class */ (function () {
     MapboxComponent.prototype.extendPast = function () {
         this.start = moment__WEBPACK_IMPORTED_MODULE_8__(this.start).subtract(1, 'day').toDate();
     };
-    MapboxComponent.prototype.durationWindow = function () {
-        return moment__WEBPACK_IMPORTED_MODULE_8__(this.finish).diff(moment__WEBPACK_IMPORTED_MODULE_8__(this.start), 'day');
-    };
+    // durationWindow() {
+    //   return moment(this.finish).diff(moment(this.start), 'day');
+    // }
     MapboxComponent.prototype.onSelectDate = function (e) {
         this.selectedDate = moment__WEBPACK_IMPORTED_MODULE_8__(e.name).format('YYYY-MM-DD');
         console.log('Got new date Selection: ', this.selectedDate);
@@ -5328,21 +5781,6 @@ var MapboxComponent = /** @class */ (function () {
         }
         console.log(this.currentmap);
     };
-    MapboxComponent.prototype.toggleAvailabilityView = function () {
-        this.availview = !this.availview;
-    };
-    MapboxComponent.prototype.refreshAvailability = function () {
-        // Just sort the static dummy data as a proxy to the real thing for now...
-        return this.availability_data.sort(function (a, b) {
-            if (a.model > b.model) {
-                return 1;
-            }
-            if (a.model < b.model) {
-                return -1;
-            }
-            return 0;
-        });
-    };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('calculatedarea'),
         __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"])
@@ -5395,8 +5833,8 @@ var MapboxComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-mapbox',
             template: __webpack_require__(/*! ./mapbox.component.html */ "./src/app/shared/mapbox/mapbox.component.html"),
-            styles: [__webpack_require__(/*! ./mapbox.component.css */ "./src/app/shared/mapbox/mapbox.component.css")],
-            providers: [_services_map_service__WEBPACK_IMPORTED_MODULE_2__["MapService"]]
+            providers: [_services_map_service__WEBPACK_IMPORTED_MODULE_2__["MapService"]],
+            styles: [__webpack_require__(/*! ./mapbox.component.css */ "./src/app/shared/mapbox/mapbox.component.css")]
         }),
         __metadata("design:paramtypes", [_services_map_service__WEBPACK_IMPORTED_MODULE_2__["MapService"],
             _services_nosql_service__WEBPACK_IMPORTED_MODULE_4__["NosqlService"],
@@ -5405,6 +5843,206 @@ var MapboxComponent = /** @class */ (function () {
             ng2_semantic_ui__WEBPACK_IMPORTED_MODULE_10__["SuiModalService"]])
     ], MapboxComponent);
     return MapboxComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/timescope/temporal.service.ts":
+/*!***********************************************!*\
+  !*** ./src/app/timescope/temporal.service.ts ***!
+  \***********************************************/
+/*! exports provided: TemporalService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TemporalService", function() { return TemporalService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var httpOptions = {
+    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+    })
+};
+var TemporalService = /** @class */ (function () {
+    function TemporalService(http) {
+        this.http = http;
+        this.pipeline = 'http://pipeline.landscapefuelmoisture.bushfirebehaviour.net.au';
+    }
+    TemporalService.prototype.timesForModel = function (model_name) {
+        return this.http.post(this.pipeline + "/temporal", { 'model': model_name }, httpOptions);
+    };
+    TemporalService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+    ], TemporalService);
+    return TemporalService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/timescope/time-bar/time-bar.component.css":
+/*!***********************************************************!*\
+  !*** ./src/app/timescope/time-bar/time-bar.component.css ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3RpbWVzY29wZS90aW1lLWJhci90aW1lLWJhci5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/timescope/time-bar/time-bar.component.html":
+/*!************************************************************!*\
+  !*** ./src/app/timescope/time-bar/time-bar.component.html ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"ui grid\">\n  <div class=\"two wide column right aligned\">\n    <div class=\"ui blue right pointing label\">{{ min_time | date: 'dd/MM/yyyy' }}</div>\n  </div>\n  <div class=\"twelve wide column center aligned\">\n    <div class=\"timebar\">\n      <div class=\"ui fluid indicator\">\n        <ngx-charts-bar-horizontal-stacked\n          [results]=\"data\"\n          [legend]=\"false\"\n          [xAxis]=\"false\"\n          [yAxis]=\"false\"\n          [scheme]=\"colorScheme\"\n          [barPadding]=\"0\"\n\n        ></ngx-charts-bar-horizontal-stacked>\n      </div>\n    </div>\n  </div>\n  <div class=\"two wide column left aligned\">\n    <div class=\"ui blue left pointing label\">{{ max_time | date: 'dd/MM/yyyy' }}</div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/timescope/time-bar/time-bar.component.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/timescope/time-bar/time-bar.component.ts ***!
+  \**********************************************************/
+/*! exports provided: TimeBarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TimeBarComponent", function() { return TimeBarComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _temporal_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../temporal.service */ "./src/app/timescope/temporal.service.ts");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var TimeBarComponent = /** @class */ (function () {
+    function TimeBarComponent(temporalService) {
+        this.temporalService = temporalService;
+        this.min_time = new Date();
+        this.max_time = new Date();
+        this.selectedColorScheme = 'viridis';
+        // Colors are <present> / <absent>
+        this.colorSets = [
+            {
+                name: 'viridis',
+                selectable: true,
+                group: 'Ordinal',
+                domain: [
+                    '#365d8d',
+                    '#1e9c89'
+                ]
+            }
+        ];
+        this.example_data = [
+            {
+                "name": "Temporal Availability",
+                "series": [
+                    {
+                        "name": "No values",
+                        "value": 0
+                    }
+                ]
+            }
+        ];
+    }
+    TimeBarComponent_1 = TimeBarComponent;
+    TimeBarComponent.compare = function (a, b) {
+        if (moment__WEBPACK_IMPORTED_MODULE_2__(a.name).toDate().getTime() < moment__WEBPACK_IMPORTED_MODULE_2__(b.name).toDate().getTime()) {
+            return -1;
+        }
+        if (moment__WEBPACK_IMPORTED_MODULE_2__(a.name).toDate().getTime() > moment__WEBPACK_IMPORTED_MODULE_2__(b.name).toDate().getTime()) {
+            return 1;
+        }
+        return 0;
+    };
+    TimeBarComponent.prototype.ngOnInit = function () {
+        this.data = this.example_data;
+        this.setColorScheme('viridis');
+    };
+    TimeBarComponent.prototype.ngAfterViewInit = function () {
+        var _this = this;
+        this.temporalService.timesForModel(this.model_layer_group).subscribe(function (n) {
+            _this.data = [n];
+            _this.data[0].series = _this.data[0].series.sort(TimeBarComponent_1.compare);
+            console.log(_this.data);
+        }, function (e) {
+            console.log(e);
+        }, function () {
+            for (var _i = 0, _a = _this.data[0].series; _i < _a.length; _i++) {
+                var ds = _a[_i];
+                for (var _b = 0, ds_1 = ds; _b < ds_1.length; _b++) {
+                    var d = ds_1[_b];
+                    var x = new Date(d.name);
+                    if (x.getTime() < _this.min_time.getTime()) {
+                        _this.min_time = x;
+                    }
+                    if (d.value > 1) {
+                        _this.max_time = moment__WEBPACK_IMPORTED_MODULE_2__(x).add(d.value, 'days').toDate();
+                    }
+                    else {
+                        if (x.getTime() > _this.max_time.getTime()) {
+                            _this.max_time = x;
+                        }
+                    }
+                }
+            }
+        });
+    };
+    TimeBarComponent.prototype.setColorScheme = function (name) {
+        this.selectedColorScheme = name;
+        this.colorScheme = this.colorSets.find(function (s) { return s.name === name; });
+    };
+    TimeBarComponent.prototype.modelExtents = function () {
+        return [this.min_time, this.max_time];
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], TimeBarComponent.prototype, "model_layer_group", void 0);
+    TimeBarComponent = TimeBarComponent_1 = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-time-bar',
+            template: __webpack_require__(/*! ./time-bar.component.html */ "./src/app/timescope/time-bar/time-bar.component.html"),
+            styles: [__webpack_require__(/*! ./time-bar.component.css */ "./src/app/timescope/time-bar/time-bar.component.css")]
+        }),
+        __metadata("design:paramtypes", [_temporal_service__WEBPACK_IMPORTED_MODULE_1__["TemporalService"]])
+    ], TimeBarComponent);
+    return TimeBarComponent;
+    var TimeBarComponent_1;
 }());
 
 

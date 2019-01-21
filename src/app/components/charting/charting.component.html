@@ -8,7 +8,7 @@
       <!--</div>-->
       <!--</div>-->
 
-      <app-queryprogress></app-queryprogress>
+      <app-queryprogress (queueComplete)="showResults($event)" #queryprogress></app-queryprogress>
 
 
     </div>
@@ -24,7 +24,6 @@
       [showYAxisLabel]="showYAxisLabel"
       [xAxisLabel]="xAxisLabel"
       [yAxisLabel]="yAxisLabel"
-      [autoScale]="autoScale"
       [showGridLines]="showGridLines"
       [showRefLines]="showRefLines"
       [referenceLines]="referenceLines"
@@ -40,7 +39,7 @@
       (active) = "onActivateAndDeactivate()"
 
       (select)="onSelect($event)"
-      *ngIf="!dimmer">
+      *ngIf="!dimmer" #resultViewer>
     </ngx-charts-line-chart>
   </div>
 </div>

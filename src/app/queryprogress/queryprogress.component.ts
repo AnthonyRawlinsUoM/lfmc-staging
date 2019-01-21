@@ -1,4 +1,4 @@
-import {Component, ContentChildren, ElementRef, EventEmitter, OnInit, Output, QueryList, ViewChild} from '@angular/core';
+import {Component, ContentChildren, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild} from '@angular/core';
 import {ProgressionService} from './progression.service';
 
 @Component({
@@ -21,6 +21,9 @@ export class QueryprogressComponent implements OnInit {
 
   @Output() queueStartEvent: EventEmitter<any> = new EventEmitter<any>();
   @Output() queueStopEvent: EventEmitter<any> = new EventEmitter<any>();
+  @Output() queueComplete: EventEmitter<any> = new EventEmitter<any>();
+
+  @Input() query_params: any;
 
   constructor(private prog: ProgressionService) {
   }
@@ -91,11 +94,34 @@ export class QueryprogressComponent implements OnInit {
     );
   }
 
+  doQuery(json_query) {
+    this.multi = [];
+
+    this.prog.submit(json_query).subscribe((j) => {
+        console.log(j);
+        this.subtasks = j;
+      },
+      (e) => console.log('Error: ' + e.message),
+      () => {
+        this.subtasks.map(a => this.newQuery.emit(a));
+      });
+
+    this.newQuery.subscribe((u) => {
+        console.log(u);
+      }, (e) => {
+      }, () => {
+
+      }
+    );
+  }
+
   onComplete(res) {
+
     this.multi.push(res);
     // console.log(this.multi);
     if (this.multi.length === this.subtasks.length) {
       console.log('ALL Tasks complete!');
+      this.queueComplete.emit(this.multi);
     }
   }
 

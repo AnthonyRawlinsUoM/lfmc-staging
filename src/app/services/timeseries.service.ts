@@ -27,7 +27,7 @@ export class TimeseriesService {
 
   // Revoke task
   revoke(uuid) {
-    this.http.get(`${this.pipeline}/revoke?uuid=${uuid}`, httpOptions);
+    this.http.post(`${this.pipeline}/revoke`, {'uuid': uuid}, httpOptions);
   }
 
   // Get the cached result of the task
@@ -37,7 +37,7 @@ export class TimeseriesService {
 
   // Abort a running task
   abort(uuid) {
-    this.http.get(`${this.pipeline}/abort?uuid=${uuid}`, httpOptions);
+    this.http.post(`${this.pipeline}/abort`, {'uuid': uuid}, httpOptions);
   }
 
   // Observe the progress of a task

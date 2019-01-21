@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef} from '@angular/core';
 import {TimeseriesService} from '../../services/timeseries.service';
 import * as shape from 'd3-shape';
 import {ConfirmModal} from '../confirm-modal/confirm-modal.component';
@@ -6,7 +6,8 @@ import {SuiModalService} from 'ng2-semantic-ui';
 import {ErrorReportingService} from '../../services/error-reporting.service';
 
 import {filter, map, delay, catchError, mergeMap} from 'rxjs/operators';
-import {forkJoin, of, throwError} from 'rxjs';
+import {forkJoin, from, of, throwError} from 'rxjs';
+import {QueryprogressComponent} from '../../queryprogress/queryprogress.component';
 
 export enum LFMCResponseType {
   TIMESERIES = 0,
@@ -28,6 +29,11 @@ export class ChartingComponent implements OnInit {
   @Input() @Output() finish: string;
 
   @Output() select: EventEmitter<any> = new EventEmitter();
+
+  @ViewChild(QueryprogressComponent)
+  private progressComponent: QueryprogressComponent;
+
+  private chartComponent: ChartingComponent;
 
   dimmer: boolean;
 
@@ -199,17 +205,8 @@ export class ChartingComponent implements OnInit {
 
     console.log('Calling API');
 
-    const dateFormat = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$/;
-
-    function reviver(key, value) {
-      if (typeof value === 'string' && dateFormat.test(value)) {
-        return new Date(value);
-      }
-      return value;
-    }
 
     this.multi = [];
-
     this.tss.submit(
       name,
       json_query
@@ -225,16 +222,41 @@ export class ChartingComponent implements OnInit {
         this.dimmer = true;
       },
       () => {
-        // For each subtask...
-        // monitor_progress();
-        // catch_errors();
-        // then ...
-        // this.multi = merge_results();
-
-        // this.dimmer = false;
+        // Ask task manager to start queue of tasks...
+        const p = new Promise(() => {
+          this.progressComponent.doQuery(json_query);
+        }).then(() => {
+          this.dimmer = false;
+        });
       });
   }
 
+  showResults(ev) {
+
+
+    console.log('Showing results now...');
+    console.log(ev);
+
+    const dateFormat = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$/;
+    for (const mr of ev) {
+
+      console.log(typeof mr);
+
+      // const model_result = mr.replace(/'/g, '"');
+
+      const cleaned = JSON.parse(JSON.stringify(mr), (key, value) => {
+        if (key === 'name' && typeof value === 'string' && dateFormat.test(value)) {
+          return new Date(value);
+        }
+        return value;
+      });
+      console.log(cleaned);
+
+      this.multi.push(cleaned);
+    }
+
+    this.dimmer = false;
+  }
 
 
 // if (this.multi['error'] && this.multi['code']) {

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {jqxRangeSelectorComponent} from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxrangeselector';
 
 @Component({
@@ -6,7 +6,7 @@ import {jqxRangeSelectorComponent} from 'jqwidgets-scripts/jqwidgets-ts/angular_
   templateUrl: './range-selector.component.html',
   styleUrls: ['./range-selector.component.css']
 })
-export class RangeSelectorComponent implements OnInit {
+export class RangeSelectorComponent implements OnInit, AfterViewInit {
   @ViewChild('rangeSelector') myRangeSelector: jqxRangeSelectorComponent;
 
 
@@ -24,6 +24,10 @@ export class RangeSelectorComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    this.myRangeSelector.refresh();
   }
 
   update() {

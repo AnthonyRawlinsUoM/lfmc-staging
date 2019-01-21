@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ProgressionService} from '../../progression.service';
-import { Form } from '@angular/forms';
+import {Form} from '@angular/forms';
+import {delay} from 'rxjs/internal/operators';
 
 @Component({
   selector: '[model-progress]',
@@ -26,6 +27,7 @@ export class ProgressbarComponent implements OnInit, AfterViewInit {
 
   public taskActive = true;
   public taskDisabled = false;
+  private timeseries: Object;
 
   constructor(private prog: ProgressionService) {
   }
@@ -87,14 +89,31 @@ export class ProgressbarComponent implements OnInit, AfterViewInit {
         () => {
           if (this.p.state === 'SUCCESS') {
             console.log('Progress for ' + this.uuid + ' has completed.');
-            console.log(this.p.result);
-            this.complete.emit(this.p.result);
-          } else {
-            this.retry();
+
+            this.prog.getResult(this.uuid)
+              .subscribe((n) => {
+                this.timeseries = n;
+                },
+              (e) => {
+                console.log(e);
+              },
+              () => {
+                console.log(this.timeseries);
+                this.complete.emit(this.timeseries);
+              });
+
+          } else if (this.p.state === 'PENDING' || this.p.state === 'STARTED') {
+            this.delay(1000).then(() => {
+              this.retry(); // TODO - Observable WebSocket instead of polling.
+            });
           }
         }
       );
     }
+  }
+
+  async delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   abort(uuid) {

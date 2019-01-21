@@ -11,12 +11,12 @@ RUN npm install --no-optional
 ADD VERSION .
 COPY . .
 
-# Development Mode
-# EXPOSE 4200
-# CMD ["npm", "start"]
 
 # Deployment
 EXPOSE 3000
+
+ENV TZ Australia/Melbourne
+
 # EXPOSE 4200
 CMD ["node", "app.js"]
 

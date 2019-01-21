@@ -60,6 +60,7 @@ import {DisclaimerComponent} from './components/disclaimer/disclaimer.component'
 import {RangeSelectorComponent} from './components/range-selector/range-selector.component';
 import { jqxBarGaugeComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxbargauge';
 import { jqxRangeSelectorComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxrangeselector';
+import { TimeBarComponent } from './timescope/time-bar/time-bar.component';
 
 
 // import {QueryprogressComponent} from './components/queryprogress/queryprogress.component';
@@ -119,7 +120,8 @@ const appRoutes: Routes = [
     // ModelprogressComponent
     RangeSelectorComponent,
     jqxRangeSelectorComponent,
-    jqxBarGaugeComponent
+    jqxBarGaugeComponent,
+    TimeBarComponent
   ],
 
   // Modules

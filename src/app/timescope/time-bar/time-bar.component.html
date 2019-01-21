@@ -1,0 +1,23 @@
+<div class="ui grid">
+  <div class="two wide column right aligned">
+    <div class="ui blue right pointing label">{{ min_time | date: 'dd/MM/yyyy' }}</div>
+  </div>
+  <div class="twelve wide column center aligned">
+    <div class="timebar">
+      <div class="ui fluid indicator">
+        <ngx-charts-bar-horizontal-stacked
+          [results]="data"
+          [legend]="false"
+          [xAxis]="false"
+          [yAxis]="false"
+          [scheme]="colorScheme"
+          [barPadding]="0"
+
+        ></ngx-charts-bar-horizontal-stacked>
+      </div>
+    </div>
+  </div>
+  <div class="two wide column left aligned">
+    <div class="ui blue left pointing label">{{ max_time | date: 'dd/MM/yyyy' }}</div>
+  </div>
+</div>

@@ -97,58 +97,6 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     'December'
   ];
 
-  availability_data = [
-    {
-      'model': 'AWRA',
-      'series': [['2010-01-01', '2018-03-31']]
-    },
-    {
-      'model': 'Jasmin',
-      'series': [['2010-01-01', '2018-09-31']]
-    },
-    {
-      'model': 'DEAD_FUEL',
-      'series': [['2008-01-01', '2018-06-06']]
-    },
-    {
-      'model': 'LIVE_FUEL',
-      'series': [['2008-01-01', '2018-06-06']]
-    },
-    {
-      'model': 'DF',
-      'series': [['2018-05-09', '2018-05-11'],
-        ['2018-05-19', '2018-06-06']]
-    },
-    {
-      'model': 'KBDI',
-      'series': [['2008-01-01', '2018-06-06']]
-    },
-    {
-      'model': 'FFDI',
-      'series': [['2018-05-09', '2018-05-11'],
-        ['2018-05-19', '2018-06-06']]
-    },
-    {
-      'model': 'Matthews',
-      'series': [['2008-01-01', '2018-06-06']]
-    },
-    {
-      'model': 'Yebra',
-      'series': [['2018-01-01', '2018-06-06']]
-    },
-    {
-      'model': 'GFDI',
-      'series': [['2018-05-09', '2018-05-11'],
-        ['2018-05-19', '2018-06-06']]
-    },
-    {
-      'model': 'Temp',
-      'series': [['2018-05-09', '2018-05-11'],
-        ['2018-05-19', '2018-06-06']]
-    }
-  ];
-
-
   @Input() cursorLat: number | string;
   @Input() cursorLng: number | string;
   @Output() cursorMoveEW;
@@ -166,6 +114,8 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   coloroptions: any;
   colorLegend: any;
 
+  rangeStart: Date = new Date(2018, 0, 1);  // Eventually this will come from extents of TemporalAvailability Module
+  rangeFinish: Date = new Date(2019, 0, 1);  // TODO -> TemporalAvailability
 
   prevBoundary = {'features': []};
 
@@ -231,6 +181,10 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     // this.ns.get('/model_names').subscribe(m => this.model_names = m);
 
 
+  }
+
+  updateRangeSelector() {
+    console.log('Updating extents of temporal range availability.');
   }
 
   updateDates(ev) {
@@ -966,17 +920,6 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     }
   }
 
-  date_range(startDate, stopDate) {
-    const dateArray = [];
-    let currentDate = moment(startDate);
-    const stop = moment(stopDate);
-    while (currentDate <= stop) {
-      dateArray.push(moment(currentDate).format('YYYY-MM-DD'));
-      currentDate = moment(currentDate).add(1, 'days');
-    }
-    return dateArray;
-  }
-
   setJasminLevel(v) {
     this.jasminLevel = v;
   }
@@ -1000,6 +943,8 @@ export class MapboxComponent implements OnInit, AfterViewInit {
       const f = moment(this.finish).toArray();
       // Use last day of selection by default
       time_component = '&time=' + s[0] +'-'+ s[1] +'-'+ s[2] + ',' + f[0] +'-'+ f[1] +'-'+ f[2];
+
+      console.log(time_component);
     }
     // It is possible to animate the map using the WMS Animator function of GeoServer,
     // however Mapbox doesn't support rendering because you can't sync animation frames
@@ -1043,17 +988,17 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     console.log('Added ' + layer_code + '_source.');
   }
 
-  addLayersForAllModels() {
-    ['L', 'R'].forEach((lr) => {
-      this.setMapContext(lr);
-      for (let i = 0; i < this.models.length; i++) {
-        const layer_code = this.models[i].code;
-        this.makeSourceForModel(layer_code);
-        this.makeLayerForModel(layer_code);
-      }
-    });
-    this.setMapContext('R');
-  }
+  // addLayersForAllModels() {
+  //   ['L', 'R'].forEach((lr) => {
+  //     this.setMapContext(lr);
+  //     for (let i = 0; i < this.models.length; i++) {
+  //       const layer_code = this.models[i].code;
+  //       this.makeSourceForModel(layer_code);
+  //       this.makeLayerForModel(layer_code);
+  //     }
+  //   });
+  //   this.setMapContext('R');
+  // }
 
   makeLayerForModel(layer_code) {
     if (!(this.currentmap instanceof Map)) {
@@ -1085,30 +1030,30 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     }
   }
 
-  shuntFuture() {
-    this.start = moment(this.start).add(1, 'day').toDate();
-    this.finish = moment(this.finish).add(1, 'day').toDate();
-  }
-
-  shuntPast() {
-    this.start = moment(this.start).subtract(1, 'day').toDate();
-    this.finish = moment(this.finish).subtract(1, 'day').toDate();
-  }
-
-  shuntFutureWeek() {
-    const diff = this.durationWindow();
-
-    this.start = moment(this.start).add(diff, 'day').toDate();
-    this.finish = moment(this.finish).add(diff, 'day').toDate();
-  }
-
-  shuntPastWeek() {
-
-    const diff = this.durationWindow();
-
-    this.start = moment(this.start).subtract(diff, 'day').toDate();
-    this.finish = moment(this.finish).subtract(diff, 'day').toDate();
-  }
+  // shuntFuture() {
+  //   this.start = moment(this.start).add(1, 'day').toDate();
+  //   this.finish = moment(this.finish).add(1, 'day').toDate();
+  // }
+  //
+  // shuntPast() {
+  //   this.start = moment(this.start).subtract(1, 'day').toDate();
+  //   this.finish = moment(this.finish).subtract(1, 'day').toDate();
+  // }
+  //
+  // shuntFutureWeek() {
+  //   const diff = this.durationWindow();
+  //
+  //   this.start = moment(this.start).add(diff, 'day').toDate();
+  //   this.finish = moment(this.finish).add(diff, 'day').toDate();
+  // }
+  //
+  // shuntPastWeek() {
+  //
+  //   const diff = this.durationWindow();
+  //
+  //   this.start = moment(this.start).subtract(diff, 'day').toDate();
+  //   this.finish = moment(this.finish).subtract(diff, 'day').toDate();
+  // }
 
   reducePast() {
     this.start = moment(this.start).add(1, 'day').toDate();
@@ -1126,9 +1071,9 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     this.start = moment(this.start).subtract(1, 'day').toDate();
   }
 
-  durationWindow() {
-    return moment(this.finish).diff(moment(this.start), 'day');
-  }
+  // durationWindow() {
+  //   return moment(this.finish).diff(moment(this.start), 'day');
+  // }
 
   onSelectDate(e) {
     this.selectedDate = moment(e.name).format('YYYY-MM-DD');
@@ -1225,21 +1170,21 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     console.log(this.currentmap);
   }
 
-  toggleAvailabilityView() {
-    this.availview = !this.availview;
-  }
-
-  refreshAvailability() {
-
-    // Just sort the static dummy data as a proxy to the real thing for now...
-    return this.availability_data.sort((a, b) => {
-      if (a.model > b.model) {
-        return 1;
-      }
-      if (a.model < b.model) {
-        return -1;
-      }
-      return 0;
-    });
-  }
+  // toggleAvailabilityView() {
+  //   this.availview = !this.availview;
+  // }
+  //
+  // refreshAvailability() {
+  //
+  //   // Just sort the static dummy data as a proxy to the real thing for now...
+  //   return this.availability_data.sort((a, b) => {
+  //     if (a.model > b.model) {
+  //       return 1;
+  //     }
+  //     if (a.model < b.model) {
+  //       return -1;
+  //     }
+  //     return 0;
+  //   });
+  // }
 }

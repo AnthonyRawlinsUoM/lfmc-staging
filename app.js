@@ -1,5 +1,7 @@
 const express = require('express');
 const http = require('http');
+const https = require('https');
+const fs = require('fs');
 const path = require('path');
 
 const app = express();
@@ -35,7 +37,23 @@ app.get('*', (req, res) => {
 const port = process.env.PORT || '3000';
 app.set('port', port);
 
+// const server = http.createServer(app);
+// server.listen(port, () => {
+//   console.log('LFMC Server running on', port);
+// });
+
+const options = {
+    key: fs.readFileSync('./ssl/private.pem'),
+    cert: fs.readFileSync('./ssl/bundle.pem'),
+};
+
+// const secure = https.createServer(options, app);
+// secure.listen(port, () => {
+//   console.log('LFMC Secure Server running on', port);
+// });
+
 const server = http.createServer(app);
 server.listen(port, () => {
   console.log('LFMC Server running on', port);
 });
+

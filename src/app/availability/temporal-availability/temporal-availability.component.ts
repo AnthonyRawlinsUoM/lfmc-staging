@@ -22,6 +22,56 @@ export class TemporalAvailabilityComponent implements OnInit {
   percentage_width = 100;
   columns = 1;
 
+  availability_data = [
+    {
+      'model': 'AWRA',
+      'series': [['2010-01-01', '2018-03-31']]
+    },
+    {
+      'model': 'Jasmin',
+      'series': [['2010-01-01', '2018-09-31']]
+    },
+    {
+      'model': 'DEAD_FUEL',
+      'series': [['2008-01-01', '2018-06-06']]
+    },
+    {
+      'model': 'LIVE_FUEL',
+      'series': [['2008-01-01', '2018-06-06']]
+    },
+    {
+      'model': 'DF',
+      'series': [['2018-05-09', '2018-05-11'],
+        ['2018-05-19', '2018-06-06']]
+    },
+    {
+      'model': 'KBDI',
+      'series': [['2008-01-01', '2018-06-06']]
+    },
+    {
+      'model': 'FFDI',
+      'series': [['2018-05-09', '2018-05-11'],
+        ['2018-05-19', '2018-06-06']]
+    },
+    {
+      'model': 'Matthews',
+      'series': [['2008-01-01', '2018-06-06']]
+    },
+    {
+      'model': 'Yebra',
+      'series': [['2018-01-01', '2018-06-06']]
+    },
+    {
+      'model': 'GFDI',
+      'series': [['2018-05-09', '2018-05-11'],
+        ['2018-05-19', '2018-06-06']]
+    },
+    {
+      'model': 'Temp',
+      'series': [['2018-05-09', '2018-05-11'],
+        ['2018-05-19', '2018-06-06']]
+    }
+  ];
 
   private years_range: any[];
 
@@ -29,6 +79,9 @@ export class TemporalAvailabilityComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.availability = this.availability_data;
+
     console.log(this.availability);
 
     let r = [3000, 2001];

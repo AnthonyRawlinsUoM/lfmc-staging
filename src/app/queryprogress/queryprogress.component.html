@@ -3,18 +3,18 @@
     <h3 class="ui inverted header">Disabled</h3>
   </sui-dimmer>
 
-  <div class="ui top attached grey menu">
-    <div class="ui active item"><i class="ui tasks icon"></i> Tasks</div>
-    <div class="ui disabled item"><i class="ui chart line icon"></i> Results</div>
-    <div class="right menu">
-      <div class="ui item"><i class="ui sort amount down icon"></i> First Completed</div>
-      <div class="ui item"><i class="ui sort amount up icon"></i> Time remaining</div>
-      <div class="ui red item"><i class="ui delete icon"></i> Cancell All</div>
+  <!--<div class="ui top attached grey menu">-->
+    <!--<div class="ui active item"><i class="ui tasks icon"></i> Tasks</div>-->
+    <!--<div class="ui disabled item"><i class="ui chart line icon"></i> Results</div>-->
+    <!--<div class="right menu">-->
+      <!--<div class="ui item"><i class="ui sort amount down icon"></i> First Completed</div>-->
+      <!--<div class="ui item"><i class="ui sort amount up icon"></i> Time remaining</div>-->
+      <!--<div class="ui red item"><i class="ui delete icon"></i> Cancell All</div>-->
 
-      <div class="ui green item" (click)="go()"><i class="ui green play icon"></i></div>
-      <div class="ui red item" (click)="stop()"><i class="ui red stop icon"></i></div>
-    </div>
-  </div>
+      <!--<div class="ui green item" (click)="go()"><i class="ui green play icon"></i></div>-->
+      <!--<div class="ui red item" (click)="stop()"><i class="ui red stop icon"></i></div>-->
+    <!--</div>-->
+  <!--</div>-->
   <table class="ui selectable grey inverted table" *ngIf="subtasks.length > 0">
     <thead>
     <tr>
@@ -31,7 +31,5 @@
   </table>
 </div>
 
-<button class="ui button" (click)="isDimmed = !isDimmed">Toggle Dimmer</button>
-<button class="ui primary button" (click)="test()">Send Example Query</button>
-
-{{multi}}
+<!--<button class="ui button" (click)="isDimmed = !isDimmed">Toggle Dimmer</button>-->
+<!--<button class="ui primary button" (click)="test()">Send Example Query</button>-->
