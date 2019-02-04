@@ -3870,7 +3870,7 @@ var httpOptions = {
 var ProgressionService = /** @class */ (function () {
     function ProgressionService(http) {
         this.http = http;
-        this.pipeline = 'http://pipeline.landscapefuelmoisture.bushfirebehaviour.net.au';
+        this.pipeline = 'https://pipeline.landscapefuelmoisture.bushfirebehaviour.net.au';
     }
     ProgressionService.prototype.getProgress = function (uuid) {
         return this.http.get(this.pipeline + "/progress?uuid=" + uuid, httpOptions);
@@ -4538,7 +4538,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var ModelsService = /** @class */ (function () {
     function ModelsService(http) {
         this.http = http;
-        this.modelsUrl = 'http://api.landscapefuelmoisture.bushfirebehaviour.net.au/v1';
+        this.modelsUrl = 'https://api.landscapefuelmoisture.bushfirebehaviour.net.au/v1';
     }
     ModelsService.prototype.get = function (code) {
         return this.http
@@ -4657,7 +4657,7 @@ var httpOptions = {
 var TimeseriesService = /** @class */ (function () {
     function TimeseriesService(http) {
         this.http = http;
-        this.pipeline = 'http://pipeline.landscapefuelmoisture.bushfirebehaviour.net.au';
+        this.pipeline = 'https://pipeline.landscapefuelmoisture.bushfirebehaviour.net.au';
     }
     // private apiUrl = 'http://api.landscapefuelmoisture.bushfirebehaviour.net.au/v1';
     TimeseriesService.prototype.submit = function (path, json_query) {
@@ -5555,7 +5555,7 @@ var MapboxComponent = /** @class */ (function () {
         this.jasminLevel = v;
     };
     MapboxComponent.prototype.makeSourceForModel = function (layer_code) {
-        var layer_url_part_A = 'http://geoserver.landscapefuelmoisture.bushfirebehaviour.net.au/geoserver/lfmc/wms?service=WMS&version=1.3.0&request=GetMap&layers=lfmc:';
+        var layer_url_part_A = 'https://geoserver.landscapefuelmoisture.bushfirebehaviour.net.au/geoserver/lfmc/wms?service=WMS&version=1.3.0&request=GetMap&layers=lfmc:';
         var layer_url_part_B = '&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857';
         var time_component;
         // WORKAROUND - GeoServer expects datetime format to be zero offset for month and days.
@@ -5883,7 +5883,7 @@ var httpOptions = {
 var TemporalService = /** @class */ (function () {
     function TemporalService(http) {
         this.http = http;
-        this.pipeline = 'http://pipeline.landscapefuelmoisture.bushfirebehaviour.net.au';
+        this.pipeline = 'https://pipeline.landscapefuelmoisture.bushfirebehaviour.net.au';
     }
     TemporalService.prototype.timesForModel = function (model_name) {
         return this.http.post(this.pipeline + "/temporal", { 'model': model_name }, httpOptions);

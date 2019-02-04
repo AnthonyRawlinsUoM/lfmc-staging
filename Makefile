@@ -1,5 +1,10 @@
 all: build install pull
 
+stack:
+	npm run-script build
+	@docker build --tag=127.0.0.1:5000/lfmc-staging .
+	@docker push 127.0.0.1:5000/lfmc-staging
+
 build:
 	npm run-script build
 	@docker build --tag=anthonyrawlinsuom/lfmc-staging .
