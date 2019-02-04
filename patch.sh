@@ -9,7 +9,7 @@ git pull
 
 OLD_PACKAGE_VERSION=`node -pe "require('./package.json').version"`
 echo "previous version: $OLD_PACKAGE_VERSION"
-npm version patch
+npm version minor
 PACKAGE_VERSION=`node -pe "require('./package.json').version"`
 echo $PACKAGE_VERSION>"VERSION"
 version=`cat VERSION`
