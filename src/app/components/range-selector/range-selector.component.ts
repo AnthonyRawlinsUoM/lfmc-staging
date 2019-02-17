@@ -11,7 +11,7 @@ export class RangeSelectorComponent implements OnInit, AfterViewInit {
 
 
   @Input() min: Date = new Date(2017, 0, 1);
-  @Input() max: Date = new Date(2018, 11, 31);
+  @Input() max: Date = new Date();
 
   @Input() start: Date;
   @Input() finish: Date;

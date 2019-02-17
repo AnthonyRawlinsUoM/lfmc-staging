@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class TemporalService {
 
-  private pipeline = 'https://pipeline.landscapefuelmoisture.bushfirebehaviour.net.au';
+  private pipeline = 'http://pipeline.landscapefuelmoisture.bushfirebehaviour.net.au';
 
   constructor(private http: HttpClient) { }
 

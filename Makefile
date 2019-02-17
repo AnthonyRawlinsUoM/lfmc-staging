@@ -2,8 +2,8 @@ all: build install pull
 
 stack:
 	npm run-script build
-	@docker build --tag=127.0.0.1:5000/lfmc-staging .
-	@docker push 127.0.0.1:5000/lfmc-staging
+	@docker build --tag=anthonyrawlinsuom/lfmc-staging .
+	@docker push anthonyrawlinsuom/lfmc-staging
 
 build:
 	npm run-script build

@@ -14,7 +14,7 @@ export class ModelsService {
   constructor(private http: HttpClient) {
   }
 
-  private modelsUrl = 'https://api.landscapefuelmoisture.bushfirebehaviour.net.au/v1';
+  private modelsUrl = 'http://api.landscapefuelmoisture.bushfirebehaviour.net.au/v1';
 
   get(code: any): Observable<any> {
     return this.http

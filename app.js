@@ -42,10 +42,10 @@ app.set('port', port);
 //   console.log('LFMC Server running on', port);
 // });
 
-const options = {
-    key: fs.readFileSync('./ssl/private.pem'),
-    cert: fs.readFileSync('./ssl/bundle.pem'),
-};
+// const options = {
+//     key: fs.readFileSync('./ssl/private.pem'),
+//     cert: fs.readFileSync('./ssl/bundle.pem'),
+// };
 
 // const secure = https.createServer(options, app);
 // secure.listen(port, () => {

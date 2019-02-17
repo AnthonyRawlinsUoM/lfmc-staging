@@ -153,7 +153,7 @@
                     </a>
                     <a class="stretch item" suiDatepicker [pickerMinDate]="minStartDate" [pickerMaxDate]="maxStartDate"
                        [pickerMode]="'date'" [(ngModel)]="rangeStart" (ngModelChange)="updateRangeSelector()"><i
-                      class="calendar icon"></i> From: {{rangeStart | date:'fullDate'}}</a>
+                      class="calendar icon"></i> From: {{rangeStart | date:'dd/MM/yyyy'}}</a>
                     <a class="right aligned item" (click)="reducePast()">
                       <i class="right angle icon"></i>
                     </a>
@@ -194,7 +194,7 @@
                       <i class="calendar icon"></i> To:
                       {{rangeFinish
                       |
-                      date:'fullDate'}}</a>
+                      date:'dd/MM/yyyy'}}</a>
                     <a class="right aligned item" (click)="extendFuture()">
                       <i class="right angle icon"></i>
                     </a>
@@ -203,12 +203,13 @@
               </div>
 
             </div>
-            <app-range-selector [min]="rangeStart"
+            
+            <div class="ui bottom attached map-overlay-inner">
+                <app-range-selector [min]="rangeStart"
                                 [max]="rangeFinish"
                                 (rangeChange)="updateDates($event)"></app-range-selector>
 
             </div>
-            <div class="ui bottom attached map-overlay-inner">
               <app-charting id="chart" [lat]="lat" [lng]="lng" [start]="start | date:'yMMdd'"
                             [finish]="finish | date:'yMMdd'" (select)="onSelectDate($event)"></app-charting>
 

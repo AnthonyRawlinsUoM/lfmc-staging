@@ -74,9 +74,17 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   calculated_area = '';
   model_names: any[] = [];
   models: Model[] = [];
-  start: Date = moment().subtract(31, 'days').toDate();
+  start: Date = moment().subtract(1, 'month').toDate();
   finish: Date = moment().subtract(1, 'days').toDate();
-
+  // Eventually this will come from extents of TemporalAvailability Module
+  rangeStart: Date = moment().subtract(1, 'month').toDate();
+  rangeFinish: Date = moment().subtract(1, 'days').toDate();
+  
+  minStartDate: Date = new Date(2000,0,1);
+  maxStartDate: Date = moment().subtract(1, 'days').toDate();
+  minEndDate: Date = new Date(2000,0,1);
+  maxEndDate: Date = moment().subtract(1, 'days').toDate();
+  
   selectedDate: string;
 
   modelA = '';
@@ -113,10 +121,6 @@ export class MapboxComponent implements OnInit, AfterViewInit {
 
   coloroptions: any;
   colorLegend: any;
-
-  rangeStart: Date = new Date(2018, 0, 1);  // Eventually this will come from extents of TemporalAvailability Module
-  rangeFinish: Date = new Date(2019, 0, 1);  // TODO -> TemporalAvailability
-
   prevBoundary = {'features': []};
 
   nav: NavigationControl;
@@ -212,7 +216,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.ms.getModels().subscribe(result => {
+      this.ms.getModels().subscribe(result => {
         this.models = <Model[]>(result.models);
         this.model_names = this.getModelNamesOnly();
       },
@@ -314,7 +318,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
     map.addControl(this.ful, 'top-right');
     map.addControl(this.drw, 'top-right');
     altmap.addControl(this.altdrw, 'top-right');
-    map.addControl(this.scl, 'bottom-right');
+    map.addControl(this.scl, 'top-right');
 
     // const dragPointGeoJSON = this.dragPointGeoJSON;
 
@@ -373,7 +377,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
       //   'data': 'http://api:1880/api/bushfires'
       // });
 
-      // map.loadImage('https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Fireicon01.svg/100px-Fireicon01.svg.png',
+      // map.loadImage('http://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Fireicon01.svg/100px-Fireicon01.svg.png',
       //   function (error, image) {
       //     if (error) {
       //       throw error;
@@ -396,7 +400,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
        */
       // map.addSource('hotspots', {
       //   'type': 'geojson',
-      //   // 'data': 'https://firms.modaps.eosdis.nasa.gov/wms/c6/?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=fires24&BBOX=-180,-90,180,90&&SRS=EPSG:4326'
+      //   // 'data': 'http://firms.modaps.eosdis.nasa.gov/wms/c6/?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=fires24&BBOX=-180,-90,180,90&&SRS=EPSG:4326'
       //   'data': 'http://sentinel.ga.gov.au/geoserver/wfs?service=wfs&version=1.1.1&request=GetFeature&typeName=public:hotspot_current_4326&outputFormat=application%2Fjson'
       // });
 
@@ -927,7 +931,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   makeSourceForModel(layer_code) {
 
 
-    const layer_url_part_A = 'https://geoserver.landscapefuelmoisture.bushfirebehaviour.net.au/geoserver/lfmc/wms?service=WMS&version=1.3.0&request=GetMap&layers=lfmc:';
+    const layer_url_part_A = 'http://geoserver.landscapefuelmoisture.bushfirebehaviour.net.au/geoserver/lfmc/wms?service=WMS&version=1.3.0&request=GetMap&layers=lfmc:';
     const layer_url_part_B = '&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857';
 
     let time_component;
@@ -1056,20 +1060,20 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   // }
 
   reducePast() {
-    this.start = moment(this.start).add(1, 'day').toDate();
+    this.rangeStart = moment(this.rangeStart).add(1, 'day').toDate();
   }
-
-  reduceFuture() {
-    this.finish = moment(this.finish).subtract(1, 'day').toDate();
-  }
-
-  extendFuture() {
-    this.finish = moment(this.finish).add(1, 'day').toDate();
-  }
-
   extendPast() {
-    this.start = moment(this.start).subtract(1, 'day').toDate();
+    this.rangeStart = moment(this.rangeStart).subtract(1, 'day').toDate();
   }
+  
+  reduceFuture() {
+    this.rangeFinish = moment(this.rangeFinish).subtract(1, 'day').toDate();
+  }
+  extendFuture() {
+    this.rangeFinish = moment(this.rangeFinish).add(1, 'day').toDate();
+  }
+
+
 
   // durationWindow() {
   //   return moment(this.finish).diff(moment(this.start), 'day');
