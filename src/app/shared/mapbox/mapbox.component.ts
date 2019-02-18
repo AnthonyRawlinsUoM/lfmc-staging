@@ -74,6 +74,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   calculated_area = '';
   model_names: any[] = [];
   models: Model[] = [];
+  
   start: Date = moment().subtract(1, 'month').toDate();
   finish: Date = moment().subtract(1, 'days').toDate();
   // Eventually this will come from extents of TemporalAvailability Module
@@ -82,6 +83,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   
   minStartDate: Date = new Date(2000,0,1);
   maxStartDate: Date = moment().subtract(1, 'days').toDate();
+  
   minEndDate: Date = new Date(2000,0,1);
   maxEndDate: Date = moment().subtract(1, 'days').toDate();
   
