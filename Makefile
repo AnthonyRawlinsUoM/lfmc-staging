@@ -15,6 +15,9 @@ install:
 pull:
 	@docker pull anthonyrawlinsuom/lfmc-staging
 
+patch:
+	./patch.sh
+
 release:
 	./release.sh
 

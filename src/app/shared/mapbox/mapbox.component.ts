@@ -34,8 +34,15 @@ const turf = require('@turf/turf');
 
 const epsg3112 = proj4.defs('EPSG:3112',
   '+proj=lcc +lat_1=-18 +lat_2=-36 +lat_0=0 +lon_0=134 +x_0=0 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs');
+
+
+// New official name...
 const epsg3857 = proj4.defs('EPSG:3857',
   '+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext  +no_defs');
+// Is the same as...
+const epsg900913 = proj4.defs('EPSG:900913',
+  '+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext  +no_defs');
+  
 const epsg4326 = proj4.defs('EPSG:4326',
   '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs ');
 

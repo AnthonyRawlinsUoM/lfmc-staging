@@ -108,7 +108,7 @@ export class UploadComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.authSubscription.unsubscribe();
+    // this.authSubscription.unsubscribe();
   }
 
   getConversion(c): any {
@@ -116,22 +116,41 @@ export class UploadComponent implements OnInit, OnDestroy {
     console.log('Getting... ' + c);
 
     let geo: any;
-
+    let result: any;
+    
     this.step = 'step2';
-    this.http.get(cdnl, {}).subscribe(data => {
-      geo = new GeoJSONQuery(c, data);
-      console.log(geo);
-      if (this.auth.authenticated) {
-        this.queries.push(geo);
-        this.store.set(this.auth.userProfile.name, this.queries, {type: StorageType.LOCAL});
-      }
-    });
+    this.http.get(cdnl, {}).subscribe(
+        (data) => {
+              result = data;
+        },
+        (e) => {
+            console.log(e);
+        },
+        () => {
+            if (this.auth.authenticated) {
+                let updated = false;
+                this.queries.forEach((q) => {
+                    if (q.name == c) {
+                        q.geojson = result;
+                        updated = true;
+                        geo = q;
+                    }
+                });
+                
+                if(!updated) {
+                    geo = new GeoJSONQuery(c, result);
+                }
+                console.log(geo);
+                this.queries.push(geo);
+                this.store.set(this.auth.userProfile.name, this.queries, {type: StorageType.LOCAL});
+                this.step = 'step3';
+            }
+        });
   }
 
   storeConversions() {
     for (const c of this.conversions) {
       if (this.auth.authenticated) {
-        this.step = 'step3';
         this.getConversion(c);
         console.log('Getting any converted files.');
       } else {
