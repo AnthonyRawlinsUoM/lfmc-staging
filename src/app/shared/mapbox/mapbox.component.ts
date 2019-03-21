@@ -940,7 +940,7 @@ export class MapboxComponent implements OnInit, AfterViewInit {
   makeSourceForModel(layer_code) {
 
 
-    const layer_url_part_A = 'http://geoserver.landscapefuelmoisture.bushfirebehaviour.net.au/geoserver/lfmc/wms?service=WMS&version=1.3.0&request=GetMap&layers=lfmc:';
+    const layer_url_part_A = 'https://geoserver.landscapefuelmoisture.bushfirebehaviour.net.au/geoserver/lfmc/wms?service=WMS&version=1.3.0&request=GetMap&layers=lfmc:';
     const layer_url_part_B = '&styles=&bbox={bbox-epsg-3857}&width=256&height=256&srs=EPSG:3857';
 
     let time_component;
