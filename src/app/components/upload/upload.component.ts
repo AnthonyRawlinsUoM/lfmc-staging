@@ -11,8 +11,8 @@ import {GeoJSONQuery} from '../importeditems/importeditems.component';
 import {Observable, Subscription} from 'rxjs/index';
 
 // TODO
-// const URL = 'http://pipeline:1880/upload';
-const URL = 'http://pipeline.landscapefuelmoisture.bushfirebehaviour.net.au/upload';
+// const URL = 'https://pipeline:1880/upload';
+const URL = 'https://pipeline.landscapefuelmoisture.bushfirebehaviour.net.au/upload';
 
 @Component({
   selector: 'app-upload',

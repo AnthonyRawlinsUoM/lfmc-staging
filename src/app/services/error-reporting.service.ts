@@ -20,7 +20,7 @@ export class ErrorReportingService {
               private sms: SuiModalService) {
   }
 
-  private apiURL = 'http://pipeline.landscapefuelmoisture.bushfirebehaviour.net.au/errorlogger';
+  private apiURL = 'https://pipeline.landscapefuelmoisture.bushfirebehaviour.net.au/errorlogger';
   private metadata = 'LFMC API v' + environment.VERSION;
 
   notifyAuthorOfError(error: any) {
