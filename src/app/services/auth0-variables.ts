@@ -20,7 +20,7 @@ export const AUTH_CONFIG: AuthConfig = {
   AUDIENCE: 'https://bnhcrclfmc.au.auth0.com/userinfo',
   // REDIRECT: 'http://128.250.160.167:3000/callback',
   // REDIRECT: 'http://128.250.160.167:4200/callback',
-  REDIRECT: 'http://landscapefuelmoisture.bushfirebehaviour.net.au/callback',
+  REDIRECT: 'https://www.landscapefuelmoisture.bushfirebehaviour.net.au/callback',
   SCOPE: 'openid profile'
 };
 
